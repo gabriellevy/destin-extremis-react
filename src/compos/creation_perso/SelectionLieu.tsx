@@ -3,13 +3,13 @@ import {Perso} from "../../types/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select} from "@mui/material";
 import {getRegions, Continent, continentsOptions} from "../../donnees/geographie/continents";
 import {Option} from "../../types/lieux/Lieu";
-import {getQuartiers, Region} from "../../donnees/geographie/region";
-import {Ville} from "../../donnees/geographie/villes";
+import {getQuartiers, Region} from "../../donnees/geographie/regions";
+import {Quartier} from "../../donnees/geographie/quartiers";
 
 export default function SelectionLieu() {
     const { control, watch, formState: { errors } } = useFormContext<Perso>();
     const continentSelectionne:Continent = watch("lieu.continent");
-    const sousProvinceSelectionnee:Region = watch("lieu.region");
+    const region:Region = watch("lieu.region");
 
     return (
         <>
@@ -54,15 +54,15 @@ export default function SelectionLieu() {
             <Grid2 size={4}>
                 <Controller
                     control={control}
-                    name="lieu.ville"
+                    name="lieu.quartier"
                     render={({ field }) => (
-                        <FormControl margin="normal" error={!!errors.lieu?.ville}
+                        <FormControl margin="normal" error={!!errors.lieu?.quartier}
                                      fullWidth>
-                            <InputLabel>Ville</InputLabel>
+                            <InputLabel>Quartier</InputLabel>
                             <Select {...field}>
-                                {Object.values(getQuartiers(sousProvinceSelectionnee.toString())).map((ville: Ville) => (
-                                    <MenuItem value={ville.valueOf()} key={ville.valueOf()}>
-                                        {ville.valueOf()}
+                                {Object.values(getQuartiers(region.toString())).map((quartier: Quartier) => (
+                                    <MenuItem value={quartier.valueOf()} key={quartier.valueOf()}>
+                                        {quartier.valueOf()}
                                     </MenuItem>
                                 ))}
                             </Select>

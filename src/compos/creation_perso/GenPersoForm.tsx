@@ -20,7 +20,7 @@ import {d2, d400} from "../../fonctions/des";
 import {persoVide, enfant} from "../../donnees/persos/persos_pregens";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {Ville} from "../../donnees/geographie/villes";
+import {Quartier} from "../../donnees/geographie/quartiers";
 import {vaA} from "../../types/lieux/Lieu";
 import {getRandomEnumValue, getRandomInt, randomStatut} from "../../fonctions/random";
 import {
@@ -52,7 +52,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         const persoAl: Perso = persoVide;
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
-        vaA(persoAl, getRandomEnumValue(Ville));
+        vaA(persoAl, getRandomEnumValue(Quartier));
         persoAl.classeSociale = getRandomEnumValue(ClasseSociale);
         persoAl.statut = randomStatut();
         persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;

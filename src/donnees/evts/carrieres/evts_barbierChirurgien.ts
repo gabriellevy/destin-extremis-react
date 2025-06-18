@@ -40,7 +40,7 @@ export const evts_barbierChirurgien: GroupeEvts = {
                 } else if (!resTestDex.reussi) {
                     texte += `Malheureusement après quelques tests le barbier est sans appel : vous n'êtes pas assez habile de vos mains pour apprendre à manier le rasoir sans blesser le client. `;
                 } else {
-                    texte += `C'est formidable : le médecin de la ville vous juge apte à devenir son apprenti ! "
+                    texte += `C'est formidable : le médecin vous juge apte à devenir son apprenti ! "
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
                     commencerCarriere(perso, metiersEnum.apprenti_barbier_chirurgien, '');
                     perso.evtsProgrammes.set(perso.date + anneesToJours(5), passageDiplomeBarbierChirurgien);

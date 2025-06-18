@@ -1,5 +1,5 @@
 import {anneesToJours} from "../../types/Date";
-import {enVoyageEnSiberie, lieuParDefaut, lieuRome} from "../../types/lieux/Lieu";
+import {enVoyageEnSiberie, lieuParDefaut, lieuArgenteuil} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
 import {Perso, Sexe} from "../../types/Perso";
 import {compsDeBase} from "../../types/comps/Comps";
@@ -82,7 +82,7 @@ export const richeDeRome: Perso = {
     anneeDeDepart: 490,
     age: 16,
     jourDuMois: -1,
-    lieu: lieuRome,
+    lieu: lieuArgenteuil,
     classeSociale: ClasseSociale.citoyen_riche,
     statut: {rang: 1, metalStatut: MetalStatut.argent},
     carrieres: new Map<metiersEnum, Carriere>([[metiersEnum.edile, metierTest]]),

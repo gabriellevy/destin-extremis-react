@@ -4,13 +4,12 @@ import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
 import {evts_crime} from "../donnees/evts/carrieres/evts_crime";
 import {evts_pretres} from "../donnees/evts/carrieres/evts_pretres";
-import {evts_ubersreik_nains} from "../donnees/evts/lieux/reikland/ubersreik/evts_ubersreik_nains";
+import {evts_argenteuil} from "../donnees/evts/lieux/reikland/ubersreik/evts_argenteuil";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
-import {evts_bourgmestre} from "../donnees/evts/carrieres/evts_bourgmestre";
 import {evts_forgeron} from "../donnees/evts/carrieres/evts_forgeron";
 import {evts_brasseur} from "../donnees/evts/carrieres/evts_brasseur";
 import { Box, Typography, Dialog, IconButton, Grid2 } from '@mui/material';
@@ -19,7 +18,7 @@ import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_barbierChirurgien} from "../donnees/evts/carrieres/evts_barbierChirurgien";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
-import {descriptionVille} from "../donnees/geographie/villes";
+import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {evts_gladiateur} from "../donnees/evts/carrieres/evts_gladiateur";
@@ -80,7 +79,7 @@ export default function Histoire() {
 
         // filtrer les evts non applicables
         const evtsApplicables: Evt[] = [
-            ...filtrerEtPreparerEvts(evts_ubersreik_nains, perso),
+            ...filtrerEtPreparerEvts(evts_argenteuil, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
             ...filtrerEtPreparerEvts(evts_crime, perso),
             ...filtrerEtPreparerEvts(evts_pretres, perso),
@@ -91,7 +90,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_gladiateur, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),
             ...filtrerEtPreparerEvts(evts_macon, perso),
-            ...filtrerEtPreparerEvts(evts_bourgmestre, perso),
             ...filtrerEtPreparerEvts(evts_boulanger, perso),
             ...filtrerEtPreparerEvts(evts_boucher, perso),
             ...filtrerEtPreparerEvts(evts_forgeron, perso),
@@ -143,7 +141,7 @@ export default function Histoire() {
         if (!demarre) {
             demarre = true;
             // événement d'intro :
-            const texte = descriptionVille(perso.lieu.ville);
+            const texte = descriptionQuartier(perso.lieu.quartier);
             const nouvEvt: EvtExecute = {
                 id: "intro",
                 dateStr: jourStr(perso.date),
@@ -158,7 +156,7 @@ export default function Histoire() {
 
             setTimeout(determinerEvtSuivant, perso.vitesseExecution);
         }
-    }, [determinerEvtSuivant, perso.date, perso.lieu.ville, perso.vitesseExecution]);
+    }, [determinerEvtSuivant, perso.date, perso.lieu.quartier, perso.vitesseExecution]);
 
     return (
         <>

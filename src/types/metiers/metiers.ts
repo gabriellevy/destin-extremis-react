@@ -1,7 +1,7 @@
 import {MetalStatut, Statut} from "../statut_social/Statut";
 import {Perso} from "../Perso";
 import {titreGuildeEnum} from "./Guilde";
-import {Ville} from "../../donnees/geographie/villes";
+import {Quartier} from "../../donnees/geographie/quartiers";
 
 export enum metiersEnum {
     maitre_de_guilde = "Maître de guilde",
@@ -239,7 +239,7 @@ export const serveurDebutant: Carriere = {
 
 export const metierTest: Carriere = {
     metier: metiersObjs[metiersEnum.edile],
-    groupeLieu: Ville.rome,
+    groupeLieu: Quartier.la_defense,
     duree: 0,
     competence: 1,
     actif: true,

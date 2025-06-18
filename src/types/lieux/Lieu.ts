@@ -1,8 +1,8 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
 import {Perso} from "../Perso";
 import {getRegions, Continent} from "../../donnees/geographie/continents";
-import {Ville} from "../../donnees/geographie/villes";
-import {getQuartiers, Region} from "../../donnees/geographie/region";
+import {Quartier} from "../../donnees/geographie/quartiers";
+import {getQuartiers, Region} from "../../donnees/geographie/regions";
 
 export type Option = {
     value: string,
@@ -12,7 +12,7 @@ export type Option = {
 export type Lieu = {
     continent: Continent,
     region: Region,
-    ville: Ville,
+    quartier: Quartier,
     maison: string|null,
     enVoyage:boolean,
     residenceVoyage:ResidenceDeVoyage|null,
@@ -21,16 +21,16 @@ export type Lieu = {
 export const lieuParDefaut: Lieu = {
     continent: Continent.europe,
     region: Region.la_ville,
-    ville: Ville.ostia,
+    quartier: Quartier.vanves,
     maison: null,
     enVoyage:false,
     residenceVoyage: null,
 };
 
-export const lieuRome: Lieu = {
+export const lieuArgenteuil: Lieu = {
     continent: Continent.europe,
     region: Region.la_ville,
-    ville: Ville.rome,
+    quartier: Quartier.argenteuil,
     maison: null,
     enVoyage:false,
     residenceVoyage: null,
@@ -39,21 +39,21 @@ export const lieuRome: Lieu = {
 export const enVoyageEnSiberie: Lieu = {
     continent: Continent.siberie,
     region: Region.siberie,
-    ville: Ville.herculanum,
+    quartier: Quartier.catacombes_de_paris,
     maison: null,
     enVoyage:true,
     residenceVoyage: null,
 };
 
-export function vaA(perso: Perso, ville: Ville) {
-    perso.lieu.ville = ville;
-    const sousProvince: Region = getSousProvinceDeVille(ville);
+export function vaA(perso: Perso, quartier: Quartier) {
+    perso.lieu.quartier = quartier;
+    const sousProvince: Region = getSousProvinceDeVille(quartier);
     perso.lieu.region = sousProvince;
     perso.lieu.continent = getProvinceDeSousProvince(sousProvince);
 }
 
-export function getSousProvinceDeVille(ville: Ville): Region {
-    return Object.values(Region).find(sousProvince=> getQuartiers(sousProvince).includes(ville)) || Region.regionInconnue;
+export function getSousProvinceDeVille(quartier: Quartier): Region {
+    return Object.values(Region).find(sousProvince=> getQuartiers(sousProvince).includes(quartier)) || Region.regionInconnue;
 }
 
 export function getProvinceDeSousProvince(sousProvince: Region): Continent {

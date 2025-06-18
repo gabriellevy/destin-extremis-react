@@ -4,9 +4,9 @@ import {ResidenceDeVoyage} from "../../../../../types/lieux/ResidenceDeVoyage";
 import {compareStatut, MetalStatut} from "../../../../../types/statut_social/Statut";
 import {metiersEnum} from "../../../../../types/metiers/metiers";
 import {aUneCarriere, commencerCarriere} from "../../../../../types/metiers/metiersUtils";
-import {Ville} from "../../../../geographie/villes";
+import {Quartier} from "../../../../geographie/quartiers";
 
-export const evts_ubersreik_nains: GroupeEvts = {
+export const evts_argenteuil: GroupeEvts = {
     evts: [
 
         {
@@ -16,7 +16,7 @@ export const evts_ubersreik_nains: GroupeEvts = {
                 return "De passage à ubersreik et sans logement vous décidez de vous installer à 'La hache et le marteau'. " +
                     "Elle est située en plein Dawihafen, la quartier nain. ";
             },
-            conditions: (perso: Perso): boolean => perso.lieu.ville === Ville.pisae
+            conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.argenteuil
                 && compareStatut(perso.statut, {metalStatut: MetalStatut.argent, rang: 1})
                 && perso.lieu.enVoyage
                 && perso.lieu.residenceVoyage === null,
@@ -27,7 +27,7 @@ export const evts_ubersreik_nains: GroupeEvts = {
             description: (): string => "Aujourd'hui vous vous offrez un petit plaisir: vous allez diner et boire un bon coup à 'La hache et le marteau'. " +
                     "La cuisine y est bonne, les portions généreuses, et surtout la bière y est aux standards nains. "
             ,
-            conditions: (perso: Perso): boolean => perso.lieu.ville === Ville.pisae
+            conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.argenteuil
                 && compareStatut(perso.statut, {metalStatut: MetalStatut.argent, rang: 1}),
         },
         {
@@ -40,7 +40,7 @@ export const evts_ubersreik_nains: GroupeEvts = {
                     "C'est une auberge de qualité dans laquelle vous devriez être assez payé pour subvenir à vos besoins. " +
                     "Vous avez surtout la chance de pouvoir loger dans une chambre de l'auberge pour les domestiques. "
             },
-            conditions: (perso: Perso): boolean => perso.lieu.ville === Ville.pisae
+            conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.argenteuil
                 && !aUneCarriere(perso),
         },
     ],

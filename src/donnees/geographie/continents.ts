@@ -1,5 +1,5 @@
 import {Option} from "../../types/lieux/Lieu";
-import {Region} from "./region";
+import {Region} from "./regions";
 
 export enum Continent {
     europe = 'Europe',
