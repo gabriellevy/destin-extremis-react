@@ -1,10 +1,10 @@
 import {anneesToJours} from "../../types/Date";
-import {enVoyageEnSiberie, lieuParDefaut, lieuArgenteuil} from "../../types/lieux/Lieu";
+import {enVoyageEnSiberie, lieuParDefaut} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
 import {Perso, Sexe} from "../../types/Perso";
 import {compsDeBase} from "../../types/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
-import {Carriere, metiersEnum, metierTest} from "../../types/metiers/metiers";
+import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {unAnAvantDebutCampagne} from "../dates/ennemi_interieur";
 import {APOLLON} from "../dieux/dieux";
 import {ClasseSociale} from "../../types/statut_social/ClasseSociale";
@@ -42,28 +42,6 @@ export const jeuneHommeEnVoyageEnCampanie: Perso = {
     classeSociale: ClasseSociale.citoyen_romain,
     statut: {rang: 2, metalStatut: MetalStatut.argent},
     carrieres: new Map<metiersEnum, Carriere>,
-    comps: compsDeBase(),
-    maitrises: [],
-    dieu: {id: APOLLON},
-    evtsProgrammes: evts_programmes,
-    vitesseExecution: 5000,
-};
-
-// époque du carnaval
-export const richeDeRome: Perso = {
-    prenom: "Lucius",
-    nom: "Aemilius",
-    cognomen: "Paullus",
-    sexe: Sexe.male,
-    dateNaissance: anneesToJours(470),
-    date: unAnAvantDebutCampagne, // début du pouvoir derrière le trône 3ème volume
-    anneeDeDepart: 490,
-    age: 16,
-    jourDuMois: -1,
-    lieu: lieuArgenteuil,
-    classeSociale: ClasseSociale.citoyen_riche,
-    statut: {rang: 1, metalStatut: MetalStatut.argent},
-    carrieres: new Map<metiersEnum, Carriere>([[metiersEnum.edile, metierTest]]),
     comps: compsDeBase(),
     maitrises: [],
     dieu: {id: APOLLON},
