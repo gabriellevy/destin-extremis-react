@@ -1,5 +1,5 @@
 import {Option} from "../../types/lieux/Lieu";
-import {SousProvince} from "./sousProvince";
+import {Region} from "./region";
 
 export enum Continent {
     europe = 'Europe',
@@ -23,10 +23,10 @@ export const continentsOptions: Option[]= [
     { value: Continent.amerique_sud, label: Continent.amerique_sud},
 ];
 
-export function getSousProvinces(provinceStr: string):SousProvince[] {
-    switch (provinceStr) {
+export function getRegions(continent: Continent):Region[] {
+    switch (continent) {
         case Continent.siberie : return [
-            // TODO
+            Region.siberie,
         ];
         case Continent.inde : return [
             // TODO
@@ -38,22 +38,7 @@ export function getSousProvinces(provinceStr: string):SousProvince[] {
             // TODO
         ];
         case Continent.europe : return [
-            SousProvince.latium,
-            SousProvince.campanie,
-            SousProvince.tuscia,
-            SousProvince.umbria,
-            SousProvince.aemilia,
-            SousProvince.Venetia,
-            SousProvince.Liguria,
-            SousProvince.Pedemontium,
-            SousProvince.Insubria,
-            SousProvince.Sicilia,
-            SousProvince.Sardinia,
-            SousProvince.Bruttium,
-            SousProvince.Apulia,
-            SousProvince.Lucania,
-            SousProvince.Sabinum,
-            SousProvince.Samnium,
+            Region.la_ville,
         ];
         case Continent.amerique_centrale : return [
         // TODO
