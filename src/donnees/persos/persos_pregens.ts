@@ -9,25 +9,6 @@ import {unAnAvantDebutCampagne} from "../dates/ennemi_interieur";
 import {APOLLON} from "../dieux/dieux";
 import {ClasseSociale} from "../../types/statut_social/ClasseSociale";
 
-export const persoVide: Perso = {
-    prenom: "Lucius",
-    nom: "Aemilius",
-    cognomen: "Paullus",
-    carrieres: new Map<metiersEnum, Carriere>,
-    comps: compsDeBase(),
-    date: 0,
-    dateNaissance: 0,
-    dieu: {id: APOLLON},
-    evtsProgrammes: evts_programmes,
-    jourDuMois: 0,
-    lieu: lieuParDefaut,
-    sexe: Sexe.male,
-    statut: {rang: 4, metalStatut: MetalStatut.bronze},
-    classeSociale: ClasseSociale.citoyen_romain,
-    maitrises: [],
-    vitesseExecution: 5000,
-}
-
 export const enfant: Perso = {
     prenom: "Caius",
     nom: "Aemilius",

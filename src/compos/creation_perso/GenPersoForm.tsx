@@ -17,7 +17,7 @@ import SelectionStatut from "./SelectionStatut";
 import SelectionDates from "./SelectionDates";
 import {anneesToJours} from "../../types/Date";
 import {d2, d400} from "../../fonctions/des";
-import {persoVide, enfant} from "../../donnees/persos/persos_pregens";
+import {enfant} from "../../donnees/persos/persos_pregens";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Quartier} from "../../donnees/geographie/quartiers";
@@ -49,14 +49,14 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     };
 
     const persoAleatoire = () => {
-        const persoAl: Perso = persoVide;
+        const persoAl: Perso = enfant;
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
         persoAl.classeSociale = getRandomEnumValue(ClasseSociale);
         persoAl.statut = randomStatut();
         persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
-        // nom aléatoire (TODO : selon nation, race etc)
+        // nom aléatoire (TODO : selon coterie)
         persoAl.prenom = persoAl.sexe ?
             EMPIRE_PRENOMS_M[getRandomInt(EMPIRE_PRENOMS_M.length)] :
             EMPIRE_PRENOMS_F[getRandomInt(EMPIRE_PRENOMS_F.length)];
