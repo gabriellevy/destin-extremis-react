@@ -1,6 +1,6 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
 import {Perso} from "../Perso";
-import {Pays} from "../../donnees/geographie/pays";
+import {Continent} from "../../donnees/geographie/continent";
 import {getSousProvinces, Province} from "../../donnees/geographie/provinces";
 import {Ville} from "../../donnees/geographie/villes";
 import {getVilles, SousProvince} from "../../donnees/geographie/sousProvince";
@@ -11,7 +11,7 @@ export type Option = {
 }
 
 export type Lieu = {
-    pays: Pays,
+    pays: Continent,
     province: Province,
     sousProvince: SousProvince,
     ville: Ville,
@@ -21,7 +21,7 @@ export type Lieu = {
 };
 
 export const lieuParDefaut: Lieu = {
-    pays: Pays.empire,
+    pays: Continent.europe,
     province: Province.italia,
     sousProvince: SousProvince.latium,
     ville: Ville.ostia,
@@ -31,7 +31,7 @@ export const lieuParDefaut: Lieu = {
 };
 
 export const lieuRome: Lieu = {
-    pays: Pays.empire,
+    pays: Continent.europe,
     province: Province.italia,
     sousProvince: SousProvince.latium,
     ville: Ville.rome,
@@ -41,7 +41,7 @@ export const lieuRome: Lieu = {
 };
 
 export const enVoyageEnCampanie: Lieu = {
-    pays: Pays.empire,
+    pays: Continent.europe,
     province: Province.hispania,
     sousProvince: SousProvince.campanie,
     ville: Ville.herculanum,

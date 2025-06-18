@@ -8,7 +8,6 @@ import {evts_ubersreik_nains} from "../donnees/evts/lieux/reikland/ubersreik/evt
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
-import {evts_empireEI} from "../donnees/evts/histoire/ennemi_intérieur/evts_empireEI";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
 import {evts_bourgmestre} from "../donnees/evts/carrieres/evts_bourgmestre";
@@ -95,7 +94,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_bourgmestre, perso),
             ...filtrerEtPreparerEvts(evts_boulanger, perso),
             ...filtrerEtPreparerEvts(evts_boucher, perso),
-            ...filtrerEtPreparerEvts(evts_empireEI, perso),
             ...filtrerEtPreparerEvts(evts_forgeron, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),
             ...filtrerEtPreparerEvts(evts_barbierChirurgien, perso),
