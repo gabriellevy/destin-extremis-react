@@ -57,13 +57,6 @@ export default function AffichagePerso() {
                 </ListItem>
             </List>
             <Comps perso={perso}/>
-            {
-                perso.corruption > 0 && (
-                    <ListItem>
-                        <ListItemText primary="Corruption" secondary={perso.corruption}/>
-                    </ListItem>
-                )
-            }
             <Box mt={2}>
                 <Button variant="contained" color="primary" onClick={exporter} size="small">
                     Exporter le perso

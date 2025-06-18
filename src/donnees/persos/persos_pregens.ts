@@ -26,7 +26,6 @@ export const persoVide: Perso = {
     classeSociale: ClasseSociale.citoyen_romain,
     maitrises: [],
     vitesseExecution: 5000,
-    corruption: 0,
 }
 
 export const enfant: Perso = {
@@ -48,7 +47,6 @@ export const enfant: Perso = {
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
-    corruption: 0,
 };
 
 export const jeuneHommeEnVoyageEnCampanie: Perso = {
@@ -68,7 +66,6 @@ export const jeuneHommeEnVoyageEnCampanie: Perso = {
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
-    corruption: 0,
 };
 
 // époque du carnaval
@@ -91,5 +88,4 @@ export const richeDeRome: Perso = {
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
-    corruption: 0,
 };
