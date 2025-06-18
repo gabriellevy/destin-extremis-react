@@ -1,14 +1,14 @@
 import {Controller, useFormContext} from "react-hook-form";
 import {Perso} from "../../types/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select} from "@mui/material";
-import {getSousProvinces, Province, provinceOptions} from "../../donnees/geographie/provinces";
+import {getSousProvinces, Continent, continentsOptions} from "../../donnees/geographie/continents";
 import {Option} from "../../types/lieux/Lieu";
 import {getVilles, SousProvince} from "../../donnees/geographie/sousProvince";
 import {Ville} from "../../donnees/geographie/villes";
 
 export default function SelectionLieu() {
     const { control, watch, formState: { errors } } = useFormContext<Perso>();
-    const provinceSelectionnee:Province = watch("lieu.province");
+    const continentSelectionne:Continent = watch("lieu.continent");
     const sousProvinceSelectionnee:SousProvince = watch("lieu.sousProvince");
 
     return (
@@ -16,15 +16,15 @@ export default function SelectionLieu() {
             <Grid2 size={4}>
                 <Controller
                     control={control}
-                    name="lieu.province"
+                    name="lieu.continent"
                     render={({ field }) => (
-                        <FormControl margin="normal" error={!!errors.lieu?.province}
+                        <FormControl margin="normal" error={!!errors.lieu?.continent}
                                      fullWidth>
-                            <InputLabel>Province</InputLabel>
+                            <InputLabel>Continent</InputLabel>
                             <Select {...field}>
-                                {Object.values(provinceOptions).map((provinceOption: Option) => (
-                                    <MenuItem value={provinceOption.value} key={provinceOption.value}>
-                                        {provinceOption.label}
+                                {Object.values(continentsOptions).map((continentOption: Option) => (
+                                    <MenuItem value={continentOption.value} key={continentOption.value}>
+                                        {continentOption.label}
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -41,7 +41,7 @@ export default function SelectionLieu() {
                                      fullWidth>
                             <InputLabel>Sous province</InputLabel>
                             <Select {...field}>
-                                {Object.values(getSousProvinces(provinceSelectionnee.toString())).map((sousProvince: SousProvince) => (
+                                {Object.values(getSousProvinces(continentSelectionne.toString())).map((sousProvince: SousProvince) => (
                                     <MenuItem value={sousProvince.valueOf()} key={sousProvince.valueOf()}>
                                         {sousProvince.valueOf()}
                                     </MenuItem>

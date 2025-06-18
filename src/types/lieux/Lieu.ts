@@ -1,7 +1,6 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
 import {Perso} from "../Perso";
-import {Continent} from "../../donnees/geographie/continent";
-import {getSousProvinces, Province} from "../../donnees/geographie/provinces";
+import {getSousProvinces, Continent} from "../../donnees/geographie/continents";
 import {Ville} from "../../donnees/geographie/villes";
 import {getVilles, SousProvince} from "../../donnees/geographie/sousProvince";
 
@@ -11,8 +10,7 @@ export type Option = {
 }
 
 export type Lieu = {
-    pays: Continent,
-    province: Province,
+    continent: Continent,
     sousProvince: SousProvince,
     ville: Ville,
     maison: string|null,
@@ -21,8 +19,7 @@ export type Lieu = {
 };
 
 export const lieuParDefaut: Lieu = {
-    pays: Continent.europe,
-    province: Province.italia,
+    continent: Continent.europe,
     sousProvince: SousProvince.latium,
     ville: Ville.ostia,
     maison: null,
@@ -31,8 +28,7 @@ export const lieuParDefaut: Lieu = {
 };
 
 export const lieuRome: Lieu = {
-    pays: Continent.europe,
-    province: Province.italia,
+    continent: Continent.europe,
     sousProvince: SousProvince.latium,
     ville: Ville.rome,
     maison: null,
@@ -41,8 +37,7 @@ export const lieuRome: Lieu = {
 };
 
 export const enVoyageEnCampanie: Lieu = {
-    pays: Continent.europe,
-    province: Province.hispania,
+    continent: Continent.siberie,
     sousProvince: SousProvince.campanie,
     ville: Ville.herculanum,
     maison: null,
@@ -54,19 +49,19 @@ export function vaA(perso: Perso, ville: Ville) {
     perso.lieu.ville = ville;
     const sousProvince: SousProvince = getSousProvinceDeVille(ville);
     perso.lieu.sousProvince = sousProvince;
-    perso.lieu.province = getProvinceDeSousProvince(sousProvince);
+    perso.lieu.continent = getProvinceDeSousProvince(sousProvince);
 }
 
 export function getSousProvinceDeVille(ville: Ville): SousProvince {
     return Object.values(SousProvince).find(sousProvince=> getVilles(sousProvince).includes(ville)) || SousProvince.sousProvinceInconnue;
 }
 
-export function getProvinceDeSousProvince(sousProvince: SousProvince): Province {
-    return Object.values(Province).find(province=> getSousProvinces(province).includes(sousProvince)) || Province.provinceInconnue;
+export function getProvinceDeSousProvince(sousProvince: SousProvince): Continent {
+    return Object.values(Continent).find(province=> getSousProvinces(province).includes(sousProvince)) || Continent.continentInconnu;
 }
 
 export function auBordDeLaRiviere(perso: Perso): boolean {
-    if (perso.lieu.province === Province.gallia) return true; // il y a des rivières partout là dedans...
+    if (perso.lieu.continent === Continent.europe) return true; // il y a des rivières partout là dedans...
 
     return false;
 }

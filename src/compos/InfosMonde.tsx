@@ -9,7 +9,7 @@ export default function InfosMonde() {
             <ListItem>
                 <ListItemText
                     primary="Lieu"
-                    secondary={perso.lieu.residenceVoyage ?? "En voyage à " + perso.lieu.ville + " (" + perso.lieu.province + ")"}
+                    secondary={perso.lieu.residenceVoyage ?? "En voyage à " + perso.lieu.ville + " (" + perso.lieu.continent + ")"}
                 />
             </ListItem>
             { perso.lieu.residenceVoyage &&
