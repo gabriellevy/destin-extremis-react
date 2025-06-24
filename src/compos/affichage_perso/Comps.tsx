@@ -1,6 +1,6 @@
 import {Perso} from "../../types/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
-import {getCompValue, TypeCompetence} from "../../types/comps/Comps";
+import {getCompValue, isCompDeBase, TypeCompetence} from "../../types/comps/Comps";
 
 interface CaracProps {
     primaryText: string,
@@ -49,7 +49,9 @@ export default function Comps ({perso}:CompsProps) {
             overflow: "auto"
         }}>
             {
-                Object.values(TypeCompetence).map(typeComp => {
+                Object.values(TypeCompetence)
+                    .filter(typeComp => isCompDeBase(typeComp))
+                    .map(typeComp => {
                     return (<Comp
                         primaryText={typeComp.toString()}
                         perso={perso}

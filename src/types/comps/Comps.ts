@@ -8,6 +8,7 @@ export type Competence = {
 }
 
 export enum TypeCompetence {
+    // compétences de base (tout le monde les a)
     adresse = "Adresse",
     animaux = "Animaux",
     armeCaC = "Armes de corps à corps",
@@ -36,6 +37,56 @@ export enum TypeCompetence {
     tromperie = "Tromperie",
     vigilance = "Vigilance",
     volonte = "Volonté",
+    // compétences professionnelles :
+    art_ecriture = "Art (écriture)",
+    art_sculpture = "Art (Sculpture)",
+    art_peinture = "Art (Peinture)",
+    crochetage = "Crochetage",
+    dressage = "Dressage",
+    guerison = "Guérison",
+    musicien = "Musicien",
+    piegeage = "Piégeage",
+    pistage = "Pistage",
+    priere = "Prière",
+    recherche = "Recherche",
+    navigation = "Navigation",
+    gestion_de_patrimoine = "Gestion de patrimoine",
+}
+
+export function isCompDeBase(typeCompetence: TypeCompetence): boolean {
+    switch (typeCompetence) {
+        case TypeCompetence.adresse:
+        case TypeCompetence.animaux:
+        case TypeCompetence.armeCaC:
+        case TypeCompetence.bagarre:
+        case TypeCompetence.chance:
+        case TypeCompetence.charme:
+        case TypeCompetence.commandement:
+        case TypeCompetence.dexterite:
+        case TypeCompetence.discours:
+        case TypeCompetence.discretion:
+        case TypeCompetence.endurance:
+        case TypeCompetence.evaluation:
+        case TypeCompetence.force:
+        case TypeCompetence.intelligence:
+        case TypeCompetence.intimidation:
+        case TypeCompetence.intuition:
+        case TypeCompetence.jeux:
+        case TypeCompetence.marchandage:
+        case TypeCompetence.mouvement:
+        case TypeCompetence.orientation:
+        case TypeCompetence.perception:
+        case TypeCompetence.ragot:
+        case TypeCompetence.reflexes:
+        case TypeCompetence.survie:
+        case TypeCompetence.tir:
+        case TypeCompetence.tromperie:
+        case TypeCompetence.vigilance:
+        case TypeCompetence.volonte:
+            return true;
+        default:
+            return false;
+    }
 }
 
 export function compDeDepartAleatoire(): number {
