@@ -3,7 +3,7 @@ import {Perso} from "../../types/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";
-import {classeSocialOptions} from "../../types/Coterie";
+import {coterieOptions} from "../../types/Coterie";
 
 export default function SelectionStatut() {
     const { control, formState: { errors } } = useFormContext<Perso>();
@@ -19,7 +19,7 @@ export default function SelectionStatut() {
                                      fullWidth>
                             <InputLabel>Coterie</InputLabel>
                             <Select {...field}>
-                                {Object.values(classeSocialOptions).map((coterie: Option) => (
+                                {Object.values(coterieOptions).map((coterie: Option) => (
                                     <MenuItem value={coterie.value} key={coterie.value}>
                                         {coterie.label}
                                     </MenuItem>
