@@ -21,7 +21,6 @@ import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
-import {evts_gladiateur} from "../donnees/evts/carrieres/evts_gladiateur";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -87,7 +86,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_centurion, perso),
             ...filtrerEtPreparerEvts(evts_legionnaire, perso),
-            ...filtrerEtPreparerEvts(evts_gladiateur, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),
             ...filtrerEtPreparerEvts(evts_macon, perso),
             ...filtrerEtPreparerEvts(evts_boulanger, perso),

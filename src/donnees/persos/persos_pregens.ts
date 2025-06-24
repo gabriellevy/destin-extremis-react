@@ -7,7 +7,7 @@ import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {unAnAvantDebutCampagne} from "../dates/ennemi_interieur";
 import {APOLLON} from "../dieux/dieux";
-import {ClasseSociale} from "../../types/statut_social/ClasseSociale";
+import {Coterie} from "../../types/Coterie";
 
 export const enfant: Perso = {
     prenom: "Caius",
@@ -21,7 +21,7 @@ export const enfant: Perso = {
     age: 17,
     lieu: lieuParDefaut,
     statut: {rang: 4, metalStatut: MetalStatut.bronze},
-    classeSociale: ClasseSociale.citoyen_romain,
+    coterie: Coterie.acheron,
     carrieres: new Map<metiersEnum, Carriere>,
     comps: compsDeBase(),
     maitrises: [],
@@ -39,7 +39,7 @@ export const jeuneHommeEnVoyageEnCampanie: Perso = {
     date: anneesToJours(490),
     jourDuMois: -1,
     lieu: enVoyageEnSiberie,
-    classeSociale: ClasseSociale.citoyen_romain,
+    coterie: Coterie.acheron,
     statut: {rang: 2, metalStatut: MetalStatut.argent},
     carrieres: new Map<metiersEnum, Carriere>,
     comps: compsDeBase(),

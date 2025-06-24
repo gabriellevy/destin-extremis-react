@@ -6,7 +6,7 @@ import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/comps/Comps";
 import {age} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
-import {ClasseSociale} from "../../../types/statut_social/ClasseSociale";
+import {Coterie} from "../../../types/Coterie";
 
 export const evts_legionnaire: GroupeEvts = {
     evts: [
@@ -30,7 +30,7 @@ export const evts_legionnaire: GroupeEvts = {
                 !aUneCarriere(perso)
                 && age(perso) >= 17
                 && age(perso) <= 46
-                && perso.classeSociale === ClasseSociale.citoyen_romain,
+                && perso.coterie === Coterie.conquistador,
         },
         {
             id: "evts_legionnaire2",

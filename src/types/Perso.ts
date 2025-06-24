@@ -4,7 +4,7 @@ import {Carriere, metiersEnum} from "./metiers/metiers";
 import {Dieu} from "./Dieu";
 import {Competence} from "./comps/Comps";
 import {maitrises} from "../donnees/maitrises";
-import {ClasseSociale} from "./statut_social/ClasseSociale";
+import {Coterie} from "./Coterie";
 
 export type Perso = {
     prenom: string;
@@ -20,7 +20,7 @@ export type Perso = {
     mois?: string, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     jourDuMois: number, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     statut: Statut;
-    classeSociale: ClasseSociale;
+    coterie: Coterie;
     carrieres: Map<metiersEnum, Carriere>, // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
     dieu: Dieu,

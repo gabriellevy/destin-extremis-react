@@ -3,7 +3,7 @@ import {Perso} from "../../types/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";
-import {classeSocialOptions} from "../../types/statut_social/ClasseSociale";
+import {classeSocialOptions} from "../../types/Coterie";
 
 export default function SelectionStatut() {
     const { control, formState: { errors } } = useFormContext<Perso>();
@@ -13,15 +13,15 @@ export default function SelectionStatut() {
             <Grid2 size={4}>
                 <Controller
                     control={control}
-                    name="classeSociale"
+                    name="coterie"
                     render={({ field }) => (
-                        <FormControl margin="normal" error={!!errors.classeSociale}
+                        <FormControl margin="normal" error={!!errors.coterie}
                                      fullWidth>
-                            <InputLabel>Classe sociale</InputLabel>
+                            <InputLabel>Coterie</InputLabel>
                             <Select {...field}>
-                                {Object.values(classeSocialOptions).map((classeSociale: Option) => (
-                                    <MenuItem value={classeSociale.value} key={classeSociale.value}>
-                                        {classeSociale.label}
+                                {Object.values(classeSocialOptions).map((coterie: Option) => (
+                                    <MenuItem value={coterie.value} key={coterie.value}>
+                                        {coterie.label}
                                     </MenuItem>
                                 ))}
                             </Select>
