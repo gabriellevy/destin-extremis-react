@@ -35,6 +35,6 @@ export function descriptionQuartier(quartier: Quartier): string {
                 "La ville est également un carrefour commercial dynamique, où les marchands de toutes les provinces viennent échanger leurs biens. Le fleuve Reik, qui traverse Altdorf, est une artère vitale pour le commerce fluvial, reliant la ville à d'autres grandes cités comme Nuln et Marienburg. Malgré sa splendeur, Altdorf n'est pas épargnée par les intrigues politiques et les complots. Les grandes familles nobles y exercent une influence considérable, et les luttes de pouvoir sont monnaie courante. La présence de l'Empereur et de sa cour ajoute une dimension de prestige et de danger à la vie quotidienne de ses habitants."
        */
         default:
-            return "pas de description de cet endroit";
+            return "Il manque la description de cet endroit : " + quartier;
     }
 }

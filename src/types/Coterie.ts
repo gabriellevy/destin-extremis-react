@@ -1,6 +1,8 @@
 
 // à l'échelle de l'empire romain
 import {Option} from "./lieux/Lieu";
+import {Perso} from "./Perso";
+import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
 
 export enum Coterie {
     acheron = 'Achéron',
@@ -55,4 +57,20 @@ export const coterieOptions: Option[]= [
     { value: Coterie.tyranides, label: Coterie.tyranides},
     { value: Coterie.zaporogues, label: Coterie.zaporogues},
 ];
+
+export function rejointCoterie( perso: Perso, coterie: Coterie) {
+    switch (coterie) {
+        case Coterie.templiers:
+            augmenterCompetence(perso, TypeCompetence.vigilance, 10);
+            augmenterCompetence(perso, TypeCompetence.volonte, 10);
+            augmenterCompetence(perso, TypeCompetence.armeCaC, 5);
+            augmenterCompetence(perso, TypeCompetence.evaluation, 5);
+            augmenterCompetence(perso, TypeCompetence.jeux, -5);
+            augmenterCompetence(perso, TypeCompetence.tromperie, -10);
+            break;
+        default:
+            console.warn("Pas d'effet de rejoindre une coterie pour la coterie : " + coterie)
+            break;
+    }
+}
 

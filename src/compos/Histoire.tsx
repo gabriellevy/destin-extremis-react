@@ -21,6 +21,7 @@ import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
+import {rejointCoterie} from "../types/Coterie";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -138,6 +139,8 @@ export default function Histoire() {
     useEffect(() => {
         if (!demarre) {
             demarre = true;
+            // applique au perso les effets de sa coterie actuelle :
+            rejointCoterie(perso, perso.coterie);
             // événement d'intro :
             const texte = descriptionQuartier(perso.lieu.quartier);
             const nouvEvt: EvtExecute = {
