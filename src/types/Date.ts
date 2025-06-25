@@ -26,32 +26,41 @@ function calculJourDuMois(joursDepuis0: number): number {
     const joursDepuisDebutAnnee: number = jourDansLAnnee(joursDepuis0);
 
     // détermination du mois
-    if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.MARTIUS]) {
-        return -1;
-    }
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.APRILIS]) {
-        return joursDepuisDebutAnnee - nbJourDuDernierJourDuMois[enumMois.MARTIUS];
-    }
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.MAIUS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.MARTIUS];
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.SEPTEMBER])
-        return -1;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.IUNIUS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.SEPTEMBER];
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.QUINTILIS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.IUNIUS];
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.SEXTILIS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.QUINTILIS];
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.OCTOBER])
-        return -1;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.NOVEMBER])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.OCTOBER];
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.DECEMBER])
-        return -1;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.IANUARIUS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.DECEMBER];
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.FEBRUARIUS])
-        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.IANUARIUS];
+    if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.vendemiaire])
+        return joursDepuisDebutAnnee;
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.brumaire])
+        return joursDepuisDebutAnnee - nbJourDuDernierJourDuMois[enumMois.vendemiaire];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.frimaire])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.brumaire];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.nivose])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.frimaire];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.pluviose])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.nivose];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.ventose])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.pluviose];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.germinal])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.ventose];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.floreal])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.germinal];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.prairial])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.floreal];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.messidor])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.prairial];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.thermidor])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.messidor];
+
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.fructidor])
+        return joursDepuisDebutAnnee-nbJourDuDernierJourDuMois[enumMois.thermidor];
 
     return -1;
 }
@@ -60,45 +69,46 @@ function calculMoisStr(joursDepuis0: number): string {
     const joursDepuisDebutAnnee: number = jourDansLAnnee(joursDepuis0);
 
     // détermination du mois
-    if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.MARTIUS]) {
-        return enumMois.MARTIUS;
-    }
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.APRILIS])
-        return enumMois.APRILIS;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.MAIUS])
-        return enumMois.MAIUS;
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.SEPTEMBER])
-        return enumMois.SEPTEMBER;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.IUNIUS])
-        return enumMois.IUNIUS;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.QUINTILIS])
-        return enumMois.QUINTILIS;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.SEXTILIS])
-        return enumMois.SEXTILIS;
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.OCTOBER])
-        return enumMois.OCTOBER;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.NOVEMBER])
-        return enumMois.NOVEMBER;
-    else if (joursDepuisDebutAnnee == nbJourDuDernierJourDuMois[enumMois.DECEMBER])
-        return enumMois.DECEMBER;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.IANUARIUS])
-        return enumMois.IANUARIUS;
-    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.FEBRUARIUS])
-        return enumMois.FEBRUARIUS;
+    if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.vendemiaire])
+        return enumMois.vendemiaire;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.brumaire])
+        return enumMois.brumaire;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.frimaire])
+        return enumMois.frimaire;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.nivose])
+        return enumMois.nivose;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.pluviose])
+        return enumMois.pluviose;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.ventose])
+        return enumMois.ventose;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.germinal])
+        return enumMois.germinal;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.floreal])
+        return enumMois.floreal;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.prairial])
+        return enumMois.prairial;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.messidor])
+        return enumMois.messidor;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.thermidor])
+        return enumMois.thermidor;
+    else if (joursDepuisDebutAnnee <= nbJourDuDernierJourDuMois[enumMois.fructidor])
+        return enumMois.fructidor;
 
     return "mois inconnu"
 }
 
 export function numJourSemaineToStr(numeroJourSemaine: number): string {
     switch (numeroJourSemaine) {
-        case 0: return "Dies Solis";
-        case 1: return "Dies Lunae";
-        case 2: return "Dies Martis";
-        case 3: return "Dies Mercurii";
-        case 4: return "Dies Iovis";
-        case 5: return "Dies Veneris";
-        case 6: return "Dies Saturni";
-        case 7: return "Dies Nundinae";
+        case 0: return "Primidi";
+        case 1: return "Duodi";
+        case 2: return "Tridi";
+        case 3: return "Quartidi";
+        case 4: return "Quintidi";
+        case 5: return "Sextidi";
+        case 6: return "Septidi";
+        case 7: return "Octidi";
+        case 8: return "Nonidi";
+        case 9: return "Décadi";
     }
     return "non défini !";
 }

@@ -5,7 +5,6 @@ import {Perso, Sexe} from "../../types/Perso";
 import {compsDeBase} from "../../types/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
-import {unAnAvantDebutCampagne} from "../dates/ennemi_interieur";
 import {APOLLON} from "../dieux/dieux";
 import {Coterie} from "../../types/Coterie";
 
@@ -16,7 +15,7 @@ export const enfant: Perso = {
     sexe: Sexe.male,
     dateNaissance: anneesToJours(478), // un peu avant 490 ab urbe condita cad le début de la 1ère guerre punique
     jourDuMois: -1,
-    date: unAnAvantDebutCampagne, // début du pouvoir derrière le trône 3ème volume
+    date: anneesToJours(490), // début du pouvoir derrière le trône 3ème volume
     anneeDeDepart: 490,
     age: 17,
     lieu: lieuParDefaut,
