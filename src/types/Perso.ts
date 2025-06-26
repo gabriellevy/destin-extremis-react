@@ -5,6 +5,7 @@ import {Dieu} from "./Dieu";
 import {Competence} from "./comps/Comps";
 import {maitrises} from "../donnees/maitrises";
 import {Coterie} from "./Coterie";
+import {ViceVertu} from "./ViceVertu";
 
 export type Perso = {
     prenom: string;
@@ -25,6 +26,7 @@ export type Perso = {
     // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
     dieu: Dieu,
     comps: Competence[],
+    viceVertu: ViceVertu[],
     maitrises: maitrises[],
     evtsProgrammes: Map<number, (perso: Perso)=>string> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     vitesseExecution: number, // en millisecondes entre chaque événement

@@ -5,6 +5,7 @@ import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import Comps from "./Comps";
+import AffichageViceVertu from "./AffichageViceVertu";
 
 export default function AffichagePerso() {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -56,6 +57,7 @@ export default function AffichagePerso() {
                     <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>
                 </ListItem>
             </List>
+            <AffichageViceVertu perso={perso}/>
             <Comps perso={perso}/>
             <Box mt={2}>
                 <Button variant="contained" color="primary" onClick={exporter} size="small">
