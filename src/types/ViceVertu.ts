@@ -2,8 +2,8 @@ import {Perso} from "./Perso";
 
 export type ViceVertu = {
     valVertu: number, // la val de vice est l'inverse
-    nbDeTestsFaits: number,
-    typeVice: TypeVice,
+    nbDeTestsFaits?: number,
+    typeVice?: TypeVice,
     typeVertu: TypeVertu,
 }
 
@@ -95,4 +95,23 @@ export function valeurViceVertuAleatoire(): number {
     // négatif
     if (rand < 0.92) return -2;
     return -1;
+}
+
+// ajout de manière relative à la valeur précédent (donc ajoute ou soustrait)
+export function ajouterVertuVal(perso: Perso, typeVertu: TypeVertu, val:number) {
+    let valActuelle: number = getValeurVertu(perso, typeVertu) + val;
+    if (valActuelle < -3) valActuelle = -3
+    else if (valActuelle > 3) valActuelle = 3
+    let viceVertu = perso.viceVertu.find(
+        (viceVertu: ViceVertu) => viceVertu.typeVertu === typeVertu);
+    if (!viceVertu) {
+        perso.viceVertu.push({
+            valVertu: valActuelle,
+            nbDeTestsFaits: 0,
+            typeVice: getViceOppose(typeVertu),
+            typeVertu: typeVertu,
+        });
+    } else {
+        viceVertu.valVertu = valActuelle;
+    }
 }

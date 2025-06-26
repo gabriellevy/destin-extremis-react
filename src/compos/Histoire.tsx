@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext, useCallback, useRef} from 'react';
+import {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {Evt, EvtExecute, filtrerEtPreparerEvts} from "../types/Evt";
 import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
@@ -12,7 +12,7 @@ import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
 import {evts_forgeron} from "../donnees/evts/carrieres/evts_forgeron";
 import {evts_brasseur} from "../donnees/evts/carrieres/evts_brasseur";
-import { Box, Typography, Dialog, IconButton, Grid2 } from '@mui/material';
+import {Box, Dialog, Grid2, IconButton, Typography} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
@@ -22,6 +22,7 @@ import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {rejointCoterie} from "../types/Coterie";
+import {evts_universite} from "../donnees/evts/coteries/evts_universite";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -85,6 +86,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_pretres, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
+            ...filtrerEtPreparerEvts(evts_universite, perso),
             ...filtrerEtPreparerEvts(evts_centurion, perso),
             ...filtrerEtPreparerEvts(evts_legionnaire, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),
@@ -141,6 +143,7 @@ export default function Histoire() {
             demarre = true;
             // applique au perso les effets de sa coterie actuelle :
             rejointCoterie(perso, perso.coterie);
+            // ajouterVertuVal(perso, TypeVertu.bienveillant, -10); // exemple tmp
             // événement d'intro :
             const texte = descriptionQuartier(perso.lieu.quartier);
             const nouvEvt: EvtExecute = {

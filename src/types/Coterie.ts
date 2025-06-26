@@ -3,6 +3,7 @@
 import {Option} from "./lieux/Lieu";
 import {Perso} from "./Perso";
 import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
+import {getValeurVertu, TypeVertu, ViceVertu} from "./ViceVertu";
 
 export enum Coterie {
     acheron = 'Achéron',
@@ -74,3 +75,62 @@ export function rejointCoterie( perso: Perso, coterie: Coterie) {
     }
 }
 
+// chacun doit en avoir autant pour que ce soit plus équitable
+export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
+    [Coterie.culte_du_plaisir]: [],
+    [Coterie.esprit_de_la_nature]: [],
+    [Coterie.acheron]: [],
+    [Coterie.bastets]: [],
+    [Coterie.cathares]: [],
+    [Coterie.celtes]: [],
+    [Coterie.conquistador]: [],
+    [Coterie.demokratos]: [],
+    [Coterie.elfes]: [],
+    [Coterie.esthetes]: [],
+    [Coterie.jacobins]: [],
+    [Coterie.libertins]: [],
+    [Coterie.lumieres]: [],
+    [Coterie.ogres]: [],
+    [Coterie.orks]: [],
+    [Coterie.performeurs]: [],
+    [Coterie.romains]: [],
+    [Coterie.saabi]: [],
+    [Coterie.schweizer]: [],
+    [Coterie.skavens]: [],
+    [Coterie.templiers]: [{
+        valVertu: 1,
+        typeVertu: TypeVertu.loyal,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.humble,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.chaste,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.sobre,
+    }],
+    [Coterie.transhumanistes]: [],
+    [Coterie.tyranides]: [],
+    [Coterie.zaporogues]: []
+}
+
+export function calculerAffinite(perso: Perso, coterie: Coterie): number {
+    let affinite = 0;
+    affiniteViceVertuCoterie[coterie].forEach(viceVertuCoterie => {
+        const valVertuPerso = getValeurVertu(perso, viceVertuCoterie.typeVertu);
+        if (valVertuPerso == viceVertuCoterie.valVertu) {
+            if (valVertuPerso ==0) affinite+=2;
+            if (valVertuPerso ==1) affinite+=4;
+            if (valVertuPerso ==2) affinite+=8;
+            if (valVertuPerso ==3) affinite+=16;
+        } else {
+            if (Math.abs(valVertuPerso - viceVertuCoterie.valVertu) > 1) {
+                affinite-=1;
+            } else {
+                affinite+=1;
+            }
+        }
+    })
+    return affinite;
+}
