@@ -2,17 +2,18 @@ import {Perso} from "../../../types/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {age} from "../../../types/Date";
 import {Coterie, getCoterieAleatoireSauf} from "../../../types/Coterie";
-import {getRandomEnumValue} from "../../../fonctions/random";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
+import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
         {
             id: "evts_engagement_lycee_1ere_annee",
             description: (perso: Perso): string => {
-                const coterieRejointe: Coterie = getRandomEnumValue(Coterie);
+                const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
                 let texte: string = "Votre première année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieAnnee1 = coterieRejointe;
+                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie1;
                 return texte;
             },
@@ -27,6 +28,7 @@ export const evts_lycee: GroupeEvts = {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([perso.bilanLycee.coterieAnnee1]);
                 let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
+                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie2;
                 return texte;
             },
@@ -44,6 +46,7 @@ export const evts_lycee: GroupeEvts = {
                 );
                 let texte: string = "Votre troisième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
+                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie3;
                 return texte;
             },
@@ -62,6 +65,7 @@ export const evts_lycee: GroupeEvts = {
                 );
                 let texte: string = "Votre quatrième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
+                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie4;
                 return texte;
             },
