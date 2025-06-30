@@ -6,6 +6,7 @@ import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import Comps from "./Comps";
 import AffichageViceVertu from "./AffichageViceVertu";
+import {Coterie} from "../../types/Coterie";
 
 export default function AffichagePerso() {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -52,6 +53,13 @@ export default function AffichagePerso() {
                             affichageCarriere(value)
                         );
                     })
+                }
+                {
+                    perso.coterie !== Coterie.aucune && (
+                        <ListItem>
+                            <ListItemText primary={perso.coterie}/>
+                        </ListItem>
+                    )
                 }
                 <ListItem>
                     <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>

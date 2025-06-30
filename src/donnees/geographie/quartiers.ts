@@ -1,4 +1,6 @@
 export enum Quartier {
+    inconnu = 'Inconnu',
+
     noisiel = 'Noisiel',
     montmartre = 'Montmartre',
     saint_maur_des_fosses = 'Saint Maur des fossés',
