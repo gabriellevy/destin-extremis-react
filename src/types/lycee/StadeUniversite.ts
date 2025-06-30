@@ -1,10 +1,10 @@
 import {Coterie} from "../Coterie";
 
 export type BilanLycee = {
-    coterieAnnee1?: Coterie,
-    coterieAnnee2?: Coterie,
-    coterieAnnee3?: Coterie,
-    coterieAnnee4?: Coterie,
+    coterieAnnee1: Coterie,
+    coterieAnnee2: Coterie,
+    coterieAnnee3: Coterie,
+    coterieAnnee4: Coterie,
     phaseActuelle: PhaseLycee,
 }
 
@@ -19,4 +19,8 @@ export enum PhaseLycee {
 
 export const bilanLyceeALaNaissance:BilanLycee = {
     phaseActuelle: PhaseLycee.pas_commence,
+    coterieAnnee1: Coterie.aucune,
+    coterieAnnee2: Coterie.aucune,
+    coterieAnnee3: Coterie.aucune,
+    coterieAnnee4: Coterie.aucune,
 };

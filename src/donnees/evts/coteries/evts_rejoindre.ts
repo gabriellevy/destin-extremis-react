@@ -34,7 +34,7 @@ export const evts_rejoindre: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !perso.coterie
+                perso.coterie === Coterie.aucune
                 && age(perso) >= 19,
         },
     ],

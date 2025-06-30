@@ -4,6 +4,7 @@ import {Option} from "./lieux/Lieu";
 import {Perso} from "./Perso";
 import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
 import {getValeurVertu, TypeVertu, ViceVertu} from "./ViceVertu";
+import {getRandomEnumValue} from "../fonctions/random";
 
 export enum Coterie {
     aucune = 'Aucune',
@@ -31,6 +32,15 @@ export enum Coterie {
     transhumanistes = 'Transhumanistes',
     tyranides = 'Tyranides',
     zaporogues = 'Zaporogues',
+}
+
+export function getCoterieAleatoireSauf(coteriesExclues: Coterie[]): Coterie {
+    coteriesExclues.push(Coterie.aucune);
+    let coterieAleatoire: Coterie = getRandomEnumValue(Coterie);
+    while (coteriesExclues.includes(coterieAleatoire)) {
+        coterieAleatoire = getRandomEnumValue(Coterie);
+    }
+    return coterieAleatoire;
 }
 
 export const coterieOptions: Option[]= [

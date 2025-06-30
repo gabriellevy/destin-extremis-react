@@ -19,7 +19,7 @@ export const enfant: Perso = {
     jourDuMois: -1,
     date: anneesToJours(490), // début du pouvoir derrière le trône 3ème volume
     anneeDeDepart: 490,
-    age: 14,
+    age: 13,
     lieu: lieuParDefaut,
     statut: {rang: 4, metalStatut: MetalStatut.bronze},
     coterie: Coterie.aucune, // TODO : en mettre une au hasard ? (celle des parents)
