@@ -8,6 +8,7 @@ import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {APOLLON} from "../dieux/dieux";
 import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
+import {bilanUniversiteALaNaissance} from "../../types/universite/StadeUniversite";
 
 export const enfant: Perso = {
     prenom: "Caius",
@@ -18,7 +19,7 @@ export const enfant: Perso = {
     jourDuMois: -1,
     date: anneesToJours(490), // début du pouvoir derrière le trône 3ème volume
     anneeDeDepart: 490,
-    age: 17,
+    age: 14,
     lieu: lieuParDefaut,
     statut: {rang: 4, metalStatut: MetalStatut.bronze},
     coterie: Coterie.acheron,
@@ -29,4 +30,5 @@ export const enfant: Perso = {
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
+    bilanUniversite: bilanUniversiteALaNaissance,
 };

@@ -1,0 +1,22 @@
+import {Coterie} from "../Coterie";
+
+export type BilanUniversite = {
+    coterieAnnee1?: Coterie,
+    coterieAnnee2?: Coterie,
+    coterieAnnee3?: Coterie,
+    coterieAnnee4?: Coterie,
+    phaseActuelle: PhaseUniversite,
+}
+
+export enum PhaseUniversite {
+    pas_commence = "Pas commencé",
+    coterie1 = "Première coterie",
+    coterie2 = "Deuxième coterie",
+    coterie3 = "Troisième coterie",
+    coterie4 = "Quatrième coterie",
+    finie = "Finie",
+}
+
+export const bilanUniversiteALaNaissance:BilanUniversite = {
+    phaseActuelle: PhaseUniversite.pas_commence,
+};
