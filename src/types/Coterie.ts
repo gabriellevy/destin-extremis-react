@@ -61,6 +61,14 @@ export const coterieOptions: Option[]= [
 
 export function rejointCoterie( perso: Perso, coterie: Coterie) {
     switch (coterie) {
+        case Coterie.celtes:
+            augmenterCompetence(perso, TypeCompetence.intimidation, 10);
+            augmenterCompetence(perso, TypeCompetence.mouvement, 10);
+            augmenterCompetence(perso, TypeCompetence.armeCaC, 5);
+            augmenterCompetence(perso, TypeCompetence.survie, 5);
+            augmenterCompetence(perso, TypeCompetence.commandement, -5);
+            augmenterCompetence(perso, TypeCompetence.vigilance, -10);
+            break;
         case Coterie.templiers:
             augmenterCompetence(perso, TypeCompetence.vigilance, 10);
             augmenterCompetence(perso, TypeCompetence.volonte, 10);
@@ -82,7 +90,19 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.acheron]: [],
     [Coterie.bastets]: [],
     [Coterie.cathares]: [],
-    [Coterie.celtes]: [],
+    [Coterie.celtes]: [{
+        valVertu: -1,
+        typeVertu: TypeVertu.humble,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.valeureux,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.sobre,
+    }],
     [Coterie.conquistador]: [],
     [Coterie.demokratos]: [],
     [Coterie.elfes]: [],
@@ -120,12 +140,14 @@ export function calculerAffinite(perso: Perso, coterie: Coterie): number {
     affiniteViceVertuCoterie[coterie].forEach(viceVertuCoterie => {
         const valVertuPerso = getValeurVertu(perso, viceVertuCoterie.typeVertu);
         if (valVertuPerso == viceVertuCoterie.valVertu) {
+            // très très proche de la coterie
             if (valVertuPerso ==0) affinite+=2;
-            if (valVertuPerso ==1) affinite+=4;
-            if (valVertuPerso ==2) affinite+=8;
-            if (valVertuPerso ==3) affinite+=16;
+            if (Math.abs(valVertuPerso) ==1) affinite+=4;
+            if (Math.abs(valVertuPerso) ==2) affinite+=8;
+            if (Math.abs(valVertuPerso) ==3) affinite+=16;
         } else {
             if (Math.abs(valVertuPerso - viceVertuCoterie.valVertu) > 1) {
+                // grosse difféernce de valeur avec la coterie
                 affinite-=1;
             } else {
                 affinite+=1;
