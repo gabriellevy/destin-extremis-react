@@ -4,7 +4,6 @@ import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
 import {evts_crime} from "../donnees/evts/carrieres/evts_crime";
 import {evts_pretres} from "../donnees/evts/carrieres/evts_pretres";
-import {evts_argenteuil} from "../donnees/evts/lieux/reikland/ubersreik/evts_argenteuil";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
@@ -24,6 +23,7 @@ import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {rejointCoterie} from "../types/Coterie";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
+import {evts_chatenay_malabry} from "../donnees/evts/lieux/evts_chatenay_malabry";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -81,7 +81,7 @@ export default function Histoire() {
 
         // filtrer les evts non applicables
         const evtsApplicables: Evt[] = [
-            ...filtrerEtPreparerEvts(evts_argenteuil, perso),
+            ...filtrerEtPreparerEvts(evts_chatenay_malabry, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
             ...filtrerEtPreparerEvts(evts_crime, perso),
             ...filtrerEtPreparerEvts(evts_pretres, perso),

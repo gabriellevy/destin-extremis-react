@@ -23,7 +23,7 @@ export const lieuParDefaut: Lieu = {
     region: Region.la_ville,
     quartier: Quartier.vanves,
     maison: null,
-    enVoyage:false,
+    enVoyage: false,
     residenceVoyage: null,
 };
 

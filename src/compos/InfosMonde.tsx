@@ -8,15 +8,12 @@ export default function InfosMonde() {
         <List dense>
             <ListItem>
                 <ListItemText
-                    primary="Lieu"
-                    secondary={perso.lieu.residenceVoyage ?? "En voyage à " + perso.lieu.quartier + " (" + perso.lieu.continent + ")"}
+                    primary={perso.lieu.residenceVoyage != null ?
+                        "Voyage en " + perso.lieu.residenceVoyage :
+                        "Habite à " + perso.lieu.quartier
+                }
                 />
             </ListItem>
-            { perso.lieu.residenceVoyage &&
-                <ListItem>
-                    <ListItemText secondary={perso.lieu.residenceVoyage} />
-                </ListItem>
-            }
         </List>
     );
 }
