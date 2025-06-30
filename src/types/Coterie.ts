@@ -6,6 +6,7 @@ import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
 import {getValeurVertu, TypeVertu, ViceVertu} from "./ViceVertu";
 
 export enum Coterie {
+    aucune = 'Aucune',
     acheron = 'Achéron',
     bastets = 'Bastets',
     cathares = 'Cathares',
@@ -33,6 +34,7 @@ export enum Coterie {
 }
 
 export const coterieOptions: Option[]= [
+    { value: Coterie.aucune, label: Coterie.aucune},
     { value: Coterie.acheron, label: Coterie.acheron},
     { value: Coterie.bastets, label: Coterie.bastets},
     { value: Coterie.cathares, label: Coterie.cathares},
@@ -85,6 +87,7 @@ export function rejointCoterie( perso: Perso, coterie: Coterie) {
 
 // chacun doit en avoir autant pour que ce soit plus équitable
 export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
+    [Coterie.aucune]: [],
     [Coterie.culte_du_plaisir]: [],
     [Coterie.esprit_de_la_nature]: [],
     [Coterie.acheron]: [],
@@ -134,6 +137,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.tyranides]: [],
     [Coterie.zaporogues]: []
 }
+
+export const SEUIL_AFFINITE:number = 10; // seuil à partir de quand une coterie intéresse le perso
 
 export function calculerAffinite(perso: Perso, coterie: Coterie): number {
     let affinite = 0;

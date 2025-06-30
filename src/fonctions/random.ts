@@ -21,6 +21,7 @@ export function randomStatut():Statut {
     return {rang, metalStatut};
 }
 
+// de 1 à num
 export function getRandomInt(num: number): number {
     return Math.floor(Math.random() * num) + 1;
 }

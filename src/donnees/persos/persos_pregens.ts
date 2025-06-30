@@ -22,7 +22,7 @@ export const enfant: Perso = {
     age: 14,
     lieu: lieuParDefaut,
     statut: {rang: 4, metalStatut: MetalStatut.bronze},
-    coterie: Coterie.acheron,
+    coterie: Coterie.aucune, // TODO : en mettre une au hasard ? (celle des parents)
     carrieres: new Map<metiersEnum, Carriere>,
     comps: compsDeBase(),
     viceVertu: viceVertuDeBase(),
