@@ -22,7 +22,7 @@ import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {rejointCoterie} from "../types/Coterie";
-import {evts_universite} from "../donnees/evts/coteries/evts_universite";
+import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -86,7 +86,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_pretres, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
-            ...filtrerEtPreparerEvts(evts_universite, perso),
+            ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_centurion, perso),
             ...filtrerEtPreparerEvts(evts_legionnaire, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),

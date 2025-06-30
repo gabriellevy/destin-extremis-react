@@ -6,7 +6,7 @@ import {Competence} from "./comps/Comps";
 import {maitrises} from "../donnees/maitrises";
 import {Coterie} from "./Coterie";
 import {ViceVertu} from "./ViceVertu";
-import {BilanUniversite} from "./universite/StadeUniversite";
+import {BilanLycee} from "./lycee/StadeUniversite";
 
 export type Perso = {
     prenom: string;
@@ -32,7 +32,7 @@ export type Perso = {
     evtsProgrammes: Map<number, (perso: Perso)=>string> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     vitesseExecution: number, // en millisecondes entre chaque événement
     mort?: boolean,
-    bilanUniversite: BilanUniversite
+    bilanLycee: BilanLycee
 };
 
 export enum Sexe {

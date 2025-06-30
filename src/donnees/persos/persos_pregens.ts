@@ -8,7 +8,7 @@ import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {APOLLON} from "../dieux/dieux";
 import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
-import {bilanUniversiteALaNaissance} from "../../types/universite/StadeUniversite";
+import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 
 export const enfant: Perso = {
     prenom: "Caius",
@@ -30,5 +30,5 @@ export const enfant: Perso = {
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
-    bilanUniversite: bilanUniversiteALaNaissance,
+    bilanLycee: bilanLyceeALaNaissance,
 };

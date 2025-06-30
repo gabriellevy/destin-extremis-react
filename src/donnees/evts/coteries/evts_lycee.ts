@@ -3,10 +3,10 @@ import {GroupeEvts} from "../../../types/Evt";
 import {age} from "../../../types/Date";
 import {calculerAffinite, Coterie} from "../../../types/Coterie";
 
-export const evts_universite: GroupeEvts = {
+export const evts_lycee: GroupeEvts = {
     evts: [
         {
-            id: "evts_universite1",
+            id: "evts_lycee1",
             description: (perso: Perso): string => {
                 let texte: string = `Fin de l'univ ? tester la coterie avec la meilleure affinité : <br/>`
 
