@@ -22,14 +22,9 @@ import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {vaA} from "../../types/lieux/Lieu";
-import {getRandomEnumValue, getRandomInt, randomStatut} from "../../fonctions/random";
-import {
-    EMPIRE_NOMS_F,
-    EMPIRE_NOMS_M1, EMPIRE_cognomen_M2,
-    EMPIRE_PRENOMS_F,
-    EMPIRE_PRENOMS_M
-} from "../../donnees/noms/humains/empire";
+import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
 import {Coterie} from "../../types/Coterie";
+import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -57,15 +52,9 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         persoAl.statut = randomStatut();
         persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
         // nom aléatoire (TODO : selon coterie)
-        persoAl.prenom = persoAl.sexe ?
-            EMPIRE_PRENOMS_M[getRandomInt(EMPIRE_PRENOMS_M.length)] :
-            EMPIRE_PRENOMS_F[getRandomInt(EMPIRE_PRENOMS_F.length)];
-        persoAl.nom = persoAl.sexe ?
-            EMPIRE_NOMS_M1[getRandomInt(EMPIRE_NOMS_M1.length)] :
-            EMPIRE_NOMS_F[getRandomInt(EMPIRE_NOMS_F.length)];
-        persoAl.cognomen = persoAl.sexe ?
-            EMPIRE_cognomen_M2[getRandomInt(EMPIRE_cognomen_M2.length)] :
-            '';
+        persoAl.prenom = getPrenom(persoAl.coterie, persoAl.sexe);
+        persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
+        persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);
 
         reset({...persoAl});
         setAfficherForm(true);

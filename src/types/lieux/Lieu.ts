@@ -21,7 +21,7 @@ export type Lieu = {
 export const lieuParDefaut: Lieu = {
     continent: Continent.europe,
     region: Region.la_ville,
-    quartier: Quartier.vanves,
+    quartier: Quartier.chatenay_malabry,
     maison: null,
     enVoyage: false,
     residenceVoyage: null,
