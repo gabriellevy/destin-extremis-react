@@ -7,6 +7,7 @@ import {maitrises} from "../donnees/maitrises";
 import {Coterie} from "./Coterie";
 import {ViceVertu} from "./ViceVertu";
 import {BilanLycee} from "./lycee/StadeUniversite";
+import {Reputation} from "./Reputation";
 
 export type Perso = {
     prenom: string;
@@ -33,6 +34,7 @@ export type Perso = {
     vitesseExecution: number, // en millisecondes entre chaque événement
     mort?: boolean,
     bilanLycee: BilanLycee
+    reputation: Reputation
 };
 
 export enum Sexe {
