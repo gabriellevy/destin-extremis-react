@@ -5,6 +5,9 @@ import {majReputationDansQuartier} from "../../../types/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
 import {getValeurCompetence, TypeCompetence} from "../../../types/comps/Comps";
+import {aLaMaitrise, Maitrise} from "../../maitrise";
+import {ResultatTest} from "../../../types/LancerDe";
+import {testComp} from "../../../fonctions/des";
 
 export const evts_chatenay_malabry: GroupeEvts = {
     evts: [
@@ -22,7 +25,22 @@ export const evts_chatenay_malabry: GroupeEvts = {
                     majReputation += 1;
                     texte += "Votre réputation de bon combattant vous donne droit de diner à la table des guerriers. <br/>";
                 }
-
+                if (aLaMaitrise(perso, Maitrise.poesie)) {
+                    texte += "Votre talent de poète intéresse l'assemblée. On vous demande d'interpréter un de vos poèmes. ";
+                    const resTestDiscours:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: 0});
+                    texte += resTestDiscours.resume;
+                    if (resTestDiscours.reussi) {
+                        texte += "Votre interprétation impressionne le roi et tous les convives. Nul doute que votre réputation va augmenter. <br/>";
+                        majReputation += 3;
+                    } else {
+                        if (resTestDiscours.critical) {
+                            texte += "Peut-être est-ce le vin pur, peut-être est-ce le trac, mais vous faites erreurs sur erreur et faute de goût sur faute de goût. Vous interrompez votre récital sous les huées. <br/>";
+                            majReputation -= 2;
+                        } else {
+                            texte += "Mais votre interprétation est peu applaudie. <br/>";
+                        }
+                    }
+                }
 
                 majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation);
                 return texte;

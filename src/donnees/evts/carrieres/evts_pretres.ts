@@ -6,7 +6,7 @@ import {Dieu} from "../../../types/Dieu";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/comps/Comps";
-import {maitrises} from "../../maitrises";
+import {Maitrise} from "../../maitrise";
 import {commencerCarriere, neSuitPasUneCarriereDe} from "../../../types/metiers/metiersUtils";
 
 export const evts_pretres: GroupeEvts = {
@@ -25,7 +25,7 @@ export const evts_pretres: GroupeEvts = {
                     }
                     commencerCarriere(perso, metierEnum, '');
                     perso.dieu = dieu;
-                    perso.maitrises.push(maitrises.beni);
+                    perso.maitrises.push(Maitrise.beni);
                     texte += `Vous êtes frappé par la révélation de ${dieu.id} et sentez que ${dieu.id} a un destin pour vous et répond à vos prières. ` +
                         `À partir de ce jour vous ne rêvez plus que de servir ${dieu.id} et parvenez à vous faire accepter comme ${metierEnum.toString()}. `
                 } else {

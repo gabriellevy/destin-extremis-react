@@ -10,6 +10,7 @@ import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../types/Reputation";
+import {Maitrise} from "../maitrise";
 
 export const enfant: Perso = {
     prenom: "Caius",
@@ -27,7 +28,7 @@ export const enfant: Perso = {
     carrieres: new Map<metiersEnum, Carriere>,
     comps: compsDeBase(),
     viceVertu: viceVertuDeBase(),
-    maitrises: [],
+    maitrises: [Maitrise.poesie],
     dieu: {id: APOLLON},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,

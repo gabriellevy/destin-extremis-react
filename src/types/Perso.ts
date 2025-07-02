@@ -3,7 +3,7 @@ import {Statut} from "./statut_social/Statut";
 import {Carriere, metiersEnum} from "./metiers/metiers";
 import {Dieu} from "./Dieu";
 import {Competence} from "./comps/Comps";
-import {maitrises} from "../donnees/maitrises";
+import {Maitrise} from "../donnees/maitrise";
 import {Coterie} from "./Coterie";
 import {ViceVertu} from "./ViceVertu";
 import {BilanLycee} from "./lycee/StadeUniversite";
@@ -29,7 +29,7 @@ export type Perso = {
     dieu: Dieu,
     comps: Competence[],
     viceVertu: ViceVertu[],
-    maitrises: maitrises[],
+    maitrises: Maitrise[],
     evtsProgrammes: Map<number, (perso: Perso)=>string> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     vitesseExecution: number, // en millisecondes entre chaque événement
     mort?: boolean,
