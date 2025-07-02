@@ -41,6 +41,8 @@ export const evts_chatenay_malabry: GroupeEvts = {
                         }
                     }
                 }
+                // gloutonnerie ??
+
 
                 majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation);
                 return texte;
@@ -48,5 +50,5 @@ export const evts_chatenay_malabry: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.chatenay_malabry,
         },
     ],
-    probaParDefaut: 9999999999999999999999999999999995,
+    probaParDefaut: 10, // > à la moyenne car localisés à un quartier
 };

@@ -1,64 +1,51 @@
 import {Perso} from "../../types/Perso";
-import {List, ListItem, ListItemText, Typography} from "@mui/material";
 import {getValeurVertu, getValeurVice, getViceOppose, TypeVertu} from "../../types/ViceVertu";
-
-interface CaracViceVertu {
-    perso: Perso,
-    typeVertu: TypeVertu,
-}
-
-const ViceVertu = ({perso, typeVertu}:CaracViceVertu) => {
-    if (getValeurVertu(perso, typeVertu) == 0) {
-        return null;
-    }
-    const typeVice = getViceOppose(typeVertu);
-    return (
-        <ListItem sx={{padding: '0px',width: "auto"}}>
-            <ListItemText
-                primary={
-                    <Typography
-                        variant="body2"
-                        style={{ display: 'inline', fontSize: '13px' }}
-                    >
-                        { "(" + getValeurVice(perso, typeVice) + ")" + typeVice.toString()}
-                    </Typography>
-                }
-                secondary={
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        style={{ display: 'inline', marginLeft: '10px', fontSize: '13px' }}
-                    >
-                        {typeVertu.toString() + "(" + getValeurVertu(perso, typeVertu) + ")"}
-                    </Typography>
-                }
-                sx={{margin: '0px', fontSize: '5px'}}
-            />
-        </ListItem>
-    );
-};
 
 interface CompsProps {
     perso: Perso,
 }
 
+// Style pour le tableau
+const tableStyle: React.CSSProperties = {
+    padding: '0px', // Réduit le rembourrage dans les cellules
+    margin: '0', // Supprime la marge
+    borderCollapse: 'collapse', // Supprime l'espacement entre les bordures des cellules
+};
+
+// Style pour les cellules du tableau
+const cellStyle: React.CSSProperties = {
+    padding: '0px', // Réduit le rembourrage dans les cellules
+    margin: '0', // Supprime la marge
+    lineHeight: '1', // Réduit la hauteur de ligne
+};
+
 export default function AffichageViceVertu ({perso}:CompsProps) {
 
-    return (<List sx={{
-        display: "flex",
-        flexFlow: "column wrap",
-        gap: "0 10px",
-        height: 300,
-        overflow: "auto"
-    }}>
-        {
-            Object.values(TypeVertu)
-                .map(typeVertu => {
-                    return (<ViceVertu
-                        perso={perso}
-                        typeVertu={typeVertu}
-                    />);
-                })
+    return (<table style={tableStyle}>
+        <tbody>
+        {Object.values(TypeVertu).map((typeVertu: TypeVertu) => {
+            if (getValeurVertu(perso, typeVertu) != 0) {
+                const typeVice = getViceOppose(typeVertu);
+                return (
+                    <tr key={typeVertu.toString()}
+                        style={{ display: 'inline', marginLeft: '10px', fontSize: '13px',
+                            flexFlow: "column wrap",
+                            gap: "0 0px", }}
+                    >
+                        <td style={{ ...cellStyle, color: 'red' }}>
+                            { "(" + getValeurVice(perso, typeVice) + ") " + typeVice.toString() + "  >"}
+                        </td>
+                        <td>
+                            {" ----- "}
+                        </td>
+                        <td style={{ ...cellStyle, color: 'blue' }}>
+                            {"<  " + typeVertu.toString() + " (" + getValeurVertu(perso, typeVertu) + ")"}
+                        </td>
+                    </tr>
+                    );
+            }
+        })
         }
-    </List>);
+        </tbody>
+    </table>);
 }
