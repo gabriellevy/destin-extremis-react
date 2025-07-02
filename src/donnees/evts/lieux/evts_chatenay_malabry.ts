@@ -8,6 +8,7 @@ import {getValeurCompetence, TypeCompetence} from "../../../types/comps/Comps";
 import {aLaMaitrise, Maitrise} from "../../maitrise";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
+import {ajouterViceVal, getValeurVice, TypeVice} from "../../../types/ViceVertu";
 
 export const evts_chatenay_malabry: GroupeEvts = {
     evts: [
@@ -42,6 +43,11 @@ export const evts_chatenay_malabry: GroupeEvts = {
                     }
                 }
                 // gloutonnerie ??
+                if (getValeurVice(perso, TypeVice.gourmand) < 2) {
+                    if (Math.random() >= 0.9) {
+                        texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
+                    }
+                }
 
 
                 majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation);

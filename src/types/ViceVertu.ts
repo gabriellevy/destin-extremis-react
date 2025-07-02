@@ -103,6 +103,7 @@ export function valeurViceVertuAleatoire(): number {
 
 // ajout de manière relative à la valeur précédent (donc ajoute ou soustrait)
 export function ajouterVertuVal(perso: Perso, typeVertu: TypeVertu, val:number) {
+    const valPrecedente = getValeurVertu(perso, typeVertu);
     let valActuelle: number = getValeurVertu(perso, typeVertu) + val;
     if (valActuelle < -3) valActuelle = -3
     else if (valActuelle > 3) valActuelle = 3
@@ -117,5 +118,18 @@ export function ajouterVertuVal(perso: Perso, typeVertu: TypeVertu, val:number) 
         });
     } else {
         viceVertu.valVertu = valActuelle;
+    }
+    if (valPrecedente != valActuelle) {
+        return "<b>" + valActuelle + " en " + typeVertu.toString() + " </b> ";
+    }
+}
+
+export function ajouterViceVal(perso: Perso, typeVice: TypeVice, val:number) {
+    const vertu = getVertuOppose(typeVice);
+    const valPrecedente = getValeurVice(perso, typeVice);
+    ajouterVertuVal(perso, vertu, -val);
+    const valActuelle = getValeurVice(perso, typeVice);
+    if (valPrecedente != valActuelle) {
+        return "<b>" + valActuelle + " en " + typeVice.toString() + " </b> ";
     }
 }
