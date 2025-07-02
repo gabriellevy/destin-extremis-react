@@ -93,7 +93,7 @@ export function compDeDepartAleatoire(): number {
     return 20 + d10() + d10();
 }
 
-export function getCompValue(perso: Perso, typeComp: TypeCompetence): number {
+export function getValeurCompetence(perso: Perso, typeComp: TypeCompetence): number {
     return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.val || -1;
 }
 

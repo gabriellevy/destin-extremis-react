@@ -1,5 +1,5 @@
 import {ResultatTest, TestCompetence, TestMetier} from "../types/LancerDe";
-import {augmenterNbDeTestsFaitsComp, getCompValue} from "../types/comps/Comps";
+import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/comps/Comps";
 import {Perso} from "../types/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "../types/metiers/metiersUtils";
 
@@ -17,7 +17,7 @@ export function d400(): number {
 }
 
 export function testComp(perso: Perso, test: TestCompetence): ResultatTest {
-    const compVal: number = getCompValue(perso, test.comp);
+    const compVal: number = getValeurCompetence(perso, test.comp);
     // augmenter tests effectués :
     const resAugmentation: string = augmenterNbDeTestsFaitsComp(perso, test.comp);
     return returnTestResult(resAugmentation, test.comp, compVal, test.bonusMalus);

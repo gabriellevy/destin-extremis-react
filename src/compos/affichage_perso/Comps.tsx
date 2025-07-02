@@ -1,6 +1,6 @@
 import {Perso} from "../../types/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
-import {getCompValue, isCompDeBase, TypeCompetence} from "../../types/comps/Comps";
+import {getValeurCompetence, isCompDeBase, TypeCompetence} from "../../types/comps/Comps";
 
 interface CaracProps {
     primaryText: string,
@@ -26,7 +26,7 @@ const Comp = ({primaryText, perso, competenceType}:CaracProps) => {
                         color="textSecondary"
                         style={{ display: 'inline', marginLeft: '10px', fontSize: '13px' }}
                     >
-                        {getCompValue(perso, competenceType)}
+                        {getValeurCompetence(perso, competenceType)}
                     </Typography>
                 }
                 sx={{margin: '0px', fontSize: '5px'}}
