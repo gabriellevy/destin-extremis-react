@@ -23,7 +23,7 @@ import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {rejointCoterie} from "../types/Coterie";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
-import {evts_chatenay_malabry} from "../donnees/evts/lieux/evts_chatenay_malabry";
+import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 

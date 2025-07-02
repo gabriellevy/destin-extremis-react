@@ -42,7 +42,7 @@ export const evts_chatenay_malabry: GroupeEvts = {
                         }
                     }
                 }
-                // gloutonnerie ??
+                // gloutonnerie
                 if (getValeurVice(perso, TypeVice.gourmand) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
