@@ -24,6 +24,7 @@ import {rejointCoterie} from "../types/Coterie";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
 import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
+import {evts_lycee_celtes} from "../donnees/evts/coteries/celtes/evts_lycee_celtes";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -88,6 +89,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_lycee, perso),
+            ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),
             ...filtrerEtPreparerEvts(evts_centurion, perso),
             ...filtrerEtPreparerEvts(evts_legionnaire, perso),

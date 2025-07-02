@@ -5,12 +5,10 @@ import {Perso, Sexe} from "../../types/Perso";
 import {compsDeBase} from "../../types/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
-import {APOLLON} from "../dieux/dieux";
 import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../types/Reputation";
-import {Maitrise} from "../maitrise";
 
 export const enfant: Perso = {
     prenom: "Caius",
@@ -28,8 +26,8 @@ export const enfant: Perso = {
     carrieres: new Map<metiersEnum, Carriere>,
     comps: compsDeBase(),
     viceVertu: viceVertuDeBase(),
-    maitrises: [Maitrise.poesie],
-    dieu: {id: APOLLON},
+    maitrises: [],
+    dieu: {id: "Aucun"},
     evtsProgrammes: evts_programmes,
     vitesseExecution: 5000,
     bilanLycee: bilanLyceeALaNaissance,

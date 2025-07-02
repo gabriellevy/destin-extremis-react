@@ -16,9 +16,10 @@ export function getReputationDansQuartier(perso:Perso, quartier:Quartier): numbe
     return perso.reputation.parQuartier.get(quartier) ?? 0;
 }
 
-export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modif: number): void {
+export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modif: number): string {
     perso.reputation.parQuartier.set(
         quartier,
         getReputationDansQuartier(perso, quartier) + modif
     );
+    return "<b>Réputation à " + quartier.toString() + " à " + getReputationDansQuartier(perso, quartier) + "</b>";
 }
