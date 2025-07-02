@@ -6,6 +6,8 @@ import {testComp} from "../../../../fonctions/des";
 import {ajouterViceVal, getValeurVice, TypeVice} from "../../../../types/ViceVertu";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
+import {ajouterMaitrise, Maitrise} from "../../../maitrise";
+import {Coterie} from "../../../../types/Coterie";
 
 export const evts_lycee_celtes: GroupeEvts = {
     evts: [
@@ -25,15 +27,43 @@ export const evts_lycee_celtes: GroupeEvts = {
                     }
                 // gloutonnerie
                 if (getValeurVice(perso, TypeVice.orgueilleux) < 2) {
-                    if (Math.random() >= 0.85) {
+                    if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeVice.orgueilleux, 1);
                     }
                 }
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.chatenay_malabry,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
+        {
+            id: "evts_lycee_celtes2_festin",
+            description: (perso: Perso): string => {
+                let texte:string = "Tout bon celte doit être un hôte de qualité. Savoir discourir, accueillir, cuisiner, servir, sont des compétences qui attirent respect et amitié.<br/> ";
+                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: 0});
+                    texte += resTest.resume;
+                    if (resTest.reussi) {
+                        texte += "Vous savez accueillir et divertir. <br/>";
+                        // se fait connaître dans le coin
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    } else {
+                        texte += "Vous êtes encore maladroit pour un hôte mais on pardonne beaucoup à un étudiant. <br/>";
+                    }
+                // gloutonnerie
+                if (getValeurVice(perso, TypeVice.gourmand) < 2) {
+                    if (Math.random() >= 0.9) {
+                        texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
+                    }
+                }
+                if (Math.random() >= 0.9) {
+                    texte += "Vous prenez goût à la cuisine et y devenez très doué. ";
+                    ajouterMaitrise(perso, Maitrise.cuisine);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
         },
     ],
-    probaParDefaut: 9999999999999999999940, // >>> à la moyenne car localisés à un quartier et une phase
+    probaParDefaut: 40, // >>> à la moyenne car localisés à un quartier et une phase
 };

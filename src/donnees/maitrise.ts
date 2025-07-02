@@ -11,8 +11,13 @@ export enum Maitrise {
     beni = "Béni", // béni par un dieu (celui de perso.dieu), permet d'accomplir des miracles
     natation = "Natation",
     poesie = "Poesie",
+    cuisine = "Cuisine",
 }
 
 export function aLaMaitrise(perso: Perso, maitrise: Maitrise): boolean {
     return perso.maitrises.find((tal: Maitrise) => tal === maitrise) !== undefined;
+}
+
+export function ajouterMaitrise(perso: Perso, maitrise: Maitrise): void {
+    perso.maitrises.push(maitrise);
 }

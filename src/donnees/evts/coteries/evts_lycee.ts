@@ -12,6 +12,7 @@ export const evts_lycee: GroupeEvts = {
             description: (perso: Perso): string => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
                 let texte: string = "Votre première année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee1 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie1;
@@ -27,6 +28,7 @@ export const evts_lycee: GroupeEvts = {
             description: (perso: Perso): string => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([perso.bilanLycee.coterieAnnee1]);
                 let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie2;
@@ -45,6 +47,7 @@ export const evts_lycee: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee2]
                 );
                 let texte: string = "Votre troisième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie3;
@@ -64,6 +67,7 @@ export const evts_lycee: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee3]
                 );
                 let texte: string = "Votre quatrième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie4;
@@ -79,6 +83,7 @@ export const evts_lycee: GroupeEvts = {
             description: (perso: Perso): string => {
                 let texte: string = "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
+                perso.bilanLycee.coterieActuelle = Coterie.aucune;
                 return texte;
             },
             conditions: (perso: Perso): boolean =>

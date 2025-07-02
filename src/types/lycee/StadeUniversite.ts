@@ -1,6 +1,7 @@
 import {Coterie} from "../Coterie";
 
 export type BilanLycee = {
+    coterieActuelle: Coterie,
     coterieAnnee1: Coterie,
     coterieAnnee2: Coterie,
     coterieAnnee3: Coterie,
@@ -19,6 +20,7 @@ export enum PhaseLycee {
 
 export const bilanLyceeALaNaissance:BilanLycee = {
     phaseActuelle: PhaseLycee.pas_commence,
+    coterieActuelle: Coterie.aucune,
     coterieAnnee1: Coterie.aucune,
     coterieAnnee2: Coterie.aucune,
     coterieAnnee3: Coterie.aucune,
