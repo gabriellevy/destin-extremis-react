@@ -135,6 +135,22 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
         },
+        {
+            id: "evts_lycee_celtes6_foret",
+            description: (perso: Perso): string => {
+                let texte:string = "Survivre dans la nature est signe de forte volonté et de débrouillardise pour les celtes, ainsi qu'un lien à conserver avec les anciens dieux. "
+                        + "De rudes randonnées et nuits à la belle étoile sont donc au programme de leur lycée et vous n'y échapperez pas.<br/> ";
+                    const resTestSur:ResultatTest = testComp(perso, {comp: TypeCompetence.survie, bonusMalus: 0});
+                    texte += resTestSur.resume;
+                    if (resTestSur.reussi) {
+                        texte += "Vous sembezl être naturellement chez vous en pleine forêt, même dans la nuit la plus noire, à la grande surprise de vos professeurs. <br/>";
+                        // se fait connaître dans le coin
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car localisés à un quartier et une phase
 };
