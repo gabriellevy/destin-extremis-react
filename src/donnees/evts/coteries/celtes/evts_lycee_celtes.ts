@@ -3,7 +3,14 @@ import {Perso} from "../../../../types/Perso";
 import {TypeCompetence} from "../../../../types/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
-import {ajouterViceVal, getValeurVice, TypeVice} from "../../../../types/ViceVertu";
+import {
+    ajouterVertuVal,
+    ajouterViceVal,
+    getValeurVertu,
+    getValeurVice,
+    TypeVertu,
+    TypeVice
+} from "../../../../types/ViceVertu";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterMaitrise, Maitrise} from "../../../maitrise";
@@ -71,16 +78,40 @@ export const evts_lycee_celtes: GroupeEvts = {
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
                     texte += resTest.resume;
                     if (resTest.reussi) {
-                        texte += "Vous savez très rapidement rendre coup pour coup. Même les professeurs commencent à respecter votre force. <br/>";
+                        texte += "Vous savez très rapidement rendre coup pour coup. Bientôt ce sont les autres élèves qui ont peur de vous. <br/>";
                         // se fait connaître dans le coin
                         texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
                     } else {
                         texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
                     }
-                // gloutonnerie
+
                 if (getValeurVice(perso, TypeVice.colerique) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeVice.colerique, 1);
+                    }
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
+        {
+            id: "evts_lycee_celtes4_duels",
+            description: (perso: Perso): string => {
+                let texte:string = "Le combat au corps à corps est une tradition vivace chez les celtes. Le but n'est que rarement de tuer, mais de prouver son habileté et son courage. <br/> ";
+                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.armeCaC, bonusMalus: 0});
+                    texte += resTest.resume;
+                    if (resTest.reussi) {
+                        texte += "Vous savez très rapidement rendre coup pour coup avec courage et habileté. Même les professeurs commencent à respecter votre force. <br/>";
+                        // se fait connaître dans le coin
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    } else {
+                        // TODO : échec critique : blessure
+                        texte += "Vous avez beaucoup à apprendre pour avoir le niveau et cesser de vous faire rosser. <br/>";
+                    }
+
+                if (getValeurVertu(perso, TypeVertu.valeureux) < 2) {
+                    if (Math.random() >= 0.9) {
+                        texte += ajouterVertuVal(perso, TypeVertu.valeureux, 1);
                     }
                 }
                 return texte;
