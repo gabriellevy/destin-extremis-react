@@ -118,6 +118,23 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
         },
+        {
+            id: "evts_lycee_celtes5_physique",
+            description: (perso: Perso): string => {
+                let texte:string = "La forme physique est primordiale pour les celtes. Les entrainements en athlétisme sont nombreux et éreintants. <br/> ";
+                    const resTestMvt:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
+                    texte += resTestMvt.resume;
+                    const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
+                    texte += resTestEnd.resume;
+                    if (resTestMvt.reussi && resTestEnd.reussi) {
+                        texte += "Agile et endurant, vous faites l'admiration de tous. <br/>";
+                        // se fait connaître dans le coin
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car localisés à un quartier et une phase
 };
