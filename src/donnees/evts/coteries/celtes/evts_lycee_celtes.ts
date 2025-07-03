@@ -64,6 +64,29 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
         },
+        {
+            id: "evts_lycee_celtes3_brimades",
+            description: (perso: Perso): string => {
+                let texte:string = "Les violences et brimades entre étudiants sont courantes chez les celtes, quand elles ne sont pas encouragées. <br/> ";
+                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
+                    texte += resTest.resume;
+                    if (resTest.reussi) {
+                        texte += "Vous savez très rapidement rendre coup pour coup. Même les professeurs commencent à respecter votre force. <br/>";
+                        // se fait connaître dans le coin
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    } else {
+                        texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
+                    }
+                // gloutonnerie
+                if (getValeurVice(perso, TypeVice.colerique) < 2) {
+                    if (Math.random() >= 0.9) {
+                        texte += ajouterViceVal(perso, TypeVice.colerique, 1);
+                    }
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car localisés à un quartier et une phase
 };
