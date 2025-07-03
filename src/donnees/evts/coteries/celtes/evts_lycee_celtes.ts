@@ -64,7 +64,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 }
                 if (Math.random() >= 0.9) {
                     texte += "Vous prenez goût à la cuisine et y devenez très doué. ";
-                    ajouterMaitrise(perso, Maitrise.cuisine);
+                    texte += ajouterMaitrise(perso, Maitrise.cuisine);
                 }
 
                 return texte;
@@ -147,6 +147,23 @@ export const evts_lycee_celtes: GroupeEvts = {
                         // se fait connaître dans le coin
                         texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
                     }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+        },
+        {
+            id: "evts_lycee_celtes7_poesie",
+            description: (perso: Perso): string => {
+                let texte:string = "Votre professeur de diction tente de vous inculquer les bases du discours et de la poésie.<br/> ";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: -10});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    texte += "Vous avez un talent de poète inné qui impressionne fortement votre professeur. <br/>";
+                    texte += ajouterMaitrise(perso, Maitrise.poesie);
+                    // se fait connaître dans le coin
+                    texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                }
+
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
