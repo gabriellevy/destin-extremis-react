@@ -17,7 +17,7 @@ import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_barbierChirurgien} from "../donnees/evts/carrieres/evts_barbierChirurgien";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
-import {descriptionQuartier} from "../donnees/geographie/quartiers";
+import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
 import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {evts_centurion} from "../donnees/evts/carrieres/evts_centurion";
 import {rejointCoterie} from "../types/Coterie";
@@ -150,11 +150,12 @@ export default function Histoire() {
             // ajouterVertuVal(perso, TypeVertu.bienveillant, -10); // exemple tmp
             // événement d'intro :
             const texte = descriptionQuartier(perso.lieu.quartier);
+            const adresseImage = imageQuartier(perso.lieu.quartier);
             const nouvEvt: EvtExecute = {
                 id: "intro",
                 dateStr: jourStr(perso.date),
                 texteFinal: texte, // l'exécution elle-même
-                //image: evtExecute.image,
+                image: adresseImage,
             };
 
             setEvtsExecutes((prev: EvtExecute[]) => [
