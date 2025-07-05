@@ -62,22 +62,22 @@ export const evts_lycee_skavens: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
         {
-            id: "evts_lycee_skavens3_brimades",
+            id: "evts_lycee_skavens3_artisanat",
             description: (perso: Perso): string => {
-                let texte:string = "Les violences et brimades entre étudiants sont courantes chez les celtes, quand elles ne sont pas encouragées. <br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
+                let texte:string = "Être agile de ses mains et surtout rapide est précieux chez les skavens, qui adorent fabriquer des chsoes et détestent faire quoique de soit lentement.<br/>"
+                    + "Les cours d'artisanat sont donc toujours chronométrés et demandent une excellente coordination.<br/>";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += "Vous savez très rapidement rendre coup pour coup. Bientôt ce sont les autres élèves qui ont peur de vous. <br/>";
+                    texte += "Vous impressionnez vos professeurs par votre habileté et votre précision. <br/>";
                     // se fait connaître dans le coin
                     texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
-                } else {
-                    texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
                 }
 
-                if (getValeurVice(perso, TypeVice.colerique) < 2) {
+                if (getValeurVertu(perso, TypeVertu.travailleur) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeVice.colerique, 1);
+                        texte += ajouterVertuVal(perso, TypeVertu.travailleur, 1);
+                        texte += "Vous prenez goût au travail bien fait. <br/>";
                     }
                 }
                 return texte;
