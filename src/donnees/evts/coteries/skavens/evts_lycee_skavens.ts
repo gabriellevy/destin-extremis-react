@@ -90,20 +90,26 @@ export const evts_lycee_skavens: GroupeEvts = {
                 let texte:string = "Entre les punitions incessantes sans raison et les agressions et vols des élèves vous êtes bien obligé de vous faire discret.<br/> ";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
                 texte += resTest.resume;
+                if (resTest.reussi) {
+                    if (getValeurVice(perso, TypeVice.trompeur) < 2) {
+                        if (Math.random() >= 0.9) {
+                            texte += ajouterViceVal(perso, TypeVice.trompeur, 1);
+                            texte += "Non seulement vous devenez discret, mais vous trompez de plus en plus facilement tout le monde sur votre position ou vos intention pour devenir introuvable.<br/>";
+                        }
+                    }
+                }
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
         {
-            id: "evts_lycee_skavens5_physique",
+            id: "evts_lycee_skavens5_science",
             description: (perso: Perso): string => {
-                let texte:string = "La forme physique est primordiale pour les celtes. Les entrainements en athlétisme sont nombreux et éreintants. <br/> ";
-                const resTestMvt:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
-                texte += resTestMvt.resume;
-                const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
-                texte += resTestEnd.resume;
-                if (resTestMvt.reussi && resTestEnd.reussi) {
-                    texte += "Agile et endurant, vous faites l'admiration de tous. <br/>";
+                let texte:string = "Les cours scientifiques des skavens sont étonament poussés. Ils se focalisent plus sur l'expérimentation que sur le théorique.<br/> ";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    texte += "Votre intelligence impressionne vos professeurs.<br/>";
                     // se fait connaître dans le coin
                     texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
                 }
