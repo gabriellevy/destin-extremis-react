@@ -3,7 +3,7 @@ import {affiniteViceVertuCoterie} from "../../donnees/coteries/affiniteViceVertu
 import {getValeurVertu} from "../../types/ViceVertu";
 import {Coterie} from "../../types/Coterie";
 
-export const SEUIL_AFFINITE:number = 10; // seuil à partir de quand une coterie intéresse le perso
+export const SEUIL_AFFINITE:number = 8; // seuil à partir de quand une coterie intéresse le perso
 
 export function calculerAffinite(perso: Perso, coterie: Coterie): number {
     let affinite = 0;

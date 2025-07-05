@@ -2,6 +2,7 @@ import {Option} from "./lieux/Lieu";
 import {Perso} from "./Perso";
 import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
 import {getRandomEnumValue} from "../fonctions/random";
+import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
 
 export enum Coterie {
     aucune = 'Aucune',
@@ -68,26 +69,49 @@ export const coterieOptions: Option[]= [
     { value: Coterie.zaporogues, label: Coterie.zaporogues},
 ];
 
+/**
+ * effets sur le perso quand il rejoint cette coterie
+ */
+export type EffectDeCoterieSurPerso = {
+    plus10Values: TypeCompetence[],
+    plus5Values: TypeCompetence[],
+    minus10Values: TypeCompetence[],
+    minus5Values: TypeCompetence[],
+}
+
 export function rejointCoterie( perso: Perso, coterie: Coterie) {
-    switch (coterie) {
-        case Coterie.celtes:
-            augmenterCompetence(perso, TypeCompetence.intimidation, 10);
-            augmenterCompetence(perso, TypeCompetence.mouvement, 10);
-            augmenterCompetence(perso, TypeCompetence.armeCaC, 5);
-            augmenterCompetence(perso, TypeCompetence.survie, 5);
-            augmenterCompetence(perso, TypeCompetence.commandement, -5);
-            augmenterCompetence(perso, TypeCompetence.vigilance, -10);
-            break;
-        case Coterie.templiers:
-            augmenterCompetence(perso, TypeCompetence.vigilance, 10);
-            augmenterCompetence(perso, TypeCompetence.volonte, 10);
-            augmenterCompetence(perso, TypeCompetence.armeCaC, 5);
-            augmenterCompetence(perso, TypeCompetence.evaluation, 5);
-            augmenterCompetence(perso, TypeCompetence.jeux, -5);
-            augmenterCompetence(perso, TypeCompetence.tromperie, -10);
-            break;
-        default:
-            console.warn("Pas d'effet de rejoindre une coterie pour la coterie : " + coterie)
-            break;
+    const ancienneCoterie = perso.coterie;
+    if (ancienneCoterie != Coterie.aucune) {
+        // inverser effet de la coterie précédente (pour la quitter)
+        const effetDepart: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(ancienneCoterie);
+        effetDepart.plus10Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, -10)
+        );
+        effetDepart.plus5Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, -5)
+        );
+        effetDepart.minus10Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, 10)
+        );
+        effetDepart.minus5Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, 5)
+        );
+
     }
+
+    perso.coterie = coterie;
+
+    const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(coterie);
+    effet.plus10Values.forEach((typeComp: TypeCompetence) =>
+        augmenterCompetence(perso, typeComp, 10)
+    );
+    effet.plus5Values.forEach((typeComp: TypeCompetence) =>
+        augmenterCompetence(perso, typeComp, 5)
+    );
+    effet.minus10Values.forEach((typeComp: TypeCompetence) =>
+        augmenterCompetence(perso, typeComp, -10)
+    );
+    effet.minus5Values.forEach((typeComp: TypeCompetence) =>
+        augmenterCompetence(perso, typeComp, -5)
+    );
 }
