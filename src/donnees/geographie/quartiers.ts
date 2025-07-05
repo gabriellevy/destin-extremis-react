@@ -25,15 +25,14 @@ export enum Quartier {
     suresnes = 'Suresnes',
 
     vladivostok = 'Vladivostok',
-
-
 }
 
 export function descriptionQuartier(quartier: Quartier): string {
     let texte: string = "Vous vous trouvez dans le quartier <b>" + quartier + "</b>.<br/>";
     switch (quartier) {
         case Quartier.grande_crete:
-            texte += "La grande crête est une aberration géologique survenue durant la grande guerre tectonique. À cet époque les chthoniens ont attaqué l’Europe en y provoquant une série de séismes qui ont eu pour principal effet la création d’une énorme chaîne de montagne entre Paris et Prague. "
+            texte += "La grande crête est une aberration géologique survenue durant la grande guerre tectonique. "
+                + "À cette époque les chthoniens ont attaqué l’Europe en y provoquant une série de séismes qui ont eu pour principal effet la création d’une énorme chaîne de montagne entre Paris et Prague. "
                 + "Cette crête a une altitude équivalente à celle des alpes mais est encore plus abrupte. <br/>"
                 + "Elle est naturellement très difficile à aménager mais les schweizer l’ont trouvée à leur goût et l’ont transformée de manière si ingénieuse qu’elle est devenue prospère et très bien desservie par les chemins de fers, surtout dans la partie proche de la Ville. ";
             break;

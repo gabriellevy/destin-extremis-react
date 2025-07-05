@@ -51,7 +51,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         persoAl.coterie = getRandomEnumValue(Coterie);
         persoAl.statut = randomStatut();
         persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
-        // nom aléatoire (TODO : selon coterie)
+        // nom aléatoire
         persoAl.prenom = getPrenom(persoAl.coterie, persoAl.sexe);
         persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
         persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);

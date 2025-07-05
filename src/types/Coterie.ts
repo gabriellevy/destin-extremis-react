@@ -1,9 +1,6 @@
-
-// à l'échelle de l'empire romain
 import {Option} from "./lieux/Lieu";
 import {Perso} from "./Perso";
 import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
-import {getValeurVertu, TypeVertu, ViceVertu} from "./ViceVertu";
 import {getRandomEnumValue} from "../fonctions/random";
 
 export enum Coterie {
@@ -93,81 +90,4 @@ export function rejointCoterie( perso: Perso, coterie: Coterie) {
             console.warn("Pas d'effet de rejoindre une coterie pour la coterie : " + coterie)
             break;
     }
-}
-
-// chacun doit en avoir autant pour que ce soit plus équitable
-export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
-    [Coterie.aucune]: [],
-    [Coterie.culte_du_plaisir]: [],
-    [Coterie.esprit_de_la_nature]: [],
-    [Coterie.acheron]: [],
-    [Coterie.bastets]: [],
-    [Coterie.cathares]: [],
-    [Coterie.celtes]: [{
-        valVertu: -1,
-        typeVertu: TypeVertu.humble,
-    },{
-        valVertu: -1,
-        typeVertu: TypeVertu.prudent,
-    },{
-        valVertu: 1,
-        typeVertu: TypeVertu.valeureux,
-    },{
-        valVertu: -1,
-        typeVertu: TypeVertu.sobre,
-    }],
-    [Coterie.conquistador]: [],
-    [Coterie.demokratos]: [],
-    [Coterie.elfes]: [],
-    [Coterie.esthetes]: [],
-    [Coterie.jacobins]: [],
-    [Coterie.libertins]: [],
-    [Coterie.lumieres]: [],
-    [Coterie.ogres]: [],
-    [Coterie.orks]: [],
-    [Coterie.performeurs]: [],
-    [Coterie.romains]: [],
-    [Coterie.saabi]: [],
-    [Coterie.schweizer]: [],
-    [Coterie.skavens]: [],
-    [Coterie.templiers]: [{
-        valVertu: 1,
-        typeVertu: TypeVertu.loyal,
-    },{
-        valVertu: 1,
-        typeVertu: TypeVertu.humble,
-    },{
-        valVertu: 1,
-        typeVertu: TypeVertu.chaste,
-    },{
-        valVertu: 1,
-        typeVertu: TypeVertu.sobre,
-    }],
-    [Coterie.transhumanistes]: [],
-    [Coterie.tyranides]: [],
-    [Coterie.zaporogues]: []
-}
-
-export const SEUIL_AFFINITE:number = 10; // seuil à partir de quand une coterie intéresse le perso
-
-export function calculerAffinite(perso: Perso, coterie: Coterie): number {
-    let affinite = 0;
-    affiniteViceVertuCoterie[coterie].forEach(viceVertuCoterie => {
-        const valVertuPerso = getValeurVertu(perso, viceVertuCoterie.typeVertu);
-        if (valVertuPerso == viceVertuCoterie.valVertu) {
-            // très très proche de la coterie
-            if (valVertuPerso ==0) affinite+=2;
-            if (Math.abs(valVertuPerso) ==1) affinite+=4;
-            if (Math.abs(valVertuPerso) ==2) affinite+=8;
-            if (Math.abs(valVertuPerso) ==3) affinite+=16;
-        } else {
-            if (Math.abs(valVertuPerso - viceVertuCoterie.valVertu) > 1) {
-                // grosse difféernce de valeur avec la coterie
-                affinite-=1;
-            } else {
-                affinite+=1;
-            }
-        }
-    })
-    return affinite;
 }
