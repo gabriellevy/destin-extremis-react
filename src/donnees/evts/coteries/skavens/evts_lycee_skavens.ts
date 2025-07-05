@@ -43,29 +43,20 @@ export const evts_lycee_skavens: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
         {
-            id: "evts_lycee_skavens2_festin",
+            id: "evts_lycee_skavens2_fuite",
             description: (perso: Perso): string => {
-                let texte:string = "Tout bon celte doit être un hôte de qualité. Savoir discourir, accueillir, cuisiner, servir, sont des compétences qui attirent respect et amitié.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: 0});
+                let texte:string = "Le premier but d'un skaven est la survie. Apprendre à fuir à toute vitesse, par les fenêtres, par les toits, dans les catacombes, est une nécessité qu'on vous enseigne encore et encore.<br/> ";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += "Vous savez accueillir et divertir. <br/>";
-                    // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
-                } else {
-                    texte += "Vous êtes encore maladroit pour un hôte mais on pardonne beaucoup à un étudiant. <br/>";
-                }
-                // gloutonnerie
-                if (getValeurVice(perso, TypeVice.gourmand) < 2) {
-                    if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
+                    texte += "Vous devenez rapidement agile comme un chat et vif comme l'éclair. <br/>";
+                    if (getValeurVice(perso, TypeVice.lache) < 2) {
+                        if (Math.random() >= 0.9) {
+                            texte += ajouterViceVal(perso, TypeVice.lache, 1);
+                            texte += "Mais surtout, cette habitude fuir au moindre danger devient une seconde nature chez vous. <br/>";
+                        }
                     }
                 }
-                if (Math.random() >= 0.9) {
-                    texte += "Vous prenez goût à la cuisine et y devenez très doué. ";
-                    texte += ajouterMaitrise(perso, Maitrise.cuisine);
-                }
-
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
