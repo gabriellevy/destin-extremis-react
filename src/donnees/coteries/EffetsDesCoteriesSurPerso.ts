@@ -19,7 +19,6 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.orks: return Quartier.genevilliers;
         case Coterie.saabi: return Quartier.saint_ouen;
         case Coterie.schweizer: return Quartier.grande_crete;
-        case Coterie.skavens: return Quartier.catacombes_de_paris;
         case Coterie.tyranides: return Quartier.argenteuil;
         case Coterie.zaporogues: return Quartier.suresnes;*/
         case Coterie.celtes: return {
@@ -33,6 +32,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             plus5Values: [TypeCompetence.armeCaC, TypeCompetence.evaluation],
             minus10Values: [TypeCompetence.tromperie],
             minus5Values: [TypeCompetence.jeux],
+        };
+        case Coterie.skavens: return {
+            plus10Values: [TypeCompetence.tromperie, TypeCompetence.mouvement],
+            plus5Values: [TypeCompetence.adresse, TypeCompetence.discretion],
+            minus10Values: [TypeCompetence.volonte],
+            minus5Values: [TypeCompetence.vigilance],
         };
     }
     console.warn("Pas d'effet de rejoindre une coterie pour la coterie : " + cot)

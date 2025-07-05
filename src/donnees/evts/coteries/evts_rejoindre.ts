@@ -25,7 +25,7 @@ export const evts_rejoindre: GroupeEvts = {
                 const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
                 if (coterieRejointe) {
                     rejointCoterie(perso, coterieRejointe);
-                    texte += "Après mure réflexion vous rejoinez les " + coterieRejointe.toString();
+                    texte += "Après mure réflexion vous rejoignez les " + coterieRejointe.toString();
                 } else {
                     texte += "Malheureusement aucune coterie ne vous satisfait. Peut-être votre caractère est-il encore trop peu affirmé ?" +
                         " Ou peut-être au contraire êtes vous si exceptionnel qu'aucune coterie ne peut vous correspondre ?";
