@@ -85,25 +85,11 @@ export const evts_lycee_skavens: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
         {
-            id: "evts_lycee_skavens4_duels",
+            id: "evts_lycee_skavens4_discrétion",
             description: (perso: Perso): string => {
-                let texte:string = "Le combat au corps à corps est une tradition vivace chez les celtes. Le but n'est que rarement de tuer, mais de prouver son habileté et son courage. <br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.armeCaC, bonusMalus: 0});
+                let texte:string = "Entre les punitions incessantes sans raison et les agressions et vols des élèves vous êtes bien obligé de vous faire discret.<br/> ";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
                 texte += resTest.resume;
-                if (resTest.reussi) {
-                    texte += "Vous savez très rapidement rendre coup pour coup avec courage et habileté. Même les professeurs commencent à respecter votre force. <br/>";
-                    // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
-                } else {
-                    // TODO : échec critique : blessure
-                    texte += "Vous avez beaucoup à apprendre pour avoir le niveau et cesser de vous faire rosser. <br/>";
-                }
-
-                if (getValeurVertu(perso, TypeVertu.valeureux) < 2) {
-                    if (Math.random() >= 0.9) {
-                        texte += ajouterVertuVal(perso, TypeVertu.valeureux, 1);
-                    }
-                }
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
