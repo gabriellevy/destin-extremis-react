@@ -13,7 +13,6 @@ import {
 } from "../../../../types/ViceVertu";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
-import {ajouterMaitrise, Maitrise} from "../../../maitrise";
 import {Coterie} from "../../../../types/Coterie";
 
 export const evts_lycee_skavens: GroupeEvts = {
@@ -118,34 +117,26 @@ export const evts_lycee_skavens: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
         {
-            id: "evts_lycee_skavens6_foret",
+            id: "evts_lycee_skavens6_cupidité",
             description: (perso: Perso): string => {
-                let texte:string = "Survivre dans la nature est signe de forte volonté et de débrouillardise pour les celtes, ainsi qu'un lien à conserver avec les anciens dieux. "
-                    + "De rudes randonnées et nuits à la belle étoile sont donc au programme de leur lycée et vous n'y échapperez pas.<br/> ";
-                const resTestSur:ResultatTest = testComp(perso, {comp: TypeCompetence.survie, bonusMalus: 0});
-                texte += resTestSur.resume;
-                if (resTestSur.reussi) {
-                    texte += "Vous semblez être naturellement chez vous en pleine forêt, même dans la nuit la plus noire, à la grande surprise de vos professeurs. <br/>";
-                    // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
-                }
-                return texte;
-            },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
-        },
-        {
-            id: "evts_lycee_skavens7_poesie",
-            description: (perso: Perso): string => {
-                let texte:string = "Votre professeur de diction tente de vous inculquer les bases du discours et de la poésie.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: -10});
+                let texte:string = "Un bon skaven se doit d'être ambitieux et de vouloir toujours plus. "
+                    + "Les cours ne laissent évidemment pas de côté un élément aussi important de la vie.<br/>";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += "Vous avez un talent de poète inné qui impressionne fortement votre professeur. <br/>";
-                    texte += ajouterMaitrise(perso, Maitrise.poesie);
-                    // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
+                    texte += "Vous semblez avoir un excellent instinct pour ces choses là.<br/>";
+                    if (getValeurVice(perso, TypeVice.cupide) < 2) {
+                        if (Math.random() >= 0.9) {
+                            texte += ajouterViceVal(perso, TypeVice.cupide, 1);
+                        }
+                    }
+                    if (getValeurVice(perso, TypeVice.envieux) < 2) {
+                        if (Math.random() >= 0.9) {
+                            texte += ajouterViceVal(perso, TypeVice.envieux, 1);
+                            texte += "Vous comprenez vite que le plus rapide moyen d'avoir plus est de prendre à votre voisin. Un enseignement que votre professeur confirme vite.<br/>";
+                        }
+                    }
                 }
-
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
