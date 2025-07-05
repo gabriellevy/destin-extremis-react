@@ -143,7 +143,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     const resTestSur:ResultatTest = testComp(perso, {comp: TypeCompetence.survie, bonusMalus: 0});
                     texte += resTestSur.resume;
                     if (resTestSur.reussi) {
-                        texte += "Vous sembezl être naturellement chez vous en pleine forêt, même dans la nuit la plus noire, à la grande surprise de vos professeurs. <br/>";
+                        texte += "Vous semblez être naturellement chez vous en pleine forêt, même dans la nuit la plus noire, à la grande surprise de vos professeurs. <br/>";
                         // se fait connaître dans le coin
                         texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
                     }

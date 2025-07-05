@@ -9,13 +9,16 @@ import {
 import {getRandomInt} from "./random";
 import {Sexe} from "../types/Perso";
 import {CELTES_PRENOMS_F, CELTES_PRENOMS_M} from "../donnees/coteries/celtes/noms_celtes";
+import {PARTIE_NOM_SKAVEN1, PARTIE_NOM_SKAVEN2, PARTIE_NOM_SKAVEN3} from "../donnees/coteries/skavens/noms_skavens";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
         case Coterie.romains : return sexe === Sexe.male ?
             ROMAINS_NOMS_M1[getRandomInt(ROMAINS_NOMS_M1.length)] :
             ROMAINS_NOMS_F[getRandomInt(ROMAINS_NOMS_F.length)];
-        case Coterie.celtes: return ""; // les celtes n'ont pas de noms de familles
+        case Coterie.celtes:
+        case Coterie.skavens:
+            return ""; // les celtes n'ont pas de noms de familles
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -28,6 +31,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.celtes : return sexe === Sexe.male ?
             CELTES_PRENOMS_M[getRandomInt(CELTES_PRENOMS_M.length)] :
             CELTES_PRENOMS_F[getRandomInt(CELTES_PRENOMS_F.length)];
+        case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt(PARTIE_NOM_SKAVEN1.length)]
+            + PARTIE_NOM_SKAVEN2[getRandomInt(PARTIE_NOM_SKAVEN3.length)]
+            + PARTIE_NOM_SKAVEN3[getRandomInt(PARTIE_NOM_SKAVEN3.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
