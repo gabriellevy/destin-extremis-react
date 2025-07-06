@@ -6,7 +6,7 @@ import {anneesToJours} from "../../types/Date";
 export const evts_programmes: Map<number, (perso: Perso)=>string> = new Map([
     [anneesToJours(2512),
         (): string => {
-            return "TODO : jour de l'invasion d'Ubersreik par les troupes d'Altdorf";
+            return "TODO : ajouter des événements historiques";
         },
     ],
 ]);

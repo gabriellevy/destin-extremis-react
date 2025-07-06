@@ -3,7 +3,6 @@ import {Evt, EvtExecute, filtrerEtPreparerEvts} from "../types/Evt";
 import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
 import {evts_crime} from "../donnees/evts/carrieres/evts_crime";
-import {evts_pretres} from "../donnees/evts/carrieres/evts_pretres";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
@@ -86,7 +85,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_chatenay_malabry, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
             ...filtrerEtPreparerEvts(evts_crime, perso),
-            ...filtrerEtPreparerEvts(evts_pretres, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_lycee, perso),
