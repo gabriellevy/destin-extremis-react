@@ -33,7 +33,7 @@ interface CharacterFormProps {
 export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     const { setPerso } = useContext(PersoContexte) as PersoContexteType;
     const methods = useForm<Perso>({
-        defaultValues: enfant
+        defaultValues: enfant()
     });
     const { reset } = methods;
 
@@ -44,7 +44,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     };
 
     const persoAleatoire = () => {
-        const persoAl: Perso = enfant;
+        const persoAl: Perso = enfant();
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
