@@ -20,7 +20,10 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.celtes:
         case Coterie.skavens:
             return ""; // les celtes n'ont pas de noms de familles
-        case Coterie.aucune : return NOM[getRandomInt(NOM.length)];
+        // noms français :
+        case Coterie.aucune:
+        case Coterie.jacobins:
+            return NOM[getRandomInt(NOM.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -36,9 +39,13 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt(PARTIE_NOM_SKAVEN1.length)]
             + PARTIE_NOM_SKAVEN2[getRandomInt(PARTIE_NOM_SKAVEN3.length)]
             + PARTIE_NOM_SKAVEN3[getRandomInt(PARTIE_NOM_SKAVEN3.length)];
-        case Coterie.aucune: return sexe === Sexe.male ?
-            PRENOM_M[getRandomInt(PRENOM_M.length)] :
-            PRENOM_F[getRandomInt(PRENOM_F.length)];
+        // noms français :
+        case Coterie.aucune:
+        case Coterie.jacobins:
+        case Coterie.templiers:
+            return sexe === Sexe.male ?
+                PRENOM_M[getRandomInt(PRENOM_M.length)] :
+                PRENOM_F[getRandomInt(PRENOM_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -60,9 +67,13 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
                                     + " " +  getCognomen(coterie, sexe);
         case Coterie.celtes :
         case Coterie.skavens :
+        case Coterie.templiers:
             return getPrenom(coterie, sexe);
-        case Coterie.aucune : return getPrenom(coterie, sexe)
-            + " " + getNom(coterie, sexe)
+
+        case Coterie.aucune:
+        case Coterie.jacobins:
+            return getPrenom(coterie, sexe)
+                + " " + getNom(coterie, sexe)
     }
     return "pas de patronyme pour cette coterie : " + coterie;
 }
