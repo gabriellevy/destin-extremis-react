@@ -29,22 +29,17 @@ export function getRegions(continent: Continent):Region[] {
             Region.siberie,
         ];
         case Continent.inde : return [
-            // TODO
         ];
         case Continent.asie_sud_est : return [
-        // TODO
         ];
         case Continent.amerique_nord : return [
-            // TODO
         ];
         case Continent.europe : return [
             Region.la_ville,
         ];
         case Continent.amerique_centrale : return [
-        // TODO
         ];
         case Continent.amerique_sud : return [
-            // TODO
         ];
     }
     return [];
