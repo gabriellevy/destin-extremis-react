@@ -3,8 +3,13 @@ import {TypeCompetence} from "../../types/comps/Comps";
 
 export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieSurPerso {
     switch (cot) {
-        /*case Coterie.acheron: return Quartier.noisiel;
-        case Coterie.bastets: return Quartier.montmartre;
+        case Coterie.acheron: return {
+            plus10Values: [TypeCompetence.intelligence, TypeCompetence.volonte],
+            plus5Values: [TypeCompetence.intimidation, TypeCompetence.tromperie],
+            minus10Values: [TypeCompetence.charme],
+            minus5Values: [TypeCompetence.reflexes],
+        };
+        /*case Coterie.bastets: return Quartier.montmartre;
         case Coterie.cathares: return Quartier.saint_maur_des_fosses;
         case Coterie.conquistador: return Quartier.montesson;
         case Coterie.culte_du_plaisir: return Quartier.palais_royal;

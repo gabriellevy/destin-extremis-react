@@ -4,9 +4,21 @@ import {TypeVertu, ViceVertu } from "../../types/ViceVertu";
 // chacun doit en avoir autant pour que ce soit plus équitable
 export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.aucune]: [],
+    [Coterie.acheron]: [{
+        valVertu: -1,
+        typeVertu: TypeVertu.altruiste,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.travailleur,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.humble,
+    }],
     [Coterie.culte_du_plaisir]: [],
     [Coterie.esprit_de_la_nature]: [],
-    [Coterie.acheron]: [],
     [Coterie.bastets]: [],
     [Coterie.cathares]: [],
     [Coterie.celtes]: [{
