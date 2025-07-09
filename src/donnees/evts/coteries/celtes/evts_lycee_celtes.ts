@@ -47,7 +47,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             id: "evts_lycee_celtes2_festin",
             description: (perso: Perso): string => {
                 let texte:string = "Tout bon celte doit être un hôte de qualité. Savoir discourir, accueillir, cuisiner, servir, sont des compétences qui attirent respect et amitié.<br/> ";
-                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: 0});
+                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
                     texte += resTest.resume;
                     if (resTest.reussi) {
                         texte += "Vous savez accueillir et divertir. <br/>";
@@ -155,7 +155,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             id: "evts_lycee_celtes7_poesie",
             description: (perso: Perso): string => {
                 let texte:string = "Votre professeur de diction tente de vous inculquer les bases du discours et de la poésie.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: -10});
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: -10});
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous avez un talent de poète inné qui impressionne fortement votre professeur. <br/>";

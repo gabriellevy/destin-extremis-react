@@ -28,7 +28,7 @@ export const evts_chatenay_malabry: GroupeEvts = {
                 }
                 if (aLaMaitrise(perso, Maitrise.poesie)) {
                     texte += "Votre talent de poète intéresse l'assemblée. On vous demande d'interpréter un de vos poèmes. ";
-                    const resTestDiscours:ResultatTest = testComp(perso, {comp: TypeCompetence.discours, bonusMalus: 0});
+                    const resTestDiscours:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
                     texte += resTestDiscours.resume;
                     if (resTestDiscours.reussi) {
                         texte += "Votre interprétation impressionne le roi et tous les convives. Nul doute que votre réputation va augmenter. <br/>";

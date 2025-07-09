@@ -43,6 +43,19 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 1,
         typeVertu: TypeVertu.humble,
     }],
+    [Coterie.conquistador]: [{
+        valVertu: 1,
+        typeVertu: TypeVertu.valeureux,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.genereux,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.loyal,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.humble,
+    }],
     [Coterie.culte_du_plaisir]: [],
     [Coterie.esprit_de_la_nature]: [],
     [Coterie.celtes]: [{
@@ -58,7 +71,6 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.sobre,
     }],
-    [Coterie.conquistador]: [],
     [Coterie.demokratos]: [],
     [Coterie.elfes]: [],
     [Coterie.esthetes]: [],

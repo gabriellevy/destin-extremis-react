@@ -21,8 +21,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.bagarre],
             minus5Values: [TypeCompetence.evaluation],
         };
-        /*case Coterie.conquistador: return Quartier.montesson;
-        case Coterie.culte_du_plaisir: return Quartier.palais_royal;
+        case Coterie.conquistador: return {
+            plus10Values: [TypeCompetence.tir, TypeCompetence.survie],
+            plus5Values: [TypeCompetence.orientation, TypeCompetence.armeCaC],
+            minus10Values: [TypeCompetence.eloquence],
+            minus5Values: [TypeCompetence.tromperie],
+        };
+        /*case Coterie.culte_du_plaisir: return Quartier.palais_royal;
         case Coterie.elfes: return Quartier.saint_germain_en_laye;
         case Coterie.esprit_de_la_nature: return Quartier.bois_de_boulogne;
         case Coterie.esthetes: return Quartier.versailles;
