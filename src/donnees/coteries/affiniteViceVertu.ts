@@ -30,9 +30,21 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.bienveillant,
     }],
+    [Coterie.cathares]: [{
+        valVertu: 1,
+        typeVertu: TypeVertu.sobre,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.chaste,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.altruiste,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.humble,
+    }],
     [Coterie.culte_du_plaisir]: [],
     [Coterie.esprit_de_la_nature]: [],
-    [Coterie.cathares]: [],
     [Coterie.celtes]: [{
         valVertu: -1,
         typeVertu: TypeVertu.humble,
