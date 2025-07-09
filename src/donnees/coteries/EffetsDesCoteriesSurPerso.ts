@@ -9,8 +9,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.charme],
             minus5Values: [TypeCompetence.reflexes],
         };
-        /*case Coterie.bastets: return Quartier.montmartre;
-        case Coterie.cathares: return Quartier.saint_maur_des_fosses;
+        case Coterie.bastets:  return {
+            plus10Values: [TypeCompetence.charme, TypeCompetence.mouvement],
+            plus5Values: [TypeCompetence.reflexes, TypeCompetence.discretion],
+            minus10Values: [TypeCompetence.commandement],
+            minus5Values: [TypeCompetence.force],
+        };
+        /*case Coterie.cathares: return Quartier.saint_maur_des_fosses;
         case Coterie.conquistador: return Quartier.montesson;
         case Coterie.culte_du_plaisir: return Quartier.palais_royal;
         case Coterie.elfes: return Quartier.saint_germain_en_laye;

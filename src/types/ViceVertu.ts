@@ -25,7 +25,7 @@ export enum TypeVertu {
     genereux = "Généreux",
     prudent = "Prudent",
     tempere = "Tempéré",
-    clement = "Clément",
+    bienveillant = "Bienveillant",
     altruiste = "Bienveillant",
     sobre = "Sobre",
     valeureux = "Valeureux",
@@ -40,7 +40,7 @@ export function getViceOppose(typeVertu: TypeVertu): TypeVice {
         case TypeVertu.genereux : return TypeVice.cupide;
         case TypeVertu.prudent : return TypeVice.impulsif;
         case TypeVertu.tempere : return TypeVice.colerique;
-        case TypeVertu.clement : return TypeVice.cruel;
+        case TypeVertu.bienveillant : return TypeVice.cruel;
         case TypeVertu.altruiste : return TypeVice.envieux;
         case TypeVertu.sobre : return TypeVice.gourmand;
         case TypeVertu.valeureux : return TypeVice.lache;
@@ -55,7 +55,7 @@ export function getVertuOppose(typeVice: TypeVice): TypeVertu {
         case TypeVice.cupide : return TypeVertu.genereux;
         case TypeVice.impulsif : return TypeVertu.prudent;
         case TypeVice.colerique : return TypeVertu.tempere;
-        case TypeVice.cruel : return TypeVertu.clement;
+        case TypeVice.cruel : return TypeVertu.bienveillant;
         case TypeVice.envieux : return TypeVertu.altruiste;
         case TypeVice.gourmand : return TypeVertu.sobre;
         case TypeVice.lache : return TypeVertu.valeureux;
