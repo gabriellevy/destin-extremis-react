@@ -66,7 +66,13 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.sobre,
     }],
-    [Coterie.esprit_de_la_nature]: [],
+    [Coterie.esprit_de_la_nature]: [{
+        valVertu: 3,
+        typeVertu: TypeVertu.naturaliste,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.humble,
+    }],
     [Coterie.celtes]: [{
         valVertu: -1,
         typeVertu: TypeVertu.humble,

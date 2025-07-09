@@ -33,8 +33,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.survie],
             minus5Values: [TypeCompetence.intimidation],
         };
+        case Coterie.esprit_de_la_nature: return {
+            plus10Values: [TypeCompetence.animaux, TypeCompetence.survie],
+            plus5Values: [TypeCompetence.orientation, TypeCompetence.perception],
+            minus10Values: [TypeCompetence.tir],
+            minus5Values: [TypeCompetence.evaluation],
+        };
         /*case Coterie.elfes: return Quartier.saint_germain_en_laye;
-        case Coterie.esprit_de_la_nature: return Quartier.bois_de_boulogne;
         case Coterie.esthetes: return Quartier.versailles;
         case Coterie.demokratos: return Quartier.vanves;
         case Coterie.jacobins: return Quartier.luxembourg;
