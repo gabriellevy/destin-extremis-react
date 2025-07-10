@@ -9,6 +9,7 @@ export enum Coterie {
     acheron = 'Achéron',
     bastets = 'Bastets',
     cathares = 'Cathares',
+    carthaginois = 'Carthaginois',
     celtes = 'Celtes',
     conquistador = 'Conquistador',
     culte_du_plaisir = 'Culte du plaisir',

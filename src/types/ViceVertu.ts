@@ -20,6 +20,7 @@ export enum TypeVice {
     paresseux = "Paresseux",
     trompeur = "Trompeur",
     artificialiste = "Artificialiste",
+    casanier = "Casanier",
 }
 
 export enum TypeVertu {
@@ -35,6 +36,7 @@ export enum TypeVertu {
     travailleur = "Travailleur",
     loyal = "Loyal",
     naturaliste = "Naturaliste",
+    aventureux = "Aventureux",
 }
 
 export function getViceOppose(typeVertu: TypeVertu): TypeVice {
@@ -51,6 +53,7 @@ export function getViceOppose(typeVertu: TypeVertu): TypeVice {
         case TypeVertu.travailleur : return TypeVice.paresseux;
         case TypeVertu.loyal : return TypeVice.trompeur;
         case TypeVertu.naturaliste : return TypeVice.artificialiste;
+        case TypeVertu.aventureux : return TypeVice.casanier;
     }
 }
 export function getVertuOppose(typeVice: TypeVice): TypeVertu {
@@ -67,6 +70,7 @@ export function getVertuOppose(typeVice: TypeVice): TypeVertu {
         case TypeVice.paresseux : return TypeVertu.travailleur;
         case TypeVice.trompeur : return TypeVertu.loyal;
         case TypeVice.artificialiste : return TypeVertu.naturaliste;
+        case TypeVice.casanier : return TypeVertu.aventureux;
     }
 }
 
