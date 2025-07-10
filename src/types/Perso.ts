@@ -17,7 +17,7 @@ export type Perso = {
     dateNaissance: number;
     date: number, // en nombre de jours depuis l'an 0 du calendrier impérial
     anneeDeDepart?: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
-    age?: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
+    age: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
     lieu: Lieu,
     // aide à la programmation mais pas à afficher directement :
     mois?: string, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
