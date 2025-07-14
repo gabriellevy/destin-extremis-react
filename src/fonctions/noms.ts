@@ -19,6 +19,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
             ROMAINS_NOMS_F[getRandomInt(ROMAINS_NOMS_F.length)];
         case Coterie.celtes:
         case Coterie.skavens:
+        case Coterie.templiers:
             return ""; // les celtes n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:

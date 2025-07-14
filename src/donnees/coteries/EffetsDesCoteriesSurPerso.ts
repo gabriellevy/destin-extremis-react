@@ -27,6 +27,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.bagarre],
             minus5Values: [TypeCompetence.evaluation],
         };
+        case Coterie.celtes: return {
+            plus10Values: [TypeCompetence.intimidation, TypeCompetence.mouvement],
+            plus5Values: [TypeCompetence.armeCaC, TypeCompetence.survie],
+            minus10Values: [TypeCompetence.vigilance],
+            minus5Values: [TypeCompetence.commandement],
+        };
         case Coterie.conquistador: return {
             plus10Values: [TypeCompetence.tir, TypeCompetence.survie],
             plus5Values: [TypeCompetence.orientation, TypeCompetence.armeCaC],
@@ -67,12 +73,6 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.schweizer: return Quartier.grande_crete;
         case Coterie.tyranides: return Quartier.argenteuil;
         case Coterie.zaporogues: return Quartier.suresnes;*/
-        case Coterie.celtes: return {
-            plus10Values: [TypeCompetence.intimidation, TypeCompetence.mouvement],
-            plus5Values: [TypeCompetence.armeCaC, TypeCompetence.survie],
-            minus10Values: [TypeCompetence.vigilance],
-            minus5Values: [TypeCompetence.commandement],
-        };
         case Coterie.templiers: return {
             plus10Values: [TypeCompetence.vigilance, TypeCompetence.volonte],
             plus5Values: [TypeCompetence.armeCaC, TypeCompetence.evaluation],
