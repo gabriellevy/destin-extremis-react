@@ -1,6 +1,6 @@
 import {Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
-import {age} from "../../../types/Date";
+import {calculeAge} from "../../../types/Date";
 import {Coterie, rejointCoterie} from "../../../types/Coterie";
 import {getRandomInt} from "../../../fonctions/random";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
@@ -36,7 +36,7 @@ export const evts_rejoindre: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.coterie === Coterie.aucune
-                && age(perso) >= 19,
+                && calculeAge(perso) >= 19,
         },
     ],
     probaParDefaut: 50,

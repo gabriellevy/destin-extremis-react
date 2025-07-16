@@ -11,7 +11,7 @@ import {
 
 export function joursToAnnees(jours: number) {return Math.floor(jours / JOURS_PAR_AN)}
 export function anneesToJours(annees: number) {return annees * JOURS_PAR_AN}
-export function age(perso: Perso) {return joursToAnnees(perso.date - perso.dateNaissance)}
+export function calculeAge(perso: Perso) {return joursToAnnees(perso.date - perso.dateNaissance)}
 // numéro du jour actuel depuis le début de l'année en cours (dibc de 0 à JOURS_PAR_AN-1)
 export function jourDansLAnnee(joursDepuis0: number) {return joursDepuis0%JOURS_PAR_AN + 1}
 

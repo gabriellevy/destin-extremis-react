@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {age, anneesToJours} from "../../../types/Date";
+import {calculeAge, anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
 const passageDiplomeBoulanger: (perso: Perso) => string = (perso: Perso) => {
@@ -41,7 +41,7 @@ export const evts_boulanger: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Bruno_B%C3%A4cker.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && age(perso) >= 14,
+                && calculeAge(perso) >= 14,
         },
         {
             id: "evts_boulanger2",

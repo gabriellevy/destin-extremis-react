@@ -1,11 +1,12 @@
 import {getRandomEnumValue} from "./random";
 import {Carriere, metiersEnum, metiersObjs} from "../types/metiers/metiers";
 import {Coterie} from "../types/Coterie";
-import {Sexe} from "../types/perso/Perso";
-import {anneesToJours} from "../types/Date";
+import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
+import {calculeAge, anneesToJours} from "../types/Date";
 import {lieuParDefaut} from "../types/lieux/Lieu";
 import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
+import {getNom, getPrenom} from "./noms";
 
 export function getCarriereAleatoire(): Carriere {
     let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);
@@ -19,14 +20,25 @@ export function getCarriereAleatoire(): Carriere {
     };
 }
 
-export function genererPNJ():PNJ {
+export function genererPNJAmourableDePerso(perso: Perso):PNJ {
+    const sexe: Sexe = getSexeOppose(perso.sexe);
+    const minAge: number = calculeAge(perso)/2 + 9 ;
+    const maxAge: number = calculeAge(perso)*2 - 18 ;
+    const age = minAge + Math.random() * (maxAge - minAge);
+    const dateNaissance: number = perso.date - anneesToJours(age);
+    return genererPNJ(sexe, dateNaissance);
+}
+
+export function genererPNJ(sexe:Sexe, dateNaissance: number):PNJ {
     const cot: Coterie = getCoterieAleatoireSauf([]);
     const carriere: Carriere = getCarriereAleatoire();
+    const nom: string = getNom(cot, sexe);
+    const prenom: string = getPrenom(cot, sexe);
     return {
-        prenom: "prénom bidon",
-        nom: "nom bidon",
+        prenom: prenom,
+        nom: nom,
         sexe: Sexe.male,
-        dateNaissance: anneesToJours(478),
+        dateNaissance: dateNaissance,
         lieu: lieuParDefaut,
         coterie: cot,
         carriere: carriere,

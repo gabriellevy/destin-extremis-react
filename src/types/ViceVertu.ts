@@ -29,7 +29,7 @@ export enum TypeVertu {
     prudent = "Prudent",
     tempere = "Tempéré",
     bienveillant = "Bienveillant",
-    altruiste = "Bienveillant",
+    altruiste = "Altruiste",
     sobre = "Sobre",
     valeureux = "Valeureux",
     chaste = "Chaste",

@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {age} from "../../../types/Date";
+import {calculeAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
@@ -28,7 +28,7 @@ export const evts_batelier: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && age(perso) >= 14
+                && calculeAge(perso) >= 14
                 && auBordDeLaRiviere(perso),
         },
         {

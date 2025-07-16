@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {age} from "../../../types/Date";
+import {calculeAge} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 import {Coterie} from "../../../types/Coterie";
 
@@ -28,8 +28,8 @@ export const evts_legionnaire: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && age(perso) >= 17
-                && age(perso) <= 46
+                && calculeAge(perso) >= 17
+                && calculeAge(perso) <= 46
                 && perso.coterie === Coterie.conquistador,
         },
         {

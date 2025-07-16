@@ -1,5 +1,5 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from '@mui/material';
-import {age, joursToAnnees} from "../../types/Date";
+import {calculeAge, joursToAnnees} from "../../types/Date";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
@@ -44,7 +44,7 @@ export default function AffichagePerso() {
                 <ListItem>
                     <Typography variant="h5" gutterBottom>
                         <ListItemText primary={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}
-                                      secondary={`${age(perso)} ans`}/>
+                                      secondary={`${calculeAge(perso)} ans`}/>
                     </Typography>
                 </ListItem>
                 {

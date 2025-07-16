@@ -15,8 +15,8 @@ export type Perso = {
     nom: string;
     cognomen: string;
     sexe: Sexe;
-    dateNaissance: number;
-    date: number, // en nombre de jours depuis l'an 0 du calendrier impérial
+    dateNaissance: number; // en nombre de jours depuis l'an 0 du calendrier consulaire ?
+    date: number, // en nombre de jours depuis l'an 0 du calendrier consulaire
     anneeDeDepart?: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
     age: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
     lieu: Lieu,
@@ -43,4 +43,8 @@ export type Perso = {
 export enum Sexe {
     male = 'Mâle',
     femelle = 'Femelle',
+}
+
+export function getSexeOppose(sexe:Sexe) {
+    return sexe === Sexe.male ? Sexe.femelle : Sexe.male;
 }

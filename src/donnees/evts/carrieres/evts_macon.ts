@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {age} from "../../../types/Date";
+import {calculeAge} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
 export const evts_macon: GroupeEvts = {
@@ -29,7 +29,7 @@ export const evts_macon: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && age(perso) >= 14,
+                && calculeAge(perso) >= 14,
         },
         {
             id: "evts_macon2",

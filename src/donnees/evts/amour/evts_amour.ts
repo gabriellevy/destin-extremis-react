@@ -1,7 +1,7 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {Perso} from "../../../types/perso/Perso";
 import {getValeurVice, TypeVice} from "../../../types/ViceVertu";
-import {genererPNJ} from "../../../fonctions/generation";
+import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 
 export const evts_amour: GroupeEvts = {
@@ -9,7 +9,7 @@ export const evts_amour: GroupeEvts = {
         {
             id: "evts_amour1",
             description: (perso: Perso): string => {
-                const coupDeCoeur:PNJ = genererPNJ();
+                const coupDeCoeur:PNJ = genererPNJAmourableDePerso(perso);
                 let texte:string = "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
 
                 return texte;

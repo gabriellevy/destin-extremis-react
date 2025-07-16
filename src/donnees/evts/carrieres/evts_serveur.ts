@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {age} from "../../../types/Date";
+import {calculeAge} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
 export const evts_serveur: GroupeEvts = {
@@ -33,7 +33,7 @@ export const evts_serveur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && age(perso) >= 14, // TODO : tester que dans une ville ?
+                && calculeAge(perso) >= 14, // TODO : tester que dans une ville ?
         },
         {
             id: "evts_serveur2",
