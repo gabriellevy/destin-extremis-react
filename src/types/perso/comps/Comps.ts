@@ -1,4 +1,4 @@
-import {d10} from "../../fonctions/des";
+import {d10} from "../../../fonctions/des";
 import {Perso} from "../Perso";
 
 export type Competence = {

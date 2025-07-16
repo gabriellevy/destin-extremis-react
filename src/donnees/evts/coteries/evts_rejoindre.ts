@@ -1,4 +1,4 @@
-import {Perso} from "../../../types/Perso";
+import {Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {age} from "../../../types/Date";
 import {Coterie, rejointCoterie} from "../../../types/Coterie";

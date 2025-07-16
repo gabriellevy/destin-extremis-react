@@ -1,6 +1,6 @@
 import {Option} from "./lieux/Lieu";
-import {Perso} from "./Perso";
-import {augmenterCompetence, TypeCompetence} from "./comps/Comps";
+import {Perso} from "./perso/Perso";
+import {augmenterCompetence, TypeCompetence} from "./perso/comps/Comps";
 import {getRandomEnumValue} from "../fonctions/random";
 import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
 

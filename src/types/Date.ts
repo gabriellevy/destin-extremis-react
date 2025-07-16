@@ -1,4 +1,4 @@
-import {Perso} from "./Perso";
+import {Perso} from "./perso/Perso";
 import {Evt} from "./Evt";
 import {Carriere} from "./metiers/metiers";
 import {

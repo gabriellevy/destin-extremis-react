@@ -1,4 +1,4 @@
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {getValeurVertu, getValeurVice, getViceOppose, TypeVertu} from "../../types/ViceVertu";
 
 interface CompsProps {

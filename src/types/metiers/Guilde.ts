@@ -1,5 +1,5 @@
 import {metiersEnum} from "./metiers";
-import {Perso} from "../Perso";
+import {Perso} from "../perso/Perso";
 
 // undefined si n'appartient pas à la guilde
 export enum titreGuildeEnum {

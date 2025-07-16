@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Perso} from "../types/Perso";
+import {Perso} from "../types/perso/Perso";
 import {enfant} from "../donnees/persos/persos_pregens";
 import { PersoContexte } from "./ContexteTypes";
 

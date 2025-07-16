@@ -1,5 +1,5 @@
 import {Quartier} from "../donnees/geographie/quartiers";
-import {Perso} from "./Perso";
+import {Perso} from "./perso/Perso";
 
 export type Reputation = {
     // par quartier -100 = catastrophique, +100 = excellente

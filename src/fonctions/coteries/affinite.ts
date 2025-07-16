@@ -1,4 +1,4 @@
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {affiniteViceVertuCoterie} from "../../donnees/coteries/affiniteViceVertu";
 import {getValeurVertu} from "../../types/ViceVertu";
 import {Coterie} from "../../types/Coterie";

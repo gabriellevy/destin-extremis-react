@@ -1,10 +1,10 @@
-import {Perso} from "../../../types/Perso";
+import {Perso} from "../../../types/perso/Perso";
 import {metiersEnum} from "../../../types/metiers/metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {compareStatut, MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
-import {TypeCompetence} from "../../../types/comps/Comps";
+import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../types/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";

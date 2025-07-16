@@ -1,5 +1,5 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
-import {Perso} from "../Perso";
+import {Perso} from "../perso/Perso";
 import {getRegions, Continent} from "../../donnees/geographie/continents";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {getQuartiers, Region} from "../../donnees/geographie/regions";

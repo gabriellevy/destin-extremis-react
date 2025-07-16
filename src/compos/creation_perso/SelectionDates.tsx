@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {Grid2, TextField} from "@mui/material";
 
 export default function SelectionDates() {

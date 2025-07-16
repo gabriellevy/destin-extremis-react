@@ -7,7 +7,7 @@ import {
     ROMAINS_PRENOMS_M
 } from "../donnees/coteries/romains/noms_romains";
 import {getRandomInt} from "./random";
-import {Sexe} from "../types/Perso";
+import {Sexe} from "../types/perso/Perso";
 import {CELTES_PRENOMS_F, CELTES_PRENOMS_M} from "../donnees/coteries/celtes/noms_celtes";
 import {PARTIE_NOM_SKAVEN1, PARTIE_NOM_SKAVEN2, PARTIE_NOM_SKAVEN3} from "../donnees/coteries/skavens/noms_skavens";
 import {NOM, PRENOM_F, PRENOM_M} from "../donnees/coteries/aucune/noms_francais";

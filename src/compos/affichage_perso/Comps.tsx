@@ -1,6 +1,6 @@
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
-import {getValeurCompetence, isCompDeBase, TypeCompetence} from "../../types/comps/Comps";
+import {getValeurCompetence, isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
 
 interface CaracProps {
     primaryText: string,

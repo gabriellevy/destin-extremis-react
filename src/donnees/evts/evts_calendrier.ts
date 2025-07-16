@@ -1,5 +1,5 @@
 import {GroupeEvts} from "../../types/Evt";
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {enumMois} from "../dates/calendrier";
 
 export const evts_calendrier: GroupeEvts = {

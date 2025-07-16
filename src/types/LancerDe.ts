@@ -1,4 +1,4 @@
-import {TypeCompetence} from "./comps/Comps";
+import {TypeCompetence} from "./perso/comps/Comps";
 import {metiersEnum} from "./metiers/metiers";
 
 export type ResultatTest = {

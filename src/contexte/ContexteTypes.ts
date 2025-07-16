@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import {Perso} from "../types/Perso";
+import {Perso} from "../types/perso/Perso";
 
 export type PersoContexteType = {
     perso: Perso;

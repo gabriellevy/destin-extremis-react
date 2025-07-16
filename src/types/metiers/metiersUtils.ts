@@ -1,6 +1,6 @@
 import {Carriere, metiersEnum, metiersObjs} from "./metiers";
-import {Perso} from "../Perso";
-import {seuils} from "../comps/Comps";
+import {Perso} from "../perso/Perso";
+import {seuils} from "../perso/comps/Comps";
 import {anneesToJours} from "../Date";
 
 // seulement les carrières actives

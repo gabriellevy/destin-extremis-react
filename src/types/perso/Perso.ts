@@ -1,13 +1,14 @@
-import {Lieu} from "./lieux/Lieu";
-import {Statut} from "./statut_social/Statut";
-import {Carriere, metiersEnum} from "./metiers/metiers";
-import {Dieu} from "./Dieu";
+import {Lieu} from "../lieux/Lieu";
+import {Statut} from "../statut_social/Statut";
+import {Carriere, metiersEnum} from "../metiers/metiers";
+import {Dieu} from "../Dieu";
+import {Maitrise} from "../../donnees/maitrise";
+import {Coterie} from "../Coterie";
+import {ViceVertu} from "../ViceVertu";
+import {BilanLycee} from "../lycee/StadeUniversite";
+import {Reputation} from "../Reputation";
 import {Competence} from "./comps/Comps";
-import {Maitrise} from "../donnees/maitrise";
-import {Coterie} from "./Coterie";
-import {ViceVertu} from "./ViceVertu";
-import {BilanLycee} from "./lycee/StadeUniversite";
-import {Reputation} from "./Reputation";
+import {PNJ} from "./PNJ";
 
 export type Perso = {
     prenom: string;
@@ -35,6 +36,8 @@ export type Perso = {
     mort?: boolean,
     bilanLycee: BilanLycee
     reputation: Reputation
+    // personnes avec qui le perso est en relation
+    pnjs: PNJ[],
 };
 
 export enum Sexe {

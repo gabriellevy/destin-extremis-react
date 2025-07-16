@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select} from "@mui/material";
 import {getRegions, Continent, continentsOptions} from "../../donnees/geographie/continents";
 import {Option} from "../../types/lieux/Lieu";

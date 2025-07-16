@@ -1,8 +1,8 @@
 import {anneesToJours} from "../../types/Date";
 import {lieuParDefaut} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
-import {Perso, Sexe} from "../../types/Perso";
-import {compsDeBase} from "../../types/comps/Comps";
+import {Perso, Sexe} from "../../types/perso/Perso";
+import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {Coterie, getCoterieAleatoireSauf, rejointCoterie} from "../../types/Coterie";
@@ -36,6 +36,7 @@ export function enfant(): Perso {
         vitesseExecution: 5000,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
+        pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
     };
     rejointCoterie(perso, cot);
     return perso;

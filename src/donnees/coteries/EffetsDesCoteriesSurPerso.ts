@@ -1,5 +1,5 @@
 import {Coterie, EffectDeCoterieSurPerso} from "../../types/Coterie";
-import {TypeCompetence} from "../../types/comps/Comps";
+import {TypeCompetence} from "../../types/perso/comps/Comps";
 
 export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieSurPerso {
     switch (cot) {

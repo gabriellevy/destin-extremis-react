@@ -11,7 +11,7 @@ import {
     TextField,
     Typography
 } from '@mui/material';
-import {Perso, Sexe} from "../../types/Perso";
+import {Perso, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
 import SelectionStatut from "./SelectionStatut";
 import SelectionDates from "./SelectionDates";

@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";

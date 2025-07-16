@@ -5,7 +5,7 @@ et qui déclenchent des événements
 -> certaines compétences peu intéressante sont transformées en talents comme la natation
  */
 
-import {Perso} from "../types/Perso";
+import {Perso} from "../types/perso/Perso";
 
 export enum Maitrise {
     beni = "Béni", // béni par un dieu (celui de perso.dieu), permet d'accomplir des miracles

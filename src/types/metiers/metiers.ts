@@ -1,5 +1,5 @@
 import {MetalStatut, Statut} from "../statut_social/Statut";
-import {Perso} from "../Perso";
+import {Perso} from "../perso/Perso";
 import {titreGuildeEnum} from "./Guilde";
 import {Quartier} from "../../donnees/geographie/quartiers";
 

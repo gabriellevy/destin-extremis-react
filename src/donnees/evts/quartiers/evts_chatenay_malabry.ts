@@ -1,10 +1,10 @@
 import {GroupeEvts} from "../../../types/Evt";
-import {Perso, Sexe} from "../../../types/Perso";
+import {Perso, Sexe} from "../../../types/perso/Perso";
 import {Quartier} from "../../geographie/quartiers";
 import {majReputationDansQuartier} from "../../../types/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
-import {getValeurCompetence, TypeCompetence} from "../../../types/comps/Comps";
+import {getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
 import {aLaMaitrise, Maitrise} from "../../maitrise";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";

@@ -1,6 +1,6 @@
 import {ResultatTest, TestCompetence, TestMetier} from "../types/LancerDe";
-import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/comps/Comps";
-import {Perso} from "../types/Perso";
+import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
+import {Perso} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "../types/metiers/metiersUtils";
 
 export function d2(): number {

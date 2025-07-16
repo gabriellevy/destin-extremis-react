@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../../types/Evt";
-import {Perso} from "../../../../types/Perso";
-import {TypeCompetence} from "../../../../types/comps/Comps";
+import {Perso} from "../../../../types/perso/Perso";
+import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
 import {

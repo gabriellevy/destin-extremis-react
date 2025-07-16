@@ -1,4 +1,4 @@
-import {Perso} from "./Perso";
+import {Perso} from "./perso/Perso";
 
 export type Evt = {
     id: string;

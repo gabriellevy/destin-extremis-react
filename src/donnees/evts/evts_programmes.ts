@@ -1,4 +1,4 @@
-import {Perso} from "../../types/Perso";
+import {Perso} from "../../types/perso/Perso";
 import {anneesToJours} from "../../types/Date";
 
 // ces énévements sont déclenchés à date fise indépendamment des actions du héros
