@@ -5,11 +5,12 @@ import {Perso, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
-import {Coterie, getCoterieAleatoireSauf, rejointCoterie} from "../../types/Coterie";
+import {Coterie, rejointCoterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../types/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
+import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 
 export function enfant(): Perso {
     const cot: Coterie = getCoterieAleatoireSauf([]);

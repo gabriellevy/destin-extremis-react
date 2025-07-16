@@ -1,6 +1,6 @@
 import {getRandomEnumValue} from "./random";
 import {Carriere, metiersEnum, metiersObjs} from "../types/metiers/metiers";
-import {Coterie, getCoterieAleatoireSauf} from "../types/Coterie";
+import {Coterie} from "../types/Coterie";
 import {Sexe} from "../types/perso/Perso";
 import {anneesToJours} from "../types/Date";
 import {lieuParDefaut} from "../types/lieux/Lieu";
@@ -33,4 +33,13 @@ export function genererPNJ():PNJ {
         viceVertu:  viceVertuDeBase(),
         mort: false,
     }
+}
+
+export function getCoterieAleatoireSauf(coteriesExclues: Coterie[]): Coterie {
+    coteriesExclues.push(Coterie.aucune);
+    let coterieAleatoire: Coterie = getRandomEnumValue(Coterie);
+    while (coteriesExclues.includes(coterieAleatoire)) {
+        coterieAleatoire = getRandomEnumValue(Coterie);
+    }
+    return coterieAleatoire;
 }

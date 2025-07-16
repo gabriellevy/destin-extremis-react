@@ -1,7 +1,6 @@
 import {Option} from "./lieux/Lieu";
 import {Perso} from "./perso/Perso";
 import {augmenterCompetence, TypeCompetence} from "./perso/comps/Comps";
-import {getRandomEnumValue} from "../fonctions/random";
 import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
 
 export enum Coterie {
@@ -31,15 +30,6 @@ export enum Coterie {
     transhumanistes = 'Transhumanistes',
     tyranides = 'Tyranides',
     zaporogues = 'Zaporogues',
-}
-
-export function getCoterieAleatoireSauf(coteriesExclues: Coterie[]): Coterie {
-    coteriesExclues.push(Coterie.aucune);
-    let coterieAleatoire: Coterie = getRandomEnumValue(Coterie);
-    while (coteriesExclues.includes(coterieAleatoire)) {
-        coterieAleatoire = getRandomEnumValue(Coterie);
-    }
-    return coterieAleatoire;
 }
 
 export const coterieOptions: Option[]= [

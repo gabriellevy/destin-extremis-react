@@ -1,9 +1,10 @@
 import {Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {age} from "../../../types/Date";
-import {Coterie, getCoterieAleatoireSauf} from "../../../types/Coterie";
+import {Coterie} from "../../../types/Coterie";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
+import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
