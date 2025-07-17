@@ -73,6 +73,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.schweizer: return Quartier.grande_crete;
         case Coterie.tyranides: return Quartier.argenteuil;
         case Coterie.zaporogues: return Quartier.suresnes;*/
+        case Coterie.performeurs: return {
+            plus10Values: [TypeCompetence.vigilance, TypeCompetence.reflexes],
+            plus5Values: [TypeCompetence.endurance, TypeCompetence.mouvement],
+            minus10Values: [TypeCompetence.ragot],
+            minus5Values: [TypeCompetence.intuition],
+        };
         case Coterie.templiers: return {
             plus10Values: [TypeCompetence.vigilance, TypeCompetence.volonte],
             plus5Values: [TypeCompetence.armeCaC, TypeCompetence.evaluation],
