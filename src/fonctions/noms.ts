@@ -11,6 +11,7 @@ import {Sexe} from "../types/perso/Perso";
 import {CELTES_PRENOMS_F, CELTES_PRENOMS_M} from "../donnees/coteries/celtes/noms_celtes";
 import {PARTIE_NOM_SKAVEN1, PARTIE_NOM_SKAVEN2, PARTIE_NOM_SKAVEN3} from "../donnees/coteries/skavens/noms_skavens";
 import {NOM, PRENOM_F, PRENOM_M} from "../donnees/coteries/aucune/noms_francais";
+import {DEMOKRATOS_PRENOMS_F, DEMOKRATOS_PRENOMS_M} from "../donnees/coteries/demokratos/noms_demokratos";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -18,6 +19,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
             ROMAINS_NOMS_M1[getRandomInt(ROMAINS_NOMS_M1.length)] :
             ROMAINS_NOMS_F[getRandomInt(ROMAINS_NOMS_F.length)];
         case Coterie.celtes:
+        case Coterie.demokratos:
         case Coterie.skavens:
         case Coterie.templiers:
             return ""; // les celtes n'ont pas de noms de familles
@@ -37,6 +39,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.celtes : return sexe === Sexe.male ?
             CELTES_PRENOMS_M[getRandomInt(CELTES_PRENOMS_M.length)] :
             CELTES_PRENOMS_F[getRandomInt(CELTES_PRENOMS_F.length)];
+        case Coterie.demokratos : return sexe === Sexe.male ?
+            DEMOKRATOS_PRENOMS_M[getRandomInt(DEMOKRATOS_PRENOMS_M.length)] :
+            DEMOKRATOS_PRENOMS_F[getRandomInt(DEMOKRATOS_PRENOMS_F.length)];
         case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt(PARTIE_NOM_SKAVEN1.length)]
             + PARTIE_NOM_SKAVEN2[getRandomInt(PARTIE_NOM_SKAVEN3.length)]
             + PARTIE_NOM_SKAVEN3[getRandomInt(PARTIE_NOM_SKAVEN3.length)];
@@ -69,6 +74,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.celtes :
         case Coterie.skavens :
         case Coterie.templiers:
+        case Coterie.demokratos:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:
