@@ -4,6 +4,7 @@ import {getValeurVice, TypeVice} from "../../../types/ViceVertu";
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour} from "../../../types/perso/Amour";
+import {enCoupleAvecUnAmourFort} from "../../../fonctions/pnjs/amour";
 
 export const evts_amour: GroupeEvts = {
     evts: [
@@ -13,12 +14,13 @@ export const evts_amour: GroupeEvts = {
                 const coupDeCoeur:PNJ = genererPNJAmourableDePerso(perso);
                 coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
                 perso.pnjs.push(coupDeCoeur);
-                let texte:string = "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
-
-                return texte;
+                return "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
             },
-            conditions: (perso: Perso): boolean => getValeurVice(perso, TypeVice.luxurieux) >= 0 && perso.age >= 13,
+            conditions: (perso: Perso): boolean =>
+                getValeurVice(perso, TypeVice.luxurieux) >= 0
+                && !enCoupleAvecUnAmourFort(perso)
+                && perso.age >= 13,
         },
     ],
-    probaParDefaut: 109999999999999999,
+    probaParDefaut: 10,
 };

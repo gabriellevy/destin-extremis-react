@@ -2,11 +2,12 @@ import {getRandomEnumValue} from "./random";
 import {Carriere, metiersEnum, metiersObjs} from "../types/metiers/metiers";
 import {Coterie} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
-import {calculeAge, anneesToJours} from "../types/Date";
+import {anneesToJours, calculeAge} from "../types/Date";
 import {lieuParDefaut} from "../types/lieux/Lieu";
 import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
 import {getNom, getPrenom} from "./noms";
+import {NiveauRelationAmoureuse} from "../types/perso/Amour";
 
 export function getCarriereAleatoire(): Carriere {
     let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);
@@ -44,6 +45,7 @@ export function genererPNJ(sexe:Sexe, dateNaissance: number):PNJ {
         carriere: carriere,
         viceVertu:  viceVertuDeBase(),
         mort: false,
+        niveauRelationAmoureuse: NiveauRelationAmoureuse.rien,
     }
 }
 
