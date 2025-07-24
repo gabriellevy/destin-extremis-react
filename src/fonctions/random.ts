@@ -25,3 +25,8 @@ export function randomStatut():Statut {
 export function getRandomInt(num: number): number {
     return Math.floor(Math.random() * num) + 1;
 }
+
+// de 0 à num
+export function getRandomInt0(num: number): number {
+    return Math.floor(Math.random() * num);
+}

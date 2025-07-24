@@ -6,7 +6,7 @@ import {
     ROMAINS_PRENOMS_F,
     ROMAINS_PRENOMS_M
 } from "../donnees/coteries/romains/noms_romains";
-import {getRandomInt} from "./random";
+import {getRandomInt0} from "./random";
 import {Sexe} from "../types/perso/Perso";
 import {CELTES_PRENOMS_F, CELTES_PRENOMS_M} from "../donnees/coteries/celtes/noms_celtes";
 import {PARTIE_NOM_SKAVEN1, PARTIE_NOM_SKAVEN2, PARTIE_NOM_SKAVEN3} from "../donnees/coteries/skavens/noms_skavens";
@@ -24,8 +24,8 @@ import {NOM_OGRE1, NOM_OGRE2, NOM_OGRE3} from "../donnees/coteries/ogres/noms_og
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
         case Coterie.romains : return sexe === Sexe.male ?
-            ROMAINS_NOMS_M1[getRandomInt(ROMAINS_NOMS_M1.length)] :
-            ROMAINS_NOMS_F[getRandomInt(ROMAINS_NOMS_F.length)];
+            ROMAINS_NOMS_M1[getRandomInt0(ROMAINS_NOMS_M1.length)] :
+            ROMAINS_NOMS_F[getRandomInt0(ROMAINS_NOMS_F.length)];
         case Coterie.celtes:
         case Coterie.demokratos:
         case Coterie.skavens:
@@ -36,12 +36,12 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.libertins:
-            return NOM[getRandomInt(NOM.length)];
+            return NOM[getRandomInt0(NOM.length)];
         case Coterie.performeurs:
         case Coterie.transhumanistes:
-            return NOM_ANGL[getRandomInt(NOM_ANGL.length)];
+            return NOM_ANGL[getRandomInt0(NOM_ANGL.length)];
         case Coterie.schweizer:
-            return NOM_SCHWEIZER[getRandomInt(NOM_SCHWEIZER.length)];
+            return NOM_SCHWEIZER[getRandomInt0(NOM_SCHWEIZER.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -49,41 +49,41 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
 export function getPrenom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
         case Coterie.romains : return sexe === Sexe.male ?
-            ROMAINS_PRENOMS_M[getRandomInt(ROMAINS_PRENOMS_M.length)] :
-            ROMAINS_PRENOMS_F[getRandomInt(ROMAINS_PRENOMS_F.length)];
+            ROMAINS_PRENOMS_M[getRandomInt0(ROMAINS_PRENOMS_M.length)] :
+            ROMAINS_PRENOMS_F[getRandomInt0(ROMAINS_PRENOMS_F.length)];
         case Coterie.celtes : return sexe === Sexe.male ?
-            CELTES_PRENOMS_M[getRandomInt(CELTES_PRENOMS_M.length)] :
-            CELTES_PRENOMS_F[getRandomInt(CELTES_PRENOMS_F.length)];
+            CELTES_PRENOMS_M[getRandomInt0(CELTES_PRENOMS_M.length)] :
+            CELTES_PRENOMS_F[getRandomInt0(CELTES_PRENOMS_F.length)];
         case Coterie.demokratos : return sexe === Sexe.male ?
-            DEMOKRATOS_PRENOMS_M[getRandomInt(DEMOKRATOS_PRENOMS_M.length)] :
-            DEMOKRATOS_PRENOMS_F[getRandomInt(DEMOKRATOS_PRENOMS_F.length)];
-        case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt(PARTIE_NOM_SKAVEN1.length)]
-            + PARTIE_NOM_SKAVEN2[getRandomInt(PARTIE_NOM_SKAVEN3.length)]
-            + PARTIE_NOM_SKAVEN3[getRandomInt(PARTIE_NOM_SKAVEN3.length)];
+            DEMOKRATOS_PRENOMS_M[getRandomInt0(DEMOKRATOS_PRENOMS_M.length)] :
+            DEMOKRATOS_PRENOMS_F[getRandomInt0(DEMOKRATOS_PRENOMS_F.length)];
+        case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt0(PARTIE_NOM_SKAVEN1.length)]
+            + PARTIE_NOM_SKAVEN2[getRandomInt0(PARTIE_NOM_SKAVEN3.length)]
+            + PARTIE_NOM_SKAVEN3[getRandomInt0(PARTIE_NOM_SKAVEN3.length)];
         // noms français :
         case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.templiers:
         case Coterie.libertins:
             return sexe === Sexe.male ?
-                PRENOM_M[getRandomInt(PRENOM_M.length)] :
-                PRENOM_F[getRandomInt(PRENOM_F.length)];
+                PRENOM_M[getRandomInt0(PRENOM_M.length)] :
+                PRENOM_F[getRandomInt0(PRENOM_F.length)];
         case Coterie.performeurs:
             return sexe === Sexe.male ?
-                PRENOM_ANGL70_M[getRandomInt(PRENOM_ANGL70_M.length)] :
-                PRENOM_ANGL70_F[getRandomInt(PRENOM_ANGL70_F.length)];
+                PRENOM_ANGL70_M[getRandomInt0(PRENOM_ANGL70_M.length)] :
+                PRENOM_ANGL70_F[getRandomInt0(PRENOM_ANGL70_F.length)];
         case Coterie.transhumanistes:
             return sexe === Sexe.male ?
-                PRENOM_ANGL90_M[getRandomInt(PRENOM_ANGL90_M.length)] :
-                PRENOM_ANGL90_F[getRandomInt(PRENOM_ANGL90_F.length)];
+                PRENOM_ANGL90_M[getRandomInt0(PRENOM_ANGL90_M.length)] :
+                PRENOM_ANGL90_F[getRandomInt0(PRENOM_ANGL90_F.length)];
         case Coterie.schweizer:
             return sexe === Sexe.male ?
-                PRENOM_SCHWEIZER_M[getRandomInt(PRENOM_SCHWEIZER_M.length)] :
-                PRENOM_SCHWEIZER_F[getRandomInt(PRENOM_SCHWEIZER_F.length)];
+                PRENOM_SCHWEIZER_M[getRandomInt0(PRENOM_SCHWEIZER_M.length)] :
+                PRENOM_SCHWEIZER_F[getRandomInt0(PRENOM_SCHWEIZER_F.length)];
         case Coterie.ogres:
-            return (NOM_OGRE1[getRandomInt(NOM_OGRE1.length)]
-                + NOM_OGRE2[getRandomInt(NOM_OGRE2.length)]
-                + NOM_OGRE3[getRandomInt(NOM_OGRE3.length)]);
+            return (NOM_OGRE1[getRandomInt0(NOM_OGRE1.length)]
+                + NOM_OGRE2[getRandomInt0(NOM_OGRE2.length)]
+                + NOM_OGRE3[getRandomInt0(NOM_OGRE3.length)]);
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -91,7 +91,7 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
 export function getCognomen(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
         case Coterie.romains : return sexe === Sexe.male ?
-            ROMAINS_cognomen_M2[getRandomInt(ROMAINS_cognomen_M2.length)] :
+            ROMAINS_cognomen_M2[getRandomInt0(ROMAINS_cognomen_M2.length)] :
             '';
     }
     return "";// pas forcément de cognomen
