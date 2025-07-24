@@ -19,6 +19,7 @@ import {
     PRENOM_ANGL90_M
 } from "../donnees/coteries/transhumanistes/noms_anglais";
 import {NOM_SCHWEIZER, PRENOM_SCHWEIZER_F, PRENOM_SCHWEIZER_M} from "../donnees/coteries/schweizer/noms_schweizer";
+import {NOM_OGRE1, NOM_OGRE2, NOM_OGRE3} from "../donnees/coteries/ogres/noms_ogres";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -29,6 +30,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.demokratos:
         case Coterie.skavens:
         case Coterie.templiers:
+        case Coterie.ogres:
             return ""; // les celtes n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -78,6 +80,10 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 PRENOM_SCHWEIZER_M[getRandomInt(PRENOM_SCHWEIZER_M.length)] :
                 PRENOM_SCHWEIZER_F[getRandomInt(PRENOM_SCHWEIZER_F.length)];
+        case Coterie.ogres:
+            return (NOM_OGRE1[getRandomInt(NOM_OGRE1.length)]
+                + NOM_OGRE2[getRandomInt(NOM_OGRE2.length)]
+                + NOM_OGRE3[getRandomInt(NOM_OGRE3.length)]);
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -101,6 +107,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.skavens :
         case Coterie.templiers:
         case Coterie.demokratos:
+        case Coterie.ogres:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:

@@ -70,6 +70,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.lumieres: return Quartier.maisons_laffite;
         case Coterie.orks: return Quartier.genevilliers;
         case Coterie.tyranides: return Quartier.argenteuil;*/
+        case Coterie.ogres: return {
+            plus10Values: [TypeCompetence.force, TypeCompetence.endurance],
+            plus5Values: [TypeCompetence.intimidation, TypeCompetence.bagarre],
+            minus10Values: [TypeCompetence.intelligence],
+            minus5Values: [TypeCompetence.charme],
+        };
         case Coterie.schweizer: return {
             plus10Values: [TypeCompetence.evaluation, TypeCompetence.volonte],
             plus5Values: [TypeCompetence.tir, TypeCompetence.dexterite],
