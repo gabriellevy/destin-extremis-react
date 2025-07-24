@@ -69,8 +69,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.libertins: return Quartier.bondy;
         case Coterie.lumieres: return Quartier.maisons_laffite;
         case Coterie.orks: return Quartier.genevilliers;
-        case Coterie.schweizer: return Quartier.grande_crete;
         case Coterie.tyranides: return Quartier.argenteuil;*/
+        case Coterie.schweizer: return {
+            plus10Values: [TypeCompetence.evaluation, TypeCompetence.volonte],
+            plus5Values: [TypeCompetence.tir, TypeCompetence.dexterite],
+            minus10Values: [TypeCompetence.charme],
+            minus5Values: [TypeCompetence.eloquence],
+        };
         case Coterie.saabi: return {
             plus10Values: [TypeCompetence.adresse, TypeCompetence.mouvement],
             plus5Values: [TypeCompetence.tromperie, TypeCompetence.marchandage],
@@ -90,9 +95,9 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus5Values: [TypeCompetence.charme],
         };
         case Coterie.performeurs: return {
-            plus10Values: [TypeCompetence.vigilance, TypeCompetence.reflexes],
-            plus5Values: [TypeCompetence.endurance, TypeCompetence.mouvement],
-            minus10Values: [TypeCompetence.ragot],
+            plus10Values: [TypeCompetence.vigilance, TypeCompetence.force],
+            plus5Values: [TypeCompetence.volonte, TypeCompetence.mouvement],
+            minus10Values: [TypeCompetence.chance],
             minus5Values: [TypeCompetence.intuition],
         };
         case Coterie.templiers: return {

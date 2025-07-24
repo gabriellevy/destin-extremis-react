@@ -129,14 +129,17 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.ogres]: [],
     [Coterie.orks]: [],
     [Coterie.performeurs]: [{
-        valVertu: 2,
+        valVertu: 1,
         typeVertu: TypeVertu.travailleur,
     },{
         valVertu: -1,
         typeVertu: TypeVertu.altruiste,
     },{
-        valVertu: -1,
+        valVertu: -2,
         typeVertu: TypeVertu.humble,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.chaste,
     },{
         valVertu: 1,
         typeVertu: TypeVertu.aventureux,
@@ -167,7 +170,22 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 1,
         typeVertu: TypeVertu.sociable,
     }],
-    [Coterie.schweizer]: [],
+    [Coterie.schweizer]: [{
+        valVertu: 1,
+        typeVertu: TypeVertu.travailleur,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
+    },{
+        valVertu: 1,
+        typeVertu: TypeVertu.sobre,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.sociable,
+    },{
+        valVertu: -1,
+        typeVertu: TypeVertu.aventureux,
+    }],
     [Coterie.skavens]: [{
         valVertu: -1,
         typeVertu: TypeVertu.valeureux,

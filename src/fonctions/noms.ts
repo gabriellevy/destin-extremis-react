@@ -18,6 +18,7 @@ import {
     PRENOM_ANGL90_F,
     PRENOM_ANGL90_M
 } from "../donnees/coteries/transhumanistes/noms_anglais";
+import {NOM_SCHWEIZER, PRENOM_SCHWEIZER_F, PRENOM_SCHWEIZER_M} from "../donnees/coteries/schweizer/noms_schweizer";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -32,10 +33,13 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         // noms français :
         case Coterie.aucune:
         case Coterie.jacobins:
+        case Coterie.libertins:
             return NOM[getRandomInt(NOM.length)];
         case Coterie.performeurs:
         case Coterie.transhumanistes:
             return NOM_ANGL[getRandomInt(NOM_ANGL.length)];
+        case Coterie.schweizer:
+            return NOM_SCHWEIZER[getRandomInt(NOM_SCHWEIZER.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -58,6 +62,7 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.templiers:
+        case Coterie.libertins:
             return sexe === Sexe.male ?
                 PRENOM_M[getRandomInt(PRENOM_M.length)] :
                 PRENOM_F[getRandomInt(PRENOM_F.length)];
@@ -69,6 +74,10 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 PRENOM_ANGL90_M[getRandomInt(PRENOM_ANGL90_M.length)] :
                 PRENOM_ANGL90_F[getRandomInt(PRENOM_ANGL90_F.length)];
+        case Coterie.schweizer:
+            return sexe === Sexe.male ?
+                PRENOM_SCHWEIZER_M[getRandomInt(PRENOM_SCHWEIZER_M.length)] :
+                PRENOM_SCHWEIZER_F[getRandomInt(PRENOM_SCHWEIZER_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -98,6 +107,8 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.jacobins:
         case Coterie.performeurs:
         case Coterie.transhumanistes:
+        case Coterie.libertins:
+        case Coterie.schweizer:
             return getPrenom(coterie, sexe)
                 + " " + getNom(coterie, sexe)
     }
