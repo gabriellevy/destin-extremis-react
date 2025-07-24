@@ -12,6 +12,12 @@ import {CELTES_PRENOMS_F, CELTES_PRENOMS_M} from "../donnees/coteries/celtes/nom
 import {PARTIE_NOM_SKAVEN1, PARTIE_NOM_SKAVEN2, PARTIE_NOM_SKAVEN3} from "../donnees/coteries/skavens/noms_skavens";
 import {NOM, PRENOM_F, PRENOM_M} from "../donnees/coteries/aucune/noms_francais";
 import {DEMOKRATOS_PRENOMS_F, DEMOKRATOS_PRENOMS_M} from "../donnees/coteries/demokratos/noms_demokratos";
+import {
+    NOM_ANGL,
+    PRENOM_ANGL70_F, PRENOM_ANGL70_M,
+    PRENOM_ANGL90_F,
+    PRENOM_ANGL90_M
+} from "../donnees/coteries/transhumanistes/noms_anglais";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -27,6 +33,9 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.aucune:
         case Coterie.jacobins:
             return NOM[getRandomInt(NOM.length)];
+        case Coterie.performeurs:
+        case Coterie.transhumanistes:
+            return NOM_ANGL[getRandomInt(NOM_ANGL.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -52,6 +61,14 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 PRENOM_M[getRandomInt(PRENOM_M.length)] :
                 PRENOM_F[getRandomInt(PRENOM_F.length)];
+        case Coterie.performeurs:
+            return sexe === Sexe.male ?
+                PRENOM_ANGL70_M[getRandomInt(PRENOM_ANGL70_M.length)] :
+                PRENOM_ANGL70_F[getRandomInt(PRENOM_ANGL70_F.length)];
+        case Coterie.transhumanistes:
+            return sexe === Sexe.male ?
+                PRENOM_ANGL90_M[getRandomInt(PRENOM_ANGL90_M.length)] :
+                PRENOM_ANGL90_F[getRandomInt(PRENOM_ANGL90_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -79,6 +96,8 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
 
         case Coterie.aucune:
         case Coterie.jacobins:
+        case Coterie.performeurs:
+        case Coterie.transhumanistes:
             return getPrenom(coterie, sexe)
                 + " " + getNom(coterie, sexe)
     }
