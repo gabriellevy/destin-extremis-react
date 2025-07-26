@@ -64,8 +64,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus5Values: [TypeCompetence.jeux],
         };
         /*case Coterie.jacobins: return Quartier.luxembourg;
-        case Coterie.lumieres: return Quartier.maisons_laffite;
-        case Coterie.orks: return Quartier.genevilliers;*/
+        case Coterie.lumieres: return Quartier.maisons_laffite;*/
+        case Coterie.orks: return {
+            plus10Values: [TypeCompetence.endurance, TypeCompetence.bagarre],
+            plus5Values: [TypeCompetence.force, TypeCompetence.intuition],
+            minus10Values: [TypeCompetence.eloquence],
+            minus5Values: [TypeCompetence.charme],
+        };
         case Coterie.esthetes: return {
             plus10Values: [TypeCompetence.evaluation, TypeCompetence.perception],
             plus5Values: [TypeCompetence.adresse, TypeCompetence.eloquence],
