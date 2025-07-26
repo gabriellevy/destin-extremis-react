@@ -67,30 +67,11 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.jacobins: return Quartier.luxembourg;
         case Coterie.libertins: return Quartier.bondy;
         case Coterie.lumieres: return Quartier.maisons_laffite;
-        case Coterie.orks: return Quartier.genevilliers;
-        case Coterie.tyranides: return Quartier.argenteuil;*/
-        case Coterie.transhumanistes: return {
-            plus10Values: [TypeCompetence.intelligence, TypeCompetence.evaluation],
-            plus5Values: [TypeCompetence.adresse, TypeCompetence.marchandage],
-            minus10Values: [TypeCompetence.animaux],
-            minus5Values: [TypeCompetence.survie],
-        };
+        case Coterie.orks: return Quartier.genevilliers;*/
         case Coterie.ogres: return {
             plus10Values: [TypeCompetence.force, TypeCompetence.endurance],
             plus5Values: [TypeCompetence.intimidation, TypeCompetence.bagarre],
             minus10Values: [TypeCompetence.intelligence],
-            minus5Values: [TypeCompetence.charme],
-        };
-        case Coterie.schweizer: return {
-            plus10Values: [TypeCompetence.evaluation, TypeCompetence.volonte],
-            plus5Values: [TypeCompetence.tir, TypeCompetence.dexterite],
-            minus10Values: [TypeCompetence.charme],
-            minus5Values: [TypeCompetence.eloquence],
-        };
-        case Coterie.saabi: return {
-            plus10Values: [TypeCompetence.adresse, TypeCompetence.mouvement],
-            plus5Values: [TypeCompetence.tromperie, TypeCompetence.marchandage],
-            minus10Values: [TypeCompetence.reflexes],
             minus5Values: [TypeCompetence.charme],
         };
         case Coterie.romains: return {
@@ -111,6 +92,18 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.chance],
             minus5Values: [TypeCompetence.intuition],
         };
+        case Coterie.saabi: return {
+            plus10Values: [TypeCompetence.adresse, TypeCompetence.mouvement],
+            plus5Values: [TypeCompetence.tromperie, TypeCompetence.marchandage],
+            minus10Values: [TypeCompetence.reflexes],
+            minus5Values: [TypeCompetence.charme],
+        };
+        case Coterie.schweizer: return {
+            plus10Values: [TypeCompetence.evaluation, TypeCompetence.volonte],
+            plus5Values: [TypeCompetence.tir, TypeCompetence.dexterite],
+            minus10Values: [TypeCompetence.charme],
+            minus5Values: [TypeCompetence.eloquence],
+        };
         case Coterie.templiers: return {
             plus10Values: [TypeCompetence.vigilance, TypeCompetence.volonte],
             plus5Values: [TypeCompetence.armeCaC, TypeCompetence.evaluation],
@@ -118,10 +111,22 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus5Values: [TypeCompetence.jeux],
         };
         case Coterie.skavens: return {
-            plus10Values: [TypeCompetence.tromperie, TypeCompetence.mouvement],
+            plus10Values: [TypeCompetence.tromperie, TypeCompetence.reflexes],
             plus5Values: [TypeCompetence.adresse, TypeCompetence.discretion],
             minus10Values: [TypeCompetence.volonte],
             minus5Values: [TypeCompetence.vigilance],
+        };
+        case Coterie.transhumanistes: return {
+            plus10Values: [TypeCompetence.intelligence, TypeCompetence.evaluation],
+            plus5Values: [TypeCompetence.adresse, TypeCompetence.marchandage],
+            minus10Values: [TypeCompetence.animaux],
+            minus5Values: [TypeCompetence.survie],
+        };
+        case Coterie.tyranides: return {
+            plus10Values: [TypeCompetence.vigilance, TypeCompetence.volonte],
+            plus5Values: [TypeCompetence.endurance, TypeCompetence.discretion],
+            minus10Values: [TypeCompetence.eloquence],
+            minus5Values: [TypeCompetence.charme],
         };
     }
     console.warn("Pas d'effet de rejoindre une coterie pour la coterie : " + cot)

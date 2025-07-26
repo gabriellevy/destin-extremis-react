@@ -22,6 +22,7 @@ export enum TypeVice {
     artificialiste = "Artificialiste",
     casanier = "Casanier",
     solitaire = "Solitaire",
+    sociopathique = "Sociopathique",
 }
 
 export enum TypeVertu {
@@ -39,6 +40,7 @@ export enum TypeVertu {
     naturaliste = "Naturaliste",
     aventureux = "Aventureux",
     sociable = "Sociable",
+    empathique = "Empathique",
 }
 
 export function getViceOppose(typeVertu: TypeVertu): TypeVice {
@@ -57,6 +59,7 @@ export function getViceOppose(typeVertu: TypeVertu): TypeVice {
         case TypeVertu.naturaliste : return TypeVice.artificialiste;
         case TypeVertu.aventureux : return TypeVice.casanier;
         case TypeVertu.sociable : return TypeVice.solitaire;
+        case TypeVertu.empathique : return TypeVice.sociopathique;
     }
 }
 export function getVertuOppose(typeVice: TypeVice): TypeVertu {
@@ -75,6 +78,7 @@ export function getVertuOppose(typeVice: TypeVice): TypeVertu {
         case TypeVice.artificialiste : return TypeVertu.naturaliste;
         case TypeVice.casanier : return TypeVertu.aventureux;
         case TypeVice.solitaire : return TypeVertu.sociable;
+        case TypeVice.sociopathique : return TypeVertu.empathique;
     }
 }
 
