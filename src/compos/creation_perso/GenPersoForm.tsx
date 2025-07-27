@@ -119,7 +119,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                                 render={({ field }) => (
                                     <TextField
                                         {...field}
-                                        label="Praenomen"
+                                        label="Prénom"
                                         margin="normal"
                                         fullWidth
                                     />
@@ -134,7 +134,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                                 render={({ field }) => (
                                     <TextField
                                         {...field}
-                                        label="Nomen"
+                                        label="Nom"
                                         margin="normal"
                                         fullWidth
                                     />
@@ -148,7 +148,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                                 render={({ field }) => (
                                     <TextField
                                         {...field}
-                                        label="Cognomen"
+                                        label="Surnom"
                                         margin="normal"
                                         fullWidth
                                     />
