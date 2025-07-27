@@ -1,6 +1,8 @@
 import {Perso} from "../../types/perso/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
 import {getValeurCompetence, isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
+import {useContext} from "react";
+import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
 interface CaracProps {
     primaryText: string,
@@ -35,11 +37,8 @@ const Comp = ({primaryText, perso, competenceType}:CaracProps) => {
     );
 };
 
-interface CompsProps {
-    perso: Perso,
-}
-
-export default function Comps ({perso}:CompsProps) {
+export default function Comps () {
+    const { perso } = useContext(PersoContexte) as PersoContexteType;
 
         return (<List sx={{
             display: "flex",

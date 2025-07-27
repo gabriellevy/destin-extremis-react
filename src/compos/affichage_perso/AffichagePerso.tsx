@@ -1,6 +1,5 @@
 import {Box, Tab, Tabs} from '@mui/material';
-import {useContext, useState} from "react";
-import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {useState} from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -42,7 +41,6 @@ function a11yProps(index: number) {
 }
 
 export default function AffichagePerso() {
-    const { perso } = useContext(PersoContexte) as PersoContexteType;
     const [value, setValue] = useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -61,16 +59,16 @@ export default function AffichagePerso() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <DonneesPerso perso={perso} />
+                <DonneesPerso />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <RelationsPnjs perso={perso} />
+                <RelationsPnjs />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <AffichageViceVertu perso={perso} />
+                <AffichageViceVertu />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <Comps perso={perso} />
+                <Comps />
             </TabPanel>
             <TabPanel value={value} index={4}>
                 <InfosMonde/>

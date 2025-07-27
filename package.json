@@ -1,9 +1,15 @@
 {
   "name": "destin-extremis-react",
   "version": "0.1.0",
+  "homepage": "https://gabriellevy.github.io/destin-extremis-react",
   "private": true,
   "type": "module",
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mistralai/mistralai": "^1.5.2",
+    "@mui/icons-material": "^6.4.3",
+    "@mui/material": "^6.1.7",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -13,20 +19,17 @@
     "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.54.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mistralai/mistralai": "^1.5.2",
-    "@mui/icons-material": "^6.4.3",
-    "@mui/material": "^6.1.7",
-    "react-hook-form": "^7.54.1"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -35,6 +38,7 @@
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "typescript": "5.7.3"
   },

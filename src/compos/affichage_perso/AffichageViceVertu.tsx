@@ -1,9 +1,6 @@
-import {Perso} from "../../types/perso/Perso";
 import {getValeurVertu, getValeurVice, getViceOppose, TypeVertu} from "../../types/ViceVertu";
-
-interface CompsProps {
-    perso: Perso,
-}
+import {useContext} from "react";
+import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
 // Style pour le tableau
 const tableStyle: React.CSSProperties = {
@@ -19,7 +16,8 @@ const cellStyle: React.CSSProperties = {
     lineHeight: '1', // Réduit la hauteur de ligne
 };
 
-export default function AffichageViceVertu ({perso}:CompsProps) {
+export default function AffichageViceVertu () {
+    const { perso } = useContext(PersoContexte) as PersoContexteType;
 
     return (<table style={tableStyle}>
         <tbody>

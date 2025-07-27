@@ -1,15 +1,13 @@
-import {Perso} from "../../types/perso/Perso";
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {calculeAge, joursToAnnees} from "../../types/Date";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {Coterie} from "../../types/Coterie";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
+import {useContext} from "react";
+import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
-interface CompsProps {
-    perso: Perso,
-}
-
-export default function DonneesPerso ({perso}:CompsProps) {
+export default function DonneesPerso () {
+    const { perso } = useContext(PersoContexte) as PersoContexteType;
 
     const exporter = () => {
         const persoStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(perso));

@@ -1,12 +1,10 @@
-import {Perso} from "../../types/perso/Perso";
 import {ListItem, ListItemText} from "@mui/material";
 import {PNJ} from "../../types/perso/PNJ";
+import {useContext} from "react";
+import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
-interface CompsProps {
-    perso: Perso,
-}
-
-export default function RelationsPnjs ({perso}:CompsProps) {
+export default function RelationsPnjs () {
+    const { perso } = useContext(PersoContexte) as PersoContexteType;
 
     return (
             perso.pnjs.map((pnj:PNJ) => {
