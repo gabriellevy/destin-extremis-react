@@ -3,7 +3,6 @@ import {Paper, Grid2} from '@mui/material';
 import GenPersoForm from "../compos/creation_perso/GenPersoForm";
 import AffichagePerso from "../compos/affichage_perso/AffichagePerso";
 import Histoire from "../compos/Histoire";
-import InfosMonde from "../compos/InfosMonde";
 
 export default function Main() {
     const [afficherForm, setAfficherForm] = useState(true);
@@ -29,7 +28,6 @@ export default function Main() {
                                 padding: '0px',
                             }
                         }>
-                            <InfosMonde/>
                             <AffichagePerso />
                         </Paper>
                     </Grid2>

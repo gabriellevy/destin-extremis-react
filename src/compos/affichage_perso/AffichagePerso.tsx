@@ -5,10 +5,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
+import PublicIcon from '@mui/icons-material/Public';
 import Comps from "./Comps";
 import AffichageViceVertu from "./AffichageViceVertu";
 import DonneesPerso from "./DonneesPerso";
 import RelationsPnjs from "./RelationsPnjs";
+import InfosMonde from "../InfosMonde";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -55,6 +57,7 @@ export default function AffichagePerso() {
                     <Tab icon={<PeopleIcon />} {...a11yProps(1)} sx={{ width: 40, minWidth: 40 }} />
                     <Tab icon={<FavoriteIcon />} {...a11yProps(2)} sx={{ width: 40, minWidth: 40 }} />
                     <Tab icon={<StarIcon />} {...a11yProps(3)} sx={{ width: 40, minWidth: 40 }} />
+                    <Tab icon={<PublicIcon />} {...a11yProps(4)} sx={{ width: 40, minWidth: 40 }} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
@@ -68,6 +71,9 @@ export default function AffichagePerso() {
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Comps perso={perso} />
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+                <InfosMonde/>
             </TabPanel>
         </Box>
     );
