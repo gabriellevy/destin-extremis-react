@@ -43,9 +43,11 @@ export type Perso = {
 };
 
 export enum NiveauIA {
-    desactive = 'Désactivé',
+    desactive = 'Désactivé', // aucune IA, mode par défaut
     bouche_trou = 'Bouche trou', // pour les scènes de remplissage et à la rigueur quand un texte a été trop répété
-    systematique = 'Systématique', // tout ce qui peut être IAtisé l'est, donc tout sauf les messages formel précis et indispensables
+    // tout ce qui peut être IAtisé l'est, donc tout sauf les messages formels précis et indispensables
+    // en théorie tous les messages devraient avoir une version "prompt" pour IA, mais bon ne rêvons pas trop
+    systematique = 'Systématique',
 }
 export enum Sexe {
     male = 'Mâle',

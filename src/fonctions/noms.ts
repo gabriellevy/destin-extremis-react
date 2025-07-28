@@ -24,6 +24,7 @@ import {
     ESPRIT_DE_LA_NATURE_F,
     ESPRIT_DE_LA_NATURE_M1, ESPRIT_DE_LA_NATURE_M2
 } from "../donnees/coteries/esprit_de_la_nature/noms_esprit_de_la_nature";
+import {TYRANIDES_F1, TYRANIDES_F2, TYRANIDES_M1, TYRANIDES_M2} from "../donnees/coteries/tyranides/noms_tyranides";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -36,7 +37,8 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.templiers:
         case Coterie.ogres:
         case Coterie.esprit_de_la_nature:
-            return ""; // les celtes n'ont pas de noms de familles
+        case Coterie.tyranides:
+            return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
         case Coterie.jacobins:
@@ -73,6 +75,11 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             ESPRIT_DE_LA_NATURE_M1[getRandomInt0(ESPRIT_DE_LA_NATURE_M1.length)]
             + ESPRIT_DE_LA_NATURE_M2[getRandomInt0(ESPRIT_DE_LA_NATURE_M2.length)] :
             ESPRIT_DE_LA_NATURE_F[getRandomInt0(ESPRIT_DE_LA_NATURE_F.length)];
+        case Coterie.tyranides: return sexe === Sexe.male ?
+            TYRANIDES_M1[getRandomInt0(TYRANIDES_M1.length)]
+            + TYRANIDES_M2[getRandomInt0(TYRANIDES_M2.length)] :
+            TYRANIDES_F1[getRandomInt0(TYRANIDES_F1.length)]
+            + TYRANIDES_F2[getRandomInt0(TYRANIDES_F2.length)];
         // prénoms français :
         case Coterie.aucune:
         case Coterie.jacobins:
@@ -124,6 +131,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.templiers:
         case Coterie.demokratos:
         case Coterie.ogres:
+        case Coterie.tyranides:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:
