@@ -1,5 +1,5 @@
 import {GroupeEvts} from "../../../types/Evt";
-import {Perso} from "../../../types/perso/Perso";
+import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {getValeurVertu, getValeurVice, TypeVertu, TypeVice} from "../../../types/ViceVertu";
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
@@ -18,11 +18,37 @@ export const evts_amour: GroupeEvts = {
                 const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
                 coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
                 perso.pnjs.push(coupDeCoeur);
-                // TODO : retirez cette proba exagérée et remettre un message standard
-                // utiliser l'IA pour des messages de remplissages ? Ou quand un texte a déjà été utilisé ?
-                const res = await appelLeChat("Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom);
-                //const standard = "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
-                return res + ". <br/>";
+                let texte: string = "";
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChat(
+                        "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom
+                        + ". Ce coup de foudre n'est pas réciproque.");
+                } else {
+                    texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom;
+                }
+                return texte + ". <br/>";
+            },
+            conditions: (perso: Perso): boolean =>
+                getValeurVice(perso, TypeVice.luxurieux) >= 0
+                && !enCoupleAvecUnAmourFort(perso)
+                && perso.age >= 13,
+        },
+        {
+            id: "evts_amour1 avoir un coup de coeur réciproque",
+            description: async (perso: Perso): Promise<string> => {
+                const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
+                coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
+                coupDeCoeur.amourDeCePnj = NiveauAmour.coupDeCoeur;
+                perso.pnjs.push(coupDeCoeur);
+                let texte: string = "";
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChat(
+                        "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre réciproque pour " + coupDeCoeur.prenom
+                        + ". ");
+                } else {
+                    texte += "Vous avez le coup de foudre pour " + coupDeCoeur.prenom;
+                }
+                return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
                 getValeurVice(perso, TypeVice.luxurieux) >= 0
@@ -61,5 +87,5 @@ export const evts_amour: GroupeEvts = {
                 aUnCoupDeCoeur(perso),
         },
     ],
-    probaParDefaut: 1099999999999999,
+    probaParDefaut: 10,
 };

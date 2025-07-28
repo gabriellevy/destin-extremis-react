@@ -38,8 +38,15 @@ export type Perso = {
     reputation: Reputation
     // personnes avec qui le perso est en relation
     pnjs: PNJ[],
+    // IA :
+    niveauIA: NiveauIA,
 };
 
+export enum NiveauIA {
+    desactive = 'Désactivé',
+    bouche_trou = 'Bouche trou', // pour les scènes de remplissage et à la rigueur quand un texte a été trop répété
+    systematique = 'Systématique', // tout ce qui peut être IAtisé l'est, donc tout sauf les messages formel précis et indispensables
+}
 export enum Sexe {
     male = 'Mâle',
     femelle = 'Femelle',

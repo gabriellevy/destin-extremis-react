@@ -1,7 +1,7 @@
 import {anneesToJours} from "../../types/Date";
 import {lieuParDefaut} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
-import {Perso, Sexe} from "../../types/perso/Perso";
+import {NiveauIA, Perso, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
@@ -37,6 +37,7 @@ export function enfant(): Perso {
         vitesseExecution: 5000,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
+        niveauIA: NiveauIA.bouche_trou,
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
     };
     rejointCoterie(perso, cot);
