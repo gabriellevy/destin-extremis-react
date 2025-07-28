@@ -21,6 +21,7 @@ export const evts_amour: GroupeEvts = {
                 let texte: string = "";
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChat(
+                        perso,
                         "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom
                         + ". Ce coup de foudre n'est pas réciproque.");
                 } else {
@@ -43,7 +44,8 @@ export const evts_amour: GroupeEvts = {
                 let texte: string = "";
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChat(
-                        "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre réciproque pour " + coupDeCoeur.prenom
+                        perso,
+                        "Décrivez comment le personnage principal a eu un coup de foudre réciproque pour " + coupDeCoeur.prenom
                         + ". ");
                 } else {
                     texte += "Vous avez le coup de foudre pour " + coupDeCoeur.prenom;

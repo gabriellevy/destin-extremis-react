@@ -37,7 +37,7 @@ export function enfant(): Perso {
         vitesseExecution: 5000,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
-        niveauIA: NiveauIA.bouche_trou,
+        niveauIA: NiveauIA.systematique,
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
     };
     rejointCoterie(perso, cot);
