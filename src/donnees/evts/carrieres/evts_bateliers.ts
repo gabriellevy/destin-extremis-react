@@ -12,7 +12,7 @@ export const evts_batelier: GroupeEvts = {
     evts: [
         {
             id: "evts_batelier1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous hésitez à devenir batelier. `
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
@@ -33,7 +33,7 @@ export const evts_batelier: GroupeEvts = {
         },
         {
             id: "evts_batelier2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 40});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 40});

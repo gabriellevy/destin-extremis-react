@@ -10,7 +10,7 @@ export const evts_rejoindre: GroupeEvts = {
     evts: [
         {
             id: "evts_rejoindre1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous n'avez toujours aucune coterie à votre âge, ce qui est inhabituel. <br/>`
                 texte += 'Vous prenez le temps de réfléchir à si une vous séduit suffisament.<br/>';
 

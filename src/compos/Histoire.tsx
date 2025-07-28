@@ -58,22 +58,24 @@ export default function Histoire() {
     };
 
     const executerEvt = useCallback((evtExecute: Evt, dateDejaAffichee: boolean) => {
-        const texte = evtExecute.description(perso);
-        const nouvEvt: EvtExecute = {
-            id: evtExecute.id,
-            dateStr: dateDejaAffichee ? '' : jourStr(perso.date),
-            texteFinal: texte, // l'exécution elle-même
-            image: evtExecute.image,
-        };
+        const texte: Promise<string> = evtExecute.description(perso);
+        texte.then((texte) => {
+            const nouvEvt: EvtExecute = {
+                id: evtExecute.id,
+                dateStr: dateDejaAffichee ? '' : jourStr(perso.date),
+                texteFinal: texte, // l'exécution elle-même
+                image: evtExecute.image,
+            };
 
-        setEvtsExecutes((prev: EvtExecute[]) => [
-            ...prev,
-            nouvEvt
-        ]);
+            setEvtsExecutes((prev: EvtExecute[]) => [
+                ...prev,
+                nouvEvt
+            ]);
 
-        setPerso({
-            ...perso,
-        });
+            setPerso({
+                ...perso,
+            });
+        })
     }, [perso, setPerso]);
 
     const determinerEvtSuivant = useCallback(() => {
@@ -132,7 +134,9 @@ export default function Histoire() {
                 if (perso.mort) {
                     const evt: Evt = {
                         id: "mort",
-                        description: () => "Vous êtes mort.",
+                        description: () =>  new Promise((resolve) => {
+                            resolve("Vous êtes mort.");
+                        }),
                     };
                     executerEvt(evt, true);
                 } else {

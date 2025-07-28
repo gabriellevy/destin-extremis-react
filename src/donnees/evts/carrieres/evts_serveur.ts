@@ -11,7 +11,7 @@ export const evts_serveur: GroupeEvts = {
     evts: [
         {
             id: "evts_serveur1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const taverne: string = "la taverne rouge";
                 let texte: string = `Vous hésitez à devenir serveur et décider de postuler à ${taverne} de Klara Kellner. `
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 40});
@@ -37,7 +37,7 @@ export const evts_serveur: GroupeEvts = {
         },
         {
             id: "evts_serveur2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.serveur, bonusMalus: 20});
                 texte += resTestMetier.resume;

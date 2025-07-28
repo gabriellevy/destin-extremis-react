@@ -9,7 +9,7 @@ export const evts_bars: GroupeEvts = {
     evts: [
         {
             id: "evts_bars1",
-            description: (perso: Perso): string => {
+            description: (perso: Perso): Promise<string> => {
                 let soireeFinie: boolean = false;
                 let texte:string = "Vous allez boire un verre avec des amis. <br/>";
                 // gloutonnerie
@@ -51,7 +51,9 @@ export const evts_bars: GroupeEvts = {
                     }
                     soireeFinie = true;
                 }
-                return texte;
+                return new Promise((resolve) => {
+                    resolve(texte);
+                });
             },
             conditions: (perso: Perso): boolean => getValeurVertu(perso, TypeVertu.sobre) <= 0 && perso.age >= 18,
         },

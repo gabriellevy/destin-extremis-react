@@ -12,7 +12,7 @@ export const evts_legionnaire: GroupeEvts = {
     evts: [
         {
             id: "evts_legionnaire1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voulez rejoindre la légion. `
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
@@ -34,7 +34,7 @@ export const evts_legionnaire: GroupeEvts = {
         },
         {
             id: "evts_legionnaire2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 40});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 40});

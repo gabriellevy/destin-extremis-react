@@ -10,7 +10,7 @@ export const evts_lycee: GroupeEvts = {
     evts: [
         {
             id: "evts_engagement_lycee_1ere_annee",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
                 let texte: string = "Votre première année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
@@ -26,7 +26,7 @@ export const evts_lycee: GroupeEvts = {
         },
         {
             id: "evts_engagement_lycee_2eme_annee",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([perso.bilanLycee.coterieAnnee1]);
                 let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
@@ -42,7 +42,7 @@ export const evts_lycee: GroupeEvts = {
         },
         {
             id: "evts_engagement_lycee_3eme_annee",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf(
                     [perso.bilanLycee.coterieAnnee1,
                     perso.bilanLycee.coterieAnnee2]
@@ -61,7 +61,7 @@ export const evts_lycee: GroupeEvts = {
         },
         {
             id: "evts_engagement_lycee_4eme_annee",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf(
                     [perso.bilanLycee.coterieAnnee1,
                     perso.bilanLycee.coterieAnnee2,
@@ -81,7 +81,7 @@ export const evts_lycee: GroupeEvts = {
         },
         {
             id: "evts_fin_de_lycee",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
                 perso.bilanLycee.coterieActuelle = Coterie.aucune;

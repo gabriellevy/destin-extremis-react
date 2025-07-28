@@ -37,7 +37,9 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.jacobins:
         case Coterie.libertins:
         case Coterie.lumieres:
+        case Coterie.culte_du_plaisir:
             return NOM[getRandomInt0(NOM.length)];
+        // noms anglais
         case Coterie.performeurs:
         case Coterie.transhumanistes:
             return NOM_ANGL[getRandomInt0(NOM_ANGL.length)];
@@ -67,6 +69,7 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.templiers:
         case Coterie.lumieres:
         case Coterie.libertins:
+        case Coterie.culte_du_plaisir:
             return sexe === Sexe.male ?
                 PRENOM_M[getRandomInt0(PRENOM_M.length)] :
                 PRENOM_F[getRandomInt0(PRENOM_F.length)];
@@ -119,6 +122,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.libertins:
         case Coterie.lumieres:
         case Coterie.schweizer:
+        case Coterie.culte_du_plaisir:
             return getPrenom(coterie, sexe)
                 + " " + getNom(coterie, sexe)
     }

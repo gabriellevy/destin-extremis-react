@@ -7,7 +7,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
-const passageDiplomeForgeron: (perso: Perso) => string = (perso: Perso) => {
+const passageDiplomeForgeron: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti forgeron depuis longtemps. ";
     const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_Forgeron, bonusMalus: 0});
     texte += resTestMetier.resume;
@@ -18,14 +18,14 @@ const passageDiplomeForgeron: (perso: Perso) => string = (perso: Perso) => {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeForgeron);
     }
-    return texte;
+    return new Promise((resolve) => resolve(texte))
 }
 
 export const evts_forgeron: GroupeEvts = {
     evts: [
         {
             id: "evts_forgeron1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir apprenti forgeron. `
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
@@ -47,7 +47,7 @@ export const evts_forgeron: GroupeEvts = {
         },
         {
             id: "evts_forgeron2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});

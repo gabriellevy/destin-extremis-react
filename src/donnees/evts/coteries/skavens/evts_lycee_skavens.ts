@@ -19,7 +19,7 @@ export const evts_lycee_skavens: GroupeEvts = {
     evts: [
         {
             id: "evts_lycee_skavens1_tromperie",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le lycée skaven met votre intégrité à rude épreuve. Les élèves, volent, mentent, trichent, et les professeurs, au lieu de punir, récompensent. "
                     + "Ils insistent sur le fait que c'est ainsi qu'on s'en sort et que c'est la bonne voie vers le succès.<br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 0});
@@ -43,7 +43,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         },
         {
             id: "evts_lycee_skavens2_fuite",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le premier but d'un skaven est la survie. Apprendre à fuir à toute vitesse, par les fenêtres, par les toits, dans les catacombes, est une nécessité qu'on vous enseigne encore et encore.<br/> ";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
                 texte += resTest.resume;
@@ -62,7 +62,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         },
         {
             id: "evts_lycee_skavens3_artisanat",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Être agile de ses mains et surtout rapide est précieux chez les skavens, qui adorent fabriquer des chsoes et détestent faire quoique de soit lentement.<br/>"
                     + "Les cours d'artisanat sont donc toujours chronométrés et demandent une excellente coordination.<br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
@@ -85,7 +85,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         },
         {
             id: "evts_lycee_skavens4_discrétion",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Entre les punitions incessantes sans raison et les agressions et vols des élèves vous êtes bien obligé de vous faire discret.<br/> ";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
                 texte += resTest.resume;
@@ -103,7 +103,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         },
         {
             id: "evts_lycee_skavens5_science",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les cours scientifiques des skavens sont étonament poussés. Ils se focalisent plus sur l'expérimentation que sur le théorique.<br/> ";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
                 texte += resTest.resume;
@@ -118,7 +118,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         },
         {
             id: "evts_lycee_skavens6_cupidité",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Un bon skaven se doit d'être ambitieux et de vouloir toujours plus. "
                     + "Les cours ne laissent évidemment pas de côté un élément aussi important de la vie.<br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 0});

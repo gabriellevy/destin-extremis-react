@@ -14,7 +14,7 @@ export const evts_centurion: GroupeEvts = {
     evts: [
         {
             id: "evts_centurion1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous tentez d'obtenir le grade de centurion. `
                 const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
                 texte += resTestInt.resume;
@@ -33,7 +33,7 @@ export const evts_centurion: GroupeEvts = {
         },
         {
             id: "evts_centurion2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 40});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 40});

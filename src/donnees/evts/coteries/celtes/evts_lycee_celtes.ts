@@ -20,7 +20,7 @@ export const evts_lycee_celtes: GroupeEvts = {
     evts: [
         {
             id: "evts_lycee_celtes1_intimidation",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "L'intimidation et la vantardise sont des traditions précieuses chez les celtes, qui peuvent se renvoyer des insultes des nuits entières pendant leurs banquets ou leurs duels rituels. "
                     + "Il va de soit que vous êtes formés, en particulier lors des soirées étudiantes. Vous apprenez aussi à vous peindre le visage de manière terrifiante.<br/> ";
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
@@ -45,7 +45,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes2_festin",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Tout bon celte doit être un hôte de qualité. Savoir discourir, accueillir, cuisiner, servir, sont des compétences qui attirent respect et amitié.<br/> ";
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
                     texte += resTest.resume;
@@ -73,7 +73,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes3_brimades",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les violences et brimades entre étudiants sont courantes chez les celtes, quand elles ne sont pas encouragées. <br/> ";
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
                     texte += resTest.resume;
@@ -96,7 +96,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes4_duels",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le combat au corps à corps est une tradition vivace chez les celtes. Le but n'est que rarement de tuer, mais de prouver son habileté et son courage. <br/> ";
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.armeCaC, bonusMalus: 0});
                     texte += resTest.resume;
@@ -120,7 +120,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes5_physique",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "La forme physique est primordiale pour les celtes. Les entrainements en athlétisme sont nombreux et éreintants. <br/> ";
                     const resTestMvt:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
                     texte += resTestMvt.resume;
@@ -137,7 +137,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes6_foret",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Survivre dans la nature est signe de forte volonté et de débrouillardise pour les celtes, ainsi qu'un lien à conserver avec les anciens dieux. "
                         + "De rudes randonnées et nuits à la belle étoile sont donc au programme de leur lycée et vous n'y échapperez pas.<br/> ";
                     const resTestSur:ResultatTest = testComp(perso, {comp: TypeCompetence.survie, bonusMalus: 0});
@@ -153,7 +153,7 @@ export const evts_lycee_celtes: GroupeEvts = {
         },
         {
             id: "evts_lycee_celtes7_poesie",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Votre professeur de diction tente de vous inculquer les bases du discours et de la poésie.<br/> ";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: -10});
                 texte += resTest.resume;

@@ -8,16 +8,21 @@ import {aUnCoupDeCoeur, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../.
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
+import {appelLeChat} from "../../../App";
 
 export const evts_amour: GroupeEvts = {
     evts: [
         {
             id: "evts_amour1 avoir un coup de coeur",
-            description: (perso: Perso): string => {
-                const coupDeCoeur:PNJ = genererPNJAmourableDePerso(perso);
+            description: async (perso: Perso): Promise<string> => {
+                const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
                 coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
                 perso.pnjs.push(coupDeCoeur);
-                return "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
+                // TODO : retirez cette proba exagérée et remettre un message standard
+                // utiliser l'IA pour des messages de remplissages ? Ou quand un texte a déjà été utilisé ?
+                const res = await appelLeChat("Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom);
+                //const standard = "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". <br/>";
+                return res + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
                 getValeurVice(perso, TypeVice.luxurieux) >= 0
@@ -26,7 +31,7 @@ export const evts_amour: GroupeEvts = {
         },
         {
             id: "evts_amour draguer un coup de coeur",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
                 const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
                 let texte = "Vous vous décidez à aborder " + coupDeCoeur.prenom + ". " + resTestCharme.resume + "<br/>";
@@ -56,5 +61,5 @@ export const evts_amour: GroupeEvts = {
                 aUnCoupDeCoeur(perso),
         },
     ],
-    probaParDefaut: 10,
+    probaParDefaut: 1099999999999999,
 };

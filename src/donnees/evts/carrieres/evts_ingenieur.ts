@@ -9,7 +9,7 @@ import {anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../types/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
 
-const passageDiplome: (perso: Perso) => string = (perso: Perso) => {
+const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "C'est le jour du passage de diplôme ! ";
     const resTestInge:ResultatTest = testMetier(perso, {metier: metiersEnum.etudiant_ingenieur, bonusMalus: 20});
     texte += resTestInge.resume;
@@ -20,14 +20,14 @@ const passageDiplome: (perso: Perso) => string = (perso: Perso) => {
         texte += "Malheureusement c'est un échec pour vous. Vous êtes recalé... Vous avez néanmoins encore une chance de le passer l'an prochain. ";
         perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplome);
     }
-    return texte;
+    return new Promise((resolve) => resolve(texte))
 }
 
 export const evts_ingenieur: GroupeEvts = {
     evts: [
         {
             id: "evts_ingenieur1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous avez la ferme intention de devenir apprenti ingénieur, mais les tests d'entrée sont difficiles. `
                 const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 20});
@@ -50,7 +50,7 @@ export const evts_ingenieur: GroupeEvts = {
         },
         {
             id: "evts_ingenieur2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 40});
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 40});
@@ -69,7 +69,7 @@ export const evts_ingenieur: GroupeEvts = {
         },
         {
             id: "evts_ingenieur3_entre_a_la_guilde",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Vous aimeriez bien rejoindre la guilde des ingénieurs.";
                 const resTestInge:ResultatTest = testMetier(perso, {metier: metiersEnum.etudiant_ingenieur, bonusMalus: 0});
                 texte += resTestInge.resume;

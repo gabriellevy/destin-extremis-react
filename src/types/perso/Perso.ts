@@ -31,7 +31,7 @@ export type Perso = {
     comps: Competence[],
     viceVertu: ViceVertu[],
     maitrises: Maitrise[],
-    evtsProgrammes: Map<number, (perso: Perso)=>string> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
+    evtsProgrammes: Map<number, (perso: Perso)=>Promise<string>> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     vitesseExecution: number, // en millisecondes entre chaque événement
     mort?: boolean,
     bilanLycee: BilanLycee

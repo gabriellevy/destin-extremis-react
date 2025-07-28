@@ -11,7 +11,7 @@ export const evts_macon: GroupeEvts = {
     evts: [
         {
             id: "evts_macon1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous avez décidé de devenir maçon. `
                 const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
                 const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
@@ -33,7 +33,7 @@ export const evts_macon: GroupeEvts = {
         },
         {
             id: "evts_macon2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.macon, bonusMalus: 20});
                 texte += resTestMetier.resume;

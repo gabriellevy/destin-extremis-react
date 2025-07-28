@@ -14,7 +14,7 @@ export const evts_chatenay_malabry: GroupeEvts = {
     evts: [
         {
             id: "evts_chatenay_malabry1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let majReputation: number = 0;
                 let texte:string = "Vous êtes invité à un grand banquet celte. "
                     + "Le chef de clan " + getPatronyme(Coterie.celtes, Sexe.male) + " a fait les choses en grand. Du vin de la viande, du miel, tout est excellent. <br/>";

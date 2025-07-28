@@ -16,7 +16,7 @@ export const evts_crime: GroupeEvts = {
     evts: [
         {
             id: "evts_crime1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 commencerCarriere(perso, metiersEnum.ranconneur, '');
 
             return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
@@ -26,7 +26,7 @@ export const evts_crime: GroupeEvts = {
         },
         {
             id: "evts_crime2",
-            description: (perso: Perso): string =>  {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestCC:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
                 texte += resTestCC.resume;
@@ -42,7 +42,7 @@ export const evts_crime: GroupeEvts = {
         },
         {
             id: "evts_crime3",
-                description: (): string => "Vous êtes maintenant un membre de la bande à part entière. " +
+            description: async (_perso: Perso): Promise<string> => "Vous êtes maintenant un membre de la bande à part entière. " +
                 "En signe d'appartenance et de fraternité un couteau et une larme vous sont tatoués bien visibles sur le visage. ",
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, metiersEnum.ranconneur, 40),
         },

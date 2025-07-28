@@ -7,7 +7,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
-const passageDiplomeBoulanger: (perso: Perso) => string = (perso: Perso) => {
+const passageDiplomeBoulanger: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boulanger depuis longtemps. ";
     const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_boulanger, bonusMalus: 20});
     texte += resTestMetier.resume;
@@ -18,14 +18,14 @@ const passageDiplomeBoulanger: (perso: Perso) => string = (perso: Perso) => {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeBoulanger);
     }
-    return texte;
+    return new Promise((resolve) => resolve(texte))
 }
 
 export const evts_boulanger: GroupeEvts = {
     evts: [
         {
             id: "evts_boulanger1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir boulanger. `
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 0});
                 texte += resTestDex.resume;
@@ -45,7 +45,7 @@ export const evts_boulanger: GroupeEvts = {
         },
         {
             id: "evts_boulanger2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.boulanger, bonusMalus: 0});
                 texte += resTestMetier.resume;

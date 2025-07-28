@@ -7,7 +7,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
 
-const passageDiplomeBarbierChirurgien: (perso: Perso) => string = (perso: Perso) => {
+const passageDiplomeBarbierChirurgien: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti barbier chirurgien depuis des années. ";
     const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_barbier_chirurgien, bonusMalus: 20});
     texte += resTestMetier.resume;
@@ -18,14 +18,14 @@ const passageDiplomeBarbierChirurgien: (perso: Perso) => string = (perso: Perso)
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeBarbierChirurgien);
     }
-    return texte;
+    return new Promise((resolve) => resolve(texte))
 }
 
 export const evts_barbierChirurgien: GroupeEvts = {
     evts: [
         {
             id: "evts_barbierChirurgien1",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir barbier chirurgien. `
                 const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
                 const resTestFm:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 20});
@@ -54,7 +54,7 @@ export const evts_barbierChirurgien: GroupeEvts = {
         },
         {
             id: "evts_barbierChirurgien2",
-            description: (perso: Perso): string => {
+            description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.boulanger, bonusMalus: 0});
                 texte += resTestMetier.resume;
