@@ -20,6 +20,10 @@ import {
 } from "../donnees/coteries/transhumanistes/noms_anglais";
 import {NOM_SCHWEIZER, PRENOM_SCHWEIZER_F, PRENOM_SCHWEIZER_M} from "../donnees/coteries/schweizer/noms_schweizer";
 import {NOM_OGRE1, NOM_OGRE2, NOM_OGRE3} from "../donnees/coteries/ogres/noms_ogres";
+import {
+    ESPRIT_DE_LA_NATURE_F,
+    ESPRIT_DE_LA_NATURE_M1, ESPRIT_DE_LA_NATURE_M2
+} from "../donnees/coteries/esprit_de_la_nature/noms_esprit_de_la_nature";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -31,6 +35,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.skavens:
         case Coterie.templiers:
         case Coterie.ogres:
+        case Coterie.esprit_de_la_nature:
             return ""; // les celtes n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -63,7 +68,11 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.skavens: return PARTIE_NOM_SKAVEN1[getRandomInt0(PARTIE_NOM_SKAVEN1.length)]
             + PARTIE_NOM_SKAVEN2[getRandomInt0(PARTIE_NOM_SKAVEN3.length)]
             + PARTIE_NOM_SKAVEN3[getRandomInt0(PARTIE_NOM_SKAVEN3.length)];
-        // noms français :
+        case Coterie.esprit_de_la_nature: return sexe === Sexe.male ?
+            ESPRIT_DE_LA_NATURE_M1[getRandomInt0(ESPRIT_DE_LA_NATURE_M1.length)]
+            + ESPRIT_DE_LA_NATURE_M2[getRandomInt0(ESPRIT_DE_LA_NATURE_M2.length)] :
+            ESPRIT_DE_LA_NATURE_F[getRandomInt0(ESPRIT_DE_LA_NATURE_F.length)];
+        // prénoms français :
         case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.templiers:
