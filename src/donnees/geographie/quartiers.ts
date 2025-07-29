@@ -5,6 +5,7 @@ export enum Quartier {
     montmartre = 'Montmartre',
     saint_maur_des_fosses = 'Saint Maur des fossés',
     chatenay_malabry = 'Châtenay-Malabry',
+    montbrison = 'Montbrison',
     saint_malo = 'Saint-Malo',
     montesson = 'Montesson',
     palais_royal = 'Palais royal',
