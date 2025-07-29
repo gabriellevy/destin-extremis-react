@@ -26,6 +26,11 @@ import {
 } from "../donnees/coteries/esprit_de_la_nature/noms_esprit_de_la_nature";
 import {TYRANIDES_F1, TYRANIDES_F2, TYRANIDES_M1, TYRANIDES_M2} from "../donnees/coteries/tyranides/noms_tyranides";
 import {BASTETS_PRENOMS_F, BASTETS_PRENOMS_M} from "../donnees/coteries/bastets/noms_bastets";
+import {
+    CONQUISTADORS_NOMS,
+    CONQUISTADORS_PRENOMS_F,
+    CONQUISTADORS_PRENOMS_M
+} from "../donnees/coteries/conquistadors/noms_conquistadors";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -55,6 +60,8 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
             return NOM_ANGL[getRandomInt0(NOM_ANGL.length)];
         case Coterie.schweizer:
             return NOM_SCHWEIZER[getRandomInt0(NOM_SCHWEIZER.length)];
+        case Coterie.conquistador:
+            return CONQUISTADORS_NOMS[getRandomInt0(CONQUISTADORS_NOMS.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -112,6 +119,10 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return (NOM_OGRE1[getRandomInt0(NOM_OGRE1.length)]
                 + NOM_OGRE2[getRandomInt0(NOM_OGRE2.length)]
                 + NOM_OGRE3[getRandomInt0(NOM_OGRE3.length)]);
+        case Coterie.conquistador:
+            return sexe === Sexe.male ?
+                CONQUISTADORS_PRENOMS_M[getRandomInt0(CONQUISTADORS_PRENOMS_M.length)] :
+                CONQUISTADORS_PRENOMS_F[getRandomInt0(CONQUISTADORS_PRENOMS_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -149,6 +160,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.schweizer:
         case Coterie.culte_du_plaisir:
         case Coterie.esthetes:
+        case Coterie.conquistador:
             return getPrenom(coterie, sexe)
                 + " " + getNom(coterie, sexe)
     }
