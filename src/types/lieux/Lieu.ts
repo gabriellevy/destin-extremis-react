@@ -1,6 +1,6 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
 import {Perso} from "../perso/Perso";
-import {getRegions, Continent} from "../../donnees/geographie/continents";
+import {Continent, getRegions} from "../../donnees/geographie/continents";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {getQuartiers, Region} from "../../donnees/geographie/regions";
 
@@ -62,6 +62,9 @@ export function getProvinceDeSousProvince(sousProvince: Region): Continent {
 
 export function auBordDeLaRiviere(perso: Perso): boolean {
     if (perso.lieu.continent === Continent.europe) return true; // il y a des rivières partout là dedans...
-
     return false;
+}
+
+export function auBordDuneZone(perso: Perso): boolean {
+    return perso.lieu.quartier === Quartier.montbrison;
 }

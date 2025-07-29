@@ -14,6 +14,7 @@ export function getQuartiers(sousProvinceStr: string):Quartier[] {
             Quartier.noisiel,
             Quartier.montmartre,
             Quartier.chatenay_malabry,
+            Quartier.montbrison,
             Quartier.saint_malo,
             Quartier.montesson,
             Quartier.palais_royal,

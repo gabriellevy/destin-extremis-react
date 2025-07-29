@@ -27,6 +27,7 @@ import {evts_lycee_celtes} from "../donnees/evts/coteries/celtes/evts_lycee_celt
 import {evts_lycee_skavens} from "../donnees/evts/coteries/skavens/evts_lycee_skavens";
 import {evts_bars} from "../donnees/evts/vie_courante/evts_bars";
 import {evts_amour} from "../donnees/evts/amour/evts_amour";
+import {evts_montbrison} from "../donnees/evts/quartiers/evts_montbrison";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -87,6 +88,7 @@ export default function Histoire() {
         // filtrer les evts non applicables
         const evtsApplicables: Evt[] = [
             ...filtrerEtPreparerEvts(evts_chatenay_malabry, perso),
+            ...filtrerEtPreparerEvts(evts_montbrison, perso),
             ...filtrerEtPreparerEvts(evts_bars, perso),
             ...filtrerEtPreparerEvts(evts_amour, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),

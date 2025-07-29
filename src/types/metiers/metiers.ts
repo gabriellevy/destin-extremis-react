@@ -13,7 +13,7 @@ export enum metiersEnum {
     moine = "Moine",
     initie_pretre = "Initié prêtre",
     pretre = "Prêtre",
-    confesseur = "Confesseur", // sorte de prêtre confesseur spécialisé associé à une famille riche
+    stalker = "Stalker",
     etudiant_ingenieur = "Étudiant ingénieur",
     ingenieur = "Ingénieur",
     batelier = "Batelier",
@@ -209,11 +209,11 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 2, metalStatut: MetalStatut.or},
     },
-    [metiersEnum.confesseur] : {
-        nom: metiersEnum.confesseur,
-        intitule: (_perso: Perso, carriere: Carriere) => metiersEnum.confesseur + " de " + carriere.employeur,
-        statut: {rang: 1, metalStatut: MetalStatut.or},
-        statutMax: {rang: 2, metalStatut: MetalStatut.or},
+    [metiersEnum.stalker] : {
+        nom: metiersEnum.stalker,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.stalker,
+        statut: {rang: 2, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 4, metalStatut: MetalStatut.argent},
     },
 }
 
