@@ -25,6 +25,7 @@ import {
     ESPRIT_DE_LA_NATURE_M1, ESPRIT_DE_LA_NATURE_M2
 } from "../donnees/coteries/esprit_de_la_nature/noms_esprit_de_la_nature";
 import {TYRANIDES_F1, TYRANIDES_F2, TYRANIDES_M1, TYRANIDES_M2} from "../donnees/coteries/tyranides/noms_tyranides";
+import {BASTETS_PRENOMS_F, BASTETS_PRENOMS_M} from "../donnees/coteries/bastets/noms_bastets";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -38,6 +39,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.ogres:
         case Coterie.esprit_de_la_nature:
         case Coterie.tyranides:
+        case Coterie.bastets:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -65,6 +67,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.celtes : return sexe === Sexe.male ?
             CELTES_PRENOMS_M[getRandomInt0(CELTES_PRENOMS_M.length)] :
             CELTES_PRENOMS_F[getRandomInt0(CELTES_PRENOMS_F.length)];
+        case Coterie.bastets : return sexe === Sexe.male ?
+            BASTETS_PRENOMS_M[getRandomInt0(BASTETS_PRENOMS_M.length)] :
+            BASTETS_PRENOMS_F[getRandomInt0(BASTETS_PRENOMS_F.length)];
         case Coterie.demokratos : return sexe === Sexe.male ?
             DEMOKRATOS_PRENOMS_M[getRandomInt0(DEMOKRATOS_PRENOMS_M.length)] :
             DEMOKRATOS_PRENOMS_F[getRandomInt0(DEMOKRATOS_PRENOMS_F.length)];
@@ -132,6 +137,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.demokratos:
         case Coterie.ogres:
         case Coterie.tyranides:
+        case Coterie.bastets:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:
