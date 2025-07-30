@@ -4,7 +4,13 @@ import {TypeVertu, ViceVertu } from "../../types/ViceVertu";
 // chacun doit en avoir autant pour que ce soit plus équitable
 export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.aucune]: [],
-    [Coterie.chaos]: [],
+    [Coterie.chaos]: [{
+        valVertu: -2,
+        typeVertu: TypeVertu.discipline,
+    },{
+        valVertu: -2,
+        typeVertu: TypeVertu.prudent,
+    }],
     [Coterie.acheron]: [{
         valVertu: -1,
         typeVertu: TypeVertu.altruiste,
@@ -54,8 +60,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 1,
         typeVertu: TypeVertu.travailleur,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.conquistador]: [{
         valVertu: 1,
@@ -104,8 +110,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 2,
         typeVertu: TypeVertu.sociable,
     },{
-        valVertu: -1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
     },{
         valVertu: 1,
         typeVertu: TypeVertu.loyal,
@@ -117,8 +123,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 1,
         typeVertu: TypeVertu.prudent,
     },{
-        valVertu: -1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
     },{
         valVertu: 1,
         typeVertu: TypeVertu.naturaliste,
@@ -133,8 +139,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.travailleur,
     },{
-        valVertu: -1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
     },{
         valVertu: 1,
         typeVertu: TypeVertu.naturaliste,
@@ -165,8 +171,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -2,
         typeVertu: TypeVertu.discipline,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.lumieres]: [{
         valVertu: -1,
@@ -194,8 +200,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.prudent,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.orks]: [{
         valVertu: -1,
@@ -226,8 +232,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.chaste,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.romains]: [{
         valVertu: 1,
@@ -249,8 +255,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.prudent,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     },{
         valVertu: 1,
         typeVertu: TypeVertu.sociable,
@@ -268,8 +274,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -1,
         typeVertu: TypeVertu.sociable,
     },{
-        valVertu: -1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: 1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.skavens]: [{
         valVertu: -1,
@@ -310,8 +316,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: -2,
         typeVertu: TypeVertu.naturaliste,
     },{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     }],
     [Coterie.tyranides]:  [{
         valVertu: 1,
@@ -330,8 +336,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         typeVertu: TypeVertu.sobre,
     }],
     [Coterie.zaporogues]: [{
-        valVertu: 1,
-        typeVertu: TypeVertu.aventureux,
+        valVertu: -1,
+        typeVertu: TypeVertu.prudent,
     },{
         valVertu: -1,
         typeVertu: TypeVertu.sobre,

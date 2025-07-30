@@ -69,11 +69,11 @@ export const evts_amour: GroupeEvts = {
                     coupDeCoeur.niveauRelationAmoureuse = NiveauRelationAmoureuse.petiteAmie;
                 } else {
                     texte += "Mais " + coupDeCoeur.prenom + " ne tombe pas sous votre charme. ";
-                    if (getValeurVice(perso, TypeVice.casanier) > 0) {
+                    if (getValeurVertu(perso, TypeVertu.prudent) > 0) {
                         texte += "Déçu, vous passez autre chose et l'oubliez rapidement. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.aucun;
                     }
-                    if (getValeurVertu(perso, TypeVertu.aventureux) > 0) {
+                    if (getValeurVice(perso, TypeVice.aventureux) > 0) {
                         texte += "Vous n'êtes pas du genre à renoncer. Vous savez que vous pouvez lui plaire et chercherez une autre occasion. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.aucun;
                     }

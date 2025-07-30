@@ -9,7 +9,7 @@ export type ViceVertu = {
 
 export enum TypeVice {
     cupide = "Cupide",
-    impulsif = "Impulsif",
+    aventureux = "Aventureux",
     colerique = "Colérique",
     cruel = "Cruel",
     envieux = "Envieux",
@@ -20,7 +20,6 @@ export enum TypeVice {
     paresseux = "Paresseux",
     trompeur = "Trompeur",
     artificialiste = "Artificialiste",
-    casanier = "Casanier",
     solitaire = "Solitaire",
     sociopathique = "Sociopathique",
     rebelle = "Rebelle",
@@ -39,7 +38,6 @@ export enum TypeVertu {
     travailleur = "Travailleur",
     loyal = "Loyal",
     naturaliste = "Naturaliste",
-    aventureux = "Aventureux",
     sociable = "Sociable",
     empathique = "Empathique",
     discipline = "Discipliné",
@@ -48,7 +46,7 @@ export enum TypeVertu {
 export function getViceOppose(typeVertu: TypeVertu): TypeVice {
     switch (typeVertu) {
         case TypeVertu.genereux : return TypeVice.cupide;
-        case TypeVertu.prudent : return TypeVice.impulsif;
+        case TypeVertu.prudent : return TypeVice.aventureux;
         case TypeVertu.tempere : return TypeVice.colerique;
         case TypeVertu.bienveillant : return TypeVice.cruel;
         case TypeVertu.altruiste : return TypeVice.envieux;
@@ -59,7 +57,6 @@ export function getViceOppose(typeVertu: TypeVertu): TypeVice {
         case TypeVertu.travailleur : return TypeVice.paresseux;
         case TypeVertu.loyal : return TypeVice.trompeur;
         case TypeVertu.naturaliste : return TypeVice.artificialiste;
-        case TypeVertu.aventureux : return TypeVice.casanier;
         case TypeVertu.sociable : return TypeVice.solitaire;
         case TypeVertu.empathique : return TypeVice.sociopathique;
         case TypeVertu.discipline : return TypeVice.rebelle;
@@ -68,7 +65,7 @@ export function getViceOppose(typeVertu: TypeVertu): TypeVice {
 export function getVertuOppose(typeVice: TypeVice): TypeVertu {
     switch (typeVice) {
         case TypeVice.cupide : return TypeVertu.genereux;
-        case TypeVice.impulsif : return TypeVertu.prudent;
+        case TypeVice.aventureux : return TypeVertu.prudent;
         case TypeVice.colerique : return TypeVertu.tempere;
         case TypeVice.cruel : return TypeVertu.bienveillant;
         case TypeVice.envieux : return TypeVertu.altruiste;
@@ -79,7 +76,6 @@ export function getVertuOppose(typeVice: TypeVice): TypeVertu {
         case TypeVice.paresseux : return TypeVertu.travailleur;
         case TypeVice.trompeur : return TypeVertu.loyal;
         case TypeVice.artificialiste : return TypeVertu.naturaliste;
-        case TypeVice.casanier : return TypeVertu.aventureux;
         case TypeVice.solitaire : return TypeVertu.sociable;
         case TypeVice.sociopathique : return TypeVertu.empathique;
         case TypeVice.rebelle : return TypeVertu.discipline;

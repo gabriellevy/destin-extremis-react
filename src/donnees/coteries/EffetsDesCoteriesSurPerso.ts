@@ -33,6 +33,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.vigilance],
             minus5Values: [TypeCompetence.commandement],
         };
+        case Coterie.chaos: return {
+            plus10Values: [TypeCompetence.chance, TypeCompetence.intuition],
+            plus5Values: [TypeCompetence.tromperie, TypeCompetence.orientation],
+            minus10Values: [TypeCompetence.perception],
+            minus5Values: [TypeCompetence.evaluation],
+        };
         case Coterie.conquistador: return {
             plus10Values: [TypeCompetence.tir, TypeCompetence.survie],
             plus5Values: [TypeCompetence.orientation, TypeCompetence.armeCaC],
