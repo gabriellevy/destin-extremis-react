@@ -14,7 +14,8 @@ import {NOM, PRENOM_F, PRENOM_M} from "../donnees/coteries/aucune/noms_francais"
 import {DEMOKRATOS_PRENOMS_F, DEMOKRATOS_PRENOMS_M} from "../donnees/coteries/demokratos/noms_demokratos";
 import {
     NOM_ANGL,
-    PRENOM_ANGL70_F, PRENOM_ANGL70_M,
+    PRENOM_ANGL70_F,
+    PRENOM_ANGL70_M,
     PRENOM_ANGL90_F,
     PRENOM_ANGL90_M
 } from "../donnees/coteries/transhumanistes/noms_anglais";
@@ -22,7 +23,8 @@ import {NOM_SCHWEIZER, PRENOM_SCHWEIZER_F, PRENOM_SCHWEIZER_M} from "../donnees/
 import {NOM_OGRE1, NOM_OGRE2, NOM_OGRE3} from "../donnees/coteries/ogres/noms_ogres";
 import {
     ESPRIT_DE_LA_NATURE_F,
-    ESPRIT_DE_LA_NATURE_M1, ESPRIT_DE_LA_NATURE_M2
+    ESPRIT_DE_LA_NATURE_M1,
+    ESPRIT_DE_LA_NATURE_M2
 } from "../donnees/coteries/esprit_de_la_nature/noms_esprit_de_la_nature";
 import {TYRANIDES_F1, TYRANIDES_F2, TYRANIDES_M1, TYRANIDES_M2} from "../donnees/coteries/tyranides/noms_tyranides";
 import {BASTETS_PRENOMS_F, BASTETS_PRENOMS_M} from "../donnees/coteries/bastets/noms_bastets";
@@ -31,6 +33,13 @@ import {
     CONQUISTADORS_PRENOMS_F,
     CONQUISTADORS_PRENOMS_M
 } from "../donnees/coteries/conquistadors/noms_conquistadors";
+import {
+    PRENOM_CHAOS_1, PRENOM_CHAOS_2,
+    PRENOM_CHAOS_3,
+    PRENOM_CHAOS_4, PRENOM_CHAOS_5,
+    PRENOM_CHAOS_6, PRENOM_CHAOS_7,
+    PRENOM_CHAOS_8
+} from "../donnees/coteries/chaos/noms_chaos";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -45,6 +54,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.esprit_de_la_nature:
         case Coterie.tyranides:
         case Coterie.bastets:
+        case Coterie.chaos:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -125,6 +135,44 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 CONQUISTADORS_PRENOMS_M[getRandomInt0(CONQUISTADORS_PRENOMS_M.length)] :
                 CONQUISTADORS_PRENOMS_F[getRandomInt0(CONQUISTADORS_PRENOMS_F.length)];
+        case Coterie.chaos:
+            const i = Math.floor(Math.random() * 10) + 1;
+            if(i < 5){
+                const txt5 = PRENOM_CHAOS_5[getRandomInt0(PRENOM_CHAOS_5.length)];
+                const txt6 = PRENOM_CHAOS_6[getRandomInt0(PRENOM_CHAOS_6.length)];
+                const txt7 = PRENOM_CHAOS_7[getRandomInt0(PRENOM_CHAOS_7.length)];
+                const txt6_b = PRENOM_CHAOS_6[getRandomInt0(PRENOM_CHAOS_6.length)];
+                const txt8 = PRENOM_CHAOS_8[getRandomInt0(PRENOM_CHAOS_8.length)];
+                if(i < 2){
+                    return txt5 + txt6 + txt7 + txt6_b + txt8;
+                }else if(i < 4){
+                    const txt7_b = PRENOM_CHAOS_7[getRandomInt0(PRENOM_CHAOS_7.length)];
+                    const txt6_b = PRENOM_CHAOS_6[getRandomInt0(PRENOM_CHAOS_6.length)];
+                    return txt5 + txt6 + txt7 + txt6_b + txt7_b + txt6_b + txt8;
+                }else{
+                    const txt7_b = PRENOM_CHAOS_7[getRandomInt0(PRENOM_CHAOS_7.length)];
+                    const txt6_b = PRENOM_CHAOS_6[getRandomInt0(PRENOM_CHAOS_6.length)];
+                    return txt6 + txt7 + txt6_b + txt7_b + txt6_b;
+                }
+            }else {
+                const txt1 = PRENOM_CHAOS_1[getRandomInt0(PRENOM_CHAOS_1.length)];
+                const txt2 = PRENOM_CHAOS_2[getRandomInt0(PRENOM_CHAOS_2.length)];
+                const txt3 = PRENOM_CHAOS_3[getRandomInt0(PRENOM_CHAOS_3.length)];
+                const txt4 = PRENOM_CHAOS_4[getRandomInt0(PRENOM_CHAOS_4.length)];
+                if (i < 7) {
+                    return txt1 + txt2 + txt3 + txt4;
+                } else if (i < 9) {
+                    const txt2_b = PRENOM_CHAOS_2[getRandomInt0(PRENOM_CHAOS_2.length)];
+                    const txt3_b = PRENOM_CHAOS_3[getRandomInt0(PRENOM_CHAOS_3.length)];
+                    return txt1 + txt2 + txt3 + txt2_b + txt3_b + txt4;
+                } else {
+                    const txt2_b = PRENOM_CHAOS_2[getRandomInt0(PRENOM_CHAOS_2.length)];
+                    const txt3_b = PRENOM_CHAOS_3[getRandomInt0(PRENOM_CHAOS_3.length)];
+                    const txt2_c = PRENOM_CHAOS_2[getRandomInt0(PRENOM_CHAOS_2.length)];
+                    const txt3_c = PRENOM_CHAOS_3[getRandomInt0(PRENOM_CHAOS_3.length)];
+                    return txt1 + txt2 + txt3 + txt2_b + txt3_b + txt2_c + txt3_c + txt4;
+                }
+            }
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }

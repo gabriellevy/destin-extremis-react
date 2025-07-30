@@ -1,0 +1,8 @@
+export const PRENOM_CHAOS_1: string[] = ["","","","","","","ch","d","dh","dhr","h","hr","j","jy","k","kh","kr","ksh","l","m","n","p","pr","s","sr","t","v","vr"];
+export const PRENOM_CHAOS_2: string[] = ["a","e","i","o","u","a","a","a","a","a","a","i","i"];
+export const PRENOM_CHAOS_3: string[] = ["bh","d","g","h","j","k","l","m","n","p","r","s","t","v","y","bh","d","dg","dh","dhy","dm","dr","g","h","hl","hy","j","k","kh","ksh","ky","l","lm","lw","m","mkh","mv","mvr","n","nd","ndh","ng","nj","nkh","nm","nshtr","nt","nth","p","pt","r","rd","rk","rm","rn","rt","ry","s","sh","shk","shm","shn","shp","shth","shtr","sr","st","sth","sw","t","th","tr","tt","ttr","ty","v","vy","y","yl"];
+export const PRENOM_CHAOS_4: string[] = ["a","a","a","a","a","a","a","a","a","i","u","as","at"];
+export const PRENOM_CHAOS_5: string[] = ["","","","","","","","","","","c","cr","ch","d","h","k","kr","kh","l","r","s","s","s","sh","sz","sc","sy","sz","sh","t","th","x","y","z","zs","zh"];
+export const PRENOM_CHAOS_6: string[] = ["a","e","i","o","u","a","e","i","a","e","i","o","u","a","e","i","a","e","i","o","u","a","e","i","a","e","i","o","u","a","e","i","aa","ai","ee","ei","ie"];
+export const PRENOM_CHAOS_7: string[] = ["c","d","dh","k","kh","l","r","s","sh","t","th","x","xh","z","zh","c","d","k","l","r","s","t","x","z","c","d","k","l","r","s","t","x","z","s","s","sh","sh","cc","ch","ck","cs","csh","cz","dh","dj","kk","kh","ks","ksh","kz","ll","lh","lz","ls","rr","rc","rg","rh","rj","rs","rsh","rz","rsz","rt","rth","rc","rk","ss","sc","sh","sk","sz","sy","th","tr","ts","tz","tsh","xh","xs","xz","zh","zs","zz","zs"];
+export const PRENOM_CHAOS_8: string[] = ["","","","","","","","","","","","kh","l","r","s","sj","ss","sh","sz","t","th","x","z","zs"];
