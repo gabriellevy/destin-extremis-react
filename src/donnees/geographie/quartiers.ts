@@ -38,7 +38,7 @@ export function descriptionQuartier(quartier: Quartier): string {
                 + "Elle est naturellement très difficile à aménager mais les schweizer l’ont trouvée à leur goût et l’ont transformée de manière si ingénieuse qu’elle est devenue prospère et très bien desservie par les chemins de fers, surtout dans la partie proche de la Ville. ";
             break;
             case Quartier.noisiel:
-            texte += "Noisiel est un petit quartier réquisitionné par les [Achéron](https://www.notion.so/Ach-ron-acdb44a8711640f5a6d9527e5e656d5a?pvs=21) pour habiter le proche centre de la Ville et ainsi remplir les obligations légales pour être une coterie siégeant à l’assemblée. <br/>"
+            texte += "Noisiel est un petit quartier réquisitionné par les <a href='https://www.notion.so/Ach-ron-acdb44a8711640f5a6d9527e5e656d5a?pvs=21'>Achéron</a> pour habiter le proche centre de la Ville et ainsi remplir les obligations légales pour être une coterie siégeant à l’assemblée. <br/>"
                 + "Malheureusement leur influence a perverti le quartier et en a fait un lieu désolé et morbide où très peu d’Extrémiens viennent s’installer. <br/>"
                 + "Ils voulaient augmenter leur influence politique mais l’exemple de leur gouvernance et de leur influence magique a au contraire fait d’eux un exemple à ne pas suivre pour tous ceux qui ont visité Noisiel. <br/>";
             break;
@@ -52,6 +52,8 @@ export function imageQuartier(quartier: Quartier): string {
     switch (quartier) {
         case Quartier.grande_crete:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/grande_cr%C3%A8te.jpg";
+        case Quartier.noisiel:
+            return "https://github.com/gabriellevy/destin-extremis-react/blob/main/images/quartiers/noisiel.jpg?raw=true";
 
         default:
             return "Il manque l'image de cet endroit : " + quartier;
