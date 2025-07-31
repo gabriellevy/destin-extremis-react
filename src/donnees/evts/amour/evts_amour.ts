@@ -8,7 +8,7 @@ import {aUnCoupDeCoeur, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../.
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {appelLeChat} from "../../../App";
+import {appelLeChat, NiveauInfosPerso} from "../../../App";
 
 export const evts_amour: GroupeEvts = {
     evts: [
@@ -23,7 +23,8 @@ export const evts_amour: GroupeEvts = {
                     texte = await appelLeChat(
                         perso,
                         "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom
-                        + ". Ce coup de foudre n'est pas réciproque.");
+                        + ". Ce coup de foudre n'est pas réciproque.",
+                        NiveauInfosPerso.patronyme);
                 } else {
                     texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom;
                 }
@@ -46,7 +47,8 @@ export const evts_amour: GroupeEvts = {
                     texte = await appelLeChat(
                         perso,
                         "Décrivez comment le personnage principal a eu un coup de foudre réciproque pour " + coupDeCoeur.prenom
-                        + ". ");
+                        + ". ",
+                        NiveauInfosPerso.patronyme);
                 } else {
                     texte += "Vous avez le coup de foudre pour " + coupDeCoeur.prenom;
                 }

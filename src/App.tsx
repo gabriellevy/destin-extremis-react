@@ -5,15 +5,36 @@ import {CssBaseline} from "@mui/material";
 import { Mistral } from '@mistralai/mistralai';
 import {Perso} from "./types/perso/Perso";
 import {ChatCompletionResponse} from "@mistralai/mistralai/models/components";
+import {descriptionQuartier} from "./donnees/geographie/quartiers";
+import {getCarriereActive} from "./types/metiers/metiersUtils";
 
 export const apiKey: string = "CJfRR1Dc8PSxmeF5oDtYt9iVDfrBlJrk";
 
 export const client = new Mistral({apiKey: apiKey});
 
-export async function appelLeChat(perso: Perso, prompt: string): Promise<string> {
+export enum NiveauInfosPerso {
+    rien,
+    prenom,
+    patronyme,
+    plus_quartier_de_vie,
+    plus_metier,
+}
+
+export async function appelLeChat(perso: Perso,
+                                  prompt: string,
+                                  niveauInfosPerso: NiveauInfosPerso
+): Promise<string> {
     let finalPrompt = prompt;
-    finalPrompt += " Le personnage principal est " + perso.prenom + " " + perso.nom + ". ";
-    finalPrompt += " Écrivez à la deuxième personne du pluriel comme si vous vous adressiez à lui en le vouvoyant. ";
+    if (niveauInfosPerso >= NiveauInfosPerso.patronyme) {
+        finalPrompt += " Le personnage principal est " + perso.prenom + " " + perso.nom + ". ";
+    }
+    finalPrompt += " Écrivez à la deuxième personne du pluriel comme si vous vous adressiez au personnage principal en le vouvoyant. ";
+    if (niveauInfosPerso >= NiveauInfosPerso.plus_quartier_de_vie && perso.lieu.quartier != null) {
+        finalPrompt += "La scène se passe dans le quartier de " + perso.lieu.quartier + " décrit ainsi : " + descriptionQuartier(perso.lieu.quartier) + ".";
+    }
+    if (niveauInfosPerso >= NiveauInfosPerso.plus_metier && getCarriereActive(perso)) {
+        finalPrompt += "La scène concerne le métier du personnage principal qui est " + getCarriereActive(perso) + ".";
+    }
     finalPrompt += " Écrivez cela en 100 mots maximum."
     const chatResponse:ChatCompletionResponse = await client.chat.complete({
         model: "codestral-2405",
