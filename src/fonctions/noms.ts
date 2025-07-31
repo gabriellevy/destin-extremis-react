@@ -46,6 +46,7 @@ import {
     ACHERON_PRENOMS_F,
     ACHERON_PRENOMS_M
 } from "../donnees/coteries/acheron/noms_acheron";
+import {ORKS_PRENOMS_F, ORKS_PRENOMS_M} from "../donnees/coteries/orks/noms_orks";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -62,6 +63,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.bastets:
         case Coterie.chaos:
         case Coterie.acheron:
+        case Coterie.orks:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -134,6 +136,10 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 PRENOM_SCHWEIZER_M[getRandomInt0(PRENOM_SCHWEIZER_M.length)] :
                 PRENOM_SCHWEIZER_F[getRandomInt0(PRENOM_SCHWEIZER_F.length)];
+        case Coterie.orks:
+            return sexe === Sexe.male ?
+                ORKS_PRENOMS_M[getRandomInt0(ORKS_PRENOMS_M.length)] :
+                ORKS_PRENOMS_F[getRandomInt0(ORKS_PRENOMS_F.length)];
         case Coterie.ogres:
             return (NOM_OGRE1[getRandomInt0(NOM_OGRE1.length)]
                 + NOM_OGRE2[getRandomInt0(NOM_OGRE2.length)]
@@ -215,6 +221,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.tyranides:
         case Coterie.bastets:
         case Coterie.acheron:
+        case Coterie.orks:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:
