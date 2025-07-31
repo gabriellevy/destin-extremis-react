@@ -40,6 +40,12 @@ import {
     PRENOM_CHAOS_6, PRENOM_CHAOS_7,
     PRENOM_CHAOS_8
 } from "../donnees/coteries/chaos/noms_chaos";
+import {
+    ACHERON_NOM1,
+    ACHERON_NOM2, ACHERON_NOM3,
+    ACHERON_PRENOMS_F,
+    ACHERON_PRENOMS_M
+} from "../donnees/coteries/acheron/noms_acheron";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -55,6 +61,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.tyranides:
         case Coterie.bastets:
         case Coterie.chaos:
+        case Coterie.acheron:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.aucune:
@@ -135,6 +142,14 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             return sexe === Sexe.male ?
                 CONQUISTADORS_PRENOMS_M[getRandomInt0(CONQUISTADORS_PRENOMS_M.length)] :
                 CONQUISTADORS_PRENOMS_F[getRandomInt0(CONQUISTADORS_PRENOMS_F.length)];
+        case Coterie.acheron:
+            const txt1 = ACHERON_NOM1[getRandomInt0(ACHERON_NOM1.length)];
+            const txt2 = ACHERON_NOM2[getRandomInt0(ACHERON_NOM2.length)];
+            const txt3 = ACHERON_NOM3[getRandomInt0(ACHERON_NOM3.length)];
+            return txt1 + txt2 + txt3
+                + (sexe === Sexe.male ?
+                ACHERON_PRENOMS_M[getRandomInt0(ACHERON_PRENOMS_M.length)] :
+                ACHERON_PRENOMS_F[getRandomInt0(ACHERON_PRENOMS_F.length)]);
         case Coterie.chaos:
             const i = Math.floor(Math.random() * 10) + 1;
             if(i < 5){
@@ -199,6 +214,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.ogres:
         case Coterie.tyranides:
         case Coterie.bastets:
+        case Coterie.acheron:
             return getPrenom(coterie, sexe);
 
         case Coterie.aucune:
