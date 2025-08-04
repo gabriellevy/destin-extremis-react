@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {ajouterViceVal, getValeurVertu, getValeurVice, TypeVertu, TypeVice} from "../../../types/ViceVertu";
+import {ajouterViceVal, getValeurVertu, getValeurMauvais, TypeBon, TypeMauvais} from "../../../types/BonMauvais";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -13,13 +13,13 @@ export const evts_bars: GroupeEvts = {
                 let soireeFinie: boolean = false;
                 let texte:string = "Vous allez boire un verre avec des amis. <br/>";
                 // gloutonnerie
-                if (getValeurVice(perso, TypeVice.gourmand) < 2) {
+                if (getValeurMauvais(perso, TypeMauvais.gourmand) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += "Vous forcez un peu sur la boisson et y prenez goût. "
-                        texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
+                        texte += ajouterViceVal(perso, TypeMauvais.gourmand, 1);
                     }
                 }
-                if (getValeurVice(perso, TypeVice.luxurieux) >= 1) {
+                if (getValeurMauvais(perso, TypeMauvais.luxurieux) >= 1) {
                     if (Math.random() >= 0.5) {
                         texte += "Vous repérez une jolie femme tout à fait à votre goût. ";
                     }
@@ -34,7 +34,7 @@ export const evts_bars: GroupeEvts = {
                     }
                 }
                 // bagarre
-                if (!soireeFinie && getValeurVice(perso, TypeVice.colerique) >= 1 && Math.random() >= 0.9) {
+                if (!soireeFinie && getValeurMauvais(perso, TypeMauvais.colerique) >= 1 && Math.random() >= 0.9) {
                     texte += "Vous vous sentez d'humeur massacrante et cherchez la bagarre avec tous les types qui vous regardent de travers. "
                     const resTestBagarre:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
                     texte += resTestBagarre.resume;
@@ -55,7 +55,7 @@ export const evts_bars: GroupeEvts = {
                     resolve(texte);
                 });
             },
-            conditions: (perso: Perso): boolean => getValeurVertu(perso, TypeVertu.sobre) <= 0 && perso.age >= 18,
+            conditions: (perso: Perso): boolean => getValeurVertu(perso, TypeBon.sobre) <= 0 && perso.age >= 18,
         },
     ],
     probaParDefaut: 10,

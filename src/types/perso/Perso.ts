@@ -4,7 +4,7 @@ import {Carriere, metiersEnum} from "../metiers/metiers";
 import {Dieu} from "../Dieu";
 import {Maitrise} from "../../donnees/maitrise";
 import {Coterie} from "../Coterie";
-import {ViceVertu} from "../ViceVertu";
+import {BonMauvais} from "../BonMauvais";
 import {BilanLycee} from "../lycee/StadeUniversite";
 import {Reputation} from "../Reputation";
 import {Competence} from "./comps/Comps";
@@ -29,7 +29,7 @@ export type Perso = {
     // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
     dieu: Dieu,
     comps: Competence[],
-    viceVertu: ViceVertu[],
+    viceVertu: BonMauvais[],
     maitrises: Maitrise[],
     evtsProgrammes: Map<number, (perso: Perso)=>Promise<string>> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     vitesseExecution: number, // en millisecondes entre chaque événement

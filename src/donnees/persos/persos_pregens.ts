@@ -6,7 +6,7 @@ import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
 import {Carriere, metiersEnum} from "../../types/metiers/metiers";
 import {Coterie, rejointCoterie} from "../../types/Coterie";
-import {viceVertuDeBase} from "../../types/ViceVertu";
+import {viceVertuDeBase} from "../../types/BonMauvais";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../types/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";

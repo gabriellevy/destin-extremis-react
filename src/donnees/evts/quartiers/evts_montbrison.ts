@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {getValeurVice, TypeVice} from "../../../types/ViceVertu";
+import {getValeurMauvais, TypeMauvais} from "../../../types/BonMauvais";
 import {aUneCarriere, commencerCarriere} from "../../../types/metiers/metiersUtils";
 import {metiersEnum} from "../../../types/metiers/metiers";
 import {calculeAge} from "../../../types/Date";
@@ -33,7 +33,7 @@ export const evts_montbrison: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && getValeurVice(perso, TypeVice.aventureux) >= 1
+                && getValeurMauvais(perso, TypeMauvais.aventureux) >= 1
                 && calculeAge(perso) >= 16
                 && auBordDuneZone(perso),
         },

@@ -7,10 +7,10 @@ import {
     ajouterVertuVal,
     ajouterViceVal,
     getValeurVertu,
-    getValeurVice,
-    TypeVertu,
-    TypeVice
-} from "../../../../types/ViceVertu";
+    getValeurMauvais,
+    TypeBon,
+    TypeMauvais
+} from "../../../../types/BonMauvais";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterMaitrise, Maitrise} from "../../../maitrise";
@@ -33,9 +33,9 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous ne faites clairement pas le poids, mais vous êtes au lycée pour apprendre ! <br/>";
                     }
                 // gloutonnerie
-                if (getValeurVice(perso, TypeVice.orgueilleux) < 2) {
+                if (getValeurMauvais(perso, TypeMauvais.orgueilleux) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeVice.orgueilleux, 1);
+                        texte += ajouterViceVal(perso, TypeMauvais.orgueilleux, 1);
                     }
                 }
 
@@ -57,9 +57,9 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous êtes encore maladroit pour un hôte mais on pardonne beaucoup à un étudiant. <br/>";
                     }
                 // gloutonnerie
-                if (getValeurVice(perso, TypeVice.gourmand) < 2) {
+                if (getValeurMauvais(perso, TypeMauvais.gourmand) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeVice.gourmand, 1);
+                        texte += ajouterViceVal(perso, TypeMauvais.gourmand, 1);
                     }
                 }
                 if (Math.random() >= 0.9) {
@@ -85,9 +85,9 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
                     }
 
-                if (getValeurVice(perso, TypeVice.colerique) < 2) {
+                if (getValeurMauvais(perso, TypeMauvais.colerique) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeVice.colerique, 1);
+                        texte += ajouterViceVal(perso, TypeMauvais.colerique, 1);
                     }
                 }
                 return texte;
@@ -109,9 +109,9 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous avez beaucoup à apprendre pour avoir le niveau et cesser de vous faire rosser. <br/>";
                     }
 
-                if (getValeurVertu(perso, TypeVertu.valeureux) < 2) {
+                if (getValeurVertu(perso, TypeBon.valeureux) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterVertuVal(perso, TypeVertu.valeureux, 1);
+                        texte += ajouterVertuVal(perso, TypeBon.valeureux, 1);
                     }
                 }
                 return texte;
