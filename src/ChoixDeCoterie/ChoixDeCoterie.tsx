@@ -1,74 +1,24 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import {Grid2} from "@mui/material";
+import {TypeMauvais} from "../types/BonMauvais";
 
 type FormData = {
-    colerique: number;
-    aventureux: number;
-    lache: number;
-    naturaliste: number;
-    trompeur: number;
-    paresseux: number;
-    luxurieux: number;
-    gourmand: number;
-    cupide: number;
-    cruel: number;
-    envieux: number;
-    orgueilleux: number;
-    solitaire: number;
-    sociopathique: number;
-    rebelle: number;
+    [key in TypeMauvais]: number;
 };
+
+const defaultValues: FormData = Object.keys(TypeMauvais).reduce((acc, key) => {
+    acc[key as TypeMauvais] = 0;
+    return acc;
+}, {} as FormData);
 
 const ChoixDeCoterie : React.FC = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
-        defaultValues: {
-            colerique: 0,
-            aventureux: 0,
-            lache: 0,
-            naturaliste: 0,
-            trompeur: 0,
-            paresseux: 0,
-            luxurieux: 0,
-            gourmand: 0,
-            cupide: 0,
-            cruel: 0,
-            envieux: 0,
-            orgueilleux: 0,
-            solitaire: 0,
-            sociopathique: 0,
-            rebelle: 0,
-        }
+        defaultValues: defaultValues
     });
 
-    const idsSliders: string[] = [
-        'colerique', 'aventureux', 'lache', 'naturaliste',
-        'trompeur',
-        'paresseux',
-        'luxurieux',
-        'gourmand',
-        'cupide',
-        'cruel',
-        'envieux',
-        'orgueilleux',
-        'solitaire',
-        'sociopathique',
-        'rebelle',
-    ];
-    const sliders = watch([
-        'colerique', 'aventureux', 'lache', 'naturaliste',
-        'trompeur',
-        'paresseux',
-        'luxurieux',
-        'gourmand',
-        'cupide',
-        'cruel',
-        'envieux',
-        'orgueilleux',
-        'solitaire',
-        'sociopathique',
-        'rebelle',
-    ]);
+    const idsSliders: TypeMauvais[] = Object.values(TypeMauvais);
+    const sliders = watch(Object.keys(TypeMauvais) as Array<TypeMauvais>);
 
     const total = sliders.reduce((sum, value) => sum + Math.abs(value), 0);
 
@@ -79,7 +29,7 @@ const ChoixDeCoterie : React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            {idsSliders.map((idSlider: string, indexSliderAffiche: number) => (
+            {idsSliders.map((idSlider: TypeMauvais, indexSliderAffiche: number) => (
                 <Grid2 container spacing={0} sx={{ mb: 2 }} columns={8}>
                     <Grid2 size={4}>
                         {idSlider} :
@@ -98,7 +48,7 @@ const ChoixDeCoterie : React.FC = () => {
                                 }
                             })}
                         />
-                    {errors[idSlider as keyof FormData] && <p>{errors[idSlider as keyof FormData]?.message}</p>}
+                    {errors[idSlider as TypeMauvais] && <p>{errors[idSlider as TypeMauvais]?.message}</p>}
                     </Grid2>
                 </Grid2>
             ))}
