@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {TypeMauvais} from "../types/BonMauvais";
+import {Grid2} from "@mui/material";
 
 type FormData = {
     colerique: number;
@@ -80,9 +80,11 @@ const ChoixDeCoterie : React.FC = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             {idsSliders.map((idSlider: string, indexSliderAffiche: number) => (
-                <div key={idSlider}>
-                    <label>
-                        Slider {idSlider}:
+                <Grid2 container spacing={0} sx={{ mb: 2 }} columns={8}>
+                    <Grid2 size={4}>
+                        {idSlider} :
+                    </Grid2>
+                    <Grid2 size={4}>
                         <input
                             type="range"
                             min="-3"
@@ -96,9 +98,9 @@ const ChoixDeCoterie : React.FC = () => {
                                 }
                             })}
                         />
-                    </label>
                     {errors[idSlider as keyof FormData] && <p>{errors[idSlider as keyof FormData]?.message}</p>}
-                </div>
+                    </Grid2>
+                </Grid2>
             ))}
             <p>Total des déplacements: {total}</p>
             <button type="submit" disabled={total > 5}>Valider</button>
