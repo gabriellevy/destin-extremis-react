@@ -1,27 +1,74 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import {TypeMauvais} from "../types/BonMauvais";
 
 type FormData = {
     colerique: number;
-    slider2: number;
-    slider3: number;
-    slider4: number;
-    slider5: number;
+    aventureux: number;
+    lache: number;
+    naturaliste: number;
+    trompeur: number;
+    paresseux: number;
+    luxurieux: number;
+    gourmand: number;
+    cupide: number;
+    cruel: number;
+    envieux: number;
+    orgueilleux: number;
+    solitaire: number;
+    sociopathique: number;
+    rebelle: number;
 };
 
 const ChoixDeCoterie : React.FC = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
         defaultValues: {
             colerique: 0,
-            slider2: 0,
-            slider3: 0,
-            slider4: 0,
-            slider5: 0,
+            aventureux: 0,
+            lache: 0,
+            naturaliste: 0,
+            trompeur: 0,
+            paresseux: 0,
+            luxurieux: 0,
+            gourmand: 0,
+            cupide: 0,
+            cruel: 0,
+            envieux: 0,
+            orgueilleux: 0,
+            solitaire: 0,
+            sociopathique: 0,
+            rebelle: 0,
         }
     });
 
-    const idsSliders: string[] = ['colerique', 'slider2', 'slider3', 'slider4', 'slider5'];
-    const sliders = watch(['colerique', 'slider2', 'slider3', 'slider4', 'slider5']);
+    const idsSliders: string[] = [
+        'colerique', 'aventureux', 'lache', 'naturaliste',
+        'trompeur',
+        'paresseux',
+        'luxurieux',
+        'gourmand',
+        'cupide',
+        'cruel',
+        'envieux',
+        'orgueilleux',
+        'solitaire',
+        'sociopathique',
+        'rebelle',
+    ];
+    const sliders = watch([
+        'colerique', 'aventureux', 'lache', 'naturaliste',
+        'trompeur',
+        'paresseux',
+        'luxurieux',
+        'gourmand',
+        'cupide',
+        'cruel',
+        'envieux',
+        'orgueilleux',
+        'solitaire',
+        'sociopathique',
+        'rebelle',
+    ]);
 
     const total = sliders.reduce((sum, value) => sum + Math.abs(value), 0);
 
