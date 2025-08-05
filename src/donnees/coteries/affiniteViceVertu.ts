@@ -87,8 +87,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         typeBon: TypeBon.sobre,
     }],
     [Coterie.esprit_de_la_nature]: [{
-        valBon: 3,
-        typeBon: TypeBon.naturaliste,
+        valBon: -3,
+        typeBon: TypeBon.artificialiste,
     },{
         valBon: 1,
         typeBon: TypeBon.humble,
@@ -126,8 +126,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.prudent,
     },{
-        valBon: 1,
-        typeBon: TypeBon.naturaliste,
+        valBon: -1,
+        typeBon: TypeBon.artificialiste,
     }],
     [Coterie.esthetes]:  [{
         valBon: 1,
@@ -142,15 +142,15 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.prudent,
     },{
-        valBon: 1,
-        typeBon: TypeBon.naturaliste,
+        valBon: -1,
+        typeBon: TypeBon.artificialiste,
     }],
     [Coterie.jacobins]: [{
         valBon: -1,
         typeBon: TypeBon.empathique,
     },{
-        valBon: -1,
-        typeBon: TypeBon.naturaliste,
+        valBon: 1,
+        typeBon: TypeBon.artificialiste,
     },{
         valBon: 1,
         typeBon: TypeBon.valeureux,
@@ -181,8 +181,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.travailleur,
     },{
-        valBon: -1,
-        typeBon: TypeBon.naturaliste,
+        valBon: 1,
+        typeBon: TypeBon.artificialiste,
     },{
         valBon: -1,
         typeBon: TypeBon.humble,
@@ -313,8 +313,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.travailleur,
     },{
-        valBon: -2,
-        typeBon: TypeBon.naturaliste,
+        valBon: 2,
+        typeBon: TypeBon.artificialiste,
     },{
         valBon: -1,
         typeBon: TypeBon.prudent,
