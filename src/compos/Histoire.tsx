@@ -159,13 +159,17 @@ export default function Histoire() {
             rejointCoterie(perso, perso.coterie);
             // ajouterVertuVal(perso, TypeVertu.bienveillant, -10); // exemple tmp
             // événement d'intro :
-            const texte = descriptionQuartier(perso.lieu.quartier);
-            const adresseImage = imageQuartier(perso.lieu.quartier);
+            let textQuartier = "Pas de quartier";
+            let adresseQuartier = "Pas d'image";
+            if (perso.lieu.quartier) {
+                textQuartier = descriptionQuartier(perso.lieu.quartier);
+                adresseQuartier = imageQuartier(perso.lieu.quartier);
+            }
             const nouvEvt: EvtExecute = {
                 id: "intro",
                 dateStr: jourStr(perso.date),
-                texteFinal: texte, // l'exécution elle-même
-                image: adresseImage,
+                texteFinal: textQuartier, // l'exécution elle-même
+                image: adresseQuartier,
             };
 
             setEvtsExecutes((prev: EvtExecute[]) => [

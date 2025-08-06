@@ -8,8 +8,8 @@ import {Quartier} from "../../donnees/geographie/quartiers";
 
 export default function SelectionLieu() {
     const { control, watch, formState: { errors } } = useFormContext<Perso>();
-    const continentSelectionne:Continent = watch("lieu.continent");
-    const region:Region = watch("lieu.region");
+    const continentSelectionne:Continent|undefined = watch("lieu.continent");
+    const region:Region|undefined = watch("lieu.region");
 
     return (
         <>
@@ -60,7 +60,7 @@ export default function SelectionLieu() {
                                      fullWidth>
                             <InputLabel>Quartier</InputLabel>
                             <Select {...field}>
-                                {Object.values(getQuartiers(region.toString())).map((quartier: Quartier) => (
+                                {Object.values(getQuartiers(region?.toString())).map((quartier: Quartier) => (
                                     <MenuItem value={quartier.valueOf()} key={quartier.valueOf()}>
                                         {quartier.valueOf()}
                                     </MenuItem>

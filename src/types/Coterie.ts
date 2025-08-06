@@ -37,6 +37,7 @@ export const coterieOptions: Option[]= [
     { value: Coterie.aucune, label: Coterie.aucune},
     { value: Coterie.acheron, label: Coterie.acheron},
     { value: Coterie.bastets, label: Coterie.bastets},
+    { value: Coterie.carthaginois, label: Coterie.carthaginois},
     { value: Coterie.cathares, label: Coterie.cathares},
     { value: Coterie.celtes, label: Coterie.celtes},
     { value: Coterie.chaos, label: Coterie.chaos},

@@ -10,7 +10,7 @@ export enum Continent {
     amerique_centrale = 'Amérique centrale',
     amerique_sud = 'Amérique du sud',
 
-    continentInconnu = 'Continent inconnu',
+    // continentInconnu = 'Continent inconnu',
 }
 
 export const continentsOptions: Option[]= [
@@ -23,7 +23,7 @@ export const continentsOptions: Option[]= [
     { value: Continent.amerique_sud, label: Continent.amerique_sud},
 ];
 
-export function getRegions(continent: Continent):Region[] {
+export function getRegions(continent: Continent|undefined):Region[] {
     switch (continent) {
         case Continent.siberie : return [
             Region.siberie,

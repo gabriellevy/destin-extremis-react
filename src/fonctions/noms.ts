@@ -34,19 +34,31 @@ import {
     CONQUISTADORS_PRENOMS_M
 } from "../donnees/coteries/conquistadors/noms_conquistadors";
 import {
-    PRENOM_CHAOS_1, PRENOM_CHAOS_2,
+    PRENOM_CHAOS_1,
+    PRENOM_CHAOS_2,
     PRENOM_CHAOS_3,
-    PRENOM_CHAOS_4, PRENOM_CHAOS_5,
-    PRENOM_CHAOS_6, PRENOM_CHAOS_7,
+    PRENOM_CHAOS_4,
+    PRENOM_CHAOS_5,
+    PRENOM_CHAOS_6,
+    PRENOM_CHAOS_7,
     PRENOM_CHAOS_8
 } from "../donnees/coteries/chaos/noms_chaos";
 import {
     ACHERON_NOM1,
-    ACHERON_NOM2, ACHERON_NOM3,
+    ACHERON_NOM2,
+    ACHERON_NOM3,
     ACHERON_PRENOMS_F,
     ACHERON_PRENOMS_M
 } from "../donnees/coteries/acheron/noms_acheron";
 import {ORKS_PRENOMS_F, ORKS_PRENOMS_M} from "../donnees/coteries/orks/noms_orks";
+import {
+    ZAPO_NOMS_F,
+    ZAPO_NOMS_M,
+    ZAPO_PRENOMS_F_1,
+    ZAPO_PRENOMS_F_2,
+    ZAPO_PRENOMS_M_1,
+    ZAPO_PRENOMS_M_2
+} from "../donnees/coteries/zaporogues/noms_zaporogues";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -82,6 +94,9 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
             return NOM_SCHWEIZER[getRandomInt0(NOM_SCHWEIZER.length)];
         case Coterie.conquistador:
             return CONQUISTADORS_NOMS[getRandomInt0(CONQUISTADORS_NOMS.length)];
+        case Coterie.zaporogues: return sexe === Sexe.male ?
+            ZAPO_NOMS_M[getRandomInt0(ZAPO_NOMS_M.length)] :
+            ZAPO_NOMS_F[getRandomInt0(ZAPO_NOMS_F.length)];
     }
     return "pas de noms pour cette coterie : " + coterie;
 }
@@ -194,6 +209,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
                     return txt1 + txt2 + txt3 + txt2_b + txt3_b + txt2_c + txt3_c + txt4;
                 }
             }
+        case Coterie.zaporogues: return sexe === Sexe.male ?
+            ZAPO_PRENOMS_M_1[getRandomInt0(ZAPO_PRENOMS_M_1.length)] :
+            ZAPO_PRENOMS_F_1[getRandomInt0(ZAPO_PRENOMS_F_1.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -203,13 +221,18 @@ export function getCognomen(coterie: Coterie, sexe: Sexe): string {
         case Coterie.romains : return sexe === Sexe.male ?
             ROMAINS_cognomen_M2[getRandomInt0(ROMAINS_cognomen_M2.length)] :
             '';
+        case Coterie.zaporogues: return sexe === Sexe.male ?
+            ZAPO_PRENOMS_M_2[getRandomInt0(ZAPO_PRENOMS_M_2.length)] :
+            ZAPO_PRENOMS_F_2[getRandomInt0(ZAPO_PRENOMS_F_2.length)];
     }
     return "";// pas forcément de cognomen
 }
 
 export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
-        case Coterie.romains : return getPrenom(coterie, sexe)
+        case Coterie.romains :
+        case Coterie.zaporogues :
+            return getPrenom(coterie, sexe)
                                     + " " + getNom(coterie, sexe)
                                         // cognomen romain
                                     + " " +  getCognomen(coterie, sexe);

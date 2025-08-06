@@ -5,10 +5,10 @@ export enum Region {
     la_ville = "La Ville",
     siberie = "Sibérie",
 
-    regionInconnue = 'Région inconnue',
+    // regionInconnue = 'Région inconnue',
 }
 
-export function getQuartiers(sousProvinceStr: string):Quartier[] {
+export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
     switch (sousProvinceStr) {
         case Region.la_ville : return [
             Quartier.noisiel,
