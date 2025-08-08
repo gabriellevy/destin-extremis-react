@@ -1,0 +1,31 @@
+import {Coterie} from "../../types/Coterie";
+
+export const descriptionCot: Record<Coterie, string> = {
+    "Culte du plaisir": "",
+    "Esprit de la nature": "",
+    Aucune: "",
+    Bastets: "",
+    Carthaginois: "",
+    Cathares: "",
+    Celtes: "",
+    Chaos: "",
+    Conquistador: "",
+    Démokratos: "",
+    Elfes: "",
+    Esthètes: "",
+    Jacobins: "",
+    Libertins: "",
+    Lumières: "",
+    Ogres: "",
+    Orks: "",
+    Performeurs: "",
+    Romains: "",
+    Saabi: "",
+    Schweizer: "",
+    Skavens: "",
+    Templiers: "",
+    Transhumanistes: "",
+    Tyranides: "",
+    Zaporogues: "",
+    [Coterie.acheron] : "La coterie d'Achéron a un principe d'une terrifiante simplicité: la vie est surfaite. Il est temps que l'humanité dépasse ce stade et entre dans la non vie éternelle derrière le bienveillant guide qu'est la magie des ténèbres."
+}
