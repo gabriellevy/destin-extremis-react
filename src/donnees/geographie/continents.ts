@@ -31,6 +31,7 @@ export function getRegions(continent: Continent|undefined):Region[] {
         case Continent.inde : return [
         ];
         case Continent.asie_sud_est : return [
+            Region.chine,
         ];
         case Continent.amerique_nord : return [
         ];

@@ -26,6 +26,8 @@ export enum Quartier {
     suresnes = 'Suresnes',
 
     vladivostok = 'Vladivostok',
+
+    comptoir_ghangzhou = 'Comptoir de Ghangzhou',
 }
 
 export function descriptionQuartier(quartier: Quartier): string {

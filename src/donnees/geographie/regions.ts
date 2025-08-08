@@ -4,6 +4,7 @@ import {Quartier} from "./quartiers";
 export enum Region {
     la_ville = "La Ville",
     siberie = "Sibérie",
+    chine = "Chine",
 
     // regionInconnue = 'Région inconnue',
 }
@@ -37,6 +38,9 @@ export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
         ];
         case Region.siberie : return [
             Quartier.vladivostok
+        ];
+        case Region.chine : return [
+            Quartier.comptoir_ghangzhou
         ];
     }
     return [];
