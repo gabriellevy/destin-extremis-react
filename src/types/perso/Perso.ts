@@ -25,7 +25,7 @@ export type Perso = {
     mois?: string, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     jourDuMois: number, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     statut: Statut;
-    coterie: Coterie;
+    coterie?: Coterie;
     carrieres: Map<metiersEnum, Carriere>, // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
     dieu: Dieu,

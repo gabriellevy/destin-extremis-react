@@ -52,7 +52,7 @@ export default function DonneesPerso () {
             })
         }
         {
-            perso.coterie !== Coterie.aucune && (
+            (
                 <ListItem>
                     <ListItemText primary={perso.coterie}/>
                 </ListItem>

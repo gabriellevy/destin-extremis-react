@@ -4,7 +4,6 @@ import {augmenterCompetence, TypeCompetence} from "./perso/comps/Comps";
 import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
 
 export enum Coterie {
-    aucune = 'Aucune',
     acheron = 'Achéron',
     bastets = 'Bastets',
     cathares = 'Cathares',
@@ -34,7 +33,6 @@ export enum Coterie {
 }
 
 export const coterieOptions: Option[]= [
-    { value: Coterie.aucune, label: Coterie.aucune},
     { value: Coterie.acheron, label: Coterie.acheron},
     { value: Coterie.bastets, label: Coterie.bastets},
     { value: Coterie.carthaginois, label: Coterie.carthaginois},
@@ -75,7 +73,7 @@ export type EffectDeCoterieSurPerso = {
 
 export function rejointCoterie( perso: Perso, coterie: Coterie) {
     const ancienneCoterie = perso.coterie;
-    if (ancienneCoterie != Coterie.aucune) {
+    if (ancienneCoterie !== undefined) {
         // inverser effet de la coterie précédente (pour la quitter)
         const effetDepart: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(ancienneCoterie);
         effetDepart.plus10Values.forEach((typeComp: TypeCompetence) =>

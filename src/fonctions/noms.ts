@@ -78,7 +78,6 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.orks:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
-        case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.libertins:
         case Coterie.lumieres:
@@ -128,7 +127,6 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
             TYRANIDES_F1[getRandomInt0(TYRANIDES_F1.length)]
             + TYRANIDES_F2[getRandomInt0(TYRANIDES_F2.length)];
         // prénoms français :
-        case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.templiers:
         case Coterie.lumieres:
@@ -247,7 +245,6 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.orks:
             return getPrenom(coterie, sexe);
 
-        case Coterie.aucune:
         case Coterie.jacobins:
         case Coterie.performeurs:
         case Coterie.transhumanistes:

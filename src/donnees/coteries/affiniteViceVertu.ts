@@ -3,7 +3,6 @@ import {TypeBon, BonMauvais } from "../../types/BonMauvais";
 
 // chacun doit en avoir autant pour que ce soit plus équitable
 export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
-    [Coterie.aucune]: [],
     [Coterie.chaos]: [{
         valBon: -2,
         typeBon: TypeBon.discipline,

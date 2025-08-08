@@ -50,9 +50,9 @@ export function genererPNJ(sexe:Sexe, dateNaissance: number):PNJ {
     }
 }
 
-export function getCoterieAleatoireSauf(coteriesExclues: Coterie[]): Coterie {
-    coteriesExclues.push(Coterie.aucune);
+export function getCoterieAleatoireSauf(coteriesExclues: (Coterie|undefined)[]): Coterie {
     let coterieAleatoire: Coterie = getRandomEnumValue(Coterie);
+    coteriesExclues = coteriesExclues.filter(cot => cot !== undefined)
     while (coteriesExclues.includes(coterieAleatoire)) {
         coterieAleatoire = getRandomEnumValue(Coterie);
     }

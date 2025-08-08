@@ -20,14 +20,14 @@ export const evts_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.bilanLycee.coterieAnnee1 === Coterie.aucune // si n'a asp encore commencé l'université
+                perso.bilanLycee.coterieAnnee1 === undefined // si n'a asp encore commencé l'université
                 && calculeAge(perso) == 14,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_engagement_lycee_2eme_annee",
             description: async (perso: Perso): Promise<string> => {
-                const coterieRejointe: Coterie = getCoterieAleatoireSauf([perso.bilanLycee.coterieAnnee1]);
+                const coterieRejointe: Coterie = getCoterieAleatoireSauf(perso.bilanLycee.coterieAnnee1 ? [perso.bilanLycee.coterieAnnee1] : []);
                 let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
@@ -36,7 +36,7 @@ export const evts_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.bilanLycee.coterieAnnee2 === Coterie.aucune
+                perso.bilanLycee.coterieAnnee2 === undefined
                 && calculeAge(perso) == 15,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
@@ -55,7 +55,7 @@ export const evts_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.bilanLycee.coterieAnnee3 === Coterie.aucune
+                perso.bilanLycee.coterieAnnee3 === undefined
                 && calculeAge(perso) == 16,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
@@ -75,7 +75,7 @@ export const evts_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.bilanLycee.coterieAnnee4 === Coterie.aucune
+                perso.bilanLycee.coterieAnnee4 === undefined
                 && calculeAge(perso) == 17,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
@@ -84,7 +84,7 @@ export const evts_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
-                perso.bilanLycee.coterieActuelle = Coterie.aucune;
+                perso.bilanLycee.coterieActuelle = undefined;
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
