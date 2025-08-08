@@ -20,7 +20,8 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.elfes]: "Les elfes  ont pour but principal de faire atteindre son potentiel maximum à tout homme qui les rejoindra. Cette perfection étant pour eux essentiellement au niveau de la beauté, de la sensibilité, de l'agrément et de la morale. Ils ont développé toute une philosophie et une magie orientée vers ce but et les ont poussées à un tel niveau qu'aucun elfe ne reste longtemps laid ou désagréable.",
     [Coterie.esthetes]: "",
     [Coterie.jacobins]: "Les jacobins sont des politiciens idéologues pensant toujours en structure et en groupes puissants et centralisés. Ils font passer l’intérêt collectif, le devoir et la vertu loin devant l’intérêt personnel qu’ils acceptent comme expression de la liberté, mais méprisent comme une faiblesse humaine qu’il faut dépasser.",
-    Libertins: "",
+    [Coterie.libertins]: "Les libertins ne se considèrent pas comme une coterie, mais quoiqu'ils en pensent ils en sont une. Ils sont ceux qui refusent le principe de s'affilier à une coterie donc une idéologie. Ils ont décidé \n" +
+        "de faire passer leur liberté et leur indépendance avant toute autre chose. Simplement cet individualisme est en soit une idéologie de coterie. Ils refusent le mariage, refusent le salariat et les charges, et vagabondent au jour le jour.",
     Lumières: "",
     Ogres: "",
     Orks: "",
