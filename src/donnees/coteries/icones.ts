@@ -1,15 +1,15 @@
 import {Coterie} from "../../types/Coterie";
 
 export const iconesCot: Record<Coterie, string> = {
-    "Culte du plaisir": "",
+    [Coterie.culte_du_plaisir]: "",
     "Esprit de la nature": "",
     Aucune: "",
     [Coterie.bastets]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Bastet.png",
     [Coterie.carthaginois]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Carthaginois.png",
     [Coterie.cathares]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Cathares.png",
     [Coterie.celtes]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Celte.png",
-    Chaos: "",
-    Conquistador: "",
+    [Coterie.chaos]: "",
+    [Coterie.conquistador]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Conquistador.png",
     Démokratos: "",
     Elfes: "",
     Esthètes: "",
