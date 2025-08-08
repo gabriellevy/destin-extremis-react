@@ -3,16 +3,16 @@ import {Perso} from "../types/perso/Perso";
 import {Carriere, MetierObj} from "../types/metiers/Metier";
 
 export enum metiersEnum {
-    maitre_de_guilde = "Maître de guilde",
-    serveur = "Serveur",
-    macon = "Maçon",
     edile = "Édile",
+    maitre_de_guilde = "Maître de guilde",
+    macon = "Maçon",
+    pilleur_de_ruche = "Pilleur de ruches",
     ranconneur = "Rançonneur",
+    serveur = "Serveur",
     novice = "Moine novice",
     moine = "Moine",
     initie_pretre = "Initié prêtre",
     pretre = "Prêtre",
-    stalker = "Stalker",
     etudiant_ingenieur = "Étudiant ingénieur",
     ingenieur = "Ingénieur",
     batelier = "Batelier",
@@ -30,6 +30,7 @@ export enum metiersEnum {
     gladiateur = "Gladiateur",
     legionnaire = "Légionnaire",
     pamphletaire = "Pamphlétaire",
+    stalker = "Stalker",
 }
 
 export const metiersObjs: MetierObj = {
@@ -202,6 +203,12 @@ export const metiersObjs: MetierObj = {
     [metiersEnum.stalker] : {
         nom: metiersEnum.stalker,
         intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.stalker,
+        statut: {rang: 2, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 4, metalStatut: MetalStatut.argent},
+    },
+    [metiersEnum.pilleur_de_ruche] : {
+        nom: metiersEnum.pilleur_de_ruche,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.pilleur_de_ruche,
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
     },
