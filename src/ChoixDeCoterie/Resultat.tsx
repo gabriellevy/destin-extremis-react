@@ -3,6 +3,7 @@ import {UseFormWatch} from 'react-hook-form';
 import {getViceOppose, TypeMauvais} from "../types/BonMauvais";
 import {Coterie} from "../types/Coterie";
 import {affiniteViceVertuCoterie} from "../donnees/coteries/affiniteViceVertu";
+import Vignette from "./Vignette";
 
 type FormData = {
     [key in TypeMauvais]: number;
@@ -16,6 +17,7 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
     // Exemple d'utilisation de `watch` pour accéder aux valeurs actuelles du formulaire
     const values = watch();
 
+    // calcul du résultat
     const resParCoterie = new Map<Coterie, number>();
     Object.values(Coterie).forEach((coterie: Coterie) => {
         let res = 0;
@@ -33,16 +35,29 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
 
         resParCoterie.set(coterie, res);
     });
+    let resMax: number = 0;
+    resParCoterie.forEach((value) => {
+        if (value > resMax) {
+            resMax = value;
+        }
+    });
 
     return (
         <>
             <h2>Résultat : </h2>
             {
-                Array.from(resParCoterie.entries()).map(([coterie, total], index) => {
+                Array.from(resParCoterie.entries())
+                    .sort(([_coterie1, total1], [_coterie2, total2]) => {
+                        return total2 - total1;
+                    }).map(([coterie, total], index) => {
                     return (
-                        <li key={index}>
-                            {coterie} : {total}
-                        </li>
+                        <Vignette
+                            key={index}
+                            name={coterie}
+                            description={coterie}
+                            image={''}
+                            score={total/resMax*5}
+                        />
                     )
                 })
             }

@@ -35,7 +35,8 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && getValeurMauvais(perso, TypeMauvais.aventureux) >= 1
+                && (getValeurMauvais(perso, TypeMauvais.aventureux) >= 1
+                || getValeurMauvais(perso, TypeMauvais.cupide) >= 1 && getValeurMauvais(perso, TypeMauvais.aventureux) >= 0)
                 && calculeAge(perso) >= 16
                 && auBordDuneRuche(perso),
         },
