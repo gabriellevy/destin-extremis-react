@@ -3,7 +3,7 @@ import {Coterie} from "../../types/Coterie";
 export const descriptionCot: Record<Coterie, string> = {
     [Coterie.culte_du_plaisir]: "Les cultistes du plaisir -aussi appelés hédonistes- prônent la recherche et la satisfaction du plaisir personnel et des sensations fortes quel qu’elles soient dans un sens très large. On y trouve donc tout autant les meilleurs cuisiniers que les meilleurs prostitués.<br/>" +
     "Sans condamner l’ambition (qui peut être un plaisir en soit), les cultiste considèrent l’action volontaire sur le monde comme une chimère qui ne mène à rien. Mieux vaut renoncer aux buts et aux ambitions extérieures, se concentrer uniquement sur soi, se laisser glisser dans les douces pattes du plaisir, et apprécier la vie.",
-    "Esprit de la nature": "",
+    [Coterie.esprit_de_la_nature]: "",
     Aucune: "",
     [Coterie.bastets]: 'Principes de la faction : <br/>' +
     "- S'occuper des chats<br/>" +
@@ -17,9 +17,9 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.chaos]: "",
     [Coterie.conquistador]: "Les conquistadors sont une coterie particulièrement militarisée et aventureuse. Ils vivent pour les expéditions lointaines, la conquête, la piraterie, et la gloire qui va avec. Ils parcourent le monde dans des navires, en petites troupes d'élite très bien équipées et très motivées appelées Cuadrilla. Ils ne reviennent à leur base de Saint Malo que chargés de richesse ou après avoir fondé une colonie prometteuse.",
     [Coterie.demokratos]: "Confuse et vivante, basée sur la démocratie et la convivialité.",
-    Elfes: "",
-    Esthètes: "",
-    Jacobins: "",
+    [Coterie.elfes]: "Les elfes  ont pour but principal de faire atteindre son potentiel maximum à tout homme qui les rejoindra. Cette perfection étant pour eux essentiellement au niveau de la beauté, de la sensibilité, de l'agrément et de la morale. Ils ont développé toute une philosophie et une magie orientée vers ce but et les ont poussées à un tel niveau qu'aucun elfe ne reste longtemps laid ou désagréable.",
+    [Coterie.esthetes]: "",
+    [Coterie.jacobins]: "Les jacobins sont des politiciens idéologues pensant toujours en structure et en groupes puissants et centralisés. Ils font passer l’intérêt collectif, le devoir et la vertu loin devant l’intérêt personnel qu’ils acceptent comme expression de la liberté, mais méprisent comme une faiblesse humaine qu’il faut dépasser.",
     Libertins: "",
     Lumières: "",
     Ogres: "",
