@@ -4,7 +4,12 @@ export const descriptionCot: Record<Coterie, string> = {
     "Culte du plaisir": "",
     "Esprit de la nature": "",
     Aucune: "",
-    Bastets: "",
+    [Coterie.bastets]: 'Principes de la faction : <br/>' +
+    "- S'occuper des chats<br/>" +
+    "- Mépris du travail<br/>" +
+    "- individualisme forcené. Seuls la liberté et les chats comptent<br/>" +
+    "- Apprendre à communiquer avec les chats pour mieux suivre leurs ordres<br/>" +
+    "- Suivre le mode de vie des chats (dormir 20h par jour par exemple)",
     Carthaginois: "",
     Cathares: "",
     Celtes: "",

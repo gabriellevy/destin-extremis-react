@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Box, Rating } from '@mui/material';
+import { Card, CardContent, Typography, Box, Rating } from '@mui/material';
 
 // Définir les types pour les props
 interface VignetteProps {
@@ -25,7 +25,7 @@ const Vignette: React.FC<VignetteProps> = ({ name, description, image, score }) 
                     {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {description}
+                    <span dangerouslySetInnerHTML={{ __html: description}} />
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
                     <Rating name="read-only" value={score} readOnly precision={0.5} />
