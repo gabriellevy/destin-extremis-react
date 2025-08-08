@@ -70,3 +70,7 @@ export function auBordDeLaRiviere(perso: Perso): boolean {
 export function auBordDuneZone(perso: Perso): boolean {
     return perso.lieu.quartier === Quartier.montbrison;
 }
+
+export function auBordDuneRuche(perso: Perso): boolean {
+    return perso.lieu.quartier === Quartier.comptoir_ghangzhou;
+}
