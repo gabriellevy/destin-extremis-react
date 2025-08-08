@@ -5,7 +5,7 @@ export const iconesCot: Record<Coterie, string> = {
     "Esprit de la nature": "",
     Aucune: "",
     [Coterie.bastets]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Bastet.png",
-    Carthaginois: "",
+    [Coterie.carthaginois]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Carthaginois.png",
     Cathares: "",
     Celtes: "",
     Chaos: "",
