@@ -11,7 +11,7 @@ export const descriptionCot: Record<Coterie, string> = {
     "- Apprendre à communiquer avec les chats pour mieux suivre leurs ordres<br/>" +
     "- Suivre le mode de vie des chats (dormir 20h par jour par exemple)",
     [Coterie.carthaginois]: "Les carthaginois sont l’incarnation de l’ambition et de l’aventure. Ils parcourent le monde par tous les moyens qui existent pour découvrir les terres et les peuples et commercer. Ils veulent tout posséder : toutes les matières, tous les métaux, tous les objets d’art, toutes les technologies, les accumuler puis s’en servir pour acquérir encore plus.",
-    Cathares: "",
+    [Coterie.cathares]: "Les cathares nient l'existence de la volonté et affirment que seul Dieu accorde ses dons selon sa grâce. Lui demander une faveur pour soi est blasphématoire, seules les demandes désintéressées pour les autres ont une chance d'aboutir et elles ne doivent être faites qu'avec la plus grande humilité.",
     Celtes: "",
     Chaos: "",
     Conquistador: "",
