@@ -5,6 +5,7 @@ import {Coterie} from "../types/Coterie";
 import {affiniteViceVertuCoterie} from "../donnees/coteries/affiniteViceVertu";
 import Vignette from "./Vignette";
 import {descriptionCot} from "../donnees/coteries/description";
+import {iconesCot} from "../donnees/coteries/icones";
 
 type FormData = {
     [key in TypeMauvais]: number;
@@ -56,7 +57,7 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
                             key={index}
                             name={coterie}
                             description={descriptionCot[coterie]}
-                            image={''}
+                            image={iconesCot[coterie]}
                             score={total/resMax*5}
                         />
                     )

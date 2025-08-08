@@ -11,13 +11,15 @@ interface VignetteProps {
 
 const Vignette: React.FC<VignetteProps> = ({ name, description, image, score }) => {
     return (
-        <Card sx={{ maxWidth: 345, m: 2 }}>
-            <CardMedia
-                component="img"
-                height="140"
-                image={image}
-                alt={name}
-            />
+        <Card sx={{ display: 'flex', m: 2, maxWidth: 600 }}>
+            <Box sx={{ width: 150, height: 150 }}>
+                <img
+                    src={image}
+                    alt={name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+            </Box>
+            <Box sx={{ width: 450, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {name}
@@ -32,6 +34,7 @@ const Vignette: React.FC<VignetteProps> = ({ name, description, image, score }) 
                     </Typography>
                 </Box>
             </CardContent>
+            </Box>
     </Card>
 );
 };

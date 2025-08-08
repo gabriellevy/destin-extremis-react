@@ -1,0 +1,31 @@
+import {Coterie} from "../../types/Coterie";
+
+export const iconesCot: Record<Coterie, string> = {
+    "Culte du plaisir": "",
+    "Esprit de la nature": "",
+    Aucune: "",
+    Bastets: "",
+    Carthaginois: "",
+    Cathares: "",
+    Celtes: "",
+    Chaos: "",
+    Conquistador: "",
+    Démokratos: "",
+    Elfes: "",
+    Esthètes: "",
+    Jacobins: "",
+    Libertins: "",
+    Lumières: "",
+    Ogres: "",
+    Orks: "",
+    Performeurs: "",
+    Romains: "",
+    Saabi: "",
+    Schweizer: "",
+    Skavens: "",
+    Templiers: "",
+    Transhumanistes: "",
+    Tyranides: "",
+    Zaporogues: "",
+    [Coterie.acheron] : "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Ach%C3%A9ron.png"
+}
