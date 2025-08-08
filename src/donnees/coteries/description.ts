@@ -16,7 +16,7 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.celtes]: "Les celtes sont un peuple très attachés à l’aventure, à la fête et à la liberté. L’histoire de leur coterie est une suite d’aventures héroïques puis de célébration.",
     [Coterie.chaos]: "",
     [Coterie.conquistador]: "Les conquistadors sont une coterie particulièrement militarisée et aventureuse. Ils vivent pour les expéditions lointaines, la conquête, la piraterie, et la gloire qui va avec. Ils parcourent le monde dans des navires, en petites troupes d'élite très bien équipées et très motivées appelées Cuadrilla. Ils ne reviennent à leur base de Saint Malo que chargés de richesse ou après avoir fondé une colonie prometteuse.",
-    Démokratos: "",
+    [Coterie.demokratos]: "Confuse et vivante, basée sur la démocratie et la convivialité.",
     Elfes: "",
     Esthètes: "",
     Jacobins: "",
