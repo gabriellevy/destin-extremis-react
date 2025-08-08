@@ -1,6 +1,6 @@
 import {Perso} from "./perso/Perso";
 import {Evt} from "./Evt";
-import {Carriere} from "./metiers/metiers";
+import {Carriere} from "./metiers/Metier";
 import {
     enumMois,
     JOURS_PAR_AN,

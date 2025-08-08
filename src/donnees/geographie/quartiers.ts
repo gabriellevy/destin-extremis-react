@@ -27,6 +27,7 @@ export enum Quartier {
 
     vladivostok = 'Vladivostok',
 
+    // Asie
     comptoir_ghangzhou = 'Comptoir de Ghangzhou',
 }
 

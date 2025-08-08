@@ -5,9 +5,9 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {getValeurMauvais, TypeMauvais} from "../../../types/BonMauvais";
 import {aUneCarriere, commencerCarriere} from "../../../types/metiers/metiersUtils";
-import {metiersEnum} from "../../../types/metiers/metiers";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneZone} from "../../../types/lieux/Lieu";
+import {metiersEnum} from "../../metiers";
 
 export const evts_montbrison: GroupeEvts = {
     evts: [

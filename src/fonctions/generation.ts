@@ -1,5 +1,5 @@
 import {getRandomEnumValue} from "./random";
-import {Carriere, metiersEnum, metiersObjs} from "../types/metiers/metiers";
+import {Carriere} from "../types/metiers/Metier";
 import {Coterie} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
 import {anneesToJours, calculeAge} from "../types/Date";
@@ -8,6 +8,7 @@ import {viceVertuDeBase} from "../types/BonMauvais";
 import {PNJ} from "../types/perso/PNJ";
 import {getNom, getPrenom} from "./noms";
 import {NiveauRelationAmoureuse} from "../types/perso/Amour";
+import {metiersEnum, metiersObjs} from "../donnees/metiers";
 
 export function getCarriereAleatoire(): Carriere {
     let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);

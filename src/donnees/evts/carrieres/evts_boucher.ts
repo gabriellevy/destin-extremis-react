@@ -1,11 +1,11 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../../types/metiers/metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {metiersEnum} from "../../metiers";
 
 const passageDiplomeBoucher: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boucher depuis longtemps. ";

@@ -1,7 +1,6 @@
-import {MetalStatut, Statut} from "../statut_social/Statut";
-import {Perso} from "../perso/Perso";
-import {titreGuildeEnum} from "./Guilde";
-import {Quartier} from "../../donnees/geographie/quartiers";
+import {MetalStatut} from "../types/statut_social/Statut";
+import {Perso} from "../types/perso/Perso";
+import {Carriere, MetierObj} from "../types/metiers/Metier";
 
 export enum metiersEnum {
     maitre_de_guilde = "Maître de guilde",
@@ -32,15 +31,6 @@ export enum metiersEnum {
     legionnaire = "Légionnaire",
     pamphletaire = "Pamphlétaire",
 }
-
-export type Metier = {
-    nom: metiersEnum,
-    statut: Statut,
-    statutMax: Statut,
-    intitule: (perso: Perso,carriere: Carriere) => string,
-}
-
-export type MetierObj = Record<metiersEnum, Metier>;
 
 export const metiersObjs: MetierObj = {
     // citadins
@@ -216,32 +206,3 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
     },
 }
-
-export type Carriere = {
-    metier: Metier,
-    groupeLieu?: string, // ou ?
-    employeur?: string, // quel groupe ou employeur ?
-    duree: number, // temps passé à pratiquer ce métier (en jours)
-    competence: number, // sur 100. 1 en débutant
-    actif: boolean, // false pour une ancienne carrière (dont on conserve tout de même les compétences etc)
-    nbDeTestsFaits: number,
-    guilde?: titreGuildeEnum,
-}
-
-export const serveurDebutant: Carriere = {
-    metier: metiersObjs[metiersEnum.serveur],
-    groupeLieu: "Auberge du pont",
-    duree: 0,
-    competence: 1,
-    actif: true,
-    nbDeTestsFaits: 0,
-};
-
-export const metierTest: Carriere = {
-    metier: metiersObjs[metiersEnum.edile],
-    groupeLieu: Quartier.la_defense,
-    duree: 0,
-    competence: 1,
-    actif: true,
-    nbDeTestsFaits: 0,
-};

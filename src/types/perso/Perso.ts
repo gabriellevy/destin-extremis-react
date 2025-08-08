@@ -1,6 +1,6 @@
 import {Lieu} from "../lieux/Lieu";
 import {Statut} from "../statut_social/Statut";
-import {Carriere, metiersEnum} from "../metiers/metiers";
+import {Carriere} from "../metiers/Metier";
 import {Dieu} from "../Dieu";
 import {Maitrise} from "../../donnees/maitrise";
 import {Coterie} from "../Coterie";
@@ -9,6 +9,7 @@ import {BilanLycee} from "../lycee/StadeUniversite";
 import {Reputation} from "../Reputation";
 import {Competence} from "./comps/Comps";
 import {PNJ} from "./PNJ";
+import {metiersEnum} from "../../donnees/metiers";
 
 export type Perso = {
     prenom: string;

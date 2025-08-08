@@ -1,5 +1,4 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../../types/metiers/metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
@@ -7,6 +6,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
 import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {metiersEnum} from "../../metiers";
 
 export const evts_batelier: GroupeEvts = {
     evts: [

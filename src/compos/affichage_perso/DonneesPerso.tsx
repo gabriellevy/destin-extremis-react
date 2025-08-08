@@ -1,10 +1,11 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {calculeAge, joursToAnnees} from "../../types/Date";
-import {Carriere, metiersEnum} from "../../types/metiers/metiers";
+import {Carriere} from "../../types/metiers/Metier";
 import {Coterie} from "../../types/Coterie";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {metiersEnum} from "../../donnees/metiers";
 
 export default function DonneesPerso () {
     const { perso } = useContext(PersoContexte) as PersoContexteType;

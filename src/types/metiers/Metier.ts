@@ -1,0 +1,43 @@
+import {Statut} from "../statut_social/Statut";
+import {Perso} from "../perso/Perso";
+import {titreGuildeEnum} from "./Guilde";
+import {Quartier} from "../../donnees/geographie/quartiers";
+import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+
+export type Metier = {
+    nom: metiersEnum,
+    statut: Statut,
+    statutMax: Statut,
+    intitule: (perso: Perso,carriere: Carriere) => string,
+}
+
+export type MetierObj = Record<metiersEnum, Metier>;
+
+export type Carriere = {
+    metier: Metier,
+    groupeLieu?: string, // ou ?
+    employeur?: string, // quel groupe ou employeur ?
+    duree: number, // temps passé à pratiquer ce métier (en jours)
+    competence: number, // sur 100. 1 en débutant
+    actif: boolean, // false pour une ancienne carrière (dont on conserve tout de même les compétences etc)
+    nbDeTestsFaits: number,
+    guilde?: titreGuildeEnum,
+}
+
+export const serveurDebutant: Carriere = {
+    metier: metiersObjs[metiersEnum.serveur],
+    groupeLieu: "Auberge du pont",
+    duree: 0,
+    competence: 1,
+    actif: true,
+    nbDeTestsFaits: 0,
+};
+
+export const metierTest: Carriere = {
+    metier: metiersObjs[metiersEnum.edile],
+    groupeLieu: Quartier.la_defense,
+    duree: 0,
+    competence: 1,
+    actif: true,
+    nbDeTestsFaits: 0,
+};

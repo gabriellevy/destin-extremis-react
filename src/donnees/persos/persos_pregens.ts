@@ -4,13 +4,14 @@ import {MetalStatut} from "../../types/statut_social/Statut";
 import {NiveauIA, Perso, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
-import {Carriere, metiersEnum} from "../../types/metiers/metiers";
+import {Carriere} from "../../types/metiers/Metier";
 import {Coterie, rejointCoterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/BonMauvais";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../types/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
+import {metiersEnum} from "../metiers";
 
 export function enfant(): Perso {
     const cot: Coterie = getCoterieAleatoireSauf([]);

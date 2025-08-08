@@ -1,7 +1,8 @@
-import {Carriere, metiersEnum, metiersObjs} from "./metiers";
+import {Carriere} from "./Metier";
 import {Perso} from "../perso/Perso";
 import {seuils} from "../perso/comps/Comps";
 import {anneesToJours} from "../Date";
+import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {

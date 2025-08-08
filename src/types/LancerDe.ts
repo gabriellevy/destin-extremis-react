@@ -1,5 +1,5 @@
 import {TypeCompetence} from "./perso/comps/Comps";
-import {metiersEnum} from "./metiers/metiers";
+import {metiersEnum} from "../donnees/metiers";
 
 export type ResultatTest = {
     reussi: boolean,

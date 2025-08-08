@@ -1,5 +1,5 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../../types/metiers/metiers";
+import {metiersEnum} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {compareStatut, MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
