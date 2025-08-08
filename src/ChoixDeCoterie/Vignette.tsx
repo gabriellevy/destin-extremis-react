@@ -21,7 +21,7 @@ const Vignette: React.FC<VignetteProps> = ({ name, description, image, score }) 
             </Box>
             <Box sx={{ width: 450, display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h6" component="div">
                     {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

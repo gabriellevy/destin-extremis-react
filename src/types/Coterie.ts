@@ -71,7 +71,7 @@ export type EffectDeCoterieSurPerso = {
     minus5Values: TypeCompetence[],
 }
 
-export function rejointCoterie( perso: Perso, coterie: Coterie) {
+export function rejointCoterie( perso: Perso, coterie: Coterie|undefined) {
     const ancienneCoterie = perso.coterie;
     if (ancienneCoterie !== undefined) {
         // inverser effet de la coterie précédente (pour la quitter)
@@ -93,17 +93,19 @@ export function rejointCoterie( perso: Perso, coterie: Coterie) {
 
     perso.coterie = coterie;
 
-    const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(coterie);
-    effet.plus10Values.forEach((typeComp: TypeCompetence) =>
-        augmenterCompetence(perso, typeComp, 10)
-    );
-    effet.plus5Values.forEach((typeComp: TypeCompetence) =>
-        augmenterCompetence(perso, typeComp, 5)
-    );
-    effet.minus10Values.forEach((typeComp: TypeCompetence) =>
-        augmenterCompetence(perso, typeComp, -10)
-    );
-    effet.minus5Values.forEach((typeComp: TypeCompetence) =>
-        augmenterCompetence(perso, typeComp, -5)
-    );
+    if (coterie) {
+        const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(coterie);
+        effet.plus10Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, 10)
+        );
+        effet.plus5Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, 5)
+        );
+        effet.minus10Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, -10)
+        );
+        effet.minus5Values.forEach((typeComp: TypeCompetence) =>
+            augmenterCompetence(perso, typeComp, -5)
+        );
+    }
 }
