@@ -26,9 +26,11 @@ export const descriptionCot: Record<Coterie, string> = {
     "- profondément élitiste : grosse différence entre les riches (nobles, entrepreneurs, écrivains) et les très nombreux et insignifiants prolétaires",
     [Coterie.ogres]: "La base de l’idéologie ogre est la voracité, d’une manière simple et brutale. Voracité de nourriture bien sûr, mais aussi d’argent, d’émotion forte, d’expériences exceptionnelles, de voyages lointains, de possessions innombrables. Quel que soit ce qu’ils veulent, car chacun a ses propres obsessions, Ils veulent toujours plus, ne sont heureux et rassasiés que quelques heures au mieux. Et si ils ont atteint tous leurs objectifs, un nouveau réapparaîtra bientôt et les obsédera à nouveau.",
     [Coterie.orks]: "Les orks sont des mutants costauds et bricoleurs qui embrassent avant tout une vie simple et brutale, sans prise de tête.",
-    Performeurs: "",
-    Romains: "",
-    Saabi: "",
+    [Coterie.performeurs]: "Les performeurs sont une coterie fondée uniquement sur la compétitivité et le fait qu’ils sont les meilleurs en tout.\n" +
+        "\n" +
+        "Pour eux toute performance est une question de **motivation** et de **volonté**, leur dicton favori est “quand on veut on peut”.",
+    [Coterie.romains]: "",
+    [Coterie.saabi]: "",
     Schweizer: "",
     Skavens: "",
     Templiers: "",
