@@ -31,7 +31,8 @@ export const descriptionCot: Record<Coterie, string> = {
         "Pour eux toute performance est une question de **motivation** et de **volonté**, leur dicton favori est “quand on veut on peut”.",
     [Coterie.romains]: "",
     [Coterie.saabi]: "",
-    Schweizer: "",
+    [Coterie.schweizer]: "L’idéal Schweizer est la prospérité dans la responsabilité. <br/>" +
+    "Chaque Schweizer a un nombre incalculable de devoirs politiques, économiques, civils et militaires. Si il cesse de les remplir il cesse d’être Schweizer. Si il les remplit il a droit à la paix, la tranquillité et la sécurité que tous ses coreligionnaires lui assurent.",
     Skavens: "",
     Templiers: "",
     Transhumanistes: "",

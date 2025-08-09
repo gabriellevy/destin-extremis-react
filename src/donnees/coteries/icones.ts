@@ -20,7 +20,7 @@ export const iconesCot: Record<Coterie, string> = {
     [Coterie.performeurs]: "",
     [Coterie.romains]: "",
     [Coterie.saabi]: "",
-    Schweizer: "",
+    [Coterie.schweizer]: "",
     Skavens: "",
     Templiers: "",
     Transhumanistes: "",
