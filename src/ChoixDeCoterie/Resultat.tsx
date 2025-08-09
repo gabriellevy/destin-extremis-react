@@ -28,9 +28,9 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
             const mauvais: TypeMauvais = getViceOppose(valBon.typeBon);
             const valMauvaisPerso = values[mauvais];
             if (Math.abs(valMauvaisPerso) !== 0) {
-                // alors ça vaut le coup de compter :
-                const valeurCoterie = valBon.valBon;
-                const amplitudeCombinee = valeurCoterie - valMauvaisPerso;
+                // alors ça vaut le coup de compter :s
+                const valeurCoterie:number = valBon.valBon;
+                const amplitudeCombinee:number = parseInt(String(valeurCoterie)) + parseInt(String(valMauvaisPerso));
                 res += Math.abs(amplitudeCombinee) * 5;
             }
         })

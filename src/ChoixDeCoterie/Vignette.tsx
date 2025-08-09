@@ -12,7 +12,7 @@ interface VignetteProps {
 const Vignette: React.FC<VignetteProps> = ({ name, description, image, score }) => {
     return (
         <Card sx={{ display: 'flex', m: 2, maxWidth: 600 }}>
-            <Box sx={{ width: 150, height: 150 }}>
+            <Box sx={{ width: 200, height: 200 }}>
                 <img
                     src={image}
                     alt={name}
