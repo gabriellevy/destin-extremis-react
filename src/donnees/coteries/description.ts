@@ -21,7 +21,9 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.jacobins]: "Les jacobins sont des politiciens idéologues pensant toujours en structure et en groupes puissants et centralisés. Ils font passer l’intérêt collectif, le devoir et la vertu loin devant l’intérêt personnel qu’ils acceptent comme expression de la liberté, mais méprisent comme une faiblesse humaine qu’il faut dépasser.",
     [Coterie.libertins]: "Les libertins ne se considèrent pas comme une coterie, mais quoiqu'ils en pensent ils en sont une. Ils sont ceux qui refusent le principe de s'affilier à une coterie donc une idéologie. Ils ont décidé \n" +
         "de faire passer leur liberté et leur indépendance avant toute autre chose. Simplement cet individualisme est en soit une idéologie de coterie. Ils refusent le mariage, refusent le salariat et les charges, et vagabondent au jour le jour.",
-    Lumières: "",
+    [Coterie.lumieres]: "Idéologie<br/>" +
+    "- puissance des idées pour modifier la réalité, relativité de la réalité, dominateurs depuis l'ombre, puissance du mensonge, morgue et sûreté sans faille de leur bon droit<br/>" +
+    "- profondément élitiste : grosse différence entre les riches (nobles, entrepreneurs, écrivains) et les très nombreux et insignifiants prolétaires",
     Ogres: "",
     Orks: "",
     Performeurs: "",
