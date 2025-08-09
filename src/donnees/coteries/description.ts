@@ -24,7 +24,7 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.lumieres]: "Idéologie<br/>" +
     "- puissance des idées pour modifier la réalité, relativité de la réalité, dominateurs depuis l'ombre, puissance du mensonge, morgue et sûreté sans faille de leur bon droit<br/>" +
     "- profondément élitiste : grosse différence entre les riches (nobles, entrepreneurs, écrivains) et les très nombreux et insignifiants prolétaires",
-    Ogres: "",
+    [Coterie.ogres]: "La base de l’idéologie ogre est la voracité, d’une manière simple et brutale. Voracité de nourriture bien sûr, mais aussi d’argent, d’émotion forte, d’expériences exceptionnelles, de voyages lointains, de possessions innombrables. Quel que soit ce qu’ils veulent, car chacun a ses propres obsessions, Ils veulent toujours plus, ne sont heureux et rassasiés que quelques heures au mieux. Et si ils ont atteint tous leurs objectifs, un nouveau réapparaîtra bientôt et les obsédera à nouveau.",
     Orks: "",
     Performeurs: "",
     Romains: "",
