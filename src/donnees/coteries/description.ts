@@ -33,7 +33,8 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.saabi]: "",
     [Coterie.schweizer]: "L’idéal Schweizer est la prospérité dans la responsabilité. <br/>" +
     "Chaque Schweizer a un nombre incalculable de devoirs politiques, économiques, civils et militaires. Si il cesse de les remplir il cesse d’être Schweizer. Si il les remplit il a droit à la paix, la tranquillité et la sécurité que tous ses coreligionnaires lui assurent.",
-    Skavens: "",
+    [Coterie.skavens]: "Les skavens ont pour principe de base une énergie et une ambition démesurée. Toujours plus et en un minimum de temps est leur devise, peu importe les risques à prendre.<br/>" +
+    "La race skavens vit dans une compétition acharnée et perpétuelle. Les forts y écrasent les faibles et en font leurs esclaves mais les faibles sont toujours à l'affût d'un moyen d'éliminer et renverser leurs maîtres. La trahison est la règle et elle n'est pas mal vue : chacun y voit un élément naturel et nécessaire pour la survie. La loyauté y est vue comme une faiblesse.",
     Templiers: "",
     Transhumanistes: "",
     Tyranides: "",
