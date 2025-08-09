@@ -6,18 +6,16 @@ import {affiniteViceVertuCoterie} from "../donnees/coteries/affiniteViceVertu";
 import Vignette from "./Vignette";
 import {descriptionCot} from "../donnees/coteries/description";
 import {iconesCot} from "../donnees/coteries/icones";
-
-type FormData = {
-    [key in TypeMauvais]: number;
-};
+import {ChoixCoterieFormData} from "./ChoixDeCoterie";
 
 type ResultatProps = {
-    watch: UseFormWatch<FormData>;
+    watch: UseFormWatch<ChoixCoterieFormData>;
 };
 
 const Resultat: React.FC<ResultatProps> = ({ watch }) => {
     // Exemple d'utilisation de `watch` pour accéder aux valeurs actuelles du formulaire
     const values = watch();
+    console.log("Mathieu values : ", values);
 
     // calcul du résultat
     const resParCoterie = new Map<Coterie, number>();
@@ -26,7 +24,7 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
 
         affiniteViceVertuCoterie[coterie].forEach(valBon => {
             const mauvais: TypeMauvais = getViceOppose(valBon.typeBon);
-            const valMauvaisPerso = values[mauvais];
+            const valMauvaisPerso = values.mauvais[mauvais];
             if (Math.abs(valMauvaisPerso) !== 0) {
                 // alors ça vaut le coup de compter :s
                 const valeurCoterie:number = valBon.valBon;

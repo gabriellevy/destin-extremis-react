@@ -3,15 +3,33 @@ import {FieldErrorsImpl, useForm} from 'react-hook-form';
 import {TypeMauvais} from "../types/BonMauvais";
 import SelectionTraits from "./SelectionTraits";
 import Resultat from "./Resultat";
+import SelectionComp from "./SelectionComp";
+import {TypeCompetence} from "../types/perso/comps/Comps";
 
-type FormData = {
-    [key in TypeMauvais]: number;
+export type ChoixCoterieFormData = {
+    competences: {
+        [key in TypeCompetence]: boolean;
+    };
+    mauvais: {
+        [key in TypeMauvais]: number;
+    };
 };
 
-const defaultValues: FormData = Object.keys(TypeMauvais).reduce((acc, key) => {
+const defaultValues: ChoixCoterieFormData = {
+    competences: Object.values(TypeCompetence).reduce((acc, competence) => {
+        acc[competence] = false;
+        return acc;
+    }, {} as { [key in TypeCompetence]: boolean }),
+        mauvais: Object.values(TypeMauvais).reduce((acc, mauvais) => {
+        acc[mauvais] = 0;
+        return acc;
+    }, {} as { [key in TypeMauvais]: number }),
+};
+
+/*const defaultValues: FormData = Object.keys(TypeMauvais).reduce((acc, key) => {
     acc[key as TypeMauvais] = 0;
     return acc;
-}, {} as FormData);
+}, {} as FormData);*/
 
 export enum PhaseDeChoix {
     selection_traits,
@@ -20,7 +38,7 @@ export enum PhaseDeChoix {
 }
 
 const ChoixDeCoterie : React.FC = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<ChoixCoterieFormData>({
         defaultValues: defaultValues
     });
     const [phaseDeChoix, setPhaseDeChoix] = useState<PhaseDeChoix>(PhaseDeChoix.selection_traits);
@@ -31,10 +49,20 @@ const ChoixDeCoterie : React.FC = () => {
                     (<SelectionTraits
                         register={register}
                         handleSubmit={handleSubmit}
-                        errors={errors as FieldErrorsImpl<FormData>}
+                        errors={errors as FieldErrorsImpl<ChoixCoterieFormData>}
                         watch={watch}
                         setPhaseDeChoix={setPhaseDeChoix}
                     />)
+            }
+            {
+                phaseDeChoix === PhaseDeChoix.selection_competences &&
+                (<SelectionComp
+                    register={register}
+                    handleSubmit={handleSubmit}
+                    errors={errors as FieldErrorsImpl<ChoixCoterieFormData>}
+                    watch={watch}
+                    setPhaseDeChoix={setPhaseDeChoix}
+                />)
             }
             {
                 phaseDeChoix === PhaseDeChoix.resultat &&
