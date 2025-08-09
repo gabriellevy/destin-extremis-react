@@ -7,15 +7,15 @@ import Vignette from "./Vignette";
 import {descriptionCot} from "../donnees/coteries/description";
 import {iconesCot} from "../donnees/coteries/icones";
 import {ChoixCoterieFormData} from "./ChoixDeCoterie";
+import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
+import {TypeCompetence} from "../types/perso/comps/Comps";
 
 type ResultatProps = {
     watch: UseFormWatch<ChoixCoterieFormData>;
 };
 
 const Resultat: React.FC<ResultatProps> = ({ watch }) => {
-    // Exemple d'utilisation de `watch` pour accéder aux valeurs actuelles du formulaire
     const values = watch();
-    console.log("Mathieu values : ", values);
 
     // calcul du résultat
     const resParCoterie = new Map<Coterie, number>();
@@ -30,6 +30,28 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
                 const valeurCoterie:number = valBon.valBon;
                 const amplitudeCombinee:number = parseInt(String(valeurCoterie)) + parseInt(String(valMauvaisPerso));
                 res += Math.abs(amplitudeCombinee) * 5;
+            }
+        })
+
+        const competencesChoisies = values.competences;
+        getEffetsDeCoterieSurCompetences(coterie).plus10Values.forEach((comp: TypeCompetence) => {
+            if (competencesChoisies[comp]) {
+                res += 12;
+            }
+        })
+        getEffetsDeCoterieSurCompetences(coterie).plus5Values.forEach((comp: TypeCompetence) => {
+            if (competencesChoisies[comp]) {
+                res += 6;
+            }
+        })
+        getEffetsDeCoterieSurCompetences(coterie).minus10Values.forEach((comp: TypeCompetence) => {
+            if (competencesChoisies[comp]) {
+                res -= 7;
+            }
+        })
+        getEffetsDeCoterieSurCompetences(coterie).minus5Values.forEach((comp: TypeCompetence) => {
+            if (competencesChoisies[comp]) {
+                res -= 3;
             }
         })
 

@@ -26,11 +26,6 @@ const defaultValues: ChoixCoterieFormData = {
     }, {} as { [key in TypeMauvais]: number }),
 };
 
-/*const defaultValues: FormData = Object.keys(TypeMauvais).reduce((acc, key) => {
-    acc[key as TypeMauvais] = 0;
-    return acc;
-}, {} as FormData);*/
-
 export enum PhaseDeChoix {
     selection_traits,
     selection_competences,
