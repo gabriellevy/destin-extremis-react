@@ -30,8 +30,31 @@ const cocheComp = (competence: TypeCompetence, listeMauvais: {
     Rebelle: number
 }): boolean => {
     switch (competence) {
-        case TypeCompetence.chance: return false;
+        case TypeCompetence.charme: return listeMauvais.Luxurieux < 0;
         case TypeCompetence.mouvement: return listeMauvais.Lâche < 0;
+        case TypeCompetence.intelligence: return listeMauvais.Naturaliste > 0;
+        case TypeCompetence.volonte: return listeMauvais.Aventureux > 0;
+        case TypeCompetence.armeCaC: return listeMauvais.Lâche > 0;
+        case TypeCompetence.bagarre: return listeMauvais.Orgueilleux < 0 || listeMauvais.Colérique < 0;
+        case TypeCompetence.discretion: return listeMauvais.Colérique > 0;
+        case TypeCompetence.marchandage: return listeMauvais.Cupide < 0;
+        case TypeCompetence.evaluation: return listeMauvais.Cupide < 0 || listeMauvais.Envieux < 0;
+        case TypeCompetence.animaux: return listeMauvais.Naturaliste < 0 || listeMauvais.Sociopathique > 0;
+        case TypeCompetence.intimidation: return listeMauvais.Colérique < 0 || listeMauvais.Cruel < 0;
+        case TypeCompetence.orientation: return listeMauvais.Aventureux < 0;
+        case TypeCompetence.intuition: return listeMauvais.Sociopathique > 0;
+        case TypeCompetence.survie: return listeMauvais.Naturaliste < 0;
+        case TypeCompetence.ragot: return listeMauvais.Solitaire > 0;
+        case TypeCompetence.vigilance: return listeMauvais.Rebelle > 0;
+        case TypeCompetence.reflexes: return listeMauvais.Colérique < 0;
+        case TypeCompetence.force: return listeMauvais.Paresseux > 0;
+        case TypeCompetence.adresse: return listeMauvais.Paresseux > 0;
+        case TypeCompetence.eloquence: return listeMauvais.Solitaire > 0;
+        case TypeCompetence.endurance: return listeMauvais.Gourmand > 0;
+        case TypeCompetence.tir: return listeMauvais.Solitaire < 0;
+        case TypeCompetence.perception: return listeMauvais.Colérique > 0 || listeMauvais.Paresseux < 0;
+        case TypeCompetence.commandement: return listeMauvais.Trompeur > 0;
+        case TypeCompetence.tromperie: return listeMauvais.Trompeur < 0 || listeMauvais.Rebelle < 0;
     }
     return false;
 }
