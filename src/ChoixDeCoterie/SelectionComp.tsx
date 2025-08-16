@@ -1,6 +1,6 @@
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText} from "@mui/material";
 import {isCompDeBase, TypeCompetence} from "../types/perso/comps/Comps";
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {ChoixCoterieFormData, PhaseDeChoix} from "./ChoixDeCoterie";
 import {FieldErrorsImpl, UseFormHandleSubmit, UseFormRegister, UseFormWatch} from "react-hook-form";
 
@@ -70,6 +70,29 @@ const SelectionComp: React.FC<SelectionCompProps> = ({
     const selectedCompetences: TypeCompetence[] = Object.entries(watch('competences')).flatMap(([key, value]) =>
         value ? [key as TypeCompetence] : []
     );
+    const [competencesCochees, setCompetencesCochees] = useState<Record<TypeCompetence, boolean>>(
+        () => {
+            const initialState: Record<TypeCompetence, boolean> = {} as Record<TypeCompetence, boolean>;
+            Object.values(TypeCompetence).forEach((competence) => {
+                initialState[competence] = cocheComp(competence, mauvaisTraits);
+            });
+            return initialState;
+        }
+    );
+
+    const handleCheckboxChange = (competence: TypeCompetence) => {
+        setCompetencesCochees((prevState) => ({
+            ...prevState,
+            [competence]: !prevState[competence],
+        }));
+    };
+
+    useEffect(() => {
+        Object.entries(competencesCochees).forEach(([competence, isChecked]) => {
+            // Mettre à jour les valeurs du formulaire si nécessaire
+            // Exemple : setValue(`competences.${competence}`, isChecked);
+        });
+    }, [competencesCochees]);
 
     const onSubmit = (data: ChoixCoterieFormData) => {
         const selected = Object.entries(data.competences)
@@ -94,7 +117,8 @@ const SelectionComp: React.FC<SelectionCompProps> = ({
                         control={
                             <Checkbox
                                 {...register(`competences.${competence}`)}
-                                checked={cocheComp(competence, mauvaisTraits)}
+                                checked={competencesCochees[competence]}
+                                onChange={() => handleCheckboxChange(competence)}
                             />
                         }
                         label={competence}
