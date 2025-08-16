@@ -37,7 +37,8 @@ export enum TypeCompetence {
     tromperie = "Tromperie",
     vigilance = "Vigilance",
     volonte = "Volonté",
-    // compétences professionnelles :
+
+    // compétences spécialisées / professionnelles :
     art_ecriture = "Art (écriture)",
     art_sculpture = "Art (Sculpture)",
     art_peinture = "Art (Peinture)",

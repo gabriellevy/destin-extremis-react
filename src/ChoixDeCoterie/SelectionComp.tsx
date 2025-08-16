@@ -1,5 +1,5 @@
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText} from "@mui/material";
-import {TypeCompetence} from "../types/perso/comps/Comps";
+import {isCompDeBase, TypeCompetence} from "../types/perso/comps/Comps";
 import {Dispatch, SetStateAction} from "react";
 import {ChoixCoterieFormData, PhaseDeChoix} from "./ChoixDeCoterie";
 import {FieldErrorsImpl, UseFormHandleSubmit, UseFormRegister, UseFormWatch} from "react-hook-form";
@@ -12,6 +12,30 @@ type SelectionCompProps = {
     setPhaseDeChoix: Dispatch<SetStateAction<PhaseDeChoix>>;
 };
 
+const cocheComp = (competence: TypeCompetence, listeMauvais: {
+    Colérique: number;
+    Aventureux: number;
+    Lâche: number;
+    Naturaliste: number;
+    Trompeur: number;
+    Paresseux: number;
+    Luxurieux: number;
+    Gourmand: number;
+    Cupide: number;
+    Cruel: number;
+    Envieux: number;
+    Orgueilleux: number;
+    Solitaire: number;
+    Sociopathique: number;
+    Rebelle: number
+}): boolean => {
+    switch (competence) {
+        case TypeCompetence.chance: return false;
+        case TypeCompetence.mouvement: return listeMauvais.Lâche < 0;
+    }
+    return false;
+}
+
 const SelectionComp: React.FC<SelectionCompProps> = ({
                                                      register,
                                                      errors,
@@ -19,6 +43,7 @@ const SelectionComp: React.FC<SelectionCompProps> = ({
                                                      handleSubmit,
                                                      setPhaseDeChoix
                                                  }) => {
+    const mauvaisTraits = watch().mauvais;
     const selectedCompetences: TypeCompetence[] = Object.entries(watch('competences')).flatMap(([key, value]) =>
         value ? [key as TypeCompetence] : []
     );
@@ -39,12 +64,14 @@ const SelectionComp: React.FC<SelectionCompProps> = ({
     return (
         <FormControl component="form" onSubmit={handleSubmit(onSubmit)} error={!!errors.competences}>
             <FormGroup>
-                {Object.values(TypeCompetence).map((competence) => (
+                {Object.values(TypeCompetence).map((competence: TypeCompetence) =>
+                    isCompDeBase(competence) && (
                     <FormControlLabel
                         key={competence}
                         control={
                             <Checkbox
                                 {...register(`competences.${competence}`)}
+                                checked={cocheComp(competence, mauvaisTraits)}
                             />
                         }
                         label={competence}

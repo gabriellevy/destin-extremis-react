@@ -66,7 +66,7 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
 
     return (
         <>
-            <h2>Résultat : </h2>
+            <h2>Vos coteries recommandées par ordre d'affinité : </h2>
             {
                 Array.from(resParCoterie.entries())
                     .sort(([_coterie1, total1], [_coterie2, total2]) => {
