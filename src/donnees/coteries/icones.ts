@@ -19,7 +19,7 @@ export const iconesCot: Record<Coterie, string> = {
     [Coterie.orks]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Orks.png",
     [Coterie.performeurs]: "",
     [Coterie.romains]: "",
-    [Coterie.saabi]: "",
+    [Coterie.saabi]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Saabi.png",
     [Coterie.schweizer]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Schweizer.jpg",
     [Coterie.skavens]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Skavens.png",
     [Coterie.templiers]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Templier.png",
