@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../types/Evt";
 import {NiveauIA, Perso} from "../../types/perso/Perso";
-import {appelLeChat, NiveauInfosPerso} from "../../App";
+import {appelLeChat, NiveauInfosPerso} from "../../fonctions/le_chat";
 
 export const evts_tout: GroupeEvts = {
     evts: [

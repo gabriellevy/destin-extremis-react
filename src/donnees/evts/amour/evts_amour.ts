@@ -8,7 +8,7 @@ import {aUnCoupDeCoeur, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../.
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {appelLeChat, NiveauInfosPerso} from "../../../App";
+import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 
 export const evts_amour: GroupeEvts = {
     evts: [
