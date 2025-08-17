@@ -26,15 +26,15 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Grid2 container spacing={0} sx={{ mb: 2 }} columns={16}>
+            <Grid2 container spacing={1} sx={{ mb: 5 }} columns={16}>
                 {idsSliders.map((idSlider: TypeMauvais, indexSliderAffiche: number) => (
                     <React.Fragment key={idSlider}>
                         <Grid2 size={2}>
-                            <Typography>
+                            <Typography textAlign="right">
                                 {idSlider}
                             </Typography>
                         </Grid2>
-                        <Grid2 size={4}>
+                        <Grid2 size={2}>
                             <input
                                 type="range"
                                 min="-3"
@@ -51,14 +51,18 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
                             {errors.mauvais?.[idSlider] && <p>{errors.mauvais[idSlider]?.message}</p>}
                         </Grid2>
                         <Grid2 size={2}>
-                            <Typography>
+                            <Typography sx={{ paddingLeft: '12px' }}>
                                 {idsBons[indexSliderAffiche]}
                             </Typography>
+                        </Grid2>
+                        <Grid2 size={2}>
                         </Grid2>
                     </React.Fragment>
                 ))}
             </Grid2>
-            <p>Total des déplacements: {total}</p>
+            {total >=5 &&(
+                <Typography color="error">Vous n'avez droit qu'à 5 crans de curseur déplacé et vous en êtes à {total} crans.</Typography>
+            )}
             <button type="submit" disabled={total > 5}>Valider</button>
         </form>
     );
