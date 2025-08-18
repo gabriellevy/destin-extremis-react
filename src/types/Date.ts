@@ -158,9 +158,18 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
 
     const nouvJourDuMois: number = calculJourDuMois(perso.date);
     const nouvMoisStr: string = calculMoisStr(perso.date);
+    // ---- Modification des valeurs affectées par le passage du temps
+    // - carrières
     Array.from(perso.carrieres.values()).map((carriere: Carriere) => {
         carriere.duree = carriere.duree + joursRellementAjoutes;
     });
+    // - blessures
+    if (perso.nbJoursDHopital > 0) {
+        perso.nbJoursDHopital -= joursRellementAjoutes;
+        if (perso.nbJoursDHopital < 0) {
+            perso.nbJoursDHopital = 0;
+        }
+    }
 
     // console.debug("nouvMoisStr : " + nouvMoisStr);
     perso.mois = nouvMoisStr;
