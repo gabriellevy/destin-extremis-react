@@ -3,41 +3,38 @@ import {Perso} from "../../../../types/perso/Perso";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
-import {
-    ajouterViceVal,
-    getValeurMauvais,
-    TypeMauvais
-} from "../../../../types/BonMauvais";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
+import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 
 export const evts_lycee_orks: GroupeEvts = {
     evts: [
         {
-            id: "evts_lycee_orks1_TODO",
+            id: "evts_lycee_orks1_fosse",
             description: async (perso: Perso): Promise<string> => {
-                let texte:string = "L'intimidation et la vantardise sont des traditions précieuses chez les celtes, qui peuvent se renvoyer des insultes des nuits entières pendant leurs banquets ou leurs duels rituels. "
-                    + "Il va de soit que vous êtes formés, en particulier lors des soirées étudiantes. Vous apprenez aussi à vous peindre le visage de manière terrifiante.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                let texte = "Vous vous entrainez à la plus violente des coutumes orks : le combat au corps à corps dans les fosses de justice.";
+
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: -10});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += "Vous êtes très doué à ce petit jeu. <br/>";
+                    texte += "Vous êtes étonament doué et dominez votre adversaire. <br/>";
+                    texte += "Vous vous en sortez avec quelques bleus et contusions. <br/>";
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 2);
                 } else {
-                    texte += "Vous ne faites clairement pas le poids, mais vous êtes au lycée pour apprendre ! <br/>";
-                }
-                // gloutonnerie
-                if (getValeurMauvais(perso, TypeMauvais.orgueilleux) < 2) {
-                    if (Math.random() >= 0.9) {
-                        texte += ajouterViceVal(perso, TypeMauvais.orgueilleux, 1);
+                    const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
+                    if (blessureSubie != null) {
+                        const texteBlessure: string = blessureSubie.nom;
+                        texte += "Au cours de l'entrainement vous recevez une blessure : " + texteBlessure + ". <br/>";
                     }
+                    texte += "Les orks en rigolent un bon coup et vous tappent dans le dos joyeusement. ";
+                    texte += "Tu verras quand tu s'ras un vrai ork ça r'poussera. ";
                 }
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
