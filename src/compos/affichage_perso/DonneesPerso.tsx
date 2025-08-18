@@ -1,7 +1,6 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {calculeAge, joursToAnnees} from "../../types/Date";
 import {Carriere} from "../../types/metiers/Metier";
-import {Coterie} from "../../types/Coterie";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
@@ -61,6 +60,24 @@ export default function DonneesPerso () {
         <ListItem>
             <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>
         </ListItem>
+        {
+            perso.pbDeSante.length > 0 && (
+                <ListItem>
+                    <ListItemText primary="Blessures" secondary={
+                        perso.pbDeSante.map(pbSante => pbSante.nom).join(', ')
+                    }/>
+                </ListItem>
+            )
+        }
+        {
+            perso.nbJoursDHopital > 0 && (
+                <ListItem>
+                    <ListItemText primary="Jours de convalescence" secondary={
+                        perso.nbJoursDHopital
+                    }/>
+                </ListItem>
+            )
+        }
         <Box sx={{ p: 2 }}>
             <Button variant="contained" color="primary" onClick={exporter} size="small">
                 Exporter le perso
