@@ -29,6 +29,7 @@ import {evts_bars} from "../donnees/evts/vie_courante/evts_bars";
 import {evts_amour} from "../donnees/evts/amour/evts_amour";
 import {evts_montbrison} from "../donnees/evts/quartiers/evts_montbrison";
 import {evts_pilleur_de_ruches} from "../donnees/evts/carrieres/evts_pilleur_de_ruches";
+import {evts_lycee_orks} from "../donnees/evts/coteries/orks/evts_lycee_orks";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -99,6 +100,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
+            ...filtrerEtPreparerEvts(evts_lycee_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),
             ...filtrerEtPreparerEvts(evts_centurion, perso),

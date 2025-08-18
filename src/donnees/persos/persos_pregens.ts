@@ -40,6 +40,8 @@ export function enfant(): Perso {
         reputation: reputationVide(),
         niveauIA: NiveauIA.systematique,
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
+        pbDeSante: [],
+        nbJoursDHopital: 0,
     };
     rejointCoterie(perso, cot);
     return perso;

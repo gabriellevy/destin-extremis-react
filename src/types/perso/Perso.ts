@@ -10,6 +10,7 @@ import {Reputation} from "../Reputation";
 import {Competence} from "./comps/Comps";
 import {PNJ} from "./PNJ";
 import {metiersEnum} from "../../donnees/metiers";
+import {PbDeSante} from "../sante/pbDeSante";
 
 export type Perso = {
     prenom: string;
@@ -41,6 +42,9 @@ export type Perso = {
     pnjs: PNJ[],
     // IA :
     niveauIA: NiveauIA,
+    // santé
+    pbDeSante: PbDeSante[],
+    nbJoursDHopital: number,
 };
 
 export enum NiveauIA {
