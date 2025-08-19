@@ -5,10 +5,11 @@ import {majReputationDansQuartier} from "../../../types/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
 import {getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
-import {aLaMaitrise, Maitrise} from "../../maitrise";
+import {Maitrise} from "../../maitrise";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {ajouterViceVal, getValeurMauvais, TypeMauvais} from "../../../types/BonMauvais";
+import {aLaMaitrise} from "../../../fonctions/perso/maitrise";
 
 export const evts_chatenay_malabry: GroupeEvts = {
     evts: [
@@ -48,7 +49,6 @@ export const evts_chatenay_malabry: GroupeEvts = {
                         texte += ajouterViceVal(perso, TypeMauvais.gourmand, 1);
                     }
                 }
-
 
                 majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation);
                 return texte;

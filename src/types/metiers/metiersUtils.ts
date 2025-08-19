@@ -3,6 +3,7 @@ import {Perso} from "../perso/Perso";
 import {seuils} from "../perso/comps/Comps";
 import {anneesToJours} from "../Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+import {PhaseLycee} from "../lycee/StadeUniversite";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -10,6 +11,10 @@ export function aUneCarriere(perso: Perso): boolean {
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
         if (carriere.actif) trouve = true;
     });
+    if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie) {
+        // considéré comme travaillant tant qu'il n'a pas fini son lycée
+        trouve = true;
+    }
     return trouve;
 }
 

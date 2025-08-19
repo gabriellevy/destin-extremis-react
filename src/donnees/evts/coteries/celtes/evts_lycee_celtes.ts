@@ -13,8 +13,9 @@ import {
 } from "../../../../types/BonMauvais";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
-import {ajouterMaitrise, Maitrise} from "../../../maitrise";
+import {Maitrise} from "../../../maitrise";
 import {Coterie} from "../../../../types/Coterie";
+import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 
 export const evts_lycee_celtes: GroupeEvts = {
     evts: [
