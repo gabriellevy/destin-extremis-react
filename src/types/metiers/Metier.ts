@@ -18,7 +18,7 @@ export type Carriere = {
     groupeLieu?: string, // ou ?
     employeur?: string, // quel groupe ou employeur ?
     duree: number, // temps passé à pratiquer ce métier (en jours)
-    competence: number, // sur 100. 1 en débutant
+    competence: number, // sur 100. 25 en débutant
     actif: boolean, // false pour une ancienne carrière (dont on conserve tout de même les compétences etc)
     nbDeTestsFaits: number,
     guilde?: titreGuildeEnum,
@@ -28,7 +28,7 @@ export const serveurDebutant: Carriere = {
     metier: metiersObjs[metiersEnum.serveur],
     groupeLieu: "Auberge du pont",
     duree: 0,
-    competence: 1,
+    competence: 25,
     actif: true,
     nbDeTestsFaits: 0,
 };
@@ -37,7 +37,7 @@ export const metierTest: Carriere = {
     metier: metiersObjs[metiersEnum.edile],
     groupeLieu: Quartier.la_defense,
     duree: 0,
-    competence: 1,
+    competence: 25,
     actif: true,
     nbDeTestsFaits: 0,
 };

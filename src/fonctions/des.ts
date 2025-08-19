@@ -43,7 +43,7 @@ function returnTestResult(resAugmentation: string, intituleTestee:string, valeur
     const texte: string = "<br/><i>Test de "
         + intituleTestee + " "
         + (reussi ? "réussi" : "raté")
-        + ` (résultat ${resDe} contre compétence ${valeurTestee} ${bonusMalus > 0 ? "+" : ""} ${bonusMalus} ) `
+        + ` (résultat ${resDe} contre compétence ${valeurTestee} ${bonusMalus > 0 ? "+" : ""} ${bonusMalus != 0 ? bonusMalus : ""} ) `
         + resAugmentation
         + "</i>";
     return {

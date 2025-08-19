@@ -37,7 +37,7 @@ export const evts_batelier: GroupeEvts = {
                 let texte: string = "";
                 const resTestFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 40});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 40});
-                texte += resTestEnd.resume;
+                texte += resTestFor.resume;
                 texte += resTestEnd.resume;
                 if (resTestFor.reussi && resTestEnd.reussi) {
                     texte += `Vous êtes un batelier efficace et respecté. `;

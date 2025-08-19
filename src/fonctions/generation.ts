@@ -16,7 +16,7 @@ export function getCarriereAleatoire(): Carriere {
     return {
         metier: metiersObjs[metierAleatoire],
         duree: 0,
-        competence: 1,
+        competence: 25,
         actif: true,
         nbDeTestsFaits: 0,
     };

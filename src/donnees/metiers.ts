@@ -31,6 +31,7 @@ export enum metiersEnum {
     legionnaire = "Légionnaire",
     pamphletaire = "Pamphlétaire",
     stalker = "Stalker",
+    mecanicien = "Mécanicien",
 }
 
 export const metiersObjs: MetierObj = {
@@ -205,6 +206,12 @@ export const metiersObjs: MetierObj = {
         intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.stalker,
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
+    },
+    [metiersEnum.mecanicien] : {
+        nom: metiersEnum.mecanicien,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.mecanicien,
+        statut: {rang: 5, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 1, metalStatut: MetalStatut.or},
     },
     [metiersEnum.pilleur_de_ruche] : {
         nom: metiersEnum.pilleur_de_ruche,

@@ -11,6 +11,8 @@ import {Maitrise} from "../../../maitrise";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {ajouterVertuVal, ajouterViceVal, TypeBon, TypeMauvais} from "../../../../types/BonMauvais";
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
+import {plusUnEnCompetenceMetier} from "../../../../types/metiers/metiersUtils";
+import {metiersEnum} from "../../../metiers";
 
 export const evts_lycee_orks: GroupeEvts = {
     evts: [
@@ -137,6 +139,24 @@ export const evts_lycee_orks: GroupeEvts = {
                 if (rand <= 0.3) {
                     texte += "L'alcool est tellement persistant qu'il vous fait sauter vos inhibitions et votre prudence sur le coup mais aussi à long terme.";
                     texte += ajouterViceVal(perso, TypeMauvais.rebelle, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks5formation mékano",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Un mékano a remarqué vos capacités et vous a formé aux bases de la réparation de moteurs. Bien que sa technique semble rudimentaire à première vue il est véritablement doué et très entousiaste comme enseignant. "
+                 + "Il vous promet que quand vous serez un vrai ork il vous apprendra à fabriquer des armes, ce qui est encore plus rigolo. <br/>";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    plusUnEnCompetenceMetier(perso, metiersEnum.mecanicien)
+                    texte += "Vous parvenez à retenir les bases du métier. <br/>";
+                } else {
+                    texte += "Mais vous n'y comprenez pas grand chose. <br/>";
                 }
 
                 return texte;

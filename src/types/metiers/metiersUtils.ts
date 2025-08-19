@@ -96,7 +96,31 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     });
 
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
-    let nivCompetence: number = 1;
+    let nivCompetence: number = 25;
+    let nbDeTestsFaits: number = 0;
+    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.get(metier);
+    if (cetteCarriereDejaFaite) {
+        // réactiver
+        cetteCarriereDejaFaite.actif = true;
+    } else {
+        // commencer la nouvelle
+        perso.carrieres.set(metier, {
+            metier: metiersObjs[metier],
+            groupeLieu: groupeLieu,
+            duree: 0,
+            competence: nivCompetence,
+            actif: true,
+            nbDeTestsFaits : nbDeTestsFaits,
+        });
+    }
+}
+
+/**
+ * devient meilleur à un métier mais sans commencer la carrière pour autant
+ */
+export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): void {
+    // récupérer valeurs de ce métier si déjà pratiqué par le passé
+    let nivCompetence: number = 25; // niveau débutant
     let nbDeTestsFaits: number = 0;
     const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.get(metier);
     if (cetteCarriereDejaFaite) {
@@ -106,10 +130,9 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     // commencer la nouvelle
     perso.carrieres.set(metier, {
         metier: metiersObjs[metier],
-        groupeLieu: groupeLieu,
         duree: 0,
-        competence: nivCompetence,
-        actif: true,
+        competence: nivCompetence + 1,
+        actif: false,
         nbDeTestsFaits : nbDeTestsFaits,
     });
 }
