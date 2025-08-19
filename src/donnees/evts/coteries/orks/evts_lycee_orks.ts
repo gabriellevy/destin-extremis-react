@@ -57,12 +57,34 @@ export const evts_lycee_orks: GroupeEvts = {
                     }
                 } else {
                     texte += "Vous êtes un piètre pilote et les orks se moquent de vous avec grand plaisir. <br/>";
+                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, -1);
                     if (resTest.critical) {
                         const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
                         if (blessureSubie) {
                             texte += "Malheureusement vous faites quelques chutes violentes sous les moqueries de votre instructeur. Vous avez maintenant la blessure : " + blessureSubie?.nom + ".<br/>";
                         }
                     }
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks3_pilote davion",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Les autres coteries se moquent de l'aspect rudimentaire de la technologie ork et pourtant ils sont une des rares à être capable de produire et faire tourner des avions grâces à leurs techniques très économiques en énergie."
+                + "Votre instructeur vous offre l'insigne honneur de voler avec lui et vous montre les bases du pilotage. <br/>";
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    texte += "Vous avez un bon talent pour cela et impressionnez votre instructeur. <br/>";
+                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                    if (resTest.critical) {
+                        texte += ajouterMaitrise(perso, Maitrise.pilotage_avion);
+                    }
+                } else {
+                    texte += "C'est extrêmement difficile. <br/>";
                 }
 
                 return texte;

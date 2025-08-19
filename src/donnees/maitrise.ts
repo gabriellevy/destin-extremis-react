@@ -11,4 +11,5 @@ export enum Maitrise {
     poesie = "Poesie",
     cuisine = "Cuisine",
     conduite_voiture = "Conduite de voiture",
+    pilotage_avion = "Pilotage d'avion",
 }
