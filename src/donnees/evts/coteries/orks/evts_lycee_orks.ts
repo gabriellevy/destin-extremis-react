@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../../types/Evt";
-import {Perso} from "../../../../types/perso/Perso";
-import {TypeCompetence} from "../../../../types/perso/comps/Comps";
+import {NiveauIA, Perso} from "../../../../types/perso/Perso";
+import {augmenterCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
@@ -9,6 +9,8 @@ import {Coterie} from "../../../../types/Coterie";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 import {Maitrise} from "../../../maitrise";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
+import {ajouterVertuVal, ajouterViceVal, TypeBon, TypeMauvais} from "../../../../types/BonMauvais";
+import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
 
 export const evts_lycee_orks: GroupeEvts = {
     evts: [
@@ -85,6 +87,56 @@ export const evts_lycee_orks: GroupeEvts = {
                     }
                 } else {
                     texte += "C'est extrêmement difficile. <br/>";
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks4soulé à la bière",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Personne ne respecte un ork qui ne tient pas la bière aux champignons. Votre instructeur fait en sorte que vous goûtiez de tous les alcools ork. Et en grande quantité. "
+                + "Aucun humain ayant subi une telle épreuve n'en ressort indemne. <br/>";
+
+                if (perso.niveauIA !== NiveauIA.desactive) {
+                    // pour les evts de remplissage l'IA est utilisée même en mode bouche_trou
+                    texte += await appelLeChat(
+                        perso,
+                        "Racontez une soirée de beuverie d personnage principal avec des orks.",
+                        NiveauInfosPerso.plus_metier) + "<br/>";
+                }
+
+                let rand = Math.random();
+                if (rand <= 0.3) {
+                    texte += "Votre organisme est durement affecté.";
+                    augmenterCompetence(perso, TypeCompetence.endurance, -1);
+                } else if (rand > 0.7) {
+                    texte += "Après des gueules de bois violentes vous êtes surpris de constater que vous vous êtes habitué même à leurs pires bières frelatées.";
+                    augmenterCompetence(perso, TypeCompetence.endurance, 1);
+                }
+
+                rand = Math.random();
+                if (rand <= 0.1) {
+                    texte += "Toutes vos angoisses profondes fondent définitivement.";
+                    texte += ajouterVertuVal(perso, TypeBon.placide, 1);
+                }
+
+                rand = Math.random();
+                if (rand <= 0.1) {
+                    texte += "Durablement affecté par la boisson empoisonnée mais violemment addictive, vous devenez alcoolique.";
+                    texte += ajouterViceVal(perso, TypeMauvais.gourmand, 1);
+                }
+
+                rand = Math.random();
+                if (rand <= 0.3) {
+                    texte += "L'alcool vous a salement endommagé le cerveau.";
+                    augmenterCompetence(perso, TypeCompetence.intelligence, -1);
+                }
+                rand = Math.random();
+                if (rand <= 0.3) {
+                    texte += "L'alcool est tellement persistant qu'il vous fait sauter vos inhibitions et votre prudence sur le coup mais aussi à long terme.";
+                    texte += ajouterViceVal(perso, TypeMauvais.rebelle, 1);
                 }
 
                 return texte;
