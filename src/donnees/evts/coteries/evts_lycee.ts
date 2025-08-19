@@ -5,6 +5,7 @@ import {Coterie} from "../../../types/Coterie";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
+import {descriptionCot} from "../../coteries/description";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
@@ -13,7 +14,8 @@ export const evts_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = Coterie.orks;
                 //const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
-                let texte: string = "Votre première année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                let texte: string = "Votre première année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee1 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
@@ -29,7 +31,8 @@ export const evts_lycee: GroupeEvts = {
             id: "evts_engagement_lycee_2eme_annee",
             description: async (perso: Perso): Promise<string> => {
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf(perso.bilanLycee.coterieAnnee1 ? [perso.bilanLycee.coterieAnnee1] : []);
-                let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
@@ -48,7 +51,8 @@ export const evts_lycee: GroupeEvts = {
                     [perso.bilanLycee.coterieAnnee1,
                     perso.bilanLycee.coterieAnnee2]
                 );
-                let texte: string = "Votre troisième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                let texte: string = "Votre troisième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
@@ -68,7 +72,8 @@ export const evts_lycee: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee2,
                     perso.bilanLycee.coterieAnnee3]
                 );
-                let texte: string = "Votre quatrième année de lycée commence. Vous rejoignez les " + coterieRejointe.toString();
+                let texte: string = "Votre quatrième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
                 perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
