@@ -13,6 +13,8 @@ import {ajouterVertuVal, ajouterViceVal, TypeBon, TypeMauvais} from "../../../..
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
 import {plusUnEnCompetenceMetier} from "../../../../types/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
+import {poserBioniqueAleatoire} from "../../../../fonctions/sante/bionique";
+import {Bionique} from "../../../../types/sante/Bionique";
 
 export const evts_lycee_orks: GroupeEvts = {
     evts: [
@@ -106,7 +108,7 @@ export const evts_lycee_orks: GroupeEvts = {
                     texte += await appelLeChat(
                         perso,
                         "Racontez une soirée de beuverie d personnage principal avec des orks.",
-                        NiveauInfosPerso.plus_metier) + "<br/>";
+                        NiveauInfosPerso.prenom) + "<br/>";
                 }
 
                 let rand = Math.random();
@@ -157,6 +159,47 @@ export const evts_lycee_orks: GroupeEvts = {
                     texte += "Vous parvenez à retenir les bases du métier. <br/>";
                 } else {
                     texte += "Mais vous n'y comprenez pas grand chose. <br/>";
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks6formation médiko",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Un médiko a remarqué vos capacités et vous a formé aux bases de la rudimentaire médecine ork."
+                 + "Leur vrai point fort est leur obsession des améliorations bioniques combinée à la capacité des patients orques à accepter à peu près toutes les greffes. <br/>";
+
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    plusUnEnCompetenceMetier(perso, metiersEnum.medecin)
+                    plusUnEnCompetenceMetier(perso, metiersEnum.cyberneticien)
+                    texte += "Vous parvenez à retenir les bases du métier. <br/>";
+                } else {
+                    texte += "Mais vous n'y comprenez pas grand chose. <br/>";
+                }
+
+                if (Math.random() <= 0.4) {
+                    texte += "Malheureusement il en profite pour faire des expériences amusantes sur vous après vous avoir assommé avec un maillet.";
+                    const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
+                    if (blessureSubie != null) {
+                        const texteBlessure: string = blessureSubie.nom;
+                        texte += texteBlessure + ". <br/>";
+                    }
+                    const bionique: Bionique|null = poserBioniqueAleatoire(perso);
+                    if (bionique) {
+                        if (bionique.description.length == 0 && perso.niveauIA !== NiveauIA.desactive
+                            || perso.niveauIA === NiveauIA.systematique) {
+                            texte += await appelLeChat(
+                                perso,
+                                "Racontez la pose du bionique suivant sur le personnage principal : " + bionique.nom,
+                                NiveauInfosPerso.prenom);
+                        } else {
+                            texte += bionique.description + "<br/>"
+                        }
+                    }
                 }
 
                 return texte;

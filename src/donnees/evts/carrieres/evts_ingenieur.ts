@@ -1,13 +1,14 @@
 import {Perso} from "../../../types/perso/Perso";
 import {metiersEnum} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
-import {compareStatut, MetalStatut} from "../../../types/statut_social/Statut";
+import {MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../types/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
+import {compareStatut} from "../../../fonctions/perso/statut";
 
 const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "C'est le jour du passage de diplôme ! ";

@@ -41,6 +41,7 @@ export function enfant(): Perso {
         niveauIA: NiveauIA.systematique,
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
         pbDeSante: [],
+        bioniques: [],
         nbJoursDHopital: 0,
     };
     rejointCoterie(perso, cot);

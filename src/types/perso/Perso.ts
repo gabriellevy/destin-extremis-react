@@ -11,6 +11,7 @@ import {Competence} from "./comps/Comps";
 import {PNJ} from "./PNJ";
 import {metiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
+import {Bionique} from "../sante/Bionique";
 
 export type Perso = {
     prenom: string;
@@ -44,6 +45,7 @@ export type Perso = {
     niveauIA: NiveauIA,
     // santé
     pbDeSante: PbDeSante[],
+    bioniques: Bionique[],
     nbJoursDHopital: number,
 };
 
