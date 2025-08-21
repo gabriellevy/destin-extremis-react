@@ -115,13 +115,15 @@ export const seuils: number[] = [
     511,
 ];
 
-export function augmenterCompetence(perso: Perso,typeComp: TypeCompetence, val: number) {
+export function augmenterCompetence(perso: Perso,typeComp: TypeCompetence, val: number): string {
     const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
     if (comp !== undefined) {
         comp.val += val;
+        return (val> 0 ? "+" : "") + val + " " + typeComp.toString() + "<br/>";
     } else {
         console.warn("Impossible de modifier la valeur de la compétence : " + typeComp + " de " + val);
     }
+    return "Impossible de modifier la valeur de la compétence : " + typeComp + " de " + val;
 }
 
 export function augmenterNbDeTestsFaitsComp(perso: Perso, typeComp: TypeCompetence): string {

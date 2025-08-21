@@ -114,10 +114,10 @@ export const evts_lycee_orks: GroupeEvts = {
                 let rand = Math.random();
                 if (rand <= 0.3) {
                     texte += "Votre organisme est durement affecté.";
-                    augmenterCompetence(perso, TypeCompetence.endurance, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.endurance, -1);
                 } else if (rand > 0.7) {
                     texte += "Après des gueules de bois violentes vous êtes surpris de constater que vous vous êtes habitué même à leurs pires bières frelatées.";
-                    augmenterCompetence(perso, TypeCompetence.endurance, 1);
+                    texte += augmenterCompetence(perso, TypeCompetence.endurance, 1);
                 }
 
                 rand = Math.random();
@@ -135,7 +135,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 rand = Math.random();
                 if (rand <= 0.3) {
                     texte += "L'alcool vous a salement endommagé le cerveau.";
-                    augmenterCompetence(perso, TypeCompetence.intelligence, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.intelligence, -1);
                 }
                 rand = Math.random();
                 if (rand <= 0.3) {
@@ -209,14 +209,14 @@ export const evts_lycee_orks: GroupeEvts = {
         {
             id: "evts_lycee_orks6_oisiveté",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "Si il y aune chose que vos professeurs veulent vous faire apprendre c'est qu'il 'faut pas sen fair'. "
+                let texte = "Si il y a une chose que vos professeurs veulent vous faire apprendre c'est qu'il 'faut pas sen fair'. "
                     + "Vous passez des journées entières à boire, jouer et fumer des mélanges étranges dans les kafés orks. Vous allez aussi souvent à la foir'. <br/>";
 
                 if (Math.random() <= 0.4) {
                     texte += "Plus le temps passe, plus vous vous désintéressez de ce que les autres pensent de vous, vous négligez votre hygiène, votre diction devient médiocre. ";
                     texte += ajouterViceVal(perso, TypeMauvais.paresseux, 1);
-                    augmenterCompetence(perso, TypeCompetence.eloquence, -1);
-                    augmenterCompetence(perso, TypeCompetence.charme, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.eloquence, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
                 }
                 texte += "Vous passez aussi beaucoup de temps à chanter et jouer du tambour ";
 
@@ -230,6 +230,34 @@ export const evts_lycee_orks: GroupeEvts = {
                     if (resTest.critical) {
                         texte += "Si effroyablement mal que les orks viennent de loin pour rire de vous. <br/>";
                         texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                    }
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks7bgarre",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Les rices font partie intégrante de la vie d'un ork. Hui vous vous retrouvez une fois encore aux prises avec un ork qui n'a pas apprécié que vous lui fassiez de l'ombre en passant. <br/>";
+
+                const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
+                const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
+                texte += resTestF.resume;
+                texte += resTestB.resume;
+                if (resTestF.reussi && resTestB.reussi) {
+                    texte += "Vous lui casse les dents puis vous réconciliez devant une bière en s'marrant. <br/>";
+                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                } else {
+                    if (resTestF.critical) {
+                        const blessureSubie = infligerBlessureAleatoire(perso, 0, 4);
+                        if (blessureSubie != null) {
+                            const texteBlessure: string = blessureSubie.nom;
+                            texte += "Il vous blesse gravement : " + texteBlessure + "<br/>";
+                        }
+                    } else {
+                        texte += "Il vous casse une dent puis vous réconciliez devant une bière en s'marrant. <br/>";
                     }
                 }
 
