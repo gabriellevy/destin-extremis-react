@@ -10,7 +10,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -2,
         typeBon: TypeBon.prudent,
     }],
-    [Coterie.acheron]: [{
+    [Coterie.acheron]: [
+        {
         valBon: -1,
         typeBon: TypeBon.altruiste,
     },{
@@ -23,7 +24,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.humble,
     }],
-    [Coterie.bastets]: [{
+    [Coterie.bastets]: [
+        {
         valBon: -1,
         typeBon: TypeBon.sobre,
     },{
@@ -36,7 +38,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.bienveillant,
     }],
-    [Coterie.cathares]: [{
+    [Coterie.cathares]: [
+        {
         valBon: 1,
         typeBon: TypeBon.sobre,
     },{
@@ -49,7 +52,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.humble,
     }],
-    [Coterie.carthaginois]: [{
+    [Coterie.carthaginois]: [
+        {
         valBon: -2,
         typeBon: TypeBon.genereux,
     },{
@@ -62,7 +66,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.prudent,
     }],
-    [Coterie.conquistador]: [{
+    [Coterie.conquistador]: [
+        {
         valBon: 1,
         typeBon: TypeBon.valeureux,
     },{
@@ -75,7 +80,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.humble,
     }],
-    [Coterie.culte_du_plaisir]:  [{
+    [Coterie.culte_du_plaisir]:  [
+        {
         valBon: -2,
         typeBon: TypeBon.chaste,
     },{
@@ -85,14 +91,16 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.sobre,
     }],
-    [Coterie.esprit_de_la_nature]: [{
+    [Coterie.esprit_de_la_nature]: [
+        {
         valBon: -3,
         typeBon: TypeBon.artificialiste,
     },{
         valBon: 1,
         typeBon: TypeBon.humble,
     }],
-    [Coterie.celtes]: [{
+    [Coterie.celtes]: [
+        {
         valBon: -1,
         typeBon: TypeBon.humble,
     },{
@@ -105,7 +113,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.sobre,
     }],
-    [Coterie.demokratos]: [{
+    [Coterie.demokratos]: [
+        {
         valBon: 2,
         typeBon: TypeBon.sociable,
     },{
@@ -115,7 +124,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.loyal,
     }],
-    [Coterie.elfes]: [{
+    [Coterie.elfes]: [
+        {
         valBon: 1,
         typeBon: TypeBon.chaste,
     },{
@@ -128,7 +138,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.artificialiste,
     }],
-    [Coterie.esthetes]:  [{
+    [Coterie.esthetes]:  [
+        {
         valBon: 1,
         typeBon: TypeBon.prudent,
     },{
@@ -144,7 +155,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.artificialiste,
     }],
-    [Coterie.jacobins]: [{
+    [Coterie.jacobins]: [
+        {
         valBon: -1,
         typeBon: TypeBon.empathique,
     },{
@@ -160,7 +172,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: 1,
         typeBon: TypeBon.sobre,
     }],
-    [Coterie.libertins]: [{
+    [Coterie.libertins]: [
+        {
         valBon: -1,
         typeBon: TypeBon.chaste,
     },{
@@ -173,7 +186,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.prudent,
     }],
-    [Coterie.lumieres]: [{
+    [Coterie.lumieres]: [
+        {
         valBon: -1,
         typeBon: TypeBon.loyal,
     },{
@@ -189,7 +203,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
         valBon: -1,
         typeBon: TypeBon.altruiste,
     }],
-    [Coterie.ogres]: [{
+    [Coterie.ogres]: [
+        {
         valBon: -2,
         typeBon: TypeBon.sobre,
     },{

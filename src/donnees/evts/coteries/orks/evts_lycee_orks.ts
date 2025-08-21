@@ -206,6 +206,37 @@ export const evts_lycee_orks: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
         },
+        {
+            id: "evts_lycee_orks6_oisiveté",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Si il y aune chose que vos professeurs veulent vous faire apprendre c'est qu'il 'faut pas sen fair'. "
+                    + "Vous passez des journées entières à boire, jouer et fumer des mélanges étranges dans les kafés orks. Vous allez aussi souvent à la foir'. <br/>";
+
+                if (Math.random() <= 0.4) {
+                    texte += "Plus le temps passe, plus vous vous désintéressez de ce que les autres pensent de vous, vous négligez votre hygiène, votre diction devient médiocre. ";
+                    texte += ajouterViceVal(perso, TypeMauvais.paresseux, 1);
+                    augmenterCompetence(perso, TypeCompetence.eloquence, -1);
+                    augmenterCompetence(perso, TypeCompetence.charme, -1);
+                }
+                texte += "Vous passez aussi beaucoup de temps à chanter et jouer du tambour ";
+
+                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
+                texte += resTest.resume;
+                if (resTest.reussi) {
+                    texte += "Vous avez un certain talent. <br/>";
+                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                } else {
+                    texte += "(mal).";
+                    if (resTest.critical) {
+                        texte += "Si effroyablement mal que les orks viennent de loin pour rire de vous. <br/>";
+                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                    }
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };
