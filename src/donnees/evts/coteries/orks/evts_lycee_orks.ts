@@ -265,6 +265,42 @@ export const evts_lycee_orks: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
         },
+        {
+            id: "evts_lycee_orks8impulsivité",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Hui vous voulez aller à la fête foraine et faire l'attraction la plus dangereuse possible. <br/>";
+                texte += "Votre prof' vous répond 'quand un sen kcé lmoment il fait ! Fonc' morveux !'. <br/>";
+                texte += "L'attraction est un tourniquet géant qui monte et descend tout en tounoyant dans tous les sens et chaque ork a une jambe éccrochée en haut du tourniquet par un élastique mal attaché. <br/>";
+
+                const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
+                texte += resTestE.resume;
+                if (resTestE.reussi) {
+                    texte += "Meilleure journée de votre vie ! <br/>";
+                } else {
+                    const blessureSubie = infligerBlessureAleatoire(perso, 0, 4);
+                    if (blessureSubie != null) {
+                        const texteBlessure: string = blessureSubie.nom;
+                        texte += "Après vous être cogné contre 3 autres festivaliers votre élastique lâche, vous êtes expulsé du manège à grande vitesse et subissez : " + texteBlessure + " <br/>";
+                    }
+                }
+
+                if (Math.random() <= 0.3) {
+                    texte += "En tout cas vous vous êtes fait plein d'potes à coups d'tatanes et vous êtes tous bien vomis d'ssus.<br/>.";
+                    texte += ajouterVertuVal(perso, TypeBon.sociable, 1);
+                }
+                if (Math.random() <= 0.3) {
+                    texte += "Décidément les études c'est pour les crétins.<br/>.";
+                    texte += ajouterViceVal(perso, TypeMauvais.rebelle, 1);
+                }
+                if (Math.random() <= 0.3) {
+                    texte += "Après cette expérience vous n'avez plus peur de rien.<br/>.";
+                    texte += ajouterViceVal(perso, TypeMauvais.aventureux, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };
