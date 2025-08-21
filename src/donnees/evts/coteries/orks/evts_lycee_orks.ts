@@ -2,7 +2,7 @@ import {GroupeEvts} from "../../../../types/Evt";
 import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {augmenterCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
-import {testComp} from "../../../../fonctions/des";
+import {testComp, testVertu} from "../../../../fonctions/des";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
@@ -240,7 +240,7 @@ export const evts_lycee_orks: GroupeEvts = {
         {
             id: "evts_lycee_orks7bgarre",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "Les rices font partie intégrante de la vie d'un ork. Hui vous vous retrouvez une fois encore aux prises avec un ork qui n'a pas apprécié que vous lui fassiez de l'ombre en passant. <br/>";
+                let texte = "Les rixes font partie intégrante de la vie d'un ork. Hui vous vous retrouvez une fois encore aux prises avec un ork qui n'a pas apprécié que vous lui fassiez de l'ombre en passant. <br/>";
 
                 const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
                 const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
@@ -295,6 +295,33 @@ export const evts_lycee_orks: GroupeEvts = {
                 if (Math.random() <= 0.3) {
                     texte += "Après cette expérience vous n'avez plus peur de rien.<br/>.";
                     texte += ajouterViceVal(perso, TypeMauvais.aventureux, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+        },
+        {
+            id: "evts_lycee_orks9harcèlement",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Frapper et humilier les plus faible est un trait typique de la culture ork. ";
+
+                const resTestEmpathie:ResultatTest = testVertu(perso, {typeBon: TypeBon.empathique, bonusMalus: -10});
+
+                texte += resTestEmpathie.resume;
+                if (resTestEmpathie.reussi) {
+                    texte += "Mais vous évitez autant que possible de participer. <br/>";
+                } else {
+                    texte += "Vous participez de bon coeur avec vos camarades étudiants. <br/>";
+                    const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                    texte += resTestE.resume;
+                    if (resTestE.reussi) {
+                        texte += "Vous faites pleurer plusieurs gretchins. <br/>";
+                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1);
+                    }
+                }
+                if (Math.random() <= 0.3) {
+                    texte += ajouterViceVal(perso, TypeMauvais.sociopathique, 1);
                 }
 
                 return texte;
