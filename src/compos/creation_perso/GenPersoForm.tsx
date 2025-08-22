@@ -16,7 +16,7 @@ import SelectionLieu from "./SelectionLieu";
 import SelectionStatut from "./SelectionStatut";
 import SelectionDates from "./SelectionDates";
 import {anneesToJours} from "../../types/Date";
-import {d2, d400} from "../../fonctions/des";
+import {d400} from "../../fonctions/des";
 import {enfant} from "../../donnees/persos/persos_pregens";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
@@ -50,7 +50,8 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         vaA(persoAl, getRandomEnumValue(Quartier));
         persoAl.coterie = getRandomEnumValue(Coterie);
         persoAl.statut = randomStatut();
-        persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
+        //persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
+        persoAl.sexe = Sexe.male;
         // nom aléatoire
         persoAl.prenom = getPrenom(persoAl.coterie, persoAl.sexe);
         persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
@@ -130,7 +131,6 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                             <Controller
                                 name="nom"
                                 control={methods.control}
-                                rules={{ required: "Vous devez avoir un nom" }}
                                 render={({ field }) => (
                                     <TextField
                                         {...field}

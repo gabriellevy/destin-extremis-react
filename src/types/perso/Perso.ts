@@ -15,8 +15,8 @@ import {Bionique} from "../sante/Bionique";
 
 export type Perso = {
     prenom: string;
-    nom: string;
-    cognomen: string;
+    nom?: string;
+    cognomen?: string;
     sexe: Sexe;
     dateNaissance: number; // en nombre de jours depuis l'an 0 du calendrier consulaire ?
     date: number, // en nombre de jours depuis l'an 0 du calendrier consulaire
@@ -47,6 +47,8 @@ export type Perso = {
     pbDeSante: PbDeSante[],
     bioniques: Bionique[],
     nbJoursDHopital: number,
+    // ------------------ orks
+    esclaveGtrechin?: string, // nom de l'esclave gretchin
 };
 
 export enum NiveauIA {
