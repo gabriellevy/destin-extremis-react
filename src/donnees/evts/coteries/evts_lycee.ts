@@ -1,12 +1,14 @@
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {calculeAge} from "../../../types/Date";
-import {Coterie} from "../../../types/Coterie";
+import {Coterie, rejointCoterie} from "../../../types/Coterie";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
 import {descriptionCot} from "../../coteries/description";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
+import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
+import {getRandomInt} from "../../../fonctions/random";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
@@ -14,8 +16,8 @@ export const evts_lycee: GroupeEvts = {
             id: "evts_engagement_lycee_1ere_annee",
             description: async (perso: Perso): Promise<string> => {
                 perso.coterie = undefined;
-                const coterieRejointe: Coterie = Coterie.orks;
-                // const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
+                // const coterieRejointe: Coterie = Coterie.orks;
+                const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
                 let texte: string = "Votre première année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
@@ -97,6 +99,19 @@ export const evts_lycee: GroupeEvts = {
                 let texte: string = "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
                 perso.bilanLycee.coterieActuelle = undefined;
+
+                const coteriesProches: Coterie[] = [];
+                Object.values(Coterie).forEach((co: Coterie) => {
+                    const affinite = calculerAffinite(perso, co);
+                    if (affinite >= SEUIL_AFFINITE) {
+                        coteriesProches.push(co);
+                    }
+                })
+                const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
+                if (coterieRejointe) {
+                    texte += "Vous rejoignez les " + coterieRejointe.toString();
+                    rejointCoterie(perso, coterieRejointe);
+                }
                 return texte;
             },
             conditions: (perso: Perso): boolean =>

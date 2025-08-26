@@ -50,7 +50,7 @@ import {
     ACHERON_PRENOMS_F,
     ACHERON_PRENOMS_M
 } from "../donnees/coteries/acheron/noms_acheron";
-import {ORKS_PRENOMS_F, ORKS_PRENOMS_M} from "../donnees/coteries/orks/noms_orks";
+import {ORKS_PRENOMS_F, ORKS_PRENOMS_M} from "../donnees/coteries/orks/donnees_orks";
 import {
     ZAPO_NOMS_F,
     ZAPO_NOMS_M,
