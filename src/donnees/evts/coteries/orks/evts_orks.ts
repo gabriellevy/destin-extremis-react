@@ -18,6 +18,15 @@ export const evts_orks: GroupeEvts = {
                 && statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.bronze, rang: 5})
                 && !perso.esclaveGtrechin,
         },
+        {
+            id: "evts_orks2_squid juteux",
+            description: async (perso: Perso): Promise<string> => {
+                return "Hui vous vous faites un petit plaisir : votre gretchin esclave " + perso.esclaveGtrechin + "  vous cuisine un bon squig juteux qu'il a trouvé au fond de le fosse à ordure. "
+                    + "Vous allez vous régaler ! ";
+            },
+            conditions: (perso: Perso): boolean => perso.coterie === Coterie.orks
+                && !!perso.esclaveGtrechin,
+        },
     ],
     probaParDefaut: 9999999999999999, // un peu > à la moyenne car spécifique à une coterie
 };
