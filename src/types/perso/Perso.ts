@@ -47,7 +47,7 @@ export type Perso = {
     pbDeSante: PbDeSante[],
     bioniques: Bionique[],
     nbJoursDHopital: number,
-    // ------------------ orks
+    // ------------------ orks ------------------------ //
     esclaveGtrechin?: string, // nom de l'esclave gretchin
 };
 

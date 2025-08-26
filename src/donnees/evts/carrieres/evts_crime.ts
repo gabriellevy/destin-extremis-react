@@ -11,7 +11,7 @@ import {
     suitUneCarriereDe,
     suitUneCarriereDepuis
 } from "../../../types/metiers/metiersUtils";
-import {compareStatut} from "../../../fonctions/perso/statut";
+import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
 export const evts_crime: GroupeEvts = {
     evts: [
@@ -23,7 +23,7 @@ export const evts_crime: GroupeEvts = {
             return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
                 "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. ";
         },
-            conditions: (perso: Perso): boolean => !aUneCarriere(perso) && !compareStatut(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
+            conditions: (perso: Perso): boolean => !aUneCarriere(perso) && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
         },
         {
             id: "evts_crime2",

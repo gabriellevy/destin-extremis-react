@@ -8,7 +8,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours} from "../../../types/Date";
 import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../types/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
-import {compareStatut} from "../../../fonctions/perso/statut";
+import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
 const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "C'est le jour du passage de diplôme ! ";
@@ -46,7 +46,7 @@ export const evts_ingenieur: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && !compareStatut(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
+                && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
             proba: 5,
         },
         {

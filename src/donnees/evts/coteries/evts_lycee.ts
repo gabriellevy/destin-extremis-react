@@ -12,8 +12,8 @@ export const evts_lycee: GroupeEvts = {
         {
             id: "evts_engagement_lycee_1ere_annee",
             description: async (perso: Perso): Promise<string> => {
-                //const coterieRejointe: Coterie = Coterie.orks;
-                const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
+                const coterieRejointe: Coterie = Coterie.orks;
+                // const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
                 let texte: string = "Votre première année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
