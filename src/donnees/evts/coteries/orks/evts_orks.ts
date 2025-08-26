@@ -93,5 +93,5 @@ export const evts_orks: GroupeEvts = {
                 && aUneCarriere(perso),
         },
     ],
-    probaParDefaut: 20, // un peu > à la moyenne car spécifique à une coterie
+    probaParDefaut: 10, // un peu > à la moyenne car spécifique à une coterie
 };

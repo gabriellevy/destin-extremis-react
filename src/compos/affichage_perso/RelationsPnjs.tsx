@@ -8,7 +8,7 @@ export default function RelationsPnjs () {
 
     return (
             perso.pnjs.map((pnj:PNJ) => {
-                return (<ListItem>
+                return (<ListItem key={pnj.prenom + pnj.nom}>
                     <ListItemText primary={pnj.prenom} secondary={pnj.amourPourCePnj}/>
                 </ListItem>);
             })

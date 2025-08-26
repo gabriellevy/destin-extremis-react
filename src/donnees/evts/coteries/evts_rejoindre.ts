@@ -24,8 +24,8 @@ export const evts_rejoindre: GroupeEvts = {
                 })
                 const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
                 if (coterieRejointe) {
+                    texte += "Vous rejoignez les " + coterieRejointe.toString();
                     rejointCoterie(perso, coterieRejointe);
-                    texte += "Après mure réflexion vous rejoignez les " + coterieRejointe.toString();
                 } else {
                     texte += "Malheureusement aucune coterie ne vous satisfait. Peut-être votre caractère est-il encore trop peu affirmé ?" +
                         " Ou peut-être au contraire êtes vous si exceptionnel qu'aucune coterie ne peut vous correspondre ?";
@@ -39,5 +39,5 @@ export const evts_rejoindre: GroupeEvts = {
                 && calculeAge(perso) >= 19,
         },
     ],
-    probaParDefaut: 50,
+    probaParDefaut: 100, // très grosse probabilité : il n'est pas naturel de rester sans coterie
 };
