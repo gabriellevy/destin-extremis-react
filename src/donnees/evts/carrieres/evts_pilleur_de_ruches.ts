@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {getValeurMauvais, TypeMauvais} from "../../../types/BonMauvais";
+import {getValeurVice, TypeMauvais} from "../../../types/BonMauvais";
 import {aUneCarriere, commencerCarriere} from "../../../types/metiers/metiersUtils";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
@@ -35,8 +35,8 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && (getValeurMauvais(perso, TypeMauvais.aventureux) >= 1
-                || getValeurMauvais(perso, TypeMauvais.cupide) >= 1 && getValeurMauvais(perso, TypeMauvais.aventureux) >= 0)
+                && (getValeurVice(perso, TypeMauvais.aventureux) >= 1
+                || getValeurVice(perso, TypeMauvais.cupide) >= 1 && getValeurVice(perso, TypeMauvais.aventureux) >= 0)
                 && calculeAge(perso) >= 16
                 && auBordDuneRuche(perso),
         },

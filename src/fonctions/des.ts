@@ -1,8 +1,8 @@
-import {ResultatTest, TestCompetence, TestMetier, TestVertu} from "../types/LancerDe";
+import {ResultatTest, TestCompetence, TestMetier, TestVertu, TestVice} from "../types/LancerDe";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
 import {Perso} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "../types/metiers/metiersUtils";
-import {getValeurVertu} from "../types/BonMauvais";
+import {getValeurVertu, getValeurVice} from "../types/BonMauvais";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;
@@ -26,11 +26,16 @@ export function testComp(perso: Perso, test: TestCompetence): ResultatTest {
 
 export function testVertu(perso: Perso, test: TestVertu): ResultatTest {
     const compVal: number = getValeurVertu(perso, test.typeBon);
-    // augmenter tests effectués :
-    //const resAugmentation: string = augmenterNbDeTestsFaitsComp(perso, test.comp);
     const calculerValeur = 50 + compVal*15;
 
     return returnTestResult("", test.typeBon, calculerValeur, test.bonusMalus);
+}
+
+export function testVice(perso: Perso, test: TestVice): ResultatTest {
+    const compVal: number = getValeurVice(perso, test.typeMauvais);
+    const calculerValeur = 50 + compVal*15;
+
+    return returnTestResult("", test.typeMauvais, calculerValeur, test.bonusMalus);
 }
 
 export function testMetier(perso: Perso, test: TestMetier): ResultatTest {

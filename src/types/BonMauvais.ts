@@ -83,7 +83,7 @@ export function getVertuOppose(typeVice: TypeMauvais): TypeBon {
     }
 }
 
-export function getValeurMauvais(perso: Perso, typeVice: TypeMauvais): number {
+export function getValeurVice(perso: Perso, typeVice: TypeMauvais): number {
     return - getValeurVertu(perso, getVertuOppose(typeVice));
 }
 
@@ -144,9 +144,9 @@ export function ajouterVertuVal(perso: Perso, typeVertu: TypeBon, val:number): s
 
 export function ajouterViceVal(perso: Perso, typeVice: TypeMauvais, val:number): string {
     const vertu = getVertuOppose(typeVice);
-    const valPrecedente = getValeurMauvais(perso, typeVice);
+    const valPrecedente = getValeurVice(perso, typeVice);
     ajouterVertuVal(perso, vertu, -val);
-    const valActuelle = getValeurMauvais(perso, typeVice);
+    const valActuelle = getValeurVice(perso, typeVice);
     if (valPrecedente != valActuelle) {
         return "<b>" + valActuelle + " en " + typeVice.toString() + " </b> ";
     }

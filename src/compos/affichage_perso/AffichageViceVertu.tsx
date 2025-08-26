@@ -1,4 +1,4 @@
-import {getValeurVertu, getValeurMauvais, getViceOppose, TypeBon} from "../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, getViceOppose, TypeBon} from "../../types/BonMauvais";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
@@ -31,7 +31,7 @@ export default function AffichageViceVertu () {
                             gap: "0 0px", }}
                     >
                         <td style={{ ...cellStyle, color: 'red' }}>
-                            { "(" + getValeurMauvais(perso, typeVice) + ") " + typeVice.toString() + "  >"}
+                            { "(" + getValeurVice(perso, typeVice) + ") " + typeVice.toString() + "  >"}
                         </td>
                         <td>
                             {" ----- "}

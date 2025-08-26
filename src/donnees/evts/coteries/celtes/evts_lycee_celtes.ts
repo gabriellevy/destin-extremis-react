@@ -7,7 +7,7 @@ import {
     ajouterVertuVal,
     ajouterViceVal,
     getValeurVertu,
-    getValeurMauvais,
+    getValeurVice,
     TypeBon,
     TypeMauvais
 } from "../../../../types/BonMauvais";
@@ -34,7 +34,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous ne faites clairement pas le poids, mais vous êtes au lycée pour apprendre ! <br/>";
                     }
                 // gloutonnerie
-                if (getValeurMauvais(perso, TypeMauvais.orgueilleux) < 2) {
+                if (getValeurVice(perso, TypeMauvais.orgueilleux) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeMauvais.orgueilleux, 1);
                     }
@@ -58,7 +58,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous êtes encore maladroit pour un hôte mais on pardonne beaucoup à un étudiant. <br/>";
                     }
                 // gloutonnerie
-                if (getValeurMauvais(perso, TypeMauvais.gourmand) < 2) {
+                if (getValeurVice(perso, TypeMauvais.gourmand) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeMauvais.gourmand, 1);
                     }
@@ -86,7 +86,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                         texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
                     }
 
-                if (getValeurMauvais(perso, TypeMauvais.colerique) < 2) {
+                if (getValeurVice(perso, TypeMauvais.colerique) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += ajouterViceVal(perso, TypeMauvais.colerique, 1);
                     }

@@ -1,6 +1,6 @@
 import {TypeCompetence} from "./perso/comps/Comps";
 import {metiersEnum} from "../donnees/metiers";
-import {TypeBon} from "./BonMauvais";
+import {TypeBon, TypeMauvais} from "./BonMauvais";
 
 export type ResultatTest = {
     reussi: boolean,
@@ -15,6 +15,11 @@ export type TestCompetence = {
 
 export type TestVertu = {
     typeBon: TypeBon,
+    bonusMalus: number,
+}
+
+export type TestVice = {
+    typeMauvais: TypeMauvais,
     bonusMalus: number,
 }
 

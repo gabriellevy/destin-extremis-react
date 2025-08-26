@@ -13,7 +13,12 @@ export function statut1SuperieurOuEgalAStatut2(statut1: Statut, statut2: Statut)
         statut2.metalStatut === MetalStatut.bronze;
 }
 
-export function modifierStatut(perso: Perso, valeurAjoutee: number) {
+export function statutToString(statut: Statut):string {
+    return statut.metalStatut.toString() + " " + statut.rang.toString();
+}
+
+export function modifierStatut(perso: Perso, valeurAjoutee: number): string {
+    const vieuxStatut: string = statutToString(perso.statut);
     perso.statut.rang += valeurAjoutee;
     if (perso.statut.rang < 1) {
         // rétrogradation
@@ -45,4 +50,10 @@ export function modifierStatut(perso: Perso, valeurAjoutee: number) {
                 break;
         }
     }
+    if (perso.statut.rang < 0) {
+        perso.statut.rang = 0;
+    }
+
+    const nouveauStatut: string = statutToString(perso.statut);
+    return "statut passé de " + vieuxStatut + " à " + nouveauStatut;
 }

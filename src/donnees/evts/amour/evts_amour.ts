@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
-import {getValeurVertu, getValeurMauvais, TypeBon, TypeMauvais} from "../../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, TypeBon, TypeMauvais} from "../../../types/BonMauvais";
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../../types/perso/Amour";
@@ -31,7 +31,7 @@ export const evts_amour: GroupeEvts = {
                 return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
-                getValeurMauvais(perso, TypeMauvais.luxurieux) >= 0
+                getValeurVice(perso, TypeMauvais.luxurieux) >= 0
                 && !enCoupleAvecUnAmourFort(perso)
                 && perso.age >= 13,
         },
@@ -55,7 +55,7 @@ export const evts_amour: GroupeEvts = {
                 return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
-                getValeurMauvais(perso, TypeMauvais.luxurieux) >= 0
+                getValeurVice(perso, TypeMauvais.luxurieux) >= 0
                 && !enCoupleAvecUnAmourFort(perso)
                 && perso.age >= 13,
         },
@@ -75,11 +75,11 @@ export const evts_amour: GroupeEvts = {
                         texte += "Déçu, vous passez autre chose et l'oubliez rapidement. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.aucun;
                     }
-                    if (getValeurMauvais(perso, TypeMauvais.aventureux) > 0) {
+                    if (getValeurVice(perso, TypeMauvais.aventureux) > 0) {
                         texte += "Vous n'êtes pas du genre à renoncer. Vous savez que vous pouvez lui plaire et chercherez une autre occasion. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.aucun;
                     }
-                    if (getValeurMauvais(perso, TypeMauvais.envieux) > 0 && Math.random() > 0.9) {
+                    if (getValeurVice(perso, TypeMauvais.envieux) > 0 && Math.random() > 0.9) {
                         texte += "Être repoussé vous rend de plus en plus obsessionel à son sujet. Vous êtes sûr qu'elle est faite pour vous. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.amourFort;
                     }
