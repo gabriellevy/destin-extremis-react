@@ -1,4 +1,4 @@
-import {Perso} from "../../../types/perso/Perso";
+import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {calculeAge} from "../../../types/Date";
 import {Coterie} from "../../../types/Coterie";
@@ -6,6 +6,7 @@ import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
 import {descriptionCot} from "../../coteries/description";
+import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
@@ -96,6 +97,29 @@ export const evts_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.phaseActuelle === PhaseLycee.coterie4
                 && calculeAge(perso) == 18,
+            proba: 999999999999999999999999999,// à peu près obligatoire
+        },
+        {
+            // événement bidon pour remettre le lycée à une valeur valide si il y a décalage entre âge et phaseActuelle
+            id: "evts_nettoyage_fin_de_lycee",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "";
+                perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
+                perso.bilanLycee.coterieActuelle = undefined;
+                if (perso.niveauIA !== NiveauIA.desactive) {
+                    // pour les evts de remplissage l'IA est utilisée même en mode bouche_trou
+                    texte = await appelLeChat(
+                        perso,
+                        "Racontez la vie courante du personnage principal.",
+                        NiveauInfosPerso.plus_metier);
+                } else {
+                    texte += "";
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                perso.bilanLycee.phaseActuelle !== PhaseLycee.finie
+                && calculeAge(perso) >= 20,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
     ],

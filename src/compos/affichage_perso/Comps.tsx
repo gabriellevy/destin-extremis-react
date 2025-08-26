@@ -52,6 +52,7 @@ export default function Comps () {
                     .filter(typeComp => isCompDeBase(typeComp))
                     .map(typeComp => {
                     return (<Comp
+                        key={typeComp.toString()}
                         primaryText={typeComp.toString()}
                         perso={perso}
                         competenceType={typeComp}

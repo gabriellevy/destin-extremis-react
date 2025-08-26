@@ -34,6 +34,8 @@ export enum metiersEnum {
     mecanicien = "Mécanicien",
     medecin = "Médecin",
     cyberneticien = "Cybernéticien",
+    // -------------- métiers orks ------------------ //
+    marchand_de_champignon = "Marchand de champignon",
 }
 
 export const metiersObjs: MetierObj = {
@@ -112,7 +114,12 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
     },
-
+    [metiersEnum.marchand_de_champignon] : {
+        nom: metiersEnum.marchand_de_champignon,
+        intitule: () => metiersEnum.marchand_de_champignon,
+        statut: {rang: 2, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 1, metalStatut: MetalStatut.argent},
+    },
     [metiersEnum.apprenti_barbier_chirurgien] : {
         nom: metiersEnum.apprenti_barbier_chirurgien,
         intitule: () => metiersEnum.apprenti_barbier_chirurgien,
