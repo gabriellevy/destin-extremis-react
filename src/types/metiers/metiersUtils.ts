@@ -11,7 +11,7 @@ export function aUneCarriere(perso: Perso): boolean {
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
         if (carriere.actif) trouve = true;
     });
-    if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie) {
+    if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined) {
         // considéré comme travaillant tant qu'il n'a pas fini son lycée
         trouve = true;
     }
@@ -52,11 +52,18 @@ export function neSuitPasUneCarriereDe(perso: Perso, metier: metiersEnum): boole
     return !trouve;
 }
 
-export function suitUneCarriereDepuis(perso: Perso, metier: metiersEnum, dureeEnAnnees: number): boolean {
+/**
+ *
+ * @param perso
+ * @param metier si undefined signifie n'importe quelle carrière
+ * @param dureeEnAnnees
+ */
+export function suitUneCarriereDepuis(perso: Perso, metier: metiersEnum|undefined, dureeEnAnnees: number): boolean {
     let trouve: boolean = false;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
-            if (carriere.metier.nom === metier && carriere.actif && carriere.duree >= anneesToJours(dureeEnAnnees)) {
+            if ((metier === undefined || carriere.metier.nom === metier)
+                && carriere.actif && carriere.duree >= anneesToJours(dureeEnAnnees)) {
                 trouve = true;
             }
         });

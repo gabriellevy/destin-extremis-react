@@ -1,9 +1,9 @@
 import {Option} from "../lieux/Lieu";
 
 // valeur générale reflétant le statut social d'un personnage à l'échelle de la société
-// bronze : pauvres
-// argent : travailleur
-// or : nobles et très haute bourgeoisie
+// bronze : pauvres, petits boulots, truands
+// argent : travailleurs qualifiés (mais pas trop)
+// or : haute bourgeoisie
 export type Statut = {
     rang: number,
     metalStatut: MetalStatut,

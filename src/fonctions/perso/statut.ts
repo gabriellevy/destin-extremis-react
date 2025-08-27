@@ -5,7 +5,9 @@ import {Perso} from "../../types/perso/Perso";
 /**
  * return true si statut 1 est supérieur ou égal à statut 2
  */
-export function statut1SuperieurOuEgalAStatut2(statut1: Statut, statut2: Statut): boolean {
+export function statut1SuperieurOuEgalAStatut2(statut1: Statut, statut2: Statut|undefined): boolean {
+    if (statut2 === undefined) return false;
+
     if (statut1.metalStatut === statut2.metalStatut) return statut1.rang >= statut2.rang;
     if (statut1.metalStatut === MetalStatut.or &&
         (statut2.metalStatut === MetalStatut.bronze || statut2.metalStatut === MetalStatut.argent)) return true;
@@ -19,7 +21,7 @@ export function statutToString(statut: Statut):string {
 
 export function modifierStatut(perso: Perso, valeurAjoutee: number): string {
     const vieuxStatut: string = statutToString(perso.statut);
-    perso.statut.rang += valeurAjoutee;
+    perso.statut.rang = perso.statut.rang + valeurAjoutee;
     if (perso.statut.rang < 1) {
         // rétrogradation
         switch (perso.statut.metalStatut) {
@@ -55,5 +57,5 @@ export function modifierStatut(perso: Perso, valeurAjoutee: number): string {
     }
 
     const nouveauStatut: string = statutToString(perso.statut);
-    return "statut passé de " + vieuxStatut + " à " + nouveauStatut;
+    return "Votre statut passe de " + vieuxStatut + " à " + nouveauStatut + ".<br/>";
 }

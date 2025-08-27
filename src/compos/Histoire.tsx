@@ -31,6 +31,7 @@ import {evts_montbrison} from "../donnees/evts/quartiers/evts_montbrison";
 import {evts_pilleur_de_ruches} from "../donnees/evts/carrieres/evts_pilleur_de_ruches";
 import {evts_lycee_orks} from "../donnees/evts/coteries/orks/evts_lycee_orks";
 import {evts_orks} from "../donnees/evts/coteries/orks/evts_orks";
+import {evts_carriere} from "../donnees/evts/carrieres/evts_carriere";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -111,6 +112,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_macon, perso),
             ...filtrerEtPreparerEvts(evts_boulanger, perso),
             ...filtrerEtPreparerEvts(evts_boucher, perso),
+            ...filtrerEtPreparerEvts(evts_carriere, perso),
             ...filtrerEtPreparerEvts(evts_forgeron, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),
             ...filtrerEtPreparerEvts(evts_barbierChirurgien, perso),
