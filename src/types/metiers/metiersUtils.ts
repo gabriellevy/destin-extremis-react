@@ -115,6 +115,14 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     }
 }
 
+export function arreterCarriere(perso: Perso, metier: metiersEnum): void {
+    // passer en inactif
+    const carriere =  perso.carrieres.get(metier);
+    if (carriere) {
+        carriere.actif = false;
+    }
+}
+
 /**
  * devient meilleur à un métier mais sans commencer la carrière pour autant
  */

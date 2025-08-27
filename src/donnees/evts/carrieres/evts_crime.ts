@@ -7,7 +7,7 @@ import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {
     aUneCarriere,
-    commencerCarriere,
+    commencerCarriere, plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
 } from "../../../types/metiers/metiersUtils";
@@ -20,9 +20,9 @@ export const evts_crime: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 commencerCarriere(perso, metiersEnum.ranconneur, '');
 
-            return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
-                "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. ";
-        },
+                return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
+                    "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. ";
+            },
             conditions: (perso: Perso): boolean => !aUneCarriere(perso) && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
         },
         {
@@ -45,7 +45,33 @@ export const evts_crime: GroupeEvts = {
             id: "evts_crime3",
             description: async (_perso: Perso): Promise<string> => "Vous êtes maintenant un membre de la bande à part entière. " +
                 "En signe d'appartenance et de fraternité un couteau et une larme vous sont tatoués bien visibles sur le visage. ",
-            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, metiersEnum.ranconneur, 40),
+            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, metiersEnum.ranconneur, 20),
+        },
+        {
+            id: "evts_crime4_rançonneur",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "";
+
+                const resTestI:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 20});
+                texte += resTestI.resume;
+                if (resTestI.reussi) {
+                    texte += "Vous rançonnez les petits artisans du coin très efficacement. <br/>";
+                    plusUnEnCompetenceMetier(perso, metiersEnum.ranconneur);
+                } else {
+                    texte += "Alors que vous passez prendre la redevance de l'organisation chez un marcand de chaussures il se permet de refuser de payer. <br/>";
+                    const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
+                    texte += resTestB.resume;
+                    if (resTestB.reussi) {
+                        texte += "Vous lui démontez le portrait. <br/>";
+                    } else {
+                        texte += "Vous l'attaquez mais vous prenez une dérouillée humiliante et êtes moqué par tout le gang. Peut-être n'êtes vous pas fait pour ce boulot. <br/>";
+                        commencerCarriere(perso, metiersEnum.ranconneur, '');
+                    }
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => !aUneCarriere(perso) && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
         },
     ],
     probaParDefaut: 5,
