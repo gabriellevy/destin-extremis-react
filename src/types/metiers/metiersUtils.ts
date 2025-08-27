@@ -130,17 +130,21 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25; // niveau débutant
     let nbDeTestsFaits: number = 0;
+    let metierActif = false;
+    let duree = 0;
     const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.get(metier);
     if (cetteCarriereDejaFaite) {
         nivCompetence = cetteCarriereDejaFaite.competence;
         nbDeTestsFaits = cetteCarriereDejaFaite.nbDeTestsFaits;
+        metierActif = cetteCarriereDejaFaite.actif;
+        duree = cetteCarriereDejaFaite.duree;
     }
     // commencer la nouvelle
     perso.carrieres.set(metier, {
         metier: metiersObjs[metier],
-        duree: 0,
+        duree: duree,
         competence: nivCompetence + 1,
-        actif: false,
+        actif: metierActif,
         nbDeTestsFaits : nbDeTestsFaits,
     });
 }
