@@ -97,7 +97,31 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metier: metiersEnum)
     return "";
 }
 
+/**
+ * métier aléatoire en fonction des caracs du perso et en particulier de sa coterie
+ */
 export function metierAleatoire(_perso: PersoCommon): metiersEnum {
+    const probasMetiers = new Map<metiersEnum, number>();
+
+    Object.entries(metiersObjs).forEach(([_key, metier]) => {
+        // Ajouter une entrée dans la Map avec nom comme clé et proba comme valeur
+        probasMetiers.set(metier.nom, metier.proba);
+    });
+
+    // const cot: Coterie = _perso.coterie;
+
+    let completeProba: number = 0;
+    probasMetiers.values().forEach( proba => {
+            completeProba += proba;
+    });
+    let randomProba: number = Math.random() * completeProba;
+    for (const [metier, proba] of Array.from(probasMetiers)) {
+        randomProba -= proba;
+        if (randomProba <= 0) {
+            return metier;
+        }
+    }
+
     return getRandomEnumValue(metiersEnum);
 }
 

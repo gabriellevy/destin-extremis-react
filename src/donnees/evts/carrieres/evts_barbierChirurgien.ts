@@ -9,7 +9,7 @@ import {metiersEnum} from "../../metiers";
 
 const passageDiplomeBarbierChirurgien: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti barbier chirurgien depuis des années. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_barbier_chirurgien, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_chirurgien, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir un barbier chirurgien à part entière.";
@@ -42,7 +42,7 @@ export const evts_barbierChirurgien: GroupeEvts = {
                 } else {
                     texte += `C'est formidable : le médecin vous juge apte à devenir son apprenti ! "
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
-                    commencerCarriere(perso, metiersEnum.apprenti_barbier_chirurgien, '');
+                    commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
                     perso.evtsProgrammes.set(perso.date + anneesToJours(5), passageDiplomeBarbierChirurgien);
                 }
                 return texte;
@@ -67,7 +67,7 @@ export const evts_barbierChirurgien: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.barbier_chirurgien),
+                travailleEnCeMomentComme(perso, metiersEnum.chirurgien),
         },
     ],
     probaParDefaut: 5,

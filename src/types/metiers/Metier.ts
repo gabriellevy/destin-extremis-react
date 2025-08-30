@@ -9,6 +9,11 @@ export type Metier = {
     statut: Statut,
     statutMax: Statut,
     intitule: (perso: Perso,carriere: Carriere) => string,
+    // probabilité d'avoir ce métier dans la Ville :
+    // 0 pour les métiers spécialisés extérieurs (Stalker)
+    // 0.5 pour les courants (boulanger)
+    // 1 pour les très courants (bureaucrate)
+    proba: number,
 }
 
 export type MetierObj = Record<metiersEnum, Metier>;

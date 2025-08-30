@@ -17,7 +17,6 @@ import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_barbierChirurgien} from "../donnees/evts/carrieres/evts_barbierChirurgien";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
-import {evts_legionnaire} from "../donnees/evts/carrieres/evts_legionnaire";
 import {rejointCoterie} from "../types/Coterie";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
@@ -105,7 +104,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),
-            ...filtrerEtPreparerEvts(evts_legionnaire, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),
             ...filtrerEtPreparerEvts(evts_macon, perso),
             ...filtrerEtPreparerEvts(evts_boulanger, perso),
