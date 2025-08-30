@@ -5,7 +5,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
 import {Coterie} from "../../../types/Coterie";
 
 export const evts_legionnaire: GroupeEvts = {

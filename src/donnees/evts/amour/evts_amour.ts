@@ -66,14 +66,14 @@ export const evts_amour: GroupeEvts = {
                 const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
                 let texte = "Vous vous décidez à aborder " + coupDeCoeur.prenom + ". " + resTestCharme.resume + "<br/>";
                 if (resTestCharme.reussi) {
-                    texte += coupDeCoeur.prenom + " tombe complètement sous votre charme et devient votre petite amoureuse. ";
-                    coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
+                    texte += coupDeCoeur.prenom + " tombe complètement sous votre charme et devient votre amoureuse. ";
+                    coupDeCoeur.amourDeCePnj = NiveauAmour.coupDeCoeur;
                     coupDeCoeur.niveauRelationAmoureuse = NiveauRelationAmoureuse.petiteAmie;
                 } else {
                     texte += "Mais " + coupDeCoeur.prenom + " ne tombe pas sous votre charme. ";
                     if (getValeurVertu(perso, TypeBon.prudent) > 0) {
                         texte += "Déçu, vous passez autre chose et l'oubliez rapidement. ";
-                        coupDeCoeur.amourDeCePnj = NiveauAmour.aucun;
+                        coupDeCoeur.amourPourCePnj = NiveauAmour.aucun; // TODO vérifiez que ça retire vraiment
                     }
                     if (getValeurVice(perso, TypeMauvais.aventureux) > 0) {
                         texte += "Vous n'êtes pas du genre à renoncer. Vous savez que vous pouvez lui plaire et chercherez une autre occasion. ";
@@ -81,7 +81,7 @@ export const evts_amour: GroupeEvts = {
                     }
                     if (getValeurVice(perso, TypeMauvais.envieux) > 0 && Math.random() > 0.9) {
                         texte += "Être repoussé vous rend de plus en plus obsessionel à son sujet. Vous êtes sûr qu'elle est faite pour vous. ";
-                        coupDeCoeur.amourDeCePnj = NiveauAmour.amourFort;
+                        coupDeCoeur.amourPourCePnj = NiveauAmour.amourFort;
                     }
                 }
 

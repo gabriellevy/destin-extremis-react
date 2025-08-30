@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {
     getCarriereActive,
     suitUneCarriereDepuis
-} from "../../../types/metiers/metiersUtils";
+} from "../../../fonctions/metiers/metiersUtils";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 import {Carriere} from "../../../types/metiers/Metier";
 

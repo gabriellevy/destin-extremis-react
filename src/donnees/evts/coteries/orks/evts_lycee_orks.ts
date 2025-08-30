@@ -11,7 +11,7 @@ import {Maitrise} from "../../../maitrise";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {ajouterVertuVal, ajouterViceVal, TypeBon, TypeMauvais} from "../../../../types/BonMauvais";
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
-import {plusUnEnCompetenceMetier} from "../../../../types/metiers/metiersUtils";
+import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {poserBioniqueAleatoire} from "../../../../fonctions/sante/bionique";
 import {Bionique} from "../../../../types/sante/Bionique";

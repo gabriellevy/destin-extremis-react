@@ -6,7 +6,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../fonctions/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
 import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 

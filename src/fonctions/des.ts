@@ -1,7 +1,7 @@
 import {ResultatTest, TestCompetence, TestMetier, TestVertu, TestVice} from "../types/LancerDe";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
 import {Perso} from "../types/perso/Perso";
-import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "../types/metiers/metiersUtils";
+import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice} from "../types/BonMauvais";
 
 export function d2(): number {

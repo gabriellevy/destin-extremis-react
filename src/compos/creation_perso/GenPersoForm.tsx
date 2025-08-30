@@ -25,6 +25,7 @@ import {vaA} from "../../types/lieux/Lieu";
 import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
 import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
+import {commencerCarriereAleatoire} from "../../fonctions/metiers/metiersUtils";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -56,6 +57,9 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         persoAl.prenom = getPrenom(persoAl.coterie, persoAl.sexe);
         persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
         persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);
+
+        // métier aléatoire
+        commencerCarriereAleatoire(persoAl);
 
         reset({...persoAl});
         setAfficherForm(true);

@@ -11,7 +11,7 @@ import {
     commencerCarriere, plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
-} from "../../../types/metiers/metiersUtils";
+} from "../../../fonctions/metiers/metiersUtils";
 import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
 export const evts_crime: GroupeEvts = {

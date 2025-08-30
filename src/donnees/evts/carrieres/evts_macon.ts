@@ -5,7 +5,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
 
 export const evts_macon: GroupeEvts = {
     evts: [

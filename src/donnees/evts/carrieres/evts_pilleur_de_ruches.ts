@@ -4,7 +4,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {getValeurVice, TypeMauvais} from "../../../types/BonMauvais";
-import {aUneCarriere, commencerCarriere} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
 import {metiersEnum} from "../../metiers";

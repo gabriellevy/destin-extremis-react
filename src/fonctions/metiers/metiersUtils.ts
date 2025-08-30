@@ -1,9 +1,10 @@
-import {Carriere} from "./Metier";
-import {Perso} from "../perso/Perso";
-import {seuils} from "../perso/comps/Comps";
-import {anneesToJours} from "../Date";
+import {Carriere} from "../../types/metiers/Metier";
+import {Perso} from "../../types/perso/Perso";
+import {seuils} from "../../types/perso/comps/Comps";
+import {anneesToJours} from "../../types/Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
-import {PhaseLycee} from "../lycee/StadeUniversite";
+import {PhaseLycee} from "../../types/lycee/StadeUniversite";
+import {getRandomEnumValue} from "../random";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -94,6 +95,11 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metier: metiersEnum)
         }
     }
     return "";
+}
+
+export function commencerCarriereAleatoire(perso: Perso): void {
+    let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);
+    commencerCarriere(perso, metierAleatoire, "");
 }
 
 export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu: string): void {

@@ -5,7 +5,7 @@ import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../metiers";
 
 export const evts_batelier: GroupeEvts = {

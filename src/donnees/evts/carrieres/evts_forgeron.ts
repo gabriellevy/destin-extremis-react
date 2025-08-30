@@ -5,7 +5,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
 
 const passageDiplomeForgeron: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti forgeron depuis longtemps. ";

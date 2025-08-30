@@ -2,7 +2,7 @@ import { Mistral } from '@mistralai/mistralai';
 import {ChatCompletionResponse} from "@mistralai/mistralai/models/components";
 import { Perso } from '../types/perso/Perso';
 import {descriptionQuartier} from "../donnees/geographie/quartiers";
-import { getCarriereActive } from '../types/metiers/metiersUtils';
+import { getCarriereActive } from './metiers/metiersUtils';
 
 export const apiKey: string = "CJfRR1Dc8PSxmeF5oDtYt9iVDfrBlJrk";
 

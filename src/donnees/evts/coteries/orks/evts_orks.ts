@@ -7,7 +7,7 @@ import {getPrenom} from "../../../../fonctions/noms";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVice} from "../../../../fonctions/des";
 import {getValeurCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
-import {aUneCarriere, commencerCarriere} from "../../../../types/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {ajouterVertuVal, ajouterViceVal, TypeBon, TypeMauvais} from "../../../../types/BonMauvais";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";

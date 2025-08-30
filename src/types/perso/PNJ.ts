@@ -17,7 +17,7 @@ export type PNJ = {
     mort?: boolean,
     // rapport au perso principal :
     // -- amour
-    amourDeCePnj?: NiveauAmour,
-    amourPourCePnj?: NiveauAmour,
+    amourDeCePnj?: NiveauAmour, // du pnj pour le pj
+    amourPourCePnj?: NiveauAmour, // du pj pour ce pnj
     niveauRelationAmoureuse: NiveauRelationAmoureuse,
 }

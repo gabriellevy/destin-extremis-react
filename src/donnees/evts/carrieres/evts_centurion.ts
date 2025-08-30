@@ -8,7 +8,7 @@ import {
     commencerCarriere,
     suitUneCarriereDepuis,
     travailleEnCeMomentComme
-} from "../../../types/metiers/metiersUtils";
+} from "../../../fonctions/metiers/metiersUtils";
 
 export const evts_centurion: GroupeEvts = {
     evts: [
