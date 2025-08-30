@@ -6,7 +6,7 @@ import {
     Paper,
     Typography
 } from '@mui/material';
-import {Perso, Sexe} from "../../types/perso/Perso";
+import {Perso, PersoForm, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
 import SelectionStatut from "./SelectionStatut";
 import SelectionDates from "./SelectionDates";
@@ -23,6 +23,8 @@ import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {commencerCarriereAleatoire} from "../../fonctions/metiers/metiersUtils";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
+import {metiersEnum} from "../../donnees/metiers";
+import {Carriere, metierEnCarriere} from "../../types/metiers/Metier";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -30,7 +32,7 @@ interface CharacterFormProps {
 
 export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     const { setPerso } = useContext(PersoContexte) as PersoContexteType;
-    const methods = useForm<Perso>({
+    const methods = useForm<PersoForm>({
         defaultValues: enfant()
     });
     const { reset } = methods;
@@ -62,22 +64,26 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         setAfficherForm(true);
     };
 
-    const soumettrePerso = (data: Perso) => {
+    const soumettrePerso = (persoForm: PersoForm) => {
         let persoFinal: Perso = {
-            ...data,
+            ...persoForm,
+            // Convertir `metier` en une entrée dans `carrieres`
+            carrieres: new Map<metiersEnum, Carriere>([
+            [persoForm.metier, metierEnCarriere(persoForm.metier)]
+        ]),
         }
         // conversions de données après soumission de perso :
         // date en jours est déduite de date en années
-        if (data.anneeDeDepart) {
-            const dateEnJours: number = anneesToJours(data.anneeDeDepart) + d400()-1;
+        if (persoForm.anneeDeDepart) {
+            const dateEnJours: number = anneesToJours(persoForm.anneeDeDepart) + d400()-1;
             persoFinal = {
                 ...persoFinal,
                 date: dateEnJours,
             }
         }
         // date de naissance est déduite de l'âge
-        if (data.age) {
-            const dateNaissance: number = persoFinal.date - anneesToJours(data.age) - d400() + 1;
+        if (persoForm.age) {
+            const dateNaissance: number = persoFinal.date - anneesToJours(persoForm.age) - d400() + 1;
             persoFinal = {
                 ...persoFinal,
                 dateNaissance: dateNaissance,

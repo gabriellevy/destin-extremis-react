@@ -24,6 +24,16 @@ export type Carriere = {
     guilde?: titreGuildeEnum,
 }
 
+export function metierEnCarriere(metier:metiersEnum): Carriere {
+    return {
+        metier: metiersObjs[metier],
+        duree: 0,
+        competence: 25,
+        actif: true,
+        nbDeTestsFaits: 0,
+    }
+}
+
 export const serveurDebutant: Carriere = {
     metier: metiersObjs[metiersEnum.serveur],
     groupeLieu: "Auberge du pont",

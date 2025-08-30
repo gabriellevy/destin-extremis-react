@@ -1,11 +1,11 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/perso/Perso";
+import {PersoForm} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select} from "@mui/material";
 import {Option} from "../../types/lieux/Lieu";
 import {coterieOptions} from "../../types/Coterie";
 
 export default function SelectionCoterie() {
-    const { control, formState: { errors } } = useFormContext<Perso>();
+    const { control, formState: { errors } } = useFormContext<PersoForm>();
 
     return (
         <>

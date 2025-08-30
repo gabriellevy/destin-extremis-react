@@ -1,9 +1,9 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso, Sexe} from "../../types/perso/Perso";
+import {PersoForm, Sexe} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 export default function SelectionNom() {
-    const { control } = useFormContext<Perso>();
+    const { control } = useFormContext<PersoForm>();
 
     return (
         <>

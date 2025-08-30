@@ -1,14 +1,34 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/perso/Perso";
+import {PersoForm} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";
+import {metiersEnum} from "../../donnees/metiers";
 
 export default function SelectionStatut() {
-    const { control, formState: { errors } } = useFormContext<Perso>();
+    const { control, formState: { errors } } = useFormContext<PersoForm>();
 
     return (
         <>
+            <Grid2 size={4}>
+                <Controller
+                    control={control}
+                    name="metier"
+                    render={({ field }) => (
+                        <FormControl margin="normal" error={!!errors.metier}
+                                     fullWidth>
+                            <InputLabel>Métier</InputLabel>
+                            <Select {...field}>
+                                {Object.values(metiersEnum).map((metier: metiersEnum) => (
+                                    <MenuItem value={metier} key={metier}>
+                                        {metier}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    )}
+                />
+            </Grid2>
             <Grid2 size={4}>
                 <Controller
                     control={control}

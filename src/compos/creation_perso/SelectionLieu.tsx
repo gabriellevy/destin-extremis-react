@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/perso/Perso";
+import {PersoForm} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select} from "@mui/material";
 import {getRegions, Continent, continentsOptions} from "../../donnees/geographie/continents";
 import {Option} from "../../types/lieux/Lieu";
@@ -7,7 +7,7 @@ import {getQuartiers, Region} from "../../donnees/geographie/regions";
 import {Quartier} from "../../donnees/geographie/quartiers";
 
 export default function SelectionLieu() {
-    const { control, watch, formState: { errors } } = useFormContext<Perso>();
+    const { control, watch, formState: { errors } } = useFormContext<PersoForm>();
     const continentSelectionne:Continent|undefined = watch("lieu.continent");
     const region:Region|undefined = watch("lieu.region");
 

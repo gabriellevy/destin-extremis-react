@@ -13,7 +13,7 @@ import {metiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
 
-export type Perso = {
+export type PersoCommon = {
     prenom: string;
     nom?: string;
     cognomen?: string;
@@ -28,7 +28,6 @@ export type Perso = {
     jourDuMois: number, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     statut: Statut;
     coterie?: Coterie;
-    carrieres: Map<metiersEnum, Carriere>, // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
     // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
     dieu: Dieu,
     comps: Competence[],
@@ -50,6 +49,23 @@ export type Perso = {
     // ------------------ orks ------------------------ //
     esclaveGtrechin?: string, // nom de l'esclave gretchin
 };
+
+/**
+ * Perso simplifié, pour la sélection initiale dans le formulaire de création
+ * => ses valeurs doivent être converties en valeurs de 'Perso' lors de la validation de création de personnage
+ */
+export type PersoForm = PersoCommon & {
+    metier: metiersEnum, // seulement utile pour la génération initiale
+
+}
+
+/**
+ * type standard utilisé lors de l'exécution (devrait être sauvegardable en théorie)
+ */
+export type Perso = PersoCommon & {
+    carrieres: Map<metiersEnum, Carriere>, // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
+
+}
 
 export enum NiveauIA {
     desactive = 'Désactivé', // aucune IA, mode par défaut

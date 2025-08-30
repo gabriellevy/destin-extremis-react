@@ -1,9 +1,9 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {Perso} from "../../types/perso/Perso";
+import {PersoForm} from "../../types/perso/Perso";
 import {Grid2, TextField} from "@mui/material";
 
 export default function SelectionDates() {
-    const { control } = useFormContext<Perso>();
+    const { control } = useFormContext<PersoForm>();
 
     return (
         <>
