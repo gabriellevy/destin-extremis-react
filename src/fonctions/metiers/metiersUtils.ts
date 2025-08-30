@@ -1,5 +1,5 @@
 import {Carriere} from "../../types/metiers/Metier";
-import {Perso} from "../../types/perso/Perso";
+import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {seuils} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
@@ -97,9 +97,13 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metier: metiersEnum)
     return "";
 }
 
+export function metierAleatoire(_perso: PersoCommon): metiersEnum {
+    return getRandomEnumValue(metiersEnum);
+}
+
 export function commencerCarriereAleatoire(perso: Perso): void {
-    let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);
-    commencerCarriere(perso, metierAleatoire, "");
+    let metier: metiersEnum = metierAleatoire(perso);
+    commencerCarriere(perso, metier, "");
 }
 
 export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu: string): void {

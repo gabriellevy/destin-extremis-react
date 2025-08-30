@@ -1,5 +1,5 @@
 import {Option} from "./lieux/Lieu";
-import {Perso} from "./perso/Perso";
+import {PersoCommon} from "./perso/Perso";
 import {augmenterCompetence, TypeCompetence} from "./perso/comps/Comps";
 import {getEffetsDeCoterieSurCompetences} from "../donnees/coteries/EffetsDesCoteriesSurPerso";
 import {rejoindreOrks} from "../donnees/coteries/orks/donnees_orks";
@@ -72,7 +72,7 @@ export type EffectDeCoterieSurPerso = {
     minus5Values: TypeCompetence[],
 }
 
-export function effetDeBaseEnRejoignantUneCoterie(effet: EffectDeCoterieSurPerso, perso: Perso): string {
+export function effetDeBaseEnRejoignantUneCoterie(effet: EffectDeCoterieSurPerso, perso: PersoCommon): string {
     let texte: string = "";
     effet.plus10Values.forEach((typeComp: TypeCompetence) =>
         texte += augmenterCompetence(perso, typeComp, 10)
@@ -89,7 +89,7 @@ export function effetDeBaseEnRejoignantUneCoterie(effet: EffectDeCoterieSurPerso
     return texte;
 }
 
-export function rejointCoterie( perso: Perso, coterie: Coterie|undefined): string {
+export function rejointCoterie( perso: PersoCommon, coterie: Coterie|undefined): string {
     const ancienneCoterie = perso.coterie;
     let texte: string = "";
     if (ancienneCoterie !== undefined) {

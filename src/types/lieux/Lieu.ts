@@ -1,5 +1,5 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
-import {Perso} from "../perso/Perso";
+import {Perso, PersoCommon} from "../perso/Perso";
 import {Continent, getRegions} from "../../donnees/geographie/continents";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {getQuartiers, Region} from "../../donnees/geographie/regions";
@@ -45,7 +45,7 @@ export const enVoyageEnSiberie: Lieu = {
     residenceVoyage: null,
 };
 
-export function vaA(perso: Perso, quartier: Quartier) {
+export function vaA(perso: PersoCommon, quartier: Quartier) {
     perso.lieu.quartier = quartier;
     const sousProvince: Region | undefined = getSousProvinceDeVille(quartier);
     perso.lieu.region = sousProvince;

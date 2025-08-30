@@ -1,11 +1,5 @@
 import {FormProvider, useForm} from 'react-hook-form';
-import {
-    Box,
-    Button,
-    Grid2,
-    Paper,
-    Typography
-} from '@mui/material';
+import {Box, Button, Grid2, Paper, Typography} from '@mui/material';
 import {Perso, PersoForm, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
 import SelectionStatut from "./SelectionStatut";
@@ -20,11 +14,10 @@ import {vaA} from "../../types/lieux/Lieu";
 import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
 import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
-import {commencerCarriereAleatoire} from "../../fonctions/metiers/metiersUtils";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
-import {metiersEnum} from "../../donnees/metiers";
-import {Carriere, metierEnCarriere} from "../../types/metiers/Metier";
+import {persoFormToPerso} from "../../fonctions/perso/conversionsPerso";
+import {metierAleatoire} from "../../fonctions/metiers/metiersUtils";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -35,7 +28,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     const methods = useForm<PersoForm>({
         defaultValues: enfant()
     });
-    const { reset } = methods;
+    const { reset, handleSubmit } = methods;
 
     const chargerPerso = (persoCharge: Perso) => {
         setPerso({...persoCharge});
@@ -44,7 +37,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     };
 
     const persoAleatoire = () => {
-        const persoAl: Perso = enfant();
+        const persoAl: PersoForm = enfant();
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
@@ -56,22 +49,14 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         persoAl.prenom = getPrenom(persoAl.coterie, persoAl.sexe);
         persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
         persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);
-
-        // métier aléatoire
-        commencerCarriereAleatoire(persoAl);
+        persoAl.metier = metierAleatoire(persoAl);
 
         reset({...persoAl});
         setAfficherForm(true);
     };
 
     const soumettrePerso = (persoForm: PersoForm) => {
-        let persoFinal: Perso = {
-            ...persoForm,
-            // Convertir `metier` en une entrée dans `carrieres`
-            carrieres: new Map<metiersEnum, Carriere>([
-            [persoForm.metier, metierEnCarriere(persoForm.metier)]
-        ]),
-        }
+        let persoFinal: Perso = persoFormToPerso(persoForm);
         // conversions de données après soumission de perso :
         // date en jours est déduite de date en années
         if (persoForm.anneeDeDepart) {
@@ -102,7 +87,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                 if (typeof content === 'string') {
                     try {
                         const loadedCharacter = JSON.parse(content) as Perso;
-                        methods.reset(loadedCharacter);
+                        reset(loadedCharacter);
                         chargerPerso(loadedCharacter);
                     } catch (error) {
                         console.error('Error parsing JSON:', error);
@@ -115,7 +100,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
 
     return (
         <Paper elevation={3} sx={{ p: 3, mt: 4, height: '100%', overflowY: 'auto' }}>
-            <Box component="form" onSubmit={methods.handleSubmit(soumettrePerso)} sx={{ maxWidth: 800, mx: 'auto', mt: 4 }}>
+            <Box component="form" onSubmit={handleSubmit(soumettrePerso)} sx={{ maxWidth: 800, mx: 'auto', mt: 4 }}>
                 <FormProvider {...methods}>
                     <Typography variant="h4" gutterBottom>Créer un personnage</Typography>
                     <Grid2 container spacing={1} sx={{ mb: 2 }} columns={12}>

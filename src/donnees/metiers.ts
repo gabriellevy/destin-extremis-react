@@ -1,6 +1,7 @@
 import {MetalStatut} from "../types/statut_social/Statut";
 import {Perso} from "../types/perso/Perso";
 import {Carriere, MetierObj} from "../types/metiers/Metier";
+import {Option} from "../types/lieux/Lieu";
 
 export enum metiersEnum {
     edile = "Édile",
@@ -26,7 +27,6 @@ export enum metiersEnum {
     boucher = "boucher",
     apprenti_barbier_chirurgien = "Apprenti barbier chirurgien",
     barbier_chirurgien = "Barbier chirurgien",
-    centurion = "Centurion",
     gladiateur = "Gladiateur",
     legionnaire = "Légionnaire",
     pamphletaire = "Pamphlétaire",
@@ -36,7 +36,19 @@ export enum metiersEnum {
     cyberneticien = "Cybernéticien",
     // -------------- métiers orks ------------------ //
     marchand_de_champignon = "Marchand de champignon",
+
+    //-------------------
+    non_travailleur = "Ne travaille pas",
 }
+
+export const metiersEnumOptions: Option[] =
+    Object.values(metiersEnum)
+        .map((metier: metiersEnum):Option => {
+            return {
+                value: metier,
+                label: metier.toString(),
+            }
+        });
 
 export const metiersObjs: MetierObj = {
     // citadins
@@ -130,12 +142,6 @@ export const metiersObjs: MetierObj = {
         nom: metiersEnum.barbier_chirurgien,
         intitule: () => metiersEnum.barbier_chirurgien,
         statut: {rang: 3, metalStatut: MetalStatut.argent},
-        statutMax: {rang: 1, metalStatut: MetalStatut.or},
-    },
-    [metiersEnum.centurion] : {
-        nom: metiersEnum.centurion,
-        intitule: () => metiersEnum.centurion,
-        statut: {rang: 4, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
     },
     [metiersEnum.legionnaire] : {
@@ -239,5 +245,11 @@ export const metiersObjs: MetierObj = {
         intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.pilleur_de_ruche,
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
+    },
+    [metiersEnum.non_travailleur] : {
+        nom: metiersEnum.non_travailleur,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.non_travailleur,
+        statut: {rang: 0, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 3, metalStatut: MetalStatut.bronze},
     },
 }

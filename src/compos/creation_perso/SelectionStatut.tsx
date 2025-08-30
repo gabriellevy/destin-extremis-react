@@ -3,7 +3,7 @@ import {PersoForm} from "../../types/perso/Perso";
 import {FormControl, Grid2, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";
-import {metiersEnum} from "../../donnees/metiers";
+import {metiersEnumOptions} from "../../donnees/metiers";
 
 export default function SelectionStatut() {
     const { control, formState: { errors } } = useFormContext<PersoForm>();
@@ -17,13 +17,15 @@ export default function SelectionStatut() {
                     render={({ field }) => (
                         <FormControl margin="normal" error={!!errors.metier}
                                      fullWidth>
-                            <InputLabel>Métier</InputLabel>
+                            <InputLabel>Metier</InputLabel>
                             <Select {...field}>
-                                {Object.values(metiersEnum).map((metier: metiersEnum) => (
-                                    <MenuItem value={metier} key={metier}>
-                                        {metier}
+                                {
+                                    metiersEnumOptions.map((metierOption: Option) => (
+                                    <MenuItem value={metierOption.value} key={metierOption.value}>
+                                        {metierOption.label}
                                     </MenuItem>
-                                ))}
+                                    ))
+                                }
                             </Select>
                         </FormControl>
                     )}

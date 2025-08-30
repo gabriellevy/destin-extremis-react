@@ -1,10 +1,9 @@
 import {anneesToJours} from "../../types/Date";
 import {lieuParDefaut} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
-import {NiveauIA, Perso, Sexe} from "../../types/perso/Perso";
+import {NiveauIA, PersoForm, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
-import {Carriere} from "../../types/metiers/Metier";
 import {Coterie, rejointCoterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/BonMauvais";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
@@ -13,10 +12,10 @@ import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {metiersEnum} from "../metiers";
 
-export function enfant(): Perso {
+export function enfant(): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);
     const sexe = Sexe.male;
-    let perso: Perso = {
+    let perso: PersoForm = {
         prenom: getPrenom(cot, sexe),
         nom: getNom(cot, sexe),
         cognomen: getCognomen(cot, sexe),
@@ -29,7 +28,6 @@ export function enfant(): Perso {
         lieu: lieuParDefaut,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         coterie: cot,
-        carrieres: new Map<metiersEnum, Carriere>,
         comps: compsDeBase(),
         viceVertu: viceVertuDeBase(),
         maitrises: [],
@@ -43,6 +41,7 @@ export function enfant(): Perso {
         pbDeSante: [],
         bioniques: [],
         nbJoursDHopital: 0,
+        metier: metiersEnum.non_travailleur,
     };
     rejointCoterie(perso, cot);
     return perso;

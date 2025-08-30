@@ -1,7 +1,7 @@
 import {PbDeSante} from "../../types/sante/pbDeSante";
 import {blessures} from "../../donnees/sante/blessures";
 import {getRandomInt0} from "../random";
-import {Perso} from "../../types/perso/Perso";
+import {Perso, PersoCommon} from "../../types/perso/Perso";
 
 export const getBlessureAleatoire = ():PbDeSante=> {
     return blessures[getRandomInt0(blessures.length)];
@@ -35,7 +35,7 @@ export const infligerBlessureAleatoire = (perso:Perso, minGravite:number, maxGra
  * (ou rien si le perso n'était pas blessé)
  * @param perso
  */
-export const soignerBlessureAleatoire = (perso:Perso):string|null => {
+export const soignerBlessureAleatoire = (perso:PersoCommon):string|null => {
     if (perso.pbDeSante.length == 0) {
         return null;
     }

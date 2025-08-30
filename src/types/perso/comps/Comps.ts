@@ -1,5 +1,5 @@
 import {d10} from "../../../fonctions/des";
-import {Perso} from "../Perso";
+import {Perso, PersoCommon} from "../Perso";
 
 export type Competence = {
     val: number,
@@ -94,7 +94,7 @@ export function compDeDepartAleatoire(): number {
     return 20 + d10() + d10();
 }
 
-export function getValeurCompetence(perso: Perso, typeComp: TypeCompetence): number {
+export function getValeurCompetence(perso: PersoCommon, typeComp: TypeCompetence): number {
     return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.val || -1;
 }
 
@@ -115,7 +115,7 @@ export const seuils: number[] = [
     511,
 ];
 
-export function augmenterCompetence(perso: Perso,typeComp: TypeCompetence, val: number): string {
+export function augmenterCompetence(perso: PersoCommon,typeComp: TypeCompetence, val: number): string {
     const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
     if (comp !== undefined) {
         comp.val += val;

@@ -1,4 +1,4 @@
-import {Perso} from "./perso/Perso";
+import {Perso, PersoCommon} from "./perso/Perso";
 
 export type BonMauvais = {
     valBon: number, // la val de "mauvais"" est l'inverse
@@ -83,11 +83,11 @@ export function getVertuOppose(typeVice: TypeMauvais): TypeBon {
     }
 }
 
-export function getValeurVice(perso: Perso, typeVice: TypeMauvais): number {
+export function getValeurVice(perso: PersoCommon, typeVice: TypeMauvais): number {
     return - getValeurVertu(perso, getVertuOppose(typeVice));
 }
 
-export function getValeurVertu(perso: Perso, typeVertu: TypeBon): number {
+export function getValeurVertu(perso: PersoCommon, typeVertu: TypeBon): number {
     return perso.viceVertu.find((viceVertu: BonMauvais) => viceVertu.typeBon === typeVertu)?.valBon || 0;
 }
 

@@ -55,7 +55,7 @@ export type PersoCommon = {
  * => ses valeurs doivent être converties en valeurs de 'Perso' lors de la validation de création de personnage
  */
 export type PersoForm = PersoCommon & {
-    metier: metiersEnum, // seulement utile pour la génération initiale
+    metier?: metiersEnum, // seulement utile pour la génération initiale
 
 }
 
