@@ -10,7 +10,7 @@ import {getRandomEnumValue} from "../random";
 export function aUneCarriere(perso: Perso): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
-        if (carriere.actif) trouve = true;
+        if (carriere.actif && carriere.metier.nom !== metiersEnum.non_travailleur) trouve = true;
     });
     if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined) {
         // considéré comme travaillant tant qu'il n'a pas fini son lycée

@@ -5,7 +5,7 @@ import {metalStatutOptions} from "../../types/statut_social/Statut";
 import {Option} from "../../types/lieux/Lieu";
 import {metiersEnumOptions} from "../../donnees/metiers";
 
-export default function SelectionStatut() {
+export default function SelectionCarriereStatut() {
     const { control, formState: { errors } } = useFormContext<PersoForm>();
 
     return (

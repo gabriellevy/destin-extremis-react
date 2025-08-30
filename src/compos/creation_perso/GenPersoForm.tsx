@@ -2,7 +2,7 @@ import {FormProvider, useForm} from 'react-hook-form';
 import {Box, Button, Grid2, Paper, Typography} from '@mui/material';
 import {Perso, PersoForm, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
-import SelectionStatut from "./SelectionStatut";
+import SelectionCarriereStatut from "./SelectionCarriereStatut";
 import SelectionDates from "./SelectionDates";
 import {anneesToJours} from "../../types/Date";
 import {d400} from "../../fonctions/des";
@@ -107,7 +107,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                         <SelectionCoterie />
                         <SelectionNom />
                         <SelectionLieu />
-                        <SelectionStatut />
+                        <SelectionCarriereStatut />
                         <SelectionDates />
                         <Grid2 size={4}>
                             <Button type="submit" variant="contained" color="primary">
