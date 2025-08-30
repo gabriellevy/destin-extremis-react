@@ -1,14 +1,9 @@
-import {Controller, FormProvider, useForm} from 'react-hook-form';
+import {FormProvider, useForm} from 'react-hook-form';
 import {
     Box,
     Button,
-    FormControl,
     Grid2,
-    InputLabel,
-    MenuItem,
     Paper,
-    Select,
-    TextField,
     Typography
 } from '@mui/material';
 import {Perso, Sexe} from "../../types/perso/Perso";
@@ -26,6 +21,8 @@ import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
 import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {commencerCarriereAleatoire} from "../../fonctions/metiers/metiersUtils";
+import SelectionCoterie from "./SelectionCoterie";
+import SelectionNom from "./SelectionNom";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -116,64 +113,8 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
                 <FormProvider {...methods}>
                     <Typography variant="h4" gutterBottom>Créer un personnage</Typography>
                     <Grid2 container spacing={1} sx={{ mb: 2 }} columns={12}>
-                        <Grid2 size={3}>
-                            <Controller
-                                name="prenom"
-                                control={methods.control}
-                                rules={{ required: "Vous devez avoir un prénom" }}
-                                render={({ field }) => (
-                                    <TextField
-                                        {...field}
-                                        label="Prénom"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                )}
-                            />
-                        </Grid2>
-                        <Grid2 size={3}>
-                            <Controller
-                                name="nom"
-                                control={methods.control}
-                                render={({ field }) => (
-                                    <TextField
-                                        {...field}
-                                        label="Nom"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                )}
-                            />
-                        </Grid2>
-                        <Grid2 size={3}>
-                            <Controller
-                                name="cognomen"
-                                control={methods.control}
-                                render={({ field }) => (
-                                    <TextField
-                                        {...field}
-                                        label="Surnom"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                )}
-                            />
-                        </Grid2>
-                        <Grid2 size={3}>
-                            <Controller
-                                name="sexe"
-                                control={methods.control}
-                                render={({ field }) => (
-                                    <FormControl fullWidth margin="normal">
-                                        <InputLabel>Sexe</InputLabel>
-                                        <Select {...field} label="Sexe">
-                                            <MenuItem value={Sexe.male}>{Sexe.male}</MenuItem>
-                                            <MenuItem value={Sexe.femelle}>{Sexe.femelle}</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                )}
-                            />
-                        </Grid2>
+                        <SelectionCoterie />
+                        <SelectionNom />
                         <SelectionLieu />
                         <SelectionStatut />
                         <SelectionDates />
