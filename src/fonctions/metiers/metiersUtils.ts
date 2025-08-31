@@ -108,6 +108,8 @@ export function metierAleatoire(_perso: PersoCommon): metiersEnum {
         probasMetiers.set(metier.nom, metier.proba);
     });
 
+    // TODO : moduler selon lieu
+    // TODO : moduler selon coterie (virer métiers interdits etc)
     // const cot: Coterie = _perso.coterie;
 
     let completeProba: number = 0;

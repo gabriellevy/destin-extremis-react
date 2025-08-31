@@ -59,6 +59,7 @@ import {
     ZAPO_PRENOMS_M_1,
     ZAPO_PRENOMS_M_2
 } from "../donnees/coteries/zaporogues/noms_zaporogues";
+import {CARTHAGINOIS_PRENOMS_F, CARTHAGINOIS_PRENOMS_M} from "../donnees/coteries/carthaginois/noms_carthaginois";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -76,6 +77,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.chaos:
         case Coterie.acheron:
         case Coterie.orks:
+        case Coterie.carthaginois:
             return ""; // les celtes (etc) n'ont pas de noms de familles
         // noms français :
         case Coterie.jacobins:
@@ -210,6 +212,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.zaporogues: return sexe === Sexe.male ?
             ZAPO_PRENOMS_M_1[getRandomInt0(ZAPO_PRENOMS_M_1.length)] :
             ZAPO_PRENOMS_F_1[getRandomInt0(ZAPO_PRENOMS_F_1.length)];
+        case Coterie.carthaginois: return sexe === Sexe.male ?
+            CARTHAGINOIS_PRENOMS_M[getRandomInt0(CARTHAGINOIS_PRENOMS_M.length)] :
+            CARTHAGINOIS_PRENOMS_F[getRandomInt0(CARTHAGINOIS_PRENOMS_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -243,6 +248,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.bastets:
         case Coterie.acheron:
         case Coterie.orks:
+        case Coterie.carthaginois:
             return getPrenom(coterie, sexe);
 
         case Coterie.jacobins:
