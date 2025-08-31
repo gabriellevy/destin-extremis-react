@@ -61,6 +61,7 @@ import {
 } from "../donnees/coteries/zaporogues/noms_zaporogues";
 import {CARTHAGINOIS_PRENOMS_F, CARTHAGINOIS_PRENOMS_M} from "../donnees/coteries/carthaginois/noms_carthaginois";
 import {ELFES_NOMS_M1, ELFES_NOMS_M2, ELFES_PRENOMS_F, ELFES_PRENOMS_M} from "../donnees/coteries/elfes/noms_elfes";
+import {SAABI_NOM, SAABI_PRENOMS_F, SAABI_PRENOMS_M} from "../donnees/coteries/saabi/noms_saabi";
 
 export function getNom(coterie: Coterie, sexe: Sexe): string {
     switch (coterie) {
@@ -96,6 +97,8 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
             return NOM_SCHWEIZER[getRandomInt0(NOM_SCHWEIZER.length)];
         case Coterie.conquistador:
             return CONQUISTADORS_NOMS[getRandomInt0(CONQUISTADORS_NOMS.length)];
+        case Coterie.saabi:
+            return SAABI_NOM[getRandomInt0(SAABI_NOM.length)];
         case Coterie.zaporogues: return sexe === Sexe.male ?
             ZAPO_NOMS_M[getRandomInt0(ZAPO_NOMS_M.length)] :
             ZAPO_NOMS_F[getRandomInt0(ZAPO_NOMS_F.length)];
@@ -221,6 +224,9 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.elfes: return sexe === Sexe.male ?
             ELFES_PRENOMS_M[getRandomInt0(ELFES_PRENOMS_M.length)] :
             ELFES_PRENOMS_F[getRandomInt0(ELFES_PRENOMS_F.length)];
+        case Coterie.saabi: return sexe === Sexe.male ?
+            SAABI_PRENOMS_M[getRandomInt0(SAABI_PRENOMS_M.length)] :
+            SAABI_PRENOMS_F[getRandomInt0(SAABI_PRENOMS_F.length)];
     }
     return "pas de prénoms pour cette coterie : " + coterie;
 }
@@ -268,6 +274,7 @@ export function getPatronyme(coterie: Coterie, sexe: Sexe): string {
         case Coterie.conquistador:
         case Coterie.cathares:
         case Coterie.elfes:
+        case Coterie.saabi:
             return getPrenom(coterie, sexe)
                 + " " + getNom(coterie, sexe)
     }
