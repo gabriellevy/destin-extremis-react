@@ -45,6 +45,11 @@ export function descriptionQuartier(quartier: Quartier): string {
                 + "Malheureusement leur influence a perverti le quartier et en a fait un lieu désolé et morbide où très peu d’Extrémiens viennent s’installer. <br/>"
                 + "Ils voulaient augmenter leur influence politique mais l’exemple de leur gouvernance et de leur influence magique a au contraire fait d’eux un exemple à ne pas suivre pour tous ceux qui ont visité Noisiel. <br/>";
             break;
+            case Quartier.genevilliers:
+            texte += "Ce quartier est celui des <a href=https://www.notion.so/Orks-c92555dd3ea94318a030d7bb6cfe24ca?pvs=21>orks</a> et est par conséquent le plus bruyant et le plus pollué de la ville. Certains disent qu'il a la meilleur ambiance. C'est en tout cas assurément le quartier où l'espérance de vie est la plus courte. Car non seulement les orks sont violents mais ils sont aussi imprudents et distraits. Les accidents et explosions divers sont donc monnaie courante. Pire quand on a la malchance d'habiter près d'un mékano qui aime créer des appareils expérimentaux. <br/>"
+                + "Et leurs médecins, habitués à la grande résistance des orks, sont de vrais bouchers quand ils tentent de soigner un humain normal. Le concept d’anesthésie leur est complètement étranger. <br/>"
+                + "En conséquence la mixité est infime à Gennevilliers. Peu de non orks souhaitent vivre parmi des orks et ceux ci s’en acclimatent très bien. Ils reçoivent néanmoins beaucoup de visiteurs lors de leurs très nombreuses foires aux attractions aussi dangereuses que spectaculaires. <br/>";
+            break;
         default:
             texte += "Il manque la description de cet endroit : " + quartier;
     }
