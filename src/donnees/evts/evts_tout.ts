@@ -13,11 +13,9 @@ export const evts_tout: GroupeEvts = {
                     texte = await appelLeChat(
                         perso,
                         "Racontez la vie courante du personnage principal.",
-                        NiveauInfosPerso.plus_metier);
+                        NiveauInfosPerso.plus_quartier_de_vie);
                 } else {
-                    texte += "Marienburg semble être l'endroit idéal pour les négociants en ce moment. "
-                        +"Les affaires sont en plein essort et devraient encore aller croissantes dans les mois à venir. "
-                        +"Le port fonctionne presque à pleine capacité et les commandes de céréales de Bordeleaux atteignent un niveau record. ";
+                    texte += "Le petit train train quotidien. ";
                 }
                 return texte;
             },
