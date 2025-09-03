@@ -7,8 +7,11 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valBon: -2,
         typeBon: Vertus.discipline,
     },{
-        valBon: -2,
+        valBon: -1,
         typeBon: Vertus.prudent,
+    },{
+        valBon: -1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.acheron]: [
         {
@@ -51,6 +54,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     },{
         valBon: 1,
         typeBon: Vertus.humble,
+    },{
+        valBon: 1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.carthaginois]: [
         {
@@ -77,8 +83,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valBon: 1,
         typeBon: Vertus.loyal,
     },{
-        valBon: -1,
-        typeBon: Vertus.humble,
+        valBon: 1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.culte_du_plaisir]:  [
         {
@@ -232,6 +238,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     },{
         valBon: -1,
         typeBon: Vertus.empathique,
+    },{
+        valBon: -1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.performeurs]: [{
         valBon: 1,
@@ -290,6 +299,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     },{
         valBon: 1,
         typeBon: Vertus.prudent,
+    },{
+        valBon: 1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.skavens]: [{
         valBon: -1,
@@ -319,6 +331,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     },{
         valBon: 1,
         typeBon: Vertus.sobre,
+    },{
+        valBon: 1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.transhumanistes]: [{
         valBon: -1,
@@ -332,6 +347,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     },{
         valBon: -1,
         typeBon: Vertus.prudent,
+    },{
+        valBon: -1,
+        typeBon: Vertus.spirituel,
     }],
     [Coterie.tyranides]:  [{
         valBon: 1,
