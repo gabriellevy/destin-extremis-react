@@ -198,8 +198,10 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
  * en fonction de ses vices et vertus
  * cad essentielleemnt si il veut exercer ce métier, indépendament de ses compéteces réelles
  */
-export function compatibiliteCarriere(perso: Perso, metier: Metier): number {
-
+export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): number {
+    if (!metier) {
+        metier = metiersObjs[metiersEnum.non_travailleur];
+    }
     let compatibilite: number = 0;
     metier.vicesCompatibles.forEach((vice: Vices)=> {
         compatibilite += getValeurVice(perso, vice);
