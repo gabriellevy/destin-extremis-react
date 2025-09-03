@@ -3,6 +3,7 @@ import {Perso} from "../perso/Perso";
 import {titreGuildeEnum} from "./Guilde";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+import {Vertus, Vices} from "../BonMauvais";
 
 export type Metier = {
     nom: metiersEnum,
@@ -14,6 +15,9 @@ export type Metier = {
     // 0.5 pour les courants (boulanger)
     // 1 pour les très courants (bureaucrate)
     proba: number,
+    // vertus et vices associés : si le personnage a ces traits il aura plus de chances d'apprécier ce travail :
+    vertusCompatibles: Vertus[],
+    vicesCompatibles: Vices[],
 }
 
 export type MetierObj = Record<metiersEnum, Metier>;
@@ -35,7 +39,7 @@ export function metierEnCarriere(metier:metiersEnum): Carriere {
         duree: 0,
         competence: 25,
         actif: true,
-        nbDeTestsFaits: 0,
+        nbDeTestsFaits: 0
     }
 }
 

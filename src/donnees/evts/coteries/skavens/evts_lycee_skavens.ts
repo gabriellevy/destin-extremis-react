@@ -8,8 +8,8 @@ import {
     ajouterViceVal,
     getValeurVertu,
     getValeurVice,
-    TypeBon,
-    TypeMauvais
+    Vertus,
+    Vices
 } from "../../../../types/BonMauvais";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
@@ -28,9 +28,9 @@ export const evts_lycee_skavens: GroupeEvts = {
                     texte += "Vous vous en accommodez cependant très vite. <br/>";
                     // se fait connaître dans le coin
                     texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
-                    if (getValeurVice(perso, TypeMauvais.trompeur) < 2) {
+                    if (getValeurVice(perso, Vices.trompeur) < 2) {
                         if (Math.random() >= 0.9) {
-                            texte += ajouterViceVal(perso, TypeMauvais.trompeur, 1);
+                            texte += ajouterViceVal(perso, Vices.trompeur, 1);
                         }
                     }
                 } else {
@@ -49,9 +49,9 @@ export const evts_lycee_skavens: GroupeEvts = {
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous devenez rapidement agile comme un chat et vif comme l'éclair. <br/>";
-                    if (getValeurVice(perso, TypeMauvais.lache) < 2) {
+                    if (getValeurVice(perso, Vices.lache) < 2) {
                         if (Math.random() >= 0.9) {
-                            texte += ajouterViceVal(perso, TypeMauvais.lache, 1);
+                            texte += ajouterViceVal(perso, Vices.lache, 1);
                             texte += "Mais surtout, cette habitude fuir au moindre danger devient une seconde nature chez vous. <br/>";
                         }
                     }
@@ -73,9 +73,9 @@ export const evts_lycee_skavens: GroupeEvts = {
                     texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1);
                 }
 
-                if (getValeurVertu(perso, TypeBon.travailleur) < 2) {
+                if (getValeurVertu(perso, Vertus.travailleur) < 2) {
                     if (Math.random() >= 0.9) {
-                        texte += ajouterVertuVal(perso, TypeBon.travailleur, 1);
+                        texte += ajouterVertuVal(perso, Vertus.travailleur, 1);
                         texte += "Vous prenez goût au travail bien fait. <br/>";
                     }
                 }
@@ -90,9 +90,9 @@ export const evts_lycee_skavens: GroupeEvts = {
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    if (getValeurVice(perso, TypeMauvais.trompeur) < 2) {
+                    if (getValeurVice(perso, Vices.trompeur) < 2) {
                         if (Math.random() >= 0.9) {
-                            texte += ajouterViceVal(perso, TypeMauvais.trompeur, 1);
+                            texte += ajouterViceVal(perso, Vices.trompeur, 1);
                             texte += "Non seulement vous devenez discret, mais vous trompez de plus en plus facilement tout le monde sur votre position ou vos intention pour devenir introuvable.<br/>";
                         }
                     }
@@ -125,14 +125,14 @@ export const evts_lycee_skavens: GroupeEvts = {
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous semblez avoir un excellent instinct pour ces choses là.<br/>";
-                    if (getValeurVice(perso, TypeMauvais.cupide) < 2) {
+                    if (getValeurVice(perso, Vices.cupide) < 2) {
                         if (Math.random() >= 0.9) {
-                            texte += ajouterViceVal(perso, TypeMauvais.cupide, 1);
+                            texte += ajouterViceVal(perso, Vices.cupide, 1);
                         }
                     }
-                    if (getValeurVice(perso, TypeMauvais.envieux) < 2) {
+                    if (getValeurVice(perso, Vices.envieux) < 2) {
                         if (Math.random() >= 0.9) {
-                            texte += ajouterViceVal(perso, TypeMauvais.envieux, 1);
+                            texte += ajouterViceVal(perso, Vices.envieux, 1);
                             texte += "Vous comprenez vite que le plus rapide moyen d'avoir plus est de prendre à votre voisin. Un enseignement que votre professeur confirme vite.<br/>";
                         }
                     }

@@ -1,4 +1,4 @@
-import {getValeurVertu, getValeurVice, getViceOppose, TypeBon} from "../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, getViceOppose, Vertus} from "../../types/BonMauvais";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
@@ -21,7 +21,7 @@ export default function AffichageViceVertu () {
 
     return (<table style={tableStyle}>
         <tbody>
-        {Object.values(TypeBon).map((typeVertu: TypeBon) => {
+        {Object.values(Vertus).map((typeVertu: Vertus) => {
             if (getValeurVertu(perso, typeVertu) != 0) {
                 const typeVice = getViceOppose(typeVertu);
                 return (

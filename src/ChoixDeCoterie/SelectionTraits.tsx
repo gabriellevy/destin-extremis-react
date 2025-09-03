@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {FieldErrorsImpl, UseFormHandleSubmit, UseFormRegister, UseFormWatch} from 'react-hook-form';
 import {Grid2, Typography} from "@mui/material";
-import {TypeBon, TypeMauvais} from "../types/BonMauvais";
+import {Vertus, Vices} from "../types/BonMauvais";
 import {ChoixCoterieFormData, PhaseDeChoix} from "./ChoixDeCoterie";
 
 type SelectionTraitsProps = {
@@ -14,8 +14,8 @@ type SelectionTraitsProps = {
 
 const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, watch, handleSubmit, setPhaseDeChoix }) => {
 
-    const idsSliders: TypeMauvais[] = Object.values(TypeMauvais);
-    const idsBons: string[] = Object.values(TypeBon);
+    const idsSliders: Vices[] = Object.values(Vices);
+    const idsBons: string[] = Object.values(Vertus);
 
     const sliders: number[] = idsSliders.map(id => watch(`mauvais.${id}`));
     const total = sliders.reduce((sum, value) => sum + Math.abs(value), 0);
@@ -27,7 +27,7 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid2 container spacing={1} sx={{ mb: 5 }} columns={16}>
-                {idsSliders.map((idSlider: TypeMauvais, indexSliderAffiche: number) => (
+                {idsSliders.map((idSlider: Vices, indexSliderAffiche: number) => (
                     <React.Fragment key={idSlider}>
                         <Grid2 size={2}>
                             <Typography textAlign="right">

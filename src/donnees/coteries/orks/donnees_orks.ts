@@ -2,7 +2,7 @@ import {PersoCommon, Sexe} from "../../../types/perso/Perso";
 import {getEffetsDeCoterieSurCompetences} from "../EffetsDesCoteriesSurPerso";
 import {augmenterCompetence, getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
 import {Coterie, EffectDeCoterieSurPerso, effetDeBaseEnRejoignantUneCoterie} from "../../../types/Coterie";
-import {getValeurVertu, getValeurVice, TypeBon, TypeMauvais} from "../../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/BonMauvais";
 import {soignerBlessureAleatoire} from "../../../fonctions/sante/sante";
 import {getPrenom} from "../../../fonctions/noms";
 import {getQuartierDeCoterie} from "../Quartiers";
@@ -17,25 +17,25 @@ export function rejoindreOrks(perso: PersoCommon): string {
     let scoreTransformation: number = Math.random();
 
     console.log("1. scoreTransformation : " + scoreTransformation);
-    if (getValeurVertu(perso, TypeBon.placide) > 0) {
+    if (getValeurVertu(perso, Vertus.placide) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, TypeBon.prudent) < 0) {
+    if (getValeurVertu(perso, Vertus.prudent) < 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, TypeBon.sociable) > 0) {
+    if (getValeurVertu(perso, Vertus.sociable) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, TypeBon.discipline) > 0) {
+    if (getValeurVertu(perso, Vertus.discipline) > 0) {
         scoreTransformation -= 0.04;
     }
-    if (getValeurVice(perso, TypeMauvais.sociopathique) > 0) {
+    if (getValeurVice(perso, Vices.sociopathique) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVice(perso, TypeMauvais.paresseux) > 0) {
+    if (getValeurVice(perso, Vices.paresseux) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVice(perso, TypeMauvais.aventureux) > 0) {
+    if (getValeurVice(perso, Vices.aventureux) > 0) {
         scoreTransformation += 0.04;
     }
     if (getValeurCompetence(perso, TypeCompetence.force) > 35) {
