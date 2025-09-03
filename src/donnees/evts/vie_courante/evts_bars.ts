@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {ajouterViceVal, getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/BonMauvais";
+import {ajouterViceVal, getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/ViceVertu";
 
 export const evts_bars: GroupeEvts = {
     evts: [

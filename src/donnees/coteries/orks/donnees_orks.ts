@@ -2,7 +2,7 @@ import {PersoCommon, Sexe} from "../../../types/perso/Perso";
 import {getEffetsDeCoterieSurCompetences} from "../EffetsDesCoteriesSurPerso";
 import {augmenterCompetence, getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
 import {Coterie, EffectDeCoterieSurPerso, effetDeBaseEnRejoignantUneCoterie} from "../../../types/Coterie";
-import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/ViceVertu";
 import {soignerBlessureAleatoire} from "../../../fonctions/sante/sante";
 import {getPrenom} from "../../../fonctions/noms";
 import {getQuartierDeCoterie} from "../Quartiers";

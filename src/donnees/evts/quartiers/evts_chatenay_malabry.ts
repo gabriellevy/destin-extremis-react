@@ -8,7 +8,7 @@ import {getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Co
 import {Maitrise} from "../../maitrise";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {ajouterViceVal, getValeurVice, Vices} from "../../../types/BonMauvais";
+import {ajouterViceVal, getValeurVice, Vices} from "../../../types/ViceVertu";
 import {aLaMaitrise} from "../../../fonctions/perso/maitrise";
 
 export const evts_chatenay_malabry: GroupeEvts = {

@@ -3,7 +3,7 @@ import {Perso} from "../perso/Perso";
 import {titreGuildeEnum} from "./Guilde";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
-import {Vertus, Vices} from "../BonMauvais";
+import {Vertus, Vices} from "../ViceVertu";
 
 export type Metier = {
     nom: metiersEnum,

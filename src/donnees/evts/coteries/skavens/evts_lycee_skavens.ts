@@ -10,7 +10,7 @@ import {
     getValeurVice,
     Vertus,
     Vices
-} from "../../../../types/BonMauvais";
+} from "../../../../types/ViceVertu";
 import {majReputationDansQuartier} from "../../../../types/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";

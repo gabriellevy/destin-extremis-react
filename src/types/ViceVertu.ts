@@ -1,7 +1,7 @@
 import {Perso, PersoCommon} from "./perso/Perso";
 
 // duo de vertu et vices qui fonctionnent ensemble en opposition
-export type BonMauvais = {
+export type ViceVertu = {
     valBon: number, // la val de "mauvais"" est l'inverse
     nbDeTestsFaits?: number,
     typeMauvais?: Vices,
@@ -25,11 +25,12 @@ export enum Vices {
     solitaire = "Solitaire",
     sociopathique = "Sociopathique",
     rebelle = "Rebelle",
+    sceptique = "Sceptique",
 }
 
 export enum Vertus {
     placide = "Placide",
-    prudent = "Prudent", // mou
+    prudent = "Prudent",
     valeureux = "Valeureux",
     artificialiste = "Artificialiste",
     loyal = "Loyal",
@@ -37,12 +38,13 @@ export enum Vertus {
     chaste = "Chaste",
     sobre = "Sobre",
     genereux = "Généreux",
-    bienveillant = "Bienveillant", // empathique
+    bienveillant = "Bienveillant",
     altruiste = "Altruiste",
     humble = "Humble",
     sociable = "Sociable",
     empathique = "Empathique",
     discipline = "Discipliné",
+    spirituel = "Spirituel",
 }
 
 export function getViceOppose(typeVertu: Vertus): Vices {
@@ -62,6 +64,7 @@ export function getViceOppose(typeVertu: Vertus): Vices {
         case Vertus.sociable : return Vices.solitaire;
         case Vertus.empathique : return Vices.sociopathique;
         case Vertus.discipline : return Vices.rebelle;
+        case Vertus.spirituel : return Vices.sceptique;
     }
 }
 export function getVertuOppose(typeVice: Vices): Vertus {
@@ -81,6 +84,7 @@ export function getVertuOppose(typeVice: Vices): Vertus {
         case Vices.solitaire : return Vertus.sociable;
         case Vices.sociopathique : return Vertus.empathique;
         case Vices.rebelle : return Vertus.discipline;
+        case Vices.sceptique : return Vertus.spirituel;
     }
 }
 
@@ -89,10 +93,10 @@ export function getValeurVice(perso: PersoCommon, typeVice: Vices): number {
 }
 
 export function getValeurVertu(perso: PersoCommon, typeVertu: Vertus): number {
-    return perso.viceVertu.find((viceVertu: BonMauvais) => viceVertu.typeBon === typeVertu)?.valBon || 0;
+    return perso.viceVertu.find((viceVertu: ViceVertu) => viceVertu.typeBon === typeVertu)?.valBon || 0;
 }
 
-export function viceVertuDeBase(): Array<BonMauvais> {
+export function viceVertuDeBase(): Array<ViceVertu> {
     return Object.values(Vertus)
         .map(typeVertu => {
             return {
@@ -126,7 +130,7 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertus, val:number): st
     if (valActuelle < -3) valActuelle = -3
     else if (valActuelle > 3) valActuelle = 3
     let viceVertu = perso.viceVertu.find(
-        (viceVertu: BonMauvais) => viceVertu.typeBon === typeVertu);
+        (viceVertu: ViceVertu) => viceVertu.typeBon === typeVertu);
     if (!viceVertu) {
         perso.viceVertu.push({
             valBon: valActuelle,

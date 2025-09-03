@@ -1,8 +1,8 @@
 import { Coterie } from "../../types/Coterie";
-import {Vertus, BonMauvais } from "../../types/BonMauvais";
+import {Vertus, ViceVertu } from "../../types/ViceVertu";
 
 // chacun doit en avoir autant pour que ce soit plus équitable
-export const affiniteViceVertuCoterie: Record<Coterie, BonMauvais[]> = {
+export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.chaos]: [{
         valBon: -2,
         typeBon: Vertus.discipline,

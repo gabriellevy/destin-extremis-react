@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {FieldErrorsImpl, UseFormHandleSubmit, UseFormRegister, UseFormWatch} from 'react-hook-form';
 import {Grid2, Typography} from "@mui/material";
-import {Vertus, Vices} from "../types/BonMauvais";
+import {Vertus, Vices} from "../types/ViceVertu";
 import {ChoixCoterieFormData, PhaseDeChoix} from "./ChoixDeCoterie";
 
 type SelectionTraitsProps = {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {FieldErrorsImpl, useForm} from 'react-hook-form';
-import {Vices} from "../types/BonMauvais";
+import {Vices} from "../types/ViceVertu";
 import SelectionTraits from "./SelectionTraits";
 import Resultat from "./Resultat";
 import SelectionComp from "./SelectionComp";

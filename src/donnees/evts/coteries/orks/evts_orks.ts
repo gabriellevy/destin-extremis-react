@@ -9,7 +9,7 @@ import {testComp, testVice} from "../../../../fonctions/des";
 import {getValeurCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
-import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/BonMauvais";
+import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/ViceVertu";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 
 export const evts_orks: GroupeEvts = {

@@ -2,7 +2,7 @@ import {ResultatTest, TestCompetence, TestMetier, TestVertu, TestVice} from "../
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
 import {Perso} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
-import {getValeurVertu, getValeurVice} from "../types/BonMauvais";
+import {getValeurVertu, getValeurVice} from "../types/ViceVertu";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;

@@ -1,4 +1,4 @@
-import {getValeurVertu, getValeurVice, getViceOppose, Vertus} from "../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, getViceOppose, Vertus} from "../../types/ViceVertu";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 

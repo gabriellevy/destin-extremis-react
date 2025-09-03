@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {getValeurVice, Vices} from "../../../types/BonMauvais";
+import {getValeurVice, Vices} from "../../../types/ViceVertu";
 import {aUneCarriere, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";

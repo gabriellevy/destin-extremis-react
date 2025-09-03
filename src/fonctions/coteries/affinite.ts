@@ -1,6 +1,6 @@
 import {Perso} from "../../types/perso/Perso";
 import {affiniteViceVertuCoterie} from "../../donnees/coteries/affiniteViceVertu";
-import {getValeurVertu} from "../../types/BonMauvais";
+import {getValeurVertu} from "../../types/ViceVertu";
 import {Coterie} from "../../types/Coterie";
 
 export const SEUIL_AFFINITE:number = 8; // seuil à partir de quand une coterie intéresse le perso

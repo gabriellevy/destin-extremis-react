@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
-import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/BonMauvais";
+import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/ViceVertu";
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../../types/perso/Amour";

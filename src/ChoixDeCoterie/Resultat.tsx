@@ -1,6 +1,6 @@
 import React from 'react';
 import {UseFormWatch} from 'react-hook-form';
-import {getViceOppose, Vices} from "../types/BonMauvais";
+import {getViceOppose, Vices} from "../types/ViceVertu";
 import {Coterie} from "../types/Coterie";
 import {affiniteViceVertuCoterie} from "../donnees/coteries/affiniteViceVertu";
 import Vignette from "./Vignette";

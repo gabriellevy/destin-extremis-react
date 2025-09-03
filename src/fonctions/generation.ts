@@ -4,7 +4,7 @@ import {Coterie} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
 import {anneesToJours, calculeAge} from "../types/Date";
 import {lieuParDefaut} from "../types/lieux/Lieu";
-import {viceVertuDeBase} from "../types/BonMauvais";
+import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
 import {getNom, getPrenom} from "./noms";
 import {NiveauRelationAmoureuse} from "../types/perso/Amour";

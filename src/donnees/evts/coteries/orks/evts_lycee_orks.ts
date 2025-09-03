@@ -9,7 +9,7 @@ import {Coterie} from "../../../../types/Coterie";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 import {Maitrise} from "../../../maitrise";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
-import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/BonMauvais";
+import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/ViceVertu";
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";

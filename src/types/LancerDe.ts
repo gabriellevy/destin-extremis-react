@@ -1,6 +1,6 @@
 import {TypeCompetence} from "./perso/comps/Comps";
 import {metiersEnum} from "../donnees/metiers";
-import {Vertus, Vices} from "./BonMauvais";
+import {Vertus, Vices} from "./ViceVertu";
 
 export type ResultatTest = {
     reussi: boolean,

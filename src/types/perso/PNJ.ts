@@ -2,7 +2,7 @@ import {Sexe} from "./Perso";
 import {Lieu} from "../lieux/Lieu";
 import {Coterie} from "../Coterie";
 import {Carriere} from "../metiers/Metier";
-import {BonMauvais} from "../BonMauvais";
+import {ViceVertu} from "../ViceVertu";
 import {NiveauAmour, NiveauRelationAmoureuse} from "./Amour";
 
 export type PNJ = {
@@ -13,7 +13,7 @@ export type PNJ = {
     lieu: Lieu,
     coterie: Coterie;
     carriere: Carriere,
-    viceVertu: BonMauvais[],
+    viceVertu: ViceVertu[],
     mort?: boolean,
     // rapport au perso principal :
     // -- amour
