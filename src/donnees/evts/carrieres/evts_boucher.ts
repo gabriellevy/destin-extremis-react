@@ -4,8 +4,13 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../metiers";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    travailleEnCeMomentComme
+} from "../../../fonctions/metiers/metiersUtils";
+import {metiersEnum, metiersObjs} from "../../metiers";
 
 const passageDiplomeBoucher: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boucher depuis longtemps. ";
@@ -41,6 +46,7 @@ export const evts_boucher: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Gerd_Fleisher.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_boucher]) >= 0
                 && calculeAge(perso) >= 14,
         },
         {

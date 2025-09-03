@@ -5,8 +5,13 @@ import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../metiers";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    travailleEnCeMomentComme
+} from "../../../fonctions/metiers/metiersUtils";
+import {metiersEnum, metiersObjs} from "../../metiers";
 
 export const evts_batelier: GroupeEvts = {
     evts: [
@@ -29,6 +34,7 @@ export const evts_batelier: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && calculeAge(perso) >= 14
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.batelier]) >= 0
                 && auBordDeLaRiviere(perso),
         },
         {

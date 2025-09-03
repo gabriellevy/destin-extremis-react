@@ -1,11 +1,16 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    travailleEnCeMomentComme
+} from "../../../fonctions/metiers/metiersUtils";
 
 export const evts_serveur: GroupeEvts = {
     evts: [
@@ -33,6 +38,7 @@ export const evts_serveur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.serveur]) >= 0
                 && calculeAge(perso) >= 14, // TODO : tester que dans une ville ?
         },
         {

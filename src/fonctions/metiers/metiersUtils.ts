@@ -1,10 +1,11 @@
-import {Carriere} from "../../types/metiers/Metier";
+import {Carriere, Metier} from "../../types/metiers/Metier";
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {seuils} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../random";
+import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../types/ViceVertu";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -190,6 +191,25 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
         actif: metierActif,
         nbDeTestsFaits : nbDeTestsFaits,
     });
+}
+
+/**
+ * return une valeur environ de -5 à +5 qui définit la compatibilité du personnage avec ce métier
+ * en fonction de ses vices et vertus
+ * cad essentielleemnt si il veut exercer ce métier, indépendament de ses compéteces réelles
+ */
+export function compatibiliteCarriere(perso: Perso, metier: Metier): number {
+
+    let compatibilite: number = 0;
+    metier.vicesCompatibles.forEach((vice: Vices)=> {
+        compatibilite += getValeurVice(perso, vice);
+    })
+    metier.vertusCompatibles.forEach((vertu: Vertus)=> {
+        compatibilite += getValeurVertu(perso, vertu);
+    })
+    console.log("Mathieu compatibilite : " + compatibilite);
+
+    return compatibilite;
 }
 
 

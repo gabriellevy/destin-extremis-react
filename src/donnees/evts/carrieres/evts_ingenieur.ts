@@ -1,12 +1,17 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, suitUneCarriereDe} from "../../../fonctions/metiers/metiersUtils";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    suitUneCarriereDe
+} from "../../../fonctions/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
 import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
@@ -46,6 +51,7 @@ export const evts_ingenieur: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.etudiant_ingenieur]) >= 0
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
             proba: 5,
         },

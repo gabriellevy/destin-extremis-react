@@ -1,5 +1,5 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
@@ -8,7 +8,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {
     arreterCarriere,
     aUneCarriere,
-    commencerCarriere, plusUnEnCompetenceMetier,
+    commencerCarriere, compatibiliteCarriere, plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
 } from "../../../fonctions/metiers/metiersUtils";
@@ -24,7 +24,9 @@ export const evts_crime: GroupeEvts = {
                 return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
                     "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. ";
             },
-            conditions: (perso: Perso): boolean => !aUneCarriere(perso) && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
+            conditions: (perso: Perso): boolean => !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.ranconneur]) >= 0
+                && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
         },
         {
             id: "evts_crime2",

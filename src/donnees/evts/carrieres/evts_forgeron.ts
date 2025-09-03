@@ -1,11 +1,16 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge, anneesToJours} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    travailleEnCeMomentComme
+} from "../../../fonctions/metiers/metiersUtils";
 
 const passageDiplomeForgeron: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti forgeron depuis longtemps. ";
@@ -43,6 +48,7 @@ export const evts_forgeron: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Hugo_Schmidt.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_Forgeron]) >= 0
                 && calculeAge(perso) >= 14,
         },
         {

@@ -4,10 +4,10 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {getValeurVice, Vices} from "../../../types/ViceVertu";
-import {aUneCarriere, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
+import {aUneCarriere, commencerCarriere, compatibiliteCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 
 export const evts_pilleur_de_ruches: GroupeEvts = {
     evts: [
@@ -35,6 +35,7 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.pilleur_de_ruche]) >= 0
                 && (getValeurVice(perso, Vices.aventureux) >= 1
                 || getValeurVice(perso, Vices.cupide) >= 1 && getValeurVice(perso, Vices.aventureux) >= 0)
                 && calculeAge(perso) >= 16

@@ -1,11 +1,16 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum} from "../../metiers";
+import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
-import {aUneCarriere, commencerCarriere, travailleEnCeMomentComme} from "../../../fonctions/metiers/metiersUtils";
+import {
+    aUneCarriere,
+    commencerCarriere,
+    compatibiliteCarriere,
+    travailleEnCeMomentComme
+} from "../../../fonctions/metiers/metiersUtils";
 
 export const evts_macon: GroupeEvts = {
     evts: [
@@ -29,6 +34,7 @@ export const evts_macon: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
+                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.macon]) >= 0
                 && calculeAge(perso) >= 14,
         },
         {
