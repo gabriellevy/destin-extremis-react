@@ -30,14 +30,14 @@ export default function DonneesPerso () {
         // TODO : afficher niveau de compétence dans ce métier
 
         return (carriere.metier && carriere.actif &&
-            <ListItem>
+            <ListItem key={intituleMetier}>
                 <ListItemText primary={intituleMetier} secondary={dureeCarriere}/>
             </ListItem>
         );
     }
 
     return (<List dense>
-        <ListItem>
+        <ListItem key={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}>
             <Typography variant="h5" gutterBottom>
                 <ListItemText primary={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}
                               secondary={`${calculeAge(perso)} ans`}/>

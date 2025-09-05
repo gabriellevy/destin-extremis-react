@@ -9,7 +9,12 @@ const NavBar: React.FC = () => {
             <ul className="navbar-list">
                 <li className="navbar-item">
                     <Link to="/destin-extremis" className="navbar-link">
-                        Destin Extrémis
+                        Destin Extrémis (jeu)
+                    </Link>
+                </li>
+                <li className="navbar-item">
+                    <Link to="/destin-extremis-test" className="navbar-link">
+                        Destin Extrémis (test)
                     </Link>
                 </li>
                 <li className="navbar-item">

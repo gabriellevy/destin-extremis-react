@@ -209,7 +209,6 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
     metier.vertusCompatibles.forEach((vertu: Vertus)=> {
         compatibilite += getValeurVertu(perso, vertu);
     })
-    console.log("Mathieu compatibilite : " + compatibilite);
 
     return compatibilite;
 }

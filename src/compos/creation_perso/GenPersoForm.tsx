@@ -18,15 +18,17 @@ import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
 import {persoFormToPerso} from "../../fonctions/perso/conversionsPerso";
 import {metierAleatoire} from "../../fonctions/metiers/metiersUtils";
+import {Mode, PhaseDExecution} from "../../types/Mode";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
+    mode:Mode;
 }
 
-export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
+export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormProps) {
     const { setPerso } = useContext(PersoContexte) as PersoContexteType;
     const methods = useForm<PersoForm>({
-        defaultValues: enfant()
+        defaultValues: enfant(true)
     });
     const { reset, handleSubmit } = methods;
 
@@ -37,7 +39,7 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
     };
 
     const persoAleatoire = () => {
-        const persoAl: PersoForm = enfant();
+        const persoAl: PersoForm = enfant(true);
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
@@ -50,6 +52,8 @@ export default function GenPersoForm({ setAfficherForm }: CharacterFormProps) {
         persoAl.nom = getNom(persoAl.coterie, persoAl.sexe);
         persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);
         persoAl.metier = metierAleatoire(persoAl);
+        persoAl.mode = mode;
+        persoAl.phaseDExecution = PhaseDExecution.histoire;
 
         reset({...persoAl});
         setAfficherForm(true);

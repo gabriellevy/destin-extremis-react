@@ -12,6 +12,7 @@ import {PNJ} from "./PNJ";
 import {metiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
+import {Mode, PhaseDExecution} from "../Mode";
 
 export type PersoCommon = {
     prenom: string;
@@ -46,6 +47,8 @@ export type PersoCommon = {
     pbDeSante: PbDeSante[],
     bioniques: Bionique[],
     nbJoursDHopital: number,
+    mode: Mode; // mode actuel d'exécution // immutable
+    phaseDExecution: PhaseDExecution;
     // ------------------ orks ------------------------ //
     esclaveGtrechin?: string, // nom de l'esclave gretchin
 };

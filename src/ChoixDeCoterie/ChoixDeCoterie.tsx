@@ -5,6 +5,8 @@ import SelectionTraits from "./SelectionTraits";
 import Resultat from "./Resultat";
 import SelectionComp from "./SelectionComp";
 import {TypeCompetence} from "../types/perso/comps/Comps";
+import {Mode} from "../types/Mode";
+import DestinExtremis from "../compos/DestinExtremis";
 
 export type ChoixCoterieFormData = {
     competences: {
@@ -31,8 +33,11 @@ export enum PhaseDeChoix {
     selection_competences,
     resultat
 }
+export interface ChoixDeCoterieProps {
+    mode: Mode;
+}
 
-const ChoixDeCoterie : React.FC = () => {
+function ChoixDeCoterie({mode}:Readonly<ChoixDeCoterieProps>) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm<ChoixCoterieFormData>({
         defaultValues: defaultValues
     });
@@ -60,12 +65,19 @@ const ChoixDeCoterie : React.FC = () => {
                 />)
             }
             {
-                phaseDeChoix === PhaseDeChoix.resultat &&
+                phaseDeChoix === PhaseDeChoix.resultat && mode === Mode.choixCoterie &&
                 (<Resultat
                     watch={watch}
                 />)
             }
+            {
+                phaseDeChoix === PhaseDeChoix.resultat && mode === Mode.jeu &&
+                (<DestinExtremis
+                    mode={mode}
+                    initPerso={watch}
+                />)
+            }
     </>);
-};
+}
 
 export default ChoixDeCoterie

@@ -11,8 +11,9 @@ import {reputationVide} from "../../types/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {metiersEnum} from "../metiers";
+import {Mode, PhaseDExecution} from "../../types/Mode";
 
-export function enfant(): PersoForm {
+export function enfant(empty: boolean): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);
     const sexe = Sexe.male;
     let perso: PersoForm = {
@@ -27,9 +28,9 @@ export function enfant(): PersoForm {
         age: 14,
         lieu: lieuParDefaut,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
-        coterie: cot,
+        coterie: empty ? undefined : cot,
         comps: compsDeBase(),
-        viceVertu: viceVertuDeBase(),
+        viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],
         dieu: {id: "Aucun"},
         evtsProgrammes: evts_programmes,
@@ -42,7 +43,11 @@ export function enfant(): PersoForm {
         bioniques: [],
         nbJoursDHopital: 0,
         metier: metiersEnum.non_travailleur,
+        mode: Mode.test,
+        phaseDExecution: PhaseDExecution.creation,
     };
-    rejointCoterie(perso, cot);
+    if (!empty) {
+        rejointCoterie(perso, cot);
+    }
     return perso;
 }
