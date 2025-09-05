@@ -7,6 +7,7 @@ import {getViceOppose, Vertus} from "../types/ViceVertu";
 import {PhaseDExecution} from "../types/Mode";
 import {UseFormWatch} from "react-hook-form";
 import {ChoixCoterieFormData} from "../ChoixDeCoterie/ChoixDeCoterie";
+import {Competence} from "../types/perso/comps/Comps";
 
 export interface PersoContexteProviderProps {
     children: ReactNode;
@@ -15,18 +16,16 @@ export interface PersoContexteProviderProps {
 
 function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProviderProps>) {
     const [perso, setPerso] = useState<Perso>(persoFormToPerso(enfant(true)));
-    console.log("Mathieu perso : ", perso);
 
     useEffect(() => {
         if (initPerso) {
-            console.log("Mathieu initPerso : ");
+            // initialisation à partir de données "jeu" c'est à dire par choix de vice, vertus etc par le joueur
             const valuesInitPerso = initPerso();
-            // initialisation à partir de données de génération de perso par préférences de traits
             const persoForm:PersoForm = enfant(true);
             let persoFinal: Perso = persoFormToPerso(persoForm);
-            persoFinal.prenom = "truc";
             persoFinal.phaseDExecution = PhaseDExecution.histoire;
 
+            // données de génération de perso par préférences de vices et vertus
             persoFinal.viceVertu = Object.values(Vertus)
                 .map(typeVertu => {
                     return {
@@ -36,6 +35,16 @@ function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProvi
                         typeBon: typeVertu,
                     }
                 });
+            // données de génération de perso par préférences de compétences
+            const competencesChoisies = valuesInitPerso.competences;
+            persoFinal.comps = persoFinal.comps.map((comp: Competence) => {
+                if (competencesChoisies[comp.typeComp]) {
+                    comp.val += 10;
+                } else {
+                    comp.val -= 2;
+                }
+                return comp;
+            })
 
             setPerso(persoFinal);
         }
