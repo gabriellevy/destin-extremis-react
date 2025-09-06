@@ -39,7 +39,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
     };
 
     const persoAleatoire = () => {
-        const persoAl: PersoForm = enfant(true);
+        const persoAl: PersoForm = enfant(false);
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
