@@ -4,7 +4,6 @@ import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {metiersEnum} from "../../donnees/metiers";
 
 export default function DonneesPerso () {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -44,8 +43,8 @@ export default function DonneesPerso () {
             </Typography>
         </ListItem>
         {
-            Array.from(perso.carrieres).map(([key, value]: [metiersEnum, Carriere]) => {
-                return (key && value &&
+            perso.carrieres.map((value: Carriere) => {
+                return (value &&
                     affichageCarriere(value)
                 );
             })

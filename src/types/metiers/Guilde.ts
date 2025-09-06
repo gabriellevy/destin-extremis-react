@@ -1,5 +1,6 @@
 import {Perso} from "../perso/Perso";
 import {metiersEnum} from "../../donnees/metiers";
+import {Carriere} from "./Metier";
 
 // undefined si n'appartient pas à la guilde
 export enum titreGuildeEnum {
@@ -8,12 +9,12 @@ export enum titreGuildeEnum {
 }
 
 export function appartientALaGuilde(perso: Perso, metierEnum: metiersEnum) {
-    const carriere = perso.carrieres.get(metierEnum);
+    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metierEnum);
     return (carriere !== undefined && carriere.guilde);
 }
 
 export function rejointGuilde(perso: Perso, metierEnum: metiersEnum) {
-    const carriere = perso.carrieres.get(metierEnum);
+    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metierEnum);
     if (carriere !== undefined) {
         carriere.guilde = titreGuildeEnum.membre;
     } else {

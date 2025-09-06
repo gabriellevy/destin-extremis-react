@@ -85,7 +85,7 @@ export function getCompetenceMetier(perso: Perso, metier: metiersEnum): number {
     return competence;
 }
 export function augmenterNbDeTestsFaitsMetier(perso: Perso, metier: metiersEnum): string {
-    const carriere: Carriere | undefined = perso.carrieres.get(metier);
+    const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
     if (carriere !== undefined) {
         const nbTests: number = carriere.nbDeTestsFaits + 1;
         carriere.nbDeTestsFaits = nbTests;
@@ -142,13 +142,13 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25;
     let nbDeTestsFaits: number = 0;
-    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.get(metier);
+    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
     if (cetteCarriereDejaFaite) {
         // réactiver
         cetteCarriereDejaFaite.actif = true;
     } else {
         // commencer la nouvelle
-        perso.carrieres.set(metier, {
+        perso.carrieres.push({
             metier: metiersObjs[metier],
             groupeLieu: groupeLieu,
             duree: 0,
@@ -161,7 +161,7 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
 
 export function arreterCarriere(perso: Perso, metier: metiersEnum): void {
     // passer en inactif
-    const carriere =  perso.carrieres.get(metier);
+    const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
     if (carriere) {
         carriere.actif = false;
     }
@@ -176,7 +176,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
     let nbDeTestsFaits: number = 0;
     let metierActif = false;
     let duree = 0;
-    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.get(metier);
+    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
     if (cetteCarriereDejaFaite) {
         nivCompetence = cetteCarriereDejaFaite.competence;
         nbDeTestsFaits = cetteCarriereDejaFaite.nbDeTestsFaits;
@@ -184,7 +184,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
         duree = cetteCarriereDejaFaite.duree;
     }
     // commencer la nouvelle
-    perso.carrieres.set(metier, {
+    perso.carrieres.push({
         metier: metiersObjs[metier],
         duree: duree,
         competence: nivCompetence + 1,

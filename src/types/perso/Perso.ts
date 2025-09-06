@@ -67,8 +67,7 @@ export type PersoForm = PersoCommon & {
  * type standard utilisé lors de l'exécution (devrait être sauvegardable en théorie)
  */
 export type Perso = PersoCommon & {
-    carrieres: Map<metiersEnum, Carriere>, // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
-
+    carrieres: Carriere[],
 }
 
 export enum NiveauIA {

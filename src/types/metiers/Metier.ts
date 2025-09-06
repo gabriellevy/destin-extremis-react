@@ -9,7 +9,7 @@ export type Metier = {
     nom: metiersEnum,
     statut: Statut,
     statutMax: Statut,
-    intitule: (perso: Perso,carriere: Carriere) => string,
+    intitule: (perso: Perso,carriere: Carriere) => string, //  TODO : pas sauvegardable ne json, ne aps le garder
     // probabilité d'avoir ce métier dans la Ville :
     // 0 pour les métiers spécialisés extérieurs (Stalker)
     // 0.5 pour les courants (boulanger)
