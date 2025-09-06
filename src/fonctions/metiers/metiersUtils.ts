@@ -11,7 +11,7 @@ import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../types/ViceVert
 export function aUneCarriere(perso: Perso): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
-        if (carriere.actif && carriere.metier.nom !== metiersEnum.non_travailleur) trouve = true;
+        if (carriere.actif && carriere.metier !== metiersEnum.non_travailleur) trouve = true;
     });
     if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined) {
         // considéré comme travaillant tant qu'il n'a pas fini son lycée
@@ -20,18 +20,44 @@ export function aUneCarriere(perso: Perso): boolean {
     return trouve;
 }
 
-export function getCarriereActive(perso: Perso): Carriere|undefined {
-    const carrieres = Array.from(perso.carrieres.values());
+export function getCarriere(perso: Perso, metiersEnum: metiersEnum): Carriere|undefined {
+    const carrieres: Carriere[] = Array.from(perso.carrieres.values());
+    for(let i = 0; i < carrieres.length; i++) {
+        const carriere = carrieres[i];
+        if (carriere.metier === metiersEnum) return carriere;
+    }
+    return undefined;
+}
+
+export function getCarriereActive(perso: Perso): Carriere {
+    const carrieres: Carriere[] = Array.from(perso.carrieres.values());
     for(let i = 0; i < carrieres.length; i++) {
         const carriere = carrieres[i];
         if (carriere.actif) return carriere;
     }
-    return undefined;
+
+    let carriereChomeur: Carriere|undefined = getCarriere(perso, metiersEnum.non_travailleur);
+    if (carriereChomeur) {
+        carriereChomeur.actif = true;
+        return carriereChomeur;
+    }
+
+    // pas de carrière active : lui ajouter nune carrière de chômeur ou réactiver une ancienne :
+    const chomeur: Carriere = {
+        metier: metiersEnum.non_travailleur,
+        intitule: "chômeur",
+        duree: 0,
+        competence: 25,
+        actif: true,
+        nbDeTestsFaits: 0,
+    };
+    perso.carrieres.push(chomeur);
+    return chomeur;
 }
-export function suitUneCarriereDe(perso: Perso, metier: metiersEnum): boolean {
+export function suitUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach(carriere => {
-        if (carriere.metier.nom === metier && carriere.actif) {
+        if (carriere.metier === metiersEnum && carriere.actif) {
             trouve = true;
         }
     });
@@ -44,10 +70,10 @@ export function suitUneCarriereDe(perso: Perso, metier: metiersEnum): boolean {
 export function travailleEnCeMomentComme(perso: Perso, metier: metiersEnum): boolean {
     return suitUneCarriereDe(perso, metier) && !perso.lieu.enVoyage;
 }
-export function neSuitPasUneCarriereDe(perso: Perso, metier: metiersEnum): boolean {
+export function neSuitPasUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach(carriere => {
-        if (carriere.metier.nom === metier && carriere.actif) {
+        if (carriere.metier === metiersEnum && carriere.actif) {
             trouve = true;
         }
     });
@@ -57,14 +83,14 @@ export function neSuitPasUneCarriereDe(perso: Perso, metier: metiersEnum): boole
 /**
  *
  * @param perso
- * @param metier si undefined signifie n'importe quelle carrière
+ * @param metiersEnum si undefined signifie n'importe quelle carrière
  * @param dureeEnAnnees
  */
-export function suitUneCarriereDepuis(perso: Perso, metier: metiersEnum|undefined, dureeEnAnnees: number): boolean {
+export function suitUneCarriereDepuis(perso: Perso, metiersEnum: metiersEnum|undefined, dureeEnAnnees: number): boolean {
     let trouve: boolean = false;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
-            if ((metier === undefined || carriere.metier.nom === metier)
+            if ((metiersEnum === undefined || carriere.metier === metiersEnum)
                 && carriere.actif && carriere.duree >= anneesToJours(dureeEnAnnees)) {
                 trouve = true;
             }
@@ -73,26 +99,26 @@ export function suitUneCarriereDepuis(perso: Perso, metier: metiersEnum|undefine
     return trouve;
 }
 
-export function getCompetenceMetier(perso: Perso, metier: metiersEnum): number {
+export function getCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): number {
     let competence: number = 0;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
-            if (carriere.metier.nom === metier) {
+            if (carriere.metier === metiersEnum) {
                 competence = carriere.competence;
             }
         });
     }
     return competence;
 }
-export function augmenterNbDeTestsFaitsMetier(perso: Perso, metier: metiersEnum): string {
-    const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
+export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiersEnum): string {
+    const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere !== undefined) {
         const nbTests: number = carriere.nbDeTestsFaits + 1;
         carriere.nbDeTestsFaits = nbTests;
         if (seuils.includes(nbTests)) {
             // gain d'un point de compétence :
             carriere.competence += 1;
-            return "+1 en " + metier.toString() + ". ";
+            return "+1 en " + metiersEnum.toString() + ". ";
         }
     }
     return "";
@@ -133,7 +159,7 @@ export function commencerCarriereAleatoire(perso: Perso): void {
     commencerCarriere(perso, metier, "");
 }
 
-export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu: string): void {
+export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupeLieu: string): void {
     // passer les autres en inactives
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
         carriere.actif = false;
@@ -142,14 +168,15 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25;
     let nbDeTestsFaits: number = 0;
-    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
+    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (cetteCarriereDejaFaite) {
         // réactiver
         cetteCarriereDejaFaite.actif = true;
     } else {
         // commencer la nouvelle
         perso.carrieres.push({
-            metier: metiersObjs[metier],
+            metier: metiersEnum,
+            intitule: metiersObjs + groupeLieu ? " à " + groupeLieu : "",
             groupeLieu: groupeLieu,
             duree: 0,
             competence: nivCompetence,
@@ -159,9 +186,9 @@ export function commencerCarriere(perso: Perso, metier: metiersEnum, groupeLieu:
     }
 }
 
-export function arreterCarriere(perso: Perso, metier: metiersEnum): void {
+export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum): void {
     // passer en inactif
-    const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
+    const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere) {
         carriere.actif = false;
     }
@@ -170,13 +197,13 @@ export function arreterCarriere(perso: Perso, metier: metiersEnum): void {
 /**
  * devient meilleur à un métier mais sans commencer la carrière pour autant
  */
-export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): void {
+export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): void {
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25; // niveau débutant
     let nbDeTestsFaits: number = 0;
     let metierActif = false;
     let duree = 0;
-    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metier);
+    const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (cetteCarriereDejaFaite) {
         nivCompetence = cetteCarriereDejaFaite.competence;
         nbDeTestsFaits = cetteCarriereDejaFaite.nbDeTestsFaits;
@@ -185,7 +212,8 @@ export function plusUnEnCompetenceMetier(perso: Perso, metier: metiersEnum): voi
     }
     // commencer la nouvelle
     perso.carrieres.push({
-        metier: metiersObjs[metier],
+        metier: metiersEnum,
+        intitule: metiersObjs.toString(),
         duree: duree,
         competence: nivCompetence + 1,
         actif: metierActif,

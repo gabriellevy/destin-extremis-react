@@ -9,6 +9,7 @@ import {
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 import {Carriere} from "../../../types/metiers/Metier";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
+import {metiersObjs} from "../../metiers";
 
 // événements basiques accessibles à à peu près toutes els carrières
 export const evts_carriere: GroupeEvts = {
@@ -19,13 +20,13 @@ export const evts_carriere: GroupeEvts = {
                 let texte: string = "";
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
-                    texte += "Vous êtes un " + carriere.metier.nom + " très efficace. ";
+                    texte += "Vous êtes un " + carriere.metier + " très efficace. ";
                     texte += modifierStatut(perso, 1);
                 }
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, undefined, 1)
-                && !statut1SuperieurOuEgalAStatut2(perso.statut, getCarriereActive(perso)?.metier.statutMax),
+                && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
         },
         {
             id: "evts_carriere2 train train",
@@ -35,7 +36,7 @@ export const evts_carriere: GroupeEvts = {
                     // pour les evts de remplissage l'IA est utilisée même en mode bouche_trou
                     texte = await appelLeChat(
                         perso,
-                        "Racontez une journée de travail comme " + getCarriereActive(perso)?.metier.intitule + " du personnage principal.",
+                        "Racontez une journée de travail comme " + getCarriereActive(perso)?.intitule + " du personnage principal.",
                         NiveauInfosPerso.prenom);
                 } else {
                     texte += "Le petit train train quotidien. ";
@@ -60,12 +61,12 @@ export const evts_carriere: GroupeEvts = {
                     } else {
                         texte += "Vous démissionnez. ";
                     }
-                    arreterCarriere(perso, carriere.metier.nom);
+                    arreterCarriere(perso, carriere.metier);
                 }
                 return texte;
             },
             conditions: (perso: Perso): boolean => aUneCarriere(perso)
-                && compatibiliteCarriere(perso, getCarriereActive(perso)?.metier) < 0,
+                && compatibiliteCarriere(perso, metiersObjs[getCarriereActive(perso).metier]) < 0,
         },
     ],
     probaParDefaut: 3,

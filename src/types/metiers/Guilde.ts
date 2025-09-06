@@ -9,12 +9,12 @@ export enum titreGuildeEnum {
 }
 
 export function appartientALaGuilde(perso: Perso, metierEnum: metiersEnum) {
-    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metierEnum);
+    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier === metierEnum);
     return (carriere !== undefined && carriere.guilde);
 }
 
 export function rejointGuilde(perso: Perso, metierEnum: metiersEnum) {
-    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier.nom === metierEnum);
+    const carriere = perso.carrieres.find((carriere: Carriere) => carriere.metier === metierEnum);
     if (carriere !== undefined) {
         carriere.guilde = titreGuildeEnum.membre;
     } else {

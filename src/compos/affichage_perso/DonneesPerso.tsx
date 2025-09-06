@@ -4,6 +4,7 @@ import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {metiersObjs} from "../../donnees/metiers";
 
 export default function DonneesPerso () {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -19,7 +20,7 @@ export default function DonneesPerso () {
     };
 
     const affichageCarriere = (carriere: Carriere) => {
-        let intituleMetier: string = carriere.metier.intitule(perso, carriere);
+        let intituleMetier: string = metiersObjs[carriere.metier].intitule(perso, carriere);
         if (carriere.guilde) {
             intituleMetier += ' ('+carriere.guilde+')';
         }

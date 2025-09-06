@@ -8,13 +8,14 @@ import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
 import {getNom, getPrenom} from "./noms";
 import {NiveauRelationAmoureuse} from "../types/perso/Amour";
-import {metiersEnum, metiersObjs} from "../donnees/metiers";
+import {metiersEnum} from "../donnees/metiers";
 
 export function getCarriereAleatoire(): Carriere {
     let metierAleatoire: metiersEnum = getRandomEnumValue(metiersEnum);
 
     return {
-        metier: metiersObjs[metierAleatoire],
+        metier: metierAleatoire,
+        intitule: metierAleatoire.toString(),
         duree: 0,
         competence: 25,
         actif: true,
