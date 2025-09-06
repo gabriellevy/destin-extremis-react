@@ -28,7 +28,7 @@ interface CharacterFormProps {
 export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormProps) {
     const { setPerso } = useContext(PersoContexte) as PersoContexteType;
     const methods = useForm<PersoForm>({
-        defaultValues: enfant(true)
+        defaultValues: enfant(false)
     });
     const { reset, handleSubmit } = methods;
 

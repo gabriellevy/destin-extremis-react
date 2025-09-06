@@ -21,7 +21,13 @@ const passageDiplomeBoulanger: (perso: Perso) => Promise<string> = (perso: Perso
         commencerCarriere(perso, metiersEnum.boulanger, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
-        perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeBoulanger);
+        perso.evtsProgrammes.push({
+            date: perso.date + anneesToJours(1),
+            evt: {
+                id: "passageDiplomeBoulanger",
+                description: passageDiplomeBoulanger,
+            }
+        });
     }
     return new Promise((resolve) => resolve(texte))
 }
@@ -37,7 +43,13 @@ export const evts_boulanger: GroupeEvts = {
                 if (resTestDex.reussi) {
                     commencerCarriere(perso, metiersEnum.apprenti_boulanger, '');
                     texte += `Votre motivation et votre dextérité impressionnent le boulanger qui vous engage comme apprenti à l'essai. `;
-                    perso.evtsProgrammes.set(perso.date + anneesToJours(3), passageDiplomeBoulanger);
+                    perso.evtsProgrammes.push({
+                        date: perso.date + anneesToJours(3),
+                        evt: {
+                            id: "passageDiplomeBoulanger",
+                            description: passageDiplomeBoulanger,
+                        }
+                    });
                 } else {
                     texte += `Malheureusement vous n'impressionnez guère le boulanger qui refuse de vous prendre comme apprenti. `;
                 }

@@ -21,7 +21,13 @@ const passageDiplomeBoucher: (perso: Perso) => Promise<string> = (perso: Perso) 
         commencerCarriere(perso, metiersEnum.boucher, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
-        perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeBoucher);
+        perso.evtsProgrammes.push({
+            date: perso.date + anneesToJours(1),
+            evt: {
+                id: "passageDiplomeBarbierChirurgien",
+                description: passageDiplomeBoucher,
+            }
+        });
     }
     return new Promise((resolve) => resolve(texte))
 }
@@ -37,7 +43,13 @@ export const evts_boucher: GroupeEvts = {
                 if (resTestDex.reussi) {
                     commencerCarriere(perso, metiersEnum.apprenti_boucher, '');
                     texte += `Votre motivation et votre force impressionnent le boucher qui vous engage comme apprenti à l'essai. `;
-                    perso.evtsProgrammes.set(perso.date + anneesToJours(3), passageDiplomeBoucher);
+                    perso.evtsProgrammes.push({
+                        date: perso.date + anneesToJours(3),
+                        evt: {
+                            id: "passageDiplomeBarbierChirurgien",
+                            description: passageDiplomeBoucher,
+                        }
+                    });
                 } else {
                     texte += `Malheureusement vous n'impressionnez guère le boucher qui refuse de vous prendre comme apprenti. `;
                 }

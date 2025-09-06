@@ -21,7 +21,13 @@ const passageDiplomeForgeron: (perso: Perso) => Promise<string> = (perso: Perso)
         commencerCarriere(perso, metiersEnum.brasseur, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
-        perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeForgeron);
+        perso.evtsProgrammes.push({
+            date: perso.date + anneesToJours(1),
+            evt: {
+                id: "passageDiplomeBoulanger",
+                description: passageDiplomeForgeron,
+            }
+        });
     }
     return new Promise((resolve) => resolve(texte))
 }
@@ -39,7 +45,13 @@ export const evts_forgeron: GroupeEvts = {
                 if (resTestFor.reussi && resTestDex.reussi) {
                     commencerCarriere(perso, metiersEnum.apprenti_Forgeron, '');
                     texte += `Votre force et votre dextérité impressionnent le forgeron qui vous engage comme apprenti à l'essai. `;// ajout du futur passage de diplôme :
-                    perso.evtsProgrammes.set(perso.date + anneesToJours(3), passageDiplomeForgeron);
+                    perso.evtsProgrammes.push({
+                        date: perso.date + anneesToJours(3),
+                        evt: {
+                            id: "passageDiplomeBoulanger",
+                            description: passageDiplomeForgeron,
+                        }
+                    });
                 } else {
                     texte += `Malheureusement votre dextérité et votre force n'impressionnent guère le forgeron. Il vous estime incapable de manier le marteau. `;
                 }

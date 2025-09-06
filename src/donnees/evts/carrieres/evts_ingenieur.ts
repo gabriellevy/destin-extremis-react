@@ -24,7 +24,13 @@ const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
         commencerCarriere(perso, metiersEnum.ingenieur, '');
     } else {
         texte += "Malheureusement c'est un échec pour vous. Vous êtes recalé... Vous avez néanmoins encore une chance de le passer l'an prochain. ";
-        perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplome);
+        perso.evtsProgrammes.push({
+            date: perso.date + anneesToJours(1),
+            evt: {
+                id: "passageDiplomeBoulanger",
+                description: passageDiplome,
+            }
+        });
     }
     return new Promise((resolve) => resolve(texte))
 }
@@ -43,7 +49,13 @@ export const evts_ingenieur: GroupeEvts = {
                     commencerCarriere(perso, metiersEnum.etudiant_ingenieur, '');
                     texte += `Vous êtes reçu à l'école d'ingéniérie ! Maintenant il va falloir travailler dur pour réussir le diplôme dans 5 ans. `;
                     // ajout du futur passage de diplôme :
-                    perso.evtsProgrammes.set(perso.date + anneesToJours(5), passageDiplome);
+                    perso.evtsProgrammes.push({
+                        date: perso.date + anneesToJours(5),
+                        evt: {
+                            id: "passageDiplomeBoulanger",
+                            description: passageDiplome,
+                        }
+                    });
                 } else {
                     texte += `Malheureusement vous n'avez pas été retenu. Peut-être une autre fois ? `;
                 }

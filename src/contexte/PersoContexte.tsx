@@ -15,7 +15,7 @@ export interface PersoContexteProviderProps {
 }
 
 function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProviderProps>) {
-    const [perso, setPerso] = useState<Perso>(persoFormToPerso(enfant(true)));
+    const [perso, setPerso] = useState<Perso>(persoFormToPerso(enfant(false)));
 
     useEffect(() => {
         if (initPerso) {

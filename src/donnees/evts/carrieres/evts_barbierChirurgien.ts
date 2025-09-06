@@ -21,7 +21,13 @@ const passageDiplomeBarbierChirurgien: (perso: Perso) => Promise<string> = (pers
         commencerCarriere(perso, metiersEnum.boulanger, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
-        perso.evtsProgrammes.set(perso.date + anneesToJours(1), passageDiplomeBarbierChirurgien);
+        perso.evtsProgrammes.push({
+            date: perso.date + anneesToJours(1),
+            evt: {
+                id: "passageDiplomeBarbierChirurgien",
+                description: passageDiplomeBarbierChirurgien,
+            }
+        });
     }
     return new Promise((resolve) => resolve(texte))
 }
@@ -48,7 +54,13 @@ export const evts_barbierChirurgien: GroupeEvts = {
                     texte += `C'est formidable : le médecin vous juge apte à devenir son apprenti ! "
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
                     commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
-                    perso.evtsProgrammes.set(perso.date + anneesToJours(5), passageDiplomeBarbierChirurgien);
+                    perso.evtsProgrammes.push({
+                        date: perso.date + anneesToJours(5),
+                        evt: {
+                            id: "passageDiplomeBarbierChirurgien",
+                            description: passageDiplomeBarbierChirurgien,
+                        }
+                    });
                 }
                 return texte;
             },

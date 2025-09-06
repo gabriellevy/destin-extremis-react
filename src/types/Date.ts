@@ -1,5 +1,5 @@
 import {Perso} from "./perso/Perso";
-import {Evt} from "./Evt";
+import {Evt, EvtProgramme} from "./Evt";
 import {Carriere} from "./metiers/Metier";
 import {
     enumMois,
@@ -139,13 +139,9 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
     // vérifier toutes les dates au cas où un evt "forcé" devrait avoir lieu ici avant
     for (joursRellementAjoutes= 0 ; joursRellementAjoutes <= joursAAjouter ; ++joursRellementAjoutes) {
         perso.date = perso.date + 1;
-        perso.evtsProgrammes.forEach((value, key)=>{
-            if (key == perso.date) {
-                const evt: Evt = {
-                    id: "evt",
-                    description:value,
-                };
-                executerEvt(evt, evtProgrammeExecute);
+        perso.evtsProgrammes.forEach((evtProgramme: EvtProgramme)=>{
+            if (evtProgramme.date == perso.date) {
+                executerEvt(evtProgramme.evt, evtProgrammeExecute);
                 // TODO: ? nettoyage des evts exécutés ?? suppression de ceux dont la date est dépassée ?
                 evtProgrammeExecute = true;
             }

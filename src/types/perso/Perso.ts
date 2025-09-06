@@ -13,6 +13,7 @@ import {metiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
 import {Mode, PhaseDExecution} from "../Mode";
+import {EvtProgramme} from "../Evt";
 
 export type PersoCommon = {
     prenom: string;
@@ -34,7 +35,7 @@ export type PersoCommon = {
     comps: Competence[],
     viceVertu: ViceVertu[],
     maitrises: Maitrise[],
-    evtsProgrammes: Map<number, (perso: Perso)=>Promise<string>> // TODO : conversion en tableau plutôt : évitera des pb d'export de json etc
+    evtsProgrammes: EvtProgramme[],
     vitesseExecution: number, // en millisecondes entre chaque événement
     mort?: boolean,
     bilanLycee: BilanLycee

@@ -1,5 +1,10 @@
 import {Perso} from "./perso/Perso";
 
+export type EvtProgramme = {
+    evt: Evt,
+    date: number, // date en nombre de jours depuis (l'an 0 ?)
+}
+
 export type Evt = {
     id: string;
     description: (perso: Perso) => Promise<string>;  // modifie le perso et retourne la description de l'evt
