@@ -16,7 +16,6 @@ export function rejoindreOrks(perso: PersoCommon): string {
 
     let scoreTransformation: number = Math.random();
 
-    console.log("1. scoreTransformation : " + scoreTransformation);
     if (getValeurVertu(perso, Vertus.placide) > 0) {
         scoreTransformation += 0.04;
     }
@@ -64,7 +63,6 @@ export function rejoindreOrks(perso: PersoCommon): string {
         scoreTransformation += 0.05;
     }
 
-    console.log("2. scoreTransformation : " + scoreTransformation);
     texte += "La transformation commence instantanément. Votre peau verdit, vos crocs poussent, tous vos cheveux tombent, vos yeux deviennent rouges. <br/>";
 
     const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(Coterie.orks);

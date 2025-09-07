@@ -160,6 +160,9 @@ export function commencerCarriereAleatoire(perso: Perso): void {
 }
 
 export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupeLieu: string): void {
+    if (getCarriereActive(perso).metier === metiersEnum) {
+        console.error("Commence une carrière qu'il a déjà !! : ", metiersEnum);
+    }
     // passer les autres en inactives
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
         carriere.actif = false;
@@ -174,6 +177,7 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
         cetteCarriereDejaFaite.actif = true;
     } else {
         // commencer la nouvelle
+        console.log("Commencer carrière perso.carrieres.push")
         perso.carrieres.push({
             metier: metiersEnum,
             intitule: metiersObjs + groupeLieu ? " à " + groupeLieu : "",
@@ -205,20 +209,19 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum)
     let duree = 0;
     const cetteCarriereDejaFaite: Carriere|undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (cetteCarriereDejaFaite) {
-        nivCompetence = cetteCarriereDejaFaite.competence;
-        nbDeTestsFaits = cetteCarriereDejaFaite.nbDeTestsFaits;
-        metierActif = cetteCarriereDejaFaite.actif;
-        duree = cetteCarriereDejaFaite.duree;
+        cetteCarriereDejaFaite.competence += 1;
     }
-    // commencer la nouvelle
-    perso.carrieres.push({
-        metier: metiersEnum,
-        intitule: metiersObjs.toString(),
-        duree: duree,
-        competence: nivCompetence + 1,
-        actif: metierActif,
-        nbDeTestsFaits : nbDeTestsFaits,
-    });
+    // sinon commencer comme une nouvelle
+    else {
+        perso.carrieres.push({
+            metier: metiersEnum,
+            intitule: metiersObjs.toString(),
+            duree: duree,
+            competence: nivCompetence + 1,
+            actif: metierActif,
+            nbDeTestsFaits : nbDeTestsFaits,
+        });
+    }
 }
 
 /**
