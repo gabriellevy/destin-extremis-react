@@ -3,7 +3,7 @@ import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {augmenterCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVertu} from "../../../../fonctions/des";
-import {majReputationDansQuartier} from "../../../../types/Reputation";
+import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";

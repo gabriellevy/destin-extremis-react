@@ -7,7 +7,7 @@ import {evts_programmes} from "../evts/evts_programmes";
 import {Coterie, rejointCoterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
-import {reputationVide} from "../../types/Reputation";
+import {reputationVide} from "../../fonctions/perso/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {metiersEnum} from "../metiers";

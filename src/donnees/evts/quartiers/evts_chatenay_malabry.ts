@@ -1,7 +1,7 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {Perso, Sexe} from "../../../types/perso/Perso";
 import {Quartier} from "../../geographie/quartiers";
-import {majReputationDansQuartier} from "../../../types/Reputation";
+import {majReputationDansQuartier} from "../../../fonctions/perso/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
 import {getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";

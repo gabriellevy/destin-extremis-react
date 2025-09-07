@@ -6,7 +6,6 @@ import {Maitrise} from "../../donnees/maitrise";
 import {Coterie} from "../Coterie";
 import {ViceVertu} from "../ViceVertu";
 import {BilanLycee} from "../lycee/StadeUniversite";
-import {Reputation} from "../Reputation";
 import {Competence} from "./comps/Comps";
 import {PNJ} from "./PNJ";
 import {metiersEnum} from "../../donnees/metiers";
@@ -14,6 +13,7 @@ import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
 import {Mode, PhaseDExecution} from "../Mode";
 import {EvtProgramme} from "../Evt";
+import {Reputation} from "./Reputation";
 
 export type PersoCommon = {
     prenom: string;

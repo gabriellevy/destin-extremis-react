@@ -11,7 +11,7 @@ import {
     Vertus,
     Vices
 } from "../../../../types/ViceVertu";
-import {majReputationDansQuartier} from "../../../../types/Reputation";
+import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
 
