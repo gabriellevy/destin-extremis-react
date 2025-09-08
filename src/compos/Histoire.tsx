@@ -30,6 +30,7 @@ import {evts_pilleur_de_ruches} from "../donnees/evts/carrieres/evts_pilleur_de_
 import {evts_lycee_orks} from "../donnees/evts/coteries/orks/evts_lycee_orks";
 import {evts_orks} from "../donnees/evts/coteries/orks/evts_orks";
 import {evts_carriere} from "../donnees/evts/carrieres/evts_carriere";
+import {evts_journaliste} from "../donnees/evts/carrieres/evts_journaliste";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -98,6 +99,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_crime, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
+            ...filtrerEtPreparerEvts(evts_journaliste, perso),
             ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
             ...filtrerEtPreparerEvts(evts_lycee_orks, perso),

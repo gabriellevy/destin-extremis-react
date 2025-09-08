@@ -227,7 +227,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum)
 /**
  * return une valeur environ de -5 à +5 qui définit la compatibilité du personnage avec ce métier
  * en fonction de ses vices et vertus
- * cad essentielleemnt si il veut exercer ce métier, indépendament de ses compéteces réelles
+ * cad essentiellement si il veut exercer ce métier, indépendamment de ses compétences réelles
  */
 export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): number {
     if (!metier) {
