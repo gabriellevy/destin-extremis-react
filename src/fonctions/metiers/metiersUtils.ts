@@ -6,6 +6,7 @@ import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../random";
 import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../types/ViceVertu";
+import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -234,12 +235,21 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
         metier = metiersObjs[metiersEnum.non_travailleur];
     }
     let compatibilite: number = 0;
+    // selon vice & vertus
     metier.vicesCompatibles.forEach((vice: Vices)=> {
         compatibilite += getValeurVice(perso, vice);
     })
     metier.vertusCompatibles.forEach((vertu: Vertus)=> {
         compatibilite += getValeurVertu(perso, vertu);
     })
+    // selon coterie
+    if (perso.coterie) {
+        if (metierFavorisesParCoterie[perso.coterie].includes(metier.nom)) {
+            compatibilite += 4;
+        } else if (metierDetestesParCoterie[perso.coterie].includes(metier.nom)) {
+            compatibilite -= 4;
+        }
+    }
 
     return compatibilite;
 }
