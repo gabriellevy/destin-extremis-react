@@ -57,5 +57,8 @@ export function modifierStatut(perso: Perso, valeurAjoutee: number): string {
     }
 
     const nouveauStatut: string = statutToString(perso.statut);
+    if (vieuxStatut === nouveauStatut) {
+        return "";
+    }
     return "Votre statut passe de " + vieuxStatut + " à " + nouveauStatut + ".<br/>";
 }
