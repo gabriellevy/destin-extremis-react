@@ -1,9 +1,10 @@
 import {Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {calculeAge} from "../../../types/Date";
-import {Coterie, rejointCoterie} from "../../../types/Coterie";
+import {Coterie} from "../../../types/Coterie";
 import {getRandomInt} from "../../../fonctions/random";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
+import {rejointCoterie} from "../../../fonctions/coteries/generales";
 
 // événements de base permanents pour rejoindre ou quitter une coterie
 export const evts_rejoindre: GroupeEvts = {

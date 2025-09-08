@@ -17,7 +17,6 @@ import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_barbierChirurgien} from "../donnees/evts/carrieres/evts_barbierChirurgien";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
-import {rejointCoterie} from "../types/Coterie";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
 import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
@@ -31,6 +30,7 @@ import {evts_lycee_orks} from "../donnees/evts/coteries/orks/evts_lycee_orks";
 import {evts_orks} from "../donnees/evts/coteries/orks/evts_orks";
 import {evts_carriere} from "../donnees/evts/carrieres/evts_carriere";
 import {evts_journaliste} from "../donnees/evts/carrieres/evts_journaliste";
+import { rejointCoterie } from '../fonctions/coteries/generales';
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 

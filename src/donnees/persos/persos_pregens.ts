@@ -4,7 +4,7 @@ import {MetalStatut} from "../../types/statut_social/Statut";
 import {NiveauIA, PersoForm, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
 import {evts_programmes} from "../evts/evts_programmes";
-import {Coterie, rejointCoterie} from "../../types/Coterie";
+import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../fonctions/perso/Reputation";
@@ -12,6 +12,7 @@ import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {metiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
+import {rejointCoterie} from "../../fonctions/coteries/generales";
 
 export function enfant(empty: boolean): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);

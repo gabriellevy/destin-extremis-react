@@ -16,7 +16,7 @@ import {Vices} from "../../../types/ViceVertu";
 import {vaA} from "../../../types/lieux/Lieu";
 import {Quartier} from "../../geographie/quartiers";
 
-// événements basiques accessibles à à peu près toutes els carrières
+// événements basiques accessibles à peu près toutes els carrières
 export const evts_carriere: GroupeEvts = {
     evts: [
         {

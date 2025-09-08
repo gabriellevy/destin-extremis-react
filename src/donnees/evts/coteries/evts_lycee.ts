@@ -1,7 +1,7 @@
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {calculeAge} from "../../../types/Date";
-import {Coterie, rejointCoterie} from "../../../types/Coterie";
+import {Coterie} from "../../../types/Coterie";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
@@ -9,6 +9,7 @@ import {descriptionCot} from "../../coteries/description";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
 import {getRandomInt} from "../../../fonctions/random";
+import {rejointCoterie} from "../../../fonctions/coteries/generales";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
