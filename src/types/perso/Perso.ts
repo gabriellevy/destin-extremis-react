@@ -19,6 +19,10 @@ export type PersoCommon = {
     prenom: string;
     nom?: string;
     cognomen?: string;
+    // 0 (suicidaire)
+    // 0.5 : normal
+    // à 1 (heureux)
+    bonheur: number,
     sexe: Sexe;
     dateNaissance: number; // en nombre de jours depuis l'an 0 du calendrier consulaire ?
     date: number, // en nombre de jours depuis l'an 0 du calendrier consulaire

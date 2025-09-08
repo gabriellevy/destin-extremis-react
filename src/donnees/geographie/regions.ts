@@ -3,6 +3,7 @@ import {Quartier} from "./quartiers";
 // ~pays / métropoles etc
 export enum Region {
     la_ville = "La Ville",
+    espagne = "Espagne",
     siberie = "Sibérie",
     chine = "Chine",
 
@@ -38,6 +39,9 @@ export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
         ];
         case Region.siberie : return [
             Quartier.vladivostok
+        ];
+        case Region.espagne : return [
+            Quartier.pyrenees
         ];
         case Region.chine : return [
             Quartier.comptoir_ghangzhou

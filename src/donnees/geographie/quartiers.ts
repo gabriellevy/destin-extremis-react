@@ -1,6 +1,8 @@
 export enum Quartier {
     inconnu = 'Inconnu',
 
+    // -------------- Europe
+    // ---- La Ville
     noisiel = 'Noisiel',
     montmartre = 'Montmartre',
     saint_maur_des_fosses = 'Saint Maur des fossés',
@@ -24,10 +26,12 @@ export enum Quartier {
     saint_denis = 'Saint-Denis',
     argenteuil = 'Argenteuil',
     suresnes = 'Suresnes',
-
-    vladivostok = 'Vladivostok',
+    // ---- Pyrénées
+    pyrenees = 'Pyrénes',
 
     // Asie
+
+    vladivostok = 'Vladivostok',
     comptoir_ghangzhou = 'Comptoir de Ghangzhou',
 }
 

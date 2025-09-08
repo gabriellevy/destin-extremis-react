@@ -20,6 +20,7 @@ export function enfant(empty: boolean): PersoForm {
         prenom: getPrenom(cot, sexe),
         nom: getNom(cot, sexe),
         cognomen: getCognomen(cot, sexe),
+        bonheur: 0.5,
         sexe: sexe,
         dateNaissance: anneesToJours(478), // un peu avant 490 ab urbe condita cad le début de la 1ère guerre punique
         jourDuMois: -1,

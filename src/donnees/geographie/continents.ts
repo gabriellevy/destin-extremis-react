@@ -36,7 +36,7 @@ export function getRegions(continent: Continent|undefined):Region[] {
         case Continent.amerique_nord : return [
         ];
         case Continent.europe : return [
-            Region.la_ville,
+            Region.la_ville, Region.espagne,
         ];
         case Continent.amerique_centrale : return [
         ];
