@@ -1,8 +1,8 @@
-import {ResultatTest, TestCompetence, TestMetier, TestVertu, TestVice} from "../types/LancerDe";
+import {ResultatTest, TestCompetence, TestMetier, TestVertu} from "../types/LancerDe";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
 import {Perso} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
-import {getValeurVertu, getValeurVice} from "../types/ViceVertu";
+import {getValeurVertu, getValeurVice, Vice} from "../types/ViceVertu";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;
@@ -31,11 +31,11 @@ export function testVertu(perso: Perso, test: TestVertu): ResultatTest {
     return returnTestResult("", test.typeBon, calculerValeur, test.bonusMalus);
 }
 
-export function testVice(perso: Perso, test: TestVice): ResultatTest {
-    const compVal: number = getValeurVice(perso, test.typeMauvais);
+export function testVice(perso: Perso, vice: Vice, modificateur: number): ResultatTest {
+    const compVal: number = getValeurVice(perso, vice);
     const calculerValeur = 50 + compVal*15;
 
-    return returnTestResult("", test.typeMauvais, calculerValeur, test.bonusMalus);
+    return returnTestResult("", vice, calculerValeur, modificateur);
 }
 
 export function testMetier(perso: Perso, test: TestMetier): ResultatTest {

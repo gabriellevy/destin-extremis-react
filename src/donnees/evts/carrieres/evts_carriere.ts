@@ -58,7 +58,7 @@ export const evts_carriere: GroupeEvts = {
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
                     let fonceALaMontagne = false;
-                    const resTstSolitaire:ResultatTest = testVice(perso, {typeMauvais: Vice.solitaire, bonusMalus: -10});
+                    const resTstSolitaire:ResultatTest = testVice(perso, Vice.solitaire, -10);
                     if (resTstSolitaire.reussi) {
                         fonceALaMontagne = true;
                     }

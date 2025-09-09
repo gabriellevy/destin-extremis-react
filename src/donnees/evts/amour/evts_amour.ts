@@ -6,29 +6,47 @@ import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../../types/perso/Amour";
 import {aUnCoupDeCoeur, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../../fonctions/pnjs/amour";
 import {ResultatTest} from "../../../types/LancerDe";
-import {testComp} from "../../../fonctions/des";
+import {testComp, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 
 export const evts_amour: GroupeEvts = {
     evts: [
         {
-            id: "evts_amour1 avoir un coup de coeur",
+            id: "evts_amour1 avoir un coup de coeur", // le pj va éventuellement la séduire
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
                 coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
                 perso.pnjs.push(coupDeCoeur);
                 let texte: string = "";
+
+                const resTestImpulsif:ResultatTest = testVice(perso, Vice.impulsif, 0);
+                const resTestCharme: ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
+
+                let prompt: string = "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom;
+                texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". ";
+                if (resTestImpulsif.reussi) {
+                    if (resTestCharme.reussi) {
+                        texte += "Vous l'abordez immédiatement et la séduisez. ";
+                        prompt += " et l'a séduite. ";
+                        coupDeCoeur.amourDeCePnj = NiveauAmour.coupDeCoeur;
+                    } else {
+                        prompt += " et comment il s'est fait rembarrer en la draguant. ";
+                        texte += "Vous l'abordez immédiatement mais elle vous rembarre sans ménagement.<br/> ";
+                    }
+                } else {
+                    prompt += " Ce coup de foudre n'est pas réciproque.";
+                    texte += " Ce coup de foudre n'est pas réciproque et vous n'arrivez pas à vous décider à l'aborder.<br/> ";
+                }
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChat(
-                        perso,
-                        "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom
-                        + ". Ce coup de foudre n'est pas réciproque.",
-                        NiveauInfosPerso.patronyme);
-                } else {
-                    texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom;
+                        perso, prompt, NiveauInfosPerso.patronyme
+                    );
                 }
-
+                texte += resTestImpulsif.resume + "<br/>";
+                if (resTestImpulsif.reussi) {
+                    texte += resTestCharme.resume + "<br/>";
+                }
 
                 return texte + ". <br/>";
             },

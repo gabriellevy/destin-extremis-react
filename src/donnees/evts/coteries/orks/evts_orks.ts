@@ -66,7 +66,7 @@ export const evts_orks: GroupeEvts = {
                     texte += ajouterVertuVal(perso, Vertu.placide, 1);
                 }
 
-                const resTestColere:ResultatTest = testVice(perso, {typeMauvais: Vice.colerique, bonusMalus: 0});
+                const resTestColere:ResultatTest = testVice(perso, Vice.colerique,0);
                 texte += resTestColere.resume;
                 if (resTestColere.reussi) {
                     texte += "Vous n'y tenez plus et attaquez " + nomBrute + " le rançonneur. ";
