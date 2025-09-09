@@ -9,7 +9,7 @@ import {Coterie} from "../../../../types/Coterie";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 import {Maitrise} from "../../../maitrise";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
-import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/ViceVertu";
+import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
@@ -123,13 +123,13 @@ export const evts_lycee_orks: GroupeEvts = {
                 rand = Math.random();
                 if (rand <= 0.1) {
                     texte += "Toutes vos angoisses profondes fondent définitivement.";
-                    texte += ajouterVertuVal(perso, Vertus.placide, 1);
+                    texte += ajouterVertuVal(perso, Vertu.placide, 1);
                 }
 
                 rand = Math.random();
                 if (rand <= 0.1) {
                     texte += "Durablement affecté par la boisson empoisonnée mais violemment addictive, vous devenez alcoolique.";
-                    texte += ajouterViceVal(perso, Vices.gourmand, 1);
+                    texte += ajouterViceVal(perso, Vice.gourmand, 1);
                 }
 
                 rand = Math.random();
@@ -140,7 +140,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 rand = Math.random();
                 if (rand <= 0.3) {
                     texte += "L'alcool est tellement persistant qu'il vous fait sauter vos inhibitions et votre prudence sur le coup mais aussi à long terme.";
-                    texte += ajouterViceVal(perso, Vices.rebelle, 1);
+                    texte += ajouterViceVal(perso, Vice.rebelle, 1);
                 }
 
                 return texte;
@@ -214,7 +214,7 @@ export const evts_lycee_orks: GroupeEvts = {
 
                 if (Math.random() <= 0.4) {
                     texte += "Plus le temps passe, plus vous vous désintéressez de ce que les autres pensent de vous, vous négligez votre hygiène, votre diction devient médiocre. ";
-                    texte += ajouterViceVal(perso, Vices.paresseux, 1);
+                    texte += ajouterViceVal(perso, Vice.paresseux, 1);
                     texte += augmenterCompetence(perso, TypeCompetence.eloquence, -1);
                     texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
                 }
@@ -286,15 +286,15 @@ export const evts_lycee_orks: GroupeEvts = {
 
                 if (Math.random() <= 0.3) {
                     texte += "En tout cas vous vous êtes fait plein d'potes à coups d'tatanes et vous êtes tous bien vomis d'ssus.<br/>.";
-                    texte += ajouterVertuVal(perso, Vertus.sociable, 1);
+                    texte += ajouterVertuVal(perso, Vertu.sociable, 1);
                 }
                 if (Math.random() <= 0.3) {
                     texte += "Décidément les études c'est pour les crétins.<br/>.";
-                    texte += ajouterViceVal(perso, Vices.rebelle, 1);
+                    texte += ajouterViceVal(perso, Vice.rebelle, 1);
                 }
                 if (Math.random() <= 0.3) {
                     texte += "Après cette expérience vous n'avez plus peur de rien.<br/>.";
-                    texte += ajouterViceVal(perso, Vices.aventureux, 1);
+                    texte += ajouterViceVal(perso, Vice.aventureux, 1);
                 }
 
                 return texte;
@@ -306,7 +306,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Frapper et humilier les plus faible est un trait typique de la culture ork. ";
 
-                const resTestEmpathie:ResultatTest = testVertu(perso, {typeBon: Vertus.empathique, bonusMalus: -10});
+                const resTestEmpathie:ResultatTest = testVertu(perso, {typeBon: Vertu.empathique, bonusMalus: -10});
 
                 texte += resTestEmpathie.resume;
                 if (resTestEmpathie.reussi) {
@@ -321,7 +321,7 @@ export const evts_lycee_orks: GroupeEvts = {
                     }
                 }
                 if (Math.random() <= 0.3) {
-                    texte += ajouterViceVal(perso, Vices.sociopathique, 1);
+                    texte += ajouterViceVal(perso, Vice.sociopathique, 1);
                 }
 
                 return texte;

@@ -4,12 +4,13 @@ import {Perso, PersoCommon} from "./perso/Perso";
 export type ViceVertu = {
     valVertu: number, // la val de "mauvais"" est l'inverse
     nbDeTestsFaits?: number,
-    typeVice?: Vices,
-    typeVertu: Vertus,
+    typeVice?: Vice,
+    typeVertu: Vertu,
 }
 
 // mauvais étant ici "mauvais citoyen" mais peut aussi être une qualité
-export enum Vices {
+export enum Vice {
+    impulsif = "Impulsif",
     colerique = "Colérique",
     aventureux = "Aventureux",
     lache = "Lâche",
@@ -28,7 +29,8 @@ export enum Vices {
     sceptique = "Sceptique",
 }
 
-export enum Vertus {
+export enum Vertu {
+    reflechi = "Réfléchi",
     placide = "Placide",
     prudent = "Prudent",
     valeureux = "Valeureux",
@@ -47,57 +49,59 @@ export enum Vertus {
     spirituel = "Spirituel",
 }
 
-export function getViceOppose(typeVertu: Vertus): Vices {
+export function getViceOppose(typeVertu: Vertu): Vice {
     switch (typeVertu) {
-        case Vertus.genereux : return Vices.cupide;
-        case Vertus.prudent : return Vices.aventureux;
-        case Vertus.placide : return Vices.colerique;
-        case Vertus.bienveillant : return Vices.cruel;
-        case Vertus.altruiste : return Vices.envieux;
-        case Vertus.sobre : return Vices.gourmand;
-        case Vertus.valeureux : return Vices.lache;
-        case Vertus.chaste : return Vices.luxurieux;
-        case Vertus.humble : return Vices.orgueilleux;
-        case Vertus.travailleur : return Vices.paresseux;
-        case Vertus.loyal : return Vices.trompeur;
-        case Vertus.artificialiste : return Vices.naturaliste;
-        case Vertus.sociable : return Vices.solitaire;
-        case Vertus.empathique : return Vices.sociopathique;
-        case Vertus.discipline : return Vices.rebelle;
-        case Vertus.spirituel : return Vices.sceptique;
+        case Vertu.reflechi : return Vice.impulsif;
+        case Vertu.genereux : return Vice.cupide;
+        case Vertu.prudent : return Vice.aventureux;
+        case Vertu.placide : return Vice.colerique;
+        case Vertu.bienveillant : return Vice.cruel;
+        case Vertu.altruiste : return Vice.envieux;
+        case Vertu.sobre : return Vice.gourmand;
+        case Vertu.valeureux : return Vice.lache;
+        case Vertu.chaste : return Vice.luxurieux;
+        case Vertu.humble : return Vice.orgueilleux;
+        case Vertu.travailleur : return Vice.paresseux;
+        case Vertu.loyal : return Vice.trompeur;
+        case Vertu.artificialiste : return Vice.naturaliste;
+        case Vertu.sociable : return Vice.solitaire;
+        case Vertu.empathique : return Vice.sociopathique;
+        case Vertu.discipline : return Vice.rebelle;
+        case Vertu.spirituel : return Vice.sceptique;
     }
 }
-export function getVertuOppose(typeVice: Vices): Vertus {
+export function getVertuOppose(typeVice: Vice): Vertu {
     switch (typeVice) {
-        case Vices.cupide : return Vertus.genereux;
-        case Vices.aventureux : return Vertus.prudent;
-        case Vices.colerique : return Vertus.placide;
-        case Vices.cruel : return Vertus.bienveillant;
-        case Vices.envieux : return Vertus.altruiste;
-        case Vices.gourmand : return Vertus.sobre;
-        case Vices.lache : return Vertus.valeureux;
-        case Vices.luxurieux : return Vertus.chaste;
-        case Vices.orgueilleux : return Vertus.humble;
-        case Vices.paresseux : return Vertus.travailleur;
-        case Vices.trompeur : return Vertus.loyal;
-        case Vices.naturaliste : return Vertus.artificialiste;
-        case Vices.solitaire : return Vertus.sociable;
-        case Vices.sociopathique : return Vertus.empathique;
-        case Vices.rebelle : return Vertus.discipline;
-        case Vices.sceptique : return Vertus.spirituel;
+        case Vice.impulsif : return Vertu.reflechi;
+        case Vice.cupide : return Vertu.genereux;
+        case Vice.aventureux : return Vertu.prudent;
+        case Vice.colerique : return Vertu.placide;
+        case Vice.cruel : return Vertu.bienveillant;
+        case Vice.envieux : return Vertu.altruiste;
+        case Vice.gourmand : return Vertu.sobre;
+        case Vice.lache : return Vertu.valeureux;
+        case Vice.luxurieux : return Vertu.chaste;
+        case Vice.orgueilleux : return Vertu.humble;
+        case Vice.paresseux : return Vertu.travailleur;
+        case Vice.trompeur : return Vertu.loyal;
+        case Vice.naturaliste : return Vertu.artificialiste;
+        case Vice.solitaire : return Vertu.sociable;
+        case Vice.sociopathique : return Vertu.empathique;
+        case Vice.rebelle : return Vertu.discipline;
+        case Vice.sceptique : return Vertu.spirituel;
     }
 }
 
-export function getValeurVice(perso: PersoCommon, typeVice: Vices): number {
+export function getValeurVice(perso: PersoCommon, typeVice: Vice): number {
     return - getValeurVertu(perso, getVertuOppose(typeVice));
 }
 
-export function getValeurVertu(perso: PersoCommon, typeVertu: Vertus): number {
+export function getValeurVertu(perso: PersoCommon, typeVertu: Vertu): number {
     return perso.viceVertu.find((viceVertu: ViceVertu) => viceVertu.typeVertu === typeVertu)?.valVertu || 0;
 }
 
 export function viceVertuDeBase(): Array<ViceVertu> {
-    return Object.values(Vertus)
+    return Object.values(Vertu)
         .map(typeVertu => {
             return {
                 valVertu: valeurViceVertuAleatoire(),
@@ -124,7 +128,7 @@ export function valeurViceVertuAleatoire(): number {
 }
 
 // ajout de manière relative à la valeur précédent (donc ajoute ou soustrait)
-export function ajouterVertuVal(perso: Perso, typeVertu: Vertus, val:number): string {
+export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): string {
     const valPrecedente = getValeurVertu(perso, typeVertu);
     let valActuelle: number = getValeurVertu(perso, typeVertu) + val;
     if (valActuelle < -3) valActuelle = -3
@@ -147,7 +151,7 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertus, val:number): st
     return '';
 }
 
-export function ajouterViceVal(perso: Perso, typeVice: Vices, val:number): string {
+export function ajouterViceVal(perso: Perso, typeVice: Vice, val:number): string {
     const vertu = getVertuOppose(typeVice);
     const valPrecedente = getValeurVice(perso, typeVice);
     ajouterVertuVal(perso, vertu, -val);

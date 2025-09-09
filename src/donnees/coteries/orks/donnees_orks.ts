@@ -2,7 +2,7 @@ import {PersoCommon, Sexe} from "../../../types/perso/Perso";
 import {getEffetsDeCoterieSurCompetences} from "../EffetsDesCoteriesSurPerso";
 import {augmenterCompetence, getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
 import {Coterie, EffectDeCoterieSurPerso} from "../../../types/Coterie";
-import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../../types/ViceVertu";
+import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
 import {soignerBlessureAleatoire} from "../../../fonctions/sante/sante";
 import {getPrenom} from "../../../fonctions/noms";
 import {getQuartierDeCoterie} from "../Quartiers";
@@ -17,25 +17,25 @@ export function rejoindreOrks(perso: PersoCommon): string {
 
     let scoreTransformation: number = Math.random();
 
-    if (getValeurVertu(perso, Vertus.placide) > 0) {
+    if (getValeurVertu(perso, Vertu.placide) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, Vertus.prudent) < 0) {
+    if (getValeurVertu(perso, Vertu.prudent) < 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, Vertus.sociable) > 0) {
+    if (getValeurVertu(perso, Vertu.sociable) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVertu(perso, Vertus.discipline) > 0) {
+    if (getValeurVertu(perso, Vertu.discipline) > 0) {
         scoreTransformation -= 0.04;
     }
-    if (getValeurVice(perso, Vices.sociopathique) > 0) {
+    if (getValeurVice(perso, Vice.sociopathique) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVice(perso, Vices.paresseux) > 0) {
+    if (getValeurVice(perso, Vice.paresseux) > 0) {
         scoreTransformation += 0.04;
     }
-    if (getValeurVice(perso, Vices.aventureux) > 0) {
+    if (getValeurVice(perso, Vice.aventureux) > 0) {
         scoreTransformation += 0.04;
     }
     if (getValeurCompetence(perso, TypeCompetence.force) > 35) {

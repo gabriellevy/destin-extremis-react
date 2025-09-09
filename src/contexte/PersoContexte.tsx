@@ -3,7 +3,7 @@ import {Perso, PersoForm} from "../types/perso/Perso";
 import {enfant} from "../donnees/persos/persos_pregens";
 import {PersoContexte} from "./ContexteTypes";
 import {persoFormToPerso} from "../fonctions/perso/conversionsPerso";
-import {getViceOppose, Vertus} from "../types/ViceVertu";
+import {getViceOppose, Vertu} from "../types/ViceVertu";
 import {PhaseDExecution} from "../types/Mode";
 import {UseFormWatch} from "react-hook-form";
 import {ChoixCoterieFormData} from "../ChoixDeCoterie/ChoixDeCoterie";
@@ -26,8 +26,8 @@ function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProvi
             persoFinal.phaseDExecution = PhaseDExecution.histoire;
 
             // données de génération de perso par préférences de vices et vertus
-            persoFinal.viceVertu = Object.values(Vertus)
-                .map((typeVertu: Vertus) => {
+            persoFinal.viceVertu = Object.values(Vertu)
+                .map((typeVertu: Vertu) => {
                     return {
                         valVertu: valuesInitPerso.mauvais[getViceOppose(typeVertu)],
                         nbDeTestsFaits: 0,

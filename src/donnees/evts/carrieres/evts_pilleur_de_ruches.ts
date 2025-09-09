@@ -3,7 +3,7 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {getValeurVice, Vices} from "../../../types/ViceVertu";
+import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {aUneCarriere, commencerCarriere, compatibiliteCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {calculeAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
@@ -36,8 +36,8 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.pilleur_de_ruche]) >= 0
-                && (getValeurVice(perso, Vices.aventureux) >= 1
-                || getValeurVice(perso, Vices.cupide) >= 1 && getValeurVice(perso, Vices.aventureux) >= 0)
+                && (getValeurVice(perso, Vice.aventureux) >= 1
+                || getValeurVice(perso, Vice.cupide) >= 1 && getValeurVice(perso, Vice.aventureux) >= 0)
                 && calculeAge(perso) >= 16
                 && auBordDuneRuche(perso),
         },

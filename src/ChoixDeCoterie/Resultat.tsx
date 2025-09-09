@@ -1,6 +1,6 @@
 import React from 'react';
 import {UseFormWatch} from 'react-hook-form';
-import {getViceOppose, Vices, ViceVertu} from "../types/ViceVertu";
+import {getViceOppose, Vice, ViceVertu} from "../types/ViceVertu";
 import {Coterie} from "../types/Coterie";
 import {affiniteViceVertuCoterie} from "../donnees/coteries/affiniteViceVertu";
 import Vignette from "./Vignette";
@@ -23,7 +23,7 @@ const Resultat: React.FC<ResultatProps> = ({ watch }) => {
         let res = 0;
 
         affiniteViceVertuCoterie[coterie].forEach((viceVertu: ViceVertu) => {
-            const mauvais: Vices = getViceOppose(viceVertu.typeVertu);
+            const mauvais: Vice = getViceOppose(viceVertu.typeVertu);
             const valMauvaisPerso = values.mauvais[mauvais];
             if (Math.abs(valMauvaisPerso) !== 0) {
                 // alors ça vaut le coup de compter :s

@@ -12,7 +12,7 @@ import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {metiersObjs} from "../../metiers";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testVice} from "../../../fonctions/des";
-import {Vices} from "../../../types/ViceVertu";
+import {Vice} from "../../../types/ViceVertu";
 import {vaA} from "../../../types/lieux/Lieu";
 import {Quartier} from "../../geographie/quartiers";
 
@@ -58,7 +58,7 @@ export const evts_carriere: GroupeEvts = {
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
                     let fonceALaMontagne = false;
-                    const resTstSolitaire:ResultatTest = testVice(perso, {typeMauvais: Vices.solitaire, bonusMalus: -10});
+                    const resTstSolitaire:ResultatTest = testVice(perso, {typeMauvais: Vice.solitaire, bonusMalus: -10});
                     if (resTstSolitaire.reussi) {
                         fonceALaMontagne = true;
                     }

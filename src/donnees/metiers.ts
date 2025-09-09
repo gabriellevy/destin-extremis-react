@@ -2,7 +2,7 @@ import {MetalStatut} from "../types/statut_social/Statut";
 import {Perso} from "../types/perso/Perso";
 import {Carriere, MetierObj} from "../types/metiers/Metier";
 import {Option} from "../types/lieux/Lieu";
-import {Vertus, Vices} from "../types/ViceVertu";
+import {Vertu, Vice} from "../types/ViceVertu";
 
 export enum metiersEnum {
     edile = "Édile",
@@ -58,8 +58,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.1,
-        vicesCompatibles: [Vices.trompeur, Vices.rebelle, Vices.aventureux],
-        vertusCompatibles: [Vertus.sociable],
+        vicesCompatibles: [Vice.trompeur, Vice.rebelle, Vice.aventureux],
+        vertusCompatibles: [Vertu.sociable],
     },
 
     // ------ ------- artisans
@@ -70,7 +70,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.1,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.artificialiste, Vertus.travailleur],
+        vertusCompatibles: [Vertu.artificialiste, Vertu.travailleur],
     },
     [metiersEnum.apprenti_Forgeron] : {
         nom: metiersEnum.apprenti_Forgeron,
@@ -79,7 +79,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.1,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.artificialiste, Vertus.travailleur],
+        vertusCompatibles: [Vertu.artificialiste, Vertu.travailleur],
     },
     [metiersEnum.apprenti_brasseur] : {
         nom: metiersEnum.apprenti_brasseur,
@@ -87,8 +87,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.3,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.apprenti_boulanger] : {
         nom: metiersEnum.apprenti_boulanger,
@@ -96,8 +96,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.3,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.apprenti_boucher] : {
         nom: metiersEnum.apprenti_boucher,
@@ -105,8 +105,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.bronze},
         proba: 0.3,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.ingenieur] : {
         nom: metiersEnum.ingenieur,
@@ -115,7 +115,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 2, metalStatut: MetalStatut.or},
         proba: 0.5,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.artificialiste],
+        vertusCompatibles: [Vertu.artificialiste],
     },
     [metiersEnum.forgeron] : {
         nom: metiersEnum.forgeron,
@@ -123,8 +123,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.3,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.macon] : {
         nom: metiersEnum.macon,
@@ -133,7 +133,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 2, metalStatut: MetalStatut.argent},
         proba: 0.8,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.artificialiste, Vertus.travailleur],
+        vertusCompatibles: [Vertu.artificialiste, Vertu.travailleur],
     },
     [metiersEnum.brasseur] : {
         nom: metiersEnum.brasseur,
@@ -141,8 +141,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.5,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.boulanger] : {
         nom: metiersEnum.boulanger,
@@ -150,8 +150,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.5,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.boucher] : {
         nom: metiersEnum.boucher,
@@ -159,8 +159,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.5,
-        vicesCompatibles: [Vices.gourmand],
-        vertusCompatibles: [Vertus.travailleur],
+        vicesCompatibles: [Vice.gourmand],
+        vertusCompatibles: [Vertu.travailleur],
     },
     [metiersEnum.marchand_de_champignon] : {
         nom: metiersEnum.marchand_de_champignon,
@@ -168,7 +168,7 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 1, metalStatut: MetalStatut.argent},
         proba: 0.1,
-        vicesCompatibles: [Vices.cupide, Vices.naturaliste],
+        vicesCompatibles: [Vice.cupide, Vice.naturaliste],
         vertusCompatibles: [],
     },
     [metiersEnum.apprenti_chirurgien] : {
@@ -177,8 +177,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 3, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 1, metalStatut: MetalStatut.argent},
         proba: 0.1,
-        vicesCompatibles: [Vices.sociopathique, Vices.orgueilleux],
-        vertusCompatibles: [Vertus.prudent],
+        vicesCompatibles: [Vice.sociopathique, Vice.orgueilleux],
+        vertusCompatibles: [Vertu.prudent],
     },
     [metiersEnum.chirurgien] : {
         nom: metiersEnum.chirurgien,
@@ -186,8 +186,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 3, metalStatut: MetalStatut.argent},
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.2,
-        vicesCompatibles: [Vices.sociopathique, Vices.orgueilleux],
-        vertusCompatibles: [Vertus.prudent],
+        vicesCompatibles: [Vice.sociopathique, Vice.orgueilleux],
+        vertusCompatibles: [Vertu.prudent],
     },
     [metiersEnum.gladiateur] : {
         nom: metiersEnum.gladiateur,
@@ -195,8 +195,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 0, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 3, metalStatut: MetalStatut.argent},
         proba: 0.1,
-        vicesCompatibles: [Vices.colerique, Vices.cruel],
-        vertusCompatibles: [Vertus.valeureux],
+        vicesCompatibles: [Vice.colerique, Vice.cruel],
+        vertusCompatibles: [Vertu.valeureux],
     },
     [metiersEnum.batelier] : {
         nom: metiersEnum.batelier,
@@ -205,7 +205,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.5,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.placide, Vertus.sociable],
+        vertusCompatibles: [Vertu.placide, Vertu.sociable],
     },
     [metiersEnum.journaliste] : {
         nom: metiersEnum.journaliste,
@@ -214,7 +214,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.sociable],
+        vertusCompatibles: [Vertu.sociable],
     },
     [metiersEnum.serveur] : {
         nom: metiersEnum.serveur,
@@ -225,7 +225,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 2, metalStatut: MetalStatut.argent},
         proba: 0.8,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.sociable],
+        vertusCompatibles: [Vertu.sociable],
     },
     [metiersEnum.edile] : {
         nom: metiersEnum.edile,
@@ -236,7 +236,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.1,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.sociable],
+        vertusCompatibles: [Vertu.sociable],
     },
     [metiersEnum.ranconneur] : {
         nom: metiersEnum.ranconneur,
@@ -244,7 +244,7 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 3, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
-        vicesCompatibles: [Vices.colerique, Vices.cruel, Vices.trompeur],
+        vicesCompatibles: [Vice.colerique, Vice.cruel, Vice.trompeur],
         vertusCompatibles: [],
     },
     [metiersEnum.novice_pretre] : {
@@ -256,7 +256,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 2, metalStatut: MetalStatut.bronze},
         proba: 0.2,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.chaste, Vertus.spirituel],
+        vertusCompatibles: [Vertu.chaste, Vertu.spirituel],
     },
     [metiersEnum.initie_pretre] : {
         nom: metiersEnum.initie_pretre,
@@ -265,7 +265,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 4, metalStatut: MetalStatut.bronze},
         proba: 0.3,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.chaste, Vertus.spirituel],
+        vertusCompatibles: [Vertu.chaste, Vertu.spirituel],
     },
     [metiersEnum.moine] : {
         nom: metiersEnum.moine,
@@ -274,7 +274,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.chaste, Vertus.spirituel],
+        vertusCompatibles: [Vertu.chaste, Vertu.spirituel],
     },
     [metiersEnum.pretre] : {
         nom: metiersEnum.pretre,
@@ -283,7 +283,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 2, metalStatut: MetalStatut.or},
         proba: 0.3,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.chaste, Vertus.spirituel],
+        vertusCompatibles: [Vertu.chaste, Vertu.spirituel],
     },
     [metiersEnum.stalker] : {
         nom: metiersEnum.stalker,
@@ -291,8 +291,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
         proba: 0,
-        vicesCompatibles: [Vices.rebelle, Vices.aventureux],
-        vertusCompatibles: [Vertus.valeureux],
+        vicesCompatibles: [Vice.rebelle, Vice.aventureux],
+        vertusCompatibles: [Vertu.valeureux],
     },
     [metiersEnum.mecanicien] : {
         nom: metiersEnum.mecanicien,
@@ -301,7 +301,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 1, metalStatut: MetalStatut.or},
         proba: 0.5,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.artificialiste, Vertus.travailleur],
+        vertusCompatibles: [Vertu.artificialiste, Vertu.travailleur],
     },
     [metiersEnum.medecin] : {
         nom: metiersEnum.medecin,
@@ -310,7 +310,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 3, metalStatut: MetalStatut.or},
         proba: 0.5,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.prudent],
+        vertusCompatibles: [Vertu.prudent],
     },
     [metiersEnum.cyberneticien] : {
         nom: metiersEnum.cyberneticien,
@@ -319,7 +319,7 @@ export const metiersObjs: MetierObj = {
         statutMax: {rang: 3, metalStatut: MetalStatut.or},
         proba: 0.1,
         vicesCompatibles: [],
-        vertusCompatibles: [Vertus.prudent, Vertus.artificialiste],
+        vertusCompatibles: [Vertu.prudent, Vertu.artificialiste],
     },
     [metiersEnum.pilleur_de_ruche] : {
         nom: metiersEnum.pilleur_de_ruche,
@@ -327,8 +327,8 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.argent},
         proba: 0,
-        vicesCompatibles: [Vices.cupide, Vices.aventureux],
-        vertusCompatibles: [Vertus.valeureux],
+        vicesCompatibles: [Vice.cupide, Vice.aventureux],
+        vertusCompatibles: [Vertu.valeureux],
     },
     [metiersEnum.non_travailleur] : {
         nom: metiersEnum.non_travailleur,
@@ -336,7 +336,7 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 0, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 3, metalStatut: MetalStatut.bronze},
         proba: 0.5,
-        vicesCompatibles: [Vices.paresseux],
+        vicesCompatibles: [Vice.paresseux],
         vertusCompatibles: [],
     },
 }

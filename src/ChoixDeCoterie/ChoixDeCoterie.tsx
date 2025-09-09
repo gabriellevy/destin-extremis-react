@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {FieldErrorsImpl, useForm} from 'react-hook-form';
-import {Vices} from "../types/ViceVertu";
+import {Vice} from "../types/ViceVertu";
 import SelectionTraits from "./SelectionTraits";
 import Resultat from "./Resultat";
 import SelectionComp from "./SelectionComp";
@@ -13,7 +13,7 @@ export type ChoixCoterieFormData = {
         [key in TypeCompetence]: boolean;
     };
     mauvais: {
-        [key in Vices]: number;
+        [key in Vice]: number;
     };
 };
 
@@ -22,10 +22,10 @@ const defaultValues: ChoixCoterieFormData = {
         acc[competence] = false;
         return acc;
     }, {} as { [key in TypeCompetence]: boolean }),
-        mauvais: Object.values(Vices).reduce((acc, mauvais) => {
+        mauvais: Object.values(Vice).reduce((acc, mauvais) => {
         acc[mauvais] = 0;
         return acc;
-    }, {} as { [key in Vices]: number }),
+    }, {} as { [key in Vice]: number }),
 };
 
 export enum PhaseDeChoix {

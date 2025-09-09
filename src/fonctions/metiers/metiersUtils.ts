@@ -5,7 +5,7 @@ import {anneesToJours} from "../../types/Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../random";
-import {getValeurVertu, getValeurVice, Vertus, Vices} from "../../types/ViceVertu";
+import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
 import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
 
 // seulement les carrières actives
@@ -236,10 +236,10 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
     }
     let compatibilite: number = 0;
     // selon vice & vertus
-    metier.vicesCompatibles.forEach((vice: Vices)=> {
+    metier.vicesCompatibles.forEach((vice: Vice)=> {
         compatibilite += getValeurVice(perso, vice);
     })
-    metier.vertusCompatibles.forEach((vertu: Vertus)=> {
+    metier.vertusCompatibles.forEach((vertu: Vertu)=> {
         compatibilite += getValeurVertu(perso, vertu);
     })
     // selon coterie

@@ -9,7 +9,7 @@ import {testComp, testVice} from "../../../../fonctions/des";
 import {getValeurCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
-import {ajouterVertuVal, ajouterViceVal, Vertus, Vices} from "../../../../types/ViceVertu";
+import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 
 export const evts_orks: GroupeEvts = {
@@ -59,14 +59,14 @@ export const evts_orks: GroupeEvts = {
 
                 if (Math.random() <= 0.1) {
                     texte += "Vous avez beau savoir que vous n'êtes pas le plus fort, votre colère monte. <br/>.";
-                    texte += ajouterViceVal(perso, Vices.colerique, 1);
+                    texte += ajouterViceVal(perso, Vice.colerique, 1);
                 }
                 else if (Math.random() <= 0.1) {
                     texte += "Ces mauvais traitements et votre sentiment d'impuissance vous rendent de plus en plus mou et inquiet.<br/>.";
-                    texte += ajouterVertuVal(perso, Vertus.placide, 1);
+                    texte += ajouterVertuVal(perso, Vertu.placide, 1);
                 }
 
-                const resTestColere:ResultatTest = testVice(perso, {typeMauvais: Vices.colerique, bonusMalus: 0});
+                const resTestColere:ResultatTest = testVice(perso, {typeMauvais: Vice.colerique, bonusMalus: 0});
                 texte += resTestColere.resume;
                 if (resTestColere.reussi) {
                     texte += "Vous n'y tenez plus et attaquez " + nomBrute + " le rançonneur. ";

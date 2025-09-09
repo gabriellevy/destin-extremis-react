@@ -3,7 +3,7 @@ import {Perso} from "../perso/Perso";
 import {titreGuildeEnum} from "./Guilde";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {metiersEnum} from "../../donnees/metiers";
-import {Vertus, Vices} from "../ViceVertu";
+import {Vertu, Vice} from "../ViceVertu";
 
 // données du métier en général, indépendamment du personnage
 export type Metier = {
@@ -17,8 +17,8 @@ export type Metier = {
     // 1 pour les très courants (bureaucrate)
     proba: number,
     // vertus et vices associés : si le personnage a ces traits il aura plus de chances d'apprécier ce travail :
-    vertusCompatibles: Vertus[],
-    vicesCompatibles: Vices[],
+    vertusCompatibles: Vertu[],
+    vicesCompatibles: Vice[],
 }
 
 export type MetierObj = Record<metiersEnum, Metier>;
