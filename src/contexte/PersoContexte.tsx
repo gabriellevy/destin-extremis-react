@@ -27,12 +27,12 @@ function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProvi
 
             // données de génération de perso par préférences de vices et vertus
             persoFinal.viceVertu = Object.values(Vertus)
-                .map(typeVertu => {
+                .map((typeVertu: Vertus) => {
                     return {
-                        valBon: valuesInitPerso.mauvais[getViceOppose(typeVertu)],
+                        valVertu: valuesInitPerso.mauvais[getViceOppose(typeVertu)],
                         nbDeTestsFaits: 0,
-                        typeMauvais: getViceOppose(typeVertu),
-                        typeBon: typeVertu,
+                        typeVice: getViceOppose(typeVertu),
+                        typeVertu: typeVertu,
                     }
                 });
             // données de génération de perso par préférences de compétences

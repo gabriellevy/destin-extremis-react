@@ -4,380 +4,380 @@ import {Vertus, ViceVertu } from "../../types/ViceVertu";
 // chacun doit en avoir autant pour que ce soit plus équitable
 export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.chaos]: [{
-        valBon: -2,
-        typeBon: Vertus.discipline,
+        valVertu: -2,
+        typeVertu: Vertus.discipline,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.spirituel,
+        valVertu: -1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.acheron]: [
         {
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.humble,
+        valVertu: -1,
+        typeVertu: Vertus.humble,
     }],
     [Coterie.bastets]: [
         {
-        valBon: -1,
-        typeBon: Vertus.sobre,
+        valVertu: -1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: -1,
-        typeBon: Vertus.loyal,
+        valVertu: -1,
+        typeVertu: Vertus.loyal,
     },{
-        valBon: -1,
-        typeBon: Vertus.travailleur,
+        valVertu: -1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.bienveillant,
+        valVertu: -1,
+        typeVertu: Vertus.bienveillant,
     }],
     [Coterie.cathares]: [
         {
-        valBon: 1,
-        typeBon: Vertus.sobre,
+        valVertu: 1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: 1,
-        typeBon: Vertus.chaste,
+        valVertu: 1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: 1,
-        typeBon: Vertus.altruiste,
+        valVertu: 1,
+        typeVertu: Vertus.altruiste,
     },{
-        valBon: 1,
-        typeBon: Vertus.humble,
+        valVertu: 1,
+        typeVertu: Vertus.humble,
     },{
-        valBon: 1,
-        typeBon: Vertus.spirituel,
+        valVertu: 1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.carthaginois]: [
         {
-        valBon: -2,
-        typeBon: Vertus.genereux,
+        valVertu: -2,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     }],
     [Coterie.conquistador]: [
         {
-        valBon: 1,
-        typeBon: Vertus.valeureux,
+        valVertu: 1,
+        typeVertu: Vertus.valeureux,
     },{
-        valBon: -1,
-        typeBon: Vertus.genereux,
+        valVertu: -1,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: 1,
-        typeBon: Vertus.loyal,
+        valVertu: 1,
+        typeVertu: Vertus.loyal,
     },{
-        valBon: 1,
-        typeBon: Vertus.spirituel,
+        valVertu: 1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.culte_du_plaisir]:  [
         {
-        valBon: -2,
-        typeBon: Vertus.chaste,
+        valVertu: -2,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: -1,
-        typeBon: Vertus.bienveillant,
+        valVertu: -1,
+        typeVertu: Vertus.bienveillant,
     },{
-        valBon: -1,
-        typeBon: Vertus.sobre,
+        valVertu: -1,
+        typeVertu: Vertus.sobre,
     }],
     [Coterie.esprit_de_la_nature]: [
         {
-        valBon: -3,
-        typeBon: Vertus.artificialiste,
+        valVertu: -3,
+        typeVertu: Vertus.artificialiste,
     },{
-        valBon: 1,
-        typeBon: Vertus.humble,
+        valVertu: 1,
+        typeVertu: Vertus.humble,
     }],
     [Coterie.celtes]: [
         {
-        valBon: -1,
-        typeBon: Vertus.humble,
+        valVertu: -1,
+        typeVertu: Vertus.humble,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.valeureux,
+        valVertu: 1,
+        typeVertu: Vertus.valeureux,
     },{
-        valBon: -1,
-        typeBon: Vertus.sobre,
+        valVertu: -1,
+        typeVertu: Vertus.sobre,
     }],
     [Coterie.demokratos]: [
         {
-        valBon: 2,
-        typeBon: Vertus.sociable,
+        valVertu: 2,
+        typeVertu: Vertus.sociable,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.loyal,
+        valVertu: 1,
+        typeVertu: Vertus.loyal,
     }],
     [Coterie.elfes]: [
         {
-        valBon: 1,
-        typeBon: Vertus.chaste,
+        valVertu: 1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.artificialiste,
+        valVertu: -1,
+        typeVertu: Vertus.artificialiste,
     }],
     [Coterie.esthetes]:  [
         {
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.empathique,
+        valVertu: 1,
+        typeVertu: Vertus.empathique,
     },{
-        valBon: -1,
-        typeBon: Vertus.travailleur,
+        valVertu: -1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.artificialiste,
+        valVertu: -1,
+        typeVertu: Vertus.artificialiste,
     }],
     [Coterie.jacobins]: [
         {
-        valBon: -1,
-        typeBon: Vertus.empathique,
+        valVertu: -1,
+        typeVertu: Vertus.empathique,
     },{
-        valBon: 1,
-        typeBon: Vertus.artificialiste,
+        valVertu: 1,
+        typeVertu: Vertus.artificialiste,
     },{
-        valBon: 1,
-        typeBon: Vertus.valeureux,
+        valVertu: 1,
+        typeVertu: Vertus.valeureux,
     },{
-        valBon: 1,
-        typeBon: Vertus.discipline,
+        valVertu: 1,
+        typeVertu: Vertus.discipline,
     },{
-        valBon: 1,
-        typeBon: Vertus.sobre,
+        valVertu: 1,
+        typeVertu: Vertus.sobre,
     }],
     [Coterie.libertins]: [
         {
-        valBon: -1,
-        typeBon: Vertus.chaste,
+        valVertu: -1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: -1,
-        typeBon: Vertus.sobre,
+        valVertu: -1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: -2,
-        typeBon: Vertus.discipline,
+        valVertu: -2,
+        typeVertu: Vertus.discipline,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     }],
     [Coterie.lumieres]: [
         {
-        valBon: -1,
-        typeBon: Vertus.loyal,
+        valVertu: -1,
+        typeVertu: Vertus.loyal,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: 1,
-        typeBon: Vertus.artificialiste,
+        valVertu: 1,
+        typeVertu: Vertus.artificialiste,
     },{
-        valBon: -1,
-        typeBon: Vertus.humble,
+        valVertu: -1,
+        typeVertu: Vertus.humble,
     },{
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     }],
     [Coterie.ogres]: [
         {
-        valBon: -2,
-        typeBon: Vertus.sobre,
+        valVertu: -2,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: -1,
-        typeBon: Vertus.genereux,
+        valVertu: -1,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     }],
     [Coterie.orks]: [{
-        valBon: -1,
-        typeBon: Vertus.travailleur,
+        valVertu: -1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.sociable,
+        valVertu: 1,
+        typeVertu: Vertus.sociable,
     },{
-        valBon: -1,
-        typeBon: Vertus.discipline,
+        valVertu: -1,
+        typeVertu: Vertus.discipline,
     },{
-        valBon: -1,
-        typeBon: Vertus.empathique,
+        valVertu: -1,
+        typeVertu: Vertus.empathique,
     },{
-        valBon: -1,
-        typeBon: Vertus.spirituel,
+        valVertu: -1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.performeurs]: [{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     },{
-        valBon: -2,
-        typeBon: Vertus.humble,
+        valVertu: -2,
+        typeVertu: Vertus.humble,
     },{
-        valBon: -1,
-        typeBon: Vertus.chaste,
+        valVertu: -1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     }],
     [Coterie.romains]: [{
-        valBon: 1,
-        typeBon: Vertus.valeureux,
+        valVertu: 1,
+        typeVertu: Vertus.valeureux,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     }],
     [Coterie.saabi]: [{
-        valBon: 1,
-        typeBon: Vertus.genereux,
+        valVertu: 1,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.sociable,
+        valVertu: 1,
+        typeVertu: Vertus.sociable,
     }],
     [Coterie.schweizer]: [{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.sobre,
+        valVertu: 1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: -1,
-        typeBon: Vertus.sociable,
+        valVertu: -1,
+        typeVertu: Vertus.sociable,
     },{
-        valBon: 1,
-        typeBon: Vertus.prudent,
+        valVertu: 1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.spirituel,
+        valVertu: 1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.skavens]: [{
-        valBon: -1,
-        typeBon: Vertus.valeureux,
+        valVertu: -1,
+        typeVertu: Vertus.valeureux,
     },{
-        valBon: -1,
-        typeBon: Vertus.loyal,
+        valVertu: -1,
+        typeVertu: Vertus.loyal,
     },{
-        valBon: -1,
-        typeBon: Vertus.genereux,
+        valVertu: -1,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.altruiste,
+        valVertu: -1,
+        typeVertu: Vertus.altruiste,
     }],
     [Coterie.templiers]: [{
-        valBon: 1,
-        typeBon: Vertus.loyal,
+        valVertu: 1,
+        typeVertu: Vertus.loyal,
     },{
-        valBon: 1,
-        typeBon: Vertus.humble,
+        valVertu: 1,
+        typeVertu: Vertus.humble,
     },{
-        valBon: 1,
-        typeBon: Vertus.chaste,
+        valVertu: 1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: 1,
-        typeBon: Vertus.sobre,
+        valVertu: 1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: 1,
-        typeBon: Vertus.spirituel,
+        valVertu: 1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.transhumanistes]: [{
-        valBon: -1,
-        typeBon: Vertus.genereux,
+        valVertu: -1,
+        typeVertu: Vertus.genereux,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: 2,
-        typeBon: Vertus.artificialiste,
+        valVertu: 2,
+        typeVertu: Vertus.artificialiste,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.spirituel,
+        valVertu: -1,
+        typeVertu: Vertus.spirituel,
     }],
     [Coterie.tyranides]:  [{
-        valBon: 1,
-        typeBon: Vertus.humble,
+        valVertu: 1,
+        typeVertu: Vertus.humble,
     },{
-        valBon: 1,
-        typeBon: Vertus.travailleur,
+        valVertu: 1,
+        typeVertu: Vertus.travailleur,
     },{
-        valBon: -1,
-        typeBon: Vertus.empathique,
+        valVertu: -1,
+        typeVertu: Vertus.empathique,
     },{
-        valBon: -1,
-        typeBon: Vertus.chaste,
+        valVertu: -1,
+        typeVertu: Vertus.chaste,
     },{
-        valBon: 1,
-        typeBon: Vertus.sobre,
+        valVertu: 1,
+        typeVertu: Vertus.sobre,
     }],
     [Coterie.zaporogues]: [{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: -1,
-        typeBon: Vertus.sobre,
+        valVertu: -1,
+        typeVertu: Vertus.sobre,
     },{
-        valBon: -1,
-        typeBon: Vertus.prudent,
+        valVertu: -1,
+        typeVertu: Vertus.prudent,
     },{
-        valBon: 1,
-        typeBon: Vertus.sociable,
+        valVertu: 1,
+        typeVertu: Vertus.sociable,
     }]
 }

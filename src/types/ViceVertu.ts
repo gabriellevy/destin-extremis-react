@@ -2,10 +2,10 @@ import {Perso, PersoCommon} from "./perso/Perso";
 
 // duo de vertu et vices qui fonctionnent ensemble en opposition
 export type ViceVertu = {
-    valBon: number, // la val de "mauvais"" est l'inverse
+    valVertu: number, // la val de "mauvais"" est l'inverse
     nbDeTestsFaits?: number,
-    typeMauvais?: Vices,
-    typeBon: Vertus,
+    typeVice?: Vices,
+    typeVertu: Vertus,
 }
 
 // mauvais étant ici "mauvais citoyen" mais peut aussi être une qualité
@@ -93,17 +93,17 @@ export function getValeurVice(perso: PersoCommon, typeVice: Vices): number {
 }
 
 export function getValeurVertu(perso: PersoCommon, typeVertu: Vertus): number {
-    return perso.viceVertu.find((viceVertu: ViceVertu) => viceVertu.typeBon === typeVertu)?.valBon || 0;
+    return perso.viceVertu.find((viceVertu: ViceVertu) => viceVertu.typeVertu === typeVertu)?.valVertu || 0;
 }
 
 export function viceVertuDeBase(): Array<ViceVertu> {
     return Object.values(Vertus)
         .map(typeVertu => {
             return {
-                valBon: valeurViceVertuAleatoire(),
+                valVertu: valeurViceVertuAleatoire(),
                 nbDeTestsFaits: 0,
-                typeMauvais: getViceOppose(typeVertu),
-                typeBon: typeVertu,
+                typeVice: getViceOppose(typeVertu),
+                typeVertu: typeVertu,
             }
         });
 }
@@ -130,16 +130,16 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertus, val:number): st
     if (valActuelle < -3) valActuelle = -3
     else if (valActuelle > 3) valActuelle = 3
     let viceVertu = perso.viceVertu.find(
-        (viceVertu: ViceVertu) => viceVertu.typeBon === typeVertu);
+        (viceVertu: ViceVertu) => viceVertu.typeVertu === typeVertu);
     if (!viceVertu) {
         perso.viceVertu.push({
-            valBon: valActuelle,
+            valVertu: valActuelle,
             nbDeTestsFaits: 0,
-            typeMauvais: getViceOppose(typeVertu),
-            typeBon: typeVertu,
+            typeVice: getViceOppose(typeVertu),
+            typeVertu: typeVertu,
         });
     } else {
-        viceVertu.valBon = valActuelle;
+        viceVertu.valVertu = valActuelle;
     }
     if (valPrecedente != valActuelle) {
         return "<b>" + valActuelle + " en " + typeVertu.toString() + " </b> ";

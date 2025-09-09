@@ -28,6 +28,8 @@ export const evts_amour: GroupeEvts = {
                 } else {
                     texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom;
                 }
+
+
                 return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
@@ -91,5 +93,5 @@ export const evts_amour: GroupeEvts = {
                 aUnCoupDeCoeur(perso),
         },
     ],
-    probaParDefaut: 10,
+    probaParDefaut: 5,
 };
