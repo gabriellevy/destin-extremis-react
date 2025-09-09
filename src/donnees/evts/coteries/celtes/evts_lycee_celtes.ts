@@ -29,7 +29,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTest.reussi) {
                         texte += "Vous êtes très doué à ce petit jeu. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     } else {
                         texte += "Vous ne faites clairement pas le poids, mais vous êtes au lycée pour apprendre ! <br/>";
                     }
@@ -53,7 +53,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTest.reussi) {
                         texte += "Vous savez accueillir et divertir. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     } else {
                         texte += "Vous êtes encore maladroit pour un hôte mais on pardonne beaucoup à un étudiant. <br/>";
                     }
@@ -81,7 +81,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTest.reussi) {
                         texte += "Vous savez très rapidement rendre coup pour coup. Bientôt ce sont les autres élèves qui ont peur de vous. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     } else {
                         texte += "Vous êtes régulièrement humilié, voire tabassé par vos camarades. <br/>";
                     }
@@ -104,7 +104,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTest.reussi) {
                         texte += "Vous savez très rapidement rendre coup pour coup avec courage et habileté. Même les professeurs commencent à respecter votre force. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     } else {
                         // TODO : échec critique : blessure
                         texte += "Vous avez beaucoup à apprendre pour avoir le niveau et cesser de vous faire rosser. <br/>";
@@ -130,7 +130,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTestMvt.reussi && resTestEnd.reussi) {
                         texte += "Agile et endurant, vous faites l'admiration de tous. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     }
                 return texte;
             },
@@ -146,7 +146,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     if (resTestSur.reussi) {
                         texte += "Vous semblez être naturellement chez vous en pleine forêt, même dans la nuit la plus noire, à la grande surprise de vos professeurs. <br/>";
                         // se fait connaître dans le coin
-                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                        texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                     }
                 return texte;
             },
@@ -162,7 +162,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                     texte += "Vous avez un talent de poète inné qui impressionne fortement votre professeur. <br/>";
                     texte += ajouterMaitrise(perso, Maitrise.poesie);
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1);
+                    texte += majReputationDansQuartier(perso, Quartier.chatenay_malabry, 1, 1);
                 }
 
                 return texte;

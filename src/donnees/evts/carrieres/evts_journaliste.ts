@@ -8,10 +8,12 @@ import {
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
+    getCompetenceMetier,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 import {metiersEnum, metiersObjs} from "../../metiers";
 import {journalAleatoire} from "../../carriere/journaliste/journal";
+import {modifierStatut} from "../../../fonctions/perso/statut";
 
 export const evts_journaliste: GroupeEvts = {
     evts: [
@@ -29,7 +31,7 @@ export const evts_journaliste: GroupeEvts = {
                     texte += "Votre talent à dénicher les bonnes histoires et à la raconter convainquent le rédacteur en chef du "
                         + titreJournal +  " de vous engager. ";
                 } else {
-                    texte += "Malheureusement le rédacteur en chef du " + titreJournal + " ne vous juge aps apte à ce travail. ";
+                    texte += "Malheureusement le rédacteur en chef du " + titreJournal + " ne vous juge pas apte à ce travail. ";
                 }
                 return texte;
             },
@@ -53,6 +55,18 @@ export const evts_journaliste: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.journaliste),
+        },
+        {
+            id: "evts_journaliste contrat livre",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Vous êtes si célèbre qu'un éditeur vous propose un contrat et une forte avance pour votre prochain livre. <br/>";
+                modifierStatut(perso, 1);
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                ((travailleEnCeMomentComme(perso, metiersEnum.journaliste) && getCompetenceMetier(perso, metiersEnum.journaliste) > 40)
+                || (travailleEnCeMomentComme(perso, metiersEnum.ecrivain) && getCompetenceMetier(perso, metiersEnum.ecrivain) > 40))
+                && perso.reputation.amplitude > 10,
         },
     ],
     probaParDefaut: 5,

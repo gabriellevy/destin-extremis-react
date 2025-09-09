@@ -18,6 +18,7 @@ export enum metiersEnum {
     ingenieur = "Ingénieur",
     batelier = "Batelier",
     journaliste = "Journaliste",
+    ecrivain = "Écrivain",
     apprenti_Forgeron = "Apprenti forgeron",
     forgeron = "Forgeron",
     apprenti_brasseur = "Apprenti brasseur",
@@ -215,6 +216,15 @@ export const metiersObjs: MetierObj = {
         proba: 0.3,
         vicesCompatibles: [],
         vertusCompatibles: [Vertu.sociable],
+    },
+    [metiersEnum.ecrivain] : {
+        nom: metiersEnum.ecrivain,
+        intitule: () => metiersEnum.ecrivain,
+        statut: {rang: 3, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 1, metalStatut: MetalStatut.or},
+        proba: 0.15,
+        vicesCompatibles: [Vice.solitaire],
+        vertusCompatibles: [],
     },
     [metiersEnum.serveur] : {
         nom: metiersEnum.serveur,

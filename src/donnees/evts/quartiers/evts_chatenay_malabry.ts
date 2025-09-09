@@ -50,7 +50,7 @@ export const evts_chatenay_malabry: GroupeEvts = {
                     }
                 }
 
-                majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation);
+                majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation, majReputation);
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.chatenay_malabry,

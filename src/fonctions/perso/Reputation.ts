@@ -4,7 +4,8 @@ import {Reputation, ReputationQuartier} from "../../types/perso/Reputation";
 
 export function reputationVide(): Reputation {
     return {
-        parQuartier: []
+        parQuartier: [],
+        amplitude: 0,
     };
 }
 
@@ -14,19 +15,20 @@ export function getReputationQuartier(perso:Perso, quartier:Quartier): Reputatio
 }
 
 export function getNiveauReputationDansQuartier(perso:Perso, quartier:Quartier): number {
-    return getReputationQuartier(perso, quartier)?.niveau ?? 0;
+    return getReputationQuartier(perso, quartier)?.qualite ?? 0;
 }
 
-export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modif: number): string {
+export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modifQualite: number, modifAmplitude: number): string {
     let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
-    let niveauFinal = modif;
+    let niveauFinal = modifAmplitude;
     if (repQuartier) {
-        repQuartier.niveau += modif;
-        niveauFinal = repQuartier.niveau;
+        repQuartier.qualite += modifQualite;
+        niveauFinal = repQuartier.qualite;
     } else {
         perso.reputation.parQuartier.push({
             quartier: quartier,
-            niveau: modif,
+            qualite: modifQualite,
+            amplitude: modifAmplitude,
         })
     }
     return "<b>Réputation à "
