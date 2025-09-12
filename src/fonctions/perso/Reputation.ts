@@ -5,6 +5,7 @@ import {Reputation, ReputationQuartier} from "../../types/perso/Reputation";
 export function reputationVide(): Reputation {
     return {
         parQuartier: [],
+        qualite: 0,
         amplitude: 0,
     };
 }

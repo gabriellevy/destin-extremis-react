@@ -39,7 +39,7 @@ export function enfant(empty: boolean): PersoForm {
         vitesseExecution: 5000,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
-        niveauIA: NiveauIA.systematique,
+        niveauIA: NiveauIA.desactive,
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
         pbDeSante: [],
         bioniques: [],
