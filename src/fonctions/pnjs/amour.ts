@@ -37,3 +37,17 @@ export function getUnCoupDeCoeur(perso: Perso): PNJ {
         (pnj:PNJ) =>
             pnj.amourPourCePnj === NiveauAmour.coupDeCoeur).at(0) ?? genererPNJAmourableDePerso(perso);
 }
+
+// essentiellement leur relation
+export function descriptionPnj(pnj:PNJ): string {
+    let description: string = "";
+    // amour ?
+    if (pnj.amourPourCePnj === NiveauAmour.coupDeCoeur) {
+        if (pnj.amourDeCePnj === NiveauAmour.coupDeCoeur) {
+            description += "Coup de foudre mutuel";
+        } else {
+            description += "Coup de coeur";
+        }
+    }
+    return description;
+}
