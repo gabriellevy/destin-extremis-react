@@ -73,7 +73,7 @@ export const evts_amour: GroupeEvts = {
                 return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
-                nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux)*2)
+                nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux))*2
                 && !enCoupleAvecUnAmourFort(perso)
                 && perso.age >= 13,
         },

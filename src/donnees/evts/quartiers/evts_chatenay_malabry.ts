@@ -14,7 +14,7 @@ import {aLaMaitrise} from "../../../fonctions/perso/maitrise";
 export const evts_chatenay_malabry: GroupeEvts = {
     evts: [
         {
-            id: "evts_chatenay_malabry1",
+            id: "evts_chatenay_malabry1 banquet celte",
             description: async (perso: Perso): Promise<string> => {
                 let majReputation: number = 0;
                 let texte:string = "Vous êtes invité à un grand banquet celte. "

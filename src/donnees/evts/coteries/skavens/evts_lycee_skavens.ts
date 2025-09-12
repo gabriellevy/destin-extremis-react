@@ -63,7 +63,7 @@ export const evts_lycee_skavens: GroupeEvts = {
         {
             id: "evts_lycee_skavens3_artisanat",
             description: async (perso: Perso): Promise<string> => {
-                let texte:string = "Être agile de ses mains et surtout rapide est précieux chez les skavens, qui adorent fabriquer des chsoes et détestent faire quoique de soit lentement.<br/>"
+                let texte:string = "Être agile de ses mains et surtout rapide est précieux chez les skavens, qui adorent fabriquer des choses et détestent faire quoique de soit lentement.<br/>"
                     + "Les cours d'artisanat sont donc toujours chronométrés et demandent une excellente coordination.<br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
                 texte += resTest.resume;

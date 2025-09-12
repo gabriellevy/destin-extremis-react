@@ -21,7 +21,7 @@ export const evts_statut: GroupeEvts = {
                 }
                 return texte;
             },
-            conditions: (perso: Perso): boolean => statutPersoSuperieurAStatut2(perso, metiersObjs[getCarriereActive(perso)?.metier].statut),
+            conditions: (perso: Perso): boolean => statutPersoSuperieurAStatut2(perso, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
         },
     ],
     probaParDefaut: 5,

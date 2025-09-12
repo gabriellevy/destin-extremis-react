@@ -29,7 +29,7 @@ export function aUnCoupDeCoeurNonReciproque(perso: Perso): boolean {
 
 export function nombreDeCoupDeCoeur(perso:Perso):number {
     return perso.pnjs.filter((pnj: PNJ) =>
-        pnj.amourDeCePnj === NiveauAmour.coupDeCoeur).length;
+        pnj.amourPourCePnj === NiveauAmour.coupDeCoeur).length;
 }
 
 export function getUnCoupDeCoeur(perso: Perso): PNJ {

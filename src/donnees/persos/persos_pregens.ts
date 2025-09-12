@@ -23,8 +23,8 @@ export function enfant(empty: boolean): PersoForm {
         cognomen: getCognomen(cot, sexe),
         bonheur: 0.5,
         sexe: sexe,
-        dateNaissance: anneesToJours(478), // un peu avant 490 ab urbe condita cad le début de la 1ère guerre punique
-        date: anneesToJours(490), // début du pouvoir derrière le trône 3ème volume
+        dateNaissance: anneesToJours(476),
+        date: anneesToJours(490),
         anneeDeDepart: 490,
         age: 14,
         lieu: lieuParDefaut,
