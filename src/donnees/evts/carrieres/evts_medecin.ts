@@ -12,32 +12,32 @@ import {
 } from "../../../fonctions/metiers/metiersUtils";
 import {metiersEnum, metiersObjs} from "../../metiers";
 
-const passageDiplomeBarbierChirurgien: (perso: Perso) => Promise<string> = (perso: Perso) => {
-    let texte: string =  "Vous êtes apprenti barbier chirurgien depuis des années. ";
+const passageDiplomeMedecin: (perso: Perso) => Promise<string> = (perso: Perso) => {
+    let texte: string =  "Vous êtes étudiant en médecine depuis des années. ";
     const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_chirurgien, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
-        texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir un barbier chirurgien à part entière.";
-        commencerCarriere(perso, metiersEnum.boulanger, '');
+        texte +=  "Il est temps de passer votre diplôme. Vous allez pouvoir devenir un médecin à part entière.";
+        commencerCarriere(perso, metiersEnum.medecin, '');
     } else {
-        texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
+        texte += "Malheureusement vous échouez. Vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
             date: perso.date + anneesToJours(1),
             evt: {
-                id: "passageDiplomeBarbierChirurgien",
-                description: passageDiplomeBarbierChirurgien,
+                id: "passageDiplomeMedecin",
+                description: passageDiplomeMedecin,
             }
         });
     }
     return new Promise((resolve) => resolve(texte))
 }
 
-export const evts_barbierChirurgien: GroupeEvts = {
+export const evts_medecin: GroupeEvts = {
     evts: [
         {
-            id: "evts_barbierChirurgien1",
+            id: "evts_médecin1",
             description: async (perso: Perso): Promise<string> => {
-                let texte: string = `Vous voudriez devenir barbier chirurgien. `
+                let texte: string = `Vous voudriez devenir médecin. `
                 const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
                 const resTestFm:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 20});
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 20});
@@ -57,8 +57,8 @@ export const evts_barbierChirurgien: GroupeEvts = {
                     perso.evtsProgrammes.push({
                         date: perso.date + anneesToJours(5),
                         evt: {
-                            id: "passageDiplomeBarbierChirurgien",
-                            description: passageDiplomeBarbierChirurgien,
+                            id: "passageDiplomeMedecin",
+                            description: passageDiplomeMedecin,
                         }
                     });
                 }
@@ -71,10 +71,10 @@ export const evts_barbierChirurgien: GroupeEvts = {
                 && calculeAge(perso) >= 14,
         },
         {
-            id: "evts_barbierChirurgien2",
+            id: "evts_médecin2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.boulanger, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.medecin, bonusMalus: 0});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un médecin efficace et respecté. `;

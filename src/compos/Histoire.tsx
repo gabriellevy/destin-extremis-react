@@ -14,7 +14,7 @@ import {Box, Dialog, Grid2, IconButton, Typography} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
-import {evts_barbierChirurgien} from "../donnees/evts/carrieres/evts_barbierChirurgien";
+import {evts_medecin} from "../donnees/evts/carrieres/evts_medecin";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
@@ -113,7 +113,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_carriere, perso),
             ...filtrerEtPreparerEvts(evts_forgeron, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),
-            ...filtrerEtPreparerEvts(evts_barbierChirurgien, perso),
+            ...filtrerEtPreparerEvts(evts_medecin, perso),
             ...filtrerEtPreparerEvts(evts_tout, perso),
         ];
 
