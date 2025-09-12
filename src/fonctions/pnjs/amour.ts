@@ -18,10 +18,12 @@ export function enCoupleAvecUnAmourFort(perso: Perso): boolean {
         .length > 0;
 }
 
-export function aUnCoupDeCoeur(perso: Perso): boolean {
+export function aUnCoupDeCoeurNonReciproque(perso: Perso): boolean {
     return perso.pnjs.filter(
         (pnj:PNJ) =>
-            pnj.amourPourCePnj === NiveauAmour.coupDeCoeur)
+            pnj.amourPourCePnj === NiveauAmour.coupDeCoeur
+            && pnj.niveauRelationAmoureuse === NiveauRelationAmoureuse.rien
+            && pnj.amourDeCePnj === NiveauAmour.aucun)
         .length > 0;
 }
 

@@ -4,7 +4,7 @@ import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVer
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../../types/perso/Amour";
-import {aUnCoupDeCoeur, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../../fonctions/pnjs/amour";
+import {aUnCoupDeCoeurNonReciproque, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../../fonctions/pnjs/amour";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
@@ -108,7 +108,7 @@ export const evts_amour: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                aUnCoupDeCoeur(perso),
+                aUnCoupDeCoeurNonReciproque(perso),
         },
     ],
     probaParDefaut: 5,
