@@ -4,11 +4,17 @@ import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVer
 import {genererPNJAmourableDePerso} from "../../../fonctions/generation";
 import {PNJ} from "../../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../../types/perso/Amour";
-import {aUnCoupDeCoeurNonReciproque, enCoupleAvecUnAmourFort, getUnCoupDeCoeur} from "../../../fonctions/pnjs/amour";
+import {
+    aUnCoupDeCoeurNonReciproque,
+    enCoupleAvecUnAmourFort,
+    getUnCoupDeCoeur,
+    nombreDeCoupDeCoeur
+} from "../../../fonctions/pnjs/amour";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
+import {Coterie} from "../../../types/Coterie";
 
 export const evts_amour: GroupeEvts = {
     evts: [
@@ -27,9 +33,25 @@ export const evts_amour: GroupeEvts = {
                 texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". ";
                 if (resTestImpulsif.reussi) {
                     if (resTestCharme.reussi) {
-                        texte += "Vous l'abordez immédiatement et la séduisez. ";
-                        prompt += " et l'a séduite. ";
                         coupDeCoeur.amourDeCePnj = NiveauAmour.coupDeCoeur;
+                        if (resTestCharme.critical && resTestImpulsif.critical) {
+                            texte += "Vous l'abordez immédiatement et le courant passe si bien que vous couchez ensemble le jour même. ";
+                            prompt += " et a couché avec elle le jour même. ";
+                            if (perso.coterie === Coterie.templiers || perso.coterie === Coterie.cathares) {
+                                const resTestTromperie: ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 0});
+                                if (resTestTromperie.reussi) {
+                                    texte += "En tant que " + perso.coterie + " ce type de relation est formellement interdit mais vous parvenez à la garder secrète. ";
+                                    prompt += "En tant que " + perso.coterie + " il n'a pas le droit mais il parvient à le tenir secret. Dites comment il s'y prend. ";
+                                } else {
+                                    texte += "En tant que " + perso.coterie + " ce type de relation est formellement interdit, vous êtes exclus de la coterie. ";
+                                    prompt += "En tant que " + perso.coterie + " il n'a pas le droit à ce genre de relation. Dites comment il s'est fait prendre et exclure. ";
+                                    perso.coterie = undefined;
+                                }
+                            }
+                        } else {
+                            texte += "Vous l'abordez immédiatement et la séduisez. ";
+                            prompt += " et l'a séduite. ";
+                        }
                     } else {
                         prompt += " et comment il s'est fait rembarrer en la draguant. ";
                         texte += "Vous l'abordez immédiatement mais elle vous rembarre sans ménagement.<br/> ";
@@ -51,7 +73,7 @@ export const evts_amour: GroupeEvts = {
                 return texte + ". <br/>";
             },
             conditions: (perso: Perso): boolean =>
-                getValeurVice(perso, Vice.luxurieux) >= 0
+                nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux)*2)
                 && !enCoupleAvecUnAmourFort(perso)
                 && perso.age >= 13,
         },
