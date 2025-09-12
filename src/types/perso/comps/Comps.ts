@@ -143,11 +143,13 @@ export function augmenterNbDeTestsFaitsComp(perso: Perso, typeComp: TypeCompeten
     return texte;
 }
 
-export const compsDeBase = () => Object.values(TypeCompetence)
-    .map(typeComp => {
-        return {
-            val: compDeDepartAleatoire(),
-            nbDeTestsFaits: 0,
-            typeComp: typeComp,
-        }
-    });
+export function compsDeBase (): Competence[] {
+    return Object.values(TypeCompetence)
+        .map((typeComp: TypeCompetence) => {
+            return {
+                val: compDeDepartAleatoire(),
+                nbDeTestsFaits: 0,
+                typeComp: typeComp,
+            }
+        });
+}
