@@ -14,6 +14,15 @@ export function statut1SuperieurOuEgalAStatut2(statut1: Statut, statut2: Statut|
     return statut1.metalStatut === MetalStatut.argent &&
         statut2.metalStatut === MetalStatut.bronze;
 }
+export function statutPersoSuperieurAStatut2(perso: Perso, statut2: Statut|undefined): boolean {
+    if (statut2 === undefined) return false;
+    const statutPerso: Statut = perso.statut;
+    if (statutPerso.metalStatut === statut2.metalStatut) return statutPerso.rang > statut2.rang;
+    if (statutPerso.metalStatut === MetalStatut.or &&
+        (statut2.metalStatut === MetalStatut.bronze || statut2.metalStatut === MetalStatut.argent)) return true;
+    return statutPerso.metalStatut === MetalStatut.argent &&
+        statut2.metalStatut === MetalStatut.bronze;
+}
 
 export function statutToString(statut: Statut):string {
     return statut.metalStatut.toString() + " " + statut.rang.toString();
