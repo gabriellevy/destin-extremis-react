@@ -62,15 +62,15 @@ export function getProvinceDeSousProvince(sousProvince: Region): Continent | und
     return Object.values(Continent).find(continent=> getRegions(continent).includes(sousProvince));
 }
 
-export function auBordDeLaRiviere(perso: Perso): boolean {
+export function auBordDeLaRiviere(perso: PersoCommon): boolean {
     if (perso.lieu.continent === Continent.europe) return true; // il y a des rivières partout là dedans...
     return false;
 }
 
-export function auBordDuneZone(perso: Perso): boolean {
+export function auBordDuneZone(perso: PersoCommon): boolean {
     return perso.lieu.quartier === Quartier.montbrison;
 }
 
-export function auBordDuneRuche(perso: Perso): boolean {
+export function auBordDuneRuche(perso: PersoCommon): boolean {
     return perso.lieu.quartier === Quartier.comptoir_ghangzhou;
 }

@@ -8,6 +8,7 @@ import {getRandomEnumValue} from "../random";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
 import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
 import {Coterie} from "../../types/Coterie";
+import {auBordDuneRuche, auBordDuneZone} from "../../types/lieux/Lieu";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -129,7 +130,7 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiers
 /**
  * métier aléatoire en fonction des caracs du perso et en particulier de sa coterie
  */
-export function metierAleatoire(_perso: PersoCommon): metiersEnum {
+export function metierAleatoire(perso: PersoCommon): metiersEnum {
     const probasMetiers = new Map<metiersEnum, number>();
 
     Object.entries(metiersObjs).forEach(([_key, metier]) => {
@@ -137,9 +138,18 @@ export function metierAleatoire(_perso: PersoCommon): metiersEnum {
         probasMetiers.set(metier.nom, metier.proba);
     });
 
-    // TODO : moduler selon lieu
+    // moduler selon lieu
+    if (auBordDuneRuche(perso)) {
+        const proba = (probasMetiers.get(metiersEnum.pilleur_de_ruche) ?? 0) + 0.9;
+        probasMetiers.set(metiersEnum.pilleur_de_ruche, proba);
+    }
+    if (auBordDuneZone(perso)) {
+        const proba = (probasMetiers.get(metiersEnum.stalker) ?? 0) + 0.9;
+        probasMetiers.set(metiersEnum.stalker, proba);
+    }
+    
     // ------- moduler selon coterie
-    const cot: Coterie|undefined = _perso.coterie;
+    const cot: Coterie|undefined = perso.coterie;
     if (cot) {
         // -- virer métiers interdits
         metierDetestesParCoterie[cot].forEach((metierDeteste:metiersEnum) => {
