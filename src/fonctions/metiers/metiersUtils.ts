@@ -7,6 +7,7 @@ import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../random";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
 import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
+import {Coterie} from "../../types/Coterie";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -137,8 +138,14 @@ export function metierAleatoire(_perso: PersoCommon): metiersEnum {
     });
 
     // TODO : moduler selon lieu
-    // TODO : moduler selon coterie (virer métiers interdits etc)
-    // const cot: Coterie = _perso.coterie;
+    // ------- moduler selon coterie
+    const cot: Coterie|undefined = _perso.coterie;
+    if (cot) {
+        // -- virer métiers interdits
+        metierDetestesParCoterie[cot].forEach((metierDeteste:metiersEnum) => {
+            probasMetiers.delete(metierDeteste);
+        })
+    }
 
     let completeProba: number = 0;
     probasMetiers.values().forEach( proba => {

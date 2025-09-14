@@ -30,11 +30,18 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.zaporogues]: []
 }
 
+/**
+ * Ces métiers ne peuvent pas être pris par un perso de la coterie correspondante
+ */
 export const metierDetestesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.chaos]: [],
     [Coterie.acheron]: [],
     [Coterie.bastets]: [],
-    [Coterie.cathares]: [],
+    [Coterie.cathares]: [
+        metiersEnum.pilleur_de_ruche, metiersEnum.ranconneur, metiersEnum.gladiateur,
+        metiersEnum.brasseur, metiersEnum.apprenti_brasseur,
+        metiersEnum.boucher, metiersEnum.apprenti_boucher,
+    ],
     [Coterie.carthaginois]: [],
     [Coterie.conquistador]: [],
     [Coterie.culte_du_plaisir]:  [],
@@ -48,12 +55,12 @@ export const metierDetestesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.lumieres]: [],
     [Coterie.ogres]: [],
     [Coterie.orks]: [],
-    [Coterie.performeurs]: [],
+    [Coterie.performeurs]: [metiersEnum.non_travailleur],
     [Coterie.romains]: [],
     [Coterie.saabi]: [],
     [Coterie.schweizer]: [],
     [Coterie.skavens]: [],
-    [Coterie.templiers]: [],
+    [Coterie.templiers]: [metiersEnum.ranconneur],
     [Coterie.transhumanistes]: [],
     [Coterie.tyranides]:  [],
     [Coterie.zaporogues]: []
