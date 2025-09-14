@@ -145,6 +145,13 @@ export function metierAleatoire(_perso: PersoCommon): metiersEnum {
         metierDetestesParCoterie[cot].forEach((metierDeteste:metiersEnum) => {
             probasMetiers.delete(metierDeteste);
         })
+        // -- métiers plus favorisésS
+        metierFavorisesParCoterie[cot].forEach((metier:metiersEnum) => {
+            const proba = probasMetiers.get(metier);
+            if (proba) {
+                probasMetiers.set(metier, proba * 3);
+            }
+        })
     }
 
     let completeProba: number = 0;

@@ -1,11 +1,14 @@
 import {Coterie} from "../../types/Coterie";
 import {metiersEnum} from "../metiers";
 
+/**
+ * plus grande proba d'avoir ces métier si le perso est de cette coterie
+ */
 export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.chaos]: [],
     [Coterie.acheron]: [],
-    [Coterie.bastets]: [],
-    [Coterie.cathares]: [],
+    [Coterie.bastets]: [metiersEnum.non_travailleur],
+    [Coterie.cathares]: [metiersEnum.novice_pretre, metiersEnum.pretre, metiersEnum.moine],
     [Coterie.carthaginois]: [],
     [Coterie.conquistador]: [],
     [Coterie.culte_du_plaisir]:  [],
@@ -18,14 +21,16 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.libertins]: [],
     [Coterie.lumieres]: [metiersEnum.journaliste, metiersEnum.ecrivain],
     [Coterie.ogres]: [],
-    [Coterie.orks]: [],
+    [Coterie.orks]: [
+        metiersEnum.marchand_de_champignon, metiersEnum.mecanicien, metiersEnum.pamphletaire
+    ],
     [Coterie.performeurs]: [],
     [Coterie.romains]: [],
     [Coterie.saabi]: [],
     [Coterie.schweizer]: [],
     [Coterie.skavens]: [],
     [Coterie.templiers]: [],
-    [Coterie.transhumanistes]: [],
+    [Coterie.transhumanistes]: [metiersEnum.cyberneticien],
     [Coterie.tyranides]:  [],
     [Coterie.zaporogues]: []
 }
