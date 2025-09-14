@@ -78,30 +78,6 @@ export const evts_amour: GroupeEvts = {
                 && perso.age >= 13,
         },
         {
-            id: "evts_amour1 avoir un coup de coeur réciproque",
-            description: async (perso: Perso): Promise<string> => {
-                const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
-                coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
-                coupDeCoeur.amourDeCePnj = NiveauAmour.coupDeCoeur;
-                perso.pnjs.push(coupDeCoeur);
-                let texte: string = "";
-                if (perso.niveauIA === NiveauIA.systematique) {
-                    texte = await appelLeChat(
-                        perso,
-                        "Décrivez comment le personnage principal a eu un coup de foudre réciproque pour " + coupDeCoeur.prenom
-                        + ". ",
-                        NiveauInfosPerso.patronyme);
-                } else {
-                    texte += "Vous avez le coup de foudre pour " + coupDeCoeur.prenom;
-                }
-                return texte + ". <br/>";
-            },
-            conditions: (perso: Perso): boolean =>
-                getValeurVice(perso, Vice.luxurieux) >= 0
-                && !enCoupleAvecUnAmourFort(perso)
-                && perso.age >= 13,
-        },
-        {
             id: "evts_amour draguer un coup de coeur",
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
