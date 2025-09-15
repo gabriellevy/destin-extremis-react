@@ -25,7 +25,6 @@ export enum TypeCompetence {
     intelligence = "Intelligence",
     intimidation = "Intimidation",
     intuition = "Intuition",
-    jeux = "Jeux",
     marchandage = "Marchandage",
     mouvement = "Mouvement",
     orientation = "Orientation",
@@ -72,7 +71,6 @@ export function isCompDeBase(typeCompetence: TypeCompetence): boolean {
         case TypeCompetence.intelligence:
         case TypeCompetence.intimidation:
         case TypeCompetence.intuition:
-        case TypeCompetence.jeux:
         case TypeCompetence.marchandage:
         case TypeCompetence.mouvement:
         case TypeCompetence.orientation:

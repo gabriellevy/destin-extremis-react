@@ -67,7 +67,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             plus10Values: [TypeCompetence.adresse, TypeCompetence.charme],
             plus5Values: [TypeCompetence.perception, TypeCompetence.mouvement],
             minus10Values: [TypeCompetence.endurance],
-            minus5Values: [TypeCompetence.jeux],
+            minus5Values: [TypeCompetence.intimidation],
         };
         case Coterie.jacobins: return {
             plus10Values: [TypeCompetence.volonte, TypeCompetence.eloquence],
@@ -139,7 +139,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             plus10Values: [TypeCompetence.vigilance, TypeCompetence.volonte],
             plus5Values: [TypeCompetence.armeCaC, TypeCompetence.evaluation],
             minus10Values: [TypeCompetence.tromperie],
-            minus5Values: [TypeCompetence.jeux],
+            minus5Values: [TypeCompetence.intuition],
         };
         case Coterie.skavens: return {
             plus10Values: [TypeCompetence.tromperie, TypeCompetence.reflexes],
