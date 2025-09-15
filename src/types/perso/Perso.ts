@@ -51,6 +51,8 @@ export type PersoCommon = {
     // santé
     pbDeSante: PbDeSante[],
     bioniques: Bionique[],
+    // seulement les possessions "spéciales" qui ne sont pas implicites via le statut du perso
+    possessions: string[],
     nbJoursDHopital: number,
     mode: Mode; // mode actuel d'exécution // immutable
     phaseDExecution: PhaseDExecution;
@@ -68,7 +70,7 @@ export type PersoForm = PersoCommon & {
 }
 
 /**
- * type standard utilisé lors de l'exécution (devrait être sauvegardable en théorie)
+ * type standard utilisé lors de l'exécution (devrait être sauvegardable en json)
  */
 export type Perso = PersoCommon & {
     carrieres: Carriere[],
