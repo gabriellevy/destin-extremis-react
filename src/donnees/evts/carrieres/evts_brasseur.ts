@@ -38,7 +38,7 @@ export const evts_brasseur: GroupeEvts = {
             id: "evts_brasseur1",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir brasseur. `
-                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.dexterite, bonusMalus: 20});
+                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 20});
                 const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
                 texte += resTestEnd.resume;
                 texte += resTestDex.resume;

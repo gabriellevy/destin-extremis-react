@@ -131,7 +131,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         };
         case Coterie.schweizer: return {
             plus10Values: [TypeCompetence.evaluation, TypeCompetence.volonte],
-            plus5Values: [TypeCompetence.tir, TypeCompetence.dexterite],
+            plus5Values: [TypeCompetence.tir, TypeCompetence.adresse],
             minus10Values: [TypeCompetence.charme],
             minus5Values: [TypeCompetence.eloquence],
         };

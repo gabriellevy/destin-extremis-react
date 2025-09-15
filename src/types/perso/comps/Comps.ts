@@ -16,7 +16,6 @@ export enum TypeCompetence {
     chance = "Chance",
     charme = "Charme",
     commandement = "Commandement",
-    dexterite = "Dextérité",
     discretion = "Discrétion",
     eloquence = "Éloquence",
     endurance = "Endurance",
@@ -62,7 +61,6 @@ export function isCompDeBase(typeCompetence: TypeCompetence): boolean {
         case TypeCompetence.chance:
         case TypeCompetence.charme:
         case TypeCompetence.commandement:
-        case TypeCompetence.dexterite:
         case TypeCompetence.eloquence:
         case TypeCompetence.discretion:
         case TypeCompetence.endurance:
