@@ -16,6 +16,7 @@ const cocheComp = (competence: TypeCompetence, listeMauvais: {
     Colérique: number;
     Aventureux: number;
     Lâche: number;
+    Paranoïaque: number;
     Naturaliste: number;
     Trompeur: number;
     Paresseux: number;
@@ -34,7 +35,7 @@ const cocheComp = (competence: TypeCompetence, listeMauvais: {
         case TypeCompetence.mouvement: return listeMauvais.Lâche < 0;
         case TypeCompetence.intelligence: return listeMauvais.Naturaliste > 0;
         case TypeCompetence.volonte: return listeMauvais.Aventureux > 0;
-        case TypeCompetence.armeCaC: return listeMauvais.Lâche > 0;
+        case TypeCompetence.armeCaC: return listeMauvais.Lâche > 0 || listeMauvais.Paranoïaque < 0;
         case TypeCompetence.bagarre: return listeMauvais.Orgueilleux < 0 || listeMauvais.Colérique < 0;
         case TypeCompetence.discretion: return listeMauvais.Colérique > 0;
         case TypeCompetence.marchandage: return listeMauvais.Cupide < 0;
@@ -45,13 +46,13 @@ const cocheComp = (competence: TypeCompetence, listeMauvais: {
         case TypeCompetence.intuition: return listeMauvais.Sociopathique > 0;
         case TypeCompetence.survie: return listeMauvais.Naturaliste < 0;
         case TypeCompetence.ragot: return listeMauvais.Solitaire > 0;
-        case TypeCompetence.vigilance: return listeMauvais.Rebelle > 0;
+        case TypeCompetence.vigilance: return listeMauvais.Rebelle > 0 || listeMauvais.Paranoïaque < 0;
         case TypeCompetence.reflexes: return listeMauvais.Colérique < 0;
         case TypeCompetence.force: return listeMauvais.Paresseux > 0;
         case TypeCompetence.adresse: return listeMauvais.Paresseux > 0;
         case TypeCompetence.eloquence: return listeMauvais.Solitaire > 0;
         case TypeCompetence.endurance: return listeMauvais.Gourmand > 0;
-        case TypeCompetence.tir: return listeMauvais.Solitaire < 0;
+        case TypeCompetence.tir: return listeMauvais.Solitaire < 0 || listeMauvais.Paranoïaque < 0;
         case TypeCompetence.perception: return listeMauvais.Colérique > 0 || listeMauvais.Paresseux < 0;
         case TypeCompetence.commandement: return listeMauvais.Trompeur > 0;
         case TypeCompetence.tromperie: return listeMauvais.Trompeur < 0 || listeMauvais.Rebelle < 0;

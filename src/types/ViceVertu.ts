@@ -27,6 +27,7 @@ export enum Vice {
     sociopathique = "Sociopathique",
     rebelle = "Rebelle",
     sceptique = "Sceptique",
+    paranoiaque = "Paranoïaque",
 }
 
 export enum Vertu {
@@ -47,6 +48,7 @@ export enum Vertu {
     empathique = "Empathique",
     discipline = "Discipliné",
     spirituel = "Spirituel",
+    naif = "Naïf",
 }
 
 export function getViceOppose(typeVertu: Vertu): Vice {
@@ -68,6 +70,7 @@ export function getViceOppose(typeVertu: Vertu): Vice {
         case Vertu.empathique : return Vice.sociopathique;
         case Vertu.discipline : return Vice.rebelle;
         case Vertu.spirituel : return Vice.sceptique;
+        case Vertu.naif : return Vice.paranoiaque;
     }
 }
 export function getVertuOppose(typeVice: Vice): Vertu {
@@ -89,6 +92,7 @@ export function getVertuOppose(typeVice: Vice): Vertu {
         case Vice.sociopathique : return Vertu.empathique;
         case Vice.rebelle : return Vertu.discipline;
         case Vice.sceptique : return Vertu.spirituel;
+        case Vice.paranoiaque : return Vertu.naif;
     }
 }
 

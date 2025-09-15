@@ -14,6 +14,7 @@ import {Bionique} from "../sante/Bionique";
 import {Mode, PhaseDExecution} from "../Mode";
 import {EvtProgramme} from "../Evt";
 import {Reputation} from "./Reputation";
+import {Possession} from "../../donnees/possessions/Possession";
 
 export type PersoCommon = {
     prenom: string;
@@ -52,7 +53,7 @@ export type PersoCommon = {
     pbDeSante: PbDeSante[],
     bioniques: Bionique[],
     // seulement les possessions "spéciales" qui ne sont pas implicites via le statut du perso
-    possessions: string[],
+    possessions: Possession[],
     nbJoursDHopital: number,
     mode: Mode; // mode actuel d'exécution // immutable
     phaseDExecution: PhaseDExecution;
