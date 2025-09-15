@@ -10,6 +10,7 @@ import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
 import {getRandomInt} from "../../../fonctions/random";
 import {rejointCoterie} from "../../../fonctions/coteries/generales";
+import {changerQuartier} from "../../../fonctions/geographie/quartier";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
@@ -22,7 +23,7 @@ export const evts_lycee: GroupeEvts = {
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee1 = coterieRejointe;
-                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
+                texte += changerQuartier(perso, getQuartierDeCoterie(coterieRejointe), false);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie1;
                 return texte;
             },
@@ -40,7 +41,7 @@ export const evts_lycee: GroupeEvts = {
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
-                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
+                texte += changerQuartier(perso, getQuartierDeCoterie(coterieRejointe), false);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie2;
                 return texte;
             },
@@ -61,7 +62,7 @@ export const evts_lycee: GroupeEvts = {
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
-                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
+                texte += changerQuartier(perso, getQuartierDeCoterie(coterieRejointe), false);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie3;
                 return texte;
             },
@@ -83,7 +84,7 @@ export const evts_lycee: GroupeEvts = {
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
-                perso.lieu.quartier = getQuartierDeCoterie(coterieRejointe);
+                texte += changerQuartier(perso, getQuartierDeCoterie(coterieRejointe), false);
                 perso.bilanLycee.phaseActuelle = PhaseLycee.coterie4;
                 return texte;
             },

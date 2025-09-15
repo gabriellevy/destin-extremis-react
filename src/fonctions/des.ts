@@ -1,6 +1,6 @@
 import {ResultatTest, TestCompetence, TestMetier, TestVertu} from "../types/LancerDe";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
-import {Perso} from "../types/perso/Perso";
+import {Perso, PersoCommon} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice, Vice} from "../types/ViceVertu";
 
@@ -31,7 +31,7 @@ export function testVertu(perso: Perso, test: TestVertu): ResultatTest {
     return returnTestResult("", test.typeBon, calculerValeur, test.bonusMalus);
 }
 
-export function testVice(perso: Perso, vice: Vice, modificateur: number): ResultatTest {
+export function testVice(perso: PersoCommon, vice: Vice, modificateur: number): ResultatTest {
     const compVal: number = getValeurVice(perso, vice);
     const calculerValeur = 50 + compVal*15;
 
