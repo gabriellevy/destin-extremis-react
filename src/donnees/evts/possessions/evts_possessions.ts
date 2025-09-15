@@ -19,6 +19,18 @@ export const evts_possessions: GroupeEvts = {
                 && getValeurVice(perso, Vice.paranoiaque) > 0
                 && calculeAge(perso) >= 18,
         },
+        {
+            id: "evts_possessions armes lourdes",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = `Vu le nombre de personnes qui veulent votre peau vous décidez de vous équiper en grenades, lance missile et mitrailleuses. On ne sait jamais. `
+                texte += acquerir(perso, Possession.armes_lourdes);
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                !perso.possessions.includes(Possession.armes_lourdes)
+                && getValeurVice(perso, Vice.paranoiaque) > 1
+                && calculeAge(perso) >= 18,
+        },
     ],
     probaParDefaut: 3,
 }
