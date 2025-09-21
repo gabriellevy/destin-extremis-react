@@ -41,7 +41,7 @@ export function enfant(empty: boolean): PersoForm {
         reputation: reputationVide(),
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
         possessions: [],
-        niveauIA: NiveauIA.desactive,
+        niveauIA: NiveauIA.systematique,
         pbDeSante: [],
         bioniques: [],
         nbJoursDHopital: 0,

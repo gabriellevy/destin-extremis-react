@@ -22,15 +22,15 @@ export const evts_bars: GroupeEvts = {
                 if (getValeurVice(perso, Vice.luxurieux) >= 1) {
                     if (Math.random() >= 0.5) {
                         texte += "Vous repérez une jolie femme tout à fait à votre goût. ";
-                    }
-                    const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
-                    texte += resTestCharme.resume;
-                    if (resTestCharme.reussi) {
-                        texte += "C'est réciproque, elle est vite sous votre charme et vous passez la nuit ensemble. <br/>";
-                        soireeFinie = true;
-                        // TODO : crac crac, petites amies, enceintes etc...
-                    } else {
-                        texte += "Mais ce n'est pas du tout réciproque. <br/>";
+                        const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
+                        texte += resTestCharme.resume;
+                        if (resTestCharme.reussi) {
+                            texte += "C'est réciproque, elle est vite sous votre charme et vous passez la nuit ensemble. <br/>";
+                            soireeFinie = true;
+                            // TODO : crac crac, petites amies, enceintes etc...
+                        } else {
+                            texte += "Mais ce n'est pas du tout réciproque. <br/>";
+                        }
                     }
                 }
                 // bagarre

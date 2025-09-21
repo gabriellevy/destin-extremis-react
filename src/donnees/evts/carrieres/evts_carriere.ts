@@ -8,27 +8,49 @@ import {
 } from "../../../fonctions/metiers/metiersUtils";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 import {Carriere} from "../../../types/metiers/Metier";
-import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
+import {appelLeChat, appelLeChatParaphrase, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {metiersObjs} from "../../metiers";
 import {ResultatTest} from "../../../types/LancerDe";
-import {testVice} from "../../../fonctions/des";
+import {testComp, testMetier, testVice} from "../../../fonctions/des";
 import {Vice} from "../../../types/ViceVertu";
 import {vaA} from "../../../types/lieux/Lieu";
 import {Quartier} from "../../geographie/quartiers";
+import {TypeCompetence} from "../../../types/perso/comps/Comps";
 
-// événements basiques accessibles à peu près toutes els carrières
+// événements basiques génériques accessibles à peu près toutes les carrières
 export const evts_carriere: GroupeEvts = {
     evts: [
         {
             id: "evts_carriere1 améliore",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
+                let texteTests: string = "";
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
-                    texte += "Vous êtes un " + carriere.metier + " très efficace. ";
-                    texte += modifierStatut(perso, 1);
+                    const resultatTestMetier:ResultatTest = testMetier(perso, {metier: carriere.metier, bonusMalus: 20});
+                    texteTests += resultatTestMetier.resume + "<br/>";
+                    if (resultatTestMetier.reussi) {
+                        texte += "Vous êtes un " + carriere.metier + " efficace. ";
+                        const resultatTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
+                        texteTests += resultatTestMarch.resume + "<br/>";
+                        if (resultatTestMarch.reussi) {
+                            texte += "Et vous savez vous mettre en avant pour vous faire augmenter. ";
+                            texteTests += modifierStatut(perso, 1);
+                        } else {
+                            texte += "Mais vous êtes trop peu doué en négociation pour vous faire augmenter. ";
+                        }
+                    } else {
+                        texte += "Vous êtes un " + carriere.metier + " passable mais avez du mal à briller. ";
+                    }
+                } else {
+                    console.error("evts_carriere1 améliore sans carrière !  : perso : ", perso);
                 }
-                return texte;
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(
+                        perso,
+                        texte);
+                }
+                return texte + "<br/>" + texteTests;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, undefined, 1)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax),

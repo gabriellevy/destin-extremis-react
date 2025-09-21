@@ -16,6 +16,19 @@ export enum NiveauInfosPerso {
     plus_metier,
 }
 
+export async function appelLeChatParaphrase(perso: Perso,
+                                  texte: string
+): Promise<string> {
+    const finalPrompt = " Para^hrasez le texte suivant en 100 mots maximum  et de manière plus imagée et vivante: " + texte;
+    const chatResponse:ChatCompletionResponse = await client.chat.complete({
+        model: "codestral-2405",
+        temperature: 0.6,// 0 à 0.7 (+=+random)
+        messages: [{role: 'user', content:finalPrompt }]
+    });
+
+    return chatResponse.choices?.[0]?.message?.content?.toString() ?? "pas de réponse";
+}
+
 export async function appelLeChat(perso: Perso,
                                   prompt: string,
                                   niveauInfosPerso: NiveauInfosPerso
