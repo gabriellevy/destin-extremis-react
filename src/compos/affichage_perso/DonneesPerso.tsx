@@ -15,7 +15,7 @@ export default function DonneesPerso () {
         const persoStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(perso));
         const baliseTelechargement = document.createElement('a');
         baliseTelechargement.setAttribute("href", persoStr);
-        baliseTelechargement.setAttribute("download", "character.json");
+        baliseTelechargement.setAttribute("download", perso.prenom + " " + perso.nom + ".json");
         document.body.appendChild(baliseTelechargement);
         baliseTelechargement.click();
         baliseTelechargement.remove();
