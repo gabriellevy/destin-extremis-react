@@ -68,7 +68,7 @@ export const evts_crime: GroupeEvts = {
                         texte += "Vous lui démontez le portrait. <br/>";
                     } else {
                         texte += "Vous l'attaquez mais vous prenez une dérouillée humiliante et êtes moqué par tout le gang. Peut-être n'êtes vous pas fait pour ce boulot. <br/>";
-                        arreterCarriere(perso, metiersEnum.ranconneur);
+                        texte += arreterCarriere(perso, metiersEnum.ranconneur, true);
                     }
                 }
 

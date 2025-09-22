@@ -121,7 +121,7 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiers
         if (seuils.includes(nbTests)) {
             // gain d'un point de compétence :
             carriere.competence += 1;
-            return "+1 en " + metiersEnum.toString() + ". ";
+            return "<b> compétence +1 en " + metiersEnum.toString() + ".</b><br/> ";
         }
     }
     return "";
@@ -215,11 +215,16 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
     }
 }
 
-export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum): void {
+export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: boolean): string {
     // passer en inactif
     const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere) {
         carriere.actif = false;
+    }
+    if (vire) {
+        return "Vous êtes viré.<br/>";
+    } else {
+        return "";
     }
 }
 

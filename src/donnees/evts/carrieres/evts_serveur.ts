@@ -55,7 +55,7 @@ export const evts_serveur: GroupeEvts = {
                 } else {
                     if (resTestMetier.critical) {
                         texte += `Vous enchainez gaffe sur gaffe et finissez par être viré de la taverne. `;
-                        arreterCarriere(perso, metiersEnum.serveur);
+                        texte += arreterCarriere(perso, metiersEnum.serveur, true);
                     } else {
                         texte += `Vous avez beaucoup de mal à tenir le rythme épuisant de votre métier de serveur. `;
                     }

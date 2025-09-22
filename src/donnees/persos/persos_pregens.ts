@@ -36,7 +36,7 @@ export function enfant(empty: boolean): PersoForm {
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],
         evtsProgrammes: evts_programmes,
-        vitesseExecution: 5000,
+        vitesseExecution: 7000,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?

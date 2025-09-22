@@ -93,7 +93,7 @@ export const evts_carriere: GroupeEvts = {
                         texte += "Vous démissionnez"
                         + fonceALaMontagne ? " et décidez d'aller vivre en solitaire à la montagne." : ".";
                     }
-                    arreterCarriere(perso, carriere.metier);
+                    texte += arreterCarriere(perso, carriere.metier, false);
                     if (fonceALaMontagne) {
                         vaA(perso, Quartier.pyrenees);
                         perso.bonheur += 0.3;
