@@ -4,7 +4,9 @@ import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {metiersObjs} from "../../donnees/metiers";
+import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+import {Perso} from "../../types/perso/Perso";
+import {etudie} from "../../fonctions/coteries/etudes";
 
 export default function DonneesPerso () {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -19,6 +21,15 @@ export default function DonneesPerso () {
         baliseTelechargement.remove();
     };
 
+    const affichageEtudes = (perso: Perso) => {
+        if (etudie(perso)) {
+            return (
+                <ListItem key={"études"}>
+                    <ListItemText primary={"Étudiant"} secondary={"chez les " + perso.bilanLycee.coterieActuelle}/>
+                </ListItem>)
+        }
+    }
+
     const affichageCarriere = (carriere: Carriere) => {
         let intituleMetier: string = metiersObjs[carriere.metier].intitule(perso, carriere);
         if (carriere.guilde) {
@@ -28,6 +39,9 @@ export default function DonneesPerso () {
             `(${joursToAnnees(carriere.duree)} années)` : `(${carriere.duree} jours)`;
 
         // TODO : afficher niveau de compétence dans ce métier
+        if (carriere.metier === metiersEnum.non_travailleur && etudie(perso)) {
+            return ;
+        }
 
         return (carriere.metier && carriere.actif &&
             <ListItem key={intituleMetier}>
@@ -49,6 +63,9 @@ export default function DonneesPerso () {
                     affichageCarriere(value)
                 );
             })
+        }
+        {
+            affichageEtudes(perso)
         }
         {
             (
