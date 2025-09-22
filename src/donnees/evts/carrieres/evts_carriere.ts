@@ -46,9 +46,7 @@ export const evts_carriere: GroupeEvts = {
                     console.error("evts_carriere1 améliore sans carrière !  : perso : ", perso);
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
-                    texte = await appelLeChatParaphrase(
-                        perso,
-                        texte);
+                    texte = await appelLeChatParaphrase(texte);
                 }
                 return texte + "<br/>" + texteTests;
             },

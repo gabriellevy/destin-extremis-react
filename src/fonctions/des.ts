@@ -45,6 +45,10 @@ export function testMetier(perso: Perso, test: TestMetier): ResultatTest {
     return returnTestResult(resAugmentation, test.metier, valComp, test.bonusMalus);
 }
 
+function getCritical(resDe: number) {
+    return resDe % 10 == Math.floor(resDe / 10) || resDe === 100;
+}
+
 /**
  *
  * @param resAugmentation
@@ -57,13 +61,14 @@ function returnTestResult(resAugmentation: string, intituleTestee:string, valeur
     const reussi: boolean = resDe <= (valeurTestee + bonusMalus);
     const texte: string = "<br/><i>Test de "
         + intituleTestee + " "
-        + (reussi ? "réussi" : "raté")
+        + (reussi ? "réussite" : "échec")
+        + (getCritical(resDe) ? " CRITIQUE" : "")
         + ` (résultat ${resDe} contre compétence ${valeurTestee} ${bonusMalus > 0 ? "+" : ""} ${bonusMalus != 0 ? bonusMalus : ""} ) `
         + resAugmentation
         + "</i>";
     return {
         reussi : reussi,
-        critical: resDe % 10 == Math.floor(resDe / 10) || resDe === 100,
+        critical: getCritical(resDe),
         resume : texte,
     }
 }

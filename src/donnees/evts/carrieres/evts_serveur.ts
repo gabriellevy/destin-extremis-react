@@ -1,4 +1,4 @@
-import {Perso} from "../../../types/perso/Perso";
+import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {metiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
@@ -6,11 +6,13 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
 import {
+    arreterCarriere,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
+import {appelLeChatParaphrase} from "../../../fonctions/le_chat";
 
 export const evts_serveur: GroupeEvts = {
     evts: [
@@ -45,14 +47,23 @@ export const evts_serveur: GroupeEvts = {
             id: "evts_serveur2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
+                let texteTests: string = "";
                 const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.serveur, bonusMalus: 20});
-                texte += resTestMetier.resume;
+                texteTests += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un serveur efficace et apprécié. `;
                 } else {
-                    texte += `Vous avez beaucoup de mal à tenir le rythme épuisant de votre métier de serveur. `;
+                    if (resTestMetier.critical) {
+                        texte += `Vous enchainez gaffe sur gaffe et finissez par être viré de la taverne. `;
+                        arreterCarriere(perso, metiersEnum.serveur);
+                    } else {
+                        texte += `Vous avez beaucoup de mal à tenir le rythme épuisant de votre métier de serveur. `;
+                    }
                 }
-                return texte;
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte + "<br/>" + texteTests;
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
