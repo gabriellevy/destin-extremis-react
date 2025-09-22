@@ -27,7 +27,7 @@ export const evts_journaliste: GroupeEvts = {
                 texte += resTestInt.resume;
                 const titreJournal: string = journalAleatoire();
                 if (resTestRagot.reussi && resTestInt.reussi) {
-                    commencerCarriere(perso, metiersEnum.journaliste, titreJournal);
+                    texte += commencerCarriere(perso, metiersEnum.journaliste, titreJournal);
                     texte += "Votre talent à dénicher les bonnes histoires et à la raconter convainquent le rédacteur en chef du "
                         + titreJournal +  " de vous engager. ";
                 } else {

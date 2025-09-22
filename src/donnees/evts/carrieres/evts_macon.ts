@@ -26,7 +26,7 @@ export const evts_macon: GroupeEvts = {
                     texte += `Malheureusement vous vous révélez trop faible pour ce métier épuisant. `;
                 }
                 else {
-                    commencerCarriere(perso, metiersEnum.macon, '');
+                    texte += commencerCarriere(perso, metiersEnum.macon, '');
                     texte += `Solide comme vous êtes, vous êtes engagé. `;
                 }
                 return texte;

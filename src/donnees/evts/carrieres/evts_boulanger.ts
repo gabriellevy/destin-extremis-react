@@ -18,7 +18,7 @@ const passageDiplomeBoulanger: (perso: Perso) => Promise<string> = (perso: Perso
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir boulanger à part entière.";
-        commencerCarriere(perso, metiersEnum.boulanger, '');
+        texte += commencerCarriere(perso, metiersEnum.boulanger, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -41,7 +41,7 @@ export const evts_boulanger: GroupeEvts = {
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
                 texte += resTestDex.resume;
                 if (resTestDex.reussi) {
-                    commencerCarriere(perso, metiersEnum.apprenti_boulanger, '');
+                    texte += commencerCarriere(perso, metiersEnum.apprenti_boulanger, '');
                     texte += `Votre motivation et votre dextérité impressionnent le boulanger qui vous engage comme apprenti à l'essai. `;
                     perso.evtsProgrammes.push({
                         date: perso.date + anneesToJours(3),

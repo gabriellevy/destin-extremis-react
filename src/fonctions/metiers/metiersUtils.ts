@@ -1,6 +1,6 @@
 import {Carriere, Metier} from "../../types/metiers/Metier";
 import {Perso, PersoCommon} from "../../types/perso/Perso";
-import {seuils} from "../../types/perso/comps/Comps";
+import {seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
@@ -9,6 +9,9 @@ import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu"
 import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
 import {Coterie} from "../../types/Coterie";
 import {auBordDuneRuche, auBordDuneZone} from "../../types/lieux/Lieu";
+import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../perso/statut";
+import {ResultatTest} from "../../types/LancerDe";
+import {testComp} from "../des";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -179,12 +182,12 @@ export function metierAleatoire(perso: PersoCommon): metiersEnum {
     return getRandomEnumValue(metiersEnum);
 }
 
-export function commencerCarriereAleatoire(perso: Perso): void {
+export function commencerCarriereAleatoire(perso: Perso): string {
     let metier: metiersEnum = metierAleatoire(perso);
-    commencerCarriere(perso, metier, "");
+    return commencerCarriere(perso, metier, "");
 }
 
-export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupeLieu: string): void {
+export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupeLieu: string): string {
     if (getCarriereActive(perso).metier === metiersEnum) {
         console.error("Commence une carrière qu'il a déjà !! : ", metiersEnum);
     }
@@ -202,7 +205,6 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
         cetteCarriereDejaFaite.actif = true;
     } else {
         // commencer la nouvelle
-        console.log("Commencer carrière perso.carrieres.push")
         perso.carrieres.push({
             metier: metiersEnum,
             intitule: metiersObjs + groupeLieu ? " à " + groupeLieu : "",
@@ -213,6 +215,21 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
             nbDeTestsFaits : nbDeTestsFaits,
         });
     }
+    let texte = "Vous êtes maintenant " + metiersEnum.toString() + ".";
+    if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)) {
+        // tentative de négociation
+        const resultatTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
+        texte += resultatTestMarch.resume + "<br/>";
+        if (resultatTestMarch.reussi) {
+            texte += "Vous négociez très bien votre salaire de départ. ";
+            if (resultatTestMarch.critical) {
+                texte += modifierStatut(perso, 2);
+            } else {
+                texte += modifierStatut(perso, 1);
+            }
+        }
+    }
+    return texte;
 }
 
 export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: boolean): string {

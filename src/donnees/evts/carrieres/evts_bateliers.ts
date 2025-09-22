@@ -24,7 +24,7 @@ export const evts_batelier: GroupeEvts = {
                 texte += resTestFor.resume;
                 texte += resTestEnd.resume;
                 if (resTestFor.reussi && resTestEnd.reussi) {
-                    commencerCarriere(perso, metiersEnum.batelier, '');
+                    texte += commencerCarriere(perso, metiersEnum.batelier, '');
                     texte += `Coriace comme vous l'êtes, vous impressionnez le capitaine qui vous engage à l'essai. `;
                 } else {
                     texte += `Malheureusement c'est un métier qui demande une très robuste constitution et vous êtes jugé trop frêle par le capitaine. `;

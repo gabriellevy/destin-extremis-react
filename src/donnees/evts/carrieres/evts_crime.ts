@@ -19,10 +19,11 @@ export const evts_crime: GroupeEvts = {
         {
             id: "evts_crime1",
             description: async (perso: Perso): Promise<string> => {
-                commencerCarriere(perso, metiersEnum.ranconneur, '');
-
-                return "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
-                    "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. ";
+                let texte = '';
+                texte += "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
+                    "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. <br/>";
+                texte += commencerCarriere(perso, metiersEnum.ranconneur, '');
+                return texte;
             },
             conditions: (perso: Perso): boolean => !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.ranconneur]) >= 0

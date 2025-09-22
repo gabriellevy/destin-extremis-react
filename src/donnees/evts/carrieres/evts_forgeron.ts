@@ -18,7 +18,7 @@ const passageDiplomeForgeron: (perso: Perso) => Promise<string> = (perso: Perso)
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir forgeron à part entière.";
-        commencerCarriere(perso, metiersEnum.brasseur, '');
+        texte += commencerCarriere(perso, metiersEnum.brasseur, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -43,7 +43,7 @@ export const evts_forgeron: GroupeEvts = {
                 texte += resTestFor.resume;
                 texte += resTestDex.resume;
                 if (resTestFor.reussi && resTestDex.reussi) {
-                    commencerCarriere(perso, metiersEnum.apprenti_Forgeron, '');
+                    texte += commencerCarriere(perso, metiersEnum.apprenti_Forgeron, '');
                     texte += `Votre force et votre dextérité impressionnent le forgeron qui vous engage comme apprenti à l'essai. `;// ajout du futur passage de diplôme :
                     perso.evtsProgrammes.push({
                         date: perso.date + anneesToJours(3),

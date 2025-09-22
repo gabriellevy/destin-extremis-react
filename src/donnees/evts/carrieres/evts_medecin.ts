@@ -18,7 +18,7 @@ const passageDiplomeMedecin: (perso: Perso) => Promise<string> = (perso: Perso) 
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Il est temps de passer votre diplôme. Vous allez pouvoir devenir un médecin à part entière.";
-        commencerCarriere(perso, metiersEnum.medecin, '');
+        texte += commencerCarriere(perso, metiersEnum.medecin, '');
     } else {
         texte += "Malheureusement vous échouez. Vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -53,7 +53,7 @@ export const evts_medecin: GroupeEvts = {
                 } else {
                     texte += `C'est formidable : le médecin vous juge apte à devenir son apprenti ! "
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
-                    commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
+                    texte += commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
                     perso.evtsProgrammes.push({
                         date: perso.date + anneesToJours(5),
                         evt: {
