@@ -44,6 +44,7 @@ export function enfant(empty: boolean): PersoForm {
         niveauIA: NiveauIA.systematique,
         pbDeSante: [],
         bioniques: [],
+        drogues: [],
         nbJoursDHopital: 0,
         metier: metiersEnum.non_travailleur,
         mode: Mode.test,

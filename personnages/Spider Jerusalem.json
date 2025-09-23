@@ -51,6 +51,7 @@
 	"pnjs":[],
 	"pbDeSante":[],
 	"bioniques":[],
+	"drogues":["Vissopressine"],
 	"possessions":["Pistolet", "Armes lourdes"],
 	"nbJoursDHopital":0,
 	"metier":"Ne travaille pas",

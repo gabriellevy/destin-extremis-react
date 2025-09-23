@@ -1,8 +1,9 @@
 import {Perso} from "../../types/perso/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
-import {getValeurCompetence, isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
+import {isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {getValeurCompetence} from "../../fonctions/perso/competences";
 
 interface CaracProps {
     primaryText: string,

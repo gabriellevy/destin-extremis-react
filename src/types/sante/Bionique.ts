@@ -4,7 +4,7 @@ export type Bionique = {
     nom: string;
     // nombre de jours théoriques à passer à l'hopital (ou juste à reposer chez soi) après cette blessure pour bien récupérer
     nbJoursConvalescence: number,
-    // ce qui arrive aux caracs du perso si il lui arrive cette maladie ou blessure
+    // ce qui arrive aux caracs du perso si il a ce bionique
     effetAuxCaracs: (perso:Perso) => void,
     // texte affiché quand le perspnnage attrape ce problème de santé
     description: string,

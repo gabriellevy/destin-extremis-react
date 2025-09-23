@@ -8,6 +8,11 @@ export type ViceVertu = {
     typeVertu: Vertu,
 }
 
+export type ModificateurViceVertu = {
+    typeVertu: Vertu,
+    val: number;
+}
+
 // mauvais étant ici "mauvais citoyen" mais peut aussi être une qualité
 export enum Vice {
     impulsif = "Impulsif",

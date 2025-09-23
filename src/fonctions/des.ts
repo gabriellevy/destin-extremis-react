@@ -1,8 +1,8 @@
 import {ResultatTest, TestCompetence, TestMetier, TestVertu} from "../types/LancerDe";
-import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "../types/perso/comps/Comps";
 import {Perso, PersoCommon} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice, Vice} from "../types/ViceVertu";
+import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "./perso/competences";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;

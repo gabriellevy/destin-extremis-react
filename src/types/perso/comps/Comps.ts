@@ -1,10 +1,14 @@
 import {d10} from "../../../fonctions/des";
-import {Perso, PersoCommon} from "../Perso";
 
 export type Competence = {
     val: number,
     nbDeTestsFaits: number,
     typeComp: TypeCompetence,
+}
+
+export type ModificateurCompetence = {
+    typeComp: string,//TypeCompetence,
+    val: number;
 }
 
 export enum TypeCompetence {
@@ -90,16 +94,8 @@ export function compDeDepartAleatoire(): number {
     return 20 + d10() + d10();
 }
 
-export function getValeurCompetence(perso: PersoCommon, typeComp: TypeCompetence): number {
-    return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.val || -1;
-}
-
-export function getCompNbDeTestsFaits(perso: Perso, typeComp: TypeCompetence): number {
-    return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.nbDeTestsFaits || 0;
-}
-
 // seuils de progression des comps (en nombres de tests sur ces comps)
-// limite à +25 ?? // TODO : remplir ça , éventuellement avec une fonction
+// limite à +25 ?? // TODO : remplir ça , éventuellement avec une fonction (moins brutale la montée ??)
 export const seuils: number[] = [
     3,
     7,
@@ -110,34 +106,6 @@ export const seuils: number[] = [
     255,
     511,
 ];
-
-export function augmenterCompetence(perso: PersoCommon,typeComp: TypeCompetence, val: number): string {
-    const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
-    if (comp !== undefined) {
-        comp.val += val;
-        return (val> 0 ? "+" : "") + val + " " + typeComp.toString() + "<br/>";
-    } else {
-        console.warn("Impossible de modifier la valeur de la compétence : " + typeComp + " de " + val);
-    }
-    return "Impossible de modifier la valeur de la compétence : " + typeComp + " de " + val;
-}
-
-export function augmenterNbDeTestsFaitsComp(perso: Perso, typeComp: TypeCompetence): string {
-    const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
-    let texte: string = "";
-    if (comp !== undefined) {
-        const nbTests: number = comp.nbDeTestsFaits + 1;
-        comp.nbDeTestsFaits = nbTests;
-        if (seuils.includes(nbTests)) {
-            // gain d'un point de compétence :
-            if (comp) {
-                comp.val += 1;
-                texte = "<b>+1 en " + comp.typeComp.toString() + ". </b> ";
-            }
-        }
-    }
-    return texte;
-}
 
 export function compsDeBase (): Competence[] {
     return Object.values(TypeCompetence)

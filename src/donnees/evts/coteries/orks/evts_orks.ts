@@ -6,11 +6,12 @@ import {MetalStatut} from "../../../../types/statut_social/Statut";
 import {getPrenom} from "../../../../fonctions/noms";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVice} from "../../../../fonctions/des";
-import {getValeurCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
+import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
+import {getValeurCompetence} from "../../../../fonctions/perso/competences";
 
 export const evts_orks: GroupeEvts = {
     evts: [

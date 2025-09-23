@@ -1,8 +1,9 @@
 import {PersoCommon} from "../../types/perso/Perso";
-import {augmenterCompetence, TypeCompetence} from "../../types/perso/comps/Comps";
+import {TypeCompetence} from "../../types/perso/comps/Comps";
 import {getEffetsDeCoterieSurCompetences} from "../../donnees/coteries/EffetsDesCoteriesSurPerso";
 import {rejoindreOrks} from "../../donnees/coteries/orks/donnees_orks";
 import {Coterie, EffectDeCoterieSurPerso} from "../../types/Coterie";
+import {augmenterCompetence} from "../perso/competences";
 
 export function effetDeBaseEnRejoignantUneCoterie(effet: EffectDeCoterieSurPerso, perso: PersoCommon): string {
     let texte: string = "";

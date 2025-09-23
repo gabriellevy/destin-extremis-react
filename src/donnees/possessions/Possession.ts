@@ -1,5 +1,3 @@
-
-
 // seulement les possessions "spéciales" qui ne sont pas implicites via le statut du perso
 export enum Possession {
     pistolet = "Pistolet",
@@ -12,5 +10,4 @@ export function coutPossession(possession: Possession):number {
         case Possession.armes_lourdes: return 3;
         case Possession.pistolet: return 1;
     }
-    return 0;
 }

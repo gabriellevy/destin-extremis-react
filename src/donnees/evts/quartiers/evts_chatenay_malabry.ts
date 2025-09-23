@@ -4,12 +4,13 @@ import {Quartier} from "../../geographie/quartiers";
 import {majReputationDansQuartier} from "../../../fonctions/perso/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
-import {getValeurCompetence, TypeCompetence} from "../../../types/perso/comps/Comps";
+import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {Maitrise} from "../../maitrise";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {ajouterViceVal, getValeurVice, Vice} from "../../../types/ViceVertu";
 import {aLaMaitrise} from "../../../fonctions/perso/maitrise";
+import {getValeurCompetence} from "../../../fonctions/perso/competences";
 
 export const evts_chatenay_malabry: GroupeEvts = {
     evts: [

@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../../types/Evt";
 import {NiveauIA, Perso} from "../../../../types/perso/Perso";
-import {augmenterCompetence, TypeCompetence} from "../../../../types/perso/comps/Comps";
+import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVertu} from "../../../../fonctions/des";
 import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
@@ -15,6 +15,7 @@ import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUti
 import {metiersEnum} from "../../../metiers";
 import {poserBioniqueAleatoire} from "../../../../fonctions/sante/bionique";
 import {Bionique} from "../../../../types/sante/Bionique";
+import { augmenterCompetence } from "../../../../fonctions/perso/competences";
 
 export const evts_lycee_orks: GroupeEvts = {
     evts: [
