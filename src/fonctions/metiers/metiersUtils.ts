@@ -11,7 +11,8 @@ import {Coterie} from "../../types/Coterie";
 import {auBordDuneRuche, auBordDuneZone} from "../../types/lieux/Lieu";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../perso/statut";
 import {ResultatTest} from "../../types/LancerDe";
-import {testComp} from "../des";
+import {testComp, testVice} from "../des";
+import {Possession} from "../../donnees/possessions/Possession";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -234,15 +235,29 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
 
 export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: boolean): string {
     // passer en inactif
+    let texte: string = "";
     const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere) {
         carriere.actif = false;
     }
     if (vire) {
-        return "Vous êtes viré.<br/>";
-    } else {
-        return "";
+        texte += "Vous êtes viré.<br/>";
+        const resTestColere:ResultatTest = testVice(perso, Vice.colerique, -30);
+        texte += resTestColere.resume;
+        if (resTestColere.reussi) {
+            if (perso.possessions.includes(Possession.armes_lourdes)) {
+                texte += "Avant de partir vous vous dites que c'est l'occasion ou jamais de leur faire comprendre à tous à quel point vous les haissez de tout votre coeur. "
+                    + "Très tôt le matin vous passez devant les locaux et les faites sauter au lance-roquette. ";
+            } else if (perso.possessions.includes(Possession.pistolet)) {
+                texte += "Vous perdez la tête et vous mettez à abattre votrepatron et vos collègues les plus détestés. ";
+                // TODO : police etc
+            } else {
+                texte += "Avant de partir vous faites un scandale et insultez tous ceux que vous détestez. Ce la est défoulant mais mauvais pour les indemnités de licenciement.";
+                texte += modifierStatut(perso, -1);
+            }
+        }
     }
+    return texte;
 }
 
 /**
@@ -299,6 +314,3 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
 
     return compatibilite;
 }
-
-
-

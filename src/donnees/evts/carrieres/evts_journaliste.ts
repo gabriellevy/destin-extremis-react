@@ -5,6 +5,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {calculeAge} from "../../../types/Date";
 import {
+    arreterCarriere,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -50,6 +51,9 @@ export const evts_journaliste: GroupeEvts = {
                     texte += `Vous êtes un journaliste efficace et respecté. `;
                 } else {
                     texte += `Vous avez beaucoup de mal à accomplir votre métier de journaliste. `;
+                    if (resultatTestMetier.critical) {
+                        texte += arreterCarriere(perso, metiersEnum.journaliste, true);
+                    }
                 }
                 return texte;
             },
