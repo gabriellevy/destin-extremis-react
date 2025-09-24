@@ -9,7 +9,7 @@ export type Drogue = {
     modifsVicesVertus: ModificateurViceVertu[],
     // texte affiché quand le personnage prend cette drogue
     description: string,
-    prix?: number, // baisse du statut (si c'est vraiment très cher)
+    prix: number, // baisse du statut (si c'est vraiment très cher)
 }
 
 export type DrogueObj = Record<droguesEnum, Drogue>;

@@ -33,6 +33,7 @@ import {evts_journaliste} from "../donnees/evts/carrieres/evts_journaliste";
 import { rejointCoterie } from '../fonctions/coteries/generales';
 import {evts_statut} from "../donnees/evts/statut/evts_statut";
 import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
+import {evts_drogue} from "../donnees/evts/evts_drogue";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -114,6 +115,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_boulanger, perso),
             ...filtrerEtPreparerEvts(evts_boucher, perso),
             ...filtrerEtPreparerEvts(evts_carriere, perso),
+            ...filtrerEtPreparerEvts(evts_drogue, perso),
             ...filtrerEtPreparerEvts(evts_statut, perso),
             ...filtrerEtPreparerEvts(evts_forgeron, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),

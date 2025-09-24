@@ -2,7 +2,7 @@ import {Perso, PersoCommon} from "./perso/Perso";
 
 // duo de vertu et vices qui fonctionnent ensemble en opposition
 export type ViceVertu = {
-    valVertu: number, // la val de "mauvais"" est l'inverse
+    valVertu: number, // la val de "vice" est l'inverse
     nbDeTestsFaits?: number,
     typeVice?: Vice,
     typeVertu: Vertu,
@@ -23,10 +23,10 @@ export enum Vice {
     trompeur = "Trompeur",
     paresseux = "Paresseux",
     luxurieux = "Luxurieux",
-    gourmand = "Gourmand",
+    gourmand = "Gourmand", // inclut drogue et alcool
     cupide = "Cupide",
     cruel = "Cruel",
-    envieux = "Envieux",
+    envieux = "Envieux", // ambitieux, veut plus
     orgueilleux = "Orgueilleux",
     solitaire = "Solitaire",
     sociopathique = "Sociopathique",

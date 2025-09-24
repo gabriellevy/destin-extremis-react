@@ -9,11 +9,11 @@ export const droguesObjs: DrogueObj = {
         nom: droguesEnum.vissopressine,
         modifsCompetences: [{
             typeComp: "Intelligence",
-            val: 95,
+            val: 10,
         },{
-            // TODO : TypeCompetence.intuition provoque un pb de ReferenceError: can't access lexical declaration 'X' before initialization que je n'ai aps réussi à résoudre :
+            // TODO : TypeCompetence.intuition provoque un pb de ReferenceError: can't access lexical declaration 'X' before initialization que je n'ai pas réussi à résoudre :
             typeComp: "Intuition",
-            val: 95,
+            val: 10,
         }],
         modifsVicesVertus: [],
         description: "",
