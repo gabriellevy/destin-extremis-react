@@ -17,7 +17,6 @@ export const evts_lycee_demokratos: GroupeEvts = {
             id: "evts_lycee_demokratos1",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "La vie sociale sur le campus des Démokratos est vibrante et explosive. Les concerts, fêtes, pièces de théâtre, s'enchainent sans interruption.";
-
                 if (Math.random() >.95) {
                     texte += ajouterViceVal(perso, Vice.gourmand, 1);
                 }
@@ -27,7 +26,6 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
                 }
-
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
@@ -102,6 +100,28 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+        },
+        {
+            id: "evts_lycee_demokratos5",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Tous démokratos doit être capable de faire de la politique et de diriger ses concitoyens si il est tiré au sort pour occuper ce rôle. "
+                + "Vous alternez donc entre chef et exécutant régulièrement pour vous y habituer. ";
+                const resTestComdt:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                texte += resTestComdt.resume;
+                if (resTestComdt.reussi) {
+                    texte += "Vous êtes doué pour commander. ";
+                } else {
+                    texte += "Vous êtes plus doué pour obéir que pour commander. ";
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                if (Math.random() >.9) {
+                    texte += ajouterVertuVal(perso, Vertu.discipline, 1);
                 }
                 return texte;
             },
