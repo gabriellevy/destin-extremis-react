@@ -68,6 +68,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://github.com/gabriellevy/destin-extremis-react/blob/main/images/quartiers/noisiel.jpg?raw=true";
         case Quartier.genevilliers:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/genevilliers.jpg";
+        case Quartier.chatenay_malabry:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Ch%C3%A2tenay-Malabry.jpg";
 
         default:
             return "Il manque l'image de cet endroit : " + quartier;
