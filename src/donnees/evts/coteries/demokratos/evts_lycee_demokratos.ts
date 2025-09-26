@@ -180,6 +180,26 @@ export const evts_lycee_demokratos: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
         },
+        {
+            id: "evts_lycee_demokratos8",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Les banquets très courants sont certes l'occasion de s'amuser. "
+                + "Mais ils sont avant tout vu par les Démokratos comme une occasion de sociabilisation et de débats philosophiques enflammés. ";
+                const resTestIntelligence:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                const resTestEloq:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
+                texte += resTestEloq.resume;
+                texte += resTestIntelligence.resume;
+                if (resTestIntelligence.reussi && resTestEloq.reussi) {
+                    texte += "À ce jeu vous impressionnez souvent les invités. ";
+                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };
