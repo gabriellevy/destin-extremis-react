@@ -124,11 +124,21 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiers
         carriere.nbDeTestsFaits = nbTests;
         if (seuils.includes(nbTests)) {
             // gain d'un point de compétence :
-            carriere.competence += 1;
-            return "<b> compétence +1 en " + metiersEnum.toString() + ".</b><br/> ";
+            return augmenterCompetenceMeter(perso, metiersEnum, 1);
         }
     }
     return "";
+}
+
+export function augmenterCompetenceMeter(perso: Perso, metiersEnum: metiersEnum, val: number): string {
+    const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
+    if (carriere !== undefined) {
+        carriere.competence += val;
+        return "<b>" + (val> 0 ? "+" : "") + val + " " + metiersEnum.toString() + ".</b><br/>";
+    } else {
+        console.warn("Impossible de modifier la valeur de la compétence : " + metiersEnum + " de " + val);
+    }
+    return "Impossible de modifier la valeur de la compétence : " + metiersEnum + " de " + val;
 }
 
 /**
