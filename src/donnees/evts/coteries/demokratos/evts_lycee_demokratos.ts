@@ -76,7 +76,33 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
                 }
-
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+        },
+        {
+            id: "evts_lycee_demokratos4",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "L'art, surtout le théâtre, est très prisé chez les démokratos. "
+                + "Vous le pratiquez régulièrement. ";
+                const resTestEloq:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                const resTestTromp:ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 20});
+                const resTestChar:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: 20});
+                texte += resTestEloq.resume;
+                texte += resTestTromp.resume;
+                texte += resTestChar.resume;
+                if (resTestEloq.reussi && resTestTromp.reussi && resTestChar.reussi) {
+                        texte += "Vos talents multiples vous font remarquer. ";
+                        texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                } else {
+                    if (resTestEloq.critical && resTestTromp.critical && resTestChar.critical) {
+                        texte += "Les gens viennent de loin pour rire de votre complète inaptitude à jouer. ";
+                        texte += majReputationDansQuartier(perso, Quartier.vanves, -1,1);
+                    }
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
