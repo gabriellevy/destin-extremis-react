@@ -124,13 +124,13 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiers
         carriere.nbDeTestsFaits = nbTests;
         if (seuils.includes(nbTests)) {
             // gain d'un point de compétence :
-            return augmenterCompetenceMeter(perso, metiersEnum, 1);
+            return augmenterCompetenceMetier(perso, metiersEnum, 1);
         }
     }
     return "";
 }
 
-export function augmenterCompetenceMeter(perso: Perso, metiersEnum: metiersEnum, val: number): string {
+export function augmenterCompetenceMetier(perso: Perso, metiersEnum: metiersEnum, val: number): string {
     const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere !== undefined) {
         carriere.competence += val;
