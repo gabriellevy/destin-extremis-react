@@ -14,7 +14,7 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.culte_du_plaisir]:  [],
     [Coterie.esprit_de_la_nature]: [],
     [Coterie.celtes]: [],
-    [Coterie.demokratos]: [],
+    [Coterie.demokratos]: [metiersEnum.edile, metiersEnum.journaliste],
     [Coterie.elfes]: [],
     [Coterie.esthetes]:  [],
     [Coterie.jacobins]: [],

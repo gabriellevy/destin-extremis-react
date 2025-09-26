@@ -34,6 +34,7 @@ import { rejointCoterie } from '../fonctions/coteries/generales';
 import {evts_statut} from "../donnees/evts/statut/evts_statut";
 import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
 import {evts_drogue} from "../donnees/evts/evts_drogue";
+import {evts_lycee_demokratos} from "../donnees/evts/coteries/demokratos/evts_lycee_demokratos";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -107,6 +108,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
             ...filtrerEtPreparerEvts(evts_lycee_orks, perso),
+            ...filtrerEtPreparerEvts(evts_lycee_demokratos, perso),
             ...filtrerEtPreparerEvts(evts_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),
