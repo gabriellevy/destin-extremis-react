@@ -10,6 +10,8 @@ import {augmenterCompetenceMetier} from "../../../../fonctions/metiers/metiersUt
 import {metiersEnum} from "../../../metiers";
 import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
+import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
+import {Maitrise} from "../../../maitrise";
 
 export const evts_lycee_demokratos: GroupeEvts = {
     evts: [
@@ -116,6 +118,31 @@ export const evts_lycee_demokratos: GroupeEvts = {
                     texte += "Vous êtes doué pour commander. ";
                 } else {
                     texte += "Vous êtes plus doué pour obéir que pour commander. ";
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                if (Math.random() >.9) {
+                    texte += ajouterVertuVal(perso, Vertu.discipline, 1);
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+        },
+        {
+            id: "evts_lycee_demokratos6",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Tous les élèves doivent apprendre à composer des discours. ";
+                const resTestIntuition:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
+                const resTestEloquence:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                texte += resTestIntuition.resume;
+                if (resTestEloquence.critical && resTestEloquence.reussi) {
+                    texte += "Les professeurs vous font faire des récitations publiques de vos excellents discours. ";
+                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                }
+                if (resTestIntuition.critical && resTestIntuition.reussi) {
+                    texte += "Vous vous découvrez un talent dans les discours poétiques plein d'images puissantes. ";
+                    texte += ajouterMaitrise(perso, Maitrise.poesie);
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
