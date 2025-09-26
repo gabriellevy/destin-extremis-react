@@ -8,7 +8,6 @@ import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
-import {evts_forgeron} from "../donnees/evts/carrieres/evts_forgeron";
 import {evts_brasseur} from "../donnees/evts/carrieres/evts_brasseur";
 import {Box, Dialog, Grid2, IconButton, Typography} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -119,7 +118,6 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_carriere, perso),
             ...filtrerEtPreparerEvts(evts_drogue, perso),
             ...filtrerEtPreparerEvts(evts_statut, perso),
-            ...filtrerEtPreparerEvts(evts_forgeron, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),
             ...filtrerEtPreparerEvts(evts_medecin, perso),
             ...filtrerEtPreparerEvts(evts_tout, perso),
