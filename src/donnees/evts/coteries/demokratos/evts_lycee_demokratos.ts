@@ -119,11 +119,11 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 } else {
                     texte += "Vous êtes plus doué pour obéir que pour commander. ";
                 }
-                if (perso.niveauIA === NiveauIA.systematique) {
-                    texte = await appelLeChatParaphrase(texte);
-                }
                 if (Math.random() >.9) {
                     texte += ajouterVertuVal(perso, Vertu.discipline, 1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
                 }
                 return texte;
             },
@@ -135,6 +135,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 let texte:string = "Tous les élèves doivent apprendre à composer des discours. ";
                 const resTestIntuition:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
                 const resTestEloquence:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                texte += resTestEloquence.resume;
                 texte += resTestIntuition.resume;
                 if (resTestEloquence.critical && resTestEloquence.reussi) {
                     texte += "Les professeurs vous font faire des récitations publiques de vos excellents discours. ";
@@ -147,8 +148,33 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
                 }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+        },
+        {
+            id: "evts_lycee_demokratos7",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "L'entrainement à l'athlétisme est une des activités les plus appréciées des Démokratos. ";
+                const resTestBagarre:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
+                const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 0});
+                texte += resTestF.resume;
+                texte += resTestBagarre.resume;
+                if (resTestF.critical && resTestF.reussi) {
+                    texte += "Vous vous distinguez à la lutte. ";
+                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                }
+                const resTestM:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
+                texte += resTestM.resume;
+                if (resTestM.reussi) {
+                    texte += "Vous excellez en gymnastique. ";
+                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                }
                 if (Math.random() >.9) {
-                    texte += ajouterVertuVal(perso, Vertu.discipline, 1);
+                    texte += ajouterVertuVal(perso, Vertu.sociable, 1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
                 }
                 return texte;
             },
