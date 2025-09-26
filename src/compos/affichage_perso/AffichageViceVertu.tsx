@@ -1,49 +1,61 @@
-import {getValeurVertu, getValeurVice, getViceOppose, Vertu} from "../../types/ViceVertu";
+import {getValeurVertu, getValeurVice, getViceOppose, Vertu, Vice} from "../../types/ViceVertu";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {descriptionViceVertus} from "../../fonctions/VicesVertus_fc";
+import {List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Perso} from "../../types/perso/Perso";
 
-// Style pour le tableau
-const tableStyle: React.CSSProperties = {
-    padding: '0px', // Réduit le rembourrage dans les cellules
-    margin: '0', // Supprime la marge
-    borderCollapse: 'collapse', // Supprime l'espacement entre les bordures des cellules
-};
+interface ViceVertuProps {
+    perso: Perso,
+    typeVice: Vice,
+}
 
-// Style pour les cellules du tableau
-const cellStyle: React.CSSProperties = {
-    padding: '0px', // Réduit le rembourrage dans les cellules
-    margin: '0', // Supprime la marge
-    lineHeight: '1', // Réduit la hauteur de ligne
+const ViceVertu = ({perso, typeVice}:ViceVertuProps) => {
+    return (
+        <ListItem sx={{padding: '0px',width: "auto"}}>
+            <ListItemText
+                primary={
+                    <Typography
+                        variant="body2"
+                        style={
+                            {
+                                display: 'inline',
+                                fontSize: '13px',
+                                color: getValeurVice(perso, typeVice) > 0 ? 'red' :'blue'
+                            }}
+                    >
+                        {descriptionViceVertus(perso, typeVice)}
+                    </Typography>
+                }
+                sx={{margin: '0px', fontSize: '5px'}}
+            />
+        </ListItem>
+    );
 };
 
 export default function AffichageViceVertu () {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
 
-    return (<table style={tableStyle}>
-        <tbody>
-        {Object.values(Vertu).map((typeVertu: Vertu) => {
-            if (getValeurVertu(perso, typeVertu) != 0) {
-                const typeVice = getViceOppose(typeVertu);
-                return (
-                    <tr key={typeVertu.toString()}
-                        style={{ display: 'inline', marginLeft: '10px', fontSize: '13px',
-                            flexFlow: "column wrap",
-                            gap: "0 0px", }}
-                    >
-                        <td style={{ ...cellStyle, color: 'red' }}>
-                            { "(" + getValeurVice(perso, typeVice) + ") " + typeVice.toString() + "  >"}
-                        </td>
-                        <td>
-                            {" ----- "}
-                        </td>
-                        <td style={{ ...cellStyle, color: 'blue' }}>
-                            {"<  " + typeVertu.toString() + " (" + getValeurVertu(perso, typeVertu) + ")"}
-                        </td>
-                    </tr>
-                    );
+    return (
+        <List sx={{
+            display: "flex",
+            flexFlow: "column wrap",
+            gap: "0 10px",
+            height: 300,
+            overflow: "auto"
+        }}>
+            {
+                Object.values(Vertu).map((typeVertu: Vertu) => {
+                    if (getValeurVertu(perso, typeVertu) != 0) {
+                        const typeVice = getViceOppose(typeVertu);
+                        return (<ViceVertu
+                            key={typeVice.toString()}
+                            perso={perso}
+                            typeVice={typeVice}
+                        />);
+                    }
+                })
             }
-        })
-        }
-        </tbody>
-    </table>);
+        </List>
+    );
 }
