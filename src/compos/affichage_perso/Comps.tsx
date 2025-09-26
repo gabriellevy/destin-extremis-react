@@ -6,12 +6,12 @@ import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {getValeurCompetence} from "../../fonctions/perso/competences";
 
 interface CaracProps {
-    primaryText: string,
     perso: Perso,
     competenceType: TypeCompetence,
 }
 
-const Comp = ({primaryText, perso, competenceType}:CaracProps) => {
+const Comp = ({perso, competenceType}:CaracProps) => {
+    const valeur = getValeurCompetence(perso, competenceType);
     return (
         <ListItem sx={{padding: '0px',width: "auto"}}>
             <ListItemText
@@ -20,16 +20,15 @@ const Comp = ({primaryText, perso, competenceType}:CaracProps) => {
                         variant="body2"
                         style={{ display: 'inline', fontSize: '13px' }}
                     >
-                        {primaryText}
-                    </Typography>
-                }
-                secondary={
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        style={{ display: 'inline', marginLeft: '10px', fontSize: '13px' }}
-                    >
-                        {getValeurCompetence(perso, competenceType)}
+                        {
+                            valeur < 45 ? "Initié en " + competenceType.toString() :
+                                valeur < 55 ? "Expérimenté en " + competenceType.toString() :
+                                    valeur < 65 ? "Exceptionnel en " + competenceType.toString() :
+                                    "Légendaire en " + competenceType.toString()
+                        }
+                        {
+                            perso.debogue && " (" + valeur + ") "
+                        }
                     </Typography>
                 }
                 sx={{margin: '0px', fontSize: '5px'}}
@@ -50,11 +49,11 @@ export default function Comps () {
         }}>
             {
                 Object.values(TypeCompetence)
+                    .filter(typeComp => getValeurCompetence(perso, typeComp) > 35)
                     .filter(typeComp => isCompDeBase(typeComp))
                     .map(typeComp => {
                     return (<Comp
                         key={typeComp.toString()}
-                        primaryText={typeComp.toString()}
                         perso={perso}
                         competenceType={typeComp}
                     />);
