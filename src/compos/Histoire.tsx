@@ -32,8 +32,9 @@ import {evts_journaliste} from "../donnees/evts/carrieres/evts_journaliste";
 import { rejointCoterie } from '../fonctions/coteries/generales';
 import {evts_statut} from "../donnees/evts/statut/evts_statut";
 import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
-import {evts_drogue} from "../donnees/evts/evts_drogue";
+import {evts_drogue} from "../donnees/evts/drogues/evts_drogue";
 import {evts_lycee_demokratos} from "../donnees/evts/coteries/demokratos/evts_lycee_demokratos";
+import {evts_cigarette} from "../donnees/evts/drogues/evts_cigarette";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -73,6 +74,10 @@ export default function Histoire() {
                 texteFinal: texte, // l'exécution elle-même
                 image: evtExecute.image,
             };
+
+            if (perso.debogue) {
+                console.log("Éxécution de " + nouvEvt.id);
+            }
 
             setEvtsExecutes((prev: EvtExecute[]) => [
                 ...prev,
@@ -117,6 +122,7 @@ export default function Histoire() {
             ...filtrerEtPreparerEvts(evts_boucher, perso),
             ...filtrerEtPreparerEvts(evts_carriere, perso),
             ...filtrerEtPreparerEvts(evts_drogue, perso),
+            ...filtrerEtPreparerEvts(evts_cigarette, perso),
             ...filtrerEtPreparerEvts(evts_statut, perso),
             ...filtrerEtPreparerEvts(evts_brasseur, perso),
             ...filtrerEtPreparerEvts(evts_medecin, perso),

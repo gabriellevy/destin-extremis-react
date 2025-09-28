@@ -2,8 +2,10 @@ import {GroupeEvts} from "../../../types/Evt";
 import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
-import {testComp} from "../../../fonctions/des";
+import {testComp, testVertu} from "../../../fonctions/des";
 import {ajouterViceVal, getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
+import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
+import {droguesEnum} from "../../sante/drogues";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -12,13 +14,23 @@ export const evts_bars: GroupeEvts = {
             description: (perso: Perso): Promise<string> => {
                 let soireeFinie: boolean = false;
                 let texte:string = "Vous allez boire un verre avec des amis. <br/>";
-                // gloutonnerie
+                // gloutonnerie / alcoolisme
                 if (getValeurVice(perso, Vice.gourmand) < 2) {
                     if (Math.random() >= 0.9) {
                         texte += "Vous forcez un peu sur la boisson et y prenez goût. "
                         texte += ajouterViceVal(perso, Vice.gourmand, 1);
                     }
                 }
+                // cigarette
+                if (!actuellementDrogueA(perso, droguesEnum.cigarette) && getValeurVertu(perso, Vertu.sobre) < 1) {
+                    const resTestSobre:ResultatTest = testVertu(perso, {typeBon: Vertu.sobre, bonusMalus: 20});
+                    texte += resTestSobre.resume;
+                    if (!resTestSobre.reussi) {
+                        texte += "Vous commencez à fumer pour la première fois.";
+                        texte += seDroguer(perso, droguesEnum.cigarette);
+                    }
+                }
+                // drague
                 if (getValeurVice(perso, Vice.luxurieux) >= 1) {
                     if (Math.random() >= 0.5) {
                         texte += "Vous repérez une jolie femme tout à fait à votre goût. ";

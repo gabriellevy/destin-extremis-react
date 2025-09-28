@@ -49,7 +49,7 @@ export function getCarriereActive(perso: Perso): Carriere {
         return carriereChomeur;
     }
 
-    // pas de carrière active : lui ajouter nune carrière de chômeur ou réactiver une ancienne :
+    // pas de carrière active : lui ajouter une carrière de chômeur ou réactiver une ancienne :
     const chomeur: Carriere = {
         metier: metiersEnum.non_travailleur,
         intitule: "chômeur",

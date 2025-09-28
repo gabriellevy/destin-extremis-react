@@ -1,10 +1,10 @@
-import {GroupeEvts} from "../../types/Evt";
-import {NiveauIA, Perso} from "../../types/perso/Perso";
-import {aUneCarriere} from "../../fonctions/metiers/metiersUtils";
-import {appelLeChatParaphrase} from "../../fonctions/le_chat";
-import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
-import {actuellementDrogueA, seDroguer} from "../../fonctions/sante/drogues_fc";
-import {droguesEnum} from "../sante/drogues";
+import {GroupeEvts} from "../../../types/Evt";
+import {NiveauIA, Perso} from "../../../types/perso/Perso";
+import {aUneCarriere} from "../../../fonctions/metiers/metiersUtils";
+import {appelLeChatParaphrase} from "../../../fonctions/le_chat";
+import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
+import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
+import {droguesEnum} from "../../sante/drogues";
 
 export const evts_drogue: GroupeEvts = {
     evts: [
