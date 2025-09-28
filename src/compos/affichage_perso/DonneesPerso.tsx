@@ -1,5 +1,5 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
-import {calculeAge, joursToAnnees} from "../../types/Date";
+import {getAge, joursToAnnees} from "../../types/Date";
 import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {useContext} from "react";
@@ -54,7 +54,7 @@ export default function DonneesPerso () {
         <ListItem key={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}>
             <Typography variant="h5" gutterBottom>
                 <ListItemText primary={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}
-                              secondary={`${calculeAge(perso)} ans`}/>
+                              secondary={`${getAge(perso)} ans`}/>
             </Typography>
         </ListItem>
         {

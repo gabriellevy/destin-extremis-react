@@ -3,7 +3,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
 import {
     aUneCarriere,
@@ -33,7 +33,7 @@ export const evts_batelier: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && calculeAge(perso) >= 14
+                && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.batelier]) >= 0
                 && auBordDeLaRiviere(perso),
         },

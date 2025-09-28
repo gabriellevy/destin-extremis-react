@@ -26,10 +26,8 @@ export type PersoCommon = {
     // à 1 (heureux)
     bonheur: number,
     sexe: Sexe;
-    dateNaissance: number; // en nombre de jours depuis l'an 0 du calendrier consulaire ?
+    dateNaissance: number; // en nombre de jours depuis l'an 0 du calendrier consulaire
     date: number, // en nombre de jours depuis l'an 0 du calendrier consulaire
-    anneeDeDepart?: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
-    age: number, // cette donnée est utilisée pour el formulaire mais inutile ensuite => faire une structure de donnée pour formulaire qui hériterait de celle ci ??
     lieu: Lieu,
     // aide à la programmation mais pas à afficher directement :
     mois?: string, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
@@ -67,10 +65,12 @@ export type PersoCommon = {
 /**
  * Perso simplifié, pour la sélection initiale dans le formulaire de création
  * => ses valeurs doivent être converties en valeurs de 'Perso' lors de la validation de création de personnage
+ * puis elles sont inutiles
  */
 export type PersoForm = PersoCommon & {
-    metier?: metiersEnum, // seulement utile pour la génération initiale
-
+    metier?: metiersEnum,
+    anneeDeDepart?: number,
+    age: number,
 }
 
 /**

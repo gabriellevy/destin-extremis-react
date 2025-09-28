@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {
     aUneCarriere,
     commencerCarriere,
@@ -35,7 +35,7 @@ export const evts_macon: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.macon]) >= 0
-                && calculeAge(perso) >= 14,
+                && getAge(perso) >= 14,
         },
         {
             id: "evts_macon2",

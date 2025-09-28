@@ -4,7 +4,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {
     arreterCarriere,
     aUneCarriere,
@@ -41,7 +41,7 @@ export const evts_serveur: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.serveur]) >= 0
-                && calculeAge(perso) >= 14, // TODO : tester que dans une ville ?
+                && getAge(perso) >= 14, // TODO : tester que dans une ville ?
         },
         {
             id: "evts_serveur2",

@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {Perso} from "../../../types/perso/Perso";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {Possession} from "../../possessions/Possession";
 import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {acquerir} from "../../../fonctions/possessions/possessions";
@@ -17,7 +17,7 @@ export const evts_possessions: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !perso.possessions.includes(Possession.pistolet)
                 && getValeurVice(perso, Vice.paranoiaque) > 0
-                && calculeAge(perso) >= 18,
+                && getAge(perso) >= 18,
         },
         {
             id: "evts_possessions armes lourdes",
@@ -29,7 +29,7 @@ export const evts_possessions: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !perso.possessions.includes(Possession.armes_lourdes)
                 && getValeurVice(perso, Vice.paranoiaque) > 1
-                && calculeAge(perso) >= 18,
+                && getAge(perso) >= 18,
         },
     ],
     probaParDefaut: 3,

@@ -23,9 +23,9 @@ export function enfant(empty: boolean): PersoForm {
         cognomen: getCognomen(cot, sexe),
         bonheur: 0.5,
         sexe: sexe,
-        dateNaissance: anneesToJours(476),
-        date: anneesToJours(490),
-        anneeDeDepart: 490,
+        dateNaissance: anneesToJours(66), // début à 13-14 ans
+        date: anneesToJours(80), // année théorique de départ du jeu. 2104 dans notre monde
+        anneeDeDepart: 80,
         age: 14,
         lieu: lieuParDefaut,
         jourDuMois: -1,

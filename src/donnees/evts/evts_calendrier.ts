@@ -10,5 +10,5 @@ export const evts_calendrier: GroupeEvts = {
                 conditions: (perso:Perso):boolean => perso.mois === enumMois.messidor && perso.jourDuMois === 1,
             },
     ],
-    probaParDefaut: 10,
+    probaParDefaut: 5,
 };

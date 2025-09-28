@@ -7,6 +7,7 @@ import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_f
 import {droguesEnum} from "../../sante/drogues";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testVertu} from "../../../fonctions/des";
+import {getAge} from "../../../types/Date";
 
 export const evts_cigarette: GroupeEvts = {
     evts: [
@@ -29,7 +30,7 @@ export const evts_cigarette: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => aUneCarriere(perso) && !actuellementDrogueA(perso, droguesEnum.cigarette)
-                && getValeurVertu(perso, Vertu.sobre) < 1 && perso.age < 17,
+                && getValeurVertu(perso, Vertu.sobre) < 1 && getAge(perso) < 17,
         },
     ],
     probaParDefaut: 2,

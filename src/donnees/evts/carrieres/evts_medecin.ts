@@ -3,7 +3,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {calculeAge, anneesToJours} from "../../../types/Date";
+import {getAge, anneesToJours} from "../../../types/Date";
 import {
     aUneCarriere,
     commencerCarriere,
@@ -68,7 +68,7 @@ export const evts_medecin: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_chirurgien]) >= 0
-                && calculeAge(perso) >= 14,
+                && getAge(perso) >= 14,
         },
         {
             id: "evts_médecin2",

@@ -2,7 +2,7 @@ import {getRandomEnumValue} from "./random";
 import {Carriere} from "../types/metiers/Metier";
 import {Coterie} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
-import {anneesToJours, calculeAge} from "../types/Date";
+import {anneesToJours, getAge} from "../types/Date";
 import {lieuParDefaut} from "../types/lieux/Lieu";
 import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
@@ -25,8 +25,8 @@ export function getCarriereAleatoire(): Carriere {
 
 export function genererPNJAmourableDePerso(perso: Perso):PNJ {
     const sexe: Sexe = getSexeOppose(perso.sexe);
-    const minAge: number = calculeAge(perso)/2 + 9 ;
-    const maxAge: number = calculeAge(perso)*2 - 18 ;
+    const minAge: number = getAge(perso)/2 + 9 ;
+    const maxAge: number = getAge(perso)*2 - 18 ;
     const age = minAge + Math.random() * (maxAge - minAge);
     const dateNaissance: number = perso.date - anneesToJours(age);
     return genererPNJ(sexe, dateNaissance);

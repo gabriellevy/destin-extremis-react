@@ -5,7 +5,7 @@ import {MetalStatut} from "../../../types/statut_social/Statut";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {anneesToJours, calculeAge} from "../../../types/Date";
+import {anneesToJours, getAge} from "../../../types/Date";
 import {
     aUneCarriere,
     commencerCarriere,
@@ -64,7 +64,7 @@ export const evts_ingenieur: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.etudiant_ingenieur]) >= 0
-                && calculeAge(perso) >= 14
+                && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
             proba: 5,
         },

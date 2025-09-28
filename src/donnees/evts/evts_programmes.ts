@@ -2,7 +2,7 @@ import {Perso} from "../../types/perso/Perso";
 import {anneesToJours} from "../../types/Date";
 import {EvtProgramme} from "../../types/Evt";
 
-// ces énévements sont déclenchés à date fise indépendamment des actions du héros
+// ces énévements sont déclenchés à date fixe indépendamment des actions du héros
 // pour exister ils doivent être ajouté à la comp 'evtsProgrammes' du perso au début
 export const evts_programmes: EvtProgramme[] = [
     {
@@ -13,7 +13,6 @@ export const evts_programmes: EvtProgramme[] = [
                 return "TODO : ajouter des événements historiques"
             },
             conditions: (_perso: Perso): boolean => true,
-            image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/hexenstag.jpeg",
         },
     },
 ];

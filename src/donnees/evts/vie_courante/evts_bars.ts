@@ -6,6 +6,7 @@ import {testComp, testVertu} from "../../../fonctions/des";
 import {ajouterViceVal, getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
 import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
 import {droguesEnum} from "../../sante/drogues";
+import {getAge} from "../../../types/Date";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -67,7 +68,7 @@ export const evts_bars: GroupeEvts = {
                     resolve(texte);
                 });
             },
-            conditions: (perso: Perso): boolean => getValeurVertu(perso, Vertu.sobre) <= 0 && perso.age >= 18,
+            conditions: (perso: Perso): boolean => getValeurVertu(perso, Vertu.sobre) <= 0 && getAge(perso) >= 18,
         },
     ],
     probaParDefaut: 10,

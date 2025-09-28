@@ -15,6 +15,7 @@ import {testComp, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {Coterie} from "../../../types/Coterie";
+import {getAge} from "../../../types/Date";
 
 export const evts_amour: GroupeEvts = {
     evts: [
@@ -75,7 +76,7 @@ export const evts_amour: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux))*2
                 && !enCoupleAvecUnAmourFort(perso)
-                && perso.age >= 13,
+                && getAge(perso) >= 13,
         },
         {
             id: "evts_amour draguer un coup de coeur",

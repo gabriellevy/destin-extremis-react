@@ -3,7 +3,7 @@ import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {
     arreterCarriere,
     aUneCarriere,
@@ -38,7 +38,7 @@ export const evts_journaliste: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && calculeAge(perso) >= 14
+                && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.journaliste]) >= 0,
         },
         {

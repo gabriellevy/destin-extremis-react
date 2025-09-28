@@ -5,7 +5,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {aUneCarriere, commencerCarriere, compatibiliteCarriere} from "../../../fonctions/metiers/metiersUtils";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
 import {metiersEnum, metiersObjs} from "../../metiers";
 
@@ -38,7 +38,7 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.pilleur_de_ruche]) >= 0
                 && (getValeurVice(perso, Vice.aventureux) >= 1
                 || getValeurVice(perso, Vice.cupide) >= 1 && getValeurVice(perso, Vice.aventureux) >= 0)
-                && calculeAge(perso) >= 16
+                && getAge(perso) >= 16
                 && auBordDuneRuche(perso),
         },
     ],

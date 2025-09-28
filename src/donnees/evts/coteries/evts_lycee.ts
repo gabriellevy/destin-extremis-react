@@ -1,6 +1,6 @@
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
-import {calculeAge} from "../../../types/Date";
+import {getAge} from "../../../types/Date";
 import {Coterie} from "../../../types/Coterie";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";
 import {getQuartierDeCoterie} from "../../coteries/Quartiers";
@@ -29,7 +29,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee1 === undefined // si n'a asp encore commencé l'université
-                && calculeAge(perso) == 14,
+                && getAge(perso) == 14,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -47,7 +47,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee2 === undefined
-                && calculeAge(perso) == 15,
+                && getAge(perso) == 15,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -68,7 +68,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee3 === undefined
-                && calculeAge(perso) == 16,
+                && getAge(perso) == 16,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -90,7 +90,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee4 === undefined
-                && calculeAge(perso) == 17,
+                && getAge(perso) == 17,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -117,7 +117,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.phaseActuelle === PhaseLycee.coterie4
-                && calculeAge(perso) == 18,
+                && getAge(perso) == 18,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -140,7 +140,7 @@ export const evts_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.phaseActuelle !== PhaseLycee.finie
-                && calculeAge(perso) >= 20,
+                && getAge(perso) >= 20,
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
     ],
