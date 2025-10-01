@@ -44,8 +44,9 @@ export default function Histoire() {
     const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
     const [open, setOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-    const messagesEndRef = useRef<null | HTMLDivElement>(null)
+    const [tempsRestant, setTempsRestant] = useState<number | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -84,9 +85,7 @@ export default function Histoire() {
                 nouvEvt
             ]);
 
-            setPerso({
-                ...perso,
-            });
+            setPerso({ ...perso });
         })
     }, [perso, setPerso]);
 
@@ -138,7 +137,6 @@ export default function Histoire() {
                 }
             })
             let randomProba: number = Math.random() * completeProba;
-
             evtsApplicables.every(evt => {
                 if (evt.proba) {
                     randomProba -= evt.proba;
@@ -160,7 +158,7 @@ export default function Histoire() {
                     };
                     executerEvt(evt, true);
                 } else {
-                    setTimeout(determinerEvtSuivant, perso.vitesseExecution);
+                    setTempsRestant(perso.vitesseExecution);
                 }
             }
         } else {
@@ -168,6 +166,24 @@ export default function Histoire() {
             demarre= false;
         }
     }, [executerEvt, perso, setPerso]);
+
+    useEffect(() => {
+        if (tempsRestant !== null && tempsRestant > 0) {
+            timeoutRef.current = setTimeout(() => {
+                setTempsRestant((prev) => (prev !== null ? prev - 1 : null));
+            }, 1000);
+        } else if (tempsRestant === 0) {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            setTimeout(determinerEvtSuivant, 0);
+        }
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
+    }, [tempsRestant, determinerEvtSuivant]);
 
     // démarrer la boucle d'événements
     useEffect(() => {
@@ -195,7 +211,7 @@ export default function Histoire() {
                 nouvEvt
             ]);
 
-            setTimeout(determinerEvtSuivant, perso.vitesseExecution);
+            setTempsRestant(perso.vitesseExecution);
         }
     }, [determinerEvtSuivant, perso.date, perso.lieu.quartier, perso.vitesseExecution]);
 
@@ -228,6 +244,11 @@ export default function Histoire() {
                     </Grid2>
                 </Grid2>
             ))}
+            {tempsRestant !== null && tempsRestant > 0 && (
+                <Typography mb={2} fontWeight="bold" align="center">
+                    Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
+                </Typography>
+            )}
             <div ref={messagesEndRef} />
             {plusDEvts && (
                 <Typography mb={2} fontWeight="bold">

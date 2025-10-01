@@ -6,7 +6,7 @@ import {EvtProgramme} from "../../types/Evt";
 // pour exister ils doivent être ajouté à la comp 'evtsProgrammes' du perso au début
 export const evts_programmes: EvtProgramme[] = [
     {
-        date: anneesToJours(82), // préciser mois et jour précis
+        date: anneesToJours(92), // préciser mois et jour précis
         evt: {
             id: "evts_programmes émeutes anarchistes des chaos",
             description: async (_perso: Perso): Promise<string> => {
