@@ -9,7 +9,7 @@ import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
 import {evts_brasseur} from "../donnees/evts/carrieres/evts_brasseur";
-import {Box, Dialog, Grid2, IconButton, Typography} from '@mui/material';
+import {Box, Button, Dialog, Grid2, IconButton, Typography} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
@@ -167,6 +167,14 @@ export default function Histoire() {
         }
     }, [executerEvt, perso, setPerso]);
 
+    const passerAuSuivant = useCallback(() => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        setTempsRestant(null);
+        determinerEvtSuivant();
+    }, [determinerEvtSuivant]);
+
     useEffect(() => {
         if (tempsRestant !== null && tempsRestant > 0) {
             timeoutRef.current = setTimeout(() => {
@@ -245,9 +253,22 @@ export default function Histoire() {
                 </Grid2>
             ))}
             {tempsRestant !== null && tempsRestant > 0 && (
-                <Typography mb={2} fontWeight="bold" align="center">
-                    Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
-                </Typography>
+                <Grid2 container justifyContent="center" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+                    <Grid2>
+                        <Typography fontWeight="bold">
+                            Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
+                        </Typography>
+                    </Grid2>
+                    <Grid2>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={passerAuSuivant}
+                        >
+                            Suivant
+                        </Button>
+                    </Grid2>
+                </Grid2>
             )}
             <div ref={messagesEndRef} />
             {plusDEvts && (
