@@ -1,8 +1,8 @@
 import {List, ListItemText} from "@mui/material";
-import {useContext} from "react";
+import React, {JSX, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 
-export default function Possessions() {
+const Possessions: React.FC = (): JSX.Element => {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
     return (
         <>
@@ -10,7 +10,10 @@ export default function Possessions() {
             <ListItemText primary={perso.statut.metalStatut} secondary={perso.statut.rang.toString()}/>
             {
                 perso.possessions.map((possession: string) => (
-                    <ListItemText primary={(possession)}/>
+                    <ListItemText
+                        key={possession}
+                        primary={(possession)}
+                    />
                 ))
             }
         </List>
@@ -18,10 +21,14 @@ export default function Possessions() {
         <List dense>
             {
                 perso.drogues.map((drogue: string) => (
-                    <ListItemText primary={(drogue)}/>
+                    <ListItemText
+                        key={drogue}
+                        primary={(drogue)}
+                    />
                 ))
             }
         </List>
         </>
     );
 }
+export default Possessions;

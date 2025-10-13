@@ -22,6 +22,11 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
     };
 
     const revenirACetEvt = useCallback((idEvt: string) => {
+        if (perso.pointDestin < 1) {
+            console.error("Plus de points de destin ! : " + idEvt);
+            return;
+        }
+        let pointsDeDestin:number = perso.pointDestin - 1;
         // chercher dans les persos sauvegardés
         const persoPrecedent:Perso|undefined = perso.sauvegardes.find((persoPrec:Perso) => persoPrec.idTemporel === idEvt);
         if (!persoPrecedent) {
@@ -29,11 +34,14 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
         } else {
             // resetter perso à ce perso sauvegardé
             persoPrecedent.idTemporel = idEvt;
+            if (!perso.debogue) {
+                // en débogue les points de destin sont infinis
+                persoPrecedent.pointDestin = pointsDeDestin;
+            }
             setEvtsExecutes(persoPrecedent.evtsPasses)
             setPerso(persoToPersoHisto(persoPrecedent));
         }
-
-    }, []);
+    }, [perso, setPerso, setEvtsExecutes]);
 
     return (
         <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
@@ -63,13 +71,19 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                             }
                         </Typography>
                     }
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => revenirACetEvt(evt.id)}
-                    >
-                        Rejouer d'ici
-                    </Button>
+                    {
+                        perso.pointDestin > 0 && (
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => revenirACetEvt(evt.id)}
+                            >
+                                {
+                                    `Rejouer d'ici (${perso.pointDestin} point de destin)`
+                                }
+                            </Button>
+                        )
+                    }
                 </Box>
                 <Typography mb={2} align="left">
                     <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />

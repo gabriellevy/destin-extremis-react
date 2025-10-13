@@ -1,4 +1,4 @@
-import {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import {JSX, useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {Evt, EvtExecute, filtrerEtPreparerEvts} from "../types/Evt";
 import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
@@ -41,7 +41,7 @@ import {clonePersoHistoToPerso} from "../fonctions/perso/conversionsPerso";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
-export default function Histoire() {
+const Histoire: React.FC = (): JSX.Element => {
     const [evtsExecutes, setEvtsExecutes] = useState<EvtExecute[]>([]); // événements déjà exécutés
     const [plusDEvts, setPlusDEvts] = useState(false); // true si il n'y a plus aucun evt exécutable
     const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
@@ -70,9 +70,11 @@ export default function Histoire() {
         const previousPerso:Perso = clonePersoHistoToPerso(perso);
         const texte: Promise<string> = evtExecute.description(perso);
         texte.then((texte) => {
+            const dateStr = dateDejaAffichee ? '' : jourStr(perso.date);
+            const evtId:string = evtExecute.id + dateStr;
             const nouvEvt: EvtExecute = {
-                id: evtExecute.id,
-                dateStr: dateDejaAffichee ? '' : jourStr(perso.date),
+                id: evtId,
+                dateStr: dateStr,
                 texteFinal: texte, // l'exécution elle-même
                 image: evtExecute.image,
             };
@@ -82,7 +84,7 @@ export default function Histoire() {
             }
 
             // sauvegarder l'historique des évts et des états de perso précédents
-            previousPerso.idTemporel = evtExecute.id;
+            previousPerso.idTemporel = evtId;
             perso.evtsPasses = [
                 ...evtsExecutes,
                 nouvEvt
@@ -251,15 +253,19 @@ export default function Histoire() {
                             Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
                         </Typography>
                     </Grid2>
-                    <Grid2>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={passerAuSuivant}
-                        >
-                            Suivant
-                        </Button>
-                    </Grid2>
+                    {
+                        perso.debogue && (
+                            <Grid2>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={passerAuSuivant}
+                                >
+                                    Suivant
+                                </Button>
+                            </Grid2>
+                        )
+                    }
                 </Grid2>
             )}
             <div ref={messagesEndRef} />
@@ -290,3 +296,5 @@ export default function Histoire() {
         </>
     );
 }
+
+export default Histoire;
