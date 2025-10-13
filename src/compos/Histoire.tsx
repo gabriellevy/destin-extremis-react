@@ -45,11 +45,13 @@ export default function Histoire() {
     const [open, setOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [tempsRestant, setTempsRestant] = useState<number | null>(null);
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        if (messagesEndRef.current && "scrollIntoView" in messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        }
     }
 
     useEffect(() => {

@@ -1,8 +1,8 @@
 import {ReactNode, useEffect, useState} from "react";
-import {Perso, PersoForm} from "../types/perso/Perso";
+import {PersoForm, PersoHisto} from "../types/perso/Perso";
 import {enfant} from "../donnees/persos/persos_pregens";
 import {PersoContexte} from "./ContexteTypes";
-import {persoFormToPerso} from "../fonctions/perso/conversionsPerso";
+import {persoFormToPersoHisto} from "../fonctions/perso/conversionsPerso";
 import {getViceOppose, Vertu} from "../types/ViceVertu";
 import {PhaseDExecution} from "../types/Mode";
 import {UseFormWatch} from "react-hook-form";
@@ -15,14 +15,14 @@ export interface PersoContexteProviderProps {
 }
 
 function PersoContexteProvider({children, initPerso}:Readonly<PersoContexteProviderProps>) {
-    const [perso, setPerso] = useState<Perso>(persoFormToPerso(enfant(false)));
+    const [perso, setPerso] = useState<PersoHisto>(persoFormToPersoHisto(enfant(false)));
 
     useEffect(() => {
         if (initPerso) {
             // initialisation à partir de données "jeu" c'est à dire par choix de vice, vertus etc par le joueur
             const valuesInitPerso = initPerso();
             const persoForm:PersoForm = enfant(true);
-            let persoFinal: Perso = persoFormToPerso(persoForm);
+            let persoFinal: PersoHisto = persoFormToPersoHisto(persoForm);
             persoFinal.phaseDExecution = PhaseDExecution.histoire;
 
             // données de génération de perso par préférences de vices et vertus

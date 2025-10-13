@@ -74,10 +74,22 @@ export type PersoForm = PersoCommon & {
 }
 
 /**
- * type standard utilisé lors de l'exécution (devrait être sauvegardable en json)
+ * type standard utilisé lors de l'exécution
  */
 export type Perso = PersoCommon & {
+    idTemporel: string, // identifiant du perso à un événement précis
     carrieres: Carriere[],
+}
+
+/**
+ * état complet du jeu donc :
+ * - perso à l'instant t
+ * - état complet du perso lors de chaque evt passé
+ * (doit être sauvegardable en json)
+ */
+export type PersoHisto = Perso & {
+    // ------------ sauvegarde de l'historique
+    sauvegardes: Perso[],
 }
 
 export enum NiveauIA {

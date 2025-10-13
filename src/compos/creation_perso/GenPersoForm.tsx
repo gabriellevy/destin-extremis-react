@@ -1,6 +1,6 @@
 import {FormProvider, useForm} from 'react-hook-form';
 import {Box, Button, Grid2, Paper, Typography} from '@mui/material';
-import {Perso, PersoForm, Sexe} from "../../types/perso/Perso";
+import {Perso, PersoForm, PersoHisto, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
 import SelectionCarriereStatut from "./SelectionCarriereStatut";
 import SelectionDates from "./SelectionDates";
@@ -16,7 +16,7 @@ import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
-import {persoFormToPerso} from "../../fonctions/perso/conversionsPerso";
+import {persoFormToPersoHisto, persoToPersoHisto} from "../../fonctions/perso/conversionsPerso";
 import {metierAleatoire} from "../../fonctions/metiers/metiersUtils";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 
@@ -33,7 +33,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
     const { reset, handleSubmit } = methods;
 
     const chargerPerso = (persoCharge: Perso) => {
-        setPerso({...persoCharge});
+        setPerso({...persoToPersoHisto(persoCharge)});
         reset({...persoCharge});
         setAfficherForm(false);
     };
@@ -60,7 +60,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
     };
 
     const soumettrePerso = (persoForm: PersoForm) => {
-        let persoFinal: Perso = persoFormToPerso(persoForm);
+        let persoFinal: PersoHisto = persoFormToPersoHisto(persoForm);
         // conversions de données après soumission de perso :
         // date en jours est déduite de date en années
         if (persoForm.anneeDeDepart) {
