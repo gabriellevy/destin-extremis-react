@@ -29,7 +29,7 @@ import {evts_lycee_orks} from "../donnees/evts/coteries/orks/evts_lycee_orks";
 import {evts_orks} from "../donnees/evts/coteries/orks/evts_orks";
 import {evts_carriere} from "../donnees/evts/carrieres/evts_carriere";
 import {evts_journaliste} from "../donnees/evts/carrieres/evts_journaliste";
-import { rejointCoterie } from '../fonctions/coteries/generales';
+import {rejointCoterie} from '../fonctions/coteries/generales';
 import {evts_statut} from "../donnees/evts/statut/evts_statut";
 import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
 import {evts_drogue} from "../donnees/evts/drogues/evts_drogue";
@@ -81,6 +81,11 @@ export default function Histoire() {
             if (perso.debogue) {
                 console.log("Éxécution de " + nouvEvt.id);
             }
+
+            perso.evtsPasses = [
+                ...evtsExecutes,
+                nouvEvt
+            ];
 
             setEvtsExecutes((prev: EvtExecute[]) => [
                 ...prev,
@@ -247,6 +252,9 @@ export default function Histoire() {
                     <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
                         {evt.dateStr != '' &&
                             <Typography mb={1} align="left" sx={{ fontSize: 18 }}>{evt.dateStr}</Typography>
+                        }
+                        {perso.debogue &&
+                            <Typography mb={1} align="right" sx={{ fontSize: 10 }}>{evt.id}</Typography>
                         }
                         <Typography mb={2} align="left">
                             <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />

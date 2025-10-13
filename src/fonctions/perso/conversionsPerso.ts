@@ -8,6 +8,7 @@ export function persoFormToPersoHisto(persoForm: PersoForm): PersoHisto {
         idTemporel: "persoFormDebutant",
         carrieres: persoForm.metier ? [metierEnCarriere(persoForm.metier)] : [],
         sauvegardes: [], // vide pour l'instant à la création
+        evtsPasses: [],
     }
 }
 

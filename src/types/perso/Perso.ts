@@ -12,7 +12,7 @@ import {metiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
 import {Mode, PhaseDExecution} from "../Mode";
-import {EvtProgramme} from "../Evt";
+import {EvtExecute, EvtProgramme} from "../Evt";
 import {Reputation} from "./Reputation";
 import {Possession} from "../../donnees/possessions/Possession";
 import {droguesEnum} from "../../donnees/sante/drogues";
@@ -79,6 +79,7 @@ export type PersoForm = PersoCommon & {
 export type Perso = PersoCommon & {
     idTemporel: string, // identifiant du perso à un événement précis
     carrieres: Carriere[],
+    evtsPasses: EvtExecute[],
 }
 
 /**
