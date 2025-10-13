@@ -58,6 +58,7 @@ export type PersoCommon = {
     mode: Mode; // mode actuel d'exécution // immutable
     phaseDExecution: PhaseDExecution;
     debogue?: boolean;
+    pointDestin: number;
     // ------------------ orks ------------------------ //
     esclaveGtrechin?: string, // nom de l'esclave gretchin
 };

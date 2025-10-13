@@ -13,6 +13,7 @@ import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {metiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
+import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, VITESSE_EXECUTION} from "../ReglagesJouabilite";
 
 export function enfant(empty: boolean): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);
@@ -23,10 +24,10 @@ export function enfant(empty: boolean): PersoForm {
         cognomen: getCognomen(cot, sexe),
         bonheur: 0.5,
         sexe: sexe,
-        dateNaissance: anneesToJours(66), // début à 13-14 ans
-        date: anneesToJours(80), // année théorique de départ du jeu. 2104 dans notre monde
-        anneeDeDepart: 80,
-        age: 14,
+        dateNaissance: anneesToJours(DATE_NAISSANCE_BASE), // début à 13-14 ans
+        date: anneesToJours(ANNEE_DE_DEPART), // année théorique de départ du jeu. 2104 dans notre monde
+        anneeDeDepart: ANNEE_DE_DEPART,
+        age: ANNEE_DE_DEPART-DATE_NAISSANCE_BASE,
         lieu: lieuParDefaut,
         jourDuMois: -1,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
@@ -36,7 +37,7 @@ export function enfant(empty: boolean): PersoForm {
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],
         evtsProgrammes: evts_programmes,
-        vitesseExecution: 60,
+        vitesseExecution: VITESSE_EXECUTION,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?
@@ -50,6 +51,7 @@ export function enfant(empty: boolean): PersoForm {
         metier: metiersEnum.non_travailleur,
         mode: Mode.test,
         phaseDExecution: PhaseDExecution.creation,
+        pointDestin: NB_POINTS_DESTIN_DEPART,
     };
     if (!empty) {
         rejointCoterie(perso, cot);

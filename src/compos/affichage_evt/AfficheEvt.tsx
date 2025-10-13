@@ -1,4 +1,4 @@
-import {Box, Button, Grid2, Typography} from "@mui/material";
+import {Box, Button, Grid2, Stack, Typography} from "@mui/material";
 import {EvtExecute} from "../../types/Evt";
 import {JSX, useCallback, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
@@ -37,7 +37,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
 
     return (
         <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
-            {evt?.image != '' && (
+            {evt?.image && evt?.image != '' && (
                     <Grid2 size={4} order={{ xs: index % 2 === 0 ? 1 : 2, md: index % 2 === 0 ? 1 : 2 }}>
                         <Box
                             component="img"
@@ -53,21 +53,24 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                     </Grid2>
                 )}
             <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
-                {evt.dateStr != '' &&
-                    <Typography mb={1} align="left" sx={{ fontSize: 18 }}>{evt.dateStr}</Typography>
-                }
-                {perso.debogue &&
-                    <>
-                        <Typography mb={1} align="right" sx={{ fontSize: 10 }}>{evt.id}</Typography>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => revenirACetEvt(evt.id)}
-                        >
-                            Rejouer d'ici
-                        </Button>
-                    </>
-                }
+                <Stack>
+                    {evt.dateStr != '' &&
+                        <Typography mb={1} align="left" sx={{ fontSize: 18 }}>
+                            {
+                                perso.debogue ?
+                                    `${evt.dateStr} (${evt.id})`
+                                    : evt.dateStr
+                            }
+                        </Typography>
+                    }
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => revenirACetEvt(evt.id)}
+                    >
+                        Rejouer d'ici
+                    </Button>
+                </Stack>
                 <Typography mb={2} align="left">
                     <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
                 </Typography>
