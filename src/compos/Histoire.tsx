@@ -35,6 +35,7 @@ import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
 import {evts_drogue} from "../donnees/evts/drogues/evts_drogue";
 import {evts_lycee_demokratos} from "../donnees/evts/coteries/demokratos/evts_lycee_demokratos";
 import {evts_cigarette} from "../donnees/evts/drogues/evts_cigarette";
+import AfficheEvt from "./affichage_evt/AfficheEvt";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -57,11 +58,6 @@ export default function Histoire() {
     useEffect(() => {
         scrollToBottom()
     }, [perso.date]);
-
-    const handleClickOpen = (image: string): void => {
-        setSelectedImage(image);
-        setOpen(true);
-    };
 
     const handleClose = () => {
         setOpen(false);
@@ -233,34 +229,7 @@ export default function Histoire() {
     return (
         <>
             {evtsExecutes.map((evt: EvtExecute, index: number) => (
-                <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
-                    {evt.image && (
-                        <Grid2 size={4} order={{ xs: index % 2 === 0 ? 1 : 2, md: index % 2 === 0 ? 1 : 2 }}>
-                            <Box
-                                component="img"
-                                sx={{
-                                    width: '100%',
-                                    height: 'auto',
-                                    cursor: 'pointer',
-                                }}
-                                alt={`image de l'événement ${evt.id}`}
-                                src={evt.image}
-                                onClick={() => evt.image && handleClickOpen(evt.image)}
-                            />
-                        </Grid2>
-                    )}
-                    <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
-                        {evt.dateStr != '' &&
-                            <Typography mb={1} align="left" sx={{ fontSize: 18 }}>{evt.dateStr}</Typography>
-                        }
-                        {perso.debogue &&
-                            <Typography mb={1} align="right" sx={{ fontSize: 10 }}>{evt.id}</Typography>
-                        }
-                        <Typography mb={2} align="left">
-                            <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
-                        </Typography>
-                    </Grid2>
-                </Grid2>
+                <AfficheEvt evt={evt} index={index} setOpen={setOpen} setSelectedImage={setSelectedImage}/>
             ))}
             {tempsRestant !== null && tempsRestant > 0 && (
                 <Grid2 container justifyContent="center" alignItems="center" spacing={2} sx={{ mb: 2 }}>
