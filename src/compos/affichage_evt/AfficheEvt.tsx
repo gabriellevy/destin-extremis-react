@@ -1,4 +1,4 @@
-import {Box, Button, Grid2, Stack, Typography} from "@mui/material";
+import {Box, Button, Grid2, Typography} from "@mui/material";
 import {EvtExecute} from "../../types/Evt";
 import {JSX, useCallback, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
@@ -53,7 +53,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                     </Grid2>
                 )}
             <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
-                <Stack>
+                <Box display="flex" alignItems="center" gap={2}>
                     {evt.dateStr != '' &&
                         <Typography mb={1} align="left" sx={{ fontSize: 18 }}>
                             {
@@ -70,7 +70,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                     >
                         Rejouer d'ici
                     </Button>
-                </Stack>
+                </Box>
                 <Typography mb={2} align="left">
                     <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
                 </Typography>
