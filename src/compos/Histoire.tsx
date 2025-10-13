@@ -36,6 +36,8 @@ import {evts_drogue} from "../donnees/evts/drogues/evts_drogue";
 import {evts_lycee_demokratos} from "../donnees/evts/coteries/demokratos/evts_lycee_demokratos";
 import {evts_cigarette} from "../donnees/evts/drogues/evts_cigarette";
 import AfficheEvt from "./affichage_evt/AfficheEvt";
+import {Perso} from "../types/perso/Perso";
+import {clonePersoHistoToPerso} from "../fonctions/perso/conversionsPerso";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -65,6 +67,7 @@ export default function Histoire() {
     };
 
     const executerEvt = useCallback((evtExecute: Evt, dateDejaAffichee: boolean) => {
+        const previousPerso:Perso = clonePersoHistoToPerso(perso);
         const texte: Promise<string> = evtExecute.description(perso);
         texte.then((texte) => {
             const nouvEvt: EvtExecute = {
@@ -78,10 +81,13 @@ export default function Histoire() {
                 console.log("Éxécution de " + nouvEvt.id);
             }
 
+            // sauvegarder l'historique des évts et des états de perso précédents
+            previousPerso.idTemporel = evtExecute.id;
             perso.evtsPasses = [
                 ...evtsExecutes,
                 nouvEvt
             ];
+            perso.sauvegardes.push(previousPerso);
 
             setEvtsExecutes((prev: EvtExecute[]) => [
                 ...prev,
@@ -229,7 +235,14 @@ export default function Histoire() {
     return (
         <>
             {evtsExecutes.map((evt: EvtExecute, index: number) => (
-                <AfficheEvt evt={evt} index={index} setOpen={setOpen} setSelectedImage={setSelectedImage}/>
+                <AfficheEvt
+                    key={evt.id + index}
+                    evt={evt}
+                    index={index}
+                    setOpen={setOpen}
+                    setSelectedImage={setSelectedImage}
+                    setEvtsExecutes={setEvtsExecutes}
+                />
             ))}
             {tempsRestant !== null && tempsRestant > 0 && (
                 <Grid2 container justifyContent="center" alignItems="center" spacing={2} sx={{ mb: 2 }}>

@@ -1,22 +1,39 @@
-import {Box, Grid2, Typography} from "@mui/material";
+import {Box, Button, Grid2, Typography} from "@mui/material";
 import {EvtExecute} from "../../types/Evt";
-import {JSX, useContext} from "react";
+import {JSX, useCallback, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
+import {Perso} from "../../types/perso/Perso";
+import {persoToPersoHisto} from "../../fonctions/perso/conversionsPerso";
 
 export interface AfficheEvtProps {
     evt: EvtExecute;
     index: number;
     setSelectedImage: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void;
+    setEvtsExecutes: (value: (((prevState: EvtExecute[]) => EvtExecute[]) | EvtExecute[])) => void
     setOpen: (value: (((prevState: boolean) => boolean) | boolean)) => void;
 }
 
-const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelectedImage}): JSX.Element => {
-    const { perso } = useContext(PersoContexte) as PersoContexteType;
+const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelectedImage, setEvtsExecutes}): JSX.Element => {
+    const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
 
     const handleClickOpen = (image: string): void => {
         setSelectedImage(image);
         setOpen(true);
     };
+
+    const revenirACetEvt = useCallback((idEvt: string) => {
+        // chercher dans les persos sauvegardés
+        const persoPrecedent:Perso|undefined = perso.sauvegardes.find((persoPrec:Perso) => persoPrec.idTemporel === idEvt);
+        if (!persoPrecedent) {
+            console.error("perso précédent introuvable pour l'id d'événement : " + idEvt);
+        } else {
+            // resetter perso à ce perso sauvegardé
+            persoPrecedent.idTemporel = idEvt;
+            setEvtsExecutes(persoPrecedent.evtsPasses)
+            setPerso(persoToPersoHisto(persoPrecedent));
+        }
+
+    }, []);
 
     return (
         <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
@@ -40,7 +57,16 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                     <Typography mb={1} align="left" sx={{ fontSize: 18 }}>{evt.dateStr}</Typography>
                 }
                 {perso.debogue &&
-                    <Typography mb={1} align="right" sx={{ fontSize: 10 }}>{evt.id}</Typography>
+                    <>
+                        <Typography mb={1} align="right" sx={{ fontSize: 10 }}>{evt.id}</Typography>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => revenirACetEvt(evt.id)}
+                        >
+                            Rejouer d'ici
+                        </Button>
+                    </>
                 }
                 <Typography mb={2} align="left">
                     <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
