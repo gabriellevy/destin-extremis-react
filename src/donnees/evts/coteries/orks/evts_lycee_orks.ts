@@ -270,8 +270,8 @@ export const evts_lycee_orks: GroupeEvts = {
             id: "evts_lycee_orks8impulsivité",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Hui vous voulez aller à la fête foraine et faire l'attraction la plus dangereuse possible. <br/>";
-                texte += "Votre prof' vous répond 'quand un sen kcé lmoment il fait ! Fonc' morveux !'. <br/>";
-                texte += "L'attraction est un tourniquet géant qui monte et descend tout en tounoyant dans tous les sens et chaque ork a une jambe éccrochée en haut du tourniquet par un élastique mal attaché. <br/>";
+                texte += "Votre prof' vous répond 'quand un ork sen kcé lmoment il fait ! Fonc' morveux !'. <br/>";
+                texte += "L'attraction est un tourniquet géant qui monte et descend tout en tounoyant dans tous les sens et chaque ork a une jambe accrochée en haut du tourniquet par un élastique mal attaché. <br/>";
 
                 const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
                 texte += resTestE.resume;
