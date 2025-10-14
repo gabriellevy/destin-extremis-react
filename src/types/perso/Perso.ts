@@ -68,7 +68,7 @@ export type PersoCommon = {
  * => ses valeurs doivent être converties en valeurs de 'Perso' lors de la validation de création de personnage
  * puis elles sont inutiles
  */
-export type PersoForm = PersoCommon & {
+export interface PersoForm extends PersoCommon {
     metier?: metiersEnum,
     anneeDeDepart?: number,
     age: number,
