@@ -1,4 +1,4 @@
-import {FormProvider, useForm} from 'react-hook-form';
+import {FormProvider, useForm, UseFormReturn} from 'react-hook-form';
 import {Box, Button, Grid2, Paper, Typography} from '@mui/material';
 import {Perso, PersoForm, PersoHisto, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
@@ -7,7 +7,7 @@ import SelectionDates from "./SelectionDates";
 import {anneesToJours} from "../../types/Date";
 import {d400} from "../../fonctions/des";
 import {enfant} from "../../donnees/persos/persos_pregens";
-import {useContext} from "react";
+import {useContext, useMemo} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {vaA} from "../../types/lieux/Lieu";
@@ -16,7 +16,10 @@ import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
-import {persoFormToPersoHisto, persoToPersoHisto} from "../../fonctions/perso/conversionsPerso";
+import {
+    clonePersoHistoToPersoForm,
+    persoFormToPersoHisto,
+} from "../../fonctions/perso/conversionsPerso";
 import {metierAleatoire} from "../../fonctions/metiers/metiersUtils";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 
@@ -27,14 +30,13 @@ interface CharacterFormProps {
 
 export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormProps) {
     const { setPerso } = useContext(PersoContexte) as PersoContexteType;
-    const methods = useForm<PersoForm>({
-        defaultValues: enfant(false)
-    });
+    const defaultValues: PersoForm = useMemo(() => enfant(false), []);
+    const methods: UseFormReturn<PersoForm> = useForm<PersoForm>({ defaultValues });
     const { reset, handleSubmit } = methods;
 
-    const chargerPerso = (persoCharge: Perso) => {
-        setPerso({...persoToPersoHisto(persoCharge)});
-        reset({...persoCharge});
+    const chargerPerso = (persoCharge: PersoHisto) => {
+        setPerso(persoCharge);
+        reset(clonePersoHistoToPersoForm(persoCharge));
         setAfficherForm(false);
     };
 
@@ -53,7 +55,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
         persoAl.cognomen = getCognomen(persoAl.coterie, persoAl.sexe);
         persoAl.metier = metierAleatoire(persoAl);
         persoAl.mode = mode;
-        persoAl.phaseDExecution = PhaseDExecution.histoire;
+        persoAl.phaseDExecution = PhaseDExecution.creation;
 
         reset({...persoAl});
         setAfficherForm(true);
@@ -78,6 +80,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
                 dateNaissance: dateNaissance,
             }
         }
+        persoFinal.phaseDExecution = PhaseDExecution.histoire;
         setPerso(persoFinal);
         setAfficherForm(false);
     };
@@ -90,8 +93,8 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
                 const content = e.target?.result;
                 if (typeof content === 'string') {
                     try {
-                        const loadedCharacter = JSON.parse(content) as Perso;
-                        reset(loadedCharacter);
+                        const loadedCharacter = JSON.parse(content) as PersoHisto;
+                        reset(clonePersoHistoToPersoForm(loadedCharacter));
                         chargerPerso(loadedCharacter);
                     } catch (error) {
                         console.error('Error parsing JSON:', error);

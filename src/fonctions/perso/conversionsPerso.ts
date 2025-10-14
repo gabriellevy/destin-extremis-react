@@ -27,3 +27,11 @@ export function clonePersoHistoToPerso(persoHisto: PersoHisto): Perso {
     const { sauvegardes, ...perso } = JSON.parse(JSON.stringify(persoHisto));
     return perso as Perso;
 }
+
+/**
+ * fait une copie profonde pour éviter que les différents persos pointent vers les même tableaux de données
+ */
+export function clonePersoHistoToPersoForm(persoHisto: PersoHisto): PersoForm {
+    const { idTemporel, carrieres, evtsPasses, sauvegardes, ...persoForm } = JSON.parse(JSON.stringify(persoHisto));
+    return persoForm as PersoForm;
+}

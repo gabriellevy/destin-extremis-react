@@ -18,7 +18,7 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                     setAfficherForm={setAfficherForm}
                     mode={mode}
                 />
-            ) : perso.phaseDExecution === PhaseDExecution.histoire && (
+            ) : perso.phaseDExecution === PhaseDExecution.histoire ? (
                 <Grid2 container spacing={3} sx={{ height: '100vh', width: '100vw' }}>
                     <Grid2 size={3}>
                         <AffichagePerso />
@@ -27,7 +27,8 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                         <Histoire />
                     </Grid2>
                 </Grid2>
-            )}
+            ) : <>
+            Vous n'êtes plus dans le formulaire mais pas non plus en mode histoire ?</>}
         </>
     );
 }
