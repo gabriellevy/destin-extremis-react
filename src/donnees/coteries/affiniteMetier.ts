@@ -6,7 +6,7 @@ import {metiersEnum} from "../metiers";
  */
 export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.chaos]: [],
-    [Coterie.acheron]: [metiersEnum.informaticien],
+    [Coterie.acheron]: [metiersEnum.informaticien, metiersEnum.magicien, metiersEnum.technomancien],
     [Coterie.bastets]: [metiersEnum.non_travailleur],
     [Coterie.cathares]: [metiersEnum.novice_pretre, metiersEnum.pretre, metiersEnum.moine],
     [Coterie.carthaginois]: [],
@@ -15,7 +15,7 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.esprit_de_la_nature]: [],
     [Coterie.celtes]: [],
     [Coterie.demokratos]: [metiersEnum.edile, metiersEnum.journaliste],
-    [Coterie.elfes]: [],
+    [Coterie.elfes]: [metiersEnum.magicien],
     [Coterie.esthetes]:  [],
     [Coterie.jacobins]: [],
     [Coterie.libertins]: [],

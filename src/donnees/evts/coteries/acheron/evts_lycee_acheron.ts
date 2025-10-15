@@ -20,17 +20,41 @@ import { augmenterCompetence } from "../../../../fonctions/perso/competences";
 export const evts_lycee_acheron: GroupeEvts = {
     evts: [
         {
-            id: "evts_lycee_acheron1_fosse",
+            id: "evts_lycee_acheron1_technomancie",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Pour être initié à la technomancie et chercher l'immortalité par la digitalisation dans le réseau, il faut déjà maîtriser les bases de l'informatique.";
 
-                const resTest:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
-                texte += resTest.resume;
-                if (!resTest.reussi) {
+                const resTestInfo:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
+                texte += resTestInfo.resume;
+                if (!resTestInfo.reussi) {
                     texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en informatique au sens large. <br/>";
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.informaticien);
+                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
+                    texte += resTest.resume;
+                    if (resTest.reussi) {
+                        texte += plusUnEnCompetenceMetier(perso, metiersEnum.informaticien);
+                    }
                 } else {
                     texte += "Vous avez déjà un bon niveau. Mais il faut aussi maîtriser la magie, car la technomancie est la combinaison de l'informatique et de la magie. <br/>";
+                    const resTestInfo:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
+                    texte += resTestInfo.resume;
+                    if (!resTestInfo.reussi) {
+                        texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en magie nécromantique théoriqe. <br/>";
+                        const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
+                        texte += resTest.resume;
+                        if (resTest.reussi) {
+                            texte += plusUnEnCompetenceMetier(perso, metiersEnum.magicien);
+                        }
+                    } else {
+                        // à la fois informaticien et magicien qualifié :
+                        const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -30});
+                        texte += resTest.resume;
+                        if (resTest.reussi) {
+                            texte += "Vos nombreuses compétences ainsi que votre intelligence exceptinnelles vous permettent de saisir les bases de la technomancie. ";
+                            texte += plusUnEnCompetenceMetier(perso, metiersEnum.technomancien);
+                        } else {
+                            texte += "Vous avez beau avoir toutes ls bases l'extrême complexité de la technomancie vous échappe. ";
+                        }
+                    }
                 }
 
                 return texte;

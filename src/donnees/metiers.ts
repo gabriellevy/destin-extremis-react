@@ -34,6 +34,8 @@ export enum metiersEnum {
     medecin = "Médecin",
     cyberneticien = "Cybernéticien",
     informaticien = "Informaticien", // programmeur, responsable réseau etc au sens large
+    magicien = "Magicien", // inclut pour l'instant tous les magiciens (nécromanciens compris)
+    technomancien = "Technomancen",
     // -------------- métiers orks ------------------ //
     marchand_de_champignon = "Marchand de champignon",
 
@@ -320,6 +322,24 @@ export const metiersObjs: MetierObj = {
         proba: 0.3,
         vicesCompatibles: [],
         vertusCompatibles: [Vertu.prudent, Vertu.artificialiste],
+    },
+    [metiersEnum.magicien] : {
+        nom: metiersEnum.magicien,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.magicien,
+        statut: {rang: 4, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 3, metalStatut: MetalStatut.or},
+        proba: 0.01,
+        vicesCompatibles: [],
+        vertusCompatibles: [],
+    },
+    [metiersEnum.technomancien] : {
+        nom: metiersEnum.technomancien,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.technomancien,
+        statut: {rang: 4, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 3, metalStatut: MetalStatut.or},
+        proba: 0.001,
+        vicesCompatibles: [],
+        vertusCompatibles: [],
     },
     [metiersEnum.pilleur_de_ruche] : {
         nom: metiersEnum.pilleur_de_ruche,
