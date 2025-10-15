@@ -62,125 +62,23 @@ export const evts_lycee_acheron: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
         {
-            id: "evts_lycee_orks2_fou de la vitesse",
+            id: "evts_lycee_acheron2_magie",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "Tout ork se doit de savoir piloter les bolides et aimer la vitesse. Vos instructeurs font en sorte que vous fassiez un bon paquet de tours de pistes sans faire vot' mauviet'.";
-                texte += "Attention au virage  !! <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 10});
-                texte += resTest.resume;
-                if (resTest.reussi) {
-                    if (resTest.critical) {
-                        texte += "Vous avez un sacré talent pour cela. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
-                        texte += ajouterMaitrise(perso, Maitrise.conduite_voiture);
-
-                    } else {
-                        texte += "Vous avez un bon talent pour cela et impressionnez les orks. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
-                    }
+                let texte = "Plusieurs cours complexes visent à vous apprendre les bases de la magie. Ces cours mélangent théorie complexes avec une forme d'instinct qu'on possède ou ne possède pas. <br/>";
+                const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
+                const resTestIntuition:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: -10});
+                texte += resTestInt.resume;
+                texte += resTestIntuition.resume;
+                if (resTestInt.reussi && resTestIntuition.reussi) {
+                    plusUnEnCompetenceMetier(perso, metiersEnum.magicien)
+                    texte += "Vous parvenez à retenir les bases de la sorcellerie et à jeter instincivement de manière peu fiable quelques petits sorts. <br/>";
                 } else {
-                    texte += "Vous êtes un piètre pilote et les orks se moquent de vous avec grand plaisir. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, -1, 2);
-                    if (resTest.critical) {
-                        const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
-                        if (blessureSubie) {
-                            texte += "Malheureusement vous faites quelques chutes violentes sous les moqueries de votre instructeur. Vous avez maintenant la blessure : " + blessureSubie?.nom + ".<br/>";
-                        }
-                    }
+                    texte += "Vous ne parvenez pas à lancer le moindre sort. <br/>";
                 }
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
-        },
-        {
-            id: "evts_lycee_orks3_pilote davion",
-            description: async (perso: Perso): Promise<string> => {
-                let texte = "Les autres coteries se moquent de l'aspect rudimentaire de la technologie ork et pourtant ils sont une des rares à être capable de produire et faire tourner des avions grâces à leurs techniques très économiques en énergie."
-                    + "Votre instructeur vous offre l'insigne honneur de voler avec lui et vous montre les bases du pilotage. <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
-                texte += resTest.resume;
-                if (resTest.reussi) {
-                    texte += "Vous avez un bon talent pour cela et impressionnez votre instructeur. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
-                    if (resTest.critical) {
-                        texte += ajouterMaitrise(perso, Maitrise.pilotage_avion);
-                    }
-                } else {
-                    texte += "C'est extrêmement difficile. <br/>";
-                }
-
-                return texte;
-            },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
-        },
-        {
-            id: "evts_lycee_orks4soulé à la bière",
-            description: async (perso: Perso): Promise<string> => {
-                let texte = "Personne ne respecte un ork qui ne tient pas la bière aux champignons. Votre instructeur fait en sorte que vous goûtiez de tous les alcools ork. Et en grande quantité. "
-                    + "Aucun humain ayant subi une telle épreuve n'en ressort indemne. <br/>";
-
-                if (perso.niveauIA !== NiveauIA.desactive) {
-                    // pour les evts de remplissage l'IA est utilisée même en mode bouche_trou
-                    texte += await appelLeChat(
-                        perso,
-                        "Racontez une soirée de beuverie d personnage principal avec des orks.",
-                        NiveauInfosPerso.prenom) + "<br/>";
-                }
-
-                let rand = Math.random();
-                if (rand <= 0.3) {
-                    texte += "Votre organisme est durement affecté.";
-                    texte += augmenterCompetence(perso, TypeCompetence.endurance, -1);
-                } else if (rand > 0.7) {
-                    texte += "Après des gueules de bois violentes vous êtes surpris de constater que vous vous êtes habitué même à leurs pires bières frelatées.";
-                    texte += augmenterCompetence(perso, TypeCompetence.endurance, 1);
-                }
-
-                rand = Math.random();
-                if (rand <= 0.1) {
-                    texte += "Toutes vos angoisses profondes fondent définitivement.";
-                    texte += ajouterVertuVal(perso, Vertu.placide, 1);
-                }
-
-                rand = Math.random();
-                if (rand <= 0.1) {
-                    texte += "Durablement affecté par la boisson empoisonnée mais violemment addictive, vous devenez alcoolique.";
-                    texte += ajouterViceVal(perso, Vice.gourmand, 1);
-                }
-
-                rand = Math.random();
-                if (rand <= 0.3) {
-                    texte += "L'alcool vous a salement endommagé le cerveau.";
-                    texte += augmenterCompetence(perso, TypeCompetence.intelligence, -1);
-                }
-                rand = Math.random();
-                if (rand <= 0.3) {
-                    texte += "L'alcool est tellement persistant qu'il vous fait sauter vos inhibitions et votre prudence sur le coup mais aussi à long terme.";
-                    texte += ajouterViceVal(perso, Vice.rebelle, 1);
-                }
-
-                return texte;
-            },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
-        },
-        {
-            id: "evts_lycee_orks5formation mékano",
-            description: async (perso: Perso): Promise<string> => {
-                let texte = "Un mékano a remarqué vos capacités et vous a formé aux bases de la réparation de moteurs. Bien que sa technique semble rudimentaire à première vue il est véritablement doué et très entousiaste comme enseignant. "
-                    + "Il vous promet que quand vous serez un vrai ork il vous apprendra à fabriquer des armes, ce qui est encore plus rigolo. <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
-                texte += resTest.resume;
-                if (resTest.reussi) {
-                    plusUnEnCompetenceMetier(perso, metiersEnum.mecanicien)
-                    texte += "Vous parvenez à retenir les bases du métier. <br/>";
-                } else {
-                    texte += "Mais vous n'y comprenez pas grand chose. <br/>";
-                }
-
-                return texte;
-            },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
         {
             id: "evts_lycee_orks6formation médiko",
