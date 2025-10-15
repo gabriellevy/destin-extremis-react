@@ -49,17 +49,6 @@ const Histoire: React.FC = (): JSX.Element => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [tempsRestant, setTempsRestant] = useState<number | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
-    const messagesEndRef = useRef<null | HTMLDivElement>(null);
-
-    const scrollToBottom = () => {
-        if (messagesEndRef.current && "scrollIntoView" in messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-        }
-    }
-
-    useEffect(() => {
-        scrollToBottom()
-    }, [perso.date]);
 
     const handleClose = () => {
         setOpen(false);
@@ -268,7 +257,6 @@ const Histoire: React.FC = (): JSX.Element => {
                     }
                 </Grid2>
             )}
-            <div ref={messagesEndRef} />
             {plusDEvts && (
                 <Typography mb={2} fontWeight="bold">
                     Plus d'événements à exécuter !!!! Faut en ajouter mon vieux !!
