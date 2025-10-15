@@ -273,7 +273,7 @@ export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: bo
 /**
  * devient meilleur à un métier mais sans commencer la carrière pour autant
  */
-export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): void {
+export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): string {
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25; // niveau débutant
     let nbDeTestsFaits: number = 0;
@@ -294,6 +294,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum)
             nbDeTestsFaits : nbDeTestsFaits,
         });
     }
+    return "+1 en " + metiersEnum.toString();
 }
 
 /**

@@ -2,7 +2,7 @@ import {GroupeEvts} from "../../../../types/Evt";
 import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
-import {testComp, testVertu} from "../../../../fonctions/des";
+import {testComp, testMetier, testVertu} from "../../../../fonctions/des";
 import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
@@ -17,33 +17,25 @@ import {poserBioniqueAleatoire} from "../../../../fonctions/sante/bionique";
 import {Bionique} from "../../../../types/sante/Bionique";
 import { augmenterCompetence } from "../../../../fonctions/perso/competences";
 
-export const evts_lycee_orks: GroupeEvts = {
+export const evts_lycee_acheron: GroupeEvts = {
     evts: [
         {
-            id: "evts_lycee_orks1_fosse",
+            id: "evts_lycee_acheron1_fosse",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "Vous vous entrainez à la plus violente des coutumes orks : le combat au corps à corps dans les fosses de justice.";
+                let texte = "Pour être initié à la technomancie et chercher l'immortalité par la digitalisation dans le réseau, il faut déjà maîtriser les bases de l'informatique.";
 
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: -10});
+                const resTest:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
                 texte += resTest.resume;
-                if (resTest.reussi) {
-                    texte += "Vous êtes étonament doué et dominez votre adversaire. <br/>";
-                    texte += "Vous vous en sortez avec quelques bleus et contusions. <br/>";
-                    // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
+                if (!resTest.reussi) {
+                    texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en informatique au sens large. <br/>";
+                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.informaticien);
                 } else {
-                    const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
-                    if (blessureSubie != null) {
-                        const texteBlessure: string = blessureSubie.nom;
-                        texte += "Au cours de l'entrainement vous recevez une blessure : " + texteBlessure + ". <br/>";
-                    }
-                    texte += "Les orks en rigolent un bon coup et vous tappent dans le dos joyeusement. ";
-                    texte += "Tu verras quand tu s'ras un vrai ork ça r'poussera. ";
+                    texte += "Vous avez déjà un bon niveau. Mais il faut aussi maîtriser la magie, car la technomancie est la combinaison de l'informatique et de la magie. <br/>";
                 }
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
         {
             id: "evts_lycee_orks2_fou de la vitesse",
@@ -81,7 +73,7 @@ export const evts_lycee_orks: GroupeEvts = {
             id: "evts_lycee_orks3_pilote davion",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Les autres coteries se moquent de l'aspect rudimentaire de la technologie ork et pourtant ils sont une des rares à être capable de produire et faire tourner des avions grâces à leurs techniques très économiques en énergie."
-                + "Votre instructeur vous offre l'insigne honneur de voler avec lui et vous montre les bases du pilotage. <br/>";
+                    + "Votre instructeur vous offre l'insigne honneur de voler avec lui et vous montre les bases du pilotage. <br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
@@ -102,7 +94,7 @@ export const evts_lycee_orks: GroupeEvts = {
             id: "evts_lycee_orks4soulé à la bière",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Personne ne respecte un ork qui ne tient pas la bière aux champignons. Votre instructeur fait en sorte que vous goûtiez de tous les alcools ork. Et en grande quantité. "
-                + "Aucun humain ayant subi une telle épreuve n'en ressort indemne. <br/>";
+                    + "Aucun humain ayant subi une telle épreuve n'en ressort indemne. <br/>";
 
                 if (perso.niveauIA !== NiveauIA.desactive) {
                     // pour les evts de remplissage l'IA est utilisée même en mode bouche_trou
@@ -152,11 +144,11 @@ export const evts_lycee_orks: GroupeEvts = {
             id: "evts_lycee_orks5formation mékano",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Un mékano a remarqué vos capacités et vous a formé aux bases de la réparation de moteurs. Bien que sa technique semble rudimentaire à première vue il est véritablement doué et très entousiaste comme enseignant. "
-                 + "Il vous promet que quand vous serez un vrai ork il vous apprendra à fabriquer des armes, ce qui est encore plus rigolo. <br/>";
+                    + "Il vous promet que quand vous serez un vrai ork il vous apprendra à fabriquer des armes, ce qui est encore plus rigolo. <br/>";
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.mecanicien)
+                    plusUnEnCompetenceMetier(perso, metiersEnum.mecanicien)
                     texte += "Vous parvenez à retenir les bases du métier. <br/>";
                 } else {
                     texte += "Mais vous n'y comprenez pas grand chose. <br/>";
@@ -170,13 +162,13 @@ export const evts_lycee_orks: GroupeEvts = {
             id: "evts_lycee_orks6formation médiko",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Un médiko a remarqué vos capacités et vous a formé aux bases de la rudimentaire médecine ork."
-                 + "Leur vrai point fort est leur obsession des améliorations bioniques combinée à la capacité des patients orques à accepter à peu près toutes les greffes. <br/>";
+                    + "Leur vrai point fort est leur obsession des améliorations bioniques combinée à la capacité des patients orques à accepter à peu près toutes les greffes. <br/>";
 
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.medecin)
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.cyberneticien)
+                    plusUnEnCompetenceMetier(perso, metiersEnum.medecin)
+                    plusUnEnCompetenceMetier(perso, metiersEnum.cyberneticien)
                     texte += "Vous parvenez à retenir les bases du métier. <br/>";
                 } else {
                     texte += "Mais vous n'y comprenez pas grand chose. <br/>";

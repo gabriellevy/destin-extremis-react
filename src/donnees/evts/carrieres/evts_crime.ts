@@ -60,7 +60,7 @@ export const evts_crime: GroupeEvts = {
                 texte += resTestI.resume;
                 if (resTestI.reussi) {
                     texte += "Vous rançonnez les petits artisans du coin très efficacement. <br/>";
-                    plusUnEnCompetenceMetier(perso, metiersEnum.ranconneur);
+                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.ranconneur);
                 } else {
                     texte += "Alors que vous passez prendre la redevance de l'organisation chez un marcand de chaussures il se permet de refuser de payer. <br/>";
                     const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});

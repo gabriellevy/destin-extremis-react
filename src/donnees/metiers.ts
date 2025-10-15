@@ -33,6 +33,7 @@ export enum metiersEnum {
     mecanicien = "Mécanicien",
     medecin = "Médecin",
     cyberneticien = "Cybernéticien",
+    informaticien = "Informaticien", // programmeur, responsable réseau etc au sens large
     // -------------- métiers orks ------------------ //
     marchand_de_champignon = "Marchand de champignon",
 
@@ -308,6 +309,15 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.argent},
         statutMax: {rang: 3, metalStatut: MetalStatut.or},
         proba: 0.1,
+        vicesCompatibles: [],
+        vertusCompatibles: [Vertu.prudent, Vertu.artificialiste],
+    },
+    [metiersEnum.informaticien] : {
+        nom: metiersEnum.informaticien,
+        intitule: (_perso: Perso, _carriere: Carriere) => metiersEnum.informaticien,
+        statut: {rang: 2, metalStatut: MetalStatut.argent},
+        statutMax: {rang: 1, metalStatut: MetalStatut.or},
+        proba: 0.3,
         vicesCompatibles: [],
         vertusCompatibles: [Vertu.prudent, Vertu.artificialiste],
     },

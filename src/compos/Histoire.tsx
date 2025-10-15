@@ -38,6 +38,7 @@ import {evts_cigarette} from "../donnees/evts/drogues/evts_cigarette";
 import AfficheEvt from "./affichage_evt/AfficheEvt";
 import {Perso} from "../types/perso/Perso";
 import {clonePersoHistoToPerso} from "../fonctions/perso/conversionsPerso";
+import {evts_lycee_acheron} from "../donnees/evts/coteries/acheron/evts_lycee_acheron";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -111,6 +112,7 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
             ...filtrerEtPreparerEvts(evts_lycee_orks, perso),
+            ...filtrerEtPreparerEvts(evts_lycee_acheron, perso),
             ...filtrerEtPreparerEvts(evts_lycee_demokratos, perso),
             ...filtrerEtPreparerEvts(evts_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
