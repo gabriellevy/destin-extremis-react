@@ -8,6 +8,8 @@ import {ajouterVertuVal, ajouterViceVal, getValeurVice, Vertu, Vice} from "../..
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {augmenterCompetence} from "../../../../fonctions/perso/competences";
+import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {Quartier} from "../../../geographie/quartiers";
 export const evts_lycee_acheron: GroupeEvts = {
     evts: [
         {
@@ -83,6 +85,12 @@ export const evts_lycee_acheron: GroupeEvts = {
                 texte += resTestCruel.resume;
                 if (resTestCruel.reussi) {
                     texte += "Vous participez de bon coeur avec vos camarades étudiants. <br/>";
+                    const resTestIntim:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                    texte += resTestIntim.resume;
+                    if (resTestIntim.reussi) {
+                        texte += "En plus de la torture physiques vous êtes très doués pour terrifier les condamnés. Vos professeurs et collègues sont très impressionnés. <br/>";
+                        texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 1);
+                    }
                     if (resTestCruel.critical && getValeurVice(perso, Vice.cruel) < 3) {
                         texte += "Vous y prenez de plus en plus goût. ";
                         texte += ajouterViceVal(perso, Vice.cruel, 1);
