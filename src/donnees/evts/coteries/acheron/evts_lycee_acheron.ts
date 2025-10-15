@@ -4,10 +4,10 @@ import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testMetier, testVice} from "../../../../fonctions/des";
 import {Coterie} from "../../../../types/Coterie";
-import {ajouterViceVal, getValeurVice, Vice} from "../../../../types/ViceVertu";
+import {ajouterVertuVal, ajouterViceVal, getValeurVice, Vertu, Vice} from "../../../../types/ViceVertu";
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
-
+import {augmenterCompetence} from "../../../../fonctions/perso/competences";
 export const evts_lycee_acheron: GroupeEvts = {
     evts: [
         {
@@ -93,6 +93,23 @@ export const evts_lycee_acheron: GroupeEvts = {
                 if (Math.random() <= 0.3) {
                     texte += "À force vous vous sentez de plus en plus insensibilisé à toute cette souffrance. ";
                     texte += ajouterViceVal(perso, Vice.sociopathique, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+        },
+        {
+            id: "evts_lycee_acheron4_dur travail",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "SLes achéronnais sont obsédés par l'étude jusqu'à l'épuisement et l'obsession. <br/>";
+
+                if (Math.random() <= 0.4) {
+                    texte += "Plus le temps passe et plus les punitions se succèdent, plus vous ne pensez plus à rien d'autre qu'au travail. "
+                    + "Votre humeur, votre apparence et même votre hygiène s'en ressentent. ";
+                    texte += ajouterVertuVal(perso, Vertu.travailleur, 1);
+                    texte += augmenterCompetence(perso, TypeCompetence.reflexes, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
                 }
 
                 return texte;
