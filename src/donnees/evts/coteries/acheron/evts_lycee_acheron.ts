@@ -102,7 +102,7 @@ export const evts_lycee_acheron: GroupeEvts = {
         {
             id: "evts_lycee_acheron4_dur travail",
             description: async (perso: Perso): Promise<string> => {
-                let texte: string = "SLes achéronnais sont obsédés par l'étude jusqu'à l'épuisement et l'obsession. <br/>";
+                let texte: string = "Les achéronnais sont obsédés par l'étude jusqu'à l'épuisement et l'obsession. <br/>";
 
                 if (Math.random() <= 0.4) {
                     texte += "Plus le temps passe et plus les punitions se succèdent, plus vous ne pensez plus à rien d'autre qu'au travail. "
@@ -119,7 +119,31 @@ export const evts_lycee_acheron: GroupeEvts = {
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+        },
+        {
+            id: "evts_lycee_acheron5 expérimentations magiques",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Vos professeurs achéronnais sont friands d'expérimentations magiques et ont une méchante tendance à vous utiliser comme sujets d'expérience, vous et vos camarades. <br/>";
+
+                if (Math.random() <= 0.5) {
+                    texte += "Sans être fatales ces cruautés vous marquent physiquement et mentalement. ";
+                    texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.volonte, -1);
+                }
+                if (Math.random() <= 0.4) {
+                    texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
+                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                }
+                if (Math.random() <= 0.4) {
+                    texte += "Vous apprenez à éviter les dangers et à surtout rester discret. ";
+                    texte += ajouterVertuVal(perso, Vertu.prudent, 1);
+                    texte += augmenterCompetence(perso, TypeCompetence.discretion, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
