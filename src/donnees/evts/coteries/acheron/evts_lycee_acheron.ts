@@ -112,6 +112,11 @@ export const evts_lycee_acheron: GroupeEvts = {
                     texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
                 }
 
+                if (Math.random() <= 0.2) {
+                    texte += "La concurrence extrêmement rude entre élèves vus épuise. D'autant plus que beaucoup d'entre eux n'ont aucun scrupule pour faire des coups bas sournois. ";
+                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                }
+
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
