@@ -11,8 +11,8 @@ export function changerQuartier(perso: PersoCommon, quartier: Quartier, desactiv
 
     if (!desactiverEvtsSecondaires) {
         const resTestColere:ResultatTest = testVice(perso, Vice.colerique, -30);
-        texte += resTestColere.resume;
         if (resTestColere.reussi) {
+            texte += resTestColere.resume;
             if (perso.possessions.includes(Possession.armes_lourdes)) {
                 texte += "Avant de partir vous vous dites que c'est l'occasion ou jamais de faire comprendre au bar d'à côté à quel point vous le haissez de tout votre coeur. "
                 + "Très tôt le matin vous passez devant et le faites sauter au lance-roquette. ";

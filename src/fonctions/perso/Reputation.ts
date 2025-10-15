@@ -32,10 +32,59 @@ export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modifQ
             amplitude: modifAmplitude,
         })
     }
-    return "<b>Réputation à "
-        + quartier.toString()
-        + " à "
-        + (niveauFinal > 0 ? "+" : "")
-        + niveauFinal
+    return "<b>" + affichageReputation(perso, quartier)
         + "</b><br/>";
+}
+
+export function affichageReputation(perso: Perso, quartier:Quartier) {
+    let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
+    let amplitude:number;
+    let qualite:number;
+    if (repQuartier) {
+        amplitude = repQuartier.amplitude;
+        qualite = repQuartier.qualite;
+    } else {
+        amplitude = 0;
+        qualite = 0;
+    }
+
+    if (amplitude <= 0) {
+        return "Inconnu à " + quartier.toString();
+    }
+    if (amplitude <= 20) {
+        let texte:string =  "Un peu connu à " + quartier.toString();
+        if (qualite < -10) {
+            texte += " (en mal)"
+        } else if (qualite > 10) {
+            texte += " (en bien)"
+        }
+        return texte;
+    }
+    if (amplitude <= 80) {
+        let texte:string =  "Bien connu à " + quartier.toString();
+        if (qualite < -10) {
+            texte += " (en mal)"
+        } else if (qualite > 10) {
+            texte += " (en bien)"
+        }
+        return texte;
+    }
+    if (amplitude <= 100) {
+        let texte:string =  "Célèbre à " + quartier.toString();
+        if (qualite < -10) {
+            texte += " (en mal)"
+        } else if (qualite > 10) {
+            texte += " (en bien)"
+        }
+        return texte;
+    }
+    if (amplitude >= 100) {
+        let texte:string =  "Très connu par tout le monde à " + quartier.toString();
+        if (qualite < -10) {
+            texte += " (en mal)"
+        } else if (qualite > 10) {
+            texte += " (en bien)"
+        }
+        return texte;
+    }
 }
