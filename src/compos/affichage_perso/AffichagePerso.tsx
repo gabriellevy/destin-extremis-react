@@ -1,5 +1,5 @@
 import {Box, Tab, Tabs} from '@mui/material';
-import {useState} from "react";
+import {JSX, useState} from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -12,6 +12,7 @@ import DonneesPerso from "./DonneesPerso";
 import RelationsPnjs from "./RelationsPnjs";
 import InfosMonde from "../InfosMonde";
 import Possessions from "./Possessions";
+import {AfficheEvtProps} from "../affichage_evt/AfficheEvt";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -42,7 +43,7 @@ function a11yProps(index: number) {
     };
 }
 
-export default function AffichagePerso() {
+const AffichagePerso: React.FC = (): JSX.Element => {
     const [value, setValue] = useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -82,3 +83,4 @@ export default function AffichagePerso() {
         </Box>
     );
 }
+export default AffichagePerso;

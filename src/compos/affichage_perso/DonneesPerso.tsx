@@ -7,9 +7,8 @@ import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {Perso} from "../../types/perso/Perso";
 import {etudie} from "../../fonctions/coteries/etudes";
-import AfficheEvt, {AfficheEvtProps} from "../affichage_evt/AfficheEvt";
 
-const DonneesPerso: React.FC<AfficheEvtProps> = (): JSX.Element => {
+const DonneesPerso: React.FC = (): JSX.Element => {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
 
     const exporter = () => {
