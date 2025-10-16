@@ -55,6 +55,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos3",
@@ -79,6 +80,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos4",
@@ -106,6 +108,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos5",
@@ -128,6 +131,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos6",
@@ -151,6 +155,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos7",
@@ -179,6 +184,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
         {
             id: "evts_lycee_demokratos8",
@@ -199,6 +205,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
+            repetable: true,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante

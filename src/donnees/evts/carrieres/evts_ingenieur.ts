@@ -67,6 +67,7 @@ export const evts_ingenieur: GroupeEvts = {
                 && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
             proba: 5,
+            repetable: true,
         },
         {
             id: "evts_ingenieur2",
@@ -86,6 +87,7 @@ export const evts_ingenieur: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, metiersEnum.etudiant_ingenieur),
             proba: 1,
+            repetable: true,
         },
         {
             id: "evts_ingenieur3_entre_a_la_guilde",
@@ -106,6 +108,7 @@ export const evts_ingenieur: GroupeEvts = {
                 suitUneCarriereDe(perso, metiersEnum.ingenieur)
             && !appartientALaGuilde(perso, metiersEnum.ingenieur),
             proba: 5,
+            repetable: true,
         },
     ],
     probaParDefaut: 10,

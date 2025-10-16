@@ -21,6 +21,7 @@ export const evts_drogue: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => aUneCarriere(perso) && !actuellementDrogueA(perso, droguesEnum.vissopressine)
                 && getValeurVertu(perso, Vertu.sobre) < 0 && getValeurVice(perso, Vice.envieux) > 0,
+            repetable: true,
         },
     ],
     probaParDefaut: 3,

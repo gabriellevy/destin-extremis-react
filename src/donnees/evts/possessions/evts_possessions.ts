@@ -18,6 +18,7 @@ export const evts_possessions: GroupeEvts = {
                 !perso.possessions.includes(Possession.pistolet)
                 && getValeurVice(perso, Vice.paranoiaque) > 0
                 && getAge(perso) >= 18,
+            repetable: true,
         },
         {
             id: "evts_possessions armes lourdes",
@@ -30,6 +31,7 @@ export const evts_possessions: GroupeEvts = {
                 !perso.possessions.includes(Possession.armes_lourdes)
                 && getValeurVice(perso, Vice.paranoiaque) > 1
                 && getAge(perso) >= 18,
+            repetable: true,
         },
     ],
     probaParDefaut: 3,

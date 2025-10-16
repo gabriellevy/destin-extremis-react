@@ -77,6 +77,7 @@ export const evts_boucher: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Gerd_Fleisher.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.boucher),
+            repetable: true,
         },
     ],
     probaParDefaut: 5,

@@ -9,6 +9,7 @@ export function persoFormToPersoHisto(persoForm: PersoForm): PersoHisto {
         carrieres: persoForm.metier ? [metierEnCarriere(persoForm.metier)] : [],
         sauvegardes: [], // vide pour l'instant à la création
         evtsPasses: [],
+        idEvtsNonExecutables: [],
     } as PersoHisto
 }
 
@@ -32,6 +33,8 @@ export function clonePersoHistoToPerso(persoHisto: PersoHisto): Perso {
  * fait une copie profonde pour éviter que les différents persos pointent vers les même tableaux de données
  */
 export function clonePersoHistoToPersoForm(persoHisto: PersoHisto): PersoForm {
-    const { idTemporel, carrieres, evtsPasses, sauvegardes, ...persoForm } = JSON.parse(JSON.stringify(persoHisto));
+    const {
+        idTemporel, carrieres, evtsPasses, idEvtsNonExecutables, sauvegardes, ...persoForm
+    } = JSON.parse(JSON.stringify(persoHisto));
     return persoForm as PersoForm;
 }

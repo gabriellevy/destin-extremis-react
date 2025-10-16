@@ -68,6 +68,7 @@ export const evts_serveur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.serveur),
+            repetable: true,
         },
     ],
     probaParDefaut: 5,

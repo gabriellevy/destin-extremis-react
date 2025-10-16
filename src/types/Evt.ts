@@ -11,6 +11,7 @@ export type Evt = {
     proba?: number, // élevé signifie, si les conditions sont remplies, que cet événement a beaucoup de chance de se produire. 1 est standard plutôt courant, donc valeur par défaut
     conditions?: (perso: Perso) => boolean; // est-ce que l'événement peut être appliqué au perso ou pas
     image?: string;
+    repetable?: boolean; // true => exécutables plusieurs fois (y compris d'affilée) (undefined means false)
 };
 
 // ce qui est affiché après que l'événement ait été exécuté
@@ -29,7 +30,8 @@ export type GroupeEvts = {
 export function filtrerEtPreparerEvts(groupeEvts:GroupeEvts, perso: Perso):Evt[] {
     const probaParDefaut: number = groupeEvts.probaParDefaut;
     return groupeEvts.evts
-        .filter(event => !event.conditions || event.conditions(perso))
+        .filter((evt:Evt) => !evt.conditions || evt.conditions(perso))
+        .filter((evt:Evt) => !perso.idEvtsNonExecutables.includes(evt.id))
         .map(evt => {
             if (!evt.proba) {
                 evt.proba = probaParDefaut;

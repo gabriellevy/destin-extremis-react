@@ -20,6 +20,7 @@ export const evts_tout: GroupeEvts = {
                 return texte;
             },
             conditions: (): boolean => true,
+            repetable: true,
         },
         ],
     probaParDefaut: 1,

@@ -81,6 +81,8 @@ export type Perso = PersoCommon & {
     idTemporel: string, // identifiant du perso à un événement précis
     carrieres: Carriere[],
     evtsPasses: EvtExecute[],
+    // ids des evts non exécutables à l'avenir (en général parce qu'ils nt déjà été exécutés et ne sont pas répétables)
+    idEvtsNonExecutables: string[],
 }
 
 /**

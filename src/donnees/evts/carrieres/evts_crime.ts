@@ -44,6 +44,7 @@ export const evts_crime: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, metiersEnum.ranconneur),
+            repetable: true,
         },
         {
             id: "evts_crime3",
@@ -68,7 +69,8 @@ export const evts_crime: GroupeEvts = {
                     if (resTestB.reussi) {
                         texte += "Vous lui démontez le portrait. <br/>";
                     } else {
-                        texte += "Vous l'attaquez mais vous prenez une dérouillée humiliante et êtes moqué par tout le gang. Peut-être n'êtes vous pas fait pour ce boulot. <br/>";
+                        texte += "Vous l'attaquez mais vous prenez une dérouillée humiliante et êtes moqué par tout le gang. "
+                        "Peut-être n'êtes vous pas fait pour ce boulot. Vous vous mettez à l'écart. <br/>";
                         texte += arreterCarriere(perso, metiersEnum.ranconneur, true);
                     }
                 }
@@ -76,6 +78,7 @@ export const evts_crime: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, metiersEnum.ranconneur),
+            repetable: true,
         },
     ],
     probaParDefaut: 5,

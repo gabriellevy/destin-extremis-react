@@ -54,6 +54,7 @@ export const evts_batelier: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.batelier),
+            repetable: true,
         },
     ],
     probaParDefaut: 5,

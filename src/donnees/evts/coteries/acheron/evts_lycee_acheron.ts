@@ -53,6 +53,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+            repetable: true,
         },
         {
             id: "evts_lycee_acheron2_magie",
@@ -72,6 +73,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+            repetable: true,
         },
         {
             id: "evts_lycee_acheron3_torture",

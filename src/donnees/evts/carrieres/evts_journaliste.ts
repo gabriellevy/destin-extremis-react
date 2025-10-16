@@ -40,6 +40,7 @@ export const evts_journaliste: GroupeEvts = {
                 !aUneCarriere(perso)
                 && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.journaliste]) >= 0,
+            repetable: true,
         },
         {
             id: "evts_journaliste2",
@@ -59,6 +60,7 @@ export const evts_journaliste: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.journaliste),
+            repetable: true,
         },
         {
             id: "evts_journaliste contrat livre",

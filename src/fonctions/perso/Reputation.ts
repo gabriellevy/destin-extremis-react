@@ -32,7 +32,7 @@ export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modifQ
             amplitude: modifAmplitude,
         })
     }
-    return "Réputation : <b>" + affichageReputation(perso, quartier)
+    return "<b>Réputation : " + affichageReputation(perso, quartier)
         + "</b><br/>";
 }
 

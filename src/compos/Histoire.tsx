@@ -79,6 +79,12 @@ const Histoire: React.FC = (): JSX.Element => {
                 ...evtsExecutes,
                 nouvEvt
             ];
+            if (evtExecute.repetable === undefined || !evtExecute.repetable) {
+                perso.idEvtsNonExecutables = [
+                    ...perso.idEvtsNonExecutables,
+                    evtExecute.id,
+                ];
+            }
             perso.sauvegardes.push(previousPerso);
 
             setEvtsExecutes((prev: EvtExecute[]) => [

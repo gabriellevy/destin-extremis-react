@@ -38,7 +38,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                 // en débogue les points de destin sont infinis
                 persoPrecedent.pointDestin = pointsDeDestin;
             }
-            setEvtsExecutes(persoPrecedent.evtsPasses)
+            setEvtsExecutes(persoPrecedent.evtsPasses);
             setPerso(persoToPersoHisto(persoPrecedent));
         }
     }, [perso, setPerso, setEvtsExecutes]);

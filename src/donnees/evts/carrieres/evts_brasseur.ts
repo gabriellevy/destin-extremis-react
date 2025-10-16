@@ -79,6 +79,7 @@ export const evts_brasseur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Emil_Brauer.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, metiersEnum.brasseur),
+            repetable: true,
         },
     ],
     probaParDefaut: 5,

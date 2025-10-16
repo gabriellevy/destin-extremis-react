@@ -38,6 +38,7 @@ export const evts_rejoindre: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.coterie === undefined
                 && getAge(perso) >= 19,
+            repetable: true,
         },
     ],
     probaParDefaut: 100, // très grosse probabilité : il n'est pas naturel de rester sans coterie
