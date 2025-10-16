@@ -163,10 +163,14 @@ export const evts_lycee_acheron: GroupeEvts = {
                 const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 0});
                 texte += resTestVolonte.resume;
                 if (resTestVolonte.reussi) {
-                    texte += "Vous faites preuve d'une grande résistance à ces traitements mais vous sentez votre vivacité s'affaiblir, comme si vous vieillissiez prématurément. ";
+                    texte += "Vous faites preuve d'une grande résistance à ces traitements et impressionnez vos professeurs. "
+                    + " Mais vous sentez votre vivacité s'affaiblir, comme si vous vieillissiez prématurément. "
+                    + "Au bous de plusieurs mois de ce traitement vous avez été durement marqué physiquement et avez une sorte d'aura inquiétante qui effraye vos correlégionnaires. ";
                     texte += augmenterCompetence(perso, TypeCompetence.reflexes, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
+                    texte += augmenterCompetence(perso, TypeCompetence.intimidation, 1);
+                    texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 3);
                 }
-
                 if (Math.random() <= 0.3) {
                     texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
                     texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
