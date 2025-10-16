@@ -1,4 +1,4 @@
-import {Perso} from "../../types/perso/Perso";
+import {Perso, PersoHisto} from "../../types/perso/Perso";
 import {anneesToJours, getAge} from "../../types/Date";
 import {EvtProgramme} from "../../types/Evt";
 
@@ -9,9 +9,14 @@ export const evts_programmes: EvtProgramme[] = [
         date: (perso:Perso):boolean => (perso.date-perso.dateNaissance) % 360 === 0,
         evt: {
             id: "anniversaire",
-            description: async (perso: Perso): Promise<string> => {
+            description: async (perso: PersoHisto): Promise<string> => {
                 perso.pointDestin += 1;
-                return "Vous avez " + getAge(perso) + " ans. Joyeux anniversaire ! <br/><b>+1 point de destin</b>"
+                let texte =  "Vous avez " + getAge(perso) + " ans. Joyeux anniversaire ! <br/><b>+1 point de destin</b>"
+
+                texte += "Vous ne pouvez plus retourner en arrière.";
+                perso.sauvegardes = [];
+
+                return texte;
             },
             conditions: (_perso: Perso): boolean => true,
             repetable: true,
