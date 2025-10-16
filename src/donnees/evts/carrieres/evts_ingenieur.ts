@@ -7,6 +7,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours, getAge} from "../../../types/Date";
 import {
+    aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -62,7 +63,7 @@ export const evts_ingenieur: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.etudiant_ingenieur]) >= 0
                 && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),

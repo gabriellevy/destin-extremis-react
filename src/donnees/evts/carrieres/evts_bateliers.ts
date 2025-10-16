@@ -6,6 +6,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {auBordDeLaRiviere} from "../../../types/lieux/Lieu";
 import {
+    aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -32,7 +33,7 @@ export const evts_batelier: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.batelier]) >= 0
                 && auBordDeLaRiviere(perso),

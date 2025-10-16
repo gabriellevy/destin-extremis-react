@@ -20,6 +20,14 @@ export function aUneCarriere(perso: Perso): boolean {
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
         if (carriere.actif && carriere.metier !== metiersEnum.non_travailleur) trouve = true;
     });
+    return trouve;
+}
+
+/**
+ * true si le perso travaille ou fait des atudes (ou même s'occupe de quelqu'un à temps plein ?)
+ */
+export function aUneActiviteATempsPlein(perso: Perso): boolean {
+    let trouve: boolean = aUneCarriere(perso)
     if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined) {
         // considéré comme travaillant tant qu'il n'a pas fini son lycée
         trouve = true;

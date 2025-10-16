@@ -6,7 +6,7 @@ import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {
-    arreterCarriere,
+    arreterCarriere, aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere, compatibiliteCarriere, plusUnEnCompetenceMetier,
     suitUneCarriereDe,
@@ -25,7 +25,7 @@ export const evts_crime: GroupeEvts = {
                 texte += commencerCarriere(perso, metiersEnum.ranconneur, '');
                 return texte;
             },
-            conditions: (perso: Perso): boolean => !aUneCarriere(perso)
+            conditions: (perso: Perso): boolean => !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.ranconneur]) >= 0
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 4}),
         },

@@ -6,6 +6,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge, anneesToJours} from "../../../types/Date";
 import {
+    aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -59,7 +60,7 @@ export const evts_brasseur: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Emil_Brauer.webp",
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_brasseur]) >= 0
                 && getAge(perso) >= 14,
         },

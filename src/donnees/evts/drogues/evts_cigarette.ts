@@ -29,7 +29,7 @@ export const evts_cigarette: GroupeEvts = {
                 }
                 return texte;
             },
-            conditions: (perso: Perso): boolean => aUneCarriere(perso) && !actuellementDrogueA(perso, droguesEnum.cigarette)
+            conditions: (perso: Perso): boolean => !actuellementDrogueA(perso, droguesEnum.cigarette)
                 && getValeurVertu(perso, Vertu.sobre) < 1 && getAge(perso) < 17,
         },
     ],

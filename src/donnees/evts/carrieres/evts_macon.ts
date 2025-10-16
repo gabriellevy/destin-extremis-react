@@ -6,6 +6,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
+    aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -33,7 +34,7 @@ export const evts_macon: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.macon]) >= 0
                 && getAge(perso) >= 14,
         },

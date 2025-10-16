@@ -6,7 +6,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
-    arreterCarriere,
+    arreterCarriere, aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -39,7 +39,7 @@ export const evts_serveur: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.serveur]) >= 0
                 && getAge(perso) >= 14, // TODO : tester que dans une ville ?
         },

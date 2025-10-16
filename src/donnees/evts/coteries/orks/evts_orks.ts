@@ -7,7 +7,7 @@ import {getPrenom} from "../../../../fonctions/noms";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVice} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
-import {aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
+import {aUneActiviteATempsPlein, aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
@@ -49,7 +49,7 @@ export const evts_orks: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.coterie === Coterie.orks
-                && !aUneCarriere(perso),
+                && !aUneActiviteATempsPlein(perso),
         },
         {
             id: "evts_orks4 racketté",

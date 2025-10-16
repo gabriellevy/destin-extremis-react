@@ -5,7 +5,7 @@ import {testComp, testMetier} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
-    arreterCarriere,
+    arreterCarriere, aUneActiviteATempsPlein,
     aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
@@ -37,7 +37,7 @@ export const evts_journaliste: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !aUneCarriere(perso)
+                !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[metiersEnum.journaliste]) >= 0,
             repetable: true,

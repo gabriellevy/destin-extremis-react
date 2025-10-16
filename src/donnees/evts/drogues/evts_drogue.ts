@@ -1,6 +1,6 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
-import {aUneCarriere} from "../../../fonctions/metiers/metiersUtils";
+import {aUneActiviteATempsPlein, aUneCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {appelLeChatParaphrase} from "../../../fonctions/le_chat";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
 import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
@@ -19,7 +19,7 @@ export const evts_drogue: GroupeEvts = {
                 }
                 return texte;
             },
-            conditions: (perso: Perso): boolean => aUneCarriere(perso) && !actuellementDrogueA(perso, droguesEnum.vissopressine)
+            conditions: (perso: Perso): boolean => aUneActiviteATempsPlein(perso) && !actuellementDrogueA(perso, droguesEnum.vissopressine)
                 && getValeurVertu(perso, Vertu.sobre) < 0 && getValeurVice(perso, Vice.envieux) > 0,
             repetable: true,
         },
