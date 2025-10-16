@@ -98,14 +98,15 @@ export function neSuitPasUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): 
 /**
  *
  * @param perso
- * @param metiersEnum si undefined signifie n'importe quelle carrière
+ * @param metierSuivi si undefined signifie n'importe quelle carrière
  * @param dureeEnAnnees
  */
-export function suitUneCarriereDepuis(perso: Perso, metiersEnum: metiersEnum|undefined, dureeEnAnnees: number): boolean {
+export function suitUneCarriereDepuis(perso: Perso, metierSuivi: metiersEnum|undefined, dureeEnAnnees: number): boolean {
     let trouve: boolean = false;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
-            if ((metiersEnum === undefined || carriere.metier === metiersEnum)
+            if ((metierSuivi === undefined || carriere.metier === metierSuivi)
+                && carriere.metier !== metiersEnum.non_travailleur
                 && carriere.actif && carriere.duree >= anneesToJours(dureeEnAnnees)) {
                 trouve = true;
             }
