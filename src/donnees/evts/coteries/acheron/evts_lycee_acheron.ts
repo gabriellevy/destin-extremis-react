@@ -147,6 +147,33 @@ export const evts_lycee_acheron: GroupeEvts = {
                     texte += "Vous apprenez à éviter les dangers et à surtout rester discret. ";
                     texte += ajouterVertuVal(perso, Vertu.prudent, 1);
                     texte += augmenterCompetence(perso, TypeCompetence.discretion, 1);
+                    texte += augmenterCompetence(perso, TypeCompetence.tromperie, 1);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+        },
+        {
+            id: "evts_lycee_acheron6 méditations mortelles",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "La mort est au coeur des obsessions achéroniennes. Sn étude et la méditation à son sujet sont incontournables et oppressantes au lycée." +
+                    "Vos professeurs vous obligent à méditer immobiles pendant des heures, jusqu'à engourdir votre corps et ovus approcher de la psychose. <br/>";
+
+                const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 0});
+                texte += resTestVolonte.resume;
+                if (resTestVolonte.reussi) {
+                    texte += "Vous faites preuve d'une grande résistance à ces traitements mais vous sentez votre vivacité s'affaiblir, comme si vous vieillissiez prématurément. ";
+                    texte += augmenterCompetence(perso, TypeCompetence.reflexes, -1);
+                }
+
+                if (Math.random() <= 0.3) {
+                    texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
+                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                }
+                if (Math.random() <= 0.4) {
+                    texte += "Vous avez le sentiment que cet isolement mental brise vos aptitudes sociales. ";
+                    texte += augmenterCompetence(perso, TypeCompetence.eloquence, -1);
                 }
 
                 return texte;
