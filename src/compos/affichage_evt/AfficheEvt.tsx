@@ -72,16 +72,18 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                         </Typography>
                     }
                     {
-                        perso.pointDestin > 0 && (
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={() => revenirACetEvt(evt.id)}
-                            >
-                                {
-                                    `Rejouer d'ici (${perso.pointDestin} point${perso.pointDestin?'s':''} de destin)`
-                                }
-                            </Button>
+                        perso.pointDestin > 0
+                        && perso.sauvegardes.find((sauvegarde: Perso) => sauvegarde.idTemporel === evt.id) !== undefined
+                            &&
+                                (<Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => revenirACetEvt(evt.id)}
+                                >
+                                    {
+                                        `Rejouer d'ici (${perso.pointDestin} point${perso.pointDestin?'s':''} de destin)`
+                                    }
+                                </Button>
                         )
                     }
                 </Box>

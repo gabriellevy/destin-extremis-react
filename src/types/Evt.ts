@@ -1,4 +1,4 @@
-import {Perso} from "./perso/Perso";
+import {Perso, PersoHisto} from "./perso/Perso";
 
 export type EvtProgramme = {
     evt: Evt,
@@ -9,7 +9,7 @@ export type EvtProgramme = {
 
 export type Evt = {
     id: string;
-    description: (perso: Perso) => Promise<string>;  // modifie le perso et retourne la description de l'evt
+    description: (perso: PersoHisto) => Promise<string>;  // modifie le perso et retourne la description de l'evt
     proba?: number, // élevé signifie, si les conditions sont remplies, que cet événement a beaucoup de chance de se produire. 1 est standard plutôt courant, donc valeur par défaut
     conditions?: (perso: Perso) => boolean; // est-ce que l'événement peut être appliqué au perso ou pas
     image?: string;

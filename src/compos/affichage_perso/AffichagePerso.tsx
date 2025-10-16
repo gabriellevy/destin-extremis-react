@@ -1,5 +1,5 @@
 import {Box, Tab, Tabs} from '@mui/material';
-import {JSX, useState} from "react";
+import React, {JSX, useState} from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -12,7 +12,6 @@ import DonneesPerso from "./DonneesPerso";
 import RelationsPnjs from "./RelationsPnjs";
 import InfosMonde from "../InfosMonde";
 import Possessions from "./Possessions";
-import {AfficheEvtProps} from "../affichage_evt/AfficheEvt";
 
 interface TabPanelProps {
     children?: React.ReactNode;
