@@ -1,14 +1,15 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
-import {getAge, joursToAnnees} from "../../types/Date";
+import {getAge, joursToAnnees, jourStr} from "../../types/Date";
 import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
-import {useContext} from "react";
+import {JSX, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {metiersEnum, metiersObjs} from "../../donnees/metiers";
 import {Perso} from "../../types/perso/Perso";
 import {etudie} from "../../fonctions/coteries/etudes";
+import AfficheEvt, {AfficheEvtProps} from "../affichage_evt/AfficheEvt";
 
-export default function DonneesPerso () {
+const DonneesPerso: React.FC<AfficheEvtProps> = (): JSX.Element => {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
 
     const exporter = () => {
@@ -54,7 +55,7 @@ export default function DonneesPerso () {
         <ListItem key={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}>
             <Typography variant="h5" gutterBottom>
                 <ListItemText primary={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}
-                              secondary={`${getAge(perso)} ans`}/>
+                              secondary={`${getAge(perso)} ans (${jourStr(perso.dateNaissance)})`}/>
             </Typography>
         </ListItem>
         {
@@ -67,13 +68,9 @@ export default function DonneesPerso () {
         {
             affichageEtudes(perso)
         }
-        {
-            (
-                <ListItem>
-                    <ListItemText primary={perso.coterie}/>
-                </ListItem>
-            )
-        }
+        <ListItem>
+            <ListItemText primary={perso.coterie}/>
+        </ListItem>
         <ListItem>
             <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>
         </ListItem>
@@ -102,3 +99,4 @@ export default function DonneesPerso () {
         </Box>
     </List>);
 }
+export default DonneesPerso;

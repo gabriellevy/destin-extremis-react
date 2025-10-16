@@ -8,7 +8,6 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {anneesToJours, getAge} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     suitUneCarriereDe
@@ -26,7 +25,7 @@ const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
     } else {
         texte += "Malheureusement c'est un échec pour vous. Vous êtes recalé... Vous avez néanmoins encore une chance de le passer l'an prochain. ";
         perso.evtsProgrammes.push({
-            date: perso.date + anneesToJours(1),
+            date: (persoFutur:Perso) => perso.date + anneesToJours(1) === persoFutur.date,
             evt: {
                 id: "passageDiplomeBoulanger",
                 description: passageDiplome,
@@ -51,7 +50,7 @@ export const evts_ingenieur: GroupeEvts = {
                     texte += `Vous êtes reçu à l'école d'ingéniérie ! Maintenant il va falloir travailler dur pour réussir le diplôme dans 5 ans. `;
                     // ajout du futur passage de diplôme :
                     perso.evtsProgrammes.push({
-                        date: perso.date + anneesToJours(5),
+                        date: (persoFutur:Perso) => perso.date + anneesToJours(5) === persoFutur.date,
                         evt: {
                             id: "passageDiplomeBoulanger",
                             description: passageDiplome,

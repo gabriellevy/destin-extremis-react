@@ -140,7 +140,7 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
     for (joursRellementAjoutes= 0 ; joursRellementAjoutes <= joursAAjouter ; ++joursRellementAjoutes) {
         perso.date = perso.date + 1;
         perso.evtsProgrammes.forEach((evtProgramme: EvtProgramme)=>{
-            if (evtProgramme.date == perso.date) {
+            if (evtProgramme.date !== undefined && evtProgramme.date(perso)) {
                 executerEvt(evtProgramme.evt, evtProgrammeExecute);
                 // TODO: ? nettoyage des evts exécutés ?? suppression de ceux dont la date est dépassée ?
                 evtProgrammeExecute = true;

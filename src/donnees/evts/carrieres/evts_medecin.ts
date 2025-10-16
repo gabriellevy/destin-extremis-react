@@ -6,7 +6,6 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge, anneesToJours} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     travailleEnCeMomentComme
@@ -23,7 +22,7 @@ const passageDiplomeMedecin: (perso: Perso) => Promise<string> = (perso: Perso) 
     } else {
         texte += "Malheureusement vous échouez. Vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
-            date: perso.date + anneesToJours(1),
+            date: (persoFutur:Perso) => perso.date + anneesToJours(1) === persoFutur.date,
             evt: {
                 id: "passageDiplomeMedecin",
                 description: passageDiplomeMedecin,
@@ -56,7 +55,7 @@ export const evts_medecin: GroupeEvts = {
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
                     texte += commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
                     perso.evtsProgrammes.push({
-                        date: perso.date + anneesToJours(5),
+                        date: (persoFutur:Perso) => perso.date + anneesToJours(5) === persoFutur.date,
                         evt: {
                             id: "passageDiplomeMedecin",
                             description: passageDiplomeMedecin,

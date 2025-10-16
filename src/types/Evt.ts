@@ -2,7 +2,9 @@ import {Perso} from "./perso/Perso";
 
 export type EvtProgramme = {
     evt: Evt,
-    date: number, // date en nombre de jours depuis (l'an 0 ?)
+    // date en nombre de jours depuis (l'an 0 ?)
+    // sous forme de fonction car certaines dates dépendent du perso, comme son anniversaire
+    date: (perso: Perso) => boolean,
 }
 
 export type Evt = {

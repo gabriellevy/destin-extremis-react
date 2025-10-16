@@ -79,7 +79,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                                 onClick={() => revenirACetEvt(evt.id)}
                             >
                                 {
-                                    `Rejouer d'ici (${perso.pointDestin} point de destin)`
+                                    `Rejouer d'ici (${perso.pointDestin} point${perso.pointDestin?'s':''} de destin)`
                                 }
                             </Button>
                         )
