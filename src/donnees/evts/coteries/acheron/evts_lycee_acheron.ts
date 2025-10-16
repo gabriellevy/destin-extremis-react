@@ -184,6 +184,34 @@ export const evts_lycee_acheron: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
+        {
+            id: "evts_lycee_acheron7 domination des mort-vivants",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Dans le quartier de Noisiel vous devez vous habituer à vivre aux côté de nombreux mort-vivants ou quasi morts. "
+                    + "Beaucoup semblent n'avoir aucun sentiment ni aucune sensation. D'autres ont l'air tourmentés en permanence et vous regardent avec leur orbites vides. <br/>";
+
+                const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: -10});
+                texte += resTestVolonte.resume;
+                if (resTestVolonte.reussi) {
+                    texte += "Votre volonté solide vous permet de vous habituer étonamment vite et même de vaguement communiquer avec eux quand c'est possible. ";
+                    if (Math.random() <= 0.5) {
+                        texte += "Vous sentez vite à quel point vous êtes supérieur à ces quasi esclaves et mêmes aux autres étudiants qui ne surmontent pas leur peur. ";
+                        texte += ajouterViceVal(perso, Vice.orgueilleux, 1);
+                    }
+                    texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 2);
+                } else {
+                    texte += "Cette situation terrifiante vous affecte énormément. ";
+
+                    if (Math.random() <= 0.2) {
+                        texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
+                        texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                    }
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };
