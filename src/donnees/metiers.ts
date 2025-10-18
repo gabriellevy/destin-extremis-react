@@ -9,6 +9,7 @@ export enum metiersEnum {
     macon = "Maçon",
     pilleur_de_ruche = "Pilleur de ruches",
     ranconneur = "Rançonneur",
+    brute_de_lycee = "Brute de lycée", //  pas ne vraie carrière : plutôt une grosse occupation en plus du lycée
     serveur = "Serveur",
     novice_pretre = "Moine novice",
     moine = "Moine",
@@ -237,7 +238,16 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 3, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
-        vicesCompatibles: [Vice.colerique, Vice.cruel, Vice.trompeur],
+        vicesCompatibles: [Vice.colerique, Vice.cruel, Vice.trompeur, Vice.sociopathique],
+        vertusCompatibles: [],
+    },
+    [metiersEnum.brute_de_lycee] : {
+        nom: metiersEnum.brute_de_lycee,
+        intitule: () => metiersEnum.brute_de_lycee,
+        statut: {rang: 1, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 4, metalStatut: MetalStatut.bronze},
+        proba: 0.01,
+        vicesCompatibles: [Vice.colerique, Vice.cruel, Vice.sociopathique],
         vertusCompatibles: [],
     },
     [metiersEnum.novice_pretre] : {

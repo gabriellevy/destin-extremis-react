@@ -8,7 +8,7 @@ import {ajouterVertuVal, ajouterViceVal, getValeurVice, Vertu, Vice} from "../..
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
 import {augmenterCompetence} from "../../../../fonctions/perso/competences";
-import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 export const evts_lycee_acheron: GroupeEvts = {
     evts: [
@@ -91,7 +91,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                     texte += resTestIntim.resume;
                     if (resTestIntim.reussi) {
                         texte += "En plus de la torture physiques vous êtes très doués pour terrifier les condamnés. Vos professeurs et collègues sont très impressionnés. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.noisiel, 1, 1);
                     }
                     if (resTestCruel.critical && getValeurVice(perso, Vice.cruel) < 3) {
                         texte += "Vous y prenez de plus en plus goût. ";
@@ -171,7 +171,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                     texte += augmenterCompetence(perso, TypeCompetence.reflexes, -1);
                     texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
                     texte += augmenterCompetence(perso, TypeCompetence.intimidation, 1);
-                    texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 3);
+                    texte += modifierReputationDansQuartier(perso, Quartier.noisiel, 1, 3);
                 }
                 if (Math.random() <= 0.3) {
                     texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
@@ -200,7 +200,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                         texte += "Vous sentez vite à quel point vous êtes supérieur à ces quasi esclaves et mêmes aux autres étudiants qui ne surmontent pas leur peur. ";
                         texte += ajouterViceVal(perso, Vice.orgueilleux, 1);
                     }
-                    texte += majReputationDansQuartier(perso, Quartier.noisiel, 1, 2);
+                    texte += modifierReputationDansQuartier(perso, Quartier.noisiel, 1, 2);
                 } else {
                     texte += "Cette situation terrifiante vous affecte énormément. ";
 

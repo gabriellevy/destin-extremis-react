@@ -1,7 +1,7 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {Perso, Sexe} from "../../../types/perso/Perso";
 import {Quartier} from "../../geographie/quartiers";
-import {majReputationDansQuartier} from "../../../fonctions/perso/Reputation";
+import {modifierReputationDansQuartier} from "../../../fonctions/perso/Reputation";
 import {getPatronyme} from "../../../fonctions/noms";
 import {Coterie} from "../../../types/Coterie";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
@@ -51,7 +51,7 @@ export const evts_chatenay_malabry: GroupeEvts = {
                     }
                 }
 
-                majReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation, majReputation);
+                modifierReputationDansQuartier(perso, Quartier.chatenay_malabry, majReputation, majReputation);
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.chatenay_malabry,

@@ -11,7 +11,7 @@ import {
     Vertu,
     Vice
 } from "../../../../types/ViceVertu";
-import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
 
@@ -27,7 +27,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 if (resTest.reussi) {
                     texte += "Vous vous en accommodez cependant très vite. <br/>";
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
                     if (getValeurVice(perso, Vice.trompeur) < 2) {
                         if (Math.random() >= 0.9) {
                             texte += ajouterViceVal(perso, Vice.trompeur, 1);
@@ -70,7 +70,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 if (resTest.reussi) {
                     texte += "Vous impressionnez vos professeurs par votre habileté et votre précision. <br/>";
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
                 }
 
                 if (getValeurVertu(perso, Vertu.travailleur) < 2) {
@@ -110,7 +110,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 if (resTest.reussi) {
                     texte += "Votre intelligence impressionne vos professeurs.<br/>";
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.catacombes_de_paris, 1, 1);
                 }
                 return texte;
             },

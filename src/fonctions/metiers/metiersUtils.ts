@@ -29,11 +29,15 @@ export function aUneCarriere(perso: Perso): boolean {
  */
 export function aUneActiviteATempsPlein(perso: Perso): boolean {
     let trouve: boolean = aUneCarriere(perso)
-    if (perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined) {
+    if (estAuLycee(perso)) {
         // considéré comme travaillant tant qu'il n'a pas fini son lycée
         trouve = true;
     }
     return trouve;
+}
+
+export function estAuLycee(perso:Perso): boolean {
+    return perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined;
 }
 
 export function getCarriere(perso: Perso, metiersEnum: metiersEnum): Carriere|undefined {

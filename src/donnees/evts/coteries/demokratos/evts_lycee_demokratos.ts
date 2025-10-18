@@ -8,7 +8,7 @@ import {testComp} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {augmenterCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
 import {metiersEnum} from "../../../metiers";
-import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
@@ -43,7 +43,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                     texte += augmenterCompetenceMetier(perso, metiersEnum.journaliste, 1);
                     if (resTest.critical) {
                         texte += "Vous êtes très doué et vous faites remarquer.";
-                        texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                     }
                 } else {
                     texte += "Mais vous n'êtes pas très doué...";
@@ -66,12 +66,12 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 if (resTest.reussi) {
                     if (resTest.critical) {
                         texte += "Vous êtes redoutable dans ces exercices et vite connu dans tout le campus. ";
-                        texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                     }
                 } else {
                     if (resTest.critical) {
                         texte += "Vous êtes extrêmement mauvais au point que les gens viennent de loin pour se moquer de vous lors des exercices publics. ";
-                        texte += majReputationDansQuartier(perso, Quartier.vanves, -1,1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.vanves, -1,1);
                     }
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
@@ -95,11 +95,11 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 texte += resTestChar.resume;
                 if (resTestEloq.reussi && resTestTromp.reussi && resTestChar.reussi) {
                         texte += "Vos talents multiples vous font remarquer. ";
-                        texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 } else {
                     if (resTestEloq.critical && resTestTromp.critical && resTestChar.critical) {
                         texte += "Les gens viennent de loin pour rire de votre complète inaptitude à jouer. ";
-                        texte += majReputationDansQuartier(perso, Quartier.vanves, -1,1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.vanves, -1,1);
                     }
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
@@ -143,7 +143,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 texte += resTestIntuition.resume;
                 if (resTestEloquence.critical && resTestEloquence.reussi) {
                     texte += "Les professeurs vous font faire des récitations publiques de vos excellents discours. ";
-                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
                 if (resTestIntuition.critical && resTestIntuition.reussi) {
                     texte += "Vous vous découvrez un talent dans les discours poétiques plein d'images puissantes. ";
@@ -167,13 +167,13 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 texte += resTestBagarre.resume;
                 if (resTestF.critical && resTestF.reussi) {
                     texte += "Vous vous distinguez à la lutte. ";
-                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
                 const resTestM:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
                 texte += resTestM.resume;
                 if (resTestM.reussi) {
                     texte += "Vous excellez en gymnastique. ";
-                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
                 if (Math.random() >.9) {
                     texte += ajouterVertuVal(perso, Vertu.sociable, 1);
@@ -197,7 +197,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 texte += resTestIntelligence.resume;
                 if (resTestIntelligence.reussi && resTestEloq.reussi) {
                     texte += "À ce jeu vous impressionnez souvent les invités. ";
-                    texte += majReputationDansQuartier(perso, Quartier.vanves, 1,1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);

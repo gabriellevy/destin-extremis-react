@@ -22,7 +22,7 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.lumieres]: [metiersEnum.journaliste, metiersEnum.ecrivain],
     [Coterie.ogres]: [],
     [Coterie.orks]: [
-        metiersEnum.marchand_de_champignon, metiersEnum.mecanicien, metiersEnum.pamphletaire
+        metiersEnum.marchand_de_champignon, metiersEnum.mecanicien, metiersEnum.pamphletaire, metiersEnum.brute_de_lycee
     ],
     [Coterie.performeurs]: [],
     [Coterie.romains]: [],
@@ -43,7 +43,7 @@ export const metierDetestesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.acheron]: [],
     [Coterie.bastets]: [],
     [Coterie.cathares]: [
-        metiersEnum.pilleur_de_ruche, metiersEnum.ranconneur, metiersEnum.gladiateur,
+        metiersEnum.pilleur_de_ruche, metiersEnum.ranconneur, metiersEnum.brute_de_lycee, metiersEnum.gladiateur,
         metiersEnum.brasseur, metiersEnum.apprenti_brasseur,
         metiersEnum.boucher, metiersEnum.apprenti_boucher,
     ],

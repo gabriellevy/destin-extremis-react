@@ -3,7 +3,7 @@ import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVertu} from "../../../../fonctions/des";
-import {majReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {Coterie} from "../../../../types/Coterie";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
@@ -30,7 +30,7 @@ export const evts_lycee_orks: GroupeEvts = {
                     texte += "Vous êtes étonament doué et dominez votre adversaire. <br/>";
                     texte += "Vous vous en sortez avec quelques bleus et contusions. <br/>";
                     // se fait connaître dans le coin
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
+                    texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
                 } else {
                     const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
                     if (blessureSubie != null) {
@@ -55,16 +55,16 @@ export const evts_lycee_orks: GroupeEvts = {
                 if (resTest.reussi) {
                     if (resTest.critical) {
                         texte += "Vous avez un sacré talent pour cela. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
+                        texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 2, 2);
                         texte += ajouterMaitrise(perso, Maitrise.conduite_voiture);
 
                     } else {
                         texte += "Vous avez un bon talent pour cela et impressionnez les orks. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                     }
                 } else {
                     texte += "Vous êtes un piètre pilote et les orks se moquent de vous avec grand plaisir. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, -1, 2);
+                    texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, -1, 2);
                     if (resTest.critical) {
                         const blessureSubie = infligerBlessureAleatoire(perso, 0, 7);
                         if (blessureSubie) {
@@ -86,7 +86,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous avez un bon talent pour cela et impressionnez votre instructeur. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                     if (resTest.critical) {
                         texte += ajouterMaitrise(perso, Maitrise.pilotage_avion);
                     }
@@ -225,12 +225,12 @@ export const evts_lycee_orks: GroupeEvts = {
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous avez un certain talent. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                 } else {
                     texte += "(mal).";
                     if (resTest.critical) {
                         texte += "Si effroyablement mal que les orks viennent de loin pour rire de vous. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                     }
                 }
 
@@ -249,7 +249,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 texte += resTestB.resume;
                 if (resTestF.reussi && resTestB.reussi) {
                     texte += "Vous lui casse les dents puis vous réconciliez devant une bière en s'marrant. <br/>";
-                    texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                    texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                 } else {
                     if (resTestF.critical) {
                         const blessureSubie = infligerBlessureAleatoire(perso, 0, 4);
@@ -318,7 +318,7 @@ export const evts_lycee_orks: GroupeEvts = {
                     texte += resTestE.resume;
                     if (resTestE.reussi) {
                         texte += "Vous faites pleurer plusieurs gretchins. <br/>";
-                        texte += majReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
+                        texte += modifierReputationDansQuartier(perso, Quartier.genevilliers, 1, 1);
                     }
                 }
                 if (Math.random() <= 0.3) {

@@ -19,7 +19,7 @@ export function getNiveauReputationDansQuartier(perso:Perso, quartier:Quartier):
     return getReputationQuartier(perso, quartier)?.qualite ?? 0;
 }
 
-export function majReputationDansQuartier(perso:Perso, quartier:Quartier, modifQualite: number, modifAmplitude: number): string {
+export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier, modifQualite: number, modifAmplitude: number): string {
     let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
     let niveauFinal = modifAmplitude;
     if (repQuartier) {
