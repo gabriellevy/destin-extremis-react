@@ -1,28 +1,28 @@
 import {Coterie} from "../../types/Coterie";
-import {metiersEnum} from "../metiers";
+import {MetiersEnum} from "../metiers";
 
 /**
  * plus grande proba d'avoir ces métier si le perso est de cette coterie
  */
-export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
+export const metierFavorisesParCoterie: Record<Coterie, MetiersEnum[]> = {
     [Coterie.chaos]: [],
-    [Coterie.acheron]: [metiersEnum.informaticien, metiersEnum.magicien, metiersEnum.technomancien],
-    [Coterie.bastets]: [metiersEnum.non_travailleur],
-    [Coterie.cathares]: [metiersEnum.novice_pretre, metiersEnum.pretre, metiersEnum.moine],
+    [Coterie.acheron]: [MetiersEnum.informaticien, MetiersEnum.magicien, MetiersEnum.technomancien],
+    [Coterie.bastets]: [MetiersEnum.non_travailleur],
+    [Coterie.cathares]: [MetiersEnum.novice_pretre, MetiersEnum.pretre, MetiersEnum.moine],
     [Coterie.carthaginois]: [],
     [Coterie.conquistador]: [],
     [Coterie.culte_du_plaisir]:  [],
     [Coterie.esprit_de_la_nature]: [],
     [Coterie.celtes]: [],
-    [Coterie.demokratos]: [metiersEnum.edile, metiersEnum.journaliste],
-    [Coterie.elfes]: [metiersEnum.magicien],
+    [Coterie.demokratos]: [MetiersEnum.edile, MetiersEnum.journaliste],
+    [Coterie.elfes]: [MetiersEnum.magicien],
     [Coterie.esthetes]:  [],
     [Coterie.jacobins]: [],
     [Coterie.libertins]: [],
-    [Coterie.lumieres]: [metiersEnum.journaliste, metiersEnum.ecrivain],
+    [Coterie.lumieres]: [MetiersEnum.journaliste, MetiersEnum.ecrivain],
     [Coterie.ogres]: [],
     [Coterie.orks]: [
-        metiersEnum.marchand_de_champignon, metiersEnum.mecanicien, metiersEnum.pamphletaire, metiersEnum.brute_de_lycee
+        MetiersEnum.marchand_de_champignon, MetiersEnum.mecanicien, MetiersEnum.pamphletaire, MetiersEnum.brute_de_lycee
     ],
     [Coterie.performeurs]: [],
     [Coterie.romains]: [],
@@ -30,7 +30,7 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.schweizer]: [],
     [Coterie.skavens]: [],
     [Coterie.templiers]: [],
-    [Coterie.transhumanistes]: [metiersEnum.cyberneticien, metiersEnum.informaticien],
+    [Coterie.transhumanistes]: [MetiersEnum.cyberneticien, MetiersEnum.informaticien],
     [Coterie.tyranides]:  [],
     [Coterie.zaporogues]: []
 }
@@ -38,14 +38,14 @@ export const metierFavorisesParCoterie: Record<Coterie, metiersEnum[]> = {
 /**
  * Ces métiers ne peuvent pas être pris par un perso de la coterie correspondante
  */
-export const metierDetestesParCoterie: Record<Coterie, metiersEnum[]> = {
+export const metierDetestesParCoterie: Record<Coterie, MetiersEnum[]> = {
     [Coterie.chaos]: [],
     [Coterie.acheron]: [],
     [Coterie.bastets]: [],
     [Coterie.cathares]: [
-        metiersEnum.pilleur_de_ruche, metiersEnum.ranconneur, metiersEnum.brute_de_lycee, metiersEnum.gladiateur,
-        metiersEnum.brasseur, metiersEnum.apprenti_brasseur,
-        metiersEnum.boucher, metiersEnum.apprenti_boucher,
+        MetiersEnum.pilleur_de_ruche, MetiersEnum.ranconneur, MetiersEnum.brute_de_lycee, MetiersEnum.gladiateur,
+        MetiersEnum.brasseur, MetiersEnum.apprenti_brasseur,
+        MetiersEnum.boucher, MetiersEnum.apprenti_boucher,
     ],
     [Coterie.carthaginois]: [],
     [Coterie.conquistador]: [],
@@ -60,12 +60,12 @@ export const metierDetestesParCoterie: Record<Coterie, metiersEnum[]> = {
     [Coterie.lumieres]: [],
     [Coterie.ogres]: [],
     [Coterie.orks]: [],
-    [Coterie.performeurs]: [metiersEnum.non_travailleur],
+    [Coterie.performeurs]: [MetiersEnum.non_travailleur],
     [Coterie.romains]: [],
     [Coterie.saabi]: [],
     [Coterie.schweizer]: [],
     [Coterie.skavens]: [],
-    [Coterie.templiers]: [metiersEnum.ranconneur],
+    [Coterie.templiers]: [MetiersEnum.ranconneur],
     [Coterie.transhumanistes]: [],
     [Coterie.tyranides]:  [],
     [Coterie.zaporogues]: []

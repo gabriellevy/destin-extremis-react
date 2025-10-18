@@ -1,5 +1,5 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
@@ -27,7 +27,7 @@ export const evts_macon: GroupeEvts = {
                     texte += `Malheureusement vous vous révélez trop faible pour ce métier épuisant. `;
                 }
                 else {
-                    texte += commencerCarriere(perso, metiersEnum.macon, '');
+                    texte += commencerCarriere(perso, MetiersEnum.macon, '');
                     texte += `Solide comme vous êtes, vous êtes engagé. `;
                 }
                 return texte;
@@ -35,14 +35,14 @@ export const evts_macon: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.macon]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.macon]) >= 0
                 && getAge(perso) >= 14,
         },
         {
             id: "evts_macon2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.macon, bonusMalus: 20});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.macon, bonusMalus: 20});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un maçon efficace. `;
@@ -53,7 +53,7 @@ export const evts_macon: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.macon),
+                travailleEnCeMomentComme(perso, MetiersEnum.macon),
             repetable: true,
         },
     ],

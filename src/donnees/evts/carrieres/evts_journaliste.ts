@@ -12,7 +12,7 @@ import {
     getCompetenceMetier,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {journalAleatoire} from "../../carriere/journaliste/journal";
 import {modifierStatut} from "../../../fonctions/perso/statut";
 
@@ -28,7 +28,7 @@ export const evts_journaliste: GroupeEvts = {
                 texte += resTestInt.resume;
                 const titreJournal: string = journalAleatoire();
                 if (resTestRagot.reussi && resTestInt.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.journaliste, titreJournal);
+                    texte += commencerCarriere(perso, MetiersEnum.journaliste, titreJournal);
                     texte += "Votre talent à dénicher les bonnes histoires et à la raconter convainquent le rédacteur en chef du "
                         + titreJournal +  " de vous engager. ";
                 } else {
@@ -39,27 +39,27 @@ export const evts_journaliste: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.journaliste]) >= 0,
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= 0,
             repetable: true,
         },
         {
             id: "evts_journaliste2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resultatTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.journaliste, bonusMalus: 20});
+                const resultatTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.journaliste, bonusMalus: 20});
                 texte += resultatTestMetier.resume;
                 if (resultatTestMetier.reussi) {
                     texte += `Vous êtes un journaliste efficace et respecté. `;
                 } else {
                     texte += `Vous avez beaucoup de mal à accomplir votre métier de journaliste. `;
                     if (resultatTestMetier.critical) {
-                        texte += arreterCarriere(perso, metiersEnum.journaliste, true);
+                        texte += arreterCarriere(perso, MetiersEnum.journaliste, true);
                     }
                 }
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.journaliste),
+                travailleEnCeMomentComme(perso, MetiersEnum.journaliste),
             repetable: true,
         },
         {
@@ -70,8 +70,8 @@ export const evts_journaliste: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                ((travailleEnCeMomentComme(perso, metiersEnum.journaliste) && getCompetenceMetier(perso, metiersEnum.journaliste) > 40)
-                || (travailleEnCeMomentComme(perso, metiersEnum.ecrivain) && getCompetenceMetier(perso, metiersEnum.ecrivain) > 40))
+                ((travailleEnCeMomentComme(perso, MetiersEnum.journaliste) && getCompetenceMetier(perso, MetiersEnum.journaliste) > 40)
+                || (travailleEnCeMomentComme(perso, MetiersEnum.ecrivain) && getCompetenceMetier(perso, MetiersEnum.ecrivain) > 40))
                 && perso.reputation.amplitude > 10,
         },
     ],

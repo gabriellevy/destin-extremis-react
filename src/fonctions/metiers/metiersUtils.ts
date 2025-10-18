@@ -2,7 +2,7 @@ import {Carriere, Metier} from "../../types/metiers/Metier";
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
-import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+import {MetiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../random";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
@@ -19,7 +19,7 @@ import {possede} from "../possessions/possessions";
 export function aUneCarriere(perso: Perso): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach((carriere: Carriere) => {
-        if (carriere.actif && carriere.metier !== metiersEnum.non_travailleur) trouve = true;
+        if (carriere.actif && carriere.metier !== MetiersEnum.non_travailleur) trouve = true;
     });
     return trouve;
 }
@@ -40,7 +40,7 @@ export function estAuLycee(perso:Perso): boolean {
     return perso.bilanLycee.phaseActuelle !== PhaseLycee.finie && perso.bilanLycee.coterieActuelle !== undefined;
 }
 
-export function getCarriere(perso: Perso, metiersEnum: metiersEnum): Carriere|undefined {
+export function getCarriere(perso: Perso, metiersEnum: MetiersEnum): Carriere|undefined {
     const carrieres: Carriere[] = Array.from(perso.carrieres.values());
     for(let i = 0; i < carrieres.length; i++) {
         const carriere = carrieres[i];
@@ -56,7 +56,7 @@ export function getCarriereActive(perso: Perso): Carriere {
         if (carriere.actif) return carriere;
     }
 
-    let carriereChomeur: Carriere|undefined = getCarriere(perso, metiersEnum.non_travailleur);
+    let carriereChomeur: Carriere|undefined = getCarriere(perso, MetiersEnum.non_travailleur);
     if (carriereChomeur) {
         carriereChomeur.actif = true;
         return carriereChomeur;
@@ -64,7 +64,7 @@ export function getCarriereActive(perso: Perso): Carriere {
 
     // pas de carrière active : lui ajouter une carrière de chômeur ou réactiver une ancienne :
     const chomeur: Carriere = {
-        metier: metiersEnum.non_travailleur,
+        metier: MetiersEnum.non_travailleur,
         intitule: "chômeur",
         duree: 0,
         competence: 25,
@@ -74,7 +74,7 @@ export function getCarriereActive(perso: Perso): Carriere {
     perso.carrieres.push(chomeur);
     return chomeur;
 }
-export function suitUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): boolean {
+export function suitUneCarriereDe(perso: Perso, metiersEnum: MetiersEnum): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach(carriere => {
         if (carriere.metier === metiersEnum && carriere.actif) {
@@ -87,10 +87,10 @@ export function suitUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): boole
 /**
  * renvoie true si le perso travaille actuellement sur cette carrière, donc si il la suit mais aussi qu'il n'est pas en vacances, malade, en voyage...
  */
-export function travailleEnCeMomentComme(perso: Perso, metier: metiersEnum): boolean {
+export function travailleEnCeMomentComme(perso: Perso, metier: MetiersEnum): boolean {
     return suitUneCarriereDe(perso, metier) && !perso.lieu.enVoyage;
 }
-export function neSuitPasUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): boolean {
+export function neSuitPasUneCarriereDe(perso: Perso, metiersEnum: MetiersEnum): boolean {
     let trouve: boolean = false;
     Array.from(perso.carrieres.values()).forEach(carriere => {
         if (carriere.metier === metiersEnum && carriere.actif) {
@@ -106,12 +106,12 @@ export function neSuitPasUneCarriereDe(perso: Perso, metiersEnum: metiersEnum): 
  * @param metierSuivi si undefined signifie n'importe quelle carrière
  * @param dureeEnAnnees
  */
-export function suitUneCarriereDepuis(perso: Perso, metierSuivi: metiersEnum|undefined, dureeEnAnnees: number): boolean {
+export function suitUneCarriereDepuis(perso: Perso, metierSuivi: MetiersEnum|undefined, dureeEnAnnees: number): boolean {
     let trouve: boolean = false;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
             if ((metierSuivi === undefined || carriere.metier === metierSuivi)
-                && carriere.metier !== metiersEnum.non_travailleur
+                && carriere.metier !== MetiersEnum.non_travailleur
                 && carriere.actif && carriere.duree >= anneesToJours(dureeEnAnnees)) {
                 trouve = true;
             }
@@ -120,7 +120,7 @@ export function suitUneCarriereDepuis(perso: Perso, metierSuivi: metiersEnum|und
     return trouve;
 }
 
-export function getCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): number {
+export function getCompetenceMetier(perso: Perso, metiersEnum: MetiersEnum): number {
     let competence: number = 0;
     if (perso.carrieres) {
         Array.from(perso.carrieres.values()).forEach(carriere => {
@@ -131,7 +131,7 @@ export function getCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): num
     }
     return competence;
 }
-export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiersEnum): string {
+export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: MetiersEnum): string {
     const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere !== undefined) {
         const nbTests: number = carriere.nbDeTestsFaits + 1;
@@ -144,7 +144,7 @@ export function augmenterNbDeTestsFaitsMetier(perso: Perso, metiersEnum: metiers
     return "";
 }
 
-export function augmenterCompetenceMetier(perso: Perso, metiersEnum: metiersEnum, val: number): string {
+export function augmenterCompetenceMetier(perso: Perso, metiersEnum: MetiersEnum, val: number): string {
     const carriere: Carriere | undefined = perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
     if (carriere !== undefined) {
         carriere.competence += val;
@@ -158,8 +158,8 @@ export function augmenterCompetenceMetier(perso: Perso, metiersEnum: metiersEnum
 /**
  * métier aléatoire en fonction des caracs du perso et en particulier de sa coterie
  */
-export function metierAleatoire(perso: PersoCommon): metiersEnum {
-    const probasMetiers = new Map<metiersEnum, number>();
+export function metierAleatoire(perso: PersoCommon): MetiersEnum {
+    const probasMetiers = new Map<MetiersEnum, number>();
 
     Object.entries(metiersObjs).forEach(([_key, metier]) => {
         // Ajouter une entrée dans la Map avec nom comme clé et proba comme valeur
@@ -168,23 +168,23 @@ export function metierAleatoire(perso: PersoCommon): metiersEnum {
 
     // moduler selon lieu
     if (auBordDuneRuche(perso)) {
-        const proba = (probasMetiers.get(metiersEnum.pilleur_de_ruche) ?? 0) + 0.9;
-        probasMetiers.set(metiersEnum.pilleur_de_ruche, proba);
+        const proba = (probasMetiers.get(MetiersEnum.pilleur_de_ruche) ?? 0) + 0.9;
+        probasMetiers.set(MetiersEnum.pilleur_de_ruche, proba);
     }
     if (auBordDuneZone(perso)) {
-        const proba = (probasMetiers.get(metiersEnum.stalker) ?? 0) + 0.9;
-        probasMetiers.set(metiersEnum.stalker, proba);
+        const proba = (probasMetiers.get(MetiersEnum.stalker) ?? 0) + 0.9;
+        probasMetiers.set(MetiersEnum.stalker, proba);
     }
     
     // ------- moduler selon coterie
     const cot: Coterie|undefined = perso.coterie;
     if (cot) {
         // -- virer métiers interdits
-        metierDetestesParCoterie[cot].forEach((metierDeteste:metiersEnum) => {
+        metierDetestesParCoterie[cot].forEach((metierDeteste:MetiersEnum) => {
             probasMetiers.delete(metierDeteste);
         })
         // -- métiers plus favorisésS
-        metierFavorisesParCoterie[cot].forEach((metier:metiersEnum) => {
+        metierFavorisesParCoterie[cot].forEach((metier:MetiersEnum) => {
             const proba = probasMetiers.get(metier);
             if (proba) {
                 probasMetiers.set(metier, proba * 3);
@@ -204,15 +204,15 @@ export function metierAleatoire(perso: PersoCommon): metiersEnum {
         }
     }
 
-    return getRandomEnumValue(metiersEnum);
+    return getRandomEnumValue(MetiersEnum);
 }
 
 export function commencerCarriereAleatoire(perso: Perso): string {
-    let metier: metiersEnum = metierAleatoire(perso);
+    let metier: MetiersEnum = metierAleatoire(perso);
     return commencerCarriere(perso, metier, "");
 }
 
-export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupeLieu: string): string {
+export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupeLieu: string): string {
     if (getCarriereActive(perso).metier === metiersEnum) {
         console.error("Commence une carrière qu'il a déjà !! : ", metiersEnum);
     }
@@ -241,7 +241,9 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
         });
     }
     let texte = "Vous êtes maintenant " + metiersEnum.toString() + ".";
-    if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)) {
+    if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax) &&
+        // on n peut pas toujours négocier son salaire d'entrée : !
+        metiersEnum !== MetiersEnum.brute_de_lycee) {
         // tentative de négociation
         const resultatTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
         texte += resultatTestMarch.resume + "<br/>";
@@ -257,7 +259,7 @@ export function commencerCarriere(perso: Perso, metiersEnum: metiersEnum, groupe
     return texte;
 }
 
-export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: boolean): string {
+export function arreterCarriere(perso: Perso, metiersEnum: MetiersEnum, vire: boolean): string {
     // passer en inactif
     let texte: string = "";
     const carriere =  perso.carrieres.find((carriere: Carriere) => carriere.metier === metiersEnum);
@@ -287,7 +289,7 @@ export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: bo
 /**
  * devient meilleur à un métier mais sans commencer la carrière pour autant
  */
-export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum): string {
+export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: MetiersEnum): string {
     // récupérer valeurs de ce métier si déjà pratiqué par le passé
     let nivCompetence: number = 25; // niveau débutant
     let nbDeTestsFaits: number = 0;
@@ -318,7 +320,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: metiersEnum)
  */
 export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): number {
     if (!metier) {
-        metier = metiersObjs[metiersEnum.non_travailleur];
+        metier = metiersObjs[MetiersEnum.non_travailleur];
     }
     let compatibilite: number = 0;
     // selon vice & vertus

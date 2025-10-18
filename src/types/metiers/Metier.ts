@@ -2,12 +2,12 @@ import {Statut} from "../statut_social/Statut";
 import {Perso} from "../perso/Perso";
 import {titreGuildeEnum} from "./Guilde";
 import {Quartier} from "../../donnees/geographie/quartiers";
-import {metiersEnum} from "../../donnees/metiers";
+import {MetiersEnum} from "../../donnees/metiers";
 import {Vertu, Vice} from "../ViceVertu";
 
 // données du métier en général, indépendamment du personnage
 export type Metier = {
-    nom: metiersEnum,
+    nom: MetiersEnum,
     statut: Statut,
     statutMax: Statut,
     intitule: (perso: Perso,carriere: Carriere) => string,
@@ -21,11 +21,11 @@ export type Metier = {
     vicesCompatibles: Vice[],
 }
 
-export type MetierObj = Record<metiersEnum, Metier>;
+export type MetierObj = Record<MetiersEnum, Metier>;
 
 // carrière est ce que le perso a effectué dans un métier donné
 export type Carriere = {
-    metier: metiersEnum,
+    metier: MetiersEnum,
     intitule: string,
     groupeLieu?: string, // ou ?
     employeur?: string, // quel groupe ou employeur ?
@@ -36,7 +36,7 @@ export type Carriere = {
     guilde?: titreGuildeEnum,
 }
 
-export function metierEnCarriere(metiersEnum:metiersEnum): Carriere {
+export function metierEnCarriere(metiersEnum:MetiersEnum): Carriere {
     return {
         metier: metiersEnum,
         intitule: metiersEnum.toString(),
@@ -48,8 +48,8 @@ export function metierEnCarriere(metiersEnum:metiersEnum): Carriere {
 }
 
 export const serveurDebutant: Carriere = {
-    metier: metiersEnum.serveur,
-    intitule: metiersEnum.toString(),
+    metier: MetiersEnum.serveur,
+    intitule: MetiersEnum.toString(),
     groupeLieu: "Auberge du pont",
     duree: 0,
     competence: 25,
@@ -58,8 +58,8 @@ export const serveurDebutant: Carriere = {
 };
 
 export const metierTest: Carriere = {
-    metier: metiersEnum.edile,
-    intitule: metiersEnum.toString(),
+    metier: MetiersEnum.edile,
+    intitule: MetiersEnum.toString(),
     groupeLieu: Quartier.la_defense,
     duree: 0,
     competence: 25,

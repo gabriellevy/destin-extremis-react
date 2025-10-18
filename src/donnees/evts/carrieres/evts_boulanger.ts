@@ -1,5 +1,5 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
@@ -14,11 +14,11 @@ import {
 
 const passageDiplomeBoulanger: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boulanger depuis longtemps. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_boulanger, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_boulanger, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir boulanger à part entière.";
-        texte += commencerCarriere(perso, metiersEnum.boulanger, '');
+        texte += commencerCarriere(perso, MetiersEnum.boulanger, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -41,7 +41,7 @@ export const evts_boulanger: GroupeEvts = {
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
                 texte += resTestDex.resume;
                 if (resTestDex.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.apprenti_boulanger, '');
+                    texte += commencerCarriere(perso, MetiersEnum.apprenti_boulanger, '');
                     texte += `Votre motivation et votre dextérité impressionnent le boulanger qui vous engage comme apprenti à l'essai. `;
                     perso.evtsProgrammes.push({
                         date: (persoFutur:Perso) => perso.date + anneesToJours(3) === persoFutur.date,
@@ -58,14 +58,14 @@ export const evts_boulanger: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Bruno_B%C3%A4cker.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_boulanger]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_boulanger]) >= 0
                 && getAge(perso) >= 14,
         },
         {
             id: "evts_boulanger2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.boulanger, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.boulanger, bonusMalus: 0});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Votre pain est apprécié de tous. `;
@@ -76,7 +76,7 @@ export const evts_boulanger: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Bruno_B%C3%A4cker.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.boulanger),
+                travailleEnCeMomentComme(perso, MetiersEnum.boulanger),
             repetable: true,
         },
     ],

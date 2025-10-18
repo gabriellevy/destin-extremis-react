@@ -10,15 +10,15 @@ import {
     compatibiliteCarriere,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 
 const passageDiplomeBoucher: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boucher depuis longtemps. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_boucher, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_boucher, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir boucher à part entière.";
-        texte += commencerCarriere(perso, metiersEnum.boucher, '');
+        texte += commencerCarriere(perso, MetiersEnum.boucher, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -41,7 +41,7 @@ export const evts_boucher: GroupeEvts = {
                 const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 0});
                 texte += resTestDex.resume;
                 if (resTestDex.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.apprenti_boucher, '');
+                    texte += commencerCarriere(perso, MetiersEnum.apprenti_boucher, '');
                     texte += `Votre motivation et votre force impressionnent le boucher qui vous engage comme apprenti à l'essai. `;
                     perso.evtsProgrammes.push({
                         date: (persoFutur:Perso) => perso.date + anneesToJours(3) === persoFutur.date,
@@ -58,14 +58,14 @@ export const evts_boucher: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Gerd_Fleisher.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_boucher]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_boucher]) >= 0
                 && getAge(perso) >= 14,
         },
         {
             id: "evts_boucher2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.boucher, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.boucher, bonusMalus: 0});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Votre viande est appréciée de tous. `;
@@ -76,7 +76,7 @@ export const evts_boucher: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Gerd_Fleisher.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.boucher),
+                travailleEnCeMomentComme(perso, MetiersEnum.boucher),
             repetable: true,
         },
     ],

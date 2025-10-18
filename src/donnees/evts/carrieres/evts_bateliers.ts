@@ -12,7 +12,7 @@ import {
     compatibiliteCarriere,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 
 export const evts_batelier: GroupeEvts = {
     evts: [
@@ -25,7 +25,7 @@ export const evts_batelier: GroupeEvts = {
                 texte += resTestFor.resume;
                 texte += resTestEnd.resume;
                 if (resTestFor.reussi && resTestEnd.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.batelier, '');
+                    texte += commencerCarriere(perso, MetiersEnum.batelier, '');
                     texte += `Coriace comme vous l'êtes, vous impressionnez le capitaine qui vous engage à l'essai. `;
                 } else {
                     texte += `Malheureusement c'est un métier qui demande une très robuste constitution et vous êtes jugé trop frêle par le capitaine. `;
@@ -35,7 +35,7 @@ export const evts_batelier: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.batelier]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.batelier]) >= 0
                 && auBordDeLaRiviere(perso),
         },
         {
@@ -54,7 +54,7 @@ export const evts_batelier: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.batelier),
+                travailleEnCeMomentComme(perso, MetiersEnum.batelier),
             repetable: true,
         },
     ],

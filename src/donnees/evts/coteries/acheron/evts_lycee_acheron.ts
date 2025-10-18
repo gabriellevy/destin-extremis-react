@@ -6,7 +6,7 @@ import {testComp, testMetier, testVice} from "../../../../fonctions/des";
 import {Coterie} from "../../../../types/Coterie";
 import {ajouterVertuVal, ajouterViceVal, getValeurVice, Vertu, Vice} from "../../../../types/ViceVertu";
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../../metiers";
+import {MetiersEnum} from "../../../metiers";
 import {augmenterCompetence} from "../../../../fonctions/perso/competences";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
@@ -17,25 +17,25 @@ export const evts_lycee_acheron: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Pour être initié à la technomancie et chercher l'immortalité par la digitalisation dans le réseau, il faut déjà maîtriser les bases de l'informatique.";
 
-                const resTestInfo:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
+                const resTestInfo:ResultatTest = testMetier(perso, {metier: MetiersEnum.informaticien, bonusMalus: 0});
                 texte += resTestInfo.resume;
                 if (!resTestInfo.reussi) {
                     texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en informatique au sens large. <br/>";
                     const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
                     texte += resTest.resume;
                     if (resTest.reussi) {
-                        texte += plusUnEnCompetenceMetier(perso, metiersEnum.informaticien);
+                        texte += plusUnEnCompetenceMetier(perso, MetiersEnum.informaticien);
                     }
                 } else {
                     texte += "Vous avez déjà un bon niveau. Mais il faut aussi maîtriser la magie, car la technomancie est la combinaison de l'informatique et de la magie. <br/>";
-                    const resTestInfo:ResultatTest = testMetier(perso, {metier: metiersEnum.informaticien, bonusMalus: 0});
+                    const resTestInfo:ResultatTest = testMetier(perso, {metier: MetiersEnum.informaticien, bonusMalus: 0});
                     texte += resTestInfo.resume;
                     if (!resTestInfo.reussi) {
                         texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en magie nécromantique théoriqe. <br/>";
                         const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
                         texte += resTest.resume;
                         if (resTest.reussi) {
-                            texte += plusUnEnCompetenceMetier(perso, metiersEnum.magicien);
+                            texte += plusUnEnCompetenceMetier(perso, MetiersEnum.magicien);
                         }
                     } else {
                         // à la fois informaticien et magicien qualifié :
@@ -43,7 +43,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                         texte += resTest.resume;
                         if (resTest.reussi) {
                             texte += "Vos nombreuses compétences ainsi que votre intelligence exceptinnelles vous permettent de saisir les bases de la technomancie. ";
-                            texte += plusUnEnCompetenceMetier(perso, metiersEnum.technomancien);
+                            texte += plusUnEnCompetenceMetier(perso, MetiersEnum.technomancien);
                         } else {
                             texte += "Vous avez beau avoir toutes ls bases l'extrême complexité de la technomancie vous échappe. ";
                         }
@@ -64,7 +64,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 texte += resTestInt.resume;
                 texte += resTestIntuition.resume;
                 if (resTestInt.reussi && resTestIntuition.reussi) {
-                    plusUnEnCompetenceMetier(perso, metiersEnum.magicien)
+                    plusUnEnCompetenceMetier(perso, MetiersEnum.magicien)
                     texte += "Vous parvenez à retenir les bases de la sorcellerie et à jeter instincivement de manière peu fiable quelques petits sorts. <br/>";
                 } else {
                     texte += "Vous ne parvenez pas à lancer le moindre sort. <br/>";

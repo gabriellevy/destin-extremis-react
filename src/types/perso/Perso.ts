@@ -8,7 +8,7 @@ import {ViceVertu} from "../ViceVertu";
 import {BilanLycee} from "../lycee/StadeUniversite";
 import {Competence} from "./comps/Comps";
 import {PNJ} from "./PNJ";
-import {metiersEnum} from "../../donnees/metiers";
+import {MetiersEnum} from "../../donnees/metiers";
 import {PbDeSante} from "../sante/pbDeSante";
 import {Bionique} from "../sante/Bionique";
 import {Mode, PhaseDExecution} from "../Mode";
@@ -69,7 +69,7 @@ export type PersoCommon = {
  * puis elles sont inutiles
  */
 export interface PersoForm extends PersoCommon {
-    metier?: metiersEnum,
+    metier?: MetiersEnum,
     anneeDeDepart?: number,
     age: number,
 }

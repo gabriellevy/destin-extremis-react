@@ -12,7 +12,7 @@ import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {appelLeChat, NiveauInfosPerso} from "../../../../fonctions/le_chat";
 import {plusUnEnCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../../metiers";
+import {MetiersEnum} from "../../../metiers";
 import {poserBioniqueAleatoire} from "../../../../fonctions/sante/bionique";
 import {Bionique} from "../../../../types/sante/Bionique";
 import { augmenterCompetence } from "../../../../fonctions/perso/competences";
@@ -156,7 +156,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.mecanicien)
+                    texte += plusUnEnCompetenceMetier(perso, MetiersEnum.mecanicien)
                     texte += "Vous parvenez à retenir les bases du métier. <br/>";
                 } else {
                     texte += "Mais vous n'y comprenez pas grand chose. <br/>";
@@ -175,8 +175,8 @@ export const evts_lycee_orks: GroupeEvts = {
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.medecin)
-                    texte += plusUnEnCompetenceMetier(perso, metiersEnum.cyberneticien)
+                    texte += plusUnEnCompetenceMetier(perso, MetiersEnum.medecin)
+                    texte += plusUnEnCompetenceMetier(perso, MetiersEnum.cyberneticien)
                     texte += "Vous parvenez à retenir les bases du métier. <br/>";
                 } else {
                     texte += "Mais vous n'y comprenez pas grand chose. <br/>";

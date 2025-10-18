@@ -10,7 +10,7 @@ import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
 import {reputationVide} from "../../fonctions/perso/Reputation";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import {getCoterieAleatoireSauf} from "../../fonctions/generation";
-import {metiersEnum} from "../metiers";
+import {MetiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
 import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, VITESSE_EXECUTION} from "../ReglagesJouabilite";
@@ -48,7 +48,7 @@ export function enfant(empty: boolean): PersoForm {
         drogues: [],
         nbJoursDHopital: 0,
         debogue: false,
-        metier: metiersEnum.non_travailleur,
+        metier: MetiersEnum.non_travailleur,
         mode: Mode.test,
         phaseDExecution: PhaseDExecution.creation,
         pointDestin: NB_POINTS_DESTIN_DEPART,

@@ -7,7 +7,7 @@ import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {aUneActiviteATempsPlein, aUneCarriere, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {getAge} from "../../../types/Date";
 import {auBordDuneZone} from "../../../types/lieux/Lieu";
-import {metiersEnum} from "../../metiers";
+import {MetiersEnum} from "../../metiers";
 
 export const evts_montbrison: GroupeEvts = {
     evts: [
@@ -26,7 +26,7 @@ export const evts_montbrison: GroupeEvts = {
                     + "Vous vous perdez rapidement et votre coéquipier est obligé de vous raccompagner. "
                     + "Il vous dit clairement qu'il est hors de question de vous prendre comme coéquipier pour une autre mission. Vous n'avez tout simplement pas les capacités. ";
                 } else {
-                    texte += commencerCarriere(perso, metiersEnum.stalker, "Zone de " + perso.lieu.quartier);
+                    texte += commencerCarriere(perso, MetiersEnum.stalker, "Zone de " + perso.lieu.quartier);
                     texte += `Dans votre expédition d'entrainement aux abords de la Zone vous vous révélez extrêmement coriace et débrouillard. Un stalker né. `;
                 }
                 return texte;

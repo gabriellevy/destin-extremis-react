@@ -8,7 +8,7 @@ import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVice} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {aUneActiviteATempsPlein, aUneCarriere, commencerCarriere} from "../../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../../metiers";
+import {MetiersEnum} from "../../../metiers";
 import {ajouterVertuVal, ajouterViceVal, Vertu, Vice} from "../../../../types/ViceVertu";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 import {getValeurCompetence} from "../../../../fonctions/perso/competences";
@@ -42,7 +42,7 @@ export const evts_orks: GroupeEvts = {
                 const resTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
                 texte += resTestMarch.resume;
                 if (resTestMarch.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.marchand_de_champignon, '');
+                    texte += commencerCarriere(perso, MetiersEnum.marchand_de_champignon, '');
                 } else {
                     texte += `Malheureusement vous êtes un trop mauvais marchand, vous devenez vite abandonner. `;
                 }

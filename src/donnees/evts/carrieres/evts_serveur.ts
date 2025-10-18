@@ -1,5 +1,5 @@
 import {NiveauIA, Perso} from "../../../types/perso/Perso";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
@@ -32,7 +32,7 @@ export const evts_serveur: GroupeEvts = {
                     texte += `Malheureusement votre manque de tact et votre physique peu facile rebute la patronne qui vous conseille de vous lancer dans autre chose. `;
                 }
                 else {
-                    texte += commencerCarriere(perso, metiersEnum.serveur, taverne);
+                    texte += commencerCarriere(perso, MetiersEnum.serveur, taverne);
                     texte += `La patronne n'est pas très exigeante à l'embauche mais il va falloir lui prouver votre motivation. `;
                 }
                 return texte;
@@ -40,7 +40,7 @@ export const evts_serveur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.serveur]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.serveur]) >= 0
                 && getAge(perso) >= 14, // TODO : tester que dans une ville ?
         },
         {
@@ -48,14 +48,14 @@ export const evts_serveur: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 let texteTests: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.serveur, bonusMalus: 20});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.serveur, bonusMalus: 20});
                 texteTests += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un serveur efficace et apprécié. `;
                 } else {
                     if (resTestMetier.critical) {
                         texte += `Vous enchainez gaffe sur gaffe et finissez par être viré de la taverne. `;
-                        texte += arreterCarriere(perso, metiersEnum.serveur, true);
+                        texte += arreterCarriere(perso, MetiersEnum.serveur, true);
                     } else {
                         texte += `Vous avez beaucoup de mal à tenir le rythme épuisant de votre métier de serveur. `;
                     }
@@ -67,7 +67,7 @@ export const evts_serveur: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.serveur),
+                travailleEnCeMomentComme(perso, MetiersEnum.serveur),
             repetable: true,
         },
     ],

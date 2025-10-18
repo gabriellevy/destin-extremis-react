@@ -4,7 +4,7 @@ import {Carriere} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {JSX, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {metiersEnum, metiersObjs} from "../../donnees/metiers";
+import {MetiersEnum, metiersObjs} from "../../donnees/metiers";
 import {Perso} from "../../types/perso/Perso";
 import {etudie} from "../../fonctions/coteries/etudes";
 
@@ -39,7 +39,7 @@ const DonneesPerso: React.FC = (): JSX.Element => {
             `(${joursToAnnees(carriere.duree)} années)` : `(${carriere.duree} jours)`;
 
         // TODO : afficher niveau de compétence dans ce métier
-        if (carriere.metier === metiersEnum.non_travailleur && etudie(perso)) {
+        if (carriere.metier === MetiersEnum.non_travailleur && etudie(perso)) {
             return ;
         }
 

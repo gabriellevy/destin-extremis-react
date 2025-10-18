@@ -7,7 +7,7 @@ import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {augmenterCompetenceMetier} from "../../../../fonctions/metiers/metiersUtils";
-import {metiersEnum} from "../../../metiers";
+import {MetiersEnum} from "../../../metiers";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
@@ -40,7 +40,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 0});
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += augmenterCompetenceMetier(perso, metiersEnum.journaliste, 1);
+                    texte += augmenterCompetenceMetier(perso, MetiersEnum.journaliste, 1);
                     if (resTest.critical) {
                         texte += "Vous êtes très doué et vous faites remarquer.";
                         texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);

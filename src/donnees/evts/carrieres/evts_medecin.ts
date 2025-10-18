@@ -10,15 +10,15 @@ import {
     compatibiliteCarriere,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 
 const passageDiplomeMedecin: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes étudiant en médecine depuis des années. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_chirurgien, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_chirurgien, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Il est temps de passer votre diplôme. Vous allez pouvoir devenir un médecin à part entière.";
-        texte += commencerCarriere(perso, metiersEnum.medecin, '');
+        texte += commencerCarriere(perso, MetiersEnum.medecin, '');
     } else {
         texte += "Malheureusement vous échouez. Vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -53,7 +53,7 @@ export const evts_medecin: GroupeEvts = {
                 } else {
                     texte += `C'est formidable : le médecin vous juge apte à devenir son apprenti ! "
                     + "L'apprentissage est long et difficile  et durera des années mais cela en vaut la chandelle. `;
-                    texte += commencerCarriere(perso, metiersEnum.apprenti_chirurgien, '');
+                    texte += commencerCarriere(perso, MetiersEnum.apprenti_chirurgien, '');
                     perso.evtsProgrammes.push({
                         date: (persoFutur:Perso) => perso.date + anneesToJours(5) === persoFutur.date,
                         evt: {
@@ -67,14 +67,14 @@ export const evts_medecin: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_chirurgien]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_chirurgien]) >= 0
                 && getAge(perso) >= 14,
         },
         {
             id: "evts_médecin2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.medecin, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.medecin, bonusMalus: 0});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un médecin efficace et respecté. `;
@@ -85,7 +85,7 @@ export const evts_medecin: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.chirurgien),
+                travailleEnCeMomentComme(perso, MetiersEnum.chirurgien),
             repetable: true,
         },
     ],

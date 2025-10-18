@@ -12,7 +12,7 @@ import {
 } from "../../../fonctions/metiers/metiersUtils";
 import {getAge} from "../../../types/Date";
 import {auBordDuneRuche} from "../../../types/lieux/Lieu";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 
 export const evts_pilleur_de_ruches: GroupeEvts = {
     evts: [
@@ -32,7 +32,7 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
                         + "Vous vous perdez rapidement et votre coéquipier est obligé de vous raccompagner. "
                         + "Il vous dit clairement qu'il est hors de question de vous prendre comme coéquipier pour une autre mission. Vous n'avez tout simplement pas les capacités. ";
                 } else {
-                    texte += commencerCarriere(perso, metiersEnum.pilleur_de_ruche, "Ruche de " + perso.lieu.quartier);
+                    texte += commencerCarriere(perso, MetiersEnum.pilleur_de_ruche, "Ruche de " + perso.lieu.quartier);
                     texte += `Dès votre première expédition dans les sous-niveaux des souterrains de la ruche "
                     + " vous vous révélez extrêmement coriace et débrouillard. Vous allez pouvoir devenir pillard à plein temps. `;
                 }
@@ -40,7 +40,7 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.pilleur_de_ruche]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.pilleur_de_ruche]) >= 0
                 && (getValeurVice(perso, Vice.aventureux) >= 1
                 || getValeurVice(perso, Vice.cupide) >= 1 && getValeurVice(perso, Vice.aventureux) >= 0)
                 && getAge(perso) >= 16

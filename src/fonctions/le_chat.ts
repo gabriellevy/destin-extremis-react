@@ -3,7 +3,7 @@ import {ChatCompletionResponse} from "@mistralai/mistralai/models/components";
 import { Perso } from '../types/perso/Perso';
 import {descriptionQuartier} from "../donnees/geographie/quartiers";
 import { getCarriereActive } from './metiers/metiersUtils';
-import {metiersEnum} from "../donnees/metiers";
+import {MetiersEnum} from "../donnees/metiers";
 
 export const apiKey: string = "CJfRR1Dc8PSxmeF5oDtYt9iVDfrBlJrk";
 
@@ -42,7 +42,7 @@ export async function appelLeChat(perso: Perso,
     if (niveauInfosPerso >= NiveauInfosPerso.plus_quartier_de_vie && perso.lieu.quartier != null) {
         finalPrompt += "La scène se passe dans le quartier de " + perso.lieu.quartier + " décrit ainsi : " + descriptionQuartier(perso.lieu.quartier) + ".";
     }
-    if (niveauInfosPerso >= NiveauInfosPerso.plus_metier && getCarriereActive(perso).metier !== metiersEnum.non_travailleur) {
+    if (niveauInfosPerso >= NiveauInfosPerso.plus_metier && getCarriereActive(perso).metier !== MetiersEnum.non_travailleur) {
         finalPrompt += "La scène concerne le métier du personnage principal qui est " + getCarriereActive(perso) + ".";
     }
     finalPrompt += " Écrivez cela en 100 mots maximum."

@@ -1,5 +1,5 @@
 import {Perso} from "../../../types/perso/Perso";
-import {metiersEnum, metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
@@ -14,11 +14,11 @@ import {
 
 const passageDiplomeBrasseur: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti brasseur depuis longtemps. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.apprenti_brasseur, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_brasseur, bonusMalus: 20});
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir brasseur à part entière.";
-        texte += commencerCarriere(perso, metiersEnum.brasseur, '');
+        texte += commencerCarriere(perso, MetiersEnum.brasseur, '');
     } else {
         texte += "Malheureusement d'après votre maître vous avez encore beaucoup à apprendre avant de pouvoir travailler seul. ";
         perso.evtsProgrammes.push({
@@ -43,7 +43,7 @@ export const evts_brasseur: GroupeEvts = {
                 texte += resTestEnd.resume;
                 texte += resTestDex.resume;
                 if (resTestEnd.reussi && resTestDex.reussi) {
-                    texte += commencerCarriere(perso, metiersEnum.apprenti_brasseur, '');
+                    texte += commencerCarriere(perso, MetiersEnum.apprenti_brasseur, '');
                     texte += `Votre motivation et votre dextérité impressionnent le brasseur qui vous engage comme apprenti à l'essai. `;
                     perso.evtsProgrammes.push({
                         date: (persoFutur:Perso) => perso.date + anneesToJours(3) === persoFutur.date,
@@ -60,14 +60,14 @@ export const evts_brasseur: GroupeEvts = {
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Emil_Brauer.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[metiersEnum.apprenti_brasseur]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_brasseur]) >= 0
                 && getAge(perso) >= 14,
         },
         {
             id: "evts_brasseur2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: metiersEnum.brasseur, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.brasseur, bonusMalus: 0});
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Votre bière a très bonne qualité. `;
@@ -78,7 +78,7 @@ export const evts_brasseur: GroupeEvts = {
             },
             image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Emil_Brauer.webp",
             conditions: (perso: Perso): boolean =>
-                travailleEnCeMomentComme(perso, metiersEnum.brasseur),
+                travailleEnCeMomentComme(perso, MetiersEnum.brasseur),
             repetable: true,
         },
     ],
