@@ -4,8 +4,9 @@ import {
     arreterCarriere,
     commencerCarriere,
     compatibiliteCarriere,
-    estAuLycee, plusUnEnCompetenceMetier,
-    suitUneCarriereDe
+    estAuLycee,
+    plusUnEnCompetenceMetier,
+    suitUneCarriereDe, suitUneCarriereDepuis
 } from "../../../../fonctions/metiers/metiersUtils";
 import {MetiersEnum, metiersObjs} from "../../../metiers";
 import {getAge} from "../../../../types/Date";
@@ -13,13 +14,12 @@ import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
-import {Quartier} from "../../../geographie/quartiers";
 import {getQuartierDeCoterie} from "../../../coteries/Quartiers";
 
 export const evts_brute_de_lycee: GroupeEvts = {
     evts: [
         {
-            id: "evts_brute_de_lycee_vocation",
+            id: "evts_brute_de_lycee1_vocation",
             description: async (perso: Perso): Promise<string> => {
                 let texte = '';
                 texte += "Vous décidez de vous en prendre à d'autres jeunes plus faibles pour leur vider les poches. <br/>";
@@ -33,7 +33,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             repetable: true,
         },
         {
-            id: "evts_brute_de_lycee_traintrain",
+            id: "evts_brute_de_lycee2_traintrain",
             description: async (perso: Perso): Promise<string> => {
                 let texte = "";
                 let modifReputationAmplitude: number = 0;
@@ -73,6 +73,26 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            repetable: true,
+        },
+        {
+            id: "evts_brute_de_lycee3_cachette",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "";
+
+                const resTestDiscretion: ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 20});
+                texte += resTestDiscretion.resume;
+                if (resTestDiscretion.reussi) {
+                    texte += "Vous connaissez le lycée comme votre poche et ne vous faites jamais prendre. ";
+                } else {
+                    texte += "Vous êtes plusieurs fois dénoncé et punis par les surveillants. "
+                    + "Vous finissez par être forcé à être plus prudent et stopper vos persécutions et tabassages (pour l'instant). ";
+                    texte += arreterCarriere(perso, MetiersEnum.brute_de_lycee, true);
+                }
+
+                return texte + "<br/>";
+            },
+            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
             repetable: true,
         }
     ],
