@@ -310,7 +310,7 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: MetiersEnum)
             nbDeTestsFaits : nbDeTestsFaits,
         });
     }
-    return "+1 en " + metiersEnum.toString();
+    return "<i>+1 en " + metiersEnum.toString() + "</i><br/>";
 }
 
 /**

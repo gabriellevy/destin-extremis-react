@@ -2,7 +2,7 @@ import {JSX, useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {Evt, EvtExecute, filtrerEtPreparerEvts} from "../types/Evt";
 import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
-import {evts_crime} from "../donnees/evts/carrieres/evts_crime";
+import {evts_crime_ranconneur} from "../donnees/evts/carrieres/crime/evts_crime_ranconneur";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
@@ -16,7 +16,7 @@ import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_medecin} from "../donnees/evts/carrieres/evts_medecin";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
 import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
-import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
+import {evts_lycee_entrees_sorties} from "../donnees/evts/coteries/evts_lycee_entrees_sorties";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
 import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
 import {evts_lycee_celtes} from "../donnees/evts/coteries/celtes/evts_lycee_celtes";
@@ -113,13 +113,13 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_amour, perso),
             ...filtrerEtPreparerEvts(evts_animaux, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
-            ...filtrerEtPreparerEvts(evts_crime, perso),
+            ...filtrerEtPreparerEvts(evts_crime_ranconneur, perso),
             ...filtrerEtPreparerEvts(evts_brute_de_lycee, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
             ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_possessions, perso),
             ...filtrerEtPreparerEvts(evts_journaliste, perso),
-            ...filtrerEtPreparerEvts(evts_lycee, perso),
+            ...filtrerEtPreparerEvts(evts_lycee_entrees_sorties, perso),
             ...filtrerEtPreparerEvts(evts_lycee_celtes, perso),
             ...filtrerEtPreparerEvts(evts_lycee_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_acheron, perso),

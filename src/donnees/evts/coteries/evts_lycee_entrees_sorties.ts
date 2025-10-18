@@ -13,7 +13,7 @@ import {rejointCoterie} from "../../../fonctions/coteries/generales";
 import {changerQuartier} from "../../../fonctions/geographie/quartier";
 import {finDAnneeDEtude} from "../../../fonctions/coteries/etudes";
 
-export const evts_lycee: GroupeEvts = {
+export const evts_lycee_entrees_sorties: GroupeEvts = {
     evts: [
         {
             id: "evts_engagement_lycee_1ere_annee",

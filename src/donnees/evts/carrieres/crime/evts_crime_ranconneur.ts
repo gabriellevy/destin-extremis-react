@@ -1,20 +1,19 @@
-import {Perso} from "../../../types/perso/Perso";
-import {MetiersEnum, metiersObjs} from "../../metiers";
-import {GroupeEvts} from "../../../types/Evt";
-import {MetalStatut} from "../../../types/statut_social/Statut";
-import {ResultatTest} from "../../../types/LancerDe";
-import {testComp} from "../../../fonctions/des";
-import {TypeCompetence} from "../../../types/perso/comps/Comps";
+import {Perso} from "../../../../types/perso/Perso";
+import {MetiersEnum, metiersObjs} from "../../../metiers";
+import {GroupeEvts} from "../../../../types/Evt";
+import {MetalStatut} from "../../../../types/statut_social/Statut";
+import {ResultatTest} from "../../../../types/LancerDe";
+import {testComp} from "../../../../fonctions/des";
+import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {
     arreterCarriere, aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere, compatibiliteCarriere, plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
-} from "../../../fonctions/metiers/metiersUtils";
-import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
+} from "../../../../fonctions/metiers/metiersUtils";
+import {statut1SuperieurOuEgalAStatut2} from "../../../../fonctions/perso/statut";
 
-export const evts_crime: GroupeEvts = {
+export const evts_crime_ranconneur: GroupeEvts = {
     evts: [
         {
             id: "evts_crime1",
