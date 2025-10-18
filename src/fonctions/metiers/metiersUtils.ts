@@ -12,7 +12,8 @@ import {auBordDuneRuche, auBordDuneZone} from "../../types/lieux/Lieu";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../perso/statut";
 import {ResultatTest} from "../../types/LancerDe";
 import {testComp, testVice} from "../des";
-import {Possession} from "../../donnees/possessions/Possession";
+import {PossessionEnum} from "../../donnees/possessions/Possession";
+import {possede} from "../possessions/possessions";
 
 // seulement les carrières actives
 export function aUneCarriere(perso: Perso): boolean {
@@ -264,10 +265,10 @@ export function arreterCarriere(perso: Perso, metiersEnum: metiersEnum, vire: bo
         const resTestColere:ResultatTest = testVice(perso, Vice.colerique, -30);
         texte += resTestColere.resume;
         if (resTestColere.reussi) {
-            if (perso.possessions.includes(Possession.armes_lourdes)) {
+            if (possede(perso, PossessionEnum.armes_lourdes)) {
                 texte += "Avant de partir vous vous dites que c'est l'occasion ou jamais de leur faire comprendre à tous à quel point vous les haissez de tout votre coeur. "
                     + "Très tôt le matin vous passez devant les locaux et les faites sauter au lance-roquette. ";
-            } else if (perso.possessions.includes(Possession.pistolet)) {
+            } else if (possede(perso, PossessionEnum.pistolet)) {
                 texte += "Vous perdez la tête et vous mettez à abattre votrepatron et vos collègues les plus détestés. ";
                 // TODO : police etc
             } else {

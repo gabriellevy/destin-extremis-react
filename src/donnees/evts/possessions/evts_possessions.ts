@@ -1,9 +1,9 @@
 import {GroupeEvts} from "../../../types/Evt";
 import {Perso} from "../../../types/perso/Perso";
 import {getAge} from "../../../types/Date";
-import {Possession} from "../../possessions/Possession";
+import {PossessionEnum} from "../../possessions/Possession";
 import {getValeurVice, Vice} from "../../../types/ViceVertu";
-import {acquerir} from "../../../fonctions/possessions/possessions";
+import {acquerir, possede} from "../../../fonctions/possessions/possessions";
 
 export const evts_possessions: GroupeEvts = {
     evts: [
@@ -11,11 +11,11 @@ export const evts_possessions: GroupeEvts = {
             id: "evts_possessions pistolet",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous décidez de vous acheter un pistolet. `
-                texte += acquerir(perso, Possession.pistolet);
+                texte += acquerir(perso, PossessionEnum.pistolet);
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !perso.possessions.includes(Possession.pistolet)
+                !possede(perso, PossessionEnum.pistolet)
                 && getValeurVice(perso, Vice.paranoiaque) > 0
                 && getAge(perso) >= 18,
             repetable: true,
@@ -24,11 +24,11 @@ export const evts_possessions: GroupeEvts = {
             id: "evts_possessions armes lourdes",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vu le nombre de personnes qui veulent votre peau vous décidez de vous équiper en grenades, lance missile et mitrailleuses. On ne sait jamais. `
-                texte += acquerir(perso, Possession.armes_lourdes);
+                texte += acquerir(perso, PossessionEnum.armes_lourdes);
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !perso.possessions.includes(Possession.armes_lourdes)
+                !possede(perso, PossessionEnum.armes_lourdes)
                 && getValeurVice(perso, Vice.paranoiaque) > 1
                 && getAge(perso) >= 18,
             repetable: true,

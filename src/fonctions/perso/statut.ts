@@ -1,5 +1,5 @@
 import {MetalStatut, Statut} from "../../types/statut_social/Statut";
-import {Perso} from "../../types/perso/Perso";
+import {Perso, PersoCommon} from "../../types/perso/Perso";
 
 
 /**
@@ -28,7 +28,7 @@ export function statutToString(statut: Statut):string {
     return statut.metalStatut.toString() + " " + statut.rang.toString();
 }
 
-export function modifierStatut(perso: Perso, valeurAjoutee: number): string {
+export function modifierStatut(perso: PersoCommon, valeurAjoutee: number): string {
     const vieuxStatut: string = statutToString(perso.statut);
     perso.statut.rang = perso.statut.rang + valeurAjoutee;
     if (perso.statut.rang < 1) {

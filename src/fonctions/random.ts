@@ -30,3 +30,8 @@ export function getRandomInt(num: number): number {
 export function getRandomInt0(num: number): number {
     return Math.floor(Math.random() * num);
 }
+
+// de 0 à num
+export function getRandomDeTableauString(tableau: string[]): string {
+    return tableau[Math.floor(Math.random() * tableau.length)];
+}

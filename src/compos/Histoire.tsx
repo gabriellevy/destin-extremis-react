@@ -39,6 +39,7 @@ import AfficheEvt from "./affichage_evt/AfficheEvt";
 import {Perso} from "../types/perso/Perso";
 import {clonePersoHistoToPerso} from "../fonctions/perso/conversionsPerso";
 import {evts_lycee_acheron} from "../donnees/evts/coteries/acheron/evts_lycee_acheron";
+import {evts_animaux} from "../donnees/evts/animaux/evts_animaux";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -109,6 +110,7 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_pilleur_de_ruches, perso),
             ...filtrerEtPreparerEvts(evts_bars, perso),
             ...filtrerEtPreparerEvts(evts_amour, perso),
+            ...filtrerEtPreparerEvts(evts_animaux, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
             ...filtrerEtPreparerEvts(evts_crime, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
