@@ -44,6 +44,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
             repetable: true,
+            probaParDefaut: 20,
         },
         {
             id: "evts_lycee_celtes2_festin",
@@ -120,6 +121,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
             repetable: true,
+            probaParDefaut: 20,
         },
         {
             id: "evts_lycee_celtes5_physique",
@@ -138,6 +140,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
             repetable: true,
+            probaParDefaut: 20,
         },
         {
             id: "evts_lycee_celtes6_foret",
@@ -155,6 +158,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
             repetable: true,
+            probaParDefaut: 20,
         },
         {
             id: "evts_lycee_celtes7_poesie",
@@ -173,6 +177,7 @@ export const evts_lycee_celtes: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
             repetable: true,
+            probaParDefaut: 20,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
