@@ -11,6 +11,7 @@ import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affi
 import {getRandomInt} from "../../../fonctions/random";
 import {rejointCoterie} from "../../../fonctions/coteries/generales";
 import {changerQuartier} from "../../../fonctions/geographie/quartier";
+import {finDAnneeDEtude} from "../../../fonctions/coteries/etudes";
 
 export const evts_lycee: GroupeEvts = {
     evts: [
@@ -37,7 +38,8 @@ export const evts_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 perso.coterie = undefined;
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf(perso.bilanLycee.coterieAnnee1 ? [perso.bilanLycee.coterieAnnee1] : []);
-                let texte: string = "Votre deuxième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                let texte: string = finDAnneeDEtude(perso);
+                texte += "Votre deuxième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
@@ -58,7 +60,8 @@ export const evts_lycee: GroupeEvts = {
                     [perso.bilanLycee.coterieAnnee1,
                     perso.bilanLycee.coterieAnnee2]
                 );
-                let texte: string = "Votre troisième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                let texte: string = finDAnneeDEtude(perso);
+                texte +=  "Votre troisième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
@@ -80,7 +83,8 @@ export const evts_lycee: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee2,
                     perso.bilanLycee.coterieAnnee3]
                 );
-                let texte: string = "Votre quatrième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                let texte: string = finDAnneeDEtude(perso);
+                texte +=  "Votre quatrième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
@@ -97,7 +101,8 @@ export const evts_lycee: GroupeEvts = {
             id: "evts_fin_de_lycee",
             description: async (perso: Perso): Promise<string> => {
                 perso.coterie = undefined;
-                let texte: string = "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
+                let texte: string = finDAnneeDEtude(perso);
+                texte +=  "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
                 perso.bilanLycee.coterieActuelle = undefined;
 

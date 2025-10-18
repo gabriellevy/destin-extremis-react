@@ -18,8 +18,10 @@ export enum NiveauInfosPerso {
 }
 
 export async function appelLeChatParaphrase(texte: string): Promise<string> {
-    const finalPrompt = " Paraphrasez le texte suivant en 100 mots maximum et de manière plus imagée et vivante, "
+    const finalPrompt = "Paraphrasez le texte suivant en 100 mots maximum et de manière plus imagée et vivante, "
     + "en gardant les textes en italique ou en gras et et mettant les à la fin du texte généré sans les changer et avec un retour à la ligne avant chacun d'entre eux. "
+        + "Le formatage gras ou italique doit être préservé via des balides html <b> et/ou <i>. "
+        + "Il ne faut pas ajouter de titre. "
     + "Texte à paraphraser : '" + texte + "'";
     const chatResponse:ChatCompletionResponse = await client.chat.complete({
         model: "codestral-2405",
