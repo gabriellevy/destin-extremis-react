@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
 import PublicIcon from '@mui/icons-material/Public';
 import CottageIcon from '@mui/icons-material/Cottage';
-import Comps from "./Comps";
+import Comps from "./competences/Comps";
 import AffichageViceVertu from "./AffichageViceVertu";
 import DonneesPerso from "./DonneesPerso";
 import RelationsPnjs from "./RelationsPnjs";
