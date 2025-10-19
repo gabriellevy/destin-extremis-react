@@ -1,7 +1,7 @@
 import {Perso} from "../../types/perso/Perso";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
 import {isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
-import {useContext} from "react";
+import React, {JSX, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {getValeurCompetence} from "../../fonctions/perso/competences";
 
@@ -37,7 +37,7 @@ const Comp = ({perso, competenceType}:CaracProps) => {
     );
 };
 
-export default function Comps () {
+const Comps: React.FC = (): JSX.Element => {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
 
         return (<List sx={{
@@ -49,9 +49,9 @@ export default function Comps () {
         }}>
             {
                 Object.values(TypeCompetence)
-                    .filter(typeComp => getValeurCompetence(perso, typeComp) > 35)
-                    .filter(typeComp => isCompDeBase(typeComp))
-                    .map(typeComp => {
+                    .filter((typeComp:TypeCompetence) => getValeurCompetence(perso, typeComp) > 35)
+                    .filter((typeComp:TypeCompetence) => isCompDeBase(typeComp))
+                    .map((typeComp:TypeCompetence) => {
                     return (<Comp
                         key={typeComp.toString()}
                         perso={perso}
@@ -61,3 +61,5 @@ export default function Comps () {
             }
         </List>);
 }
+
+export default Comps;
