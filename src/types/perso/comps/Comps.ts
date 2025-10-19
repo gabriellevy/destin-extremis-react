@@ -4,6 +4,8 @@ export type Competence = {
     val: number,
     nbDeTestsFaits: number,
     typeComp: TypeCompetence,
+    // nombre de montée de niveau pour cette compétence que le joueur a encore à appliquer
+    nbMonteeDeNiveau: number,
 }
 
 export type ModificateurCompetence = {
@@ -114,6 +116,7 @@ export function compsDeBase (): Competence[] {
                 val: compDeDepartAleatoire(),
                 nbDeTestsFaits: 0,
                 typeComp: typeComp,
+                nbMonteeDeNiveau: 0,
             }
         });
 }
