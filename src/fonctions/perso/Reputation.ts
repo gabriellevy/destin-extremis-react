@@ -19,20 +19,25 @@ export function getNiveauReputationDansQuartier(perso:Perso, quartier:Quartier):
     return getReputationQuartier(perso, quartier)?.qualite ?? 0;
 }
 
-export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier, modifQualite: number, modifAmplitude: number): string {
-    let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
-    let niveauFinal = modifAmplitude;
+export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|undefined, modifQualite: number, modifAmplitude: number): string {
+    const quartierFinal:Quartier|undefined = quartier ?? perso.lieu.quartier;
+    if (!quartierFinal) {
+        console.error("pas de quartier actuel à affecter");
+        return "";
+    }
+
+    let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartierFinal);
     if (repQuartier) {
         repQuartier.qualite += modifQualite;
-        niveauFinal = repQuartier.qualite;
+        repQuartier.amplitude += modifAmplitude;
     } else {
         perso.reputation.parQuartier.push({
-            quartier: quartier,
+            quartier: quartierFinal,
             qualite: modifQualite,
             amplitude: modifAmplitude,
         })
     }
-    return "<b>Réputation : " + affichageReputation(perso, quartier)
+    return "<b>Réputation : " + affichageReputation(perso, quartierFinal)
         + "</b><br/>";
 }
 

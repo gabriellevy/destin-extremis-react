@@ -30,6 +30,7 @@ export enum Vice {
     orgueilleux = "Orgueilleux",
     solitaire = "Solitaire",
     sociopathique = "Sociopathique",
+    // inclut d'une manière général la tendance à être malhonnête, à ne pas respecter les règles de la société
     rebelle = "Rebelle",
     sceptique = "Sceptique",
     paranoiaque = "Paranoïaque",
@@ -51,6 +52,7 @@ export enum Vertu {
     humble = "Humble",
     sociable = "Sociable",
     empathique = "Empathique",
+    // inclut le respect des règles en général, donc le fait d'être honnête
     discipline = "Discipliné",
     spirituel = "Spirituel",
     naif = "Naïf",
@@ -111,7 +113,7 @@ export function getValeurVertu(perso: PersoCommon, typeVertu: Vertu): number {
 
 export function viceVertuDeBase(): Array<ViceVertu> {
     return Object.values(Vertu)
-        .map(typeVertu => {
+        .map((typeVertu: Vertu) => {
             return {
                 valVertu: valeurViceVertuAleatoire(),
                 nbDeTestsFaits: 0,
