@@ -17,8 +17,24 @@ export function getCompNbDeTestsFaits(perso: Perso, typeComp: TypeCompetence): n
     return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.nbDeTestsFaits || 0;
 }
 
-export function getCompNbDeMonteesDeNiveauRestantes(perso: Perso, typeComp: TypeCompetence): number {
+export function getNbDeMonteesDeNiveauRestantes(perso: Perso, typeComp: TypeCompetence): number {
     return perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.nbMonteeDeNiveau || 0;
+}
+
+export function depenserMonteeDeNiveau(perso:Perso, typeComp: TypeCompetence):boolean {
+    const nbMonteeDeNiveau:number = getNbDeMonteesDeNiveauRestantes(perso, typeComp);
+    if (nbMonteeDeNiveau < 1) {
+        console.error("Il n'y a pas de montée de niveau à dépenser pour cette compétence : " + typeComp);
+        return false;
+    }
+    const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
+    if (comp) {
+        comp.nbMonteeDeNiveau -= 1;
+        return true;
+    }
+
+    console.error("Compétence introuvable pour baisser son nombre de montée de niveau dispo : " + typeComp);
+    return false;
 }
 
 export function augmenterCompetence(perso: PersoCommon,typeComp: TypeCompetence, val: number): string {

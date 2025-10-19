@@ -9,7 +9,6 @@ import {NOMS_DE_CHATS} from "../../possessions/animaux";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
-import {modifierStatut} from "../../../fonctions/perso/statut";
 import {modifierReputationDansQuartier} from "../../../fonctions/perso/Reputation";
 
 export const evts_animaux: GroupeEvts = {
@@ -18,7 +17,7 @@ export const evts_animaux: GroupeEvts = {
             id: "evts_animaux adoption chat",
             description: async (perso: Perso): Promise<string> => {
                 const nomChat: string = getRandomDeTableauString(NOMS_DE_CHATS);
-                let texte:string = "Vous recuaillez un chat errant et l'appelez " + nomChat + ".";
+                let texte:string = "Vous recueillez un chat errant et l'appelez " + nomChat + ".";
                 // TODO : ajouter un test animaux car sinon il se barre
                 acquerirEtNomme(perso, PossessionEnum.chat, nomChat);
 

@@ -1,21 +1,31 @@
-import {Perso} from "../../types/perso/Perso";
-import {List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Button, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {isCompDeBase, TypeCompetence} from "../../types/perso/comps/Comps";
-import React, {JSX, useContext} from "react";
+import React, {JSX, useContext, useMemo} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {getValeurCompetence} from "../../fonctions/perso/competences";
+import {
+    augmenterCompetence, depenserMonteeDeNiveau,
+    getNbDeMonteesDeNiveauRestantes,
+    getValeurCompetence
+} from "../../fonctions/perso/competences";
 import {EmojiEvents, Star} from "@mui/icons-material";
 
 interface CaracProps {
-    perso: Perso,
     competenceType: TypeCompetence,
 }
 
-const Comp = ({perso, competenceType}:CaracProps) => {
-    const valeur = getValeurCompetence(perso, competenceType);
+const Comp = ({ competenceType }: CaracProps) => {
+    const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
 
-    // Détermine le style et l'icône en fonction de la valeur
-    let styleTexte = {};
+    const valeur: number = useMemo(() =>
+            getValeurCompetence(perso, competenceType),
+        [perso, competenceType]
+    );
+    const nbMonteeDeNiveau: number = useMemo(() =>
+            getNbDeMonteesDeNiveauRestantes(perso, competenceType),
+        [perso, competenceType]
+    );
+
+    let styleTexte;
     let icone = null;
 
     if (valeur < 35) {
@@ -48,58 +58,61 @@ const Comp = ({perso, competenceType}:CaracProps) => {
     }
 
     return (
-        <ListItem sx={{ padding: '0px', width: "auto" }}>
-            {icone}
-            <ListItemText
-                primary={
-                    <Typography
-                        variant="body2"
-                        style={styleTexte}
-                    >
-                        {
-                            valeur < 35 ? "Incompétent en " + competenceType.toString() :
+        <ListItem sx={{ padding: '0px', width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+                {icone}
+                <ListItemText
+                    primary={
+                        <Typography variant="body2" style={styleTexte}>
+                            {valeur < 35 ? "Incompétent en " + competenceType.toString() :
                                 valeur < 45 ? "Capable en " + competenceType.toString() :
                                     valeur < 55 ? "Expérimenté en " + competenceType.toString() :
                                         valeur < 65 ? "Exceptionnel en " + competenceType.toString() :
-                                        "Légendaire en " + competenceType.toString()
-                        }
-                        {
-                            " (" + valeur + ") "
-                        }
-                    </Typography>
-                }
-                sx={{margin: '0px'}}
-            />
+                                            "Légendaire en " + competenceType.toString()}
+                            {" (" + valeur + ") "}
+                        </Typography>
+                    }
+                    sx={{ margin: '0px' }}
+                />
+            </div>
+            {
+                nbMonteeDeNiveau > 0 ? (
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => {
+                            depenserMonteeDeNiveau(perso, competenceType);
+                            augmenterCompetence(perso, competenceType, 1);
+                            setPerso({...perso});
+                        }}
+                    >
+                        Montée de niveau
+                    </Button>
+                ) : undefined
+            }
+
         </ListItem>
     );
 };
 
 const Comps: React.FC = (): JSX.Element => {
-    const { perso } = useContext(PersoContexte) as PersoContexteType;
 
-        return (
-            <List sx={{
-                display: "flex",
-                flexFlow: "column wrap",
-                gap: "0 10px",
-                height: 300,
-                overflow: "auto"
-            }}>
-                {
-                    Object.values(TypeCompetence)
-                        .filter((typeComp:TypeCompetence) => isCompDeBase(typeComp))
-                        .map((typeComp:TypeCompetence) => {
-                        return (
-                            <Comp
-                                key={typeComp.toString()}
-                                perso={perso}
-                                competenceType={typeComp}
-                            />
-                        );
-                    })
-                }
-            </List>
-        );
-}
+    return (
+        <List sx={{
+            display: "flex",
+            flexDirection: "column",
+            overflow: "auto"
+        }}>
+            {Object.values(TypeCompetence)
+                .filter((typeComp: TypeCompetence) => isCompDeBase(typeComp))
+                .map((typeComp: TypeCompetence) => (
+                    <Comp
+                        key={typeComp.toString()}
+                        competenceType={typeComp}
+                    />
+                ))}
+        </List>
+    );
+};
 
 export default Comps;
