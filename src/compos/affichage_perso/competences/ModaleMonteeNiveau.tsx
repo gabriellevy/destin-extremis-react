@@ -4,16 +4,22 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 interface ModaleMonteeDeNiveauProps {
     isOpen: boolean;
     onClose: () => void;
-    onConfirm: () => void;
+    monteeCompetence: () => void;
+    modifierPersonnalite: () => void;
     competenceType: TypeCompetence,
+    texteBoutonChangtPersonnalite: string,
 }
 
-const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = ({
-                                         isOpen,
-                                         onClose,
-                                         onConfirm,
-                                         competenceType,
-                                     }) => {
+const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
+    {
+        isOpen,
+        onClose,
+        monteeCompetence,
+        modifierPersonnalite,
+        texteBoutonChangtPersonnalite,
+        competenceType,
+    }
+    ) => {
     if (!isOpen) return null;
 
     return (
@@ -22,11 +28,21 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = ({
                 <h2 className="text-xl font-bold mb-4">{`Montée de niveau en ${competenceType}`}</h2>
                 <div className="flex justify-end space-x-4">
                     <button
-                        onClick={onConfirm}
+                        onClick={monteeCompetence}
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                     >
                         {`+1 en ${competenceType}`}
                     </button>
+                    {
+                        texteBoutonChangtPersonnalite != '' ? (
+                            <button
+                                onClick={modifierPersonnalite}
+                                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            >
+                                {texteBoutonChangtPersonnalite}
+                            </button>
+                        ) : undefined
+                    }
                     <button
                         onClick={onClose}
                         className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"

@@ -9,6 +9,14 @@ import {
 } from "../../../fonctions/perso/competences";
 import {EmojiEvents, Star} from "@mui/icons-material";
 import ModaleMonteeDeNiveau from "./ModaleMonteeNiveau";
+import {changementPersonaliteSelonMonteeNiveau, ModificationVice} from "../../../types/perso/comps/MonteeNiveau";
+import {
+    ajouterViceVal,
+    getValeurVertu,
+    getValeurVice,
+    getVertuOppose,
+} from "../../../types/ViceVertu";
+import {descriptionViceVertu} from "../../../fonctions/VicesVertus_fc";
 
 interface CompProps {
     competenceType: TypeCompetence,
@@ -74,6 +82,52 @@ const Comp = ({ competenceType }: CompProps) => {
         setIsModalOpen(false);
     };
 
+    const modifViceSelonMonteeDeNiveau: ModificationVice|undefined = useMemo(() =>
+        changementPersonaliteSelonMonteeNiveau(perso, competenceType),
+    [perso, competenceType]);
+
+    // si égal à '' => il n'y a pas de changement de personnalité possible car le perso est déjà au max
+    const texteBoutonChangtPersonnalite:string = useMemo(() => {
+        if (!modifViceSelonMonteeDeNiveau) return '';
+
+        if (modifViceSelonMonteeDeNiveau.augmente) {
+            const valVice:number = getValeurVice(perso, modifViceSelonMonteeDeNiveau.vice);
+            if (valVice >= 3) { // TODO : marquer 3 comme niveau max d'un trait de personnalité
+                return '';
+            } else {
+                return descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, valVice)
+                    + " -> "
+                    + descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, valVice + 1);
+            }
+        } else {
+            const valVertu:number = getValeurVertu(perso, getVertuOppose(modifViceSelonMonteeDeNiveau.vice));
+            if (valVertu >= 3) { // TODO : marquer 3 comme niveau max d'un trait de personnalité
+                return '';
+            }
+            return descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, -valVertu)
+                + " -> "
+                + descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, -valVertu - 1);
+        }
+    }
+    , [perso, modifViceSelonMonteeDeNiveau]);
+
+    const modifierPersonnalite = () => {
+        if (!modifViceSelonMonteeDeNiveau) {
+            console.error("Le bouton modifierPersonnalite a été cliqué alors qu'il n'y a pas de modification de personnalité disponible pour " + competenceType);
+            return;
+        }
+
+        depenserMonteeDeNiveau(perso, competenceType);
+        if (modifViceSelonMonteeDeNiveau.augmente) {
+            ajouterViceVal(perso, modifViceSelonMonteeDeNiveau.vice, 1);
+        } else {
+            ajouterViceVal(perso, modifViceSelonMonteeDeNiveau.vice, -1);
+        }
+
+        setPerso({...perso});
+        setIsModalOpen(false);
+    };
+
     return (
         <>
             <ListItem sx={{ padding: '0px', width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -109,8 +163,10 @@ const Comp = ({ competenceType }: CompProps) => {
             <ModaleMonteeDeNiveau
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                onConfirm={monteeNiveauStandard}
+                monteeCompetence={monteeNiveauStandard}
                 competenceType={competenceType}
+                texteBoutonChangtPersonnalite={texteBoutonChangtPersonnalite}
+                modifierPersonnalite={modifierPersonnalite}
             />
         </>
     );

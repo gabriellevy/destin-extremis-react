@@ -1,8 +1,8 @@
 import {getValeurVice, getVertuOppose, Vice} from "../types/ViceVertu";
 import {Perso} from "../types/perso/Perso";
 
-export function descriptionViceVertus(perso: Perso, vice:Vice): string {
-    const valeurVice:number = getValeurVice(perso, vice);
+export function descriptionViceVertu(vice: Vice, valeurVice: number) {
+    if (valeurVice=== 0) return 'Neutre';
     switch (vice) {
         case Vice.cruel: {
             switch (valeurVice) {
@@ -21,7 +21,8 @@ export function descriptionViceVertus(perso: Perso, vice:Vice): string {
                 default:
                     return "valeur impossible : " + valeurVice;
             }
-        } break;
+        }
+            break;
         default : {
             switch (valeurVice) {
                 case -3:
@@ -41,4 +42,9 @@ export function descriptionViceVertus(perso: Perso, vice:Vice): string {
             }
         }
     }
+}
+
+export function descriptionViceVertusPerso(perso: Perso, vice:Vice): string {
+    const valeurVice:number = getValeurVice(perso, vice);
+    return descriptionViceVertu(vice, valeurVice);
 }

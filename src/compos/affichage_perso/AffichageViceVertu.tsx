@@ -1,7 +1,7 @@
 import {getValeurVertu, getValeurVice, getViceOppose, Vertu, Vice} from "../../types/ViceVertu";
 import {useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
-import {descriptionViceVertus} from "../../fonctions/VicesVertus_fc";
+import {descriptionViceVertusPerso} from "../../fonctions/VicesVertus_fc";
 import {List, ListItem, ListItemText, Typography} from "@mui/material";
 import {Perso} from "../../types/perso/Perso";
 
@@ -24,7 +24,7 @@ const ViceVertu = ({perso, typeVice}:ViceVertuProps) => {
                                 color: getValeurVice(perso, typeVice) > 0 ? 'red' :'blue'
                             }}
                     >
-                        {descriptionViceVertus(perso, typeVice)}
+                        {descriptionViceVertusPerso(perso, typeVice)}
                     </Typography>
                 }
                 sx={{margin: '0px', fontSize: '5px'}}
