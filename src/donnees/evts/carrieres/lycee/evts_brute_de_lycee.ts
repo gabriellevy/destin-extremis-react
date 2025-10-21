@@ -33,7 +33,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => estAuLycee(perso)
                 && !suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.brute_de_lycee]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.brute_de_lycee]) > 1
                 && getAge(perso) <= 18,
             repetable: true,
         },
