@@ -6,17 +6,20 @@ import {
     compatibiliteCarriere,
     estAuLycee,
     plusUnEnCompetenceMetier,
-    suitUneCarriereDe, suitUneCarriereDepuis
+    suitUneCarriereDe,
+    suitUneCarriereDepuis
 } from "../../../../fonctions/metiers/metiersUtils";
 import {MetiersEnum, metiersObjs} from "../../../metiers";
 import {getAge} from "../../../../types/Date";
 import {ResultatTest} from "../../../../types/LancerDe";
-import {testComp} from "../../../../fonctions/des";
+import {testComp, testVice} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {getQuartierDeCoterie} from "../../../coteries/Quartiers";
-import {acquerir, possede} from "../../../../fonctions/possessions/possessions";
+import {acquerir, perdre, possede} from "../../../../fonctions/possessions/possessions";
 import {PossessionEnum} from "../../../possessions/Possession";
+import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
+import {Vice} from "../../../../types/ViceVertu";
 
 export const evts_brute_de_lycee: GroupeEvts = {
     evts: [
@@ -107,6 +110,71 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
                 && !possede(perso, PossessionEnum.couteau),
             proba: 5,
+        },
+        {
+            id: "evts_brute_de_lycee5 bagarre de gamins",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = `Une de vos extorsions se passe mal. Vous êtes pris à parti par 3 petits merdeux. `
+                let diffIntimidation: number = -20;
+                if (possede(perso, PossessionEnum.couteau)) {
+                    texte += "Vous sortez votre couteau pour les intimider et les tenir à distance. "
+                    diffIntimidation += 50;
+                }
+                const resTestIntimidation: ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: diffIntimidation});
+                texte += resTestIntimidation.resume;
+                if (resTestIntimidation.reussi) {
+                    texte += "<br/> Vous parvenez à leur faire peur malgré leur nombre et vous éclipsez sans dommage. ";
+                    modifierReputationDansQuartier(perso, undefined, -2, 2);
+                } else {
+                    texte += "Ils ne se laissent pas intimider et se jettent sur vous : ";
+                    if (possede(perso, PossessionEnum.couteau)) {
+                        const resTestArme: ResultatTest = testComp(perso, {comp: TypeCompetence.armeCaC, bonusMalus: 20});
+                        texte += resTestArme.resume;
+                        if (resTestArme.reussi) {
+                            const resTestCruel:ResultatTest = testVice(perso, Vice.cruel, 0);
+                            texte += resTestCruel.resume;
+                            if (resTestCruel.reussi) {
+                                texte += "Vous les blessez légèrement et efficacement et ils finissent par prendre peur et s'enfuir. ";
+                            } else {
+                                texte += "De rage vous poignardez un des morveux. Les autres s'enfuient terrifiés. ";
+                                modifierReputationDansQuartier(perso, undefined, 6, -10);
+                                // TODO : police, casier etc
+                            }
+                        } else {
+                            texte += "Vous vous faites salement dérouiller malgré votre couteau : ";
+                            const blessureSubie = infligerBlessureAleatoire(perso, 0, 4);
+                            if (blessureSubie != null) {
+                                const texteBlessure: string = blessureSubie.nom;
+                                texte += texteBlessure + "<br/>";
+                            }
+                            perdre(perso, PossessionEnum.couteau);
+                        }
+                    } else {
+                        // bagarre normale à mains nues
+                        const resTestBagarre: ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: -30});
+                        texte += resTestBagarre.resume;
+                        if (resTestBagarre.reussi) {
+                            texte += "À un contre 3 vous parvenez malgré tout à les tabasser et les mettre en fuite ! ";
+                            modifierReputationDansQuartier(perso, undefined, 5, -4);
+                        } else {
+                            texte += "Vous vous faites salement dérouiller. ";
+                            if (Math.random() < 0.3) {
+                                const blessureSubie = infligerBlessureAleatoire(perso, 0, 4);
+                                if (blessureSubie != null) {
+                                    const texteBlessure: string = blessureSubie.nom;
+                                    texte += texteBlessure + "<br/>";
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            proba: 3,
+            repetable: true,
         },
     ],
     probaParDefaut: 10,

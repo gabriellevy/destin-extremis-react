@@ -6,6 +6,17 @@ export function acquerir(perso: Perso, possessionEnum: PossessionEnum):string {
     return acquerirEtNomme(perso, possessionEnum, '');
 }
 
+export function perdre(perso: Perso, possessionEnum: PossessionEnum):string {
+    if (possede(perso, possessionEnum)) {
+        const indexPossession = perso.possessions.findIndex((possession: Possession) => possessionEnum === possession.possessionEnum);
+        if (indexPossession != -1) {
+            perso.possessions.splice(indexPossession, 1);
+            return "Vous avez perdu " + possessionEnum;
+        }
+    }
+    return "";
+}
+
 export function acquerirEtNomme(perso: PersoCommon, possessionEnum: PossessionEnum, nomPossession: string):string {
     let texte = "";
     perso.possessions.push({

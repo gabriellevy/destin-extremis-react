@@ -92,8 +92,13 @@ export function achatsAssociesACompetence(typeCompetence: TypeCompetence): Posse
                 nom: getRandomDeTableauString(NOMS_DE_CHATS),
             },
         ]
-        case TypeCompetence.tir: return [{possessionEnum: PossessionEnum.pistolet},
-            {possessionEnum: PossessionEnum.armes_lourdes}]
+        case TypeCompetence.armeCaC: return [
+            {possessionEnum: PossessionEnum.couteau},
+        ]
+        case TypeCompetence.tir: return [
+            {possessionEnum: PossessionEnum.pistolet},
+            {possessionEnum: PossessionEnum.armes_lourdes}
+        ]
 
         default: {
             return [];
