@@ -9,7 +9,11 @@ import {
 } from "../../../fonctions/perso/competences";
 import {EmojiEvents, Star} from "@mui/icons-material";
 import ModaleMonteeDeNiveau from "./ModaleMonteeNiveau";
-import {changementPersonaliteSelonMonteeNiveau, ModificationVice} from "../../../types/perso/comps/MonteeNiveau";
+import {
+    achatSelonMonteeNiveau,
+    changementPersonaliteSelonMonteeNiveau,
+    ModificationVice
+} from "../../../types/perso/comps/MonteeNiveau";
 import {
     ajouterViceVal,
     getValeurVertu,
@@ -17,6 +21,8 @@ import {
     getVertuOppose,
 } from "../../../types/ViceVertu";
 import {descriptionViceVertu} from "../../../fonctions/VicesVertus_fc";
+import {Possession} from "../../../donnees/possessions/Possession";
+import {acquerir, acquerirEtNomme} from "../../../fonctions/possessions/possessions";
 
 interface CompProps {
     competenceType: TypeCompetence,
@@ -111,6 +117,16 @@ const Comp = ({ competenceType }: CompProps) => {
     }
     , [perso, modifViceSelonMonteeDeNiveau]);
 
+    const achatSelonMonteeNiveauDeCetteComp: Possession|undefined = useMemo(() =>
+            achatSelonMonteeNiveau(perso, competenceType),
+        [perso, competenceType]);
+
+    const texteBoutonAchat:string = useMemo((): string => {
+        if (achatSelonMonteeNiveauDeCetteComp === undefined) return '';
+        else return achatSelonMonteeNiveauDeCetteComp.possessionEnum
+            + (achatSelonMonteeNiveauDeCetteComp.nom != undefined ? `(${achatSelonMonteeNiveauDeCetteComp.nom})`:``)
+    }, [perso, achatSelonMonteeNiveauDeCetteComp]);
+
     const modifierPersonnalite = () => {
         if (!modifViceSelonMonteeDeNiveau) {
             console.error("Le bouton modifierPersonnalite a été cliqué alors qu'il n'y a pas de modification de personnalité disponible pour " + competenceType);
@@ -124,6 +140,21 @@ const Comp = ({ competenceType }: CompProps) => {
             ajouterViceVal(perso, modifViceSelonMonteeDeNiveau.vice, -1);
         }
 
+        setPerso({...perso});
+        setIsModalOpen(false);
+    };
+
+    const acheterObjetParMonteeDeNiveau = () => {
+        if (!achatSelonMonteeNiveauDeCetteComp) {
+            console.error("Le bouton achatSelonMonteeNiveauDeCetteComp a été cliqué alors qu'il n'y a pas d'achat disponible pour " + competenceType);
+            return;
+        }
+        depenserMonteeDeNiveau(perso, competenceType);
+        if (achatSelonMonteeNiveauDeCetteComp.nom) {
+            acquerirEtNomme(perso, achatSelonMonteeNiveauDeCetteComp.possessionEnum,achatSelonMonteeNiveauDeCetteComp.nom);
+        } else {
+            acquerir(perso, achatSelonMonteeNiveauDeCetteComp.possessionEnum);
+        }
         setPerso({...perso});
         setIsModalOpen(false);
     };
@@ -167,6 +198,8 @@ const Comp = ({ competenceType }: CompProps) => {
                 competenceType={competenceType}
                 texteBoutonChangtPersonnalite={texteBoutonChangtPersonnalite}
                 modifierPersonnalite={modifierPersonnalite}
+                texteBoutonAchat={texteBoutonAchat}
+                acheterObjetParMonteeDeNiveau={acheterObjetParMonteeDeNiveau}
             />
         </>
     );

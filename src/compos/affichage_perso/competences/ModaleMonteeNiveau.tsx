@@ -5,9 +5,11 @@ interface ModaleMonteeDeNiveauProps {
     isOpen: boolean;
     onClose: () => void;
     monteeCompetence: () => void;
+    competenceType: TypeCompetence;
+    texteBoutonChangtPersonnalite: string;
     modifierPersonnalite: () => void;
-    competenceType: TypeCompetence,
-    texteBoutonChangtPersonnalite: string,
+    texteBoutonAchat:string;
+    acheterObjetParMonteeDeNiveau: () => void;
 }
 
 const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
@@ -18,6 +20,8 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
         modifierPersonnalite,
         texteBoutonChangtPersonnalite,
         competenceType,
+        texteBoutonAchat,
+        acheterObjetParMonteeDeNiveau,
     }
     ) => {
     if (!isOpen) return null;
@@ -40,6 +44,16 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                             >
                                 {texteBoutonChangtPersonnalite}
+                            </button>
+                        ) : undefined
+                    }
+                    {
+                        texteBoutonAchat != '' ? (
+                            <button
+                                onClick={acheterObjetParMonteeDeNiveau}
+                                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                            >
+                                {texteBoutonAchat}
                             </button>
                         ) : undefined
                     }

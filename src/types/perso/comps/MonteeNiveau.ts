@@ -1,6 +1,10 @@
 import {TypeCompetence} from "./Comps";
 import {Perso} from "../Perso";
 import {getValeurVice, getViceOppose, Vertu, Vice} from "../../ViceVertu";
+import {Possession, PossessionEnum} from "../../../donnees/possessions/Possession";
+import {getRandomDeTableauString} from "../../../fonctions/random";
+import {NOMS_DE_CHATS} from "../../../donnees/possessions/animaux";
+import {possede} from "../../../fonctions/possessions/possessions";
 
 export interface ModificationVice {
     vice: Vice,
@@ -56,9 +60,9 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
     // sélection déterministe :
     // - garder ceux dans lesquels le perso a la valeur la plus éloignée
     // - si il en reste plusieurs, prendre le premier
-    const modifFinale:ModificationVice = modifsVice.reduce((acc:ModificationVice, viceSuivant:ModificationVice) => {
-        const valeurPersoAcc:number = getValeurVice(perso, acc.vice);
-        const valeurPersoViceSuivant:number = getValeurVice(perso, viceSuivant.vice);
+    return modifsVice.reduce((acc: ModificationVice, viceSuivant: ModificationVice) => {
+        const valeurPersoAcc: number = getValeurVice(perso, acc.vice);
+        const valeurPersoViceSuivant: number = getValeurVice(perso, viceSuivant.vice);
 
         // pseudo "note" d'accordement du vice du perso par rapport à la modification
         // plus elle est élevée, plus e perso est loin de la direction du ModificationVice
@@ -67,5 +71,32 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
 
         return noteViceAcc > noteViceSuivant ? acc : viceSuivant;
     });
-    return modifFinale;
+}
+
+export function achatSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): Possession|undefined {
+    const achats:Possession[] = achatsAssociesACompetence(typeCompetence);
+    // retourne le premier objet associé que le personnage n'a pas (donc déterministe)
+    for (const achat of achats) {
+        if (!possede(perso, achat.possessionEnum)) {
+            return achat;
+        }
+    }
+    return undefined;
+}
+
+export function achatsAssociesACompetence(typeCompetence: TypeCompetence): Possession[] {
+    switch (typeCompetence) {
+        case TypeCompetence.animaux: return [
+            {
+                possessionEnum: PossessionEnum.chat,
+                nom: getRandomDeTableauString(NOMS_DE_CHATS),
+            },
+        ]
+        case TypeCompetence.tir: return [{possessionEnum: PossessionEnum.pistolet},
+            {possessionEnum: PossessionEnum.armes_lourdes}]
+
+        default: {
+            return [];
+        }
+    }
 }
