@@ -15,6 +15,8 @@ import {testComp} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {getQuartierDeCoterie} from "../../../coteries/Quartiers";
+import {acquerir, possede} from "../../../../fonctions/possessions/possessions";
+import {PossessionEnum} from "../../../possessions/Possession";
 
 export const evts_brute_de_lycee: GroupeEvts = {
     evts: [
@@ -94,7 +96,18 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
             repetable: true,
-        }
+        },
+        {
+            id: "evts_brute_de_lycee4 couteau",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = `Pour faciliter vos extorsions vous décidez de vous procurer un couteau. `
+                texte += acquerir(perso, PossessionEnum.couteau);
+                return texte;
+            },
+            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
+                && !possede(perso, PossessionEnum.couteau),
+            proba: 5,
+        },
     ],
     probaParDefaut: 10,
 };
