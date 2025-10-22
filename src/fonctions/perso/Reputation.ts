@@ -10,9 +10,28 @@ export function reputationVide(): Reputation {
     };
 }
 
-export function getReputationQuartier(perso:Perso, quartier:Quartier): ReputationQuartier|undefined {
-    return perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
+/**
+ *
+ * @param perso personnage joué
+ * @param quartier quartier interrogé. Si undefined, le quartier interrogé est le quartier actuel de résidence du perso
+ */
+export function getReputationQuartier(perso:Perso, quartier:Quartier|undefined): ReputationQuartier {
+    if (!quartier) {
+        quartier = perso.lieu.quartier;
+    }
+    const repDansQuartier:ReputationQuartier|undefined = perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
         repQuartier.quartier === quartier);
+    if (!repDansQuartier) {
+        if (!quartier) {
+            quartier = Quartier.inconnu;
+        }
+        return {
+            quartier: quartier,
+            qualite: 0,
+            amplitude: 0,
+        };
+    }
+    return repDansQuartier;
 }
 
 export function getNiveauReputationDansQuartier(perso:Perso, quartier:Quartier): number {
