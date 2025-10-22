@@ -44,54 +44,68 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
     }, [perso, setPerso, setEvtsExecutes]);
 
     return (
-        <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
-            {evt?.image && evt?.image != '' && (
-                    <Grid2 size={4} order={{ xs: index % 2 === 0 ? 1 : 2, md: index % 2 === 0 ? 1 : 2 }}>
-                        <Box
-                            component="img"
-                            sx={{
-                                width: '100%',
-                                height: 'auto',
-                                cursor: 'pointer',
-                            }}
-                            alt={`image de l'événement ${evt.id}`}
-                            src={evt.image}
-                            onClick={() => evt.image && handleClickOpen(evt.image)}
-                        />
-                    </Grid2>
-                )}
-            <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
-                <Box display="flex" alignItems="center" gap={2}>
-                    {evt.dateStr != '' &&
-                        <Typography mb={1} align="left" sx={{ fontSize: 18 }}>
-                            {
-                                perso.debogue ?
-                                    `${evt.dateStr} (${evt.id})`
-                                    : evt.dateStr
-                            }
-                        </Typography>
-                    }
+        <Box
+            sx={{
+                backgroundColor: '#FFF9C4', // Fond jaune pâle
+                padding: '16px',
+                borderRadius: '8px',
+                margin: 'auto',
+                maxWidth: '700px',
+                boxSizing: 'border-box',
+            }}
+            mb={4}
+        >
+            <Grid2 container spacing={2} key={index} sx={{ mb: 2 }} columns={12}>
+                {evt?.image && evt?.image != '' && (
+                        <Grid2 size={4} order={{ xs: index % 2 === 0 ? 1 : 2, md: index % 2 === 0 ? 1 : 2 }}>
+                            <Box
+                                component="img"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    cursor: 'pointer',
+                                }}
+                                alt={`image de l'événement ${evt.id}`}
+                                src={evt.image}
+                                onClick={() => evt.image && handleClickOpen(evt.image)}
+                            />
+                        </Grid2>
+                    )}
+                <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
+                    <Box>
+                        {evt.dateStr != '' &&
+                            <Typography mb={1} align="left" variant="h6">
+                                {
+                                    perso.debogue ?
+                                        `${evt.dateStr} (${evt.id})`
+                                        : evt.dateStr
+                                }
+                            </Typography>
+                        }
+                    </Box>
+                    <Typography mb={2} align="left">
+                        <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
+                    </Typography>
                     {
                         perso.pointDestin > 0
                         && perso.sauvegardes.find((sauvegarde: Perso) => sauvegarde.idTemporel === evt.id) !== undefined
-                            &&
-                                (<Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => revenirACetEvt(evt.id)}
-                                >
-                                    {
-                                        `Rejouer d'ici (${perso.pointDestin} point${perso.pointDestin?'s':''} de destin)`
-                                    }
-                                </Button>
+                        &&
+                        (
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => revenirACetEvt(evt.id)}
+                                sx={{ mb: 1 }}
+                            >
+                                {
+                                    `Rejouer d'ici (${perso.pointDestin} point${perso.pointDestin?'s':''} de destin)`
+                                }
+                            </Button>
                         )
                     }
-                </Box>
-                <Typography mb={2} align="left">
-                    <span dangerouslySetInnerHTML={{ __html: evt.texteFinal}} />
-                </Typography>
+                </Grid2>
             </Grid2>
-        </Grid2>
+        </Box>
     );
 }
 

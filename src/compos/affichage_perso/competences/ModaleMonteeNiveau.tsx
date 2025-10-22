@@ -38,7 +38,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                 boxSizing: 'border-box',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1px', // Espace de 1px entre les éléments enfants
+                gap: '1px',
             }}
         >
             <Typography variant="h6" gutterBottom>{`Montée de niveau en ${competenceType}`}</Typography>

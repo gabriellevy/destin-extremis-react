@@ -241,16 +241,18 @@ const Histoire: React.FC = (): JSX.Element => {
 
     return (
         <>
-            {evtsExecutes.map((evt: EvtExecute, index: number) => (
-                <AfficheEvt
-                    key={evt.id + index}
-                    evt={evt}
-                    index={index}
-                    setOpen={setOpen}
-                    setSelectedImage={setSelectedImage}
-                    setEvtsExecutes={setEvtsExecutes}
-                />
-            ))}
+            <Box display="flex" flexDirection="column" gap={4}>
+                {evtsExecutes.map((evt: EvtExecute, index: number) => (
+                    <AfficheEvt
+                        key={evt.id + index}
+                        evt={evt}
+                        index={index}
+                        setOpen={setOpen}
+                        setSelectedImage={setSelectedImage}
+                        setEvtsExecutes={setEvtsExecutes}
+                    />
+                ))}
+            </Box>
             {tempsRestant !== null && tempsRestant > 0 && (
                 <Grid2 container justifyContent="center" alignItems="center" spacing={2} sx={{ mb: 2 }}>
                     <Grid2>
