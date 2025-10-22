@@ -1,6 +1,6 @@
 import {TypeCompetence} from "./Comps";
 import {Perso} from "../Perso";
-import {getValeurVice, getViceOppose, Vertu, Vice} from "../../ViceVertu";
+import {getViceOppose, Vertu, Vice} from "../../ViceVertu";
 import {Possession, PossessionEnum} from "../../../donnees/possessions/Possession";
 import {getRandomDeTableauString} from "../../../fonctions/random";
 import {NOMS_DE_CHATS} from "../../../donnees/possessions/animaux";
@@ -28,6 +28,12 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.orgueilleux,
             Vice.colerique,
         ]
+        case TypeCompetence.mouvement : return [
+            Vice.rebelle,
+            Vice.impulsif,
+            Vice.lache,
+        ]
+
 
         default: {
             return [];
@@ -37,12 +43,21 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
 
 export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu[] {
     switch (typeCompetence) {
-        case TypeCompetence.eloquence : return [
+        case TypeCompetence.armeCaC : return [
             Vertu.valeureux,
         ]
         case TypeCompetence.eloquence : return [
             Vertu.loyal,
             Vertu.sociable,
+        ]
+        case TypeCompetence.endurance : return [
+            Vertu.sobre,
+            Vertu.prudent,
+            Vertu.placide,
+            Vertu.discipline,
+        ]
+        case TypeCompetence.mouvement : return [
+            Vertu.sobre,
         ]
         default: {
             return [];
