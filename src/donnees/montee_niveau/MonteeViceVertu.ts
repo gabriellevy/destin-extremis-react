@@ -12,6 +12,11 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
         case TypeCompetence.charme: return [
             Vice.luxurieux,
         ]
+        case TypeCompetence.discretion: return [
+            Vice.lache,
+            Vice.trompeur,
+            Vice.solitaire,
+        ]
         case TypeCompetence.eloquence: return [
             Vice.trompeur,
             Vice.orgueilleux,
@@ -47,6 +52,11 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.genereux,
             Vertu.bienveillant,
             Vertu.sociable,
+            Vertu.placide,
+        ]
+        case TypeCompetence.discretion: return [
+            Vertu.prudent,
+            Vertu.humble,
             Vertu.placide,
         ]
         case TypeCompetence.eloquence : return [

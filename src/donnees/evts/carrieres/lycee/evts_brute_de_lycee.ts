@@ -100,7 +100,8 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 } else {
                     texte += "Vous êtes plusieurs fois dénoncé et punis par les surveillants. "
                     + "Vous finissez par être forcé à être plus prudent et stopper vos persécutions et tabassages (pour l'instant). ";
-                    texte += arreterCarriere(perso, MetiersEnum.brute_de_lycee, true);
+                    texte += arreterCarriere(perso, MetiersEnum.brute_de_lycee, false);
+                    texte += arreterCarriere(perso, MetiersEnum.dileur_de_lycee, false);
                 }
 
                 return texte + "<br/>";
