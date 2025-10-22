@@ -326,6 +326,31 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             repetable: true,
         },
+        {
+            id: "evts_brute_de_lycee11caillou",
+            description: async (perso: Perso): Promise<string> => {
+                const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
+                let texte: string = "Vous repérez ce petit merdeux de " + merdeux.prenom + "qui passe au dessus de vous sur un pont. "
+                    + "Se croyant à l'abri, il se permet de vous insulter ! Vous ramassez promptement un caillou. ";
+                const resTestTir: ResultatTest = testComp(perso, {comp: TypeCompetence.tir, bonusMalus: 0});
+                texte += resTestTir.resume;
+                if (resTestTir.reussi) {
+                    texte += "Vous lui carrez en pleine tête. Il fait beacoup moins le malin ! ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
+                    modifierReputationDansQuartier(perso, undefined, -4, 1);
+                } else {
+                    texte += "Vous lancez le caillou dans sa direction mais le ratez complètement, ce qui le fait bien rire. ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, -1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            proba: 5,
+            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            repetable: true,
+        },
     ],
     probaParDefaut: 10,
 };
