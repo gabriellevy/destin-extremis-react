@@ -304,6 +304,28 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             repetable: true,
         },
+        {
+            id: "evts_brute_de_lycee10ragote",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "";
+                const resTestRagot: ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 20});
+                texte += resTestRagot.resume;
+                if (resTestRagot.reussi) {
+                    texte += "Vous êts très doué pour écouter les rumeurs et récupérer ainsi les bonnes cibles peureuses et faibles. ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
+                } else {
+                    texte += "Vous avez du mal à repérer les bonnes cibles et à éviter les ennuis. ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, -1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            proba: 5,
+            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            repetable: true,
+        },
     ],
     probaParDefaut: 10,
 };
