@@ -13,6 +13,10 @@ export interface ModificationVice {
 
 export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[] {
     switch (typeCompetence) {
+        case TypeCompetence.eloquence: return [
+            Vice.trompeur,
+            Vice.orgueilleux,
+        ]
         case TypeCompetence.intimidation: return [
             Vice.cruel,
             Vice.paresseux,
@@ -28,7 +32,10 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
 
 export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu[] {
     switch (typeCompetence) {
-
+        case TypeCompetence.eloquence : return [
+            Vertu.loyal,
+            Vertu.sociable,
+        ]
         default: {
             return [];
         }
