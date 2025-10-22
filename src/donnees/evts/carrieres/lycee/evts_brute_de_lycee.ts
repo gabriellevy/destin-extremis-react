@@ -2,6 +2,7 @@ import {Perso} from "../../../../types/perso/Perso";
 import {GroupeEvts} from "../../../../types/Evt";
 import {
     arreterCarriere,
+    augmenterCompetenceMetier,
     commencerCarriere,
     compatibiliteCarriere,
     estAuLycee,
@@ -174,6 +175,25 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             proba: 3,
+            repetable: true,
+        },
+        {
+            id: "evts_brute_de_lycee6 bande",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Vous commencez à vous connaître entre jeunes malandrins. Vous délimitez vos territoires et échangez vos infos. ";
+
+                const resTestComdt: ResultatTest = testComp(perso, {comp: TypeCompetence.commandement, bonusMalus: 0});
+                texte += resTestComdt.resume;
+                if (resTestComdt.reussi) {
+                    texte += "Par votre autorité naturelle vous dirigez souvent ces petites séances de coordination.  ";
+                    modifierReputationDansQuartier(perso, undefined, -1, 3);
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
+                }
+
+                return texte + "<br/>";
+            },
+            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
+            proba: 4,
             repetable: true,
         },
     ],
