@@ -33,7 +33,10 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.impulsif,
             Vice.lache,
         ]
-
+        case TypeCompetence.survie : return [
+            Vice.naturaliste,
+            Vice.solitaire,
+        ]
 
         default: {
             return [];
@@ -57,6 +60,10 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.discipline,
         ]
         case TypeCompetence.mouvement : return [
+            Vertu.sobre,
+        ]
+        case TypeCompetence.survie : return [
+            Vertu.discipline,
             Vertu.sobre,
         ]
         default: {
