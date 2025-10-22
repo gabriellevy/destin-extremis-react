@@ -47,7 +47,7 @@ export enum Vertu {
     travailleur = "Travailleur",
     chaste = "Chaste",
     sobre = "Sobre",
-    genereux = "Généreux",
+    genereux = "Généreux", // Prodigue
     bienveillant = "Bienveillant",
     altruiste = "Altruiste",
     humble = "Humble",

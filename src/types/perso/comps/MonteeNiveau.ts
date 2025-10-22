@@ -5,71 +5,11 @@ import {Possession, PossessionEnum} from "../../../donnees/possessions/Possessio
 import {getRandomDeTableauString} from "../../../fonctions/random";
 import {NOMS_DE_CHATS} from "../../../donnees/possessions/animaux";
 import {possede} from "../../../fonctions/possessions/possessions";
+import {vertusAssociesACompetence, vicesAssociesACompetence} from "../../../donnees/montee_niveau/MonteeViceVertu";
 
 export interface ModificationVice {
     vice: Vice,
     augmente: boolean, // false signifie diminution du vice (donc augmentation de la vertu)
-}
-
-export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[] {
-    switch (typeCompetence) {
-        case TypeCompetence.armeCaC: return [
-            Vice.cruel,
-            Vice.colerique,
-            Vice.orgueilleux,
-        ]
-        case TypeCompetence.eloquence: return [
-            Vice.trompeur,
-            Vice.orgueilleux,
-        ]
-        case TypeCompetence.intimidation: return [
-            Vice.cruel,
-            Vice.paresseux,
-            Vice.orgueilleux,
-            Vice.colerique,
-        ]
-        case TypeCompetence.mouvement : return [
-            Vice.rebelle,
-            Vice.impulsif,
-            Vice.lache,
-        ]
-        case TypeCompetence.survie : return [
-            Vice.naturaliste,
-            Vice.solitaire,
-        ]
-
-        default: {
-            return [];
-        }
-    }
-}
-
-export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu[] {
-    switch (typeCompetence) {
-        case TypeCompetence.armeCaC : return [
-            Vertu.valeureux,
-        ]
-        case TypeCompetence.eloquence : return [
-            Vertu.loyal,
-            Vertu.sociable,
-        ]
-        case TypeCompetence.endurance : return [
-            Vertu.sobre,
-            Vertu.prudent,
-            Vertu.placide,
-            Vertu.discipline,
-        ]
-        case TypeCompetence.mouvement : return [
-            Vertu.sobre,
-        ]
-        case TypeCompetence.survie : return [
-            Vertu.discipline,
-            Vertu.sobre,
-        ]
-        default: {
-            return [];
-        }
-    }
 }
 
 export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): ModificationVice|undefined {
