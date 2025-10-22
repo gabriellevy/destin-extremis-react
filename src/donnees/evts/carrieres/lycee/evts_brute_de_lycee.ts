@@ -15,7 +15,7 @@ import {getAge} from "../../../../types/Date";
 import {ResultatTest} from "../../../../types/LancerDe";
 import {testComp, testVice} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
-import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {getReputationQuartier, modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {getQuartierDeCoterie} from "../../../coteries/Quartiers";
 import {acquerir, perdre, possede} from "../../../../fonctions/possessions/possessions";
 import {PossessionEnum} from "../../../possessions/Possession";
@@ -193,6 +193,47 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 return texte + "<br/>";
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
+            proba: 4,
+            repetable: true,
+        },
+        {
+            id: "evts_brute_de_lycee7 punition",
+            description: async (perso: Perso): Promise<string> => {
+                let texte = "Les surveillants et proviseurs sont fatigués d'entendre parler de vos méfaits. ";
+
+                const resTestDiscret: ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
+                texte += resTestDiscret.resume;
+                if (resTestDiscret.reussi) {
+                    texte += "Mais vous êtes trop malin pour vous faire attrapper.  ";
+                } else {
+                    texte += "Ils finissent par vous convoquer et vous pincer. "
+                    const resTestTromperie: ResultatTest = testComp(perso, {
+                        comp: TypeCompetence.tromperie,
+                        bonusMalus: 0
+                    });
+                    texte += resTestTromperie.resume;
+                    if (resTestTromperie.reussi) {
+                        texte += "Mais vous les entortillez par vos mensonges et votre bagout. ";
+                    } else {
+                        const resTestEnd: ResultatTest = testComp(perso, {
+                            comp: TypeCompetence.endurance,
+                            bonusMalus: 0
+                        });
+                        texte += "Ils vous punissent durement. ";
+                        texte += resTestEnd.resume;
+                        if (resTestEnd.reussi) {
+                            texte += "Mais vous encaissez la punition avec patience, courage et résistance. ";
+                        } else {
+                            texte += "La souffrance et l'humiliation qu'ils vous infligent vous coupent l'envie de recommencer. ";
+                            arreterCarriere(perso, MetiersEnum.brute_de_lycee, false);
+                            perso.bonheur -= 0.01;
+                        }
+                    }
+                }
+                return texte + "<br/>";
+            },
+            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
+                && getReputationQuartier(perso, undefined).qualite < -3,
             proba: 4,
             repetable: true,
         },
