@@ -21,7 +21,7 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
     const total = sliders.reduce((sum, value) => sum + Math.abs(value), 0);
 
     const onSubmit = (_data: ChoixCoterieFormData) => {
-        setPhaseDeChoix(PhaseDeChoix.selection_competences);
+        setPhaseDeChoix(PhaseDeChoix.resultat);
     };
 
     return (
