@@ -1,11 +1,13 @@
-import {NiveauIA, Perso} from "../../../../types/perso/Perso";
+import {NiveauIA, Perso, Sexe} from "../../../../types/perso/Perso";
 import {GroupeEvts} from "../../../../types/Evt";
 import {
     arreterCarriere,
     augmenterCompetenceMetier,
+    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
-    estAuLycee, getCarriereActive,
+    estAuLycee,
+    getCarriereActive,
     plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
@@ -24,6 +26,8 @@ import {Vice} from "../../../../types/ViceVertu";
 import {Carriere} from "../../../../types/metiers/Metier";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../../fonctions/perso/statut";
 import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
+import {genererPNJ} from "../../../../fonctions/generation";
+import {PNJ} from "../../../../types/perso/PNJ";
 
 export const evts_brute_de_lycee: GroupeEvts = {
     evts: [
@@ -36,7 +40,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => estAuLycee(perso)
-                && !suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
+                && !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.brute_de_lycee]) > 1
                 && getAge(perso) <= 18,
             repetable: true,
@@ -101,7 +105,9 @@ export const evts_brute_de_lycee: GroupeEvts = {
 
                 return texte + "<br/>";
             },
-            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
+            conditions: (perso: Perso): boolean =>
+                suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
+                || suitUneCarriereDepuis(perso, MetiersEnum.dileur_de_lycee, 0.3),
             repetable: true,
         },
         {
@@ -111,7 +117,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 texte += acquerir(perso, PossessionEnum.couteau);
                 return texte;
             },
-            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
+            conditions: (perso: Perso): boolean => ( suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee) || suitUneCarriereDe(perso, MetiersEnum.dileur_de_lycee))
                 && !possede(perso, PossessionEnum.couteau),
             proba: 5,
         },
@@ -172,11 +178,15 @@ export const evts_brute_de_lycee: GroupeEvts = {
                         }
                     }
                 }
-
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            conditions: (perso: Perso): boolean =>
+                suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee) ||
+                suitUneCarriereDe(perso, MetiersEnum.dileur_de_lycee),
             proba: 3,
             repetable: true,
         },
@@ -235,7 +245,8 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 }
                 return texte + "<br/>";
             },
-            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
+            conditions: (perso: Perso): boolean =>
+                ( suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3) || suitUneCarriereDepuis(perso, MetiersEnum.dileur_de_lycee, 0.3))
                 && getReputationQuartier(perso, undefined).qualite < -3,
             proba: 4,
             repetable: true,
@@ -267,6 +278,31 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[MetiersEnum.brute_de_lycee].statutMax),
                 repetable: true,
+        },
+        {
+            id: "evts_brute_de_lycee9 merdeux en fuite",
+            description: async (perso: Perso): Promise<string> => {
+                const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
+                let texte: string = "Vous croisez " + merdeux.prenom +
+                    ",un petit merdeux que vous avez déjà passé à tabac par le passé. En vous voyant il s'enfuit en courant sans vous payer sa redevance !";
+                const resTestMvt: ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 20});
+                texte += resTestMvt.resume;
+                if (resTestMvt.reussi) {
+                    texte += "Vous lui mettez une bonne dérouillée et lui mettez la main au collet pour lui apprendre à vous faire courir. ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
+                    modifierReputationDansQuartier(perso, undefined, 0, 2);
+                } else {
+                    texte += "Il vous prend de vitesse, et devant beaucoup de témoins moqueurs en plus. ";
+                    augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, -1);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            proba: 5,
+            conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
+            repetable: true,
         },
     ],
     probaParDefaut: 10,

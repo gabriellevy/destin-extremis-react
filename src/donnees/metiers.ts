@@ -9,7 +9,6 @@ export enum MetiersEnum {
     macon = "Maçon",
     pilleur_de_ruche = "Pilleur de ruches",
     ranconneur = "Rançonneur",
-    brute_de_lycee = "Brute de lycée", //  pas ne vraie carrière : plutôt une grosse occupation en plus du lycée
     serveur = "Serveur",
     novice_pretre = "Moine novice",
     moine = "Moine",
@@ -39,6 +38,10 @@ export enum MetiersEnum {
     technomancien = "Technomancen",
     // -------------- métiers orks ------------------ //
     marchand_de_champignon = "Marchand de champignon",
+
+    //  pas ne vraie carrière : plutôt de grosses occupations en plus du lycée
+    brute_de_lycee = "Brute de lycée",
+    dileur_de_lycee = "Dileur de lycée",
 
     //-------------------
     non_travailleur = "Ne travaille pas",
@@ -249,6 +252,15 @@ export const metiersObjs: MetierObj = {
         proba: 0.01,
         vicesCompatibles: [Vice.colerique, Vice.cruel, Vice.sociopathique],
         vertusCompatibles: [],
+    },
+    [MetiersEnum.dileur_de_lycee] : {
+        nom: MetiersEnum.dileur_de_lycee,
+        intitule: () => MetiersEnum.dileur_de_lycee,
+        statut: {rang: 2, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 1, metalStatut: MetalStatut.argent},
+        proba: 0.01,
+        vicesCompatibles: [Vice.trompeur, Vice.cupide, Vice.sociopathique, Vice.rebelle, Vice.gourmand, Vice.paresseux],
+        vertusCompatibles: [Vertu.sociable],
     },
     [MetiersEnum.novice_pretre] : {
         nom: MetiersEnum.novice_pretre,
