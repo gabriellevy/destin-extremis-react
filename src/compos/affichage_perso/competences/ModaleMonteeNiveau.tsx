@@ -31,55 +31,61 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
         <Box
             sx={{
                 backgroundColor: '#FFF9C4', // Fond jaune pâle
-                padding: '2px',
+                padding: '16px',
                 borderRadius: '8px',
                 margin: 'auto',
                 width: '100%',
                 boxSizing: 'border-box',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1px', // Espace de 1px entre les éléments enfants
             }}
         >
             <Typography variant="h6" gutterBottom>{`Montée de niveau en ${competenceType}`}</Typography>
             <Typography variant="body2">
-                Choisissez un des effets.
+                Choisissez un des effets :
             </Typography>
-            <div className="flex justify-end space-x-4">
-                <Button
-                    onClick={monteeCompetence}
-                    variant="contained"
-                    size="small"
-                >
-                    {`+1 en ${competenceType}`}
-                </Button>
-                {
-                    texteBoutonChangtPersonnalite != '' ? (
-                        <Button
-                            onClick={modifierPersonnalite}
-                            variant="contained"
-                            size="small"
-                        >
-                            {texteBoutonChangtPersonnalite}
-                        </Button>
-                    ) : undefined
-                }
-                {
-                    texteBoutonAchat != '' ? (
-                        <Button
-                            onClick={acheterObjetParMonteeDeNiveau}
-                            variant="contained"
-                            size="small"
-                        >
-                            {texteBoutonAchat}
-                        </Button>
-                    ) : undefined
-                }
-                <Button
-                    onClick={onClose}
-                    variant="contained"
-                    size="small"
-                >
-                    Annuler
-                </Button>
-            </div>
+            <br/>
+            <Button
+                onClick={monteeCompetence}
+                variant="contained"
+                size="small"
+                sx={{ mb: 1 }}
+            >
+                {`+1 en ${competenceType}`}
+            </Button>
+            {
+                texteBoutonChangtPersonnalite != '' ? (
+                    <Button
+                        onClick={modifierPersonnalite}
+                        variant="contained"
+                        size="small"
+                        sx={{ mb: 1 }}
+                    >
+                        {texteBoutonChangtPersonnalite}
+                    </Button>
+                ) : undefined
+            }
+            {
+                texteBoutonAchat != '' ? (
+                    <Button
+                        onClick={acheterObjetParMonteeDeNiveau}
+                        variant="contained"
+                        size="small"
+                        sx={{ mb: 1 }}
+                    >
+                        {texteBoutonAchat}
+                    </Button>
+                ) : undefined
+            }
+            <Button
+                onClick={onClose}
+                variant="contained"
+                size="small"
+                sx={{ mb: 1 }}
+            >
+                Annuler
+            </Button>
         </Box>
     );
 };
