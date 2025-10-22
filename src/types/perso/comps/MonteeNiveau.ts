@@ -13,6 +13,11 @@ export interface ModificationVice {
 
 export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[] {
     switch (typeCompetence) {
+        case TypeCompetence.armeCaC: return [
+            Vice.cruel,
+            Vice.colerique,
+            Vice.orgueilleux,
+        ]
         case TypeCompetence.eloquence: return [
             Vice.trompeur,
             Vice.orgueilleux,
@@ -32,6 +37,9 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
 
 export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu[] {
     switch (typeCompetence) {
+        case TypeCompetence.eloquence : return [
+            Vertu.valeureux,
+        ]
         case TypeCompetence.eloquence : return [
             Vertu.loyal,
             Vertu.sociable,
@@ -67,7 +75,7 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
     // sélection déterministe :
     // - garder ceux dans lesquels le perso a la valeur la plus éloignée
     // - si il en reste plusieurs, prendre le premier
-    return modifsVice.reduce((acc: ModificationVice, viceSuivant: ModificationVice) => {
+    /*return modifsVice.reduce((acc: ModificationVice, viceSuivant: ModificationVice) => {
         const valeurPersoAcc: number = getValeurVice(perso, acc.vice);
         const valeurPersoViceSuivant: number = getValeurVice(perso, viceSuivant.vice);
 
@@ -77,7 +85,12 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
         const noteViceSuivant: number = viceSuivant.augmente ? -valeurPersoViceSuivant : valeurPersoViceSuivant;
 
         return noteViceAcc > noteViceSuivant ? acc : viceSuivant;
-    });
+    });*/
+
+    // TODO : aléatoire dépendant du dernier evt exécuté comme seed :
+    // - semi déterministe car le dernier evt exécuté changera régulièrement (mais avec un bon délai)
+    // - pousse à attendre le prochain evt pour voir si on aura "mieux"
+    return modifsVice[Math.floor(Math.random() * modifsVice.length)];
 }
 
 export function achatSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): Possession|undefined {
