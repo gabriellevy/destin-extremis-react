@@ -3,7 +3,6 @@ import {FieldErrorsImpl, useForm} from 'react-hook-form';
 import {Vice} from "../types/ViceVertu";
 import SelectionTraits from "./SelectionTraits";
 import Resultat from "./Resultat";
-import SelectionComp from "./SelectionComp";
 import {TypeCompetence} from "../types/perso/comps/Comps";
 import {Mode} from "../types/Mode";
 import DestinExtremis from "../compos/DestinExtremis";
@@ -30,7 +29,6 @@ const defaultValues: ChoixCoterieFormData = {
 
 export enum PhaseDeChoix {
     selection_traits,
-    selection_competences,
     resultat
 }
 export interface ChoixDeCoterieProps {
@@ -53,16 +51,6 @@ function ChoixDeCoterie({mode}:Readonly<ChoixDeCoterieProps>) {
                         watch={watch}
                         setPhaseDeChoix={setPhaseDeChoix}
                     />)
-            }
-            {
-                phaseDeChoix === PhaseDeChoix.selection_competences &&
-                (<SelectionComp
-                    register={register}
-                    handleSubmit={handleSubmit}
-                    errors={errors as FieldErrorsImpl<ChoixCoterieFormData>}
-                    watch={watch}
-                    setPhaseDeChoix={setPhaseDeChoix}
-                />)
             }
             {
                 phaseDeChoix === PhaseDeChoix.resultat && mode === Mode.choixCoterie &&
