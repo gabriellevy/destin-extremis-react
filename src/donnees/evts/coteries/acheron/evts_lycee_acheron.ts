@@ -124,7 +124,7 @@ export const evts_lycee_acheron: GroupeEvts = {
 
                 if (Math.random() <= 0.2) {
                     texte += "La concurrence extrêmement rude entre élèves vus épuise. D'autant plus que beaucoup d'entre eux n'ont aucun scrupule pour faire des coups bas sournois. ";
-                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                    texte += ajouterViceVal(perso, Vice.mefiant, 1);
                 }
 
                 return texte;
@@ -143,7 +143,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 }
                 if (Math.random() <= 0.4) {
                     texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
-                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                    texte += ajouterViceVal(perso, Vice.mefiant, 1);
                 }
                 if (Math.random() <= 0.4) {
                     texte += "Vous apprenez à éviter les dangers et à surtout rester discret. ";
@@ -175,7 +175,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 }
                 if (Math.random() <= 0.3) {
                     texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
-                    texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                    texte += ajouterViceVal(perso, Vice.mefiant, 1);
                 }
                 if (Math.random() <= 0.4) {
                     texte += "Vous avez le sentiment que cet isolement mental brise vos aptitudes sociales. ";
@@ -206,7 +206,7 @@ export const evts_lycee_acheron: GroupeEvts = {
 
                     if (Math.random() <= 0.2) {
                         texte += "Vous devenez de plus en plus méfiant à la limite de la paranoïa. ";
-                        texte += ajouterViceVal(perso, Vice.paranoiaque, 1);
+                        texte += ajouterViceVal(perso, Vice.mefiant, 1);
                     }
                 }
 

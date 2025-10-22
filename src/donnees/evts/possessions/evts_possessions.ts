@@ -16,7 +16,7 @@ export const evts_possessions: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !possede(perso, PossessionEnum.pistolet)
-                && getValeurVice(perso, Vice.paranoiaque) > 0
+                && getValeurVice(perso, Vice.mefiant) > 0
                 && getAge(perso) >= 18,
             repetable: true,
         },
@@ -29,7 +29,7 @@ export const evts_possessions: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !possede(perso, PossessionEnum.armes_lourdes)
-                && getValeurVice(perso, Vice.paranoiaque) > 1
+                && getValeurVice(perso, Vice.mefiant) > 1
                 && getAge(perso) >= 18,
             repetable: true,
         },

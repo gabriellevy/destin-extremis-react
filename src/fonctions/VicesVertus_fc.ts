@@ -4,6 +4,25 @@ import {Perso} from "../types/perso/Perso";
 export function descriptionViceVertu(vice: Vice, valeurVice: number) {
     if (valeurVice=== 0) return 'Neutre';
     switch (vice) {
+        case Vice.mefiant: {
+            switch (valeurVice) {
+                case -3:
+                    return "Extrêmement " + getVertuOppose(vice);
+                case -2:
+                    return "Très " + getVertuOppose(vice);
+                case -1:
+                    return getVertuOppose(vice);
+                case 1:
+                    return vice;
+                case 2:
+                    return "Paranoïaque";
+                case 3:
+                    return "Complètement paranoïaque";
+                default:
+                    return "valeur impossible : " + valeurVice;
+            }
+        }
+        break;
         case Vice.cruel: {
             switch (valeurVice) {
                 case -3:

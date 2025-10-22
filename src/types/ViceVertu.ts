@@ -33,7 +33,8 @@ export enum Vice {
     // inclut d'une manière général la tendance à être malhonnête, à ne pas respecter les règles de la société
     rebelle = "Rebelle",
     sceptique = "Sceptique",
-    paranoiaque = "Paranoïaque",
+    // à haut niveau devient paranoïaque
+    mefiant = "Méfiant",
 }
 
 export enum Vertu {
@@ -77,7 +78,7 @@ export function getViceOppose(typeVertu: Vertu): Vice {
         case Vertu.empathique : return Vice.sociopathique;
         case Vertu.discipline : return Vice.rebelle;
         case Vertu.spirituel : return Vice.sceptique;
-        case Vertu.naif : return Vice.paranoiaque;
+        case Vertu.naif : return Vice.mefiant;
     }
 }
 export function getVertuOppose(typeVice: Vice): Vertu {
@@ -99,7 +100,7 @@ export function getVertuOppose(typeVice: Vice): Vertu {
         case Vice.sociopathique : return Vertu.empathique;
         case Vice.rebelle : return Vertu.discipline;
         case Vice.sceptique : return Vertu.spirituel;
-        case Vice.paranoiaque : return Vertu.naif;
+        case Vice.mefiant : return Vertu.naif;
     }
 }
 

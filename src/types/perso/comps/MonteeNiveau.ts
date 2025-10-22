@@ -137,6 +137,9 @@ export function achatsAssociesACompetence(typeCompetence: TypeCompetence): Posse
         case TypeCompetence.armeCaC: return [
             {possessionEnum: PossessionEnum.couteau},
         ]
+        case TypeCompetence.survie: return [
+            {possessionEnum: PossessionEnum.couteau},
+        ]
         case TypeCompetence.tir: return [
             {possessionEnum: PossessionEnum.pistolet},
             {possessionEnum: PossessionEnum.armes_lourdes}
