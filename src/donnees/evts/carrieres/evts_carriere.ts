@@ -3,13 +3,13 @@ import {NiveauIA, Perso} from "../../../types/perso/Perso";
 import {
     arreterCarriere,
     aUneCarriere, compatibiliteCarriere,
-    getCarriereActive,
+    getCarriereActive, suitUneCarriereDe,
     suitUneCarriereDepuis
 } from "../../../fonctions/metiers/metiersUtils";
 import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 import {Carriere} from "../../../types/metiers/Metier";
 import {appelLeChat, appelLeChatParaphrase, NiveauInfosPerso} from "../../../fonctions/le_chat";
-import {metiersObjs} from "../../metiers";
+import {MetiersEnum, metiersObjs} from "../../metiers";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier, testVice} from "../../../fonctions/des";
 import {Vice} from "../../../types/ViceVertu";
@@ -21,6 +21,8 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 export const evts_carriere: GroupeEvts = {
     evts: [
         {
+            // cet événements générique peut-être remplacé par des événements plus spécifiques aux différents métiers
+            // dans ce cas ajouter ici dans les conditions une condition qui exclut le métier en question (ici : brute_de_lycee)
             id: "evts_carriere1 améliore",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
@@ -51,6 +53,7 @@ export const evts_carriere: GroupeEvts = {
                 return texte + "<br/>" + texteTests;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, undefined, 1)
+                && !suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
             repetable: true,
         },

@@ -1,11 +1,11 @@
-import {Perso} from "../../../../types/perso/Perso";
+import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {GroupeEvts} from "../../../../types/Evt";
 import {
     arreterCarriere,
     augmenterCompetenceMetier,
     commencerCarriere,
     compatibiliteCarriere,
-    estAuLycee,
+    estAuLycee, getCarriereActive,
     plusUnEnCompetenceMetier,
     suitUneCarriereDe,
     suitUneCarriereDepuis
@@ -13,7 +13,7 @@ import {
 import {MetiersEnum, metiersObjs} from "../../../metiers";
 import {getAge} from "../../../../types/Date";
 import {ResultatTest} from "../../../../types/LancerDe";
-import {testComp, testVice} from "../../../../fonctions/des";
+import {testComp, testMetier, testVice} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {getReputationQuartier, modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {getQuartierDeCoterie} from "../../../coteries/Quartiers";
@@ -21,6 +21,9 @@ import {acquerir, perdre, possede} from "../../../../fonctions/possessions/posse
 import {PossessionEnum} from "../../../possessions/Possession";
 import {infligerBlessureAleatoire} from "../../../../fonctions/sante/sante";
 import {Vice} from "../../../../types/ViceVertu";
+import {Carriere} from "../../../../types/metiers/Metier";
+import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../../fonctions/perso/statut";
+import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
 
 export const evts_brute_de_lycee: GroupeEvts = {
     evts: [
@@ -236,6 +239,34 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 && getReputationQuartier(perso, undefined).qualite < -3,
             proba: 4,
             repetable: true,
+        },
+        {
+            id: "evts_brute_de_lycee8 travail",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "";
+                const carriere: Carriere|undefined = getCarriereActive(perso);
+                if (carriere) {
+                    const resultatTestMetier:ResultatTest = testMetier(perso, {metier: carriere.metier, bonusMalus: 20});
+                    const resTestEvaluation: ResultatTest = testComp(perso, {comp: TypeCompetence.evaluation, bonusMalus: 20});
+                    texte += resTestEvaluation.resume;
+                    texte += resultatTestMetier.resume + "<br/>";
+                    if (resultatTestMetier.reussi && resTestEvaluation.reussi) {
+                        texte += "Vous êtes un excellent racketteur de lycée, très efficace pour repérer les gamins à la fois faibles et riches. ";
+                        texte += modifierStatut(perso, 1);
+                    } else {
+                        texte += "Vous agressez régulièreent les faibles de votre lycée mais sans grand bénéfice. ";
+                    }
+                } else {
+                    console.error("evts_brute_de_lycee8 travail améliore sans carrière !  : perso : ", perso);
+                }
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+                conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
+                && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[MetiersEnum.brute_de_lycee].statutMax),
+                repetable: true,
         },
     ],
     probaParDefaut: 10,

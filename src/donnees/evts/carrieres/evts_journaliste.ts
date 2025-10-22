@@ -39,7 +39,7 @@ export const evts_journaliste: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= 0,
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= 2,
             repetable: true,
         },
         {
