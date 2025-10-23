@@ -65,6 +65,8 @@ export function descriptionQuartier(quartier: Quartier): string {
 
 export function imageQuartier(quartier: Quartier): string {
     switch (quartier) {
+        case Quartier.bois_de_boulogne:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/bois%20de%20boulogne.jpg";
         case Quartier.grande_crete:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/grande_cr%C3%A8te.jpg";
         case Quartier.noisiel:
@@ -73,8 +75,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/genevilliers.jpg";
         case Quartier.chatenay_malabry:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Ch%C3%A2tenay-Malabry.jpg";
-        case Quartier.bois_de_boulogne:
-            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/bois%20de%20boulogne.jpg";
+        case Quartier.saint_denis:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Saint-Denis.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);
