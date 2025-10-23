@@ -7,6 +7,7 @@ import {ajouterViceVal, getValeurVertu, getValeurVice, Vertu, Vice} from "../../
 import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
 import {droguesEnum} from "../../sante/drogues";
 import {getAge} from "../../../types/Date";
+import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -28,7 +29,7 @@ export const evts_bars: GroupeEvts = {
                     texte += resTestSobre.resume;
                     if (!resTestSobre.reussi) {
                         texte += "Vous commencez à fumer pour la première fois.";
-                        texte += seDroguer(perso, droguesEnum.cigarette);
+                        texte += ajouteLigneDeTexteGras(seDroguer(perso, droguesEnum.cigarette));
                     }
                 }
                 // drague

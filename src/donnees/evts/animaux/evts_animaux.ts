@@ -4,7 +4,7 @@ import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {acquerirEtNomme} from "../../../fonctions/possessions/possessions";
 import {PossessionEnum} from "../../possessions/Possession";
 import {nombreDAnimauxDomestiques} from "../../../fonctions/possessions/animaux";
-import {getRandomDeTableauString} from "../../../fonctions/random";
+import {aleatoireDeTableauString} from "../../../fonctions/random";
 import {NOMS_DE_CHATS} from "../../possessions/animaux";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
@@ -16,7 +16,7 @@ export const evts_animaux: GroupeEvts = {
         {
             id: "evts_animaux adoption chat",
             description: async (perso: Perso): Promise<string> => {
-                const nomChat: string = getRandomDeTableauString(NOMS_DE_CHATS);
+                const nomChat: string = aleatoireDeTableauString(NOMS_DE_CHATS);
                 let texte:string = "Vous recueillez un chat errant et l'appelez " + nomChat + ".";
                 // TODO : ajouter un test animaux car sinon il se barre
                 acquerirEtNomme(perso, PossessionEnum.chat, nomChat);

@@ -5,6 +5,7 @@ import {appelLeChatParaphrase} from "../../../fonctions/le_chat";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
 import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
 import {droguesEnum} from "../../sante/drogues";
+import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
 
 export const evts_drogue: GroupeEvts = {
     evts: [
@@ -12,7 +13,7 @@ export const evts_drogue: GroupeEvts = {
             id: "evts_drogue1 stimulant",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Pour tenir la compétition vous décidez de vous droguer à la vissopressine. Vous serez plus performant c'est sûr.";
-                texte += seDroguer(perso, droguesEnum.vissopressine);
+                texte += ajouteLigneDeTexteGras(seDroguer(perso, droguesEnum.vissopressine));
 
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);

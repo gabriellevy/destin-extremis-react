@@ -2,7 +2,7 @@ import {TypeCompetence} from "./Comps";
 import {Perso} from "../Perso";
 import {getViceOppose, Vertu, Vice} from "../../ViceVertu";
 import {Possession, PossessionEnum} from "../../../donnees/possessions/Possession";
-import {getRandomDeTableauString} from "../../../fonctions/random";
+import {aleatoireDeTableauString} from "../../../fonctions/random";
 import {NOMS_DE_CHATS} from "../../../donnees/possessions/animaux";
 import {possede} from "../../../fonctions/possessions/possessions";
 import {vertusAssociesACompetence, vicesAssociesACompetence} from "../../../donnees/montee_niveau/MonteeViceVertu";
@@ -71,7 +71,7 @@ export function achatsAssociesACompetence(typeCompetence: TypeCompetence): Posse
         case TypeCompetence.animaux: return [
             {
                 possessionEnum: PossessionEnum.chat,
-                nom: getRandomDeTableauString(NOMS_DE_CHATS),
+                nom: aleatoireDeTableauString(NOMS_DE_CHATS),
             },
         ]
         case TypeCompetence.armeCaC: return [

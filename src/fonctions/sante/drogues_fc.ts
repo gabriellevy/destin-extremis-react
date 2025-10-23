@@ -9,7 +9,7 @@ export function seDroguer(perso: Perso, drogueEnum: droguesEnum):string {
         perso.drogues.push(drogueEnum);
         const drogue:Drogue = droguesObjs[drogueEnum];
         texte += modifierStatut(perso, - drogue.prix);
-        texte += "<br/>Vous vous droguez à " + drogueEnum + ".";
+        texte += "Vous vous droguez à " + drogueEnum + ".";
     }
     return texte;
 }

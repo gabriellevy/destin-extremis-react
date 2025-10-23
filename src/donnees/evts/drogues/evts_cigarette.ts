@@ -8,6 +8,7 @@ import {droguesEnum} from "../../sante/drogues";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testVertu} from "../../../fonctions/des";
 import {getAge} from "../../../types/Date";
+import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
 
 export const evts_cigarette: GroupeEvts = {
     evts: [
@@ -19,7 +20,7 @@ export const evts_cigarette: GroupeEvts = {
                 texte += resTestSobre.resume;
                 if (!resTestSobre.reussi) {
                     texte += "Influencé par vos amis vous commencez à fumer pour la première fois.";
-                    texte += seDroguer(perso, droguesEnum.cigarette);
+                    texte += ajouteLigneDeTexteGras(seDroguer(perso, droguesEnum.cigarette));
                 } else {
                     texte += "Plusieurs de vos amis fument mais vous ne vous laissez pas tenter.";
                 }

@@ -1,3 +1,30 @@
+import {aleatoireDeTableauString} from "../../../fonctions/random";
+
+export const JOURNAUX:string[] = [
+    "Transmetropolitan",
+    "Le Monde",
+    "Le Figaro",
+    "Libération",
+    "L’Obs",
+    "La Croix",
+    "Les Échos",
+    "La Tribune",
+    "L’Équipe",
+    "Télérama",
+    "Elle",
+    "Marie Claire",
+    "Phosphore",
+    "Science et vie",
+    "Canard PC",
+    "01Net",
+    "Terra eco",
+    "Charlie Hebdo",
+    "Sciences et Avenir",
+    "Valeurs actuelles",
+    "Le Point",
+    "Le Canard enchaîné",
+];
+
 export function journalAleatoire(): string {
-    return "Transmetropolitan";
+    return aleatoireDeTableauString(JOURNAUX);
 }

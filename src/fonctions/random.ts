@@ -32,6 +32,6 @@ export function getRandomInt0(num: number): number {
 }
 
 // de 0 à num
-export function getRandomDeTableauString(tableau: string[]): string {
+export function aleatoireDeTableauString(tableau: string[]): string {
     return tableau[Math.floor(Math.random() * tableau.length)];
 }
