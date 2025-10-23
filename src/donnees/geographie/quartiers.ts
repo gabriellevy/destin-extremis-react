@@ -77,6 +77,7 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/bois%20de%20boulogne.jpg";
 
         default:
-            return "Il manque l'image de cet endroit : " + quartier;
+            console.error("Il manque l'image de cet endroit : " + quartier);
+            return '';
     }
 }
