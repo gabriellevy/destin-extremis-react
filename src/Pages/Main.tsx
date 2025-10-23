@@ -48,10 +48,11 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                                     margin: 'auto',
                                     p: 3,
                                     mt: 4,
-                                    height: '100vh',
+                                    height: '95vh',
                                     overflowY: 'auto',
                                     position: 'sticky',
-                                    top: 0,
+                                    top: '2.5vh',
+                                    marginLeft: '2.5vh',
                                     marginTop: 0,
                                 }
                             }>

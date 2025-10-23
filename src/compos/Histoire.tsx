@@ -254,7 +254,17 @@ const Histoire: React.FC = (): JSX.Element => {
                 ))}
             </Box>
             {tempsRestant !== null && tempsRestant > 0 && (
-                <Grid2 container justifyContent="center" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+                <Grid2 container justifyContent="center" alignItems="center" spacing={2}
+                       sx={{
+                           backgroundColor: 'rgba(255, 249, 196, 0.9)',
+                           padding: '16px',
+                           borderRadius: '8px',
+                           margin: 'auto',
+                           maxWidth: '700px',
+                           boxSizing: 'border-box',
+                           mb: 2,
+                       }}
+                >
                     <Grid2>
                         <Typography fontWeight="bold">
                             Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
