@@ -1,8 +1,9 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {FieldErrorsImpl, UseFormHandleSubmit, UseFormRegister, UseFormWatch} from 'react-hook-form';
-import {Box, Button, Grid2, Typography} from "@mui/material";
+import {Box, Button, Divider, Grid2, Typography} from "@mui/material";
 import {Vertu, Vice} from "../types/ViceVertu";
 import {ChoixCoterieFormData, PhaseDeChoix} from "./ChoixDeCoterie";
+import {descriptionVice} from "../donnees/VicesVertus";
 
 type SelectionTraitsProps = {
     register: UseFormRegister<ChoixCoterieFormData>;
@@ -37,17 +38,17 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
         >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid2 container spacing={2} columns={3}>
-                    {idsSliders.map((idSlider: Vice, indexSliderAffiche: number) => (
-                        <React.Fragment key={idSlider}>
+                    {idsSliders.map((vice: Vice, indexSliderAffiche: number) => (
+                        <React.Fragment key={vice}>
                             <Grid2 alignItems="center" justifyContent="flex-end" size={1}>
-                                <Typography textAlign="right">{idSlider}</Typography>
+                                <Typography textAlign="right">{vice}</Typography>
                             </Grid2>
                             <Grid2 alignItems="center" size={1}>
                                 <input
                                     type="range"
                                     min={-1}
                                     max={1}
-                                    {...register(`mauvais.${idSlider}`, {
+                                    {...register(`mauvais.${vice}`, {
                                         validate: (value: number) => {
                                             const newSliders = [...sliders];
                                             newSliders[indexSliderAffiche] = value;
@@ -63,9 +64,10 @@ const SelectionTraits: React.FC<SelectionTraitsProps> = ({ register, errors, wat
                                 </Typography>
                             </Grid2>
                             <Grid2 alignItems="center" size={3}>
-                                <Typography variant="caption" display="block" textAlign="center">
-                                    Description courte du slider {idSlider} sur deux lignes max.
+                                <Typography variant="body2" display="block">
+                                    {descriptionVice(vice)}
                                 </Typography>
+                                <Divider />
                             </Grid2>
                         </React.Fragment>
                     ))}
