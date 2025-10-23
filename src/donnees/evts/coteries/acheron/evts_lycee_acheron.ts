@@ -10,6 +10,7 @@ import {MetiersEnum} from "../../../metiers";
 import {augmenterCompetence} from "../../../../fonctions/perso/competences";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
+import {ajouteLigneDeTexteGras} from "../../../../fonctions/texte_fc";
 export const evts_lycee_acheron: GroupeEvts = {
     evts: [
         {
@@ -117,9 +118,9 @@ export const evts_lycee_acheron: GroupeEvts = {
                 if (Math.random() <= 0.4) {
                     texte += "Plus le temps passe et plus les punitions se succèdent, plus vous ne pensez plus à rien d'autre qu'au travail. "
                     + "Votre humeur, votre apparence et même votre hygiène s'en ressentent. ";
-                    texte += ajouterVertuVal(perso, Vertu.travailleur, 1);
-                    texte += augmenterCompetence(perso, TypeCompetence.reflexes, -1);
-                    texte += augmenterCompetence(perso, TypeCompetence.charme, -1);
+                    texte += ajouteLigneDeTexteGras(ajouterVertuVal(perso, Vertu.travailleur, 1));
+                    texte += ajouteLigneDeTexteGras(augmenterCompetence(perso, TypeCompetence.reflexes, -1));
+                    texte += ajouteLigneDeTexteGras(augmenterCompetence(perso, TypeCompetence.charme, -1));
                 }
 
                 if (Math.random() <= 0.2) {

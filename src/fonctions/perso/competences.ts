@@ -41,7 +41,7 @@ export function augmenterCompetence(perso: PersoCommon,typeComp: TypeCompetence,
     const comp: Competence | undefined = perso.comps.find((comp:Competence) => comp.typeComp === typeComp);
     if (comp !== undefined) {
         comp.val += val;
-        return "<b>" + (val> 0 ? "+" : "") + val + " " + typeComp.toString() + "</b><br/>";
+        return (val> 0 ? "+" : "") + val + " " + typeComp.toString();
     } else {
         console.warn("Impossible de modifier la valeur de la compétence : " + typeComp + " de " + val);
     }

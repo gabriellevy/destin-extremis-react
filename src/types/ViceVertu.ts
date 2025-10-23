@@ -158,7 +158,7 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): str
         viceVertu.valVertu = valActuelle;
     }
     if (valPrecedente != valActuelle) {
-        return "<b>" + valActuelle + " en " + typeVertu.toString() + " </b> ";
+        return valActuelle + " en " + typeVertu.toString();
     }
     return '';
 }
