@@ -46,7 +46,7 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
     return (
         <Box
             sx={{
-                backgroundColor: '#FFF9C4', // Fond jaune pâle
+                backgroundColor: 'rgba(255, 249, 196, 0.9)',
                 padding: '16px',
                 borderRadius: '8px',
                 margin: 'auto',

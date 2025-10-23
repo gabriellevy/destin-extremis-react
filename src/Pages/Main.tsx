@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {Box, Grid2} from '@mui/material';
 import GenPersoForm from "../compos/creation_perso/GenPersoForm";
 import AffichagePerso from "../compos/affichage_perso/AffichagePerso";
@@ -11,10 +11,12 @@ import {imageQuartier} from "../donnees/geographie/quartiers";
 export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
     const [afficherForm, setAfficherForm] = useState(initPerso === undefined);
     const { perso } = useContext(PersoContexte) as PersoContexteType;
-    let imageQuartierUrl:string = "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/bois%20de%20boulogne.jpg";
-    if (perso.lieu.quartier && imageQuartier(perso.lieu.quartier) !== '') {
-        imageQuartierUrl = imageQuartier(perso.lieu.quartier);
-    }
+    const [imageQuartierUrl, setImageQuartierUrl] = useState<string>('https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/bois%20de%20boulogne.jpg');
+    useEffect(() => {
+        if (perso.lieu.quartier && imageQuartier(perso.lieu.quartier) !== '') {
+            setImageQuartierUrl(imageQuartier(perso.lieu.quartier));
+        }
+    }, [perso.lieu.quartier]);
 
     return (
         <>
@@ -24,18 +26,19 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                     mode={mode}
                 />
             ) : perso.phaseDExecution === PhaseDExecution.histoire ? (
-                <Box
-                    sx={{
-                        backgroundImage: `url(${imageQuartierUrl})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        height: '100vh',
-                        width: '100vw',
-                        position: 'relative',
-                    }}
-                >
-                    <Grid2 container spacing={3} sx={{ height: '100vh', width: '100vw' }}>
+                <>
+                    <Box
+                        sx={{
+                            backgroundImage: `url(${imageQuartierUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat',
+                            height: '100vh',
+                            width: '100vw',
+                            position: 'fixed',
+                        }}
+                    />
+                    <Grid2 container spacing={3} sx={{ position: 'relative', zIndex: 1 }}>
                         <Grid2 size={3}>
                             <Box sx={
                                 {
@@ -59,7 +62,7 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                             <Histoire />
                         </Grid2>
                     </Grid2>
-                </Box>
+                </>
             ) : <>
                 Vous n'êtes plus dans le formulaire mais pas non plus en mode histoire ?</>}
         </>
