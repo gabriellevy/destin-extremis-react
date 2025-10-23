@@ -1,4 +1,4 @@
-import {NiveauIA, Perso} from "../../../types/perso/Perso";
+import {NiveauIA, Perso, PersoHisto} from "../../../types/perso/Perso";
 import {MetiersEnum, metiersObjs} from "../../metiers";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
@@ -37,7 +37,7 @@ export const evts_serveur: GroupeEvts = {
                 }
                 return texte;
             },
-            image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
+            image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.serveur]) >= 0
@@ -65,7 +65,7 @@ export const evts_serveur: GroupeEvts = {
                 }
                 return texte + "<br/>" + texteTests;
             },
-            image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
+            image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.serveur),
             repetable: true,

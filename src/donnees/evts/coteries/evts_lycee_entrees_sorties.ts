@@ -1,4 +1,4 @@
-import {NiveauIA, Perso} from "../../../types/perso/Perso";
+import {NiveauIA, Perso, PersoHisto} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {getAge} from "../../../types/Date";
 import {Coterie} from "../../../types/Coterie";
@@ -13,6 +13,7 @@ import {rejointCoterie} from "../../../fonctions/coteries/generales";
 import {changerQuartier} from "../../../fonctions/geographie/quartier";
 import {finDAnneeDEtude} from "../../../fonctions/coteries/etudes";
 import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
+import {imageQuartier} from "../../geographie/quartiers";
 
 export const evts_lycee_entrees_sorties: GroupeEvts = {
     evts: [
@@ -32,7 +33,8 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee1 === undefined // si n'a asp encore commencé l'université
                 && getAge(perso) == 14,
-            proba: 999999999999999999999999999,// à peu près obligatoire
+            image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
+                proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_engagement_lycee_2eme_annee",
@@ -51,6 +53,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee2 === undefined
                 && getAge(perso) == 15,
+            image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -73,6 +76,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee3 === undefined
                 && getAge(perso) == 16,
+            image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -96,6 +100,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.coterieAnnee4 === undefined
                 && getAge(perso) == 17,
+            image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
@@ -124,6 +129,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.phaseActuelle === PhaseLycee.coterie4
                 && getAge(perso) == 18,
+            image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
             proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {

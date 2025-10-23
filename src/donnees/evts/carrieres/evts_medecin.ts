@@ -1,4 +1,4 @@
-import {Perso} from "../../../types/perso/Perso";
+import {Perso, PersoHisto} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier} from "../../../fonctions/des";
@@ -64,7 +64,7 @@ export const evts_medecin: GroupeEvts = {
                 }
                 return texte;
             },
-            image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
+            image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_chirurgien]) >= 0
@@ -83,7 +83,7 @@ export const evts_medecin: GroupeEvts = {
                 }
                 return texte;
             },
-            image: "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
+            image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.chirurgien),
             repetable: true,

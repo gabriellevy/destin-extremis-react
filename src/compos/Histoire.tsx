@@ -70,7 +70,7 @@ const Histoire: React.FC = (): JSX.Element => {
                 id: evtId,
                 dateStr: dateStr,
                 texteFinal: texte, // l'exécution elle-même
-                image: evtExecute.image,
+                image: evtExecute.image != undefined ? evtExecute.image(perso) : '',
             };
 
             if (perso.debogue) {

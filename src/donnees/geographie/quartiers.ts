@@ -77,6 +77,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Ch%C3%A2tenay-Malabry.jpg";
         case Quartier.saint_denis:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Saint-Denis.jpg";
+        case Quartier.versailles:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/versailles.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);

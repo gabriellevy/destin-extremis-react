@@ -12,7 +12,9 @@ export type Evt = {
     description: (perso: PersoHisto) => Promise<string>;  // modifie le perso et retourne la description de l'evt
     proba?: number, // élevé signifie, si les conditions sont remplies, que cet événement a beaucoup de chance de se produire. 1 est standard plutôt courant, donc valeur par défaut
     conditions?: (perso: Perso) => boolean; // est-ce que l'événement peut être appliqué au perso ou pas
-    image?: string;
+    // l'image affichée dépend éventuellement du perso
+    // dans la pratique, comme l'image est déterminée après l'exécution de la description, cela signifie que le perso a déjà été modifié par la description
+    image?: (perso: PersoHisto) => string;
     repetable?: boolean; // true => exécutables plusieurs fois (y compris d'affilée) (undefined means false)
 };
 
