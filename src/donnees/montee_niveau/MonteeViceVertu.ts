@@ -4,10 +4,21 @@ import {Vertu, Vice} from "../../types/ViceVertu";
 
 export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[] {
     switch (typeCompetence) {
+        case TypeCompetence.adresse: return [
+            Vice.impulsif,
+            Vice.luxurieux,
+            Vice.trompeur,
+        ]
         case TypeCompetence.armeCaC: return [
             Vice.cruel,
             Vice.colerique,
             Vice.orgueilleux,
+        ]
+        case TypeCompetence.bagarre: return [
+            Vice.cruel,
+            Vice.colerique,
+            Vice.rebelle,
+            Vice.impulsif,
         ]
         case TypeCompetence.charme: return [
             Vice.luxurieux,
@@ -57,7 +68,13 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
 
 export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu[] {
     switch (typeCompetence) {
+        case TypeCompetence.adresse : return [
+            Vertu.travailleur,
+        ]
         case TypeCompetence.armeCaC : return [
+            Vertu.valeureux,
+        ]
+        case TypeCompetence.bagarre : return [
             Vertu.valeureux,
         ]
         case TypeCompetence.charme: return [

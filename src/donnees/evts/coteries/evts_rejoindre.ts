@@ -5,6 +5,7 @@ import {Coterie} from "../../../types/Coterie";
 import {getRandomInt} from "../../../fonctions/random";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
 import {rejointCoterie} from "../../../fonctions/coteries/generales";
+import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
 
 // événements de base permanents pour rejoindre ou quitter une coterie
 export const evts_rejoindre: GroupeEvts = {
@@ -25,7 +26,7 @@ export const evts_rejoindre: GroupeEvts = {
                 })
                 const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
                 if (coterieRejointe) {
-                    texte += "Vous rejoignez les " + coterieRejointe.toString();
+                    texte += ajouteLigneDeTexteGras("Vous rejoignez les " + coterieRejointe.toString());
                     rejointCoterie(perso, coterieRejointe);
                 } else {
                     texte += "Malheureusement aucune coterie ne vous satisfait. Peut-être votre caractère est-il encore trop peu affirmé ?" +

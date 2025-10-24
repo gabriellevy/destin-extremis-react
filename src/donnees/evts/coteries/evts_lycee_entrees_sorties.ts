@@ -121,7 +121,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 })
                 const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
                 if (coterieRejointe) {
-                    texte += "Vous rejoignez les " + coterieRejointe.toString();
+                    texte += ajouteLigneDeTexteGras("Vous rejoignez les " + coterieRejointe.toString() + ".");
                     rejointCoterie(perso, coterieRejointe);
                 }
                 return texte;
