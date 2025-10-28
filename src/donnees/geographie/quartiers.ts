@@ -81,6 +81,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Saint-Denis.jpg";
         case Quartier.versailles:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/versailles.jpg";
+        case Quartier.saint_maur_des_fosses:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/St%20Maur%20Des%20Foss%C3%A9s.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);

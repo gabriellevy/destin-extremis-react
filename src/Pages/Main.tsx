@@ -38,15 +38,13 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                             position: 'fixed',
                         }}
                     />
-                    <Grid2 container spacing={3} sx={{ position: 'relative', zIndex: 1 }}>
-                        <Grid2 size={3}>
+                    <Grid2 container spacing={1} sx={{ position: 'relative', zIndex: 1 }}>
+                        <Grid2 size={4}>
                             <Box sx={
                                 {
                                     backgroundColor: 'rgba(255, 249, 196, 0.9)',
-                                    padding: '16px',
                                     borderRadius: '8px',
                                     margin: 'auto',
-                                    p: 3,
                                     mt: 4,
                                     height: '95vh',
                                     overflowY: 'auto',
@@ -59,7 +57,7 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                                 <AffichagePerso />
                             </Box>
                         </Grid2>
-                        <Grid2 size={9}>
+                        <Grid2 size={8}>
                             <Histoire />
                         </Grid2>
                     </Grid2>
