@@ -1,6 +1,7 @@
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {Perso} from "../../types/perso/Perso";
 import {Reputation, ReputationQuartier} from "../../types/perso/Reputation";
+import {ajouteLigneDeTexteGras} from "../texte_fc";
 
 export function reputationVide(): Reputation {
     return {
@@ -56,8 +57,7 @@ export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|un
             amplitude: modifAmplitude,
         })
     }
-    return "<b>Réputation : " + affichageReputation(perso, quartierFinal)
-        + "</b><br/>";
+    return ajouteLigneDeTexteGras("Réputation : " + affichageReputation(perso, quartierFinal));
 }
 
 export function affichageReputation(perso: Perso, quartier:Quartier) {

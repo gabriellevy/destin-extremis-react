@@ -43,6 +43,41 @@ export const evts_lycee_cathares: GroupeEvts = {
             repetable: false,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
+        {
+            id: "evts_lycee_cathares2 inquisition",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Un inquisiteur vous prend comme assistant et vous entraîne à repérer les contrevenants aux règles de conduite de Saint Maur Des Fossés. ";
+
+                let nbSucces:number = 0;
+                const resTestPer:ResultatTest = testComp(perso, {comp: TypeCompetence.perception, bonusMalus: 0});
+                texte += resTestPer.resume;
+                if (resTestPer.reussi) {
+                    texte += "Vous repérez deux amoureux qui se tiennent la main et s'embrassent sans même avoir de papiers en règles de fiançailles bénies par un prêtre. "
+                    + "L'inquisiteur leur inflige une forte amende et à venir faire pénitence à l'église. ";
+                    nbSucces += 1;
+                }
+                const resTestRag:ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 0});
+                texte += resTestRag.resume;
+                if (resTestRag.reussi) {
+                    texte += "Vous êtes particulièrement doué pour attraper les rumeurs et dénoncer les gens louches. ";
+                    nbSucces += 1;
+                }
+                const resTestIntim:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                texte += resTestIntim.resume;
+                if (resTestIntim.reussi) {
+                    texte += "Personne n'ose plus briser la loi autour de vous tant votre réputation grandit vite. ";
+                    nbSucces += 1;
+                }
+                texte += modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses, nbSucces, nbSucces * 2);
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: false,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };
