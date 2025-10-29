@@ -8,6 +8,8 @@ import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterVertuVal, Vertu} from "../../../../types/ViceVertu";
+import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
+import {Maitrise} from "../../../maitrise";
 
 
 export const evts_lycee_cathares: GroupeEvts = {
@@ -69,6 +71,27 @@ export const evts_lycee_cathares: GroupeEvts = {
                     nbSucces += 1;
                 }
                 texte += modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses, nbSucces, nbSucces * 2);
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: false,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
+        {
+            id: "evts_lycee_cathares3 chants",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Les chants, en particulier en choeur, sont pratiqués régulièrement par tous les étudiants cathares. ";
+
+                const resTestPer:ResultatTest = testComp(perso, {comp: TypeCompetence.perception, bonusMalus: 0});
+                texte += resTestPer.resume;
+                if (resTestPer.reussi) {
+                    texte += "Votre belle voix et votre bonne oreille vous font remarquer. ";
+                    texte += modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses, 3, 2);
+                    texte += ajouterMaitrise(perso, Maitrise.chant);
+                }
 
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);

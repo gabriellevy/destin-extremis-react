@@ -9,6 +9,7 @@ export enum Maitrise {
     beni = "Béni", // béni par un dieu (celui de perso.dieu), permet d'accomplir des miracles
     natation = "Natation",
     poesie = "Poesie",
+    chant = "Chant",
     cuisine = "Cuisine",
     conduite_voiture = "Conduite de voiture",
     pilotage_avion = "Pilotage d'avion",
