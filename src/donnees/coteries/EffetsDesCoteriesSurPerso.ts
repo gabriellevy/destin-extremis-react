@@ -23,7 +23,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         };
         case Coterie.cathares: return {
             plus10Values: [TypeCompetence.volonte, TypeCompetence.endurance],
-            plus5Values: [TypeCompetence.animaux, TypeCompetence.discretion],
+            plus5Values: [TypeCompetence.animaux, TypeCompetence.chance],
             minus10Values: [TypeCompetence.bagarre],
             minus5Values: [TypeCompetence.evaluation],
         };
