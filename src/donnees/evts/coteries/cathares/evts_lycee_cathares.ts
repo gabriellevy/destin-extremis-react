@@ -101,6 +101,28 @@ export const evts_lycee_cathares: GroupeEvts = {
             repetable: false,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
+        {
+            id: "evts_lycee_cathares4 cathéchisme",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Hui c'est catéchisme. Vous lisez et étudiez la bible. ";
+
+                const resTestIntel:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                texte += resTestIntel.resume;
+                if (resTestIntel.reussi) {
+                    texte += "Avec le temps vous finissez par extrêmement bien la connaître. ";
+                    texte += ajouterMaitrise(perso, Maitrise.catechisme);
+                } else {
+                    texte += "Mais vous ne retenez pas grand chose. ";
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: false,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
 };

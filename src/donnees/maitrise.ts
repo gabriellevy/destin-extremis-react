@@ -10,6 +10,7 @@ export enum Maitrise {
     natation = "Natation",
     poesie = "Poesie",
     chant = "Chant",
+    catechisme = "Catéchisme",
     cuisine = "Cuisine",
     conduite_voiture = "Conduite de voiture",
     pilotage_avion = "Pilotage d'avion",
