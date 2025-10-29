@@ -1,5 +1,5 @@
 import {GroupeEvts} from "../../../../types/Evt";
-import {NiveauIA, Perso} from "../../../../types/perso/Perso";
+import {NiveauIA, Perso, Sexe} from "../../../../types/perso/Perso";
 import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
 import {Coterie} from "../../../../types/Coterie";
 import {ResultatTest} from "../../../../types/LancerDe";
@@ -10,6 +10,7 @@ import {Quartier} from "../../../geographie/quartiers";
 import {ajouterVertuVal, Vertu} from "../../../../types/ViceVertu";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
+import {getPrenom} from "../../../../fonctions/noms";
 
 
 export const evts_lycee_cathares: GroupeEvts = {
@@ -113,6 +114,59 @@ export const evts_lycee_cathares: GroupeEvts = {
                     texte += ajouterMaitrise(perso, Maitrise.catechisme);
                 } else {
                     texte += "Mais vous ne retenez pas grand chose. ";
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: false,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
+        {
+            id: "evts_lycee_cathares5 pélerinage",
+            description: async (perso: Perso): Promise<string> => {
+                const maitre:string = getPrenom(Coterie.cathares, Sexe.male);
+                let texte:string = "Mené par votre maître " + maitre
+                + " vous et vos camarades entreprenez le pélerinage à Lourdes à pied !"
+                + "L'essentiel du chemin est à travers la campagne et "
+                + maitre + " a volontairement pris peu de bagages et de provisions pour vous mettre à l'épreuve. <br/>"
+                + "À votre grande surprise les animaux s'approchent régulièrement sans crainte de " + maitre
+                + " et même lui apportent à manger des fruits et graînes. Vous tentez en douceur de vous immiscer ";
+
+                let nbSucces:number = 0;
+                const resTestAnim:ResultatTest = testComp(perso, {comp: TypeCompetence.animaux, bonusMalus: 0});
+                texte += resTestAnim.resume;
+                if (resTestAnim.reussi) {
+                    texte += " et ils se laissent approcher. Un écureuil vous donne même une noisette !  ";
+                    nbSucces += 1;
+                } else {
+                    texte += " mais ils fuient à votre approche. ";
+                }
+                const resTestSurvie:ResultatTest = testComp(perso, {comp: TypeCompetence.survie, bonusMalus: 0});
+                texte += resTestSurvie.resume;
+                if (resTestSurvie.reussi) {
+                    texte += "Vous êtes exceptionnellement doué pour trouver fruits, racines et autres plantes comestibles ainsi que pour installer un camps. "
+                    + "VOus devenez très populaire parmi vos camarades. ";
+                    texte += modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses, 5, 1);
+                    nbSucces += 1;
+                }
+                const resTestEloquence:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
+                texte += resTestEloquence.resume;
+                if (resTestEloquence.reussi) {
+                    texte += "En accord avec les principes cathares de " + maitre
+                    + " vous mendiez votre subsistance dans les maisons que vous voyez sur votre chemin. ";
+                    nbSucces += 1;
+                }
+                const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: -50 + 30 * nbSucces});
+                texte += resTestVolonte.resume;
+                if (resTestVolonte.reussi) {
+                    texte += "Cette expérience vous transforme. Vous priez avec ferveur à Lourdes et tout le long du chemin. ";
+                    texte += ajouterVertuVal(perso, Vertu.spirituel, 1);
+                } else {
+                    texte += "Cette mauvaise expérience vous fait détester la nature. ";
+                    texte += ajouterVertuVal(perso, Vertu.artificialiste, 1);
                 }
 
                 if (perso.niveauIA === NiveauIA.systematique) {
