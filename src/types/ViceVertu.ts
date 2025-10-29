@@ -1,4 +1,5 @@
 import {Perso, PersoCommon} from "./perso/Perso";
+import {ajouteLigneDeTexteGras} from "../fonctions/texte_fc";
 
 // duo de vertu et vices qui fonctionnent ensemble en opposition
 export type ViceVertu = {
@@ -158,7 +159,7 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): str
         viceVertu.valVertu = valActuelle;
     }
     if (valPrecedente != valActuelle) {
-        return valActuelle + " en " + typeVertu.toString();
+        return ajouteLigneDeTexteGras(valActuelle + " en " + typeVertu.toString());
     }
     return '';
 }

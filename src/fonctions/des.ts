@@ -3,6 +3,7 @@ import {Perso, PersoCommon} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice, Vice} from "../types/ViceVertu";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "./perso/competences";
+import {ajouteLigneDeTexteItalique} from "./texte_fc";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;
@@ -59,16 +60,15 @@ function getCritical(resDe: number) {
 function returnTestResult(resAugmentation: string, intituleTestee:string, valeurTestee: number, bonusMalus: number): ResultatTest {
     const resDe: number = d100();
     const reussi: boolean = resDe <= (valeurTestee + bonusMalus);
-    const texte: string = "<br/><i>Test de "
+    const texte: string = "Test de "
         + intituleTestee + " "
         + (reussi ? "réussite" : "échec")
         + (getCritical(resDe) ? " CRITIQUE" : "")
         + ` (résultat ${resDe} contre compétence ${valeurTestee} ${bonusMalus > 0 ? "+" : ""} ${bonusMalus != 0 ? bonusMalus : ""} ) `
-        + resAugmentation
-        + "</i>";
+        + resAugmentation;
     return {
         reussi : reussi,
         critical: getCritical(resDe),
-        resume : texte,
+        resume : ajouteLigneDeTexteItalique(texte),
     }
 }

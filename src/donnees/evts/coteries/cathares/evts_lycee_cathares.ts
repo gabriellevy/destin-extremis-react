@@ -1,0 +1,48 @@
+import {GroupeEvts} from "../../../../types/Evt";
+import {NiveauIA, Perso} from "../../../../types/perso/Perso";
+import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
+import {Coterie} from "../../../../types/Coterie";
+import {ResultatTest} from "../../../../types/LancerDe";
+import {testComp} from "../../../../fonctions/des";
+import {TypeCompetence} from "../../../../types/perso/comps/Comps";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
+import {Quartier} from "../../../geographie/quartiers";
+import {ajouterVertuVal, Vertu} from "../../../../types/ViceVertu";
+
+
+export const evts_lycee_cathares: GroupeEvts = {
+    evts: [
+        {
+            id: "evts_lycee_cathares1 reclus",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Pour renforcer votre volonté et tester votre pureté vous êtes reclus dans une cellule et réduit au pain sec et à l'eau pendant deux semaines complètes. ";
+
+                const resTestVol:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 0});
+                texte += resTestVol.resume;
+                const resTestEnd:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
+                texte += resTestEnd.resume;
+                if (resTestVol.reussi && resTestEnd.reussi) {
+                    texte += "Vous résistez à ces privations avec une constance qui frappe vos maîtres d'étonnement. ";
+                    modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses,5 , 3);
+                } else {
+                    texte += "Ces dures privations vous affectent durablement. ";
+                    perso.bonheur -= 0.2;
+                }
+                if (Math.random() < 0.3) {
+                    texte += ajouterVertuVal(perso, Vertu.sobre, 1);
+                }
+                if (Math.random() < 0.3) {
+                    texte += ajouterVertuVal(perso, Vertu.chaste, 1);
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: false,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
+    ],
+    probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
+};
