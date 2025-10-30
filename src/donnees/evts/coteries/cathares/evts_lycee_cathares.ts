@@ -7,7 +7,7 @@ import {testComp} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
-import {ajouterVertuVal, Vertu} from "../../../../types/ViceVertu";
+import {ajouterVertuVal, getValeurVertu, Vertu} from "../../../../types/ViceVertu";
 import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
@@ -176,6 +176,25 @@ export const evts_lycee_cathares: GroupeEvts = {
             },
             repetable: false,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+        },
+        {
+            id: "evts_lycee_cathares6 soupe populaire",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Les étudiants cathares doivent participer à des actions caritatives. "
+                + "En d'autres termes aujourd'hui vous êtes obligé de servir la soupe populaire aux pauvres du quartier. ";
+
+                if (Math.random() < 0.4) {
+                    texte += "Vos finissez par y prendre goût et appréciez de plus en plus d'aider les gens dans le besoin. ";
+                    texte += ajouterVertuVal(perso, Vertu.altruiste, 1);
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: true,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares && getValeurVertu(perso, Vertu.altruiste) < 3,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
