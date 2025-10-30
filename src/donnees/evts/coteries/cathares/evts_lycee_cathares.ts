@@ -8,7 +8,7 @@ import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
 import {ajouterVertuVal, getValeurVertu, Vertu} from "../../../../types/ViceVertu";
-import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
+import {ajouterMaitrise, aLaMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
 
@@ -115,13 +115,19 @@ export const evts_lycee_cathares: GroupeEvts = {
                     texte += "Mais vous ne retenez pas grand chose. ";
                 }
 
+                if (Math.random() < 0.4) {
+                    texte += "Les professeurs vous répètent si souvent votre insignifiance face à Dieu que cela finit par vous affecter. ";
+                    texte += ajouterVertuVal(perso, Vertu.humble, 1);
+                }
+
                 if (perso.niveauIA === NiveauIA.systematique) {
                     texte = await appelLeChatParaphrase(texte);
                 }
                 return texte;
             },
-            repetable: false,
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
+            repetable: true,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares
+            && !aLaMaitrise(perso, Maitrise.catechisme),
         },
         {
             id: "evts_lycee_cathares5 pélerinage",
