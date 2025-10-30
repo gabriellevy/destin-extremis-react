@@ -1,3 +1,8 @@
 export type Dieu = {
-    id: string;
+    religion: DieuEnum;
+}
+
+export enum DieuEnum {
+    aucun = "Aucun",
+    christianisme = "Christianisme",
 }

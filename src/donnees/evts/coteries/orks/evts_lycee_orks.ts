@@ -307,7 +307,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Frapper et humilier les plus faible est un trait typique de la culture ork. ";
 
-                const resTestEmpathie:ResultatTest = testVertu(perso, {typeBon: Vertu.empathique, bonusMalus: -10});
+                const resTestEmpathie:ResultatTest = testVertu(perso, Vertu.empathique, -10);
 
                 texte += resTestEmpathie.resume;
                 if (resTestEmpathie.reussi) {

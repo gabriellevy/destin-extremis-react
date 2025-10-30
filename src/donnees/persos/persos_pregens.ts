@@ -14,6 +14,7 @@ import {MetiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
 import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, VITESSE_EXECUTION} from "../ReglagesJouabilite";
+import {DieuEnum} from "../../types/Dieu";
 
 export function enfant(empty: boolean): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);
@@ -32,7 +33,7 @@ export function enfant(empty: boolean): PersoForm {
         jourDuMois: -1,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         coterie: empty ? undefined : cot,
-        dieu: {id: "Aucun"},
+        dieu: {religion: DieuEnum.aucun},
         comps: compsDeBase(),
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],

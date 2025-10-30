@@ -25,7 +25,7 @@ export const evts_bars: GroupeEvts = {
                 }
                 // cigarette
                 if (!actuellementDrogueA(perso, droguesEnum.cigarette) && getValeurVertu(perso, Vertu.sobre) < 1) {
-                    const resTestSobre:ResultatTest = testVertu(perso, {typeBon: Vertu.sobre, bonusMalus: 20});
+                    const resTestSobre:ResultatTest = testVertu(perso, Vertu.sobre, 20);
                     texte += resTestSobre.resume;
                     if (!resTestSobre.reussi) {
                         texte += "Vous commencez à fumer pour la première fois.";

@@ -3,7 +3,7 @@ import {NiveauIA, Perso, Sexe} from "../../../../types/perso/Perso";
 import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
 import {Coterie} from "../../../../types/Coterie";
 import {ResultatTest} from "../../../../types/LancerDe";
-import {testComp} from "../../../../fonctions/des";
+import {testComp, testVertu} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
@@ -11,6 +11,7 @@ import {ajouterVertuVal, getValeurVertu, Vertu} from "../../../../types/ViceVert
 import {ajouterMaitrise, aLaMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
+import {DieuEnum} from "../../../../types/Dieu";
 
 export const evts_lycee_cathares: GroupeEvts = {
     evts: [
@@ -200,6 +201,35 @@ export const evts_lycee_cathares: GroupeEvts = {
             },
             repetable: true,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares && getValeurVertu(perso, Vertu.altruiste) < 3,
+        },
+        {
+            id: "evts_lycee_cathares7 providence",
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "On vous répète sans cesse que si vous priez avec sincérité pour aider l'humanité pécheresse, "
+                + "Dieu vous bénira et vous permettra d'accomplir des miracles. ";
+
+                const resTestChance:ResultatTest = testComp(perso, {comp: TypeCompetence.chance, bonusMalus: 0});
+                texte += resTestChance.resume;
+                const resAltruisme:ResultatTest = testVertu(perso, Vertu.altruiste, -30);
+                texte += resAltruisme.resume;
+                const resSpirituel:ResultatTest = testVertu(perso, Vertu.spirituel, -30);
+                texte += resSpirituel.resume;
+                if (resTestChance.reussi && resAltruisme.reussi && resSpirituel.reussi) {
+                    texte += "Vous l'avez senti dans votre âme : votre dévotion sans faille a attiré la grâce de Dieu sur vous.  ";
+                    texte += ajouterMaitrise(perso, Maitrise.beni);
+                    perso.dieu = {
+                        religion: DieuEnum.christianisme
+                    };
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: true,
+            proba: 10,
+            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares,
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
