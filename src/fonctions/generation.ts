@@ -3,7 +3,7 @@ import {Carriere} from "../types/metiers/Metier";
 import {Coterie} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
 import {anneesToJours, getAge} from "../types/Date";
-import {lieuParDefaut} from "../types/lieux/Lieu";
+import {lieuAleatoire} from "../types/lieux/Lieu";
 import {viceVertuDeBase} from "../types/ViceVertu";
 import {PNJ} from "../types/perso/PNJ";
 import {getNom, getPrenom} from "./noms";
@@ -42,7 +42,7 @@ export function genererPNJ(sexe:Sexe, dateNaissance: number|undefined, coterie:C
         nom: nom,
         sexe: Sexe.male,
         dateNaissance: dateNaissance ?? 0,
-        lieu: lieuParDefaut,
+        lieu: lieuAleatoire(),
         coterie: cot,
         carriere: carriere,
         viceVertu:  viceVertuDeBase(),

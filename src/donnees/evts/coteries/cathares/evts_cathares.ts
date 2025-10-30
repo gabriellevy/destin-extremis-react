@@ -3,6 +3,7 @@ import {NiveauIA, Perso} from "../../../../types/perso/Perso";
 import {ajouterVertuVal, getValeurVertu, Vertu} from "../../../../types/ViceVertu";
 import {appelLeChatParaphrase} from "../../../../fonctions/le_chat";
 import {Coterie} from "../../../../types/Coterie";
+import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 
 export const evts_cathares: GroupeEvts = {
     evts: [
@@ -10,6 +11,7 @@ export const evts_cathares: GroupeEvts = {
             id: "evts_cathares1 soupe populaire",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Hui vous servez la soupe populaire dans un refuge de SDF. ";
+                modifierReputationDansQuartier(perso, undefined, 3, 1);
 
                 if (Math.random() < 0.4) {
                     texte += "Vos appréciez de plus en plus d'aider les gens dans le besoin. ";

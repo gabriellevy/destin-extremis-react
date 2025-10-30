@@ -1,8 +1,9 @@
 import {ResidenceDeVoyage} from "./ResidenceDeVoyage";
-import {Perso, PersoCommon} from "../perso/Perso";
-import {Continent, getRegions} from "../../donnees/geographie/continents";
+import {PersoCommon} from "../perso/Perso";
+import {Continent, getContinent, getRegions} from "../../donnees/geographie/continents";
 import {Quartier} from "../../donnees/geographie/quartiers";
-import {getQuartiers, Region} from "../../donnees/geographie/regions";
+import {getQuartiers, getRegion, Region} from "../../donnees/geographie/regions";
+import {getRandomEnumValue} from "../../fonctions/random";
 
 export type Option = {
     value: string,
@@ -26,6 +27,19 @@ export const lieuParDefaut: Lieu = {
     enVoyage: false,
     residenceVoyage: null,
 };
+
+export function lieuAleatoire(): Lieu {
+    const quartier:Quartier = getRandomEnumValue(Quartier);
+
+    return {
+        continent: getContinent(quartier),
+        region: getRegion(quartier),
+        quartier: quartier,
+        maison: null,
+        enVoyage: false,
+        residenceVoyage: null,
+    }
+}
 
 export const lieuArgenteuil: Lieu = {
     continent: Continent.europe,

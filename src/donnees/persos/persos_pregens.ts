@@ -1,5 +1,5 @@
 import {anneesToJours} from "../../types/Date";
-import {lieuParDefaut} from "../../types/lieux/Lieu";
+import {lieuAleatoire} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
 import {NiveauIA, PersoForm, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
@@ -29,7 +29,7 @@ export function enfant(empty: boolean): PersoForm {
         date: anneesToJours(ANNEE_DE_DEPART), // année théorique de départ du jeu. 2104 dans notre monde
         anneeDeDepart: ANNEE_DE_DEPART,
         age: ANNEE_DE_DEPART-DATE_NAISSANCE_BASE,
-        lieu: lieuParDefaut,
+        lieu: lieuAleatoire(),
         jourDuMois: -1,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         coterie: empty ? undefined : cot,

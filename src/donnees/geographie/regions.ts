@@ -10,6 +10,19 @@ export enum Region {
     // regionInconnue = 'Région inconnue',
 }
 
+export function getRegion(quartierCherche:Quartier):Region|undefined {
+    for (const regionStr in Region) {
+        const region:Region = Region[regionStr as keyof typeof Region];
+        for (const quartier of getQuartiers(region)) {
+            if (quartier === quartierCherche) {
+                return region;
+            }
+        }
+    }
+    console.error("Pas de région pour le quartier : " + quartierCherche);
+    return undefined;
+}
+
 export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
     switch (sousProvinceStr) {
         case Region.la_ville : return [

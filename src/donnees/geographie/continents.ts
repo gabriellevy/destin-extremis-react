@@ -1,5 +1,6 @@
 import {Option} from "../../types/lieux/Lieu";
-import {Region} from "./regions";
+import {getQuartiers, Region} from "./regions";
+import {Quartier} from "./quartiers";
 
 export enum Continent {
     europe = 'Europe',
@@ -22,6 +23,30 @@ export const continentsOptions: Option[]= [
     { value: Continent.amerique_centrale, label: Continent.amerique_centrale},
     { value: Continent.amerique_sud, label: Continent.amerique_sud},
 ];
+
+export function getContinent(quartierCherche:Quartier):Continent|undefined {
+    for (const continentStr in Continent) {
+        const continent:Continent = Continent[continentStr as keyof typeof Continent];
+        for (const quartier of getQuartiersDeContinent(continent)) {
+            if (quartier.toString() === quartierCherche.toString()) {
+                return continent;
+            }
+        }
+    }
+    console.error("Pas de continent pour le quartier : " + quartierCherche);
+    return undefined;
+}
+
+export function getQuartiersDeContinent(continent: Continent):Quartier[] {
+    const regions: Region[] = getRegions(continent);
+    const quartiers: Quartier[] = [];
+    for (const region of regions) {
+        for (const quartierStr of getQuartiers(region)) {
+            quartiers.push(quartierStr as Quartier);
+        }
+    }
+    return quartiers;
+}
 
 export function getRegions(continent: Continent|undefined):Region[] {
     switch (continent) {

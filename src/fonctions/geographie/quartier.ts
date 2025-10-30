@@ -5,10 +5,14 @@ import {testVice} from "../des";
 import {Vice} from "../../types/ViceVertu";
 import {PossessionEnum} from "../../donnees/possessions/Possession";
 import {possede} from "../possessions/possessions";
+import {getRegion} from "../../donnees/geographie/regions";
+import {getContinent} from "../../donnees/geographie/continents";
 
 export function changerQuartier(perso: PersoCommon, quartier: Quartier, desactiverEvtsSecondaires: boolean): string {
     let texte: string = "Vous emménagez dans le quartier " + quartier + ".";
     perso.lieu.quartier = quartier;
+    perso.lieu.region = getRegion(quartier);
+    perso.lieu.continent = getContinent(quartier);
 
     if (!desactiverEvtsSecondaires) {
         const resTestColere:ResultatTest = testVice(perso, Vice.colerique, -30);
