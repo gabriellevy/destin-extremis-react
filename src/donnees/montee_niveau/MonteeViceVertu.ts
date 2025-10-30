@@ -71,11 +71,17 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         case TypeCompetence.adresse : return [
             Vertu.travailleur,
         ]
+        case TypeCompetence.animaux : return [
+            Vertu.altruiste,
+        ]
         case TypeCompetence.armeCaC : return [
             Vertu.valeureux,
         ]
         case TypeCompetence.bagarre : return [
             Vertu.valeureux,
+        ]
+        case TypeCompetence.chance: return [
+            Vertu.altruiste,
         ]
         case TypeCompetence.charme: return [
             Vertu.genereux,
