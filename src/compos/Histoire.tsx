@@ -44,6 +44,7 @@ import {evts_brute_de_lycee} from "../donnees/evts/carrieres/lycee/evts_brute_de
 import {evts_voleur} from "../donnees/evts/carrieres/crime/evts_voleur";
 import {evts_dealer_de_lycee} from "../donnees/evts/carrieres/lycee/evts_dealer_de_lycée";
 import {evts_lycee_cathares} from "../donnees/evts/coteries/cathares/evts_lycee_cathares";
+import {evts_cathares} from "../donnees/evts/coteries/cathares/evts_cathares";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -130,6 +131,7 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_lycee_acheron, perso),
             ...filtrerEtPreparerEvts(evts_lycee_demokratos, perso),
             ...filtrerEtPreparerEvts(evts_lycee_cathares, perso),
+            ...filtrerEtPreparerEvts(evts_cathares, perso),
             ...filtrerEtPreparerEvts(evts_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),

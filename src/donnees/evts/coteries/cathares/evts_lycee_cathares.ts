@@ -12,7 +12,6 @@ import {ajouterMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
 
-
 export const evts_lycee_cathares: GroupeEvts = {
     evts: [
         {
