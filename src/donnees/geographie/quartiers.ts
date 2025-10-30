@@ -57,6 +57,9 @@ export function descriptionQuartier(quartier: Quartier): string {
         case Quartier.bois_de_boulogne:
             texte += "Le bois de Boulogne est le quartier de la coterie de l’Esprit de la nature et est donc en conséquence la partie la plus sauvage et arborée de La Ville. Un vrai miracle de verdure à deux pas de La défense. L’appeler “quartier” est généreux car les bâtiments y sont prohibés et le seul service municipal qui y est toléré est celui des ouvreurs de chemins qui taillent quelques routes et chemins dans la forêt qui autrement serait une jungle impénétrable. ";
             break;
+        case Quartier.chatenay_malabry:
+            texte += "Le quartier de Chatenay Malabry est le quartier des celtes. La nature qui l’envahit et le style ancien des maisons qu’on y trouve peut donner l’impression qu’il est archaïque mais il reflète seulement le goût de ses habitants pour la promenade, la méditation, et la fête en plein air. Derrière tout cela se trouve la même modernité qu’ailleurs. ";
+            break;
         default:
             texte += "Il manque la description de cet endroit : " + quartier;
     }
