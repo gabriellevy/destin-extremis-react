@@ -52,6 +52,7 @@ export default function Main({mode, initPerso}:Readonly<DestinExtremisProps>) {
                                     top: '2.5vh',
                                     marginLeft: '2.5vh',
                                     marginTop: 0,
+                                    maxWidth: '310px',
                                 }
                             }>
                                 <AffichagePerso />
