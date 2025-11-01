@@ -24,7 +24,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Vous vous entrainez à la plus violente des coutumes orks : le combat au corps à corps dans les fosses de justice.";
 
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: -10});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.bagarre, -10);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous êtes étonament doué et dominez votre adversaire. <br/>";
@@ -50,7 +50,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Tout ork se doit de savoir piloter les bolides et aimer la vitesse. Vos instructeurs font en sorte que vous fassiez un bon paquet de tours de pistes sans faire vot' mauviet'.";
                 texte += "Attention au virage  !! <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 10});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.adresse, 10);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     if (resTest.critical) {
@@ -82,7 +82,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Les autres coteries se moquent de l'aspect rudimentaire de la technologie ork et pourtant ils sont une des rares à être capable de produire et faire tourner des avions grâces à leurs techniques très économiques en énergie."
                 + "Votre instructeur vous offre l'insigne honneur de voler avec lui et vous montre les bases du pilotage. <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.adresse, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous avez un bon talent pour cela et impressionnez votre instructeur. <br/>";
@@ -153,7 +153,7 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Un mékano a remarqué vos capacités et vous a formé aux bases de la réparation de moteurs. Bien que sa technique semble rudimentaire à première vue il est véritablement doué et très entousiaste comme enseignant. "
                  + "Il vous promet que quand vous serez un vrai ork il vous apprendra à fabriquer des armes, ce qui est encore plus rigolo. <br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += plusUnEnCompetenceMetier(perso, MetiersEnum.mecanicien)
@@ -172,7 +172,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 let texte = "Un médiko a remarqué vos capacités et vous a formé aux bases de la rudimentaire médecine ork."
                  + "Leur vrai point fort est leur obsession des améliorations bioniques combinée à la capacité des patients orques à accepter à peu près toutes les greffes. <br/>";
 
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, -10);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += plusUnEnCompetenceMetier(perso, MetiersEnum.medecin)
@@ -221,7 +221,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 }
                 texte += "Vous passez aussi beaucoup de temps à chanter et jouer du tambour ";
 
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.intuition, 20);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous avez un certain talent. <br/>";
@@ -243,8 +243,8 @@ export const evts_lycee_orks: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Les rixes font partie intégrante de la vie d'un ork. Hui vous vous retrouvez une fois encore aux prises avec un ork qui n'a pas apprécié que vous lui fassiez de l'ombre en passant. <br/>";
 
-                const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
-                const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
+                const resTestB:ResultatTest = testComp(perso, TypeCompetence.bagarre, 20);
+                const resTestF:ResultatTest = testComp(perso, TypeCompetence.force, 20);
                 texte += resTestF.resume;
                 texte += resTestB.resume;
                 if (resTestF.reussi && resTestB.reussi) {
@@ -273,7 +273,7 @@ export const evts_lycee_orks: GroupeEvts = {
                 texte += "Votre prof' vous répond 'quand un ork sen kcé lmoment il fait ! Fonc' morveux !'. <br/>";
                 texte += "L'attraction est un tourniquet géant qui monte et descend tout en tounoyant dans tous les sens et chaque ork a une jambe accrochée en haut du tourniquet par un élastique mal attaché. <br/>";
 
-                const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 0});
+                const resTestE:ResultatTest = testComp(perso, TypeCompetence.endurance, 0);
                 texte += resTestE.resume;
                 if (resTestE.reussi) {
                     texte += "Meilleure journée de votre vie ! <br/>";
@@ -314,7 +314,7 @@ export const evts_lycee_orks: GroupeEvts = {
                     texte += "Mais vous évitez autant que possible de participer. <br/>";
                 } else {
                     texte += "Vous participez de bon coeur avec vos camarades étudiants. <br/>";
-                    const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                    const resTestE:ResultatTest = testComp(perso, TypeCompetence.intimidation, 0);
                     texte += resTestE.resume;
                     if (resTestE.reussi) {
                         texte += "Vous faites pleurer plusieurs gretchins. <br/>";

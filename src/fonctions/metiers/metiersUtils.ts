@@ -245,7 +245,7 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
         // on n peut pas toujours négocier son salaire d'entrée : !
         metiersEnum !== MetiersEnum.brute_de_lycee) {
         // tentative de négociation
-        const resultatTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
+        const resultatTestMarch:ResultatTest = testComp(perso,TypeCompetence.marchandage, 20);
         texte += resultatTestMarch.resume + "<br/>";
         if (resultatTestMarch.reussi) {
             texte += "Vous négociez très bien votre salaire de départ. ";

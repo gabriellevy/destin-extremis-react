@@ -19,7 +19,7 @@ export const evts_voleur: GroupeEvts = {
                 let texte = '';
                 texte += "Vous prenez l'habitude de voler des objets et fournitures à droite à gauche, à l'établissement comme à vos camarades. <br/>";
 
-                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 20});
+                const resTestDex:ResultatTest = testComp(perso, TypeCompetence.adresse, 20);
                 texte += resTestDex.resume;
                 if (resTestDex.reussi) {
                     texte += "Vous ne vous faites jamais prendre et finissez par en tirer un joli petit revenu. ";

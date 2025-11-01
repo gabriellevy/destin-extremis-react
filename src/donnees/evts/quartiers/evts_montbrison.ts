@@ -4,7 +4,7 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
 import {getValeurVice, Vice} from "../../../types/ViceVertu";
-import {aUneActiviteATempsPlein, aUneCarriere, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
+import {aUneActiviteATempsPlein, commencerCarriere} from "../../../fonctions/metiers/metiersUtils";
 import {getAge} from "../../../types/Date";
 import {auBordDuneZone} from "../../../types/lieux/Lieu";
 import {MetiersEnum} from "../../metiers";
@@ -15,8 +15,8 @@ export const evts_montbrison: GroupeEvts = {
             id: "evts_montbrison",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Votre goût de l'aventure et la fascination de la Zone vous pousse à devenir Stalker. `
-                const resTestVol:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: -10});
-                const resTestOrien:ResultatTest = testComp(perso, {comp: TypeCompetence.orientation, bonusMalus: -10});
+                const resTestVol:ResultatTest = testComp(perso, TypeCompetence.volonte, -10);
+                const resTestOrien:ResultatTest = testComp(perso, TypeCompetence.orientation, -10);
                 texte += resTestVol.resume;
                 texte += resTestOrien.resume;
                 if (!resTestVol.reussi) {

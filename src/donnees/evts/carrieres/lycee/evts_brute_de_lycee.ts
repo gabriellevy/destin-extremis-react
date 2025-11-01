@@ -52,7 +52,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 let modifReputationAmplitude: number = 0;
                 let modifReputationQualite: number = 0;
 
-                const resTestI: ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 20});
+                const resTestI: ResultatTest = testComp(perso, TypeCompetence.intimidation, 20);
                 texte += resTestI.resume;
                 if (resTestI.reussi) {
                     texte += "Votre presence menaçante vous permet rapidement de dominer les petits intellos maigrichons du lycée. <br/>";
@@ -62,7 +62,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 } else {
                     texte += "L'intimidation ne suffit pas, un des caves se rebiffe. "
                         + "Il va falloir le corriger publiquement pour que ça se sache dans tout le campus. <br/>";
-                    const resTestB: ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
+                    const resTestB: ResultatTest = testComp(perso, TypeCompetence.bagarre, 20);
                     texte += resTestB.resume;
                     if (resTestB.reussi) {
                         texte += "Vous lui démontez le portrait jusqu'à ce qu'il tombe à terre en pleurant. Tout le lycée va en entendre parler, c'est parfait. <br/>";
@@ -93,7 +93,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "";
 
-                const resTestDiscretion: ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 20});
+                const resTestDiscretion: ResultatTest = testComp(perso, TypeCompetence.discretion, 20);
                 texte += resTestDiscretion.resume;
                 if (resTestDiscretion.reussi) {
                     texte += "Vous connaissez le lycée comme votre poche et ne vous faites jamais prendre. ";
@@ -131,7 +131,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                     texte += "Vous sortez votre couteau pour les intimider et les tenir à distance. "
                     diffIntimidation += 50;
                 }
-                const resTestIntimidation: ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: diffIntimidation});
+                const resTestIntimidation: ResultatTest = testComp(perso, TypeCompetence.intimidation, diffIntimidation);
                 texte += resTestIntimidation.resume;
                 if (resTestIntimidation.reussi) {
                     texte += "<br/> Vous parvenez à leur faire peur malgré leur nombre et vous éclipsez sans dommage. ";
@@ -139,7 +139,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 } else {
                     texte += "Ils ne se laissent pas intimider et se jettent sur vous : ";
                     if (possede(perso, PossessionEnum.couteau)) {
-                        const resTestArme: ResultatTest = testComp(perso, {comp: TypeCompetence.armeCaC, bonusMalus: 20});
+                        const resTestArme: ResultatTest = testComp(perso, TypeCompetence.armeCaC, 20);
                         texte += resTestArme.resume;
                         if (resTestArme.reussi) {
                             const resTestCruel:ResultatTest = testVice(perso, Vice.cruel, 0);
@@ -162,7 +162,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                         }
                     } else {
                         // bagarre normale à mains nues
-                        const resTestBagarre: ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: -30});
+                        const resTestBagarre: ResultatTest = testComp(perso, TypeCompetence.bagarre, -30);
                         texte += resTestBagarre.resume;
                         if (resTestBagarre.reussi) {
                             texte += "À un contre 3 vous parvenez malgré tout à les tabasser et les mettre en fuite ! ";
@@ -196,7 +196,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Vous commencez à vous connaître entre jeunes malandrins. Vous délimitez vos territoires et échangez vos infos. ";
 
-                const resTestComdt: ResultatTest = testComp(perso, {comp: TypeCompetence.commandement, bonusMalus: 0});
+                const resTestComdt: ResultatTest = testComp(perso, TypeCompetence.commandement, 0);
                 texte += resTestComdt.resume;
                 if (resTestComdt.reussi) {
                     texte += "Par votre autorité naturelle vous dirigez souvent ces petites séances de coordination.  ";
@@ -215,24 +215,18 @@ export const evts_brute_de_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Les surveillants et proviseurs sont fatigués d'entendre parler de vos méfaits. ";
 
-                const resTestDiscret: ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
+                const resTestDiscret: ResultatTest = testComp(perso,TypeCompetence.discretion, 0);
                 texte += resTestDiscret.resume;
                 if (resTestDiscret.reussi) {
                     texte += "Mais vous êtes trop malin pour vous faire attrapper.  ";
                 } else {
                     texte += "Ils finissent par vous convoquer et vous pincer. "
-                    const resTestTromperie: ResultatTest = testComp(perso, {
-                        comp: TypeCompetence.tromperie,
-                        bonusMalus: 0
-                    });
+                    const resTestTromperie: ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
                     texte += resTestTromperie.resume;
                     if (resTestTromperie.reussi) {
                         texte += "Mais vous les entortillez par vos mensonges et votre bagout. ";
                     } else {
-                        const resTestEnd: ResultatTest = testComp(perso, {
-                            comp: TypeCompetence.endurance,
-                            bonusMalus: 0
-                        });
+                        const resTestEnd: ResultatTest = testComp(perso, TypeCompetence.endurance, 0);
                         texte += "Ils vous punissent durement. ";
                         texte += resTestEnd.resume;
                         if (resTestEnd.reussi) {
@@ -259,7 +253,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
                     const resultatTestMetier:ResultatTest = testMetier(perso, {metier: carriere.metier, bonusMalus: 20});
-                    const resTestEvaluation: ResultatTest = testComp(perso, {comp: TypeCompetence.evaluation, bonusMalus: 20});
+                    const resTestEvaluation: ResultatTest = testComp(perso, TypeCompetence.evaluation, 20);
                     texte += resTestEvaluation.resume;
                     texte += resultatTestMetier.resume + "<br/>";
                     if (resultatTestMetier.reussi && resTestEvaluation.reussi) {
@@ -286,7 +280,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
                 let texte: string = "Vous croisez " + merdeux.prenom +
                     ",un petit merdeux que vous avez déjà passé à tabac par le passé. En vous voyant il s'enfuit en courant sans vous payer sa redevance !";
-                const resTestMvt: ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 20});
+                const resTestMvt: ResultatTest = testComp(perso, TypeCompetence.mouvement, 20);
                 texte += resTestMvt.resume;
                 if (resTestMvt.reussi) {
                     texte += "Vous lui mettez une bonne dérouillée et lui mettez la main au collet pour lui apprendre à vous faire courir. ";
@@ -309,7 +303,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             id: "evts_brute_de_lycee10ragote",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "";
-                const resTestRagot: ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 20});
+                const resTestRagot: ResultatTest = testComp(perso, TypeCompetence.ragot, 20);
                 texte += resTestRagot.resume;
                 if (resTestRagot.reussi) {
                     texte += "Vous êts très doué pour écouter les rumeurs et récupérer ainsi les bonnes cibles peureuses et faibles. ";
@@ -333,7 +327,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
                 let texte: string = "Vous repérez ce petit merdeux de " + merdeux.prenom + "qui passe au dessus de vous sur un pont. "
                     + "Se croyant à l'abri, il se permet de vous insulter ! Vous ramassez promptement un caillou. ";
-                const resTestTir: ResultatTest = testComp(perso, {comp: TypeCompetence.tir, bonusMalus: 0});
+                const resTestTir: ResultatTest = testComp(perso, TypeCompetence.tir, 0);
                 texte += resTestTir.resume;
                 if (resTestTir.reussi) {
                     texte += "Vous lui carrez en pleine tête. Il fait beacoup moins le malin ! ";

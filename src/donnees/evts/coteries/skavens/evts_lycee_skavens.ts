@@ -22,7 +22,7 @@ export const evts_lycee_skavens: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le lycée skaven met votre intégrité à rude épreuve. Les élèves, volent, mentent, trichent, et les professeurs, au lieu de punir, récompensent. "
                     + "Ils insistent sur le fait que c'est ainsi qu'on s'en sort et que c'est la bonne voie vers le succès.<br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous vous en accommodez cependant très vite. <br/>";
@@ -45,7 +45,7 @@ export const evts_lycee_skavens: GroupeEvts = {
             id: "evts_lycee_skavens2_fuite",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le premier but d'un skaven est la survie. Apprendre à fuir à toute vitesse, par les fenêtres, par les toits, dans les catacombes, est une nécessité qu'on vous enseigne encore et encore.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.mouvement, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous devenez rapidement agile comme un chat et vif comme l'éclair. <br/>";
@@ -65,7 +65,7 @@ export const evts_lycee_skavens: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Être agile de ses mains et surtout rapide est précieux chez les skavens, qui adorent fabriquer des choses et détestent faire quoique de soit lentement.<br/>"
                     + "Les cours d'artisanat sont donc toujours chronométrés et demandent une excellente coordination.<br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.adresse, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Vous impressionnez vos professeurs par votre habileté et votre précision. <br/>";
@@ -87,7 +87,7 @@ export const evts_lycee_skavens: GroupeEvts = {
             id: "evts_lycee_skavens4_discrétion",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Entre les punitions incessantes sans raison et les agressions et vols des élèves vous êtes bien obligé de vous faire discret.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.discretion, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.discretion, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     if (getValeurVice(perso, Vice.trompeur) < 2) {
@@ -105,7 +105,7 @@ export const evts_lycee_skavens: GroupeEvts = {
             id: "evts_lycee_skavens5_science",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les cours scientifiques des skavens sont étonament poussés. Ils se focalisent plus sur l'expérimentation que sur le théorique.<br/> ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += "Votre intelligence impressionne vos professeurs.<br/>";
@@ -121,10 +121,10 @@ export const evts_lycee_skavens: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Un bon skaven se doit d'être ambitieux et de vouloir toujours plus. "
                     + "Les cours ne laissent évidemment pas de côté un élément aussi important de la vie.<br/>";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.marchandage, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
-                    texte += "Vous semblez avoir un excellent instinct pour ces choses là.<br/>";
+                    texte += "Vous semblez avoir un excellent instinct pour ces choses-là.<br/>";
                     if (getValeurVice(perso, Vice.cupide) < 2) {
                         if (Math.random() >= 0.9) {
                             texte += ajouterViceVal(perso, Vice.cupide, 1);

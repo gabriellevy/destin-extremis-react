@@ -33,7 +33,7 @@ export const evts_carriere: GroupeEvts = {
                     texteTests += resultatTestMetier.resume + "<br/>";
                     if (resultatTestMetier.reussi) {
                         texte += "Vous êtes un " + carriere.metier + " efficace. ";
-                        const resultatTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
+                        const resultatTestMarch:ResultatTest = testComp(perso, TypeCompetence.marchandage, 20);
                         texteTests += resultatTestMarch.resume + "<br/>";
                         if (resultatTestMarch.reussi) {
                             texte += "Et vous savez vous mettre en avant pour vous faire augmenter. ";

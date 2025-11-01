@@ -31,7 +31,7 @@ export const evts_animaux: GroupeEvts = {
             id: "evts_animaux2 persécuteur d'animaux",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Vous prenez l'habitude d'attraper et de torturer de petits animaux.";
-                const resTestAnimaux:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 20});
+                const resTestAnimaux:ResultatTest = testComp(perso, TypeCompetence.adresse, 20);
                 texte += resTestAnimaux.resume;
                 if (resTestAnimaux.reussi) {
                     texte += "Efficace et discret, vous savourez votre sadisme pendant de longues années. ";

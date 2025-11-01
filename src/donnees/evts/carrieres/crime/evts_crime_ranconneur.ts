@@ -32,7 +32,7 @@ export const evts_crime_ranconneur: GroupeEvts = {
             id: "evts_crime2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestCC:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
+                const resTestCC:ResultatTest = testComp(perso, TypeCompetence.bagarre, 0);
                 texte += resTestCC.resume;
                 if (resTestCC.reussi) {
                     texte += "Bagarre après bagarre, vous vous faites remarquer dans la bande pour votre efficacité au combat. ";
@@ -56,14 +56,14 @@ export const evts_crime_ranconneur: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "";
 
-                const resTestI:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 20});
+                const resTestI:ResultatTest = testComp(perso, TypeCompetence.intimidation, 20);
                 texte += resTestI.resume;
                 if (resTestI.reussi) {
                     texte += "Vous rançonnez les petits artisans du coin très efficacement. <br/>";
                     texte += plusUnEnCompetenceMetier(perso, MetiersEnum.ranconneur);
                 } else {
                     texte += "Alors que vous passez prendre la redevance de l'organisation chez un marchand de chaussures il se permet de refuser de payer. <br/>";
-                    const resTestB:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
+                    const resTestB:ResultatTest = testComp(perso,TypeCompetence.bagarre, 20);
                     texte += resTestB.resume;
                     if (resTestB.reussi) {
                         texte += "Vous lui démontez le portrait. <br/>";

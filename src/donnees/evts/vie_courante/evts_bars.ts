@@ -36,7 +36,7 @@ export const evts_bars: GroupeEvts = {
                 if (getValeurVice(perso, Vice.luxurieux) >= 1) {
                     if (Math.random() >= 0.5) {
                         texte += "Vous repérez une jolie femme tout à fait à votre goût. ";
-                        const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
+                        const resTestCharme:ResultatTest = testComp(perso, TypeCompetence.charme, -20);
                         texte += resTestCharme.resume;
                         if (resTestCharme.reussi) {
                             texte += "C'est réciproque, elle est vite sous votre charme et vous passez la nuit ensemble. <br/>";
@@ -50,7 +50,7 @@ export const evts_bars: GroupeEvts = {
                 // bagarre
                 if (!soireeFinie && getValeurVice(perso, Vice.colerique) >= 1 && Math.random() >= 0.9) {
                     texte += "Vous vous sentez d'humeur massacrante et cherchez la bagarre avec tous les types qui vous regardent de travers. "
-                    const resTestBagarre:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
+                    const resTestBagarre:ResultatTest = testComp(perso, TypeCompetence.bagarre, 0);
                     texte += resTestBagarre.resume;
                     // TODO : déterminer un perso au hasard ?
                     if (resTestBagarre.reussi) {

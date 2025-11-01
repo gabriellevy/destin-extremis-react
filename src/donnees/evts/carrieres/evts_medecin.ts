@@ -38,9 +38,9 @@ export const evts_medecin: GroupeEvts = {
             id: "evts_médecin1",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir médecin. `
-                const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
-                const resTestFm:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 20});
-                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 20});
+                const resTestInt:ResultatTest = testComp(perso, TypeCompetence.intelligence, 20);
+                const resTestFm:ResultatTest = testComp(perso,TypeCompetence.volonte, 20);
+                const resTestDex:ResultatTest = testComp(perso, TypeCompetence.adresse, 20);
                 texte += resTestInt.resume;
                 texte += resTestFm.resume;
                 texte += resTestDex.resume;

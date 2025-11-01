@@ -22,7 +22,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 texte += resTestInfo.resume;
                 if (!resTestInfo.reussi) {
                     texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en informatique au sens large. <br/>";
-                    const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
+                    const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, 20);
                     texte += resTest.resume;
                     if (resTest.reussi) {
                         texte += plusUnEnCompetenceMetier(perso, MetiersEnum.informaticien);
@@ -33,14 +33,14 @@ export const evts_lycee_acheron: GroupeEvts = {
                     texte += resTestInfo.resume;
                     if (!resTestInfo.reussi) {
                         texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en magie nécromantique théoriqe. <br/>";
-                        const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 20});
+                        const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, 20);
                         texte += resTest.resume;
                         if (resTest.reussi) {
                             texte += plusUnEnCompetenceMetier(perso, MetiersEnum.magicien);
                         }
                     } else {
                         // à la fois informaticien et magicien qualifié :
-                        const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -30});
+                        const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, -30);
                         texte += resTest.resume;
                         if (resTest.reussi) {
                             texte += "Vos nombreuses compétences ainsi que votre intelligence exceptinnelles vous permettent de saisir les bases de la technomancie. ";
@@ -59,9 +59,9 @@ export const evts_lycee_acheron: GroupeEvts = {
         {
             id: "evts_lycee_acheron2_magie",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "Plusieurs cours complexes visent à vous apprendre les bases de la magie. Ces cours mélangent théorie complexes avec une forme d'instinct qu'on possède ou ne possède pas. <br/>";
-                const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: -10});
-                const resTestIntuition:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: -10});
+                let texte = "Plusieurs cours complexes visent à vous apprendre les bases de la magie. Ces cours mélangent théories complexes avec une forme d'instinct qu'on possède ou ne possède pas. <br/>";
+                const resTestInt:ResultatTest = testComp(perso, TypeCompetence.intelligence, -10);
+                const resTestIntuition:ResultatTest = testComp(perso,TypeCompetence.intuition, -10);
                 texte += resTestInt.resume;
                 texte += resTestIntuition.resume;
                 if (resTestInt.reussi && resTestIntuition.reussi) {
@@ -88,7 +88,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 texte += resTestCruel.resume;
                 if (resTestCruel.reussi) {
                     texte += "Vous participez de bon coeur avec vos camarades étudiants. <br/>";
-                    const resTestIntim:ResultatTest = testComp(perso, {comp: TypeCompetence.intimidation, bonusMalus: 0});
+                    const resTestIntim:ResultatTest = testComp(perso, TypeCompetence.intimidation, 0);
                     texte += resTestIntim.resume;
                     if (resTestIntim.reussi) {
                         texte += "En plus de la torture physiques vous êtes très doués pour terrifier les condamnés. Vos professeurs et collègues sont très impressionnés. <br/>";
@@ -163,7 +163,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 let texte: string = "La mort est au coeur des obsessions achéroniennes. Son étude et la méditation à son sujet sont incontournables et oppressantes au lycée." +
                     "Vos professeurs vous obligent à méditer immobiles pendant des heures, jusqu'à engourdir votre corps et ovus approcher de la psychose. <br/>";
 
-                const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 0});
+                const resTestVolonte:ResultatTest = testComp(perso, TypeCompetence.volonte, 0);
                 texte += resTestVolonte.resume;
                 if (resTestVolonte.reussi) {
                     texte += "Vous faites preuve d'une grande résistance à ces traitements et impressionnez vos professeurs. "
@@ -193,7 +193,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                 let texte: string = "Dans le quartier de Noisiel vous devez vous habituer à vivre aux côté de nombreux mort-vivants ou quasi morts. "
                     + "Beaucoup semblent n'avoir aucun sentiment ni aucune sensation. D'autres ont l'air tourmentés en permanence et vous regardent avec leur orbites vides. <br/>";
 
-                const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: -10});
+                const resTestVolonte:ResultatTest = testComp(perso, TypeCompetence.volonte, -10);
                 texte += resTestVolonte.resume;
                 if (resTestVolonte.reussi) {
                     texte += "Votre volonté solide vous permet de vous habituer étonamment vite et même de vaguement communiquer avec eux quand c'est possible. ";

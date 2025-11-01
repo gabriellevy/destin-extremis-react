@@ -28,7 +28,7 @@ export const evts_amour: GroupeEvts = {
                 let texte: string = "";
 
                 const resTestImpulsif:ResultatTest = testVice(perso, Vice.impulsif, 0);
-                const resTestCharme: ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
+                const resTestCharme: ResultatTest = testComp(perso, TypeCompetence.charme, -20);
 
                 let prompt: string = "Décrivez comment le personnage " + perso.prenom + " a eu un coup de foudre pour " + coupDeCoeur.prenom;
                 texte += "Vous avez un coup de cœur pour " + coupDeCoeur.prenom + ". ";
@@ -39,7 +39,7 @@ export const evts_amour: GroupeEvts = {
                             texte += "Vous l'abordez immédiatement et le courant passe si bien que vous couchez ensemble le jour même. ";
                             prompt += " et a couché avec elle le jour même. ";
                             if (perso.coterie === Coterie.templiers || perso.coterie === Coterie.cathares) {
-                                const resTestTromperie: ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 0});
+                                const resTestTromperie: ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
                                 if (resTestTromperie.reussi) {
                                     texte += "En tant que " + perso.coterie + " ce type de relation est formellement interdit mais vous parvenez à la garder secrète. ";
                                     prompt += "En tant que " + perso.coterie + " il n'a pas le droit mais il parvient à le tenir secret. Dites comment il s'y prend. ";
@@ -83,7 +83,7 @@ export const evts_amour: GroupeEvts = {
             id: "evts_amour draguer un coup de coeur",
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
-                const resTestCharme:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: -20});
+                const resTestCharme:ResultatTest = testComp(perso, TypeCompetence.charme, -20);
                 let texte = "Vous vous décidez à aborder " + coupDeCoeur.prenom + ". " + resTestCharme.resume + "<br/>";
                 if (resTestCharme.reussi) {
                     texte += coupDeCoeur.prenom + " tombe complètement sous votre charme et devient votre amoureuse. ";

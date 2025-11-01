@@ -7,7 +7,6 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
     arreterCarriere, aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     travailleEnCeMomentComme
@@ -21,8 +20,8 @@ export const evts_serveur: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 const taverne: string = "la taverne rouge";
                 let texte: string = `Vous hésitez à devenir serveur et décider de postuler à ${taverne} de Klara Kellner. `
-                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.adresse, bonusMalus: 40});
-                const resTestSoc:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: 40});
+                const resTestDex:ResultatTest = testComp(perso, TypeCompetence.adresse, 40);
+                const resTestSoc:ResultatTest = testComp(perso, TypeCompetence.charme, 40);
                 texte += resTestDex.resume;
                 texte += resTestSoc.resume;
                 if (!resTestDex.reussi) {

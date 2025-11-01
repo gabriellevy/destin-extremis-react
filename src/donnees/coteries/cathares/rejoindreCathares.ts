@@ -114,7 +114,7 @@ const testDEntreeCathare: (perso: Perso) => Promise<string> = (perso: Perso) => 
         + "Vous allez devoir reprendre votre période d'ascèse jusqu'à être digne du catharisme. ";
 
         const affinite = calculerAffinite(perso, Coterie.cathares);
-        const resTestVolonte:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: affinite});
+        const resTestVolonte:ResultatTest = testComp(perso, TypeCompetence.volonte, affinite);
         texte += resTestVolonte.resume;
 
         if (affinite >= SEUIL_AFFINITE && resTestVolonte.reussi) {
@@ -135,7 +135,7 @@ const testDEntreeCathare: (perso: Perso) => Promise<string> = (perso: Perso) => 
 }
 
 /**
- * techniquement le perso devient immédiatement cathare mais il l'est en fait "à l'essai"
+ * techniquement le perso devient immédiatement cathare, mais il l'est en fait "à l'essai"
  * Si il échoue aux épreuves il sera viré d'office
  * @param perso
  */

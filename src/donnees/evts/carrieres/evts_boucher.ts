@@ -38,7 +38,7 @@ export const evts_boucher: GroupeEvts = {
             id: "evts_boucher1",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous voudriez devenir boucher. `
-                const resTestDex:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 0});
+                const resTestDex:ResultatTest = testComp(perso, TypeCompetence.force, 0);
                 texte += resTestDex.resume;
                 if (resTestDex.reussi) {
                     texte += commencerCarriere(perso, MetiersEnum.apprenti_boucher, '');

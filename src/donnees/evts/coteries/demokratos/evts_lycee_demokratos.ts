@@ -37,7 +37,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les potins et surtout la politique et les débats sont omniprésents et très importants sur le campus. "
                 + "Vous participez à un journal étudiant. ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.ragot, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     texte += augmenterCompetenceMetier(perso, MetiersEnum.journaliste, 1);
@@ -61,7 +61,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
             id: "evts_lycee_demokratos3",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Le débat, en particulier politique, est à la base des Démokratos. ";
-                const resTest:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
+                const resTest:ResultatTest = testComp(perso, TypeCompetence.eloquence, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
                     if (resTest.critical) {
@@ -87,9 +87,9 @@ export const evts_lycee_demokratos: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "L'art, surtout le théâtre, est très prisé chez les démokratos. "
                 + "Vous le pratiquez régulièrement. ";
-                const resTestEloq:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
-                const resTestTromp:ResultatTest = testComp(perso, {comp: TypeCompetence.tromperie, bonusMalus: 20});
-                const resTestChar:ResultatTest = testComp(perso, {comp: TypeCompetence.charme, bonusMalus: 20});
+                const resTestEloq:ResultatTest = testComp(perso, TypeCompetence.eloquence, 20);
+                const resTestTromp:ResultatTest = testComp(perso, TypeCompetence.tromperie, 20);
+                const resTestChar:ResultatTest = testComp(perso, TypeCompetence.charme, 20);
                 texte += resTestEloq.resume;
                 texte += resTestTromp.resume;
                 texte += resTestChar.resume;
@@ -115,7 +115,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Tous démokratos doit être capable de faire de la politique et de diriger ses concitoyens si il est tiré au sort pour occuper ce rôle. "
                 + "Vous alternez donc entre chef et exécutant régulièrement pour vous y habituer. ";
-                const resTestComdt:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                const resTestComdt:ResultatTest = testComp(perso, TypeCompetence.eloquence, 20);
                 texte += resTestComdt.resume;
                 if (resTestComdt.reussi) {
                     texte += "Vous êtes doué pour commander. ";
@@ -137,8 +137,8 @@ export const evts_lycee_demokratos: GroupeEvts = {
             id: "evts_lycee_demokratos6",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Tous les élèves doivent apprendre à composer des discours. ";
-                const resTestIntuition:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
-                const resTestEloquence:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 20});
+                const resTestIntuition:ResultatTest = testComp(perso, TypeCompetence.intuition, 20);
+                const resTestEloquence:ResultatTest = testComp(perso, TypeCompetence.eloquence, 20);
                 texte += resTestEloquence.resume;
                 texte += resTestIntuition.resume;
                 if (resTestEloquence.critical && resTestEloquence.reussi) {
@@ -161,15 +161,15 @@ export const evts_lycee_demokratos: GroupeEvts = {
             id: "evts_lycee_demokratos7",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "L'entrainement à l'athlétisme est une des activités les plus appréciées des Démokratos. ";
-                const resTestBagarre:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 0});
-                const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 0});
+                const resTestBagarre:ResultatTest = testComp(perso, TypeCompetence.bagarre, 0);
+                const resTestF:ResultatTest = testComp(perso, TypeCompetence.force, 0);
                 texte += resTestF.resume;
                 texte += resTestBagarre.resume;
                 if (resTestF.critical && resTestF.reussi) {
                     texte += "Vous vous distinguez à la lutte. ";
                     texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
-                const resTestM:ResultatTest = testComp(perso, {comp: TypeCompetence.mouvement, bonusMalus: 0});
+                const resTestM:ResultatTest = testComp(perso, TypeCompetence.mouvement, 0);
                 texte += resTestM.resume;
                 if (resTestM.reussi) {
                     texte += "Vous excellez en gymnastique. ";
@@ -191,8 +191,8 @@ export const evts_lycee_demokratos: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les banquets très courants sont certes l'occasion de s'amuser. "
                 + "Mais ils sont avant tout vu par les Démokratos comme une occasion de sociabilisation et de débats philosophiques enflammés. ";
-                const resTestIntelligence:ResultatTest = testComp(perso, {comp: TypeCompetence.intelligence, bonusMalus: 0});
-                const resTestEloq:ResultatTest = testComp(perso, {comp: TypeCompetence.eloquence, bonusMalus: 0});
+                const resTestIntelligence:ResultatTest = testComp(perso, TypeCompetence.intelligence, 0);
+                const resTestEloq:ResultatTest = testComp(perso, TypeCompetence.eloquence, 0);
                 texte += resTestEloq.resume;
                 texte += resTestIntelligence.resume;
                 if (resTestIntelligence.reussi && resTestEloq.reussi) {

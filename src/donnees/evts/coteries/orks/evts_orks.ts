@@ -39,7 +39,7 @@ export const evts_orks: GroupeEvts = {
             id: "evts_orks3",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous décidez de devenir marchand de champignon. `
-                const resTestMarch:ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 20});
+                const resTestMarch:ResultatTest = testComp(perso, TypeCompetence.marchandage, 20);
                 texte += resTestMarch.resume;
                 if (resTestMarch.reussi) {
                     texte += commencerCarriere(perso, MetiersEnum.marchand_de_champignon, '');
@@ -71,8 +71,8 @@ export const evts_orks: GroupeEvts = {
                 texte += resTestColere.resume;
                 if (resTestColere.reussi) {
                     texte += "Vous n'y tenez plus et attaquez " + nomBrute + " le rançonneur. ";
-                    const resTesBag:ResultatTest = testComp(perso, {comp: TypeCompetence.bagarre, bonusMalus: 20});
-                    const resTesFor:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
+                    const resTesBag:ResultatTest = testComp(perso, TypeCompetence.bagarre, 20);
+                    const resTesFor:ResultatTest = testComp(perso, TypeCompetence.force, 20);
                     texte += resTesBag.resume;
                     texte += resTesFor.resume;
                     if (resTesBag.reussi && resTesFor.reussi) {

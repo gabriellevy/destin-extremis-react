@@ -6,7 +6,6 @@ import {testComp} from "../../../fonctions/des";
 import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {
     aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere
 } from "../../../fonctions/metiers/metiersUtils";
@@ -21,8 +20,8 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Sans travail et tout prêt d'une ancienne ruche désaffectée, "
                     + "vous décidez de rejoindre une expédition de pilleurs. `;
-                const resTestVol:ResultatTest = testComp(perso, {comp: TypeCompetence.volonte, bonusMalus: 10});
-                const resTestOrien:ResultatTest = testComp(perso, {comp: TypeCompetence.orientation, bonusMalus: -10});
+                const resTestVol:ResultatTest = testComp(perso, TypeCompetence.volonte, 10);
+                const resTestOrien:ResultatTest = testComp(perso, TypeCompetence.orientation, -10);
                 texte += resTestVol.resume;
                 texte += resTestOrien.resume;
                 if (!resTestVol.reussi) {

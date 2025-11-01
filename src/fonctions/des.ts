@@ -1,9 +1,10 @@
-import {ResultatTest, TestCompetence, TestMetier} from "../types/LancerDe";
+import {ResultatTest, TestMetier} from "../types/LancerDe";
 import {Perso, PersoCommon} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../types/ViceVertu";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "./perso/competences";
 import {ajouteLigneDeTexteItalique} from "./texte_fc";
+import {TypeCompetence} from "../types/perso/comps/Comps";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;
@@ -18,11 +19,11 @@ export function d400(): number {
     return Math.floor(Math.random() * 400) + 1;
 }
 
-export function testComp(perso: Perso, test: TestCompetence): ResultatTest {
-    const compVal: number = getValeurCompetence(perso, test.comp);
+export function testComp(perso: Perso, comp: TypeCompetence, bonusMalus: number): ResultatTest {
+    const compVal: number = getValeurCompetence(perso, comp);
     // augmenter tests effectués :
-    const resAugmentation: string = augmenterNbDeTestsFaitsComp(perso, test.comp);
-    return returnTestResult(resAugmentation, test.comp, compVal, test.bonusMalus);
+    const resAugmentation: string = augmenterNbDeTestsFaitsComp(perso, comp);
+    return returnTestResult(resAugmentation, comp, compVal, bonusMalus);
 }
 
 export function testVertu(perso: Perso, vertu: Vertu, bonusMalus:number): ResultatTest {

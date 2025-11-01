@@ -7,7 +7,6 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     travailleEnCeMomentComme
@@ -19,8 +18,8 @@ export const evts_macon: GroupeEvts = {
             id: "evts_macon1",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous avez décidé de devenir maçon. `
-                const resTestF:ResultatTest = testComp(perso, {comp: TypeCompetence.force, bonusMalus: 20});
-                const resTestE:ResultatTest = testComp(perso, {comp: TypeCompetence.endurance, bonusMalus: 20});
+                const resTestF:ResultatTest = testComp(perso,TypeCompetence.force, 20);
+                const resTestE:ResultatTest = testComp(perso, TypeCompetence.endurance, 20);
                 texte += resTestF.resume;
                 texte += resTestE.resume;
                 if (!resTestF.reussi || !resTestE.reussi) {

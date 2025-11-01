@@ -6,7 +6,6 @@ import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {getAge} from "../../../types/Date";
 import {
     arreterCarriere, aUneActiviteATempsPlein,
-    aUneCarriere,
     commencerCarriere,
     compatibiliteCarriere,
     getCompetenceMetier,
@@ -22,8 +21,8 @@ export const evts_journaliste: GroupeEvts = {
             id: "evts_journaliste1",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous hésitez à devenir journaliste. `
-                const resTestRagot:ResultatTest = testComp(perso, {comp: TypeCompetence.ragot, bonusMalus: 20});
-                const resTestInt:ResultatTest = testComp(perso, {comp: TypeCompetence.intuition, bonusMalus: 20});
+                const resTestRagot:ResultatTest = testComp(perso, TypeCompetence.ragot, 20);
+                const resTestInt:ResultatTest = testComp(perso, TypeCompetence.intuition, 20);
                 texte += resTestRagot.resume;
                 texte += resTestInt.resume;
                 const titreJournal: string = journalAleatoire();

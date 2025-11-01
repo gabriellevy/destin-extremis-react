@@ -21,7 +21,7 @@ export const evts_dealer_de_lycee: GroupeEvts = {
                 let texte = '';
                 texte += "Vu le pognon que ça fait tourner vous tentez de vous lancer comme vendeur de drogue au lycée. <br/>";
 
-                const resTestMarchandage: ResultatTest = testComp(perso, {comp: TypeCompetence.marchandage, bonusMalus: 0});
+                const resTestMarchandage: ResultatTest = testComp(perso, TypeCompetence.marchandage, 0);
                 texte += resTestMarchandage.resume;
                 if (resTestMarchandage.reussi) {
                     texte += commencerCarriere(perso, MetiersEnum.dileur_de_lycee, '');
