@@ -19,7 +19,7 @@ export enum TypeCompetence {
     animaux = "Animaux",
     armeCaC = "Armes de corps à corps",
     bagarre = "Bagarre",
-    chance = "Chance",
+    chance = "Chance", // inclut aussi la grâce divine incompréhensibles aux mortels, le destin etc
     charme = "Charme",
     commandement = "Commandement",
     discretion = "Discrétion",

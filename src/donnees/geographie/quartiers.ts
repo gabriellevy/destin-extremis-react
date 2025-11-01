@@ -60,6 +60,11 @@ export function descriptionQuartier(quartier: Quartier): string {
         case Quartier.chatenay_malabry:
             texte += "Le quartier de Chatenay Malabry est le quartier des celtes. La nature qui l’envahit et le style ancien des maisons qu’on y trouve peut donner l’impression qu’il est archaïque mais il reflète seulement le goût de ses habitants pour la promenade, la méditation, et la fête en plein air. Derrière tout cela se trouve la même modernité qu’ailleurs. ";
             break;
+        case Quartier.montbrison:
+            texte += "Montbrison est un quartier en bordure de la Ville. En fait il s’agit en un sens d’un quartier frontière car au Sud s’étend le [Zone](https://www.notion.so/Les-Zones-23d7e0b4d00480588b05fe83440fc2b3?pvs=21) la plus proche de la tour de convention et donc un endroit inhabitable et très dangereux. En conséquence Montbrison est peu peuplée et a très mauvaise réputation. \n" +
+                "<br/>" +
+                "On y trouve essentiellement des aventuriers attirés par le butin étrange qu’on peut ramener de la zone, des scientifiques curieux risque-tout, et bien sûr des [Khaos](https://www.notion.so/Khaos-23d7e0b4d0048074afebefd4f6d598e0?pvs=21), pour qui les Zones sont sacrées car elles représentent l’incarnation terrestre de leurs croyances. ";
+            break;
         default:
             texte += "Il manque la description de cet endroit : " + quartier;
     }
