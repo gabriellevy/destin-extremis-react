@@ -42,22 +42,21 @@ export function rejointCoterie( perso: PersoCommon, coterie: Coterie|undefined):
         effetDepart.minus5Values.forEach((typeComp: TypeCompetence) =>
             texte += augmenterCompetence(perso, typeComp, 5)
         );
-
     }
 
     perso.coterie = coterie;
     if (coterie) {
         switch (coterie) {
             case Coterie.cathares: {
-                rejoindreCathares(perso);
+                texte += rejoindreCathares(perso);
             } break;
             case Coterie.orks: {
-                rejoindreOrks(perso);
+                texte += rejoindreOrks(perso);
             } break;
             default: {
                 // effet standard : mieux vaut si possible faire des textes et effets plus spécifiques par coterie
                 const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(coterie);
-                texte = effetDeBaseEnRejoignantUneCoterie(effet, perso);
+                texte += effetDeBaseEnRejoignantUneCoterie(effet, perso);
             }
         }
     }

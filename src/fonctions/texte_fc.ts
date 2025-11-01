@@ -1,6 +1,6 @@
 export function ajouteLigneDeTexteGras(ajout:string) {
-    return "<br/><b>" + ajout + "</b>";
+    return "<b>" + ajout + "</b><br/>";
 }
 export function ajouteLigneDeTexteItalique(ajout:string) {
-    return "<br/><i>" + ajout + "</i>";
+    return "<i>" + ajout + "</i><br/>";
 }

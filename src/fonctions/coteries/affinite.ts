@@ -7,7 +7,9 @@ export const SEUIL_AFFINITE:number = 8; // seuil à partir de quand une coterie 
 
 export function calculerAffinite(perso: Perso, coterie: Coterie): number {
     let affinite = 0;
-    affiniteViceVertuCoterie[coterie].forEach(viceVertuCoterie => {
+    for (const viceVertuCoterie of affiniteViceVertuCoterie[coterie]) {
+        // les "0" sont ignorés car ils sont sans importance pour la coterie :
+        if (viceVertuCoterie.valVertu === 0) continue;
         const valVertuPerso = getValeurVertu(perso, viceVertuCoterie.typeVertu);
         if (valVertuPerso == viceVertuCoterie.valVertu) {
             // valeur identique à la coterie
@@ -18,17 +20,18 @@ export function calculerAffinite(perso: Perso, coterie: Coterie): number {
         } else {
             // grosse différence de valeur avec la coterie
             if (Math.abs(valVertuPerso - viceVertuCoterie.valVertu) > 1) {
-                affinite-=1;
+                affinite -= 1;
             }
             // un positif et un négatif donc grosse différence
             if ((valVertuPerso > 0) !== (viceVertuCoterie.valVertu > 0)) {
-                affinite-=1;
+                affinite -= 2;
             } else {
                 // au moins ils sont du même côté de l'échelle donc affinité
-                affinite += 3;
+                affinite += 2;
             }
         }
-    })
+
+    }
     if (perso.debogue) {
         console.log("Affinité avec " + coterie.toString() + " : " + affinite);
     }

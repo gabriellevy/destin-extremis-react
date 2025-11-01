@@ -7,9 +7,6 @@ import {getQuartierDeCoterie} from "../../coteries/Quartiers";
 import {getCoterieAleatoireSauf} from "../../../fonctions/generation";
 import {descriptionCot} from "../../coteries/description";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
-import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
-import {getRandomInt} from "../../../fonctions/random";
-import {rejointCoterie} from "../../../fonctions/coteries/generales";
 import {changerQuartier} from "../../../fonctions/geographie/quartier";
 import {finDAnneeDEtude} from "../../../fonctions/coteries/etudes";
 import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
@@ -106,24 +103,12 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
         {
             id: "evts_fin_de_lycee",
             description: async (perso: Perso): Promise<string> => {
-                perso.coterie = undefined;
                 let texte: string = finDAnneeDEtude(perso);
                 texte +=  "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
+                perso.coterie = undefined;
                 perso.bilanLycee.coterieActuelle = undefined;
 
-                const coteriesProches: Coterie[] = [];
-                Object.values(Coterie).forEach((co: Coterie) => {
-                    const affinite = calculerAffinite(perso, co);
-                    if (affinite >= SEUIL_AFFINITE) {
-                        coteriesProches.push(co);
-                    }
-                })
-                const coterieRejointe = coteriesProches.at(getRandomInt(coteriesProches.length)-1);
-                if (coterieRejointe) {
-                    texte += ajouteLigneDeTexteGras("Vous rejoignez les " + coterieRejointe.toString() + ".");
-                    rejointCoterie(perso, coterieRejointe);
-                }
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
