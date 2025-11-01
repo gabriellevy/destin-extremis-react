@@ -19,10 +19,9 @@ export function descriptionViceVertu(vice: Vice, valeurVice: number) {
                 case 3:
                     return "Complètement paranoïaque";
                 default:
-                    return "valeur impossible : " + valeurVice;
+                    return "valeur impossible de " + vice + " : " + valeurVice;
             }
         }
-        break;
         case Vice.cruel: {
             switch (valeurVice) {
                 case -3:
@@ -38,10 +37,9 @@ export function descriptionViceVertu(vice: Vice, valeurVice: number) {
                 case 3:
                     return "Psychopathe";
                 default:
-                    return "valeur impossible : " + valeurVice;
+                    return "valeur impossible de " + vice + " : " + valeurVice;
             }
         }
-            break;
         default : {
             switch (valeurVice) {
                 case -3:
@@ -57,7 +55,7 @@ export function descriptionViceVertu(vice: Vice, valeurVice: number) {
                 case 3:
                     return "Extrêmement " + vice;
                 default:
-                    return "valeur impossible : " + valeurVice;
+                    return "valeur impossible de " + vice + " : " + valeurVice;
             }
         }
     }

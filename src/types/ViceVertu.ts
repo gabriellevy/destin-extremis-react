@@ -143,8 +143,8 @@ export function valeurViceVertuAleatoire(): number {
 
 // ajout de manière relative à la valeur précédent (donc ajoute ou soustrait)
 export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): string {
-    const valPrecedente = getValeurVertu(perso, typeVertu);
-    let valActuelle: number = getValeurVertu(perso, typeVertu) + val;
+    const valPrecedente:number = getValeurVertu(perso, typeVertu);
+    let valActuelle: number = Number(valPrecedente) + Number(val);
     if (valActuelle < -3) valActuelle = -3
     else if (valActuelle > 3) valActuelle = 3
     let viceVertu = perso.viceVertu.find(
@@ -159,27 +159,18 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): str
     } else {
         viceVertu.valVertu = valActuelle;
     }
-    if (valPrecedente != valActuelle) {
+    if (valPrecedente !== valActuelle) {
         return ajouteLigneDeTexteGras(
             "<br/>Vous passez de "
-            + descriptionViceVertu(getViceOppose(typeVertu), valPrecedente)
-            + " à " +
-            + descriptionViceVertu(getViceOppose(typeVertu), valActuelle));
+            + descriptionViceVertu(getViceOppose(typeVertu), -valPrecedente)
+            + " à "
+            + descriptionViceVertu(getViceOppose(typeVertu), -valActuelle)
+        );
     }
     return '';
 }
 
 export function ajouterViceVal(perso: Perso, typeVice: Vice, val:number): string {
     const vertu = getVertuOppose(typeVice);
-    const valPrecedente = getValeurVice(perso, typeVice);
-    ajouterVertuVal(perso, vertu, -val);
-    const valActuelle = getValeurVice(perso, typeVice);
-    if (valPrecedente != valActuelle) {
-        return ajouteLigneDeTexteGras(
-            "<br/>Vous passez de "
-            + descriptionViceVertu(typeVice, valPrecedente)
-            + " à " +
-            + descriptionViceVertu(typeVice, valActuelle));
-    }
-    return '';
+    return ajouterVertuVal(perso, vertu, -val);
 }
