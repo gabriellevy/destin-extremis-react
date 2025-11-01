@@ -1,5 +1,6 @@
 import {Perso, PersoCommon} from "./perso/Perso";
 import {ajouteLigneDeTexteGras} from "../fonctions/texte_fc";
+import {descriptionViceVertu} from "../fonctions/VicesVertus_fc";
 
 // duo de vertu et vices qui fonctionnent ensemble en opposition
 export type ViceVertu = {
@@ -159,7 +160,11 @@ export function ajouterVertuVal(perso: Perso, typeVertu: Vertu, val:number): str
         viceVertu.valVertu = valActuelle;
     }
     if (valPrecedente != valActuelle) {
-        return ajouteLigneDeTexteGras(valActuelle + " en " + typeVertu.toString());
+        return ajouteLigneDeTexteGras(
+            "<br/>Vous passez de "
+            + descriptionViceVertu(getViceOppose(typeVertu), valPrecedente)
+            + " à " +
+            + descriptionViceVertu(getViceOppose(typeVertu), valActuelle));
     }
     return '';
 }
@@ -170,7 +175,11 @@ export function ajouterViceVal(perso: Perso, typeVice: Vice, val:number): string
     ajouterVertuVal(perso, vertu, -val);
     const valActuelle = getValeurVice(perso, typeVice);
     if (valPrecedente != valActuelle) {
-        return "<b>" + valActuelle + " en " + typeVice.toString() + " </b> ";
+        return ajouteLigneDeTexteGras(
+            "<br/>Vous passez de "
+            + descriptionViceVertu(typeVice, valPrecedente)
+            + " à " +
+            + descriptionViceVertu(typeVice, valActuelle));
     }
     return '';
 }

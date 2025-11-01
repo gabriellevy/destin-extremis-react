@@ -80,6 +80,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/genevilliers.jpg";
         case Quartier.maisons_laffite:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Maisons-Laffite.jpg";
+        case Quartier.montbrison:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Montbrison-la%20Zone.png";
         case Quartier.saint_denis:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Saint-Denis.jpg";
         case Quartier.versailles:
