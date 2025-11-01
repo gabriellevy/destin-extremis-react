@@ -30,8 +30,8 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
     return (
         <Box
             sx={{
-                backgroundColor: '#FFF9C4', // Fond jaune pâle
-                padding: '16px',
+                backgroundColor: '#7c736b', // Fond jaune pâle
+                padding: '6px',
                 borderRadius: '8px',
                 margin: 'auto',
                 width: '100%',
@@ -50,7 +50,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                 onClick={monteeCompetence}
                 variant="contained"
                 size="small"
-                sx={{ mb: 1 }}
+                sx={{ mb: 1, padding: 0 }}
             >
                 {`+1 en ${competenceType}`}
             </Button>
@@ -60,7 +60,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                         onClick={modifierPersonnalite}
                         variant="contained"
                         size="small"
-                        sx={{ mb: 1 }}
+                        sx={{ mb: 1, padding: 0 }}
                     >
                         {texteBoutonChangtPersonnalite}
                     </Button>
@@ -72,7 +72,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                         onClick={acheterObjetParMonteeDeNiveau}
                         variant="contained"
                         size="small"
-                        sx={{ mb: 1 }}
+                        sx={{ mb: 1, padding: 0 }}
                     >
                         {texteBoutonAchat}
                     </Button>
@@ -82,7 +82,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                 onClick={onClose}
                 variant="contained"
                 size="small"
-                sx={{ mb: 1 }}
+                sx={{ mb: 1, padding: 0 }}
             >
                 Annuler
             </Button>

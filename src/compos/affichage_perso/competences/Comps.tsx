@@ -1,4 +1,4 @@
-import {Button, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {List, ListItem, ListItemText, Tooltip, Typography} from "@mui/material";
 import {isCompDeBase, TypeCompetence} from "../../../types/perso/comps/Comps";
 import React, {JSX, useContext, useMemo, useState} from "react";
 import {PersoContexte, PersoContexteType} from "../../../contexte/ContexteTypes";
@@ -23,6 +23,7 @@ import {
 import {descriptionViceVertu} from "../../../fonctions/VicesVertus_fc";
 import {Possession} from "../../../donnees/possessions/Possession";
 import {acquerir, acquerirEtNomme} from "../../../fonctions/possessions/possessions";
+import StarIcon from "@mui/icons-material/Star";
 
 interface CompProps {
     competenceType: TypeCompetence,
@@ -161,32 +162,38 @@ const Comp = ({ competenceType }: CompProps) => {
 
     return (
         <>
-            <ListItem sx={{ padding: '0px', width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    {icone}
-                    <ListItemText
-                        primary={
-                            <Typography variant="body2" style={styleTexte}>
-                                {valeur < 35 ? "Incompétent en " + competenceType.toString() :
-                                    valeur < 45 ? "Capable en " + competenceType.toString() :
-                                        valeur < 55 ? "Expérimenté en " + competenceType.toString() :
-                                            valeur < 65 ? "Exceptionnel en " + competenceType.toString() :
-                                                "Légendaire en " + competenceType.toString()}
-                                {" (" + valeur + ") "}
-                            </Typography>
-                        }
-                        sx={{ margin: '0px' }}
-                    />
-                </div>
+            <ListItem sx={{ padding: '0px', width: "100%", display: "flex"}}>
+                {icone}
+                <ListItemText
+                    primary={
+                        <Typography variant="body2" style={styleTexte}>
+                            {valeur < 35 ? "Incompétent en " + competenceType.toString() :
+                                valeur < 45 ? "Capable en " + competenceType.toString() :
+                                    valeur < 55 ? "Expérimenté en " + competenceType.toString() :
+                                        valeur < 65 ? "Exceptionnel en " + competenceType.toString() :
+                                            "Légendaire en " + competenceType.toString()}
+                            {" (" + valeur + ") "}
+                        </Typography>
+                    }
+                    sx={{ margin: '0px' }}
+                />
                 {
                     nbMonteeDeNiveau > 0 && !isModalOpen? (
-                        <Button
-                            variant="contained"
-                            size="small"
-                            onClick={handleOpenModal}
-                        >
-                            Montée de niveau
-                        </Button>
+                        <Tooltip title="Montée de niveau">
+                            <StarIcon
+                                onClick={handleOpenModal}
+                                sx={{
+                                    color: 'orange',
+                                    cursor: 'pointer',
+                                    animation: 'blink 1s infinite',
+                                    '@keyframes blink': {
+                                        '0%': {opacity: 1},
+                                        '50%': {opacity: 0.3},
+                                        '100%': {opacity: 1},
+                                    },
+                                    }}
+                            />
+                        </Tooltip>
                     ) : undefined
                 }
 
