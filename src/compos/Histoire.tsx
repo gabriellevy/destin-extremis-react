@@ -75,10 +75,6 @@ const Histoire: React.FC = (): JSX.Element => {
                 image: evtExecute.image != undefined ? evtExecute.image(perso) : '',
             };
 
-            if (perso.debogue) {
-                console.log("Éxécution de " + nouvEvt.id);
-            }
-
             // sauvegarder l'historique des évts et des états de perso précédents
             previousPerso.idTemporel = evtId;
             perso.evtsPasses = [

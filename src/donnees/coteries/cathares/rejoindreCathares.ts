@@ -122,6 +122,7 @@ const testDEntreeCathare: (perso: Perso) => Promise<string> = (perso: Perso) => 
                 date: (persoFutur:Perso) => perso.date + nbJours === persoFutur.date,
                 evt: {
                     id: "testDEntreeCathare",
+                    image: () => "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/cathares/int%C3%A9rieur%20%C3%A9glise.jpg",
                     description: testDEntreeCathare,
                 }
             });
@@ -149,6 +150,7 @@ export function rejoindreCathares(perso: PersoCommon): string {
         date: (persoFutur:Perso) => perso.date + nbJours === persoFutur.date,
         evt: {
             id: "testDEntreeCathare",
+            image: () => "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/cathares/int%C3%A9rieur%20%C3%A9glise.jpg",
             description: testDEntreeCathare,
         }
     });
