@@ -56,6 +56,9 @@ export function rejointCoterie( perso: PersoCommon, coterie: Coterie|undefined):
             default: {
                 // effet standard : mieux vaut si possible faire des textes et effets plus spécifiques par coterie
                 const effet: EffectDeCoterieSurPerso = getEffetsDeCoterieSurCompetences(coterie);
+                if (perso.debogue) {
+                    console.warn(" effet standard de joignage des " + coterie + " : mieux vaut si possible faire des textes et effets plus spécifiques par coterie")
+                }
                 texte += effetDeBaseEnRejoignantUneCoterie(effet, perso);
             }
         }

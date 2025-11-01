@@ -36,7 +36,7 @@ export const evts_rejoindre: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 perso.coterie === undefined
-                && perso.bilanLycee.phaseActuelle !== PhaseLycee.finie,
+                && perso.bilanLycee.phaseActuelle === PhaseLycee.finie,
             repetable: true,
         },
     ],

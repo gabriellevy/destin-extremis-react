@@ -18,6 +18,7 @@ export function getQuartierDeCoterie(cot: Coterie): Quartier {
         case Coterie.transhumanistes: return Quartier.la_defense;
         case Coterie.libertins: return Quartier.bondy;
         case Coterie.lumieres: return Quartier.maisons_laffite;
+        case Coterie.ogres: return Quartier.rungis;
         case Coterie.orks: return Quartier.genevilliers;
         case Coterie.saabi: return Quartier.saint_ouen;
         case Coterie.schweizer: return Quartier.grande_crete;

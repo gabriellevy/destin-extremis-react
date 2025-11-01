@@ -20,6 +20,7 @@ export enum Quartier {
     bondy = 'Bondy',
     maisons_laffite = 'Maisons-Laffite',
     genevilliers = 'Genevilliers',
+    rungis = 'Rungis',
     saint_ouen = 'Saint Ouen',
     grande_crete = 'Grande crète',
     catacombes_de_paris = 'catacombes de Paris',
