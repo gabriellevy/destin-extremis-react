@@ -37,6 +37,11 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.trompeur,
             Vice.orgueilleux,
         ]
+        case TypeCompetence.force: return [
+            Vice.gourmand,
+            Vice.orgueilleux,
+            Vice.luxurieux,
+        ]
         case TypeCompetence.intelligence: return [
             Vice.orgueilleux,
         ]
@@ -59,6 +64,12 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.rebelle,
             Vice.impulsif,
             Vice.lache,
+        ]
+        case TypeCompetence.ragot : return [
+            Vice.trompeur,
+            Vice.paresseux,
+            Vice.gourmand,
+            Vice.cruel,
         ]
         case TypeCompetence.survie : return [
             Vice.naturaliste,
@@ -104,6 +115,9 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.loyal,
             Vertu.sociable,
         ]
+        case TypeCompetence.force: return [
+            Vertu.valeureux,
+        ]
         case TypeCompetence.endurance : return [
             Vertu.sobre,
             Vertu.prudent,
@@ -124,6 +138,10 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         ]
         case TypeCompetence.mouvement : return [
             Vertu.sobre,
+        ]
+        case TypeCompetence.ragot : return [
+            Vertu.sociable,
+            Vertu.loyal,
         ]
         case TypeCompetence.survie : return [
             Vertu.discipline,
