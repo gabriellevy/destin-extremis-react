@@ -9,6 +9,9 @@ import {getRegion} from "../../donnees/geographie/regions";
 import {getContinent} from "../../donnees/geographie/continents";
 
 export function changerQuartier(perso: PersoCommon, quartier: Quartier, desactiverEvtsSecondaires: boolean): string {
+    if (perso.lieu.quartier === quartier)
+        return ""
+
     let texte: string = "Vous emménagez dans le quartier " + quartier + ".";
     perso.lieu.quartier = quartier;
     perso.lieu.region = getRegion(quartier);

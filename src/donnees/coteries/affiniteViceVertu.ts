@@ -138,8 +138,8 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         valVertu: 1,
         typeVertu: Vertu.prudent,
     },{
-        valVertu: 1,
-        typeVertu: Vertu.prudent,
+        valVertu: -1,
+        typeVertu: Vertu.humble,
     },{
         valVertu: -1,
         typeVertu: Vertu.artificialiste,

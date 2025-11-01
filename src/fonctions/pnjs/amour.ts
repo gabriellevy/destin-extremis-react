@@ -1,4 +1,4 @@
-import {Perso} from "../../types/perso/Perso";
+import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {PNJ} from "../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../types/perso/Amour";
 import {genererPNJAmourableDePerso} from "../generation";
@@ -30,6 +30,23 @@ export function aUnCoupDeCoeurNonReciproque(perso: Perso): boolean {
 export function nombreDeCoupDeCoeur(perso:Perso):number {
     return perso.pnjs.filter((pnj: PNJ) =>
         pnj.amourPourCePnj === NiveauAmour.coupDeCoeur).length;
+}
+
+/**
+ * y compris simples coups de coeur et trucs non réciproques
+ * @param perso
+ */
+export function nombreDeRelationsAmoureusesEnCours(perso:Perso):number {
+    return perso.pnjs.filter(
+        (pnj: PNJ) =>
+            pnj.niveauRelationAmoureuse !== NiveauRelationAmoureuse.rien
+    ).length;
+}
+
+export function getPremierAmour(perso: PersoCommon):PNJ|undefined {
+    return perso.pnjs.find((pnj:PNJ) =>
+        pnj.niveauRelationAmoureuse !== NiveauRelationAmoureuse.rien
+    );
 }
 
 export function getUnCoupDeCoeur(perso: Perso): PNJ {
