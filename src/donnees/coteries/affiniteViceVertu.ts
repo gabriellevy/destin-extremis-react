@@ -1,7 +1,8 @@
 import { Coterie } from "../../types/Coterie";
 import {Vertu, ViceVertu } from "../../types/ViceVertu";
 
-// chacun doit en avoir autant pour que ce soit plus équitable
+// chacun doit en avoir à peu près autant pour que ce soit plus équitable
+// TODO : j'étais parti avec 4 mais c'est peu => à passer à 6 ou 7 avec plus à niveau 2 ou 3
 export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
     [Coterie.chaos]: [{
         valVertu: -2,
@@ -45,6 +46,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         {
         valVertu: 1,
         typeVertu: Vertu.sobre,
+    },{
+        valVertu: 1,
+        typeVertu: Vertu.placide,
     },{
         valVertu: 1,
         typeVertu: Vertu.chaste,
@@ -320,6 +324,9 @@ export const affiniteViceVertuCoterie: Record<Coterie, ViceVertu[]> = {
         typeVertu: Vertu.altruiste,
     }],
     [Coterie.templiers]: [{
+        valVertu: 1,
+        typeVertu: Vertu.discipline,
+    },{
         valVertu: 1,
         typeVertu: Vertu.loyal,
     },{

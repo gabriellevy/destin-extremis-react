@@ -229,7 +229,9 @@ export const evts_lycee_cathares: GroupeEvts = {
             },
             repetable: true,
             proba: 10,
-            conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares,
+            conditions: (perso: Perso): boolean =>
+                (perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares)
+                && !aLaMaitrise(perso, Maitrise.beni),
         },
     ],
     probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante

@@ -10,19 +10,27 @@ export function calculerAffinite(perso: Perso, coterie: Coterie): number {
     affiniteViceVertuCoterie[coterie].forEach(viceVertuCoterie => {
         const valVertuPerso = getValeurVertu(perso, viceVertuCoterie.typeVertu);
         if (valVertuPerso == viceVertuCoterie.valVertu) {
-            // très très proche de la coterie
+            // valeur identique à la coterie
             if (valVertuPerso ==0) affinite+=2;
             if (Math.abs(valVertuPerso) ==1) affinite+=4;
-            if (Math.abs(valVertuPerso) ==2) affinite+=8;
-            if (Math.abs(valVertuPerso) ==3) affinite+=16;
+            if (Math.abs(valVertuPerso) ==2) affinite+=6;
+            if (Math.abs(valVertuPerso) ==3) affinite+=10;
         } else {
+            // grosse différence de valeur avec la coterie
             if (Math.abs(valVertuPerso - viceVertuCoterie.valVertu) > 1) {
-                // grosse difféernce de valeur avec la coterie
+                affinite-=1;
+            }
+            // un positif et un négatif donc grosse différence
+            if ((valVertuPerso > 0) !== (viceVertuCoterie.valVertu > 0)) {
                 affinite-=1;
             } else {
-                affinite+=1;
+                // au moins ils sont du même côté de l'échelle donc affinité
+                affinite += 3;
             }
         }
     })
+    if (perso.debogue) {
+        console.log("Affinité avec " + coterie.toString() + " : " + affinite);
+    }
     return affinite;
 }

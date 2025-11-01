@@ -19,7 +19,6 @@ export const evts_rejoindre: GroupeEvts = {
                 const coteriesProches: Coterie[] = [];
                 Object.values(Coterie).forEach((co: Coterie) => {
                     const affinite = calculerAffinite(perso, co);
-                    console.log(co.toString() + " : " + affinite);
                     if (affinite >= SEUIL_AFFINITE) {
                         coteriesProches.push(co);
                     }
