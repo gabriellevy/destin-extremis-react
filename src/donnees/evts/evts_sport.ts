@@ -35,5 +35,5 @@ export const evts_sports: GroupeEvts = {
                 getValeurVertu(perso, Vertu.chaste) >= 1 && getValeurVertu(perso, Vertu.sobre) >= 1,
         },
     ],
-    probaParDefaut: 3,
+    probaParDefaut: 0.02,
 };

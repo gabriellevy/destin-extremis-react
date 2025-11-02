@@ -42,6 +42,7 @@ export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
             Quartier.bondy,
             Quartier.maisons_laffite,
             Quartier.genevilliers,
+            Quartier.rungis,
             Quartier.saint_ouen,
             Quartier.grande_crete,
             Quartier.catacombes_de_paris,

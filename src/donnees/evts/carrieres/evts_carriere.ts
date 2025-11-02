@@ -6,13 +6,16 @@ import {
     getCarriereActive, suitUneCarriereDe,
     suitUneCarriereDepuis
 } from "../../../fonctions/metiers/metiersUtils";
-import {modifierStatut, statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
+import {
+    modifierStatut,
+    statut1SuperieurOuEgalAStatut2,
+} from "../../../fonctions/perso/statut";
 import {Carriere} from "../../../types/metiers/Metier";
 import {appelLeChat, appelLeChatParaphrase, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {MetiersEnum, metiersObjs} from "../../metiers";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp, testMetier, testVice} from "../../../fonctions/des";
-import {Vice} from "../../../types/ViceVertu";
+import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {vaA} from "../../../types/lieux/Lieu";
 import {Quartier} from "../../geographie/quartiers";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
@@ -112,6 +115,28 @@ export const evts_carriere: GroupeEvts = {
                 && compatibiliteCarriere(perso, metiersObjs[getCarriereActive(perso).metier]) < 0,
             repetable: true,
             proba: 0.003,
+        },
+        {
+            id: "evts_carriere4 se lève pas",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Une fois encore vous avez la flemme d'aller au travail. ";
+                const resTestTromp:ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
+                texte += resTestTromp.resume;
+                const resTestChance:ResultatTest = testComp(perso, TypeCompetence.chance, 0);
+                texte += resTestChance.resume;
+                if (resTestTromp.reussi || resTestChance.reussi) {
+                    texte += "Mais vous arrivez à vous faire passer pour malade. ";
+                } else {
+                    texte += "Cette fois c'est trop. Vous êtes viré peu après. ";
+                    texte += arreterCarriere(perso, getCarriereActive(perso).metier, true);
+                }
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                aUneCarriere(perso)
+                && getValeurVice(perso, (Vice.paresseux)) > 0,
+            repetable: true,
+            proba: 0.001,
         },
     ],
     probaParDefaut: 0.005,
