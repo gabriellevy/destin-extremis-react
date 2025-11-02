@@ -22,6 +22,7 @@ export function getReputationQuartier(perso:Perso, quartier:Quartier|undefined):
     }
     const repDansQuartier:ReputationQuartier|undefined = perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
         repQuartier.quartier === quartier);
+    console.log("perso.reputation.parQuartier : ", perso.reputation.parQuartier);
     if (!repDansQuartier) {
         if (!quartier) {
             quartier = Quartier.inconnu;
@@ -57,11 +58,12 @@ export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|un
             amplitude: modifAmplitude,
         })
     }
-    return ajouteLigneDeTexteGras("Réputation : " + affichageReputation(perso, quartierFinal) + ". ");
+    return ajouteLigneDeTexteGras("Réputation : " + affichageReputation(perso, quartierFinal) + ". <br/>");
 }
 
 export function affichageReputation(perso: Perso, quartier:Quartier) {
     let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
+    console.log("repQuartier : ", repQuartier);
     let amplitude:number;
     let qualite:number;
     if (repQuartier) {

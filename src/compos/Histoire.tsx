@@ -48,6 +48,7 @@ import {evts_argent} from "../donnees/evts/possessions/evts_argent";
 import {evts_plombier} from "../donnees/evts/carrieres/evts_plombier";
 import {evts_sports} from "../donnees/evts/evts_sport";
 import {evts_logement} from "../donnees/evts/possessions/evts_logement";
+import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -136,6 +137,7 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_cathares, perso),
             ...filtrerEtPreparerEvts(evts_orks, perso),
             ...filtrerEtPreparerEvts(evts_lycee_skavens, perso),
+            ...filtrerEtPreparerEvts(evts_lycee, perso),
             ...filtrerEtPreparerEvts(evts_rejoindre, perso),
             ...filtrerEtPreparerEvts(evts_serveur, perso),
             ...filtrerEtPreparerEvts(evts_macon, perso),
