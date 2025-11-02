@@ -49,6 +49,7 @@ export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
             Quartier.saint_denis,
             Quartier.argenteuil,
             Quartier.suresnes,
+            Quartier.marseille,
             Quartier.saint_maur_des_fosses
         ];
         case Region.siberie : return [
