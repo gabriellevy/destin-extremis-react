@@ -272,43 +272,43 @@ const Histoire: React.FC = (): JSX.Element => {
                         setEvtsExecutes={setEvtsExecutes}
                     />
                 ))}
-            </Box>
-            {tempsRestant !== null && tempsRestant > 0 && (
-                <Grid2 container justifyContent="center" alignItems="center" spacing={2}
-                       sx={{
-                           backgroundColor: 'rgba(255, 249, 196, 0.9)',
-                           padding: '16px',
-                           borderRadius: '8px',
-                           margin: 'auto',
-                           maxWidth: '700px',
-                           boxSizing: 'border-box',
-                           mb: 2,
-                       }}
-                >
-                    <Grid2>
-                        <Typography fontWeight="bold">
-                            {
-                                jourSansEvt > 0 ? jourSansEvt + " jours sans événement notable." : ''
-                            }
-                            <br/>
-                            Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
-                        </Typography>
+                {tempsRestant !== null && tempsRestant >= 0 && (
+                    <Grid2 container justifyContent="center" alignItems="center" spacing={2}
+                           sx={{
+                               backgroundColor: 'rgba(255, 249, 196, 0.9)',
+                               padding: '16px',
+                               borderRadius: '8px',
+                               margin: 'auto',
+                               maxWidth: '700px',
+                               boxSizing: 'border-box',
+                               mb: 2,
+                           }}
+                    >
+                        <Grid2>
+                            <Typography fontWeight="bold">
+                                {
+                                    jourSansEvt > 0 ? jourSansEvt + " jours sans événement notable." : ''
+                                }
+                                <br/>
+                                Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
+                            </Typography>
+                        </Grid2>
+                        {
+                            perso.debogue && (
+                                <Grid2>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={passerAuSuivant}
+                                    >
+                                        Suivant
+                                    </Button>
+                                </Grid2>
+                            )
+                        }
                     </Grid2>
-                    {
-                        perso.debogue && (
-                            <Grid2>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={passerAuSuivant}
-                                >
-                                    Suivant
-                                </Button>
-                            </Grid2>
-                        )
-                    }
-                </Grid2>
-            )}
+                )}
+            </Box>
             {plusDEvts && (
                 <Typography mb={2} fontWeight="bold">
                     Plus d'événements à exécuter !!!! Faut en ajouter mon vieux !!
