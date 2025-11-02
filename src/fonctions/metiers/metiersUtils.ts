@@ -242,7 +242,9 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
             nbDeTestsFaits : nbDeTestsFaits,
         });
     }
-    let texte = "Vous êtes maintenant " + metiersEnum.toString() + ".";
+    let texte = "Vous êtes maintenant "
+        + etudiant ? "étudiant " : ""
+        + metiersEnum.toString() + ".";
     if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)
         // on n peut pas toujours négocier son salaire d'entrée : !
         && !etudiant
