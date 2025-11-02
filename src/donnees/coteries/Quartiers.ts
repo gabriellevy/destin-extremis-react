@@ -27,5 +27,6 @@ export function getQuartierDeCoterie(cot: Coterie): Quartier {
         case Coterie.tyranides: return Quartier.argenteuil;
         case Coterie.zaporogues: return Quartier.suresnes;
     }
+    console.error("Cette coterie " + cot + " n'a pas de quartier. ");
     return Quartier.inconnu;
 }

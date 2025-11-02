@@ -48,7 +48,7 @@ export function enfant(empty: boolean): PersoForm {
         bioniques: [],
         drogues: [],
         nbJoursDHopital: 0,
-        debogue: true,
+        debogue: false,
         metier: MetiersEnum.non_travailleur,
         mode: Mode.test,
         phaseDExecution: PhaseDExecution.creation,
