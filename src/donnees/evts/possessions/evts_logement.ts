@@ -31,7 +31,7 @@ export const evts_logement: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.lieu.statutLogement === StatutLogement.Possession
+                perso.lieu.statutLogement !== StatutLogement.Possession
                 && getValeurVertu(perso, Vertu.prudent) > 0
                 && getAge(perso) >= 18
                 && statutPersoSuperieurAStatut2(perso, {
@@ -40,6 +40,22 @@ export const evts_logement: GroupeEvts = {
                     }),
             repetable: true,
         },
+        {
+            id: "evts_logement2 travaux",
+            description: async (perso: Perso): Promise<string> => {
+                let texte: string = "Vous faites des travaux dans votre appartement. ";
+                modifierStatut(perso, -1);
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                perso.lieu.statutLogement === StatutLogement.Possession
+                && getValeurVertu(perso, Vertu.artificialiste) > 0
+                && statutPersoSuperieurAStatut2(perso, {
+                        rang: 1,
+                        metalStatut: MetalStatut.argent,
+                    }),
+            repetable: true,
+        },
     ],
-    probaParDefaut: 3,
+    probaParDefaut: 0.002,
 }
