@@ -28,7 +28,7 @@ export enum Quartier {
     argenteuil = 'Argenteuil',
     suresnes = 'Suresnes',
     // ---- Pyrénées
-    pyrenees = 'Pyrénes',
+    pyrenees = 'Pyrénées',
 
     // Asie
 
@@ -96,6 +96,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/St%20Maur%20Des%20Foss%C3%A9s.jpg";
         case Quartier.la_defense:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/la%20d%C3%A9fense.jpg";
+        case Quartier.pyrenees:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Pyr%C3%A9n%C3%A9es.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);
