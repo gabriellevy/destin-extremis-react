@@ -130,9 +130,6 @@ export function dateCompleteToJourDepuis0(jourDansMois: number, mois: enumMois, 
 }
 
 export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDejaAffichee: boolean)=>void): boolean {
-    let joursRellementAjoutes: number = 0;
-    // const joursAAjouter: number = 1;
-
     let evtProgrammeExecute: boolean = false;
     // vérifier au cas où un evt "forcé" devrait avoir lieu ce jour précis
     perso.date = perso.date + 1;
@@ -149,11 +146,11 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
     // ---- Modification des valeurs affectées par le passage du temps
     // - carrières
     Array.from(perso.carrieres.values()).map((carriere: Carriere) => {
-        carriere.duree = carriere.duree + joursRellementAjoutes;
+        carriere.duree = carriere.duree + 1;
     });
     // - blessures
     if (perso.nbJoursDHopital > 0) {
-        perso.nbJoursDHopital -= joursRellementAjoutes;
+        perso.nbJoursDHopital -= 1;
         if (perso.nbJoursDHopital < 0) {
             perso.nbJoursDHopital = 0;
         }

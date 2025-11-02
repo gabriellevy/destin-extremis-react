@@ -27,5 +27,5 @@ export const evts_cathares: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.coterie === Coterie.cathares && getValeurVertu(perso, Vertu.altruiste) < 3,
         },
     ],
-    probaParDefaut: 10, // un peu > à la moyenne car spécifique à une coterie
+    probaParDefaut: 0.02, // un peu > à la moyenne car spécifique à une coterie
 };

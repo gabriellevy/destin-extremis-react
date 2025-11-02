@@ -347,5 +347,5 @@ export const evts_brute_de_lycee: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 0.04,
+    probaParDefaut: 0.03,
 };
