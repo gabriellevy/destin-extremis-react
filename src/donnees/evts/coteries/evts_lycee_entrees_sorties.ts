@@ -28,7 +28,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                perso.bilanLycee.coterieAnnee1 === undefined // si n'a asp encore commencé l'université
+                perso.bilanLycee.coterieAnnee1 === undefined // si n'a pas encore commencé l'université
                 && getAge(perso) == 14,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
         },

@@ -66,12 +66,12 @@ export const evts_amour: GroupeEvts = {
                         perso, prompt, NiveauInfosPerso.patronyme
                     );
                 }
-                texte += resTestImpulsif.resume + "<br/>";
+                texte += resTestImpulsif.resume;
                 if (resTestImpulsif.reussi) {
-                    texte += resTestCharme.resume + "<br/>";
+                    texte += resTestCharme.resume;
                 }
 
-                return texte + ". <br/>";
+                return texte;
             },
             conditions: (perso: Perso): boolean =>
                 nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux))*2
