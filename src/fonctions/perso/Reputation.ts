@@ -20,18 +20,20 @@ export function getReputationQuartier(perso:Perso, quartier:Quartier|undefined):
     if (!quartier) {
         quartier = perso.lieu.quartier;
     }
-    const repDansQuartier:ReputationQuartier|undefined = perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
+    let repDansQuartier:ReputationQuartier|undefined = perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
         repQuartier.quartier === quartier);
     console.log("perso.reputation.parQuartier : ", perso.reputation.parQuartier);
-    if (!repDansQuartier) {
+    while(!repDansQuartier) {
         if (!quartier) {
             quartier = Quartier.inconnu;
         }
-        return {
+        perso.reputation.parQuartier.push({
             quartier: quartier,
             qualite: 0,
             amplitude: 0,
-        };
+        });
+        repDansQuartier = perso.reputation.parQuartier.find((repQuartier:ReputationQuartier) =>
+            repQuartier.quartier === quartier);
     }
     return repDansQuartier;
 }
