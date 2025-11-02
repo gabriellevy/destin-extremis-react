@@ -208,5 +208,5 @@ export const evts_lycee_demokratos: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
+    probaParDefaut: 0.05, // >>> à la moyenne car spécifique à une phase importante
 };

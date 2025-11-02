@@ -216,5 +216,5 @@ export const evts_lycee_acheron: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.acheron,
         },
     ],
-    probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
+    probaParDefaut: 0.05, // >>> à la moyenne car spécifique à une phase importante
 };

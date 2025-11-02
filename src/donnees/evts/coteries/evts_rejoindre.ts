@@ -40,5 +40,5 @@ export const evts_rejoindre: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 100, // très grosse probabilité : il n'est pas naturel de rester sans coterie
+    probaParDefaut: 0.03, // très grosse probabilité : il n'est pas naturel de rester sans coterie
 };

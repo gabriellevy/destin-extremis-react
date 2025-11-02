@@ -330,5 +330,5 @@ export const evts_lycee_orks: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.orks,
         },
     ],
-    probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
+    probaParDefaut: 0.05, // >>> à la moyenne car spécifique à une phase importante
 };

@@ -142,5 +142,5 @@ export const evts_lycee_skavens: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
         },
     ],
-    probaParDefaut: 40, // >>> à la moyenne car localisés à un quartier et une phase
+    probaParDefaut: 0.05, // >>> à la moyenne car localisés à un quartier et une phase
 };

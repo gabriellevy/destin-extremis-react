@@ -228,7 +228,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 return texte;
             },
             repetable: true,
-            proba: 10,
+            proba: 0.02,
             conditions: (perso: Perso): boolean =>
                 (perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares)
                 && !aLaMaitrise(perso, Maitrise.beni),
@@ -259,12 +259,10 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
-            proba: 10,
             conditions: (perso: Perso): boolean =>
                 (perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares)
                 && !aLaMaitrise(perso, Maitrise.beni),
         },
     ],
-    probaParDefaut: 40, // >>> à la moyenne car spécifique à une phase importante
+    probaParDefaut: 0.05, // >>> à la moyenne car spécifique à une phase importante
 };

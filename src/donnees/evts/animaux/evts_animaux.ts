@@ -45,7 +45,7 @@ export const evts_animaux: GroupeEvts = {
 
                 return texte;
             },
-            proba: 10,
+            proba: 0.005,
             conditions: (perso: Perso): boolean =>
                 getValeurVice(perso, Vice.cruel) >= 2,
                 repetable: false,
