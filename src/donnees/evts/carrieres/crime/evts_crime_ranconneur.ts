@@ -21,7 +21,7 @@ export const evts_crime_ranconneur: GroupeEvts = {
                 let texte = '';
                 texte += "À force de trainer parmi les vauriens vous vous êtes intégré à leur bande et commencez à participer à leurs sales coups. " +
                     "Aujourd'hui vous les avez aidés à extorquer de l'argent à un commerçant. <br/>";
-                texte += commencerCarriere(perso, MetiersEnum.ranconneur, '');
+                texte += commencerCarriere(perso, MetiersEnum.ranconneur, '', false);
                 return texte;
             },
             conditions: (perso: Perso): boolean => !aUneActiviteATempsPlein(perso)

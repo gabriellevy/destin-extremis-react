@@ -5,6 +5,12 @@ import {Quartier} from "../../donnees/geographie/quartiers";
 import {MetiersEnum} from "../../donnees/metiers";
 import {Vertu, Vice} from "../ViceVertu";
 
+export enum PhaseProfessionnelle {
+    etudie,
+    travaille,
+    arret, // TODO : devrait remplacer active === false
+}
+
 // données du métier en général, indépendamment du personnage
 export type Metier = {
     nom: MetiersEnum,
@@ -26,12 +32,13 @@ export type MetierObj = Record<MetiersEnum, Metier>;
 // carrière est ce que le perso a effectué dans un métier donné
 export type Carriere = {
     metier: MetiersEnum,
+    phaseProfessionnelle?: PhaseProfessionnelle, // empty means travaille
     intitule: string,
     groupeLieu?: string, // ou ?
     employeur?: string, // quel groupe ou employeur ?
     duree: number, // temps passé à pratiquer ce métier (en jours)
     competence: number, // sur 100. 25 en débutant
-    actif: boolean, // false pour une ancienne carrière (dont on conserve tout de même les compétences etc)
+    actif: boolean, // false pour une ancienne carrière (dont on conserve tout de même les compétences etc) // TODO retirer et remplacer usage par 'phaseProfessionnelle'
     nbDeTestsFaits: number,
     guilde?: titreGuildeEnum,
 }

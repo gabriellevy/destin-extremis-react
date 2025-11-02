@@ -31,7 +31,7 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
                         + "Vous vous perdez rapidement et votre coéquipier est obligé de vous raccompagner. "
                         + "Il vous dit clairement qu'il est hors de question de vous prendre comme coéquipier pour une autre mission. Vous n'avez tout simplement pas les capacités. ";
                 } else {
-                    texte += commencerCarriere(perso, MetiersEnum.pilleur_de_ruche, "Ruche de " + perso.lieu.quartier);
+                    texte += commencerCarriere(perso, MetiersEnum.pilleur_de_ruche, "Ruche de " + perso.lieu.quartier, false);
                     texte += `Dès votre première expédition dans les sous-niveaux des souterrains de la ruche "
                     + " vous vous révélez extrêmement coriace et débrouillard. Vous allez pouvoir devenir pillard à plein temps. `;
                 }

@@ -7,6 +7,7 @@ import {Vertu, Vice} from "../types/ViceVertu";
 export enum MetiersEnum {
     edile = "Édile",
     macon = "Maçon",
+    plombier = "Plombier",
     pilleur_de_ruche = "Pilleur de ruches",
     ranconneur = "Rançonneur",
     serveur = "Serveur",
@@ -122,6 +123,15 @@ export const metiersObjs: MetierObj = {
         proba: 0.8,
         vicesCompatibles: [],
         vertusCompatibles: [Vertu.artificialiste, Vertu.travailleur],
+    },
+    [MetiersEnum.plombier] : {
+        nom: MetiersEnum.plombier,
+        intitule: () => MetiersEnum.plombier,
+        statut: {rang: 3, metalStatut: MetalStatut.bronze},
+        statutMax: {rang: 5, metalStatut: MetalStatut.argent},
+        proba: 0.8,
+        vicesCompatibles: [],
+        vertusCompatibles: [Vertu.artificialiste, Vertu.reflechi, Vertu.prudent],
     },
     [MetiersEnum.brasseur] : {
         nom: MetiersEnum.brasseur,

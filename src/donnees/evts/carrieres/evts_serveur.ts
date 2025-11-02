@@ -31,7 +31,7 @@ export const evts_serveur: GroupeEvts = {
                     texte += `Malheureusement votre manque de tact et votre physique peu facile rebute la patronne qui vous conseille de vous lancer dans autre chose. `;
                 }
                 else {
-                    texte += commencerCarriere(perso, MetiersEnum.serveur, taverne);
+                    texte += commencerCarriere(perso, MetiersEnum.serveur, taverne, false);
                     texte += `La patronne n'est pas très exigeante à l'embauche mais il va falloir lui prouver votre motivation. `;
                 }
                 return texte;

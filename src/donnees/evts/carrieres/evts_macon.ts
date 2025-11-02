@@ -15,7 +15,7 @@ import {
 export const evts_macon: GroupeEvts = {
     evts: [
         {
-            id: "evts_macon1",
+            id: "evts_macon1 postule",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = `Vous avez décidé de devenir maçon. `
                 const resTestF:ResultatTest = testComp(perso,TypeCompetence.force, 20);
@@ -26,7 +26,7 @@ export const evts_macon: GroupeEvts = {
                     texte += `Malheureusement vous vous révélez trop faible pour ce métier épuisant. `;
                 }
                 else {
-                    texte += commencerCarriere(perso, MetiersEnum.macon, '');
+                    texte += commencerCarriere(perso, MetiersEnum.macon, '', false);
                     texte += `Solide comme vous êtes, vous êtes engagé. `;
                 }
                 return texte;

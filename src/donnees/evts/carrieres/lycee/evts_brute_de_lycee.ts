@@ -36,7 +36,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = '';
                 texte += "Vous décidez de vous en prendre à d'autres jeunes plus faibles pour leur vider les poches. <br/>";
-                texte += commencerCarriere(perso, MetiersEnum.brute_de_lycee, '');
+                texte += commencerCarriere(perso, MetiersEnum.brute_de_lycee, '', false);
                 return texte;
             },
             conditions: (perso: Perso): boolean => estAuLycee(perso)

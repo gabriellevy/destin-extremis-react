@@ -21,7 +21,7 @@ const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
     texte += resTestInge.resume;
     if (resTestInge.reussi) {
         texte +=  "Au soir vous avez déjà confirmation que vous avez réussi. Vous êtes maintenant un ingénieur à part entière.";
-        texte += commencerCarriere(perso, MetiersEnum.ingenieur, '');
+        texte += commencerCarriere(perso, MetiersEnum.ingenieur, '', false);
     } else {
         texte += "Malheureusement c'est un échec pour vous. Vous êtes recalé... Vous avez néanmoins encore une chance de le passer l'an prochain. ";
         perso.evtsProgrammes.push({
@@ -46,7 +46,7 @@ export const evts_ingenieur: GroupeEvts = {
                 texte += resTestInt.resume;
                 texte += resTestDex.resume;
                 if (resTestInt.reussi && resTestDex.reussi) {
-                    texte += commencerCarriere(perso, MetiersEnum.etudiant_ingenieur, '');
+                    texte += commencerCarriere(perso, MetiersEnum.etudiant_ingenieur, '', true);
                     texte += `Vous êtes reçu à l'école d'ingéniérie ! Maintenant il va falloir travailler dur pour réussir le diplôme dans 5 ans. `;
                     // ajout du futur passage de diplôme :
                     perso.evtsProgrammes.push({

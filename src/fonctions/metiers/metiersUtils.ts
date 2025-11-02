@@ -1,4 +1,4 @@
-import {Carriere, Metier} from "../../types/metiers/Metier";
+import {Carriere, Metier, PhaseProfessionnelle} from "../../types/metiers/Metier";
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
@@ -209,10 +209,10 @@ export function metierAleatoire(perso: PersoCommon): MetiersEnum {
 
 export function commencerCarriereAleatoire(perso: Perso): string {
     let metier: MetiersEnum = metierAleatoire(perso);
-    return commencerCarriere(perso, metier, "");
+    return commencerCarriere(perso, metier, "", false);
 }
 
-export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupeLieu: string): string {
+export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupeLieu: string, etudiant:boolean): string {
     if (getCarriereActive(perso).metier === metiersEnum) {
         console.error("Commence une carrière qu'il a déjà !! : ", metiersEnum);
     }
@@ -228,10 +228,12 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
     if (cetteCarriereDejaFaite) {
         // réactiver
         cetteCarriereDejaFaite.actif = true;
+        cetteCarriereDejaFaite.phaseProfessionnelle = PhaseProfessionnelle.travaille;
     } else {
         // commencer la nouvelle
         perso.carrieres.push({
             metier: metiersEnum,
+            phaseProfessionnelle: etudiant ? PhaseProfessionnelle.etudie : PhaseProfessionnelle.travaille,
             intitule: metiersObjs + groupeLieu ? " à " + groupeLieu : "",
             groupeLieu: groupeLieu,
             duree: 0,
@@ -241,9 +243,10 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
         });
     }
     let texte = "Vous êtes maintenant " + metiersEnum.toString() + ".";
-    if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax) &&
+    if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)
         // on n peut pas toujours négocier son salaire d'entrée : !
-        metiersEnum !== MetiersEnum.brute_de_lycee) {
+        && !etudiant
+        && metiersEnum !== MetiersEnum.brute_de_lycee) {
         // tentative de négociation
         const resultatTestMarch:ResultatTest = testComp(perso,TypeCompetence.marchandage, 20);
         texte += resultatTestMarch.resume + "<br/>";

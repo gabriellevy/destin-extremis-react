@@ -42,7 +42,7 @@ export const evts_orks: GroupeEvts = {
                 const resTestMarch:ResultatTest = testComp(perso, TypeCompetence.marchandage, 20);
                 texte += resTestMarch.resume;
                 if (resTestMarch.reussi) {
-                    texte += commencerCarriere(perso, MetiersEnum.marchand_de_champignon, '');
+                    texte += commencerCarriere(perso, MetiersEnum.marchand_de_champignon, '', false);
                 } else {
                     texte += `Malheureusement vous êtes un trop mauvais marchand, vous devenez vite abandonner. `;
                 }
