@@ -112,5 +112,5 @@ export const evts_amour: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.04,
 };

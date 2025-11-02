@@ -130,27 +130,19 @@ export function dateCompleteToJourDepuis0(jourDansMois: number, mois: enumMois, 
 }
 
 export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDejaAffichee: boolean)=>void): boolean {
-    // ajouter 1D20 jours à l'âge du personnage // TODO : quelle vitesse ? paramétrable ?
-    const joursAAjouter = Math.floor(Math.random() * 20) + 1;
     let joursRellementAjoutes: number = 0;
     // const joursAAjouter: number = 1;
 
     let evtProgrammeExecute: boolean = false;
-    // vérifier toutes les dates au cas où un evt "forcé" devrait avoir lieu ici avant
-    for (joursRellementAjoutes= 0 ; joursRellementAjoutes <= joursAAjouter ; ++joursRellementAjoutes) {
-        perso.date = perso.date + 1;
-        perso.evtsProgrammes.forEach((evtProgramme: EvtProgramme)=>{
-            if (evtProgramme.date !== undefined && evtProgramme.date(perso)) {
-                executerEvt(evtProgramme.evt, evtProgrammeExecute);
-                // TODO: ? nettoyage des evts exécutés ?? suppression de ceux dont la date est dépassée ?
-                evtProgrammeExecute = true;
-            }
-        })
-        if (evtProgrammeExecute) {
-            // interrompt le défilement des jours
-            break;
+    // vérifier au cas où un evt "forcé" devrait avoir lieu ce jour précis
+    perso.date = perso.date + 1;
+    perso.evtsProgrammes.forEach((evtProgramme: EvtProgramme)=>{
+        if (evtProgramme.date !== undefined && evtProgramme.date(perso)) {
+            executerEvt(evtProgramme.evt, evtProgrammeExecute);
+            // TODO: ? nettoyage des evts exécutés ?? suppression de ceux dont la date est dépassée ?
+            evtProgrammeExecute = true;
         }
-    }
+    })
 
     const nouvJourDuMois: number = calculJourDuMois(perso.date);
     const nouvMoisStr: string = calculMoisStr(perso.date);

@@ -76,5 +76,5 @@ export const evts_plombier: GroupeEvts = {
                 && getAge(perso) >= 16,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };

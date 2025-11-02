@@ -66,7 +66,6 @@ export const evts_ingenieur: GroupeEvts = {
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.etudiant_ingenieur]) >= 0
                 && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
-            proba: 5,
             repetable: true,
         },
         {
@@ -86,7 +85,6 @@ export const evts_ingenieur: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, MetiersEnum.etudiant_ingenieur),
-            proba: 1,
             repetable: true,
         },
         {
@@ -107,9 +105,8 @@ export const evts_ingenieur: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, MetiersEnum.ingenieur)
             && !appartientALaGuilde(perso, MetiersEnum.ingenieur),
-            proba: 5,
             repetable: true,
         },
     ],
-    probaParDefaut: 10,
+    probaParDefaut: 0.005,
 };

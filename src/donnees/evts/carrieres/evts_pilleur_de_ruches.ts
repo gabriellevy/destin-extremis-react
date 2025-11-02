@@ -46,5 +46,5 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
                 && auBordDuneRuche(perso),
         },
     ],
-    probaParDefaut: 15, // > à la moyenne car localisés à un quartier
+    probaParDefaut: 0.1, // > à la moyenne car localisés à un quartier
 };

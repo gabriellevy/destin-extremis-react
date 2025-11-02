@@ -33,5 +33,5 @@ export const evts_cigarette: GroupeEvts = {
                 && getValeurVertu(perso, Vertu.sobre) < 1 && getAge(perso) < 17,
         },
     ],
-    probaParDefaut: 2,
+    probaParDefaut: 0.01,
 };

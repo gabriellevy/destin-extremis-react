@@ -26,5 +26,5 @@ export const evts_statut: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.03,
 }

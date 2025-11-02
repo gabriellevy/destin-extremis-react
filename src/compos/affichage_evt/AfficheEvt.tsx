@@ -72,6 +72,13 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
                         </Grid2>
                     )}
                 <Grid2 size={evt.image ? 8 : 12} order={{ xs: index % 2 === 0 ? 2 : 1, md: index % 2 === 0 ? 2 : 1 }}>
+                    {
+                        evt.joursDepuisDernierEvt > 0 ? (
+                            <Typography variant="body2" component="p">
+                                {evt.joursDepuisDernierEvt} jours plus tard
+                            </Typography>
+                        ): undefined
+                    }
                     <Box>
                         {evt.dateStr != '' &&
                             <Typography mb={1} align="left" variant="h6">

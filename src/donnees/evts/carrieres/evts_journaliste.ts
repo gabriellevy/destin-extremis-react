@@ -74,5 +74,5 @@ export const evts_journaliste: GroupeEvts = {
                 && perso.reputation.amplitude > 10,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };

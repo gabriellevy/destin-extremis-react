@@ -82,5 +82,5 @@ export const evts_brasseur: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };

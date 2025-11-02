@@ -112,5 +112,5 @@ export const evts_carriere: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 3,
+    probaParDefaut: 0.005,
 };

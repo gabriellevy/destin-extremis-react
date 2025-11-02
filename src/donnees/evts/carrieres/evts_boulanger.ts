@@ -80,5 +80,5 @@ export const evts_boulanger: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };

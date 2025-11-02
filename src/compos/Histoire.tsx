@@ -4,7 +4,6 @@ import {jourStr, leTempsPasse} from "../types/Date";
 import {evts_calendrier} from "../donnees/evts/evts_calendrier";
 import {evts_crime_ranconneur} from "../donnees/evts/carrieres/crime/evts_crime_ranconneur";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
-import {evts_batelier} from "../donnees/evts/carrieres/evts_bateliers";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
@@ -59,6 +58,7 @@ const Histoire: React.FC = (): JSX.Element => {
     const [open, setOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [tempsRestant, setTempsRestant] = useState<number | null>(null);
+    const [jourSansEvt, setJourSansEvt] = useState<number>(0);
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
     const handleClose = () => {
@@ -75,6 +75,7 @@ const Histoire: React.FC = (): JSX.Element => {
             const nouvEvt: EvtExecute = {
                 id: evtId,
                 dateStr: dateStr,
+                joursDepuisDernierEvt: jourSansEvt,
                 texteFinal: texte, // l'exécution elle-même
                 image: evtExecute.image != undefined ? evtExecute.image(perso) : '',
             };
@@ -122,7 +123,6 @@ const Histoire: React.FC = (): JSX.Element => {
             ...filtrerEtPreparerEvts(evts_brute_de_lycee, perso),
             ...filtrerEtPreparerEvts(evts_dealer_de_lycee, perso),
             ...filtrerEtPreparerEvts(evts_ingenieur, perso),
-            ...filtrerEtPreparerEvts(evts_batelier, perso),
             ...filtrerEtPreparerEvts(evts_possessions, perso),
             ...filtrerEtPreparerEvts(evts_argent, perso),
             ...filtrerEtPreparerEvts(evts_logement, perso),
@@ -160,12 +160,17 @@ const Histoire: React.FC = (): JSX.Element => {
                     completeProba += evt.proba;
                 }
             })
-            let randomProba: number = Math.random() * completeProba;
+            let randomProba: number = Math.random();
+            if (completeProba > 1) {
+                randomProba *= completeProba;
+            }
+            let evtExecute:boolean = false;
             evtsApplicables.every(evt => {
                 if (evt.proba) {
                     randomProba -= evt.proba;
                     if (randomProba <= 0) {
                         executerEvt(evt, dateDejaAffichee);
+                        evtExecute = true;
                         return false;
                     }
                 }
@@ -182,20 +187,26 @@ const Histoire: React.FC = (): JSX.Element => {
                     };
                     executerEvt(evt, true);
                 } else {
-                    setTempsRestant(perso.vitesseExecution);
+                    if (evtExecute) {
+                        setTempsRestant(perso.vitesseExecution);
+                    } else {
+                        setJourSansEvt(jourSansEvt + 1);
+                        setTempsRestant(3);
+                    }
                 }
             }
         } else {
             setPlusDEvts(true);
             demarre= false;
         }
-    }, [executerEvt, perso, setPerso]);
+    }, [executerEvt, perso, setPerso, setTempsRestant, setJourSansEvt, jourSansEvt]);
 
     const passerAuSuivant = useCallback(() => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
         setTempsRestant(null);
+        setJourSansEvt(0);
         determinerEvtSuivant();
     }, [determinerEvtSuivant]);
 
@@ -233,6 +244,7 @@ const Histoire: React.FC = (): JSX.Element => {
             }
             const nouvEvt: EvtExecute = {
                 id: "intro",
+                joursDepuisDernierEvt: 0,
                 dateStr: jourStr(perso.date),
                 texteFinal: textQuartier, // l'exécution elle-même
                 image: adresseQuartier,
@@ -275,6 +287,10 @@ const Histoire: React.FC = (): JSX.Element => {
                 >
                     <Grid2>
                         <Typography fontWeight="bold">
+                            {
+                                jourSansEvt > 0 ? jourSansEvt + " jours sans événement notable." : ''
+                            }
+                            <br/>
                             Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...
                         </Typography>
                     </Grid2>

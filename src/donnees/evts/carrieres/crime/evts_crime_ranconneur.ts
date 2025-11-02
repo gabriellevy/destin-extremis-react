@@ -69,7 +69,7 @@ export const evts_crime_ranconneur: GroupeEvts = {
                         texte += "Vous lui démontez le portrait. <br/>";
                     } else {
                         texte += "Vous l'attaquez mais vous prenez une dérouillée humiliante et êtes moqué par tout le gang. "
-                        "Peut-être n'êtes vous pas fait pour ce boulot. Vous vous mettez à l'écart. <br/>";
+                        + "Peut-être n'êtes vous pas fait pour ce boulot. Vous vous mettez à l'écart. <br/>";
                         texte += arreterCarriere(perso, MetiersEnum.ranconneur, true);
                     }
                 }
@@ -80,5 +80,5 @@ export const evts_crime_ranconneur: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.01,
 };

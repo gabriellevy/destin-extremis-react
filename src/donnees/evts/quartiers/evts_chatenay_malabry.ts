@@ -57,5 +57,5 @@ export const evts_chatenay_malabry: GroupeEvts = {
             conditions: (perso: Perso): boolean => perso.lieu.quartier === Quartier.chatenay_malabry,
         },
     ],
-    probaParDefaut: 10, // > à la moyenne car localisés à un quartier
+    probaParDefaut: 0.02, // > à la moyenne car localisés à un quartier
 };

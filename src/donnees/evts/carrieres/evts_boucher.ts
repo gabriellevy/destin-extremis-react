@@ -80,5 +80,5 @@ export const evts_boucher: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };

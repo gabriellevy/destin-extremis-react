@@ -31,7 +31,6 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.bilanLycee.coterieAnnee1 === undefined // si n'a asp encore commencé l'université
                 && getAge(perso) == 14,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
-                proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_engagement_lycee_2eme_annee",
@@ -51,7 +50,6 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.bilanLycee.coterieAnnee2 === undefined
                 && getAge(perso) == 15,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
-            proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_engagement_lycee_3eme_annee",
@@ -74,7 +72,6 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.bilanLycee.coterieAnnee3 === undefined
                 && getAge(perso) == 16,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
-            proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_engagement_lycee_4eme_annee",
@@ -98,7 +95,6 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.bilanLycee.coterieAnnee4 === undefined
                 && getAge(perso) == 17,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
-            proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             id: "evts_fin_de_lycee",
@@ -115,7 +111,6 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.bilanLycee.phaseActuelle === PhaseLycee.coterie4
                 && getAge(perso) == 18,
             image: (perso:PersoHisto) => perso.lieu.quartier != undefined ? imageQuartier(perso.lieu.quartier) : '',
-            proba: 999999999999999999999999999,// à peu près obligatoire
         },
         {
             // événement bidon pour remettre le lycée à une valeur valide si il y a décalage entre âge et phaseActuelle
@@ -138,8 +133,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.bilanLycee.phaseActuelle !== PhaseLycee.finie
                 && getAge(perso) >= 20,
-            proba: 999999999999999999999999999,// à peu près obligatoire
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 1, // à peu près obligatoire
 };

@@ -56,5 +56,5 @@ export const evts_macon: GroupeEvts = {
             repetable: true,
         },
     ],
-    probaParDefaut: 5,
+    probaParDefaut: 0.005,
 };
