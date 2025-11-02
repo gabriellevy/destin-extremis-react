@@ -10,11 +10,17 @@ export type Option = {
     label: string,
 }
 
+export enum StatutLogement {
+    Location = "Location",
+    Possession = "Possession",
+    Voyage = "Voyage",
+}
+
 export type Lieu = {
     continent: Continent | undefined,
     region: Region | undefined,
     quartier: Quartier | undefined,
-    maison: string|null,
+    statutLogement: StatutLogement,
     enVoyage:boolean,
     residenceVoyage:ResidenceDeVoyage|null,
 };
@@ -23,7 +29,7 @@ export const lieuParDefaut: Lieu = {
     continent: Continent.europe,
     region: Region.la_ville,
     quartier: Quartier.chatenay_malabry,
-    maison: null,
+    statutLogement: StatutLogement.Location,
     enVoyage: false,
     residenceVoyage: null,
 };
@@ -35,7 +41,7 @@ export function lieuAleatoire(): Lieu {
         continent: getContinent(quartier),
         region: getRegion(quartier),
         quartier: quartier,
-        maison: null,
+        statutLogement: StatutLogement.Location,
         enVoyage: false,
         residenceVoyage: null,
     }
@@ -45,7 +51,7 @@ export const lieuArgenteuil: Lieu = {
     continent: Continent.europe,
     region: Region.la_ville,
     quartier: Quartier.argenteuil,
-    maison: null,
+    statutLogement: StatutLogement.Location,
     enVoyage:false,
     residenceVoyage: null,
 };
@@ -54,7 +60,7 @@ export const enVoyageEnSiberie: Lieu = {
     continent: Continent.siberie,
     region: Region.siberie,
     quartier: Quartier.catacombes_de_paris,
-    maison: null,
+    statutLogement: StatutLogement.Voyage,
     enVoyage:true,
     residenceVoyage: null,
 };
