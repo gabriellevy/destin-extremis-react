@@ -56,6 +56,7 @@ export const evts_carriere: GroupeEvts = {
                 && !suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
             repetable: true,
+            proba: 0.003,
         },
         {
             id: "evts_carriere2 train train",
@@ -73,7 +74,7 @@ export const evts_carriere: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => aUneCarriere(perso),
-            proba: 2,
+            proba: 0.00003,
             repetable: true,
         },
         {
@@ -110,6 +111,7 @@ export const evts_carriere: GroupeEvts = {
                 && perso.bonheur < 0.6
                 && compatibiliteCarriere(perso, metiersObjs[getCarriereActive(perso).metier]) < 0,
             repetable: true,
+            proba: 0.003,
         },
     ],
     probaParDefaut: 0.005,

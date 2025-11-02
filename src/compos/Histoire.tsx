@@ -188,6 +188,7 @@ const Histoire: React.FC = (): JSX.Element => {
                     executerEvt(evt, true);
                 } else {
                     if (evtExecute) {
+                        setJourSansEvt(0);
                         setTempsRestant(perso.vitesseExecution);
                     } else {
                         setJourSansEvt(jourSansEvt + 1);

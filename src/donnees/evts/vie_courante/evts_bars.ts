@@ -70,11 +70,11 @@ export const evts_bars: GroupeEvts = {
                 });
             },
             conditions: (perso: Perso): boolean =>
-                getValeurVertu(perso, Vertu.sociable) >= 0
-                && getValeurVertu(perso, Vertu.sobre) <= 0
+                getValeurVertu(perso, Vertu.sociable) > 0
+                && getValeurVertu(perso, Vertu.sobre) < 0
                 && getAge(perso) >= 15,
             repetable: true,
         },
     ],
-    probaParDefaut: 4,
+    probaParDefaut: 0.05,
 };

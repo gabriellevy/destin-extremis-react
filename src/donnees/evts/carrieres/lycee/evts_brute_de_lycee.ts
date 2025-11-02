@@ -120,7 +120,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => ( suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee) || suitUneCarriereDe(perso, MetiersEnum.dileur_de_lycee))
                 && !possede(perso, PossessionEnum.couteau),
-            proba: 5,
+            proba: 0.02,
         },
         {
             id: "evts_brute_de_lycee5 bagarre de gamins",
@@ -188,7 +188,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee) ||
                 suitUneCarriereDe(perso, MetiersEnum.dileur_de_lycee),
-            proba: 3,
+            proba: 0.02,
             repetable: true,
         },
         {
@@ -207,7 +207,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 return texte + "<br/>";
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
-            proba: 4,
+            proba: 0.02,
             repetable: true,
         },
         {
@@ -243,7 +243,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 ( suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3) || suitUneCarriereDepuis(perso, MetiersEnum.dileur_de_lycee, 0.3))
                 && getReputationQuartier(perso, undefined).qualite < -3,
-            proba: 4,
+            proba: 0.02,
             repetable: true,
         },
         {
@@ -270,9 +270,9 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 }
                 return texte;
             },
-                conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
+            conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[MetiersEnum.brute_de_lycee].statutMax),
-                repetable: true,
+            repetable: true,
         },
         {
             id: "evts_brute_de_lycee9 merdeux en fuite",
@@ -295,7 +295,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 }
                 return texte;
             },
-            proba: 5,
+            proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             repetable: true,
         },
@@ -317,7 +317,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 }
                 return texte;
             },
-            proba: 5,
+            proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             repetable: true,
         },
@@ -342,10 +342,10 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 }
                 return texte;
             },
-            proba: 5,
+            proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
             repetable: true,
         },
     ],
-    probaParDefaut: 10,
+    probaParDefaut: 0.04,
 };
