@@ -9,6 +9,12 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.luxurieux,
             Vice.trompeur,
         ]
+        case TypeCompetence.animaux: return [
+            Vice.cruel,
+            Vice.solitaire,
+            Vice.orgueilleux,
+            Vice.naturaliste,
+        ]
         case TypeCompetence.armeCaC: return [
             Vice.cruel,
             Vice.colerique,
@@ -27,6 +33,11 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
         ]
         case TypeCompetence.charme: return [
             Vice.luxurieux,
+        ]
+        case TypeCompetence.commandement: return [
+            Vice.envieux,
+            Vice.orgueilleux,
+            Vice.sociopathique,
         ]
         case TypeCompetence.discretion: return [
             Vice.lache,
@@ -70,6 +81,10 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.impulsif,
             Vice.lache,
         ]
+        case TypeCompetence.orientation : return [
+            Vice.naturaliste,
+            Vice.solitaire,
+        ]
         case TypeCompetence.ragot : return [
             Vice.trompeur,
             Vice.paresseux,
@@ -94,6 +109,7 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         ]
         case TypeCompetence.animaux : return [
             Vertu.altruiste,
+            Vertu.empathique,
         ]
         case TypeCompetence.armeCaC : return [
             Vertu.valeureux,
@@ -110,6 +126,12 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.bienveillant,
             Vertu.sociable,
             Vertu.placide,
+        ]
+        case TypeCompetence.commandement: return [
+            Vertu.loyal,
+            Vertu.sociable,
+            Vertu.discipline,
+            Vertu.prudent,
         ]
         case TypeCompetence.discretion: return [
             Vertu.prudent,
@@ -146,6 +168,10 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         ]
         case TypeCompetence.mouvement : return [
             Vertu.sobre,
+        ]
+        case TypeCompetence.orientation : return [
+            Vertu.prudent,
+            Vertu.placide,
         ]
         case TypeCompetence.ragot : return [
             Vertu.sociable,
