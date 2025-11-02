@@ -98,6 +98,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/la%20d%C3%A9fense.jpg";
         case Quartier.pyrenees:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Pyr%C3%A9n%C3%A9es.jpg";
+        case Quartier.comptoir_ghangzhou:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Ghanghzhou.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);

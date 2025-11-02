@@ -49,8 +49,10 @@ export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|un
 
     let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartierFinal);
     if (repQuartier) {
-        repQuartier.qualite += modifQualite;
-        repQuartier.amplitude += modifAmplitude;
+        console.log("modifierReputationDansQuartier repQuartier : ", repQuartier);
+        repQuartier.qualite = repQuartier.qualite + modifQualite;
+        repQuartier.amplitude = repQuartier.amplitude + modifAmplitude;
+        console.log("modifierReputationDansQuartier repQuartier2 : ",  getReputationQuartier(perso, quartierFinal));
     } else {
         perso.reputation.parQuartier.push({
             quartier: quartierFinal,
