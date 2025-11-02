@@ -18,12 +18,11 @@ export const evts_lycee: GroupeEvts = {
                 const brute:string = getPrenom(Coterie.orks, Sexe.male);
                 let texte:string = brute + ", une brute de votre lycée, prend votre placidité pour de la faiblesse. Il vous menace pour vous soutirer votre argent. ";
 
-
                 const resPlacide:ResultatTest = testVertu(perso, Vertu.placide, 0);
                 texte += resPlacide.resume;
                 if (resPlacide.reussi) {
                     texte += "Et il a raison : vous vous laissez dépouiller sans rien faire et vous lui souhaitez une bonne journée. ";
-                    modifierStatut(perso, -1);
+                    texte += modifierStatut(perso, -1);
                     perso.bonheur -= 0.1;
                     texte += modifierReputationDansQuartier(perso, undefined, -4, 0);
                 } else {

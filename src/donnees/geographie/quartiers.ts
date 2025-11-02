@@ -67,6 +67,13 @@ export function descriptionQuartier(quartier: Quartier): string {
                 "<br/>" +
                 "On y trouve essentiellement des aventuriers attirés par le butin étrange qu’on peut ramener de la zone, des scientifiques curieux risque-tout, et bien sûr des [Khaos](https://www.notion.so/Khaos-23d7e0b4d0048074afebefd4f6d598e0?pvs=21), pour qui les Zones sont sacrées car elles représentent l’incarnation terrestre de leurs croyances. ";
             break;
+        case Quartier.la_defense:
+            texte += "La Défense est le quartier des [transhumanistes](https://www.notion.so/Transhumanistes-08e0709a67bd486cb594815e5bccdd0d?pvs=21). Il s’agit du quartier d’un quartier peu étendu en superficie mais extrêmement étendu en hauteur et sous la terre. En effet il est composé quasi exclusivement de gratte-ciel et de souterrains reliés entre eux dans toutes les directions d’une manière apparemment anarchique et pourtant hautement efficace. "
+                + "<br/>"
+                + "C’est là qu’on trouve les gens les plus riches d’Extremis : des capitalistes vivant dans leurs tours d’un km de haut et prolongeant sans cesse leur vie par des implants de plus en plus invasifs. Ce sont les maîtres des redoutables corporations transhumanistes, des entreprises d’ampleur mondiale qui contrôlent la majeure partie de secteurs clé tels la médecine, la biotechnologie la finance, et l’extraction minière. "
+                + "<br/>"
+                + "À l’autre extrémité se trouvent les ratés du système qui vivent dans les bas-fonds, se greffent du métal bricolé, et se déchirent dans des guerres des gangs sans fin. ";
+            break;
         default:
             texte += "Il manque la description de cet endroit : " + quartier;
     }
@@ -107,6 +114,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/montmartre.jpg";
         case Quartier.argenteuil:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Argenteuil.jpg";
+        case Quartier.vladivostok:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Vladivostok.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);
