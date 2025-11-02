@@ -7,7 +7,7 @@ import {testComp, testVertu} from "../../../../fonctions/des";
 import {TypeCompetence} from "../../../../types/perso/comps/Comps";
 import {modifierReputationDansQuartier} from "../../../../fonctions/perso/Reputation";
 import {Quartier} from "../../../geographie/quartiers";
-import {ajouterVertuVal, getValeurVertu, Vertu} from "../../../../types/ViceVertu";
+import {ajouterVertuVal, ajouterViceVal, getValeurVertu, Vertu, Vice} from "../../../../types/ViceVertu";
 import {ajouterMaitrise, aLaMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
@@ -220,6 +220,38 @@ export const evts_lycee_cathares: GroupeEvts = {
                     perso.dieu = {
                         religion: DieuEnum.christianisme
                     };
+                }
+
+                if (perso.niveauIA === NiveauIA.systematique) {
+                    texte = await appelLeChatParaphrase(texte);
+                }
+                return texte;
+            },
+            repetable: true,
+            proba: 10,
+            conditions: (perso: Perso): boolean =>
+                (perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares)
+                && !aLaMaitrise(perso, Maitrise.beni),
+        },
+        {
+            id: "evts_lycee_cathares8 insubordination",
+            description: async (perso: Perso): Promise<string> => {
+                const maitre:string = getPrenom(Coterie.cathares, Sexe.femelle);
+                let texte:string = "La professeur " + maitre + " vous a donné une mauvaise note et vous a rabaissé devant toute la classe. "
+                + "Humilié, vous l'avez traitée de vieille raclure incapable de juger votre talent. "
+                + "Insulter un professeur serait grave n'importe où mais nulle part pire que chez les cathares où l'orgueil est le pire des défauts. "
+                + "Vous êtes frappé à coup de règle, forcé à faire le tour du lycée à genou tous les matins pendant un mois. ";
+
+                const resTestVolonte:ResultatTest = testComp(perso, TypeCompetence.volonte, 0);
+                texte += resTestVolonte.resume;
+                if (resTestVolonte.reussi) {
+                    if (resTestVolonte.critical) {
+                        texte += "Ces vermisseaux sont incapables d'apprécier votre supériorité. <br/>";
+                        texte += ajouterViceVal(perso, Vice.orgueilleux, 1);
+                    }
+                } else {
+                    texte += "Vous supportez très mal ces humiliations. <br/>";
+                    texte += ajouterVertuVal(perso, Vertu.humble, 1);
                 }
 
                 if (perso.niveauIA === NiveauIA.systematique) {

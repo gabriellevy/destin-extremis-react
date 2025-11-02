@@ -1,6 +1,6 @@
 import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {getAge, joursToAnnees, jourStr} from "../../types/Date";
-import {Carriere} from "../../types/metiers/Metier";
+import {Carriere, PhaseProfessionnelle} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
 import {JSX, useContext} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
@@ -44,7 +44,10 @@ const DonneesPerso: React.FC = (): JSX.Element => {
         }
 
         return (carriere.metier && carriere.actif &&
-            <ListItem key={intituleMetier}>
+            <ListItem key={
+                carriere.phaseProfessionnelle === PhaseProfessionnelle.etudie ? "Étudiant " : ""
+                + intituleMetier
+            }>
                 <ListItemText primary={intituleMetier} secondary={dureeCarriere}/>
             </ListItem>
         );

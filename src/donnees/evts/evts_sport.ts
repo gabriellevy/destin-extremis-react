@@ -30,9 +30,9 @@ export const evts_sports: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            repetable: true,
             conditions: (perso: Perso): boolean =>
-                getValeurVertu(perso, Vertu.chaste) >= 1 && getValeurVertu(perso, Vertu.sobre) <= 1,
+                getValeurVertu(perso, Vertu.chaste) >= 1 && getValeurVertu(perso, Vertu.sobre) >= 1,
         },
     ],
     probaParDefaut: 3,
