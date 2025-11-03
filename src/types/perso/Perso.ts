@@ -40,7 +40,7 @@ export type PersoCommon = {
     viceVertu: ViceVertu[],
     maitrises: Maitrise[],
     evtsProgrammes: EvtProgramme[],
-    vitesseExecution: number, // en millisecondes entre chaque événement
+    secondesEntreChaqueEvt: number, // en millisecondes entre chaque événement
     mort?: boolean,
     bilanLycee: BilanLycee
     reputation: Reputation

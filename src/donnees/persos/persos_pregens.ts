@@ -13,7 +13,7 @@ import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 import {MetiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
-import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, VITESSE_EXECUTION} from "../ReglagesJouabilite";
+import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, SECONDES_ENTRE_CHAQUE_EVT} from "../ReglagesJouabilite";
 import {DieuEnum} from "../../types/Dieu";
 
 export function enfant(empty: boolean): PersoForm {
@@ -38,7 +38,7 @@ export function enfant(empty: boolean): PersoForm {
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],
         evtsProgrammes: evts_programmes,
-        vitesseExecution: VITESSE_EXECUTION,
+        secondesEntreChaqueEvt: SECONDES_ENTRE_CHAQUE_EVT,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),
         pnjs: [], // TODO : commencer avec parents, frères et soeurs ?

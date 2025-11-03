@@ -191,7 +191,7 @@ const Histoire: React.FC = (): JSX.Element => {
                 } else {
                     if (evtExecute) {
                         setJourSansEvt(0);
-                        setTempsRestant(perso.vitesseExecution);
+                        setTempsRestant(perso.secondesEntreChaqueEvt);
                     } else {
                         setJourSansEvt(jourSansEvt + 1);
                         setTempsRestant(3);
@@ -258,9 +258,9 @@ const Histoire: React.FC = (): JSX.Element => {
                 nouvEvt
             ]);
 
-            setTempsRestant(perso.vitesseExecution);
+            setTempsRestant(perso.secondesEntreChaqueEvt);
         }
-    }, [determinerEvtSuivant, perso.date, perso.lieu.quartier, perso.vitesseExecution]);
+    }, [determinerEvtSuivant, perso.date, perso.lieu.quartier, perso.secondesEntreChaqueEvt]);
 
     return (
         <>

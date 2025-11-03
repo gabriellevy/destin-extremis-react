@@ -1,5 +1,5 @@
 export const NB_POINTS_DESTIN_DEPART:number = 1;
-export const VITESSE_EXECUTION: number = 60; // seconde par événement
+export const SECONDES_ENTRE_CHAQUE_EVT: number = 25; // seconde par événement
 
 // temps
 export const DATE_NAISSANCE_BASE:number = 66;

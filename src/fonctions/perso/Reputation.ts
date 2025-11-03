@@ -59,6 +59,7 @@ export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|un
             amplitude: modifAmplitude,
         })
     }
+    if (repQuartier.amplitude === 0) return "";
     return ajouteLigneDeTexteGras("Réputation : " + affichageReputation(perso, quartierFinal) + ". <br/>");
 }
 
