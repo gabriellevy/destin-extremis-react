@@ -20,7 +20,7 @@ import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
 import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
 import {evts_lycee_celtes} from "../donnees/evts/coteries/celtes/evts_lycee_celtes";
 import {evts_lycee_skavens} from "../donnees/evts/coteries/skavens/evts_lycee_skavens";
-import {evts_bars} from "../donnees/evts/vie_courante/evts_bars";
+import {evts_bars} from "../donnees/evts/sorties/evts_bars";
 import {evts_amour} from "../donnees/evts/amour/evts_amour";
 import {evts_montbrison} from "../donnees/evts/quartiers/evts_montbrison";
 import {evts_pilleur_de_ruches} from "../donnees/evts/carrieres/evts_pilleur_de_ruches";

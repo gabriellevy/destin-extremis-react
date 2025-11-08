@@ -2,12 +2,13 @@ import {GroupeEvts} from "../../../types/Evt";
 import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
-import {testComp, testVertu} from "../../../fonctions/des";
+import {testComp, testVertu, testVice} from "../../../fonctions/des";
 import {ajouterViceVal, getValeurVertu, getValeurVice, Vertu, Vice} from "../../../types/ViceVertu";
 import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_fc";
 import {droguesEnum} from "../../sante/drogues";
 import {getAge} from "../../../types/Date";
 import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
+import {modifierStatut} from "../../../fonctions/perso/statut";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -63,7 +64,6 @@ export const evts_bars: GroupeEvts = {
                             // TODO : blessure ?
                         }
                     }
-                    soireeFinie = true;
                 }
                 return new Promise((resolve) => {
                     resolve(texte);
@@ -74,6 +74,35 @@ export const evts_bars: GroupeEvts = {
                 && getValeurVertu(perso, Vertu.sobre) < 0
                 && getAge(perso) >= 15,
             nbJoursEntreOccurences: 21,
+        },
+        {
+            id: "evts_bars2 strip tease",
+            description: (perso: Perso): Promise<string> => {
+                let texte:string = "Vous allez vous éclater dans un club de strip tease. <br/>";
+
+                const resTestLux:ResultatTest = testVice(perso, Vice.luxurieux, 20);
+                texte += resTestLux.resume;
+                if (resTestLux.reussi) {
+                    if (resTestLux.critical) {
+                        perso.bonheur += 0.15;
+                        texte += "La soirée tourne à la folie incntrolable. Pas encore rassasié par les danseuses vous finissez par dénicher des prostitués, des drogues, et finissez complètement rincé et fauché. <br/>";
+                        texte += modifierStatut(perso, -2);
+                    } else {
+                        perso.bonheur += 0.1;
+                        texte += "Vous enchainez danss privées, alcool et distribution de pourboires et sortez rincé mais heureux. <br/>";
+                        texte += modifierStatut(perso, -1);
+                    }
+                }
+
+                return new Promise((resolve) => {
+                    resolve(texte);
+                });
+            },
+            conditions: (perso: Perso): boolean =>
+                getValeurVice(perso, Vice.luxurieux) > 0
+                && getAge(perso) >= 18,
+            proba: 0.025,
+            nbJoursEntreOccurences: 40,
         },
     ],
     probaParDefaut: 0.05,
