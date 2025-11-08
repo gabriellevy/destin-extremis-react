@@ -83,6 +83,12 @@ export type Perso = PersoCommon & {
     evtsPasses: EvtExecute[],
     // ids des evts non exécutables à l'avenir (en général parce qu'ils nt déjà été exécutés et ne sont pas répétables)
     idEvtsNonExecutables: string[],
+    evtsNonRexecutablesTemporairement: EvtNonRexecutableTemporairement[],
+}
+
+export type EvtNonRexecutableTemporairement = {
+    id: string,
+    nbJoursRestants:number
 }
 
 /**

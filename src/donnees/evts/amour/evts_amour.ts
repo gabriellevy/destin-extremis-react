@@ -77,7 +77,7 @@ export const evts_amour: GroupeEvts = {
                 nombreDeCoupDeCoeur(perso) < (1 + getValeurVice(perso, Vice.luxurieux))*2
                 && !enCoupleAvecUnAmourFort(perso)
                 && getAge(perso) >= 13,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_amour draguer un coup de coeur",
@@ -109,7 +109,7 @@ export const evts_amour: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 aUnCoupDeCoeurNonReciproque(perso),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.04,

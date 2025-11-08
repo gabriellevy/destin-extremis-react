@@ -73,7 +73,7 @@ export const evts_bars: GroupeEvts = {
                 getValeurVertu(perso, Vertu.sociable) > 0
                 && getValeurVertu(perso, Vertu.sobre) < 0
                 && getAge(perso) >= 15,
-            repetable: true,
+            nbJoursEntreOccurences: 21,
         },
     ],
     probaParDefaut: 0.05,

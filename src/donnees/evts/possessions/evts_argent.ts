@@ -39,7 +39,7 @@ export const evts_argent: GroupeEvts = {
                         rang: 2,
                         metalStatut: MetalStatut.bronze,
                     }),
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
     ],
     probaParDefaut: 3,

@@ -39,7 +39,7 @@ export const evts_journaliste: GroupeEvts = {
                 !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 14
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= 2,
-            repetable: true,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_journaliste2",
@@ -59,7 +59,7 @@ export const evts_journaliste: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.journaliste),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_journaliste contrat livre",
@@ -72,6 +72,7 @@ export const evts_journaliste: GroupeEvts = {
                 ((travailleEnCeMomentComme(perso, MetiersEnum.journaliste) && getCompetenceMetier(perso, MetiersEnum.journaliste) > 40)
                 || (travailleEnCeMomentComme(perso, MetiersEnum.ecrivain) && getCompetenceMetier(perso, MetiersEnum.ecrivain) > 40))
                 && perso.reputation.amplitude > 10,
+            nbJoursEntreOccurences: 100,
         },
     ],
     probaParDefaut: 0.005,

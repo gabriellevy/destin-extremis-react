@@ -10,6 +10,7 @@ export function persoFormToPersoHisto(persoForm: PersoForm): PersoHisto {
         sauvegardes: [], // vide pour l'instant à la création
         evtsPasses: [],
         idEvtsNonExecutables: [],
+        evtsNonRexecutablesTemporairement: [],
     } as PersoHisto
 }
 

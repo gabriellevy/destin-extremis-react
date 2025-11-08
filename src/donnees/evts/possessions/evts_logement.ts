@@ -38,7 +38,7 @@ export const evts_logement: GroupeEvts = {
                         rang: 1,
                         metalStatut: MetalStatut.argent,
                     }),
-            repetable: true,
+            nbJoursEntreOccurences: 200,
         },
         {
             id: "evts_logement2 travaux",
@@ -54,7 +54,7 @@ export const evts_logement: GroupeEvts = {
                         rang: 1,
                         metalStatut: MetalStatut.argent,
                     }),
-            repetable: true,
+            nbJoursEntreOccurences: 100,
         },
     ],
     probaParDefaut: 0.002,

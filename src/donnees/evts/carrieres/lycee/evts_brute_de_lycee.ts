@@ -43,7 +43,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 && !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.brute_de_lycee]) > 1
                 && getAge(perso) <= 18,
-            repetable: true,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_brute_de_lycee2_traintrain",
@@ -86,7 +86,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee3_cachette",
@@ -109,7 +109,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
                 || suitUneCarriereDepuis(perso, MetiersEnum.dileur_de_lycee, 0.3),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee4 couteau",
@@ -189,7 +189,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee) ||
                 suitUneCarriereDe(perso, MetiersEnum.dileur_de_lycee),
             proba: 0.02,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee6 bande",
@@ -208,7 +208,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3),
             proba: 0.02,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee7 punition",
@@ -244,7 +244,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 ( suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3) || suitUneCarriereDepuis(perso, MetiersEnum.dileur_de_lycee, 0.3))
                 && getReputationQuartier(perso, undefined).qualite < -3,
             proba: 0.02,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee8 travail",
@@ -272,7 +272,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, MetiersEnum.brute_de_lycee, 0.3)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[MetiersEnum.brute_de_lycee].statutMax),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee9 merdeux en fuite",
@@ -297,7 +297,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee10ragote",
@@ -306,7 +306,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 const resTestRagot: ResultatTest = testComp(perso, TypeCompetence.ragot, 20);
                 texte += resTestRagot.resume;
                 if (resTestRagot.reussi) {
-                    texte += "Vous êts très doué pour écouter les rumeurs et récupérer ainsi les bonnes cibles peureuses et faibles. ";
+                    texte += "Vous êtes très doué pour écouter les rumeurs et récupérer ainsi les bonnes cibles peureuses et faibles. ";
                     augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
                 } else {
                     texte += "Vous avez du mal à repérer les bonnes cibles et à éviter les ennuis. ";
@@ -319,7 +319,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_brute_de_lycee11caillou",
@@ -344,7 +344,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.03,

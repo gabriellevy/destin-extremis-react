@@ -15,7 +15,7 @@ import {
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
 import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
-const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
+const passageDiplomeIngenieur: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "C'est le jour du passage de diplôme ! ";
     const resTestInge:ResultatTest = testMetier(perso, {metier: MetiersEnum.etudiant_ingenieur, bonusMalus: 20});
     texte += resTestInge.resume;
@@ -28,7 +28,7 @@ const passageDiplome: (perso: Perso) => Promise<string> = (perso: Perso) => {
             date: (persoFutur:Perso) => perso.date + anneesToJours(1) === persoFutur.date,
             evt: {
                 id: "passageDiplomeBoulanger",
-                description: passageDiplome,
+                description: passageDiplomeIngenieur,
             }
         });
     }
@@ -52,8 +52,8 @@ export const evts_ingenieur: GroupeEvts = {
                     perso.evtsProgrammes.push({
                         date: (persoFutur:Perso) => perso.date + anneesToJours(5) === persoFutur.date,
                         evt: {
-                            id: "passageDiplomeBoulanger",
-                            description: passageDiplome,
+                            id: "passageDiplomeIngenieur",
+                            description: passageDiplomeIngenieur,
                         }
                     });
                 } else {
@@ -66,7 +66,7 @@ export const evts_ingenieur: GroupeEvts = {
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.etudiant_ingenieur]) >= 0
                 && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
-            repetable: true,
+            nbJoursEntreOccurences: 200,
         },
         {
             id: "evts_ingenieur2",
@@ -85,7 +85,7 @@ export const evts_ingenieur: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, MetiersEnum.etudiant_ingenieur),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_ingenieur3_entre_a_la_guilde",
@@ -105,7 +105,7 @@ export const evts_ingenieur: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 suitUneCarriereDe(perso, MetiersEnum.ingenieur)
             && !appartientALaGuilde(perso, MetiersEnum.ingenieur),
-            repetable: true,
+            nbJoursEntreOccurences: 100,
         },
     ],
     probaParDefaut: 0.005,

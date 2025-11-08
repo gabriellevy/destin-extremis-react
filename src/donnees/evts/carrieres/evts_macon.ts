@@ -53,7 +53,7 @@ export const evts_macon: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.macon),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.005,

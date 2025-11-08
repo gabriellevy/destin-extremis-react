@@ -37,8 +37,8 @@ export const evts_rejoindre: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 perso.coterie === undefined
                 && perso.bilanLycee.phaseActuelle === PhaseLycee.finie,
-            repetable: true,
+            nbJoursEntreOccurences: 50,
         },
     ],
-    probaParDefaut: 0.03, // très grosse probabilité : il n'est pas naturel de rester sans coterie
+    probaParDefaut: 0.1, // très grosse probabilité : il n'est pas naturel de rester sans coterie
 };

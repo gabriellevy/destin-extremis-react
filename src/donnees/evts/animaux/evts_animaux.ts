@@ -25,7 +25,7 @@ export const evts_animaux: GroupeEvts = {
             },
         conditions: (perso: Perso): boolean =>
             nombreDAnimauxDomestiques(perso) < (getValeurVice(perso, Vice.naturaliste))*2,
-            repetable: true,
+            nbJoursEntreOccurences: 50,
         },
         {
             id: "evts_animaux2 persécuteur d'animaux",
@@ -48,7 +48,7 @@ export const evts_animaux: GroupeEvts = {
             proba: 0.005,
             conditions: (perso: Perso): boolean =>
                 getValeurVice(perso, Vice.cruel) >= 2,
-                repetable: false,
+            nbJoursEntreOccurences: 90,
         },
     ],
     probaParDefaut: 3,

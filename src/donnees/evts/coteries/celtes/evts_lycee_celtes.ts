@@ -43,7 +43,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.04,
         },
         {
@@ -120,7 +120,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.04,
         },
         {
@@ -139,7 +139,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.04,
         },
         {
@@ -157,7 +157,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.04,
         },
         {
@@ -176,7 +176,7 @@ export const evts_lycee_celtes: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.celtes,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.04,
         },
     ],

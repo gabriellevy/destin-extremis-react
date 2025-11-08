@@ -69,7 +69,7 @@ export const evts_plombier: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            nbJoursEntreOccurences: 100,
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.plombier]) >= 1

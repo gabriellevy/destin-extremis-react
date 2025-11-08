@@ -35,7 +35,7 @@ export const evts_voleur: GroupeEvts = {
                 && getValeurVice(perso, Vice.cupide) > 0
                 && getValeurVice(perso, Vice.rebelle) > 0
                 && getAge(perso) <= 18,
-            repetable: false,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 10,

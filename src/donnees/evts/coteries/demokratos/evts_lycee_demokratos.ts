@@ -18,7 +18,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
         {
             id: "evts_lycee_demokratos1",
             description: async (perso: Perso): Promise<string> => {
-                let texte = "La vie sociale sur le campus des Démokratos est vibrante et explosive. Les concerts, fêtes, pièces de théâtre, s'enchainent sans interruption.";
+                let texte = "La vie sociale sur le campus des Démokratos est vibrante et explosive. Les concerts, fêtes, pièces de théâtre, s'enchainent sans interruption. <br/>";
                 if (Math.random() >.95) {
                     texte += ajouterViceVal(perso, Vice.gourmand, 1);
                 }
@@ -55,7 +55,8 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
+            proba: 0.02,
         },
         {
             id: "evts_lycee_demokratos3",
@@ -80,13 +81,13 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
         {
             id: "evts_lycee_demokratos4",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "L'art, surtout le théâtre, est très prisé chez les démokratos. "
-                + "Vous le pratiquez régulièrement. ";
+                + "Vous le pratiquez régulièrement. <br/>";
                 const resTestEloq:ResultatTest = testComp(perso, TypeCompetence.eloquence, 20);
                 const resTestTromp:ResultatTest = testComp(perso, TypeCompetence.tromperie, 20);
                 const resTestChar:ResultatTest = testComp(perso, TypeCompetence.charme, 20);
@@ -94,11 +95,11 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 texte += resTestTromp.resume;
                 texte += resTestChar.resume;
                 if (resTestEloq.reussi && resTestTromp.reussi && resTestChar.reussi) {
-                        texte += "Vos talents multiples vous font remarquer. ";
+                        texte += "Vos talents multiples vous font remarquer. <br/>";
                         texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 } else {
                     if (resTestEloq.critical && resTestTromp.critical && resTestChar.critical) {
-                        texte += "Les gens viennent de loin pour rire de votre complète inaptitude à jouer. ";
+                        texte += "Les gens viennent de loin pour rire de votre complète inaptitude à jouer. <br/>";
                         texte += modifierReputationDansQuartier(perso, Quartier.vanves, -1,1);
                     }
                 }
@@ -108,13 +109,13 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
         {
             id: "evts_lycee_demokratos5",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Tous démokratos doit être capable de faire de la politique et de diriger ses concitoyens si il est tiré au sort pour occuper ce rôle. "
-                + "Vous alternez donc entre chef et exécutant régulièrement pour vous y habituer. ";
+                + "Vous alternez donc entre chef et exécutant régulièrement pour vous y habituer. <br/>";
                 const resTestComdt:ResultatTest = testComp(perso, TypeCompetence.eloquence, 20);
                 texte += resTestComdt.resume;
                 if (resTestComdt.reussi) {
@@ -131,7 +132,8 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
+            proba : 0.02,
         },
         {
             id: "evts_lycee_demokratos6",
@@ -155,7 +157,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
         {
             id: "evts_lycee_demokratos7",
@@ -165,7 +167,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 const resTestF:ResultatTest = testComp(perso, TypeCompetence.force, 0);
                 texte += resTestF.resume;
                 texte += resTestBagarre.resume;
-                if (resTestF.critical && resTestF.reussi) {
+                if (resTestBagarre.reussi && resTestF.reussi) {
                     texte += "Vous vous distinguez à la lutte. ";
                     texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
@@ -184,19 +186,20 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
+            proba : 0.02,
         },
         {
             id: "evts_lycee_demokratos8",
             description: async (perso: Perso): Promise<string> => {
                 let texte:string = "Les banquets très courants sont certes l'occasion de s'amuser. "
-                + "Mais ils sont avant tout vu par les Démokratos comme une occasion de sociabilisation et de débats philosophiques enflammés. ";
+                + "Mais ils sont avant tout vu par les Démokratos comme une occasion de sociabilisation et de débats philosophiques enflammés. <br/>";
                 const resTestIntelligence:ResultatTest = testComp(perso, TypeCompetence.intelligence, 0);
                 const resTestEloq:ResultatTest = testComp(perso, TypeCompetence.eloquence, 0);
                 texte += resTestEloq.resume;
                 texte += resTestIntelligence.resume;
                 if (resTestIntelligence.reussi && resTestEloq.reussi) {
-                    texte += "À ce jeu vous impressionnez souvent les invités. ";
+                    texte += "À ce jeu vous impressionnez souvent les invités. <br/>";
                     texte += modifierReputationDansQuartier(perso, Quartier.vanves, 1,1);
                 }
                 if (perso.niveauIA === NiveauIA.systematique) {
@@ -205,7 +208,7 @@ export const evts_lycee_demokratos: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.demokratos,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
     ],
     probaParDefaut: 0.05, // >>> à la moyenne car spécifique à une phase importante

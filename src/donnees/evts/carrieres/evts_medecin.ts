@@ -86,7 +86,7 @@ export const evts_medecin: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.chirurgien),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.005,

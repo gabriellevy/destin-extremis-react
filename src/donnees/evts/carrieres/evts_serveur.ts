@@ -67,7 +67,7 @@ export const evts_serveur: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.serveur),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.005,

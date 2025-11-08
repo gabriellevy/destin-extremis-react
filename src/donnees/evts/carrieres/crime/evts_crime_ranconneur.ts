@@ -43,7 +43,7 @@ export const evts_crime_ranconneur: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.ranconneur),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_crime3",
@@ -77,7 +77,7 @@ export const evts_crime_ranconneur: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.ranconneur),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.01,

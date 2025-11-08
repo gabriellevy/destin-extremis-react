@@ -77,7 +77,7 @@ export const evts_boulanger: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Bruno_B%C3%A4cker.webp",
             conditions: (perso: Perso): boolean =>
                 travailleEnCeMomentComme(perso, MetiersEnum.boulanger),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
     ],
     probaParDefaut: 0.005,

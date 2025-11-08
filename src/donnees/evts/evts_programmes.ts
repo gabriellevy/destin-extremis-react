@@ -19,7 +19,7 @@ export const evts_programmes: EvtProgramme[] = [
                 return texte;
             },
             conditions: (_perso: Perso): boolean => true,
-            repetable: true,
+            nbJoursEntreOccurences: 1,
         },
     },
     {

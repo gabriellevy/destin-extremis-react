@@ -18,7 +18,7 @@ export const evts_possessions: GroupeEvts = {
                 !possede(perso, PossessionEnum.pistolet)
                 && getValeurVice(perso, Vice.mefiant) > 0
                 && getAge(perso) >= 18,
-            repetable: true,
+            nbJoursEntreOccurences: 200,
         },
         {
             id: "evts_possessions armes lourdes",
@@ -31,7 +31,7 @@ export const evts_possessions: GroupeEvts = {
                 !possede(perso, PossessionEnum.armes_lourdes)
                 && getValeurVice(perso, Vice.mefiant) > 1
                 && getAge(perso) >= 18,
-            repetable: true,
+            nbJoursEntreOccurences: 200,
         },
     ],
     probaParDefaut: 3,

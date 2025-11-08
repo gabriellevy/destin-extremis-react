@@ -58,7 +58,7 @@ export const evts_carriere: GroupeEvts = {
             conditions: (perso: Perso): boolean => suitUneCarriereDepuis(perso, undefined, 1)
                 && !suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee)
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
-            repetable: true,
+            nbJoursEntreOccurences: 30,
             proba: 0.003,
         },
         {
@@ -78,7 +78,7 @@ export const evts_carriere: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean => aUneCarriere(perso),
             proba: 0.00003,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
         },
         {
             id: "evts_carriere3 démission",
@@ -113,7 +113,7 @@ export const evts_carriere: GroupeEvts = {
             conditions: (perso: Perso): boolean => aUneCarriere(perso)
                 && perso.bonheur < 0.6
                 && compatibiliteCarriere(perso, metiersObjs[getCarriereActive(perso).metier]) < 0,
-            repetable: true,
+            nbJoursEntreOccurences: 30,
             proba: 0.003,
         },
         {
@@ -135,7 +135,7 @@ export const evts_carriere: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 aUneCarriere(perso)
                 && getValeurVice(perso, (Vice.paresseux)) > 0,
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.001,
         },
     ],

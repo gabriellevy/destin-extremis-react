@@ -1,4 +1,4 @@
-import {Perso} from "./perso/Perso";
+import {EvtNonRexecutableTemporairement, Perso} from "./perso/Perso";
 import {Evt, EvtProgramme} from "./Evt";
 import {Carriere} from "./metiers/Metier";
 import {
@@ -140,6 +140,16 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
             evtProgrammeExecute = true;
         }
     })
+
+    // tous les événements non réexecutables temporairement perdent un jour de délai de blocage :
+    perso.evtsNonRexecutablesTemporairement = perso.evtsNonRexecutablesTemporairement
+        .map((evt:EvtNonRexecutableTemporairement) => {
+            return {
+                id: evt.id,
+                nbJoursRestants: evt.nbJoursRestants -= 1
+            }
+        })
+        .filter((evt: EvtNonRexecutableTemporairement) => evt.nbJoursRestants > 0);
 
     const nouvJourDuMois: number = calculJourDuMois(perso.date);
     const nouvMoisStr: string = calculMoisStr(perso.date);

@@ -43,7 +43,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -78,7 +78,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -99,7 +99,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -126,7 +126,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares
             && !aLaMaitrise(perso, Maitrise.catechisme),
         },
@@ -180,7 +180,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: false,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -199,7 +199,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares && getValeurVertu(perso, Vertu.altruiste) < 3,
         },
         {
@@ -227,7 +227,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             proba: 0.02,
             conditions: (perso: Perso): boolean =>
                 (perso.bilanLycee.coterieActuelle === Coterie.cathares || perso.coterie === Coterie.cathares)

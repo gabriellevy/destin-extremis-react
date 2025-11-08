@@ -23,8 +23,8 @@ export const evts_statut: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 statutPersoSuperieurAStatut2(perso, metiersObjs[getCarriereActive(perso)?.metier].statutMax),
-            repetable: true,
+            nbJoursEntreOccurences: 60,
         },
     ],
-    probaParDefaut: 0.03,
+    probaParDefaut: 1, // 0.03
 }

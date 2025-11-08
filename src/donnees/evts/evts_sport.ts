@@ -30,7 +30,7 @@ export const evts_sports: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
+            nbJoursEntreOccurences: 10,
             conditions: (perso: Perso): boolean =>
                 getValeurVertu(perso, Vertu.chaste) >= 1 && getValeurVertu(perso, Vertu.sobre) >= 1,
         },

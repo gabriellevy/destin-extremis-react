@@ -87,12 +87,22 @@ const Histoire: React.FC = (): JSX.Element => {
                 ...evtsExecutes,
                 nouvEvt
             ];
-            if (evtExecute.repetable === undefined || !evtExecute.repetable) {
+            if (evtExecute.nbJoursEntreOccurences === undefined || evtExecute.nbJoursEntreOccurences <= 0) {
                 perso.idEvtsNonExecutables = [
                     ...perso.idEvtsNonExecutables,
                     evtExecute.id,
                 ];
+            } else if (evtExecute.nbJoursEntreOccurences > 1) {
+                // evts that can't be reexecuted for a limited time :
+                perso.evtsNonRexecutablesTemporairement = [
+                    ...perso.evtsNonRexecutablesTemporairement,
+                    {
+                        id: evtExecute.id,
+                        nbJoursRestants: evtExecute.nbJoursEntreOccurences,
+                    }
+                ]
             }
+
             perso.sauvegardes.push(previousPerso);
 
             setEvtsExecutes((prev: EvtExecute[]) => [

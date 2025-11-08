@@ -34,7 +34,7 @@ export const evts_dealer_de_lycee: GroupeEvts = {
                 && !aUneCarriere(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.dileur_de_lycee]) > 1
                 && getAge(perso) <= 18,
-            repetable: true,
+            nbJoursEntreOccurences: 100,
         },
     ],
     probaParDefaut: 10,

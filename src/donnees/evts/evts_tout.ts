@@ -20,7 +20,7 @@ export const evts_tout: GroupeEvts = {
                 return texte;
             },
             conditions: (): boolean => true,
-            repetable: true,
+            nbJoursEntreOccurences: 1,
         },
         ],
     probaParDefaut: 0.00001,

@@ -23,7 +23,7 @@ export const evts_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            repetable: true,
+            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.coterie === Coterie.cathares && getValeurVertu(perso, Vertu.altruiste) < 3,
         },
     ],

@@ -1,4 +1,4 @@
-import {Perso, PersoHisto} from "./perso/Perso";
+import {EvtNonRexecutableTemporairement, Perso, PersoHisto} from "./perso/Perso";
 
 export type EvtProgramme = {
     evt: Evt,
@@ -15,7 +15,10 @@ export type Evt = {
     // l'image affichée dépend éventuellement du perso
     // dans la pratique, comme l'image est déterminée après l'exécution de la description, cela signifie que le perso a déjà été modifié par la description
     image?: (perso: PersoHisto) => string;
-    repetable?: boolean; // true => exécutables plusieurs fois (y compris d'affilée) (undefined means false)
+    // nombe de jours qui doivent s'écouler pour que cet événement se joue une nouvelle fois
+    // 0 (ou <0) signifie que l'evt peut ne peut jamais se répéter. undefined est équivalent à 0
+    // pour un événement qui peut se répéter sans limitation, mettre cette valeur à 1
+    nbJoursEntreOccurences?: number;
 };
 
 // ce qui est affiché après que l'événement ait été exécuté
@@ -37,6 +40,8 @@ export function filtrerEtPreparerEvts(groupeEvts:GroupeEvts, perso: Perso):Evt[]
     return groupeEvts.evts
         .filter((evt:Evt) => !evt.conditions || evt.conditions(perso))
         .filter((evt:Evt) => !perso.idEvtsNonExecutables.includes(evt.id))
+        .filter((evt:Evt) => !perso.evtsNonRexecutablesTemporairement.find((evtNonReexecutable:EvtNonRexecutableTemporairement) =>
+            evtNonReexecutable.id === evt.id))
         .map(evt => {
             if (!evt.proba) {
                 evt.proba = probaParDefaut;
