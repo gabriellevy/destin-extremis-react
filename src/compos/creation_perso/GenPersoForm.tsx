@@ -1,6 +1,6 @@
 import {FormProvider, useForm, UseFormReturn} from 'react-hook-form';
 import {Box, Button, Grid2, Paper, Typography} from '@mui/material';
-import {Perso, PersoForm, PersoHisto, Sexe} from "../../types/perso/Perso";
+import {PersoForm, PersoHisto, Sexe} from "../../types/perso/Perso";
 import SelectionLieu from "./SelectionLieu";
 import SelectionCarriereStatut from "./SelectionCarriereStatut";
 import SelectionDates from "./SelectionDates";
@@ -12,7 +12,6 @@ import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {vaA} from "../../types/lieux/Lieu";
 import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
-import {Coterie} from "../../types/Coterie";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";
@@ -22,6 +21,7 @@ import {
 } from "../../fonctions/perso/conversionsPerso";
 import {metierAleatoire} from "../../fonctions/metiers/metiersUtils";
 import {Mode, PhaseDExecution} from "../../types/Mode";
+import {getCoterieAleatoireSauf} from "../../fonctions/generation";
 
 interface CharacterFormProps {
     setAfficherForm: (afficher: boolean) => void;
@@ -45,7 +45,7 @@ export default function GenPersoForm({ setAfficherForm, mode }: CharacterFormPro
         // age aléatoire
         persoAl.age = 10 + Math.floor(Math.random() * 35);
         vaA(persoAl, getRandomEnumValue(Quartier));
-        persoAl.coterie = getRandomEnumValue(Coterie);
+        persoAl.coterie = getCoterieAleatoireSauf([]);
         persoAl.statut = randomStatut();
         //persoAl.sexe = d2() == 1 ? Sexe.femelle : Sexe.male;
         persoAl.sexe = Sexe.male;

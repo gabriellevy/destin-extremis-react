@@ -1,6 +1,6 @@
 import {getRandomEnumValue} from "./random";
 import {Carriere} from "../types/metiers/Metier";
-import {Coterie} from "../types/Coterie";
+import {Coterie, COTERIES_NON_DEVELOPPEES} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";
 import {anneesToJours, getAge} from "../types/Date";
 import {lieuAleatoire} from "../types/lieux/Lieu";
@@ -51,9 +51,19 @@ export function genererPNJ(sexe:Sexe, dateNaissance: number|undefined, coterie:C
     }
 }
 
+/**
+ * Renvoie une coterie saléatoires en excluant :
+ * - les coteries précisées dans le paramètre 'coteriesExclues'
+ * - les COTERIES_NON_DEVELOPPEES cad ayant trop peu d'éléments pour l'instant pour mériter d'être sélectionénes
+ * @param coteriesExclues
+ */
 export function getCoterieAleatoireSauf(coteriesExclues: (Coterie|undefined)[]): Coterie {
     let coterieAleatoire: Coterie = getRandomEnumValue(Coterie);
     coteriesExclues = coteriesExclues.filter(cot => cot !== undefined)
+    coteriesExclues = [
+        ...COTERIES_NON_DEVELOPPEES,
+        ...coteriesExclues
+    ];
     while (coteriesExclues.includes(coterieAleatoire)) {
         coterieAleatoire = getRandomEnumValue(Coterie);
     }

@@ -30,6 +30,13 @@ export enum Coterie {
     zaporogues = 'Zaporogues',
 }
 
+// tableau contenant les coteries pour l'instant exclues des coteries de base des lycées et du perso car trop peu développées
+// (et pas l'intention de les développer de suite)
+export const COTERIES_NON_DEVELOPPEES:Coterie[] = [
+    Coterie.bastets, Coterie.carthaginois, Coterie.chaos, Coterie.elfes, Coterie.esprit_de_la_nature, Coterie.esthetes,
+    Coterie.libertins, Coterie.performeurs, Coterie.romains, Coterie.saabi, Coterie.schweizer, Coterie.zaporogues
+];
+
 export const coterieOptions: Option[]= [
     { value: Coterie.acheron, label: Coterie.acheron},
     { value: Coterie.bastets, label: Coterie.bastets},
