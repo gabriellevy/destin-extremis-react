@@ -32,7 +32,7 @@ export enum TypeCompetence {
     intuition = "Intuition",
     marchandage = "Marchandage",
     mouvement = "Mouvement",
-    orientation = "Orientation",
+    periple = "Périple", // capcité à voyager. Inclut orientation, facilité à s'intégrer aux autres cultures à apprendre les langues...
     perception = "Perception",
     ragot = "Ragot",
     reflexes = "Réflexes",
@@ -77,7 +77,7 @@ export function isCompDeBase(typeCompetence: TypeCompetence): boolean {
         case TypeCompetence.intuition:
         case TypeCompetence.marchandage:
         case TypeCompetence.mouvement:
-        case TypeCompetence.orientation:
+        case TypeCompetence.periple:
         case TypeCompetence.perception:
         case TypeCompetence.ragot:
         case TypeCompetence.reflexes:

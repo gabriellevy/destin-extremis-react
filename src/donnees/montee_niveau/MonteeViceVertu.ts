@@ -52,6 +52,7 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.gourmand,
             Vice.cupide,
             Vice.envieux,
+            Vice.sceptique,
         ]
         case TypeCompetence.force: return [
             Vice.gourmand,
@@ -60,6 +61,7 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
         ]
         case TypeCompetence.intelligence: return [
             Vice.orgueilleux,
+            Vice.sceptique,
         ]
         case TypeCompetence.intimidation: return [
             Vice.cruel,
@@ -81,12 +83,13 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.impulsif,
             Vice.lache,
         ]
-        case TypeCompetence.orientation : return [
+        case TypeCompetence.periple : return [
             Vice.naturaliste,
             Vice.solitaire,
         ]
         case TypeCompetence.perception : return [
             Vice.impulsif,
+            Vice.sceptique,
         ]
         case TypeCompetence.reflexes : return [
             Vice.impulsif,
@@ -114,6 +117,7 @@ export function vicesAssociesACompetence(typeCompetence: TypeCompetence): Vice[]
             Vice.envieux,
             Vice.cupide,
             Vice.paresseux,
+            Vice.sceptique,
         ]
         case TypeCompetence.vigilance : return [
             Vice.solitaire,
@@ -146,6 +150,7 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         case TypeCompetence.chance: return [
             Vertu.altruiste,
             Vertu.genereux,
+            Vertu.spirituel,
         ]
         case TypeCompetence.charme: return [
             Vertu.genereux,
@@ -184,6 +189,7 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.artificialiste,
             Vertu.prudent,
             Vertu.placide,
+            Vertu.spirituel,
         ]
         case TypeCompetence.intuition: return [
             Vertu.genereux,
@@ -195,9 +201,10 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
         case TypeCompetence.mouvement : return [
             Vertu.sobre,
         ]
-        case TypeCompetence.orientation : return [
+        case TypeCompetence.periple : return [
             Vertu.prudent,
-            Vertu.placide,
+            Vertu.sobre,
+            Vertu.spirituel,
         ]
         case TypeCompetence.perception : return [
             Vertu.placide,
@@ -230,6 +237,7 @@ export function vertusAssociesACompetence(typeCompetence: TypeCompetence): Vertu
             Vertu.chaste,
             Vertu.loyal,
             Vertu.travailleur,
+            Vertu.spirituel,
         ]
         default: {
             return [];

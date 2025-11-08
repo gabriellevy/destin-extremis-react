@@ -17,7 +17,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         };
         case Coterie.carthaginois: return {
             plus10Values: [TypeCompetence.evaluation, TypeCompetence.marchandage],
-            plus5Values: [TypeCompetence.orientation, TypeCompetence.intuition],
+            plus5Values: [TypeCompetence.periple, TypeCompetence.intuition],
             minus10Values: [TypeCompetence.force],
             minus5Values: [TypeCompetence.reflexes],
         };
@@ -35,13 +35,13 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         };
         case Coterie.chaos: return {
             plus10Values: [TypeCompetence.chance, TypeCompetence.intuition],
-            plus5Values: [TypeCompetence.tromperie, TypeCompetence.orientation],
+            plus5Values: [TypeCompetence.tromperie, TypeCompetence.periple],
             minus10Values: [TypeCompetence.perception],
             minus5Values: [TypeCompetence.evaluation],
         };
         case Coterie.conquistador: return {
             plus10Values: [TypeCompetence.tir, TypeCompetence.survie],
-            plus5Values: [TypeCompetence.orientation, TypeCompetence.armeCaC],
+            plus5Values: [TypeCompetence.periple, TypeCompetence.armeCaC],
             minus10Values: [TypeCompetence.eloquence],
             minus5Values: [TypeCompetence.tromperie],
         };
@@ -53,7 +53,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         };
         case Coterie.esprit_de_la_nature: return {
             plus10Values: [TypeCompetence.animaux, TypeCompetence.survie],
-            plus5Values: [TypeCompetence.orientation, TypeCompetence.perception],
+            plus5Values: [TypeCompetence.periple, TypeCompetence.perception],
             minus10Values: [TypeCompetence.tir],
             minus5Values: [TypeCompetence.evaluation],
         };
@@ -61,7 +61,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             plus10Values: [TypeCompetence.eloquence, TypeCompetence.ragot],
             plus5Values: [TypeCompetence.intuition, TypeCompetence.commandement],
             minus10Values: [TypeCompetence.survie],
-            minus5Values: [TypeCompetence.orientation],
+            minus5Values: [TypeCompetence.periple],
         };
         case Coterie.elfes: return {
             plus10Values: [TypeCompetence.adresse, TypeCompetence.charme],
@@ -72,7 +72,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
         case Coterie.jacobins: return {
             plus10Values: [TypeCompetence.volonte, TypeCompetence.eloquence],
             plus5Values: [TypeCompetence.commandement, TypeCompetence.vigilance],
-            minus10Values: [TypeCompetence.orientation],
+            minus10Values: [TypeCompetence.periple],
             minus5Values: [TypeCompetence.animaux],
         };
         case Coterie.lumieres: return {
@@ -112,7 +112,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus5Values: [TypeCompetence.charme],
         };
         case Coterie.zaporogues: return {
-            plus10Values: [TypeCompetence.survie, TypeCompetence.orientation],
+            plus10Values: [TypeCompetence.survie, TypeCompetence.periple],
             plus5Values: [TypeCompetence.animaux, TypeCompetence.tir],
             minus10Values: [TypeCompetence.evaluation],
             minus5Values: [TypeCompetence.charme],

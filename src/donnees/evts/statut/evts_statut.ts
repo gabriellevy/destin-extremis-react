@@ -26,5 +26,5 @@ export const evts_statut: GroupeEvts = {
             nbJoursEntreOccurences: 60,
         },
     ],
-    probaParDefaut: 1, // 0.03
+    probaParDefaut: 0.03,
 }
