@@ -11,7 +11,7 @@ export const evts_programmes: EvtProgramme[] = [
             id: "anniversaire",
             description: async (perso: PersoHisto): Promise<string> => {
                 perso.pointDestin += 1;
-                let texte =  "Vous avez " + getAge(perso) + " ans. Joyeux anniversaire ! <br/><b>+1 point de destin</b>"
+                let texte =  "Vous avez " + getAge(perso) + " ans. Joyeux anniversaire ! <br/><b>+1 point de destin</b><br/>"
 
                 texte += "Vous ne pouvez plus retourner en arrière.";
                 perso.sauvegardes = [];
