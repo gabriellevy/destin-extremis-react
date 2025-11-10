@@ -8,6 +8,7 @@ export enum Quartier {
     saint_maur_des_fosses = 'Saint Maur des fossés',
     chatenay_malabry = 'Châtenay-Malabry',
     montbrison = 'Montbrison',
+    montreuil = 'Montreuil',
     saint_malo = 'Saint-Malo',
     montesson = 'Montesson',
     palais_royal = 'Palais royal',
@@ -62,6 +63,11 @@ export function descriptionQuartier(quartier: Quartier): string {
         case Quartier.chatenay_malabry:
             texte += "Le quartier de Chatenay Malabry est le quartier des celtes. La nature qui l’envahit et le style ancien des maisons qu’on y trouve peut donner l’impression qu’il est archaïque mais il reflète seulement le goût de ses habitants pour la promenade, la méditation, et la fête en plein air. Derrière tout cela se trouve la même modernité qu’ailleurs. ";
             break;
+        case Quartier.montreuil:
+            texte += "Les lois à Montreuil sont peu nombreuses, imprécises, et changent sans arrêt. Les khaos qui y vivent négligent énormément l’entretien, débordent facilement de leurs frontières et refusent d’obéir aux lois voisines. Leurs quartiers sont plein de squats vaguement légaux à un moment ou à un autre puis illégaux, puis légaux à nouveau. La végétation envahit la rue. <br/>"
+            + "Malgré cela ils ont une économie -modeste- qui fonctionne et coopèrent plutôt bien par des réseaux agiles et peu chers, même si peu fiables. Les fermes urbaines et les petites entreprises d’artisanat pullulent chez eux. <br/>"
+            + "Par leur ambiance chaleureuse ils attirent souvent des étudiants et bourgeois bohèmes, en quête de surprises et d’émotions fortes et beaucoup d’Extrémiens de coterie qui apprécient leur souplesse y vivent ou y commercent. <br/>"
+                break;
         case Quartier.montbrison:
             texte += "Montbrison est un quartier en bordure de la Ville. En fait il s’agit en un sens d’un quartier frontière car au Sud s’étend le [Zone](https://www.notion.so/Les-Zones-23d7e0b4d00480588b05fe83440fc2b3?pvs=21) la plus proche de la tour de convention et donc un endroit inhabitable et très dangereux. En conséquence Montbrison est peu peuplée et a très mauvaise réputation. \n" +
                 "<br/>" +
@@ -95,6 +101,8 @@ export function imageQuartier(quartier: Quartier): string {
         case Quartier.maisons_laffite:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Maisons-Laffite.jpg";
         case Quartier.montbrison:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Montbrison-la%20Zone.png";
+        case Quartier.montreuil:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Montbrison-la%20Zone.png";
         case Quartier.saint_denis:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Saint-Denis.jpg";

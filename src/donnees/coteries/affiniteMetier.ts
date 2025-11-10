@@ -5,7 +5,7 @@ import {MetiersEnum} from "../metiers";
  * plus grande proba d'avoir ces métier si le perso est de cette coterie
  */
 export const metierFavorisesParCoterie: Record<Coterie, MetiersEnum[]> = {
-    [Coterie.chaos]: [],
+    [Coterie.khaos]: [],
     [Coterie.acheron]: [MetiersEnum.informaticien, MetiersEnum.magicien, MetiersEnum.technomancien],
     [Coterie.bastets]: [MetiersEnum.non_travailleur],
     [Coterie.cathares]: [MetiersEnum.novice_pretre, MetiersEnum.pretre, MetiersEnum.moine],
@@ -39,7 +39,7 @@ export const metierFavorisesParCoterie: Record<Coterie, MetiersEnum[]> = {
  * Ces métiers ne peuvent pas être pris par un perso de la coterie correspondante
  */
 export const metierDetestesParCoterie: Record<Coterie, MetiersEnum[]> = {
-    [Coterie.chaos]: [],
+    [Coterie.khaos]: [],
     [Coterie.acheron]: [],
     [Coterie.bastets]: [],
     [Coterie.cathares]: [

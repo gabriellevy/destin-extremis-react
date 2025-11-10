@@ -33,7 +33,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.vigilance],
             minus5Values: [TypeCompetence.commandement],
         };
-        case Coterie.chaos: return {
+        case Coterie.khaos: return {
             plus10Values: [TypeCompetence.chance, TypeCompetence.intuition],
             plus5Values: [TypeCompetence.tromperie, TypeCompetence.periple],
             minus10Values: [TypeCompetence.perception],

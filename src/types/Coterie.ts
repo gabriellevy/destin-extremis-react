@@ -7,7 +7,7 @@ export enum Coterie {
     cathares = 'Cathares',
     carthaginois = 'Carthaginois',
     celtes = 'Celtes',
-    chaos = 'Chaos',
+    khaos = 'Khaos',
     conquistador = 'Conquistador',
     culte_du_plaisir = 'Culte du plaisir',
     demokratos = 'Démokratos',
@@ -33,7 +33,7 @@ export enum Coterie {
 // tableau contenant les coteries pour l'instant exclues des coteries de base des lycées et du perso car trop peu développées
 // (et pas l'intention de les développer de suite)
 export const COTERIES_NON_DEVELOPPEES:Coterie[] = [
-    Coterie.bastets, Coterie.carthaginois, Coterie.chaos, Coterie.elfes, Coterie.esprit_de_la_nature, Coterie.esthetes,
+    Coterie.bastets, Coterie.carthaginois, Coterie.khaos, Coterie.elfes, Coterie.esprit_de_la_nature, Coterie.esthetes,
     Coterie.libertins, Coterie.performeurs, Coterie.romains, Coterie.saabi, Coterie.schweizer, Coterie.zaporogues
 ];
 
@@ -43,7 +43,7 @@ export const coterieOptions: Option[]= [
     { value: Coterie.carthaginois, label: Coterie.carthaginois},
     { value: Coterie.cathares, label: Coterie.cathares},
     { value: Coterie.celtes, label: Coterie.celtes},
-    { value: Coterie.chaos, label: Coterie.chaos},
+    { value: Coterie.khaos, label: Coterie.khaos},
     { value: Coterie.culte_du_plaisir, label: Coterie.culte_du_plaisir},
     { value: Coterie.demokratos, label: Coterie.demokratos},
     { value: Coterie.elfes, label: Coterie.elfes},

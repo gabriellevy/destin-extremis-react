@@ -76,7 +76,7 @@ export function getNom(coterie: Coterie, sexe: Sexe): string {
         case Coterie.esprit_de_la_nature:
         case Coterie.tyranides:
         case Coterie.bastets:
-        case Coterie.chaos:
+        case Coterie.khaos:
         case Coterie.acheron:
         case Coterie.orks:
         case Coterie.carthaginois:
@@ -177,7 +177,7 @@ export function getPrenom(coterie: Coterie, sexe: Sexe): string {
                 + (sexe === Sexe.male ?
                 ACHERON_PRENOMS_M[getRandomInt0(ACHERON_PRENOMS_M.length)] :
                 ACHERON_PRENOMS_F[getRandomInt0(ACHERON_PRENOMS_F.length)]);
-        case Coterie.chaos:
+        case Coterie.khaos:
             const i = Math.floor(Math.random() * 10) + 1;
             if(i < 5){
                 const txt5 = PRENOM_CHAOS_5[getRandomInt0(PRENOM_CHAOS_5.length)];

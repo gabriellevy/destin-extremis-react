@@ -115,7 +115,7 @@ const Histoire: React.FC = (): JSX.Element => {
     }, [perso, setPerso]);
 
     const determinerEvtSuivant = useCallback(() => {
-        const dateDejaAffichee: boolean = leTempsPasse(perso, executerEvt);
+        const evtProgrammeExecute: boolean = leTempsPasse(perso, executerEvt);
         setPerso({
             ...perso,
         });
@@ -176,12 +176,12 @@ const Histoire: React.FC = (): JSX.Element => {
             if (completeProba > 1) {
                 randomProba *= completeProba;
             }
-            let evtExecute:boolean = false;
+            let evtExecute:boolean = evtProgrammeExecute;
             evtsApplicables.every(evt => {
                 if (evt.proba) {
                     randomProba -= evt.proba;
                     if (randomProba <= 0) {
-                        executerEvt(evt, dateDejaAffichee);
+                        executerEvt(evt, evtProgrammeExecute);
                         evtExecute = true;
                         return false;
                     }
