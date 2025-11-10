@@ -23,11 +23,28 @@ export const evts_programmes: EvtProgramme[] = [
         },
     },
     {
-        date: (perso:Perso):boolean => perso.date === anneesToJours(92), // préciser mois et jour précis
+        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 12, // 12 floréal 92
         evt: {
-            id: "evts_programmes émeutes anarchistes des chaos",
+            id: "evts_programmes émeutes anarchistes des chaos j1",
             description: async (_perso: Perso): Promise<string> => {
-                return "TODO : émeutes anarchistes des chaos"
+                return "Les tensions dans le quartier Montreuil des Khaos tournent à l'explosion : "
+                + "Les khaos revendiquent l'anarchisme, l'autogouvernement et la sécession de la ville. <br/>"
+                + "Il n'y a aucune chance que le consul accepte cela. La répression va être terrible une fois encore. <br/>"
+            },
+            conditions: (_perso: Perso): boolean => true,
+        },
+    },
+    {
+        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 13, // 13 floréal 92
+        evt: {
+            id: "evts_programmes émeutes anarchistes des chaos j2",
+            description: async (_perso: Perso): Promise<string> => {
+                return "Une explosion a eu lieu aux abords du quartier Montreuil.<br/> "
+                + "Tout semble accuser les Khaos. La police et les robots du consul prennent ça comme un signal. "
+                + "La répression commence. "
+                + "Des cars pleins de CRS en armure de combat sont envoyés sur palce. "
+                + "L'émeute s'enflamme quelques heures plus tard et les blessés su multiplient. "
+
             },
             conditions: (_perso: Perso): boolean => true,
         },
