@@ -1,6 +1,15 @@
 import {Perso, PersoHisto} from "../../types/perso/Perso";
 import {anneesToJours, getAge} from "../../types/Date";
 import {EvtProgramme} from "../../types/Evt";
+import {suitUneCarriereDe} from "../../fonctions/metiers/metiersUtils";
+import {MetiersEnum} from "../metiers";
+import {ResultatTest} from "../../types/LancerDe";
+import {testComp, testMetier, testVice} from "../../fonctions/des";
+import {Vice} from "../../types/ViceVertu";
+import {TypeCompetence} from "../../types/perso/comps/Comps";
+import {modifierStatut} from "../../fonctions/perso/statut";
+import {modifierReputationDansQuartier} from "../../fonctions/perso/Reputation";
+import {Quartier} from "../geographie/quartiers";
 
 // ces énévements sont déclenchés à date fixe indépendamment des actions du héros
 // pour exister ils doivent être ajouté à la comp 'evtsProgrammes' du perso au début
@@ -23,28 +32,68 @@ export const evts_programmes: EvtProgramme[] = [
         },
     },
     {
-        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 12, // 12 floréal 92
+        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 11, // 12 floréal 92
         evt: {
             id: "evts_programmes émeutes anarchistes des chaos j1",
             description: async (_perso: Perso): Promise<string> => {
                 return "Les tensions dans le quartier Montreuil des Khaos tournent à l'explosion : "
-                + "Les khaos revendiquent l'anarchisme, l'autogouvernement et la sécession de la ville. <br/>"
-                + "Il n'y a aucune chance que le consul accepte cela. La répression va être terrible une fois encore. <br/>"
+                + "Les khaos revendiquent l'anarchisme, l'autogouvernement et la sécession de la ville. Ce n'est pas la première fois, et comme pour les précédentes, "
+                + "il n'y a aucune chance que le consul accepte cela. La répression va être terrible une fois encore. <br/>"
             },
             conditions: (_perso: Perso): boolean => true,
         },
     },
     {
-        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 13, // 13 floréal 92
+        date: (perso:Perso):boolean => perso.date === anneesToJours(92) + 7*30 + 12, // 13 floréal 92
         evt: {
             id: "evts_programmes émeutes anarchistes des chaos j2",
-            description: async (_perso: Perso): Promise<string> => {
-                return "Une explosion a eu lieu aux abords du quartier Montreuil.<br/> "
+            description: async (perso: Perso): Promise<string> => {
+                let texte:string = "Une explosion a eu lieu aux abords du quartier Montreuil.<br/> "
                 + "Tout semble accuser les Khaos. La police et les robots du consul prennent ça comme un signal. "
                 + "La répression commence. "
                 + "Des cars pleins de CRS en armure de combat sont envoyés sur palce. "
-                + "L'émeute s'enflamme quelques heures plus tard et les blessés su multiplient. "
+                + "L'émeute s'enflamme quelques heures plus tard et les blessés se multiplient. <br/>>";
 
+                if (suitUneCarriereDe(perso, MetiersEnum.journaliste)) {
+                    // --------------------- JOURNALISME
+                    const resTestImpulsif:ResultatTest = testVice(perso, Vice.impulsif, 20);
+                    texte += resTestImpulsif.resume;
+                    const resTestEnvieux:ResultatTest = testVice(perso, Vice.envieux, 20);
+                    texte += resTestEnvieux.resume;
+                    if (resTestEnvieux.reussi) {
+                        texte += "Vous foncez à Montreuil pour couvrir l'événement. ";
+                    } else if (resTestImpulsif.reussi) {
+                        texte += "C'est l'occasion d'un scoop ! Vous foncez à Montreuil pour couvrir l'événement. ";
+                    }
+                    let difficulteArticle:number = -20;
+                    if (resTestEnvieux.reussi || resTestImpulsif.reussi) {
+                        difficulteArticle += 20;
+                        const resTestTromperie:ResultatTest = testComp(perso, TypeCompetence.tromperie, 20);
+                        texte += resTestTromperie.resume;
+                        if (resTestTromperie.reussi) {
+                            texte += "Vous parvenez à passer les barricdes et vous introduire dans Montreuil. "
+                            + "Puis vous entrez dans un bar puis montez sur un toit pour jauger les émeutes d'en haut. "
+                            + "Vous êtes idéalement placé pour faire des photos et écrire un article exceptionnel en plein coeur de l'action !<br/>";
+                            difficulteArticle += 60;
+                        }
+                    }
+                    const restTestJournaliste:ResultatTest = testMetier(perso, MetiersEnum.journaliste, difficulteArticle);
+                    texte += restTestJournaliste.resume;
+                    if (restTestJournaliste.reussi) {
+                        if (restTestJournaliste.critical) {
+                            texte += "Vous en tirez un article si excellent et percutant par votre rédacteur en chef qu'il en vend les droits à prix d'or et le diffuse sur écrans géants dans toute la ville en temps réel. "
+                                + "L'opinion publique est si scandalisée par les violences et manipulations que vous rapportez que la police limite la répression et quitte le quartier. <br/>";
+                            texte += "Vous êtes maintenant célèbre et adulé par le public autant que détesté par la police. <br/>";
+                            texte += modifierStatut(perso, 2);
+                            texte += modifierReputationDansQuartier(perso, Quartier.montreuil, 20, 30);
+                        } else {
+                            texte += "Vous en tirez un excellent article. <br/>";
+                            texte += modifierStatut(perso, 1);
+                        }
+                    }
+
+                }
+                return texte;
             },
             conditions: (_perso: Perso): boolean => true,
         },

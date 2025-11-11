@@ -32,7 +32,7 @@ export const evts_carriere: GroupeEvts = {
                 let texteTests: string = "";
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
-                    const resultatTestMetier:ResultatTest = testMetier(perso, {metier: carriere.metier, bonusMalus: 20});
+                    const resultatTestMetier:ResultatTest = testMetier(perso, carriere.metier, 20);
                     texteTests += resultatTestMetier.resume + "<br/>";
                     if (resultatTestMetier.reussi) {
                         texte += "Vous êtes un " + carriere.metier + " efficace. ";

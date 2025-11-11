@@ -300,7 +300,7 @@ const Histoire: React.FC = (): JSX.Element => {
                         <Grid2>
                             <Typography fontWeight="bold">
                                 {
-                                    jourSansEvt > 0 ? jourSansEvt + " jours sans événement notable." : ''
+                                    jourSansEvt > 0 ? jourSansEvt + " jours sans événement notable." : 'lendemain'
                                 }
                                 <br/>
                                 Prochain événement dans {tempsRestant} seconde{tempsRestant > 1 ? 's' : ''}...

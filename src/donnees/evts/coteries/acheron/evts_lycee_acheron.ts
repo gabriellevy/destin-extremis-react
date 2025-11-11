@@ -18,7 +18,7 @@ export const evts_lycee_acheron: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte = "Pour être initié à la technomancie et chercher l'immortalité par la digitalisation dans le réseau, il faut déjà maîtriser les bases de l'informatique.";
 
-                const resTestInfo:ResultatTest = testMetier(perso, {metier: MetiersEnum.informaticien, bonusMalus: 0});
+                const resTestInfo:ResultatTest = testMetier(perso, MetiersEnum.informaticien, 0);
                 texte += resTestInfo.resume;
                 if (!resTestInfo.reussi) {
                     texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en informatique au sens large. <br/>";
@@ -29,7 +29,7 @@ export const evts_lycee_acheron: GroupeEvts = {
                     }
                 } else {
                     texte += "Vous avez déjà un bon niveau. Mais il faut aussi maîtriser la magie, car la technomancie est la combinaison de l'informatique et de la magie. <br/>";
-                    const resTestInfo:ResultatTest = testMetier(perso, {metier: MetiersEnum.informaticien, bonusMalus: 0});
+                    const resTestInfo:ResultatTest = testMetier(perso, MetiersEnum.informaticien, 0);
                     texte += resTestInfo.resume;
                     if (!resTestInfo.reussi) {
                         texte += "Ce n'est pas votre cas, vous recevez donc une solide formation en magie nécromantique théoriqe. <br/>";

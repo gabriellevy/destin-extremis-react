@@ -17,7 +17,7 @@ import {statut1SuperieurOuEgalAStatut2} from "../../../fonctions/perso/statut";
 
 const passageDiplomeIngenieur: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "C'est le jour du passage de diplôme ! ";
-    const resTestInge:ResultatTest = testMetier(perso, {metier: MetiersEnum.etudiant_ingenieur, bonusMalus: 20});
+    const resTestInge:ResultatTest = testMetier(perso, MetiersEnum.etudiant_ingenieur, 20);
     texte += resTestInge.resume;
     if (resTestInge.reussi) {
         texte +=  "Au soir vous avez déjà confirmation que vous avez réussi. Vous êtes maintenant un ingénieur à part entière.";
@@ -91,7 +91,7 @@ export const evts_ingenieur: GroupeEvts = {
             id: "evts_ingenieur3_entre_a_la_guilde",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "Vous aimeriez bien rejoindre la guilde des ingénieurs.";
-                const resTestInge:ResultatTest = testMetier(perso, {metier: MetiersEnum.etudiant_ingenieur, bonusMalus: 0});
+                const resTestInge:ResultatTest = testMetier(perso, MetiersEnum.etudiant_ingenieur, 0);
                 texte += resTestInge.resume;
                 if (resTestInge.reussi) {
                     rejointGuilde(perso, MetiersEnum.ingenieur);

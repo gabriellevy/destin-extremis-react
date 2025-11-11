@@ -252,7 +252,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 let texte: string = "";
                 const carriere: Carriere|undefined = getCarriereActive(perso);
                 if (carriere) {
-                    const resultatTestMetier:ResultatTest = testMetier(perso, {metier: carriere.metier, bonusMalus: 20});
+                    const resultatTestMetier:ResultatTest = testMetier(perso, carriere.metier, 20);
                     const resTestEvaluation: ResultatTest = testComp(perso, TypeCompetence.evaluation, 20);
                     texte += resTestEvaluation.resume;
                     texte += resultatTestMetier.resume + "<br/>";

@@ -41,7 +41,7 @@ export const evts_macon: GroupeEvts = {
             id: "evts_macon2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.macon, bonusMalus: 20});
+                const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.macon, 20);
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un maçon efficace. `;

@@ -47,7 +47,7 @@ export const evts_serveur: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
                 let texteTests: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.serveur, bonusMalus: 20});
+                const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.serveur, 20);
                 texteTests += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un serveur efficace et apprécié. `;

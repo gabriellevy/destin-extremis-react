@@ -14,7 +14,7 @@ import {
 
 const passageDiplomeBoulanger: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes apprenti boulanger depuis longtemps. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_boulanger, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.apprenti_boulanger, 20);
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Votre maître vous juge prêt. Vous allez pouvoir devenir boulanger à part entière.";
@@ -65,7 +65,7 @@ export const evts_boulanger: GroupeEvts = {
             id: "evts_boulanger2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.boulanger, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.boulanger, 0);
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Votre pain est apprécié de tous. `;

@@ -26,7 +26,7 @@ export function enfant(empty: boolean): PersoForm {
         bonheur: 0.5,
         sexe: sexe,
         dateNaissance: anneesToJours(DATE_NAISSANCE_BASE), // début à 13-14 ans
-        date: anneesToJours(ANNEE_DE_DEPART), // année théorique de départ du jeu. 2104 dans notre monde
+        date: anneesToJours(ANNEE_DE_DEPART),
         anneeDeDepart: ANNEE_DE_DEPART,
         age: ANNEE_DE_DEPART-DATE_NAISSANCE_BASE,
         lieu: lieuAleatoire(),

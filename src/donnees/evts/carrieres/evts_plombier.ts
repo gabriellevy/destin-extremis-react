@@ -15,7 +15,7 @@ import {
 
 const passageDiplomePlombier: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes étudiant en plomberie depuis deux années. Hui vous passez votre diplôme. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.plombier, bonusMalus: 40});
+    const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.plombier, 40);
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "C'est une réussite, vous êtes maintenant un plombier.<br/>";

@@ -45,7 +45,7 @@ export const evts_journaliste: GroupeEvts = {
             id: "evts_journaliste2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resultatTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.journaliste, bonusMalus: 20});
+                const resultatTestMetier:ResultatTest = testMetier(perso, MetiersEnum.journaliste, 20);
                 texte += resultatTestMetier.resume;
                 if (resultatTestMetier.reussi) {
                     texte += `Vous êtes un journaliste efficace et respecté. `;

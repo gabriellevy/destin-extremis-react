@@ -1,10 +1,11 @@
-import {ResultatTest, TestMetier} from "../types/LancerDe";
+import {ResultatTest} from "../types/LancerDe";
 import {Perso, PersoCommon} from "../types/perso/Perso";
 import {augmenterNbDeTestsFaitsMetier, getCompetenceMetier} from "./metiers/metiersUtils";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../types/ViceVertu";
 import {augmenterNbDeTestsFaitsComp, getValeurCompetence} from "./perso/competences";
 import {ajouteLigneDeTexteItalique} from "./texte_fc";
 import {TypeCompetence} from "../types/perso/comps/Comps";
+import {MetiersEnum} from "../donnees/metiers";
 
 export function d2(): number {
     return Math.floor(Math.random() * 2) + 1;
@@ -40,11 +41,11 @@ export function testVice(perso: PersoCommon, vice: Vice, modificateur: number): 
     return returnTestResult("", vice, calculerValeur, modificateur);
 }
 
-export function testMetier(perso: Perso, test: TestMetier): ResultatTest {
-    const valComp: number = getCompetenceMetier(perso, test.metier);
+export function testMetier(perso: Perso, metiersEnum: MetiersEnum, bonusMalus: number): ResultatTest {
+    const valComp: number = getCompetenceMetier(perso, metiersEnum);
     // augmenter tests effectués :
-    const resAugmentation: string = augmenterNbDeTestsFaitsMetier(perso, test.metier);
-    return returnTestResult(resAugmentation, test.metier, valComp, test.bonusMalus);
+    const resAugmentation: string = augmenterNbDeTestsFaitsMetier(perso, metiersEnum);
+    return returnTestResult(resAugmentation, metiersEnum, valComp, bonusMalus);
 }
 
 function getCritical(resDe: number) {

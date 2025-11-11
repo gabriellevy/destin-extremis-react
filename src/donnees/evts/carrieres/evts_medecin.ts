@@ -14,7 +14,7 @@ import {MetiersEnum, metiersObjs} from "../../metiers";
 
 const passageDiplomeMedecin: (perso: Perso) => Promise<string> = (perso: Perso) => {
     let texte: string =  "Vous êtes étudiant en médecine depuis des années. ";
-    const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.apprenti_chirurgien, bonusMalus: 20});
+    const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.apprenti_chirurgien, 20);
     texte += resTestMetier.resume;
     if (resTestMetier.reussi) {
         texte +=  "Il est temps de passer votre diplôme. Vous allez pouvoir devenir un médecin à part entière.";
@@ -74,7 +74,7 @@ export const evts_medecin: GroupeEvts = {
             id: "evts_médecin2",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "";
-                const resTestMetier:ResultatTest = testMetier(perso, {metier: MetiersEnum.medecin, bonusMalus: 0});
+                const resTestMetier:ResultatTest = testMetier(perso, MetiersEnum.medecin, 0);
                 texte += resTestMetier.resume;
                 if (resTestMetier.reussi) {
                     texte += `Vous êtes un médecin efficace et respecté. `;
