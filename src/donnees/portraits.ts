@@ -40,15 +40,21 @@ export const portraits:Portrait[] = [
         coteries: [Coterie.acheron],
     },
     {
-        url: "",
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/lumi%C3%A8res/14_18.jpg",
         ageMin: 12,
         ageMax: 18,
         coteries: [Coterie.lumieres],
     },
     {
-        url: "",
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/lumi%C3%A8res/18_30.jpg",
         ageMin: 18,
         ageMax: 30,
         coteries: [Coterie.lumieres],
+    },
+    {
+        url: "",
+        ageMin: 14,
+        ageMax: 20,
+        coteries: [Coterie.demokratos],
     },
 ];
