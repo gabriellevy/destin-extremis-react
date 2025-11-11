@@ -28,9 +28,27 @@ export function extrairePortrait(perso:Perso): string {
 
 export const portraits:Portrait[] = [
     {
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/ogre/12_20.jpg",
+        ageMin: 12,
+        ageMax: 20,
+        coteries: [Coterie.ogres],
+    },
+    {
         url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/ach%C3%A9ron/12_20.jpg",
         ageMin: 12,
         ageMax: 20,
         coteries: [Coterie.acheron],
-    }
+    },
+    {
+        url: "",
+        ageMin: 12,
+        ageMax: 18,
+        coteries: [Coterie.lumieres],
+    },
+    {
+        url: "",
+        ageMin: 18,
+        ageMax: 30,
+        coteries: [Coterie.lumieres],
+    },
 ];
