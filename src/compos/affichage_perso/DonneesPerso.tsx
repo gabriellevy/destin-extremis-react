@@ -60,15 +60,15 @@ const DonneesPerso: React.FC = (): JSX.Element => {
                               secondary={`${getAge(perso)} ans (${jourStr(perso.dateNaissance)})`}/>
             </Typography>
         </ListItem>
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 147 }}>
             <CardMedia
                 component="img"
-                image="https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Argenteuil.jpg"
+                image="https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/inconnu.jpg"
                 alt="Portrait"
                 sx={{
-                    height: 180,
+                    height: 164,
                     width: 'auto',
-                    objectFit: 'contain', // ou 'cover' selon vos besoins
+                    objectFit: 'cover', // ou 'cover' selon vos besoins
                 }}
             />
         </Card>
