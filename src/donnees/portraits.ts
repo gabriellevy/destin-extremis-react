@@ -75,7 +75,7 @@ export const portraits:Portrait[] = [
         coteries: [Coterie.demokratos],
     },
     {
-        url: "",
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/ork/dileur_8_17.jpg",
         ageMin: 14,
         ageMax: 20,
         coteries: [Coterie.orks],

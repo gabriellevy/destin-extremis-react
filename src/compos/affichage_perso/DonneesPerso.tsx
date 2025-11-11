@@ -65,7 +65,8 @@ const DonneesPerso: React.FC = (): JSX.Element => {
                               secondary={`${getAge(perso)} ans (${jourStr(perso.dateNaissance)})`}/>
             </Typography>
         </ListItem>
-        <Card sx={{ maxWidth: 147 }}>
+        <Card sx={{ maxWidth: 147,
+            marginLeft: "30px", }}>
             <CardMedia
                 component="img"
                 image={urlPortrait}
