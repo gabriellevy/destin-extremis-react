@@ -2,11 +2,12 @@ import {Box, Button, Card, CardMedia, List, ListItem, ListItemText, Typography} 
 import {getAge, joursToAnnees, jourStr} from "../../types/Date";
 import {Carriere, PhaseProfessionnelle} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
-import {JSX, useContext} from "react";
+import {JSX, useContext, useMemo} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {MetiersEnum, metiersObjs} from "../../donnees/metiers";
 import {Perso} from "../../types/perso/Perso";
 import {etudie} from "../../fonctions/coteries/etudes";
+import {extrairePortrait} from "../../donnees/portraits";
 
 const DonneesPerso: React.FC = (): JSX.Element => {
     const { perso } = useContext(PersoContexte) as PersoContexteType;
@@ -53,6 +54,10 @@ const DonneesPerso: React.FC = (): JSX.Element => {
         );
     }
 
+    const urlPortrait:string = useMemo(() =>
+        extrairePortrait(perso)
+    , [perso]);
+
     return (<List dense>
         <ListItem key={`${perso.prenom} ${perso.nom} ${perso.cognomen}`}>
             <Typography variant="h5" gutterBottom>
@@ -63,7 +68,7 @@ const DonneesPerso: React.FC = (): JSX.Element => {
         <Card sx={{ maxWidth: 147 }}>
             <CardMedia
                 component="img"
-                image="https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/inconnu.jpg"
+                image={urlPortrait}
                 alt="Portrait"
                 sx={{
                     height: 164,
