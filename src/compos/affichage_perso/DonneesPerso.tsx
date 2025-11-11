@@ -1,4 +1,4 @@
-import {Box, Button, List, ListItem, ListItemText, Typography} from "@mui/material";
+import {Box, Button, Card, CardMedia, List, ListItem, ListItemText, Typography} from "@mui/material";
 import {getAge, joursToAnnees, jourStr} from "../../types/Date";
 import {Carriere, PhaseProfessionnelle} from "../../types/metiers/Metier";
 import {JOURS_PAR_AN} from "../../donnees/dates/calendrier";
@@ -60,6 +60,18 @@ const DonneesPerso: React.FC = (): JSX.Element => {
                               secondary={`${getAge(perso)} ans (${jourStr(perso.dateNaissance)})`}/>
             </Typography>
         </ListItem>
+        <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+                component="img"
+                image="https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Argenteuil.jpg"
+                alt="Portrait"
+                sx={{
+                    height: 180,
+                    width: 'auto',
+                    objectFit: 'contain', // ou 'cover' selon vos besoins
+                }}
+            />
+        </Card>
         {
             perso.carrieres.map((value: Carriere) => {
                 return (value &&
