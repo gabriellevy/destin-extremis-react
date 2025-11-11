@@ -2,23 +2,40 @@ import {Coterie} from "../types/Coterie";
 import {Portrait} from "@mui/icons-material";
 import {Perso} from "../types/perso/Perso";
 import {getAge} from "../types/Date";
+import {MetiersEnum} from "./metiers";
+import {getCarriereActive} from "../fonctions/metiers/metiersUtils";
 
 export type Portrait = {
     url: string,
     ageMin: number,
     ageMax: number,
     coteries: (Coterie|undefined)[],
+    metiers?: MetiersEnum[],
 }
 
 export function extrairePortrait(perso:Perso): string {
-    const portraitsValides:Portrait[] = portraits.filter((portrait:Portrait) => {
+    // d'abord essayer d'en trouver un qui correspond au métier ?
+    let portraitsValides:Portrait[] = portraits.filter((portrait:Portrait) => {
         return getAge(perso) <= portrait.ageMax
             && getAge(perso) >= portrait.ageMin
-        && (
-            portrait.coteries.includes(perso.coterie)
-            || portrait.coteries.includes(perso.bilanLycee.coterieActuelle)
-            );
+            && (
+                portrait.coteries.includes(perso.coterie)
+                || portrait.coteries.includes(perso.bilanLycee.coterieActuelle)
+            )
+            && (portrait.metiers && portrait.metiers.includes(getCarriereActive(perso).metier));
     });
+
+    // sinon plus générique ?
+    if (portraitsValides.length == 0) {
+        portraitsValides = portraits.filter((portrait:Portrait) => {
+            return getAge(perso) <= portrait.ageMax
+                && getAge(perso) >= portrait.ageMin
+                && (
+                    portrait.coteries.includes(perso.coterie)
+                    || portrait.coteries.includes(perso.bilanLycee.coterieActuelle)
+                );
+        });
+    }
     if (portraitsValides.length > 0) {
         return portraitsValides[Math.floor(Math.random() * portraitsValides.length)].url;
     }
@@ -52,9 +69,16 @@ export const portraits:Portrait[] = [
         coteries: [Coterie.lumieres],
     },
     {
-        url: "",
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/d%C3%A9mokratos/14_20.jpg",
         ageMin: 14,
         ageMax: 20,
         coteries: [Coterie.demokratos],
+    },
+    {
+        url: "",
+        ageMin: 14,
+        ageMax: 20,
+        coteries: [Coterie.orks],
+        metiers: [MetiersEnum.dileur_de_lycee]
     },
 ];
