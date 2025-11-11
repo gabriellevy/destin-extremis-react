@@ -6,7 +6,8 @@ import {ajouteLigneDeTexteGras} from "../texte_fc";
 export function reputationVide(): Reputation {
     return {
         parQuartier: [],
-        qualite: 0,
+        apprecieDeLaPopulation: 0,
+        apprecieDesAutorites: 0,
         amplitude: 0,
     };
 }
@@ -41,6 +42,17 @@ export function getNiveauReputationDansQuartier(perso:Perso, quartier:Quartier):
     return getReputationQuartier(perso, quartier)?.qualite ?? 0;
 }
 
+export function modifierReputationAupresPopulation(perso:Perso, modifQualite: number, modifAmplitude: number): string {
+    perso.reputation.apprecieDeLaPopulation += modifQualite;
+    perso.reputation.amplitude += modifAmplitude;
+    return ajouteLigneDeTexteGras(affichageReputatioPopulation(perso));
+}
+
+export function modifierReputationAupresAutorites(perso:Perso, modifQualite: number): string {
+    perso.reputation.apprecieDesAutorites += modifQualite;
+    return ajouteLigneDeTexteGras(affichageReputatioAutorites(perso));
+}
+
 export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|undefined, modifQualite: number, modifAmplitude: number): string {
     const quartierFinal:Quartier|undefined = quartier ?? perso.lieu.quartier;
     if (!quartierFinal) {
@@ -60,10 +72,34 @@ export function modifierReputationDansQuartier(perso:Perso, quartier:Quartier|un
         })
     }
     if (repQuartier.amplitude === 0) return "";
-    return ajouteLigneDeTexteGras("Réputation : " + affichageReputation(perso, quartierFinal) + ". <br/>");
+    return ajouteLigneDeTexteGras("Réputation : " + affichageReputationQuartier(perso, quartierFinal) + ". <br/>");
 }
 
-export function affichageReputation(perso: Perso, quartier:Quartier) {
+export function affichageReputatioPopulation(perso: Perso):string {
+    if (perso.reputation.amplitude > 0) {
+        if (perso.reputation.apprecieDeLaPopulation < 0) {
+            return "Connu par la population et mal vu";
+        } else {
+            return "Très apprécié du grand public";
+        }
+    }
+    return "Inconnu du public";
+}
+
+export function affichageReputatioAutorites(perso: Perso):string {
+    if (perso.reputation.apprecieDesAutorites < 0) {
+        if (perso.reputation.apprecieDesAutorites < -50) {
+            return "Criminel recherché";
+        }
+        return "Fiché comme délinquant à surveiller";
+    }
+    if (perso.reputation.apprecieDesAutorites > 0) {
+        return "Réputation d'honnête homme";
+    }
+    return "Inconnu des autorité";
+}
+
+export function affichageReputationQuartier(perso: Perso, quartier:Quartier) {
     let repQuartier: ReputationQuartier|undefined = getReputationQuartier(perso, quartier);
     let amplitude:number;
     let qualite:number;

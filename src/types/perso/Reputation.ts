@@ -5,7 +5,8 @@ export type Reputation = {
     // -------------- réputation générale "dans le monde" (mais surtout dans la ville)
     // -100 = catastrophique (criminel ultra dangereux),
     // +100 = excellente (bienfaiteur universel héroïque)
-    qualite: number;
+    apprecieDeLaPopulation: number;
+    apprecieDesAutorites: number; // consul, police... (même échelle que ci dessus)
     // 0 est une personne normale (inconnue)
     // 1 à 20 : passé à la télé 1 ou 2 fois
     // 21 à 80 : très connu

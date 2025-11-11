@@ -4,12 +4,17 @@ import {EvtProgramme} from "../../types/Evt";
 import {suitUneCarriereDe} from "../../fonctions/metiers/metiersUtils";
 import {MetiersEnum} from "../metiers";
 import {ResultatTest} from "../../types/LancerDe";
-import {testComp, testMetier, testVice} from "../../fonctions/des";
-import {Vice} from "../../types/ViceVertu";
+import {testComp, testMetier, testVertu, testVice} from "../../fonctions/des";
+import {Vertu, Vice} from "../../types/ViceVertu";
 import {TypeCompetence} from "../../types/perso/comps/Comps";
 import {modifierStatut} from "../../fonctions/perso/statut";
-import {modifierReputationDansQuartier} from "../../fonctions/perso/Reputation";
+import {
+    modifierReputationAupresAutorites,
+    modifierReputationAupresPopulation,
+    modifierReputationDansQuartier
+} from "../../fonctions/perso/Reputation";
 import {Quartier} from "../geographie/quartiers";
+import {Coterie} from "../../types/Coterie";
 
 // ces énévements sont déclenchés à date fixe indépendamment des actions du héros
 // pour exister ils doivent être ajouté à la comp 'evtsProgrammes' du perso au début
@@ -86,13 +91,92 @@ export const evts_programmes: EvtProgramme[] = [
                             texte += "Vous êtes maintenant célèbre et adulé par le public autant que détesté par la police. <br/>";
                             texte += modifierStatut(perso, 2);
                             texte += modifierReputationDansQuartier(perso, Quartier.montreuil, 20, 30);
+                            texte += modifierReputationAupresAutorites(perso, -5);
+                            texte += modifierReputationAupresPopulation(perso, 5, 15);
                         } else {
                             texte += "Vous en tirez un excellent article. <br/>";
                             texte += modifierStatut(perso, 1);
                         }
                     }
+                } else {
+                    // ------------------- EVT STANDARD
+                    let vaSurPlace:boolean = perso.coterie === Coterie.khaos;
+                    if (!vaSurPlace) {
+                        const resTestRebelle:ResultatTest = testVice(perso, Vice.rebelle, -10);
+                        texte += resTestRebelle.resume;
+                        if (resTestRebelle.reussi) {
+                            vaSurPlace = true;
+                        }
+                    }
+
+                    if (vaSurPlace) {
+                        texte += "Vous allez manifester dans la rue pour obtenir le relâchement des règles excessives du consul. <br/>"
+                        texte += "Autour de vous pas  mal de vitrines sont brisées. <br/>";
+                        const resTestCupide:ResultatTest = testVice(perso, Vice.cupide, 0);
+                        texte += resTestCupide.resume;
+                        if (resTestCupide.reussi) {
+                            texte += "Vous en profitez pour piller un peu d'électroménager et de fringues. ";
+                            texte += modifierStatut(perso, 1);
+                            texte += "Puis vous préférez vous éclipser avec votre butin avant que ça ne tourne mal. <br/>"
+                        } else {
+                            // ------------------ émeute
+                            let succesDansManif:number = 0;
+                            texte += "Vous finissez par vous trouver face à une ligne de CRS en armures qui bloquent toute la largeur de la rue avec leurs énormes boucliers. ";
+                            const resTestValeureux:ResultatTest = testVertu(perso, Vertu.valeureux, 0);
+                            texte += resTestValeureux.resume;
+                            if (resTestValeureux.reussi) {
+                                succesDansManif += 1;
+                                texte += "Vous échangez des projectiles avec les CRS et encaissez des volées de grenades lacrymogènes. <br/>";
+                                const resTestTir:ResultatTest = testComp(perso, TypeCompetence.tir, 0);
+                                texte += resTestTir.resume;
+                                if (resTestTir.reussi) {
+                                    succesDansManif += 1;
+                                    if (resTestTir.critical) {
+                                        succesDansManif += 2;
+                                    }
+                                }
+                                const resTestEnd:ResultatTest = testComp(perso, TypeCompetence.endurance, 0);
+                                texte += resTestEnd.resume;
+                                if (resTestEnd.reussi) {
+                                    succesDansManif += 1;
+                                    if (resTestEnd.critical) {
+                                        succesDansManif += 2;
+                                    }
+                                }
+                                texte += "Les CRS se décident à charger et tentent d'isoler des sous-groupes pour les tabasser et les arrêter. <br/>";
+                                const resTestBag:ResultatTest = testComp(perso, TypeCompetence.bagarre, -30);
+                                texte += resTestBag.resume;
+                                if (resTestBag.reussi) {
+                                    succesDansManif += 3;
+                                    if (resTestBag.critical) {
+                                        succesDansManif += 2;
+                                    }
+                                    texte += "À mains nues vous parvenez à ceinturer et neutralier une des brutes carapaçonnées. <br/>";
+                                }
+                                const resTestCom:ResultatTest = testComp(perso, TypeCompetence.commandement, 0);
+                                texte += resTestCom.resume;
+                                if (resTestCom.reussi) {
+                                    succesDansManif += 1;
+                                    if (resTestCom.critical) {
+                                        succesDansManif += 2;
+                                    }
+                                    texte += "Vous parvenez à coordonner vos camarades pour résister mieux aux assauts. <br/>";
+                                }
+                                console.log("succesDansManif : " + succesDansManif);
+                                if (succesDansManif >= 3) {
+                                    texte += "Vous avez beaucoup impressionné les manifestants khaos... et avez sans doute attiré l'attention des CRS.<br/>";
+                                    texte += modifierReputationDansQuartier(perso, Quartier.montreuil, succesDansManif *2, succesDansManif *2);
+                                    texte += modifierReputationAupresAutorites(perso, -succesDansManif);
+                                }
+
+                            } else {
+                                texte += "Vous fuyez avant la charge. <br/>"
+                            }
+                        }
+                    }
 
                 }
+
                 return texte;
             },
             conditions: (_perso: Perso): boolean => true,
