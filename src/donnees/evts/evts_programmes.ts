@@ -15,6 +15,7 @@ import {
 } from "../../fonctions/perso/Reputation";
 import {Quartier} from "../geographie/quartiers";
 import {Coterie} from "../../types/Coterie";
+import {infligerBlessureAleatoire} from "../../fonctions/sante/sante";
 
 // ces énévements sont déclenchés à date fixe indépendamment des actions du héros
 // pour exister ils doivent être ajouté à la comp 'evtsProgrammes' du perso au début
@@ -168,13 +169,32 @@ export const evts_programmes: EvtProgramme[] = [
                                     texte += modifierReputationDansQuartier(perso, Quartier.montreuil, succesDansManif *2, succesDansManif *2);
                                     texte += modifierReputationAupresAutorites(perso, -succesDansManif);
                                 }
-
                             } else {
                                 texte += "Vous fuyez avant la charge. <br/>"
                             }
                         }
-                    }
+                        // ------------------- blessé
+                        const resTestChance:ResultatTest = testComp(perso, TypeCompetence.chance, 30);
+                        texte += resTestChance.resume;
+                        if (!resTestChance.reussi) {
+                            texte += infligerBlessureAleatoire(perso, 0, 6);
+                        }
 
+                        // -------------------- fuite
+                        const resTestM:ResultatTest = testComp(perso, TypeCompetence.mouvement, 0);
+                        texte += resTestM.resume;
+                        const resTestTromp:ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
+                        texte += resTestTromp.resume;
+                        const resTestDiscret:ResultatTest = testComp(perso, TypeCompetence.discretion, 0);
+                        texte += resTestDiscret.resume;
+                        if (resTestTromp.reussi || resTestM.reussi || resTestDiscret.reussi) {
+                            texte += "Vous parvenez à échapper à l'arrestation. <br/>"
+                        } else {
+                            texte += "Vous êtes capturé et interrogé par des CRS. <br/>"
+                            texte += "Ils vous laissent repartir le lendemain mais il est clair que vous êtes maintenant fiché à vie. <br/>"
+                            texte += modifierReputationAupresAutorites(perso, -5);
+                        }
+                    }
                 }
 
                 return texte;
@@ -182,4 +202,15 @@ export const evts_programmes: EvtProgramme[] = [
             conditions: (_perso: Perso): boolean => true,
         },
     },
+    {
+        date: (perso: Perso): boolean => perso.date === anneesToJours(92) + 7 * 30 + 13, // 14 floréal 92
+        evt: {
+            id: "evts_programmes émeutes anarchistes des chaos j3",
+            description: async (_perso: Perso): Promise<string> => {
+                return "Le lendemain le quartier est encore en bonne partie incendié. "
+                + "Des centaines de manifestants sont emprisonnés et les journaux annoncent des restrictions sur al coterie Khaos, voire son interdiction. ";
+            },
+            conditions: (_perso: Perso): boolean => true,
+        },
+    }
 ];
