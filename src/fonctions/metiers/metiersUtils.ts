@@ -193,7 +193,7 @@ export function metierAleatoire(perso: PersoCommon): MetiersEnum {
     }
 
     let completeProba: number = 0;
-    probasMetiers.values().forEach( proba => {
+    probasMetiers.forEach( (proba, _metier) => {
             completeProba += proba;
     });
     let randomProba: number = Math.random() * completeProba;
