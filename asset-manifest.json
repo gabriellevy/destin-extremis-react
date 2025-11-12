@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/destin-extremis-react/static/css/main.8e08430f.css",
-    "main.js": "/destin-extremis-react/static/js/main.4d8c468d.js",
+    "main.css": "/destin-extremis-react/static/css/main.95030387.css",
+    "main.js": "/destin-extremis-react/static/js/main.8fcca912.js",
     "index.html": "/destin-extremis-react/index.html",
-    "main.8e08430f.css.map": "/destin-extremis-react/static/css/main.8e08430f.css.map",
-    "main.4d8c468d.js.map": "/destin-extremis-react/static/js/main.4d8c468d.js.map"
+    "main.95030387.css.map": "/destin-extremis-react/static/css/main.95030387.css.map",
+    "main.8fcca912.js.map": "/destin-extremis-react/static/js/main.8fcca912.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e08430f.css",
-    "static/js/main.4d8c468d.js"
+    "static/css/main.95030387.css",
+    "static/js/main.8fcca912.js"
   ]
 }
