@@ -3,7 +3,7 @@ import {lieuAleatoire} from "../../types/lieux/Lieu";
 import {MetalStatut} from "../../types/statut_social/Statut";
 import {NiveauIA, PersoForm, Sexe} from "../../types/perso/Perso";
 import {compsDeBase} from "../../types/perso/comps/Comps";
-import {evts_programmes} from "../evts/evts_programmes";
+import {evts_emeutes_khaos} from "../evts/programmes/evts_emeutes_khaos";
 import {Coterie} from "../../types/Coterie";
 import {viceVertuDeBase} from "../../types/ViceVertu";
 import {bilanLyceeALaNaissance} from "../../types/lycee/StadeUniversite";
@@ -15,6 +15,7 @@ import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
 import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, SECONDES_ENTRE_CHAQUE_EVT} from "../ReglagesJouabilite";
 import {DieuEnum} from "../../types/Dieu";
+import {evts_anniversaire} from "../evts/programmes/evts_anniversaire";
 
 export function enfant(empty: boolean): PersoForm {
     const cot: Coterie = getCoterieAleatoireSauf([]);
@@ -37,7 +38,9 @@ export function enfant(empty: boolean): PersoForm {
         comps: compsDeBase(),
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],
-        evtsProgrammes: evts_programmes,
+        evtsProgrammes: [
+            ...evts_emeutes_khaos,
+            ...evts_anniversaire],
         secondesEntreChaqueEvt: SECONDES_ENTRE_CHAQUE_EVT,
         bilanLycee: bilanLyceeALaNaissance,
         reputation: reputationVide(),

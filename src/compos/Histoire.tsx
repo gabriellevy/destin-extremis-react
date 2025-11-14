@@ -1,7 +1,7 @@
 import {JSX, useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {Evt, EvtExecute, filtrerEtPreparerEvts} from "../types/Evt";
 import {jourStr, leTempsPasse} from "../types/Date";
-import {evts_calendrier} from "../donnees/evts/evts_calendrier";
+import {evts_calendrier} from "../donnees/evts/programmes/evts_calendrier";
 import {evts_crime_ranconneur} from "../donnees/evts/carrieres/crime/evts_crime_ranconneur";
 import {evts_ingenieur} from "../donnees/evts/carrieres/evts_ingenieur";
 import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
