@@ -9,7 +9,7 @@ import {
     aUneActiviteATempsPlein,
     commencerCarriere,
     compatibiliteCarriere,
-    getCompetenceMetier,
+    getCompetenceMetier, SEUIL_COMPATIBILITE_METIER,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 import {MetiersEnum, metiersObjs} from "../../metiers";
@@ -122,7 +122,7 @@ export const evts_journaliste: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
                 && getAge(perso) >= 20
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= 2,
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.journaliste]) >= SEUIL_COMPATIBILITE_METIER,
             nbJoursEntreOccurences: 100,
         },
         {

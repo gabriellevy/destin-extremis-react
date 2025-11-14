@@ -43,7 +43,6 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -78,7 +77,6 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -99,7 +97,6 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {
@@ -180,7 +177,6 @@ export const evts_lycee_cathares: GroupeEvts = {
                 }
                 return texte;
             },
-            nbJoursEntreOccurences: 60,
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.cathares,
         },
         {

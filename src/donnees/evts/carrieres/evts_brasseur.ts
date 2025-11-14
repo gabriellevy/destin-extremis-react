@@ -8,7 +8,7 @@ import {getAge, anneesToJours} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
     commencerCarriere,
-    compatibiliteCarriere,
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 
@@ -60,7 +60,7 @@ export const evts_brasseur: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Emil_Brauer.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_brasseur]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_brasseur]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 14,
         },
         {

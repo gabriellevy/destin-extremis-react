@@ -7,6 +7,9 @@ export function aLaMaitrise(perso: Perso, maitrise: Maitrise): boolean {
 }
 
 export function ajouterMaitrise(perso: Perso, maitrise: Maitrise): string {
-    perso.maitrises.push(maitrise);
-    return ajouteLigneDeTexteGras("Apprentissage de la maîtrise " + maitrise.toString() + ".");
+    if (!aLaMaitrise(perso, maitrise)) {
+        perso.maitrises.push(maitrise);
+        return ajouteLigneDeTexteGras("Apprentissage de la maîtrise " + maitrise.toString() + ".");
+    }
+    return "";
 }

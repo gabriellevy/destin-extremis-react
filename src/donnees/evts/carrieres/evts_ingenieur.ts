@@ -9,7 +9,7 @@ import {anneesToJours, getAge} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
     commencerCarriere,
-    compatibiliteCarriere,
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER,
     suitUneCarriereDe
 } from "../../../fonctions/metiers/metiersUtils";
 import {appartientALaGuilde, rejointGuilde} from "../../../types/metiers/Guilde";
@@ -63,7 +63,7 @@ export const evts_ingenieur: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.etudiant_ingenieur]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.etudiant_ingenieur]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 14
                 && !statut1SuperieurOuEgalAStatut2(perso.statut, {metalStatut: MetalStatut.argent, rang: 3}),
             nbJoursEntreOccurences: 200,

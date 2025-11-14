@@ -7,7 +7,7 @@ import {getAge, anneesToJours} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
     commencerCarriere,
-    compatibiliteCarriere,
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 import {MetiersEnum, metiersObjs} from "../../metiers";
@@ -67,7 +67,7 @@ export const evts_medecin: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Martha_Scheren.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_chirurgien]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.apprenti_chirurgien]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 14,
         },
         {

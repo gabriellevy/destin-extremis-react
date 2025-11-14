@@ -3,7 +3,6 @@ import {Perso} from "../../../types/perso/Perso";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
-import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {
     aUneActiviteATempsPlein,
     commencerCarriere,
@@ -38,12 +37,10 @@ export const evts_pilleur_de_ruches: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean =>
-                !aUneActiviteATempsPlein(perso)
+                auBordDuneRuche(perso)
+                && !aUneActiviteATempsPlein(perso)
                 && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.pilleur_de_ruche]) >= 0
-                && (getValeurVice(perso, Vice.aventureux) >= 1
-                || getValeurVice(perso, Vice.cupide) >= 1 && getValeurVice(perso, Vice.aventureux) >= 0)
-                && getAge(perso) >= 16
-                && auBordDuneRuche(perso),
+                && getAge(perso) >= 16,
         },
     ],
     probaParDefaut: 0.1, // > à la moyenne car localisés à un quartier

@@ -8,7 +8,7 @@ import {getAge} from "../../../types/Date";
 import {
     arreterCarriere, aUneActiviteATempsPlein,
     commencerCarriere,
-    compatibiliteCarriere,
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 import {appelLeChatParaphrase} from "../../../fonctions/le_chat";
@@ -39,7 +39,7 @@ export const evts_serveur: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Klara_Kellner.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.serveur]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.serveur]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 14, // TODO : tester que dans une ville ?
         },
         {

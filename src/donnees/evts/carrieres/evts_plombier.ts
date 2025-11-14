@@ -9,7 +9,7 @@ import {
     arreterCarriere,
     aUneCarriere,
     commencerCarriere,
-    compatibiliteCarriere
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER
 } from "../../../fonctions/metiers/metiersUtils";
 
 
@@ -72,7 +72,7 @@ export const evts_plombier: GroupeEvts = {
             nbJoursEntreOccurences: 100,
             conditions: (perso: Perso): boolean =>
                 !aUneCarriere(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.plombier]) >= 1
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.plombier]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 16,
         },
     ],

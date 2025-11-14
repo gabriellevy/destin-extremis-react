@@ -318,10 +318,12 @@ export function plusUnEnCompetenceMetier(perso: Perso, metiersEnum: MetiersEnum)
     return "<i>+1 en " + metiersEnum.toString() + "</i><br/>";
 }
 
+export const SEUIL_COMPATIBILITE_METIER:number = 2;
 /**
- * return une valeur environ de -5 à +5 qui définit la compatibilité du personnage avec ce métier
+ * return une valeur environ de -10 à +10 qui définit la compatibilité du personnage avec ce métier
  * en fonction de ses vices et vertus
  * cad essentiellement si il veut exercer ce métier, indépendamment de ses compétences réelles
+ * à partir d'un résultat >= SEUIL_COMPATIBILITE_METIER la compatibilité est déjà plutôt satisfaisante
  */
 export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): number {
     if (!metier) {
@@ -343,6 +345,7 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
             compatibilite -= 4;
         }
     }
+    console.log("Compatibilité avec le métier " + metier.nom + " : " + compatibilite);
 
     return compatibilite;
 }

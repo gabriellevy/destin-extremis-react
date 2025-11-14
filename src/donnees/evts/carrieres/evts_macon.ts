@@ -8,7 +8,7 @@ import {getAge} from "../../../types/Date";
 import {
     aUneActiviteATempsPlein,
     commencerCarriere,
-    compatibiliteCarriere,
+    compatibiliteCarriere, SEUIL_COMPATIBILITE_METIER,
     travailleEnCeMomentComme
 } from "../../../fonctions/metiers/metiersUtils";
 
@@ -34,7 +34,7 @@ export const evts_macon: GroupeEvts = {
             image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-react/refs/heads/main/images/Kai_Bauerr.webp",
             conditions: (perso: Perso): boolean =>
                 !aUneActiviteATempsPlein(perso)
-                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.macon]) >= 0
+                && compatibiliteCarriere(perso, metiersObjs[MetiersEnum.macon]) >= SEUIL_COMPATIBILITE_METIER
                 && getAge(perso) >= 14,
         },
         {
