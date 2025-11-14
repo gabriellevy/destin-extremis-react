@@ -45,7 +45,7 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.eloquence],
             minus5Values: [TypeCompetence.tromperie],
         };
-        case Coterie.culte_du_plaisir: return {
+        case Coterie.hedonistes: return {
             plus10Values: [TypeCompetence.charme, TypeCompetence.ragot],
             plus5Values: [TypeCompetence.adresse, TypeCompetence.eloquence],
             minus10Values: [TypeCompetence.survie],

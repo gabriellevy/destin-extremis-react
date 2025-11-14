@@ -81,4 +81,10 @@ export const portraits:Portrait[] = [
         coteries: [Coterie.orks],
         metiers: [MetiersEnum.dileur_de_lycee]
     },
+    {
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/h%C3%A9donistes/12_16.png",
+        ageMin: 12,
+        ageMax: 16,
+        coteries: [Coterie.hedonistes],
+    },
 ];

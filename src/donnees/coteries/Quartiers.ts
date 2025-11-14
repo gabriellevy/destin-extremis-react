@@ -9,7 +9,7 @@ export function getQuartierDeCoterie(cot: Coterie): Quartier {
         case Coterie.celtes: return Quartier.chatenay_malabry;
         case Coterie.khaos: return Quartier.montreuil;
         case Coterie.conquistador: return Quartier.montesson;
-        case Coterie.culte_du_plaisir: return Quartier.palais_royal;
+        case Coterie.hedonistes: return Quartier.palais_royal;
         case Coterie.elfes: return Quartier.saint_germain_en_laye;
         case Coterie.esprit_de_la_nature: return Quartier.bois_de_boulogne;
         case Coterie.esthetes: return Quartier.versailles;
