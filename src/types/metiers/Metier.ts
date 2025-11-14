@@ -23,6 +23,7 @@ export type Metier = {
     // 1 pour les très courants (bureaucrate)
     proba: number,
     // vertus et vices associés : si le personnage a ces traits il aura plus de chances d'apprécier ce travail :
+    //  les deux combinés devraient inclure de 4 à 6 vices vertus pour rester équitables
     vertusCompatibles: Vertu[],
     vicesCompatibles: Vice[],
 }

@@ -211,7 +211,7 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
-        vicesCompatibles: [],
+        vicesCompatibles: [Vice.trompeur, Vice.mefiant, Vice.sceptique],
         vertusCompatibles: [Vertu.sociable],
     },
     [MetiersEnum.ecrivain] : {
@@ -269,7 +269,7 @@ export const metiersObjs: MetierObj = {
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 1, metalStatut: MetalStatut.argent},
         proba: 0.01,
-        vicesCompatibles: [Vice.trompeur, Vice.cupide, Vice.sociopathique, Vice.rebelle, Vice.gourmand, Vice.paresseux],
+        vicesCompatibles: [Vice.trompeur, Vice.sociopathique, Vice.rebelle, Vice.gourmand, Vice.paresseux],
         vertusCompatibles: [Vertu.sociable],
     },
     [MetiersEnum.novice_pretre] : {

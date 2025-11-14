@@ -14,4 +14,7 @@ export enum Maitrise {
     cuisine = "Cuisine",
     conduite_voiture = "Conduite de voiture",
     pilotage_avion = "Pilotage d'avion",
+
+    // diplômes :
+    diplome_journalisme = "Diplôme de journalisme",
 }

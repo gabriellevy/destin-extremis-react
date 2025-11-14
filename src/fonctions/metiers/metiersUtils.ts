@@ -246,7 +246,7 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
         + etudiant ? "étudiant " : ""
         + metiersEnum.toString() + ".";
     if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)
-        // on n peut pas toujours négocier son salaire d'entrée : !
+        // on ne peut pas toujours négocier son salaire d'entrée : !
         && !etudiant
         && metiersEnum !== MetiersEnum.brute_de_lycee) {
         // tentative de négociation
