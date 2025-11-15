@@ -1,5 +1,5 @@
 import {TypeCompetence} from "./Comps";
-import {Perso} from "../Perso";
+import {PersoHisto} from "../Perso";
 import {getViceOppose, Vertu, Vice} from "../../ViceVertu";
 import {Possession, PossessionEnum} from "../../../donnees/possessions/Possession";
 import {aleatoireDeTableauString, getAleatoireParSeed, getRandomInt0Seed} from "../../../fonctions/aleatoire";
@@ -12,7 +12,7 @@ export interface ModificationVice {
     augmente: boolean, // false signifie diminution du vice (donc augmentation de la vertu)
 }
 
-export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): ModificationVice|undefined {
+export function changementPersonaliteSelonMonteeNiveau(perso:PersoHisto, typeCompetence:TypeCompetence): ModificationVice|undefined {
     const vicesAssocies:Vice[] = vicesAssociesACompetence(typeCompetence);
     const vertusAssocies:Vertu[] = vertusAssociesACompetence(typeCompetence);
     const modifsVice:ModificationVice[] = [];
@@ -34,34 +34,18 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
         return undefined;
     }
 
-    // sélection déterministe :
-    // - garder ceux dans lesquels le perso a la valeur la plus éloignée
-    // - si il en reste plusieurs, prendre le premier
-    /*return modifsVice.reduce((acc: ModificationVice, viceSuivant: ModificationVice) => {
-        const valeurPersoAcc: number = getValeurVice(perso, acc.vice);
-        const valeurPersoViceSuivant: number = getValeurVice(perso, viceSuivant.vice);
-
-        // pseudo "note" d'accordement du vice du perso par rapport à la modification
-        // plus elle est élevée, plus e perso est loin de la direction du ModificationVice
-        const noteViceAcc: number = acc.augmente ? -valeurPersoAcc : valeurPersoAcc;
-        const noteViceSuivant: number = viceSuivant.augmente ? -valeurPersoViceSuivant : valeurPersoViceSuivant;
-
-        return noteViceAcc > noteViceSuivant ? acc : viceSuivant;
-    });*/
-
-    // TODO : aléatoire dépendant du dernier evt exécuté comme seed :
-    // - semi déterministe car le dernier evt exécuté changera régulièrement (mais avec un bon délai)
-    // - pousse à attendre le prochain evt pour voir si on aura "mieux"
     return modifsVice[Math.floor(getAleatoireParSeed(perso) * modifsVice.length)];
 }
 
-export function achatSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): Possession|undefined {
+export function achatSelonMonteeNiveau(perso:PersoHisto, typeCompetence:TypeCompetence): Possession|undefined {
     const achats:Possession[] = achatsAssociesACompetence(typeCompetence);
     let achat:Possession|undefined = undefined;
     let indexAleatoire:number = getRandomInt0Seed(achats.length, perso);
     let count:number = 0;
     while (achat === undefined || possede(perso, achat.possessionEnum)) {
+        if (count === achats.length) break;
         achat = achats[(indexAleatoire+count) % achats.length];
+        count++;
     }
     return undefined;
 }

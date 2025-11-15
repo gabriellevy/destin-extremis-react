@@ -8,6 +8,7 @@ interface ModaleMonteeDeNiveauProps {
     monteeCompetence: () => void;
     competenceType: TypeCompetence;
     texteBoutonChangtPersonnalite: string;
+    texteBoutonAmeliorationComp: string;
     modifierPersonnalite: () => void;
     texteBoutonAchat:string;
     acheterObjetParMonteeDeNiveau: () => void;
@@ -19,12 +20,12 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
         onClose,
         monteeCompetence,
         modifierPersonnalite,
+        texteBoutonAmeliorationComp,
         texteBoutonChangtPersonnalite,
         competenceType,
         texteBoutonAchat,
         acheterObjetParMonteeDeNiveau,
-    }
-    ) => {
+    }: Readonly<ModaleMonteeDeNiveauProps>) => {
     if (!isOpen) return null;
 
     return (
@@ -52,7 +53,7 @@ const ModaleMonteeDeNiveau: React.FC<ModaleMonteeDeNiveauProps> = (
                 size="small"
                 sx={{ mb: 1, padding: 0 }}
             >
-                {`+1 en ${competenceType}`}
+                {texteBoutonAmeliorationComp}
             </Button>
             {
                 texteBoutonChangtPersonnalite != '' ? (

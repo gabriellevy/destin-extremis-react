@@ -29,6 +29,7 @@ export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
             Quartier.chatenay_malabry,
             Quartier.creteil,
             Quartier.montbrison,
+            Quartier.montreuil,
             Quartier.montmartre,
             Quartier.noisiel,
             Quartier.saint_malo,

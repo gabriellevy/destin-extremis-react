@@ -90,6 +90,10 @@ const Comp = ({ competenceType }: CompProps) => {
         setIsModalOpen(false);
     };
 
+    const texteBoutonAmeliorationComp:string = useMemo(() => {
+        return "+" + getRandomIntSeed(6, perso) + " en " + competenceType;
+    }, [perso, competenceType]);
+
     const modifViceSelonMonteeDeNiveau: ModificationVice|undefined = useMemo(() =>
         changementPersonaliteSelonMonteeNiveau(perso, competenceType),
     [perso, competenceType]);
@@ -116,8 +120,7 @@ const Comp = ({ competenceType }: CompProps) => {
                 + " -> "
                 + descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, -valVertu - 1);
         }
-    }
-    , [perso, modifViceSelonMonteeDeNiveau]);
+    }, [perso, modifViceSelonMonteeDeNiveau]);
 
     const achatSelonMonteeNiveauDeCetteComp: Possession|undefined = useMemo(() =>
             achatSelonMonteeNiveau(perso, competenceType),
@@ -205,6 +208,7 @@ const Comp = ({ competenceType }: CompProps) => {
                 monteeCompetence={monteeNiveauStandard}
                 competenceType={competenceType}
                 texteBoutonChangtPersonnalite={texteBoutonChangtPersonnalite}
+                texteBoutonAmeliorationComp={texteBoutonAmeliorationComp}
                 modifierPersonnalite={modifierPersonnalite}
                 texteBoutonAchat={texteBoutonAchat}
                 acheterObjetParMonteeDeNiveau={acheterObjetParMonteeDeNiveau}

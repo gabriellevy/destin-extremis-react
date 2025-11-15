@@ -91,9 +91,13 @@ const DonneesPerso: React.FC = (): JSX.Element => {
         <ListItem>
             <ListItemText primary={perso.coterie}/>
         </ListItem>
-        <ListItem>
-            <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>
-        </ListItem>
+        {
+            perso.maitrises.length > 0 && (
+                <ListItem>
+                    <ListItemText primary="Maîtrises" secondary={perso.maitrises.join(', ')}/>
+                </ListItem>
+            )
+        }
         {
             perso.pbDeSante.length > 0 && (
                 <ListItem>

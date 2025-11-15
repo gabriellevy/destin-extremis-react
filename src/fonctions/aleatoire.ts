@@ -1,5 +1,5 @@
 import {MetalStatut, Statut} from "../types/statut_social/Statut";
-import {Perso} from "../types/perso/Perso";
+import {PersoHisto} from "../types/perso/Perso";
 import seedrandom from "seedrandom";
 
 export function getRandomEnumValue<T extends Record<string, unknown>>(enumObj: T): T[keyof T] {
@@ -39,15 +39,16 @@ export function aleatoireDeTableauString(tableau: string[]): string {
 }
 
 // ------------------ version avec seed -----------
-export function getAleatoireParSeed(perso: Perso): number {
-    const seed: string = perso.evtsPasses.length > 0 ? perso.evtsPasses[0].id : perso.idTemporel;
+export function getAleatoireParSeed(perso: PersoHisto): number {
+    const seed: string = perso.sauvegardes.length > 0 ? perso.sauvegardes[0].idTemporel : perso.idTemporel;
+    console.log("seed", seed);
     return seedrandom(seed)();
 }
 
-export function getRandomIntSeed(numMax: number, perso: Perso): number {
+export function getRandomIntSeed(numMax: number, perso: PersoHisto): number {
     return Math.floor(getAleatoireParSeed(perso) * numMax) + 1;
 }
 
-export function getRandomInt0Seed(numMax: number, perso: Perso): number {
+export function getRandomInt0Seed(numMax: number, perso: PersoHisto): number {
     return Math.floor(getAleatoireParSeed(perso) * numMax);
 }

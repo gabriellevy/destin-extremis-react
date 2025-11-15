@@ -40,6 +40,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_lycee_skavens2_fuite",
@@ -59,6 +60,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_lycee_skavens3_artisanat",
@@ -82,6 +84,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_lycee_skavens4_discrétion",
@@ -100,11 +103,12 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_lycee_skavens5_science",
             description: async (perso: Perso): Promise<string> => {
-                let texte:string = "Les cours scientifiques des skavens sont étonament poussés. Ils se focalisent plus sur l'expérimentation que sur le théorique.<br/> ";
+                let texte:string = "Les cours scientifiques des skavens sont étonnamment poussés. Ils se focalisent plus sur l'expérimentation que sur le théorique.<br/> ";
                 const resTest:ResultatTest = testComp(perso, TypeCompetence.intelligence, 0);
                 texte += resTest.resume;
                 if (resTest.reussi) {
@@ -115,6 +119,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
         {
             id: "evts_lycee_skavens6_cupidité",
@@ -140,6 +145,7 @@ export const evts_lycee_skavens: GroupeEvts = {
                 return texte;
             },
             conditions: (perso: Perso): boolean => perso.bilanLycee.coterieActuelle === Coterie.skavens,
+            nbJoursEntreOccurences: 100,
         },
     ],
     probaParDefaut: 0.05, // >>> à la moyenne car localisés à un quartier et une phase
