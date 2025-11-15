@@ -345,7 +345,6 @@ export function compatibiliteCarriere(perso: Perso, metier: Metier|undefined): n
             compatibilite -= 4;
         }
     }
-    console.log("Compatibilité avec le métier " + metier.nom + " : " + compatibilite);
 
     return compatibilite;
 }

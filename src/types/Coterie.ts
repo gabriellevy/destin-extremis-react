@@ -4,6 +4,7 @@ import {TypeCompetence} from "./perso/comps/Comps";
 export enum Coterie {
     acheron = 'Achéron',
     bastets = 'Bastets',
+    lotus_blanc = 'Lotus blanc',
     cathares = 'Cathares',
     carthaginois = 'Carthaginois',
     celtes = 'Celtes',

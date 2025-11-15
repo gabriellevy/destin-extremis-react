@@ -8,6 +8,7 @@ export const metierFavorisesParCoterie: Record<Coterie, MetiersEnum[]> = {
     [Coterie.khaos]: [],
     [Coterie.acheron]: [MetiersEnum.informaticien, MetiersEnum.magicien, MetiersEnum.technomancien],
     [Coterie.bastets]: [MetiersEnum.non_travailleur, MetiersEnum.dileur_de_lycee],
+    [Coterie.lotus_blanc]: [MetiersEnum.moine, MetiersEnum.magicien, MetiersEnum.pamphletaire],
     [Coterie.cathares]: [MetiersEnum.novice_pretre, MetiersEnum.pretre, MetiersEnum.moine],
     [Coterie.carthaginois]: [],
     [Coterie.conquistador]: [],
@@ -41,6 +42,7 @@ export const metierFavorisesParCoterie: Record<Coterie, MetiersEnum[]> = {
 export const metierDetestesParCoterie: Record<Coterie, MetiersEnum[]> = {
     [Coterie.khaos]: [],
     [Coterie.acheron]: [],
+    [Coterie.lotus_blanc]: [],
     [Coterie.bastets]: [MetiersEnum.technomancien],
     [Coterie.cathares]: [
         MetiersEnum.pilleur_de_ruche, MetiersEnum.ranconneur,
