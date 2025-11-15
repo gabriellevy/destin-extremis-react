@@ -5,6 +5,7 @@ export enum Quartier {
     // ---- La Ville
     noisiel = 'Noisiel',
     montmartre = 'Montmartre',
+    creteil = 'Créteil',
     saint_maur_des_fosses = 'Saint Maur des fossés',
     chatenay_malabry = 'Châtenay-Malabry',
     montbrison = 'Montbrison',
@@ -120,6 +121,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Palais%20royal.jpg";
         case Quartier.montmartre:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/montmartre.jpg";
+        case Quartier.creteil:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/cr%C3%A9teil.jpg";
         case Quartier.argenteuil:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Argenteuil.jpg";
         case Quartier.vladivostok:

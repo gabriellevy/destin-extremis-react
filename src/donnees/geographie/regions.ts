@@ -26,10 +26,11 @@ export function getRegion(quartierCherche:Quartier):Region|undefined {
 export function getQuartiers(sousProvinceStr: string|undefined):Quartier[] {
     switch (sousProvinceStr) {
         case Region.la_ville : return [
-            Quartier.noisiel,
-            Quartier.montmartre,
             Quartier.chatenay_malabry,
+            Quartier.creteil,
             Quartier.montbrison,
+            Quartier.montmartre,
+            Quartier.noisiel,
             Quartier.saint_malo,
             Quartier.montesson,
             Quartier.palais_royal,

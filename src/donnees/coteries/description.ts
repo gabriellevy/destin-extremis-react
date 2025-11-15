@@ -4,6 +4,7 @@ export const descriptionCot: Record<Coterie, string> = {
     [Coterie.hedonistes]: "Les cultistes du plaisir -aussi appelés hédonistes- prônent la recherche et la satisfaction du plaisir personnel et des sensations fortes quel qu’elles soient dans un sens très large. On y trouve donc tout autant les meilleurs cuisiniers que les meilleurs prostitués.<br/>" +
     "Sans condamner l’ambition (qui peut être un plaisir en soit), les cultiste considèrent l’action volontaire sur le monde comme une chimère qui ne mène à rien. Mieux vaut renoncer aux buts et aux ambitions extérieures, se concentrer uniquement sur soi, se laisser glisser dans les douces pattes du plaisir, et apprécier la vie.",
     [Coterie.esprit_de_la_nature]: "",
+    [Coterie.lotus_blanc]: "",
     [Coterie.bastets]: 'Principes de la faction : <br/>' +
     "- S'occuper des chats<br/>" +
     "- Mépris du travail<br/>" +

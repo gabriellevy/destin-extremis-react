@@ -34,13 +34,14 @@ export enum Coterie {
 // tableau contenant les coteries pour l'instant exclues des coteries de base des lycées et du perso car trop peu développées
 // (et pas l'intention de les développer de suite)
 export const COTERIES_NON_DEVELOPPEES:Coterie[] = [
-    Coterie.bastets, Coterie.carthaginois, Coterie.khaos, Coterie.elfes, Coterie.esprit_de_la_nature, Coterie.esthetes,
+    Coterie.bastets, Coterie.lotus_blanc, Coterie.carthaginois, Coterie.khaos, Coterie.elfes, Coterie.esprit_de_la_nature, Coterie.esthetes,
     Coterie.libertins, Coterie.performeurs, Coterie.romains, Coterie.saabi, Coterie.schweizer, Coterie.zaporogues
 ];
 
 export const coterieOptions: Option[]= [
     { value: Coterie.acheron, label: Coterie.acheron},
     { value: Coterie.bastets, label: Coterie.bastets},
+    { value: Coterie.lotus_blanc, label: Coterie.lotus_blanc},
     { value: Coterie.carthaginois, label: Coterie.carthaginois},
     { value: Coterie.cathares, label: Coterie.cathares},
     { value: Coterie.celtes, label: Coterie.celtes},

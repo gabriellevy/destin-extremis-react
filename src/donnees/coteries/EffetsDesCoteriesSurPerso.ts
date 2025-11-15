@@ -15,6 +15,12 @@ export function getEffetsDeCoterieSurCompetences(cot: Coterie): EffectDeCoterieS
             minus10Values: [TypeCompetence.commandement],
             minus5Values: [TypeCompetence.force],
         };
+        case Coterie.lotus_blanc: return {
+            plus10Values: [TypeCompetence.adresse, TypeCompetence.bagarre],
+            plus5Values: [TypeCompetence.reflexes, TypeCompetence.chance],
+            minus10Values: [TypeCompetence.tir],
+            minus5Values: [TypeCompetence.intelligence],
+        };
         case Coterie.carthaginois: return {
             plus10Values: [TypeCompetence.evaluation, TypeCompetence.marchandage],
             plus5Values: [TypeCompetence.periple, TypeCompetence.intuition],

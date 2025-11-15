@@ -5,6 +5,7 @@ export function getQuartierDeCoterie(cot: Coterie): Quartier {
     switch (cot) {
         case Coterie.acheron: return Quartier.noisiel;
         case Coterie.bastets: return Quartier.montmartre;
+        case Coterie.lotus_blanc: return Quartier.creteil;
         case Coterie.cathares: return Quartier.saint_maur_des_fosses;
         case Coterie.celtes: return Quartier.chatenay_malabry;
         case Coterie.khaos: return Quartier.montreuil;

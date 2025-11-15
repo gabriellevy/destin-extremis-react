@@ -4,6 +4,7 @@ export const iconesCot: Record<Coterie, string> = {
     [Coterie.hedonistes]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Culte%20du%20plaisir.png",
     [Coterie.esprit_de_la_nature]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Inconnu.png",
     [Coterie.bastets]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Bastet.png",
+    [Coterie.lotus_blanc]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Lotus%20blanc.jpg",
     [Coterie.carthaginois]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Carthaginois.png",
     [Coterie.cathares]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Cathares.png",
     [Coterie.celtes]: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/icones/Celte.png",
