@@ -1,6 +1,6 @@
 import {PbDeSante} from "../../types/sante/pbDeSante";
 import {blessures} from "../../donnees/sante/blessures";
-import {getRandomInt0} from "../random";
+import {getRandomInt0} from "../aleatoire";
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 
 export const getBlessureAleatoire = ():PbDeSante=> {

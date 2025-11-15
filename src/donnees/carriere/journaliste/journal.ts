@@ -1,4 +1,4 @@
-import {aleatoireDeTableauString} from "../../../fonctions/random";
+import {aleatoireDeTableauString} from "../../../fonctions/aleatoire";
 
 export const JOURNAUX:string[] = [
     "Transmetropolitan",

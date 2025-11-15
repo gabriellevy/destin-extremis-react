@@ -2,6 +2,8 @@ import {Perso, PersoCommon} from "./perso/Perso";
 import {ajouteLigneDeTexteGras} from "../fonctions/texte_fc";
 import {descriptionViceVertu} from "../fonctions/VicesVertus_fc";
 
+export const NIVEAU_MAX_VICEVERTU: number = 3;
+export const NIVEAU_MIN_VICEVERTU: number = -NIVEAU_MAX_VICEVERTU;
 // duo de vertu et vices qui fonctionnent ensemble en opposition
 export type ViceVertu = {
     valVertu: number, // la val de "vice" est l'inverse

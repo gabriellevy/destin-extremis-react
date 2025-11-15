@@ -4,7 +4,7 @@ import {seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
 import {MetiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
-import {getRandomEnumValue} from "../random";
+import {getRandomEnumValue} from "../aleatoire";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
 import {metierDetestesParCoterie, metierFavorisesParCoterie} from "../../donnees/coteries/affiniteMetier";
 import {Coterie} from "../../types/Coterie";

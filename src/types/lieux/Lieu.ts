@@ -3,7 +3,7 @@ import {PersoCommon} from "../perso/Perso";
 import {Continent, getContinent, getRegions} from "../../donnees/geographie/continents";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {getQuartiers, getRegion, Region} from "../../donnees/geographie/regions";
-import {getRandomEnumValue} from "../../fonctions/random";
+import {getRandomEnumValue} from "../../fonctions/aleatoire";
 
 export type Option = {
     value: string,

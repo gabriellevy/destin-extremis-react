@@ -1,7 +1,7 @@
 import {Perso} from "../../../types/perso/Perso";
 import {GroupeEvts} from "../../../types/Evt";
 import {Coterie} from "../../../types/Coterie";
-import {getRandomInt} from "../../../fonctions/random";
+import {getRandomInt} from "../../../fonctions/aleatoire";
 import {calculerAffinite, SEUIL_AFFINITE} from "../../../fonctions/coteries/affinite";
 import {rejointCoterie} from "../../../fonctions/coteries/generales";
 import {PhaseLycee} from "../../../types/lycee/StadeUniversite";

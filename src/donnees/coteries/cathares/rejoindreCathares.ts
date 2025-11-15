@@ -4,7 +4,7 @@ import {testComp, testVertu} from "../../../fonctions/des";
 import {getNom} from "../../../fonctions/noms";
 import {Coterie, EffectDeCoterieSurPerso} from "../../../types/Coterie";
 import {actuellementDrogueAQuelqueChose, arreterDrogue} from "../../../fonctions/sante/drogues_fc";
-import {getRandomInt} from "../../../fonctions/random";
+import {getRandomInt} from "../../../fonctions/aleatoire";
 import {Vertu} from "../../../types/ViceVertu";
 import {changerQuartier} from "../../../fonctions/geographie/quartier";
 import {getQuartierDeCoterie} from "../Quartiers";

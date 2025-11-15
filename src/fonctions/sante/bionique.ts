@@ -1,4 +1,4 @@
-import {getRandomInt0} from "../random";
+import {getRandomInt0} from "../aleatoire";
 import {bioniques} from "../../donnees/sante/bionique";
 import {Perso} from "../../types/perso/Perso";
 import {Bionique} from "../../types/sante/Bionique";

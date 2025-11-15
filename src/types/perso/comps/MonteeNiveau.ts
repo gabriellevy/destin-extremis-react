@@ -2,7 +2,7 @@ import {TypeCompetence} from "./Comps";
 import {Perso} from "../Perso";
 import {getViceOppose, Vertu, Vice} from "../../ViceVertu";
 import {Possession, PossessionEnum} from "../../../donnees/possessions/Possession";
-import {aleatoireDeTableauString} from "../../../fonctions/random";
+import {aleatoireDeTableauString, getAleatoireParSeed, getRandomInt0Seed} from "../../../fonctions/aleatoire";
 import {NOMS_DE_CHATS} from "../../../donnees/possessions/animaux";
 import {possede} from "../../../fonctions/possessions/possessions";
 import {vertusAssociesACompetence, vicesAssociesACompetence} from "../../../donnees/montee_niveau/MonteeViceVertu";
@@ -52,16 +52,16 @@ export function changementPersonaliteSelonMonteeNiveau(perso:Perso, typeCompeten
     // TODO : aléatoire dépendant du dernier evt exécuté comme seed :
     // - semi déterministe car le dernier evt exécuté changera régulièrement (mais avec un bon délai)
     // - pousse à attendre le prochain evt pour voir si on aura "mieux"
-    return modifsVice[Math.floor(Math.random() * modifsVice.length)];
+    return modifsVice[Math.floor(getAleatoireParSeed(perso) * modifsVice.length)];
 }
 
 export function achatSelonMonteeNiveau(perso:Perso, typeCompetence:TypeCompetence): Possession|undefined {
     const achats:Possession[] = achatsAssociesACompetence(typeCompetence);
-    // retourne le premier objet associé que le personnage n'a pas (donc déterministe)
-    for (const achat of achats) {
-        if (!possede(perso, achat.possessionEnum)) {
-            return achat;
-        }
+    let achat:Possession|undefined = undefined;
+    let indexAleatoire:number = getRandomInt0Seed(achats.length, perso);
+    let count:number = 0;
+    while (achat === undefined || possede(perso, achat.possessionEnum)) {
+        achat = achats[(indexAleatoire+count) % achats.length];
     }
     return undefined;
 }

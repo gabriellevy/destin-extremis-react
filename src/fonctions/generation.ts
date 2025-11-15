@@ -1,4 +1,4 @@
-import {getRandomEnumValue} from "./random";
+import {getRandomEnumValue} from "./aleatoire";
 import {Carriere} from "../types/metiers/Metier";
 import {Coterie, COTERIES_NON_DEVELOPPEES} from "../types/Coterie";
 import {getSexeOppose, Perso, Sexe} from "../types/perso/Perso";

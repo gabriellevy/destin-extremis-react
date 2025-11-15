@@ -11,7 +11,7 @@ import {useContext, useMemo} from "react";
 import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Quartier} from "../../donnees/geographie/quartiers";
 import {vaA} from "../../types/lieux/Lieu";
-import {getRandomEnumValue, randomStatut} from "../../fonctions/random";
+import {getRandomEnumValue, randomStatut} from "../../fonctions/aleatoire";
 import {getCognomen, getNom, getPrenom} from "../../fonctions/noms";
 import SelectionCoterie from "./SelectionCoterie";
 import SelectionNom from "./SelectionNom";

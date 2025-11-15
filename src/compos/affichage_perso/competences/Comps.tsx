@@ -18,12 +18,13 @@ import {
     ajouterViceVal,
     getValeurVertu,
     getValeurVice,
-    getVertuOppose,
+    getVertuOppose, NIVEAU_MAX_VICEVERTU,
 } from "../../../types/ViceVertu";
 import {descriptionViceVertu} from "../../../fonctions/VicesVertus_fc";
 import {Possession} from "../../../donnees/possessions/Possession";
 import {acquerir, acquerirEtNomme} from "../../../fonctions/possessions/possessions";
 import StarIcon from "@mui/icons-material/Star";
+import {getRandomIntSeed} from "../../../fonctions/aleatoire";
 
 interface CompProps {
     competenceType: TypeCompetence,
@@ -84,7 +85,7 @@ const Comp = ({ competenceType }: CompProps) => {
 
     const monteeNiveauStandard = () => {
         depenserMonteeDeNiveau(perso, competenceType);
-        augmenterCompetence(perso, competenceType, 1);
+        augmenterCompetence(perso, competenceType, getRandomIntSeed(6, perso));
         setPerso({...perso});
         setIsModalOpen(false);
     };
@@ -99,7 +100,7 @@ const Comp = ({ competenceType }: CompProps) => {
 
         if (modifViceSelonMonteeDeNiveau.augmente) {
             const valVice:number = getValeurVice(perso, modifViceSelonMonteeDeNiveau.vice);
-            if (valVice >= 3) { // TODO : marquer 3 comme niveau max d'un trait de personnalité
+            if (valVice >= NIVEAU_MAX_VICEVERTU) {
                 return '';
             } else {
                 return descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, valVice)
@@ -108,7 +109,7 @@ const Comp = ({ competenceType }: CompProps) => {
             }
         } else {
             const valVertu:number = getValeurVertu(perso, getVertuOppose(modifViceSelonMonteeDeNiveau.vice));
-            if (valVertu >= 3) { // TODO : marquer 3 comme niveau max d'un trait de personnalité
+            if (valVertu >= NIVEAU_MAX_VICEVERTU) {
                 return '';
             }
             return descriptionViceVertu(modifViceSelonMonteeDeNiveau.vice, -valVertu)

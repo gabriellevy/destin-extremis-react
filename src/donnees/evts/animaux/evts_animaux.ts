@@ -4,7 +4,7 @@ import {getValeurVice, Vice} from "../../../types/ViceVertu";
 import {acquerirEtNomme} from "../../../fonctions/possessions/possessions";
 import {PossessionEnum} from "../../possessions/Possession";
 import {nombreDAnimauxDomestiques} from "../../../fonctions/possessions/animaux";
-import {aleatoireDeTableauString} from "../../../fonctions/random";
+import {aleatoireDeTableauString} from "../../../fonctions/aleatoire";
 import {NOMS_DE_CHATS} from "../../possessions/animaux";
 import {ResultatTest} from "../../../types/LancerDe";
 import {testComp} from "../../../fonctions/des";
