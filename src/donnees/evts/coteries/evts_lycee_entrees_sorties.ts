@@ -19,7 +19,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 perso.coterie = undefined;
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf([]);
-                let texte: string = "Votre première année de lycée commence. Votre première coterie est tirée au hasard et il s'agit des <b>" + coterieRejointe.toString() + "</b>. ";
+                let texte: string = "Votre première année de lycée commence. Votre première coterie est tirée au hasard et il s'agit des <b>" + coterieRejointe.toString() + "</b>.<br/>";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee1 = coterieRejointe;
@@ -38,7 +38,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                 perso.coterie = undefined;
                 const coterieRejointe: Coterie = getCoterieAleatoireSauf(perso.bilanLycee.coterieAnnee1 ? [perso.bilanLycee.coterieAnnee1] : []);
                 let texte: string = finDAnneeDEtude(perso);
-                texte += "Votre deuxième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte += "Votre deuxième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. <br/>";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee2 = coterieRejointe;
@@ -60,7 +60,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee2]
                 );
                 let texte: string = finDAnneeDEtude(perso);
-                texte +=  "Votre troisième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte +=  "Votre troisième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. <br/>";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee3 = coterieRejointe;
@@ -83,7 +83,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
                     perso.bilanLycee.coterieAnnee3]
                 );
                 let texte: string = finDAnneeDEtude(perso);
-                texte +=  "Votre quatrième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. ";
+                texte +=  "Votre quatrième année de lycée commence. Vous rejoignez les <b>" + coterieRejointe.toString() + "</b>. <br/>";
                 texte += descriptionCot[coterieRejointe];
                 perso.bilanLycee.coterieActuelle = coterieRejointe;
                 perso.bilanLycee.coterieAnnee4 = coterieRejointe;
@@ -100,7 +100,7 @@ export const evts_lycee_entrees_sorties: GroupeEvts = {
             id: "evts_fin_de_lycee",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = finDAnneeDEtude(perso);
-                texte +=  "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.";
+                texte +=  "Vous avez finie vos années de lycée idéologique. Vous allez pouvoir commencer vos études proprement dites... et choisir une coterie.<br/>";
                 perso.bilanLycee.phaseActuelle = PhaseLycee.finie;
                 perso.coterie = undefined;
                 perso.bilanLycee.coterieActuelle = undefined;
