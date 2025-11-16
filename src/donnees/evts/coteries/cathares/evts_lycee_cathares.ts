@@ -18,14 +18,14 @@ export const evts_lycee_cathares: GroupeEvts = {
         {
             id: "evts_lycee_cathares1 reclus",
             description: async (perso: Perso): Promise<string> => {
-                let texte:string = "Pour renforcer votre volonté et tester votre pureté vous êtes reclus dans une cellule et réduit au pain sec et à l'eau pendant deux semaines complètes. ";
+                let texte:string = "Pour renforcer votre volonté et tester votre pureté vous êtes reclus dans une cellule et réduit au pain sec et à l'eau pendant deux semaines complètes. <br/>";
 
                 const resTestVol:ResultatTest = testComp(perso, TypeCompetence.volonte, 0);
                 texte += resTestVol.resume;
                 const resTestEnd:ResultatTest = testComp(perso, TypeCompetence.endurance, 0);
                 texte += resTestEnd.resume;
                 if (resTestVol.reussi && resTestEnd.reussi) {
-                    texte += "Vous résistez à ces privations avec une constance qui frappe vos maîtres d'étonnement. ";
+                    texte += "Vous résistez à ces privations avec une constance qui frappe vos maîtres d'étonnement. <br/>";
                     modifierReputationDansQuartier(perso, Quartier.saint_maur_des_fosses,5 , 3);
                 } else {
                     texte += "Ces dures privations vous affectent durablement. ";

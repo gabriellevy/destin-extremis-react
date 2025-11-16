@@ -2,6 +2,7 @@ import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {Competence, ModificateurCompetence, seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {Drogue} from "../../types/sante/Drogue";
 import {droguesEnum, droguesObjs} from "../../donnees/sante/drogues";
+import {ajouteLigneDeTexteGras} from "../texte_fc";
 
 export function getValeurCompetence(perso: PersoCommon, typeComp: TypeCompetence): number {
     let valeurDeBase:number = perso.comps.find((comp: Competence) => comp.typeComp === typeComp)?.val || -1;
@@ -58,7 +59,7 @@ export function augmenterNbDeTestsFaitsComp(perso: Perso, typeComp: TypeCompeten
             // gain d'une montée de niveau à appliquer plus tard par le joueur :
             if (comp) {
                 comp.nbMonteeDeNiveau += 1;
-                texte = "<b>Montée de niveau en " + comp.typeComp.toString() + ". </b> ";
+                texte = ajouteLigneDeTexteGras("Montée de niveau en " + comp.typeComp.toString() + ". ");
             }
         }
     }
