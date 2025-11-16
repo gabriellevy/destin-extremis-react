@@ -48,6 +48,12 @@ export enum MetiersEnum {
     non_travailleur = "Ne travaille pas",
 }
 
+/**
+ * métiers qu'on exerce pendant ses études, inclus els activités qui ne sont aps réellement des métiers comme les magouilles, racketx etc
+ * On ne peut pas négocier pour y être augmenté
+ */
+export const metiersDEtudiants: MetiersEnum[] = [MetiersEnum.dileur_de_lycee, MetiersEnum.brute_de_lycee];
+
 export const metiersEnumOptions: Option[] =
     Object.values(MetiersEnum)
         .map((metier: MetiersEnum):Option => {

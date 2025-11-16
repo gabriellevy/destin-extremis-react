@@ -26,7 +26,7 @@ export const evts_dealer_de_lycee: GroupeEvts = {
                 if (resTestMarchandage.reussi) {
                     texte += commencerCarriere(perso, MetiersEnum.dileur_de_lycee, '', false);
                 } else {
-                    texte += "Malheureusement vous n'êtes pas un très bon vendeur et n'arrivez pas à vous faire votre place. ";
+                    texte += "Malheureusement vous n'êtes pas un très bon vendeur et n'arrivez pas à vous faire votre place. <br/>";
                 }
                 return texte;
             },

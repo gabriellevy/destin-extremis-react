@@ -2,7 +2,7 @@ import {Carriere, Metier, PhaseProfessionnelle} from "../../types/metiers/Metier
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {seuils, TypeCompetence} from "../../types/perso/comps/Comps";
 import {anneesToJours} from "../../types/Date";
-import {MetiersEnum, metiersObjs} from "../../donnees/metiers";
+import {metiersDEtudiants, MetiersEnum, metiersObjs} from "../../donnees/metiers";
 import {PhaseLycee} from "../../types/lycee/StadeUniversite";
 import {getRandomEnumValue} from "../aleatoire";
 import {getValeurVertu, getValeurVice, Vertu, Vice} from "../../types/ViceVertu";
@@ -243,12 +243,12 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
         });
     }
     let texte = "Vous êtes maintenant "
-        + etudiant ? "étudiant " : ""
+        + etudiant && !metiersDEtudiants.includes(metiersEnum) ? "étudiant " : ""
         + metiersEnum.toString() + ".";
     if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)
         // on ne peut pas toujours négocier son salaire d'entrée : !
         && !etudiant
-        && metiersEnum !== MetiersEnum.brute_de_lycee) {
+        && metiersDEtudiants.includes(metiersEnum)) {
         // tentative de négociation
         const resultatTestMarch:ResultatTest = testComp(perso,TypeCompetence.marchandage, 20);
         texte += resultatTestMarch.resume + "<br/>";
