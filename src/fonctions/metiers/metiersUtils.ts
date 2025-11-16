@@ -243,12 +243,12 @@ export function commencerCarriere(perso: Perso, metiersEnum: MetiersEnum, groupe
         });
     }
     let texte = "Vous êtes maintenant "
-        + etudiant && !metiersDEtudiants.includes(metiersEnum) ? "étudiant " : ""
+        + ((etudiant && !metiersDEtudiants.includes(metiersEnum)) ? "étudiant " : "")
         + metiersEnum.toString() + ".";
     if (!statut1SuperieurOuEgalAStatut2(perso.statut, metiersObjs[getCarriereActive(perso)?.metier].statutMax)
         // on ne peut pas toujours négocier son salaire d'entrée : !
         && !etudiant
-        && metiersDEtudiants.includes(metiersEnum)) {
+        && !metiersDEtudiants.includes(metiersEnum)) {
         // tentative de négociation
         const resultatTestMarch:ResultatTest = testComp(perso,TypeCompetence.marchandage, 20);
         texte += resultatTestMarch.resume + "<br/>";

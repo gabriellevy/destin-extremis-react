@@ -14,7 +14,6 @@ import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_medecin} from "../donnees/evts/carrieres/evts_medecin";
 import {evts_boucher} from "../donnees/evts/carrieres/evts_boucher";
-import {descriptionQuartier, imageQuartier} from "../donnees/geographie/quartiers";
 import {evts_lycee_entrees_sorties} from "../donnees/evts/coteries/evts_lycee_entrees_sorties";
 import {evts_rejoindre} from "../donnees/evts/coteries/evts_rejoindre";
 import {evts_chatenay_malabry} from "../donnees/evts/quartiers/evts_chatenay_malabry";
@@ -249,26 +248,6 @@ const Histoire: React.FC = (): JSX.Element => {
             demarre = true;
             // applique au perso les effets de sa coterie actuelle :
             rejointCoterie(perso, perso.coterie);
-            // ajouterVertuVal(perso, TypeVertu.bienveillant, -10); // exemple tmp
-            // événement d'intro :
-            let textQuartier = "Pas de quartier";
-            let adresseQuartier = "Pas d'image";
-            if (perso.lieu.quartier) {
-                textQuartier = descriptionQuartier(perso.lieu.quartier);
-                adresseQuartier = imageQuartier(perso.lieu.quartier);
-            }
-            const nouvEvt: EvtExecute = {
-                id: "intro",
-                joursDepuisDernierEvt: 0,
-                dateStr: jourStr(perso.date),
-                texteFinal: textQuartier, // l'exécution elle-même
-                image: adresseQuartier,
-            };
-
-            setEvtsExecutes((prev: EvtExecute[]) => [
-                ...prev,
-                nouvEvt
-            ]);
 
             setTempsRestant(perso.secondesEntreChaqueEvt);
         }

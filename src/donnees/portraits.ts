@@ -45,6 +45,12 @@ export function extrairePortrait(perso:Perso): string {
 
 export const portraits:Portrait[] = [
     {
+        url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/transhumanistes/13_17.png",
+        ageMin: 13,
+        ageMax: 17,
+        coteries: [Coterie.transhumanistes],
+    },
+    {
         url: "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/portraits/tyranides/12_15.png",
         ageMin: 12,
         ageMax: 15,

@@ -59,7 +59,7 @@ export function augmenterNbDeTestsFaitsComp(perso: Perso, typeComp: TypeCompeten
             // gain d'une montée de niveau à appliquer plus tard par le joueur :
             if (comp) {
                 comp.nbMonteeDeNiveau += 1;
-                texte = ajouteLigneDeTexteGras("Montée de niveau en " + comp.typeComp.toString() + ". ");
+                texte = ajouteLigneDeTexteGras("<br/>Montée de niveau en " + comp.typeComp.toString() + ". ");
             }
         }
     }
