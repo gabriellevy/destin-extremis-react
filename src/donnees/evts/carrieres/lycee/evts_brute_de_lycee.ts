@@ -114,7 +114,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
         {
             id: "evts_brute_de_lycee4 couteau",
             description: async (perso: Perso): Promise<string> => {
-                let texte: string = `Pour faciliter vos extorsions vous décidez de vous procurer un couteau. `
+                let texte: string = `Pour faciliter vos extorsions vous décidez de vous procurer un couteau.<br/>`
                 texte += acquerir(perso, PossessionEnum.couteau);
                 return texte;
             },
@@ -277,7 +277,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
         {
             id: "evts_brute_de_lycee9 merdeux en fuite",
             description: async (perso: Perso): Promise<string> => {
-                const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
+                const merdeux:PNJ = genererPNJ(perso, Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
                 let texte: string = "Vous croisez " + merdeux.prenom +
                     ",un petit merdeux que vous avez déjà passé à tabac par le passé. En vous voyant il s'enfuit en courant sans vous payer sa redevance !";
                 const resTestMvt: ResultatTest = testComp(perso, TypeCompetence.mouvement, 20);
@@ -324,7 +324,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
         {
             id: "evts_brute_de_lycee11caillou",
             description: async (perso: Perso): Promise<string> => {
-                const merdeux:PNJ = genererPNJ(Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
+                const merdeux:PNJ = genererPNJ(perso, Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
                 let texte: string = "Vous repérez ce petit merdeux de " + merdeux.prenom + "qui passe au dessus de vous sur un pont. "
                     + "Se croyant à l'abri, il se permet de vous insulter ! Vous ramassez promptement un caillou. ";
                 const resTestTir: ResultatTest = testComp(perso, TypeCompetence.tir, 0);

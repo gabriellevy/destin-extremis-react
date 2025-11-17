@@ -97,6 +97,10 @@ function calculMoisStr(joursDepuis0: number): string {
     return "mois inconnu"
 }
 
+export function jourDeLaSemaineStr(joursDepuis0:number): string {
+    return  numJourSemaineToStr(joursDepuis0 % JOURS_PAR_SEMAINE);
+}
+
 export function numJourSemaineToStr(numeroJourSemaine: number): string {
     switch (numeroJourSemaine) {
         case 0: return "Primidi";

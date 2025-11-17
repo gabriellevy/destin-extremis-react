@@ -29,10 +29,10 @@ export function genererPNJAmourableDePerso(perso: Perso):PNJ {
     const maxAge: number = getAge(perso)*2 - 18 ;
     const age = minAge + Math.random() * (maxAge - minAge);
     const dateNaissance: number = perso.date - anneesToJours(age);
-    return genererPNJ(sexe, dateNaissance, undefined);
+    return genererPNJ(perso, sexe, dateNaissance, undefined);
 }
 
-export function genererPNJ(sexe:Sexe, dateNaissance: number|undefined, coterie:Coterie|undefined):PNJ {
+export function genererPNJ(perso: Perso, sexe:Sexe, dateNaissance: number|undefined, coterie:Coterie|undefined):PNJ {
     const cot: Coterie = coterie ?? getCoterieAleatoireSauf([]);
     const carriere: Carriere = getCarriereAleatoire();
     const nom: string = getNom(cot, sexe);
@@ -42,6 +42,7 @@ export function genererPNJ(sexe:Sexe, dateNaissance: number|undefined, coterie:C
         nom: nom,
         sexe: Sexe.male,
         dateNaissance: dateNaissance ?? 0,
+        dateDerniereInteration: perso.date,
         lieu: lieuAleatoire(),
         coterie: cot,
         carriere: carriere,

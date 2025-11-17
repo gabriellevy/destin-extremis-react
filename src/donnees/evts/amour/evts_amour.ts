@@ -15,14 +15,21 @@ import {testComp, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {Coterie} from "../../../types/Coterie";
-import {getAge} from "../../../types/Date";
+import {getAge, jourDeLaSemaineStr} from "../../../types/Date";
+import {supprimerPnj} from "../../../fonctions/pnjs/pnj_fc";
+
+const rencard: (pnj:PNJ, perso: Perso) => Promise<string> = ( pnj:PNJ, _perso: Perso) => {
+    let texte: string =  "TODO : Rencart avec " + pnj.prenom + ".<br/>";
+
+    return new Promise((resolve) => resolve(texte))
+}
 
 export const evts_amour: GroupeEvts = {
     evts: [
         {
             id: "evts_amour1 avoir un coup de coeur", // le pj va éventuellement la séduire
             description: async (perso: Perso): Promise<string> => {
-                const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso);
+                const coupDeCoeur: PNJ = genererPNJAmourableDePerso(perso); // TODO : dans le quartier du PJ
                 coupDeCoeur.amourPourCePnj = NiveauAmour.coupDeCoeur;
                 perso.pnjs.push(coupDeCoeur);
                 let texte: string = "";
@@ -80,7 +87,7 @@ export const evts_amour: GroupeEvts = {
             nbJoursEntreOccurences: 30,
         },
         {
-            id: "evts_amour draguer un coup de coeur",
+            id: "evts_amour2 draguer un coup de coeur",
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
                 const resTestCharme:ResultatTest = testComp(perso, TypeCompetence.charme, -20);
@@ -110,6 +117,60 @@ export const evts_amour: GroupeEvts = {
             conditions: (perso: Perso): boolean =>
                 aUnCoupDeCoeurNonReciproque(perso),
             nbJoursEntreOccurences: 30,
+        },
+        {
+            id: "evts_amour3 oubli/rappeler coup de coeur",
+            description: async (perso: Perso): Promise<string> => {
+                const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
+                let diff:number = 40 - Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/12)*10; // +10 par mois qui est passé
+                console.log("evts_amour3 oubli/rappeler coup de coeur nb mois : ", Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/12));
+                console.log("evts_amour3 oubli/rappeler coup de coeur diff : ", diff);
+                const resTestIntel:ResultatTest = testComp(perso, TypeCompetence.intelligence, diff);
+                let texte:string = "";
+                texte += resTestIntel.resume;
+                if (resTestIntel.reussi) {
+                    texte += "Vous repensez à " + coupDeCoeur.prenom + ". Ça fait longtemps que vous ne l'avez pas vue. <br/>";
+
+                    const resTestLux:ResultatTest = testVice(perso, Vice.luxurieux, 0);
+                    texte += resTestLux.resume;
+                    if (resTestLux.reussi) {
+                        texte += "Vous décidez de la recontacter. <br/>";
+                        const resTestChance:ResultatTest = testComp(perso, TypeCompetence.chance, 0);
+                        texte += resTestChance.resume;
+                        if (resTestChance.reussi) {
+                            texte += "Vous parvenez à la joindre au téléphone : elle est tout surprise.<br/>";
+                            const resTestCharme:ResultatTest = testComp(perso, TypeCompetence.charme, 0);
+                            texte += resTestCharme.resume;
+                            if (resTestCharme.reussi) {
+                                const dateDemain:number = perso.date + 1;
+                                texte += "Vous la convainquez de vous revoir demain " + jourDeLaSemaineStr(dateDemain) + ".<br/>";
+                                perso.evtsProgrammes.push({
+                                    date: (persoFutur:Perso) => perso.date + 1 === persoFutur.date,
+                                    evt: {
+                                        id: "rencard",
+                                        description: rencard.bind(null, coupDeCoeur),
+                                    }
+                                });
+                            } else {
+                                texte += "Mais elle n'a aucune envie de vous revoir malgré votre insistance.<br/>";
+                            }
+                        } else {
+                            texte += "Mais elle ne répond pas à vos appels.<br/>"
+                        }
+                    } else {
+                        texte += "Mais vous chassez vite cette pensée. Vous avez mieux à faire. <br/>";
+                    }
+                } else {
+                    texte += "Elle a beau vous avoir beaucoup plu à une époque, vous oubliez " + coupDeCoeur.prenom + " complètement. <br/>";
+                    supprimerPnj(perso, coupDeCoeur.prenom, coupDeCoeur.nom);
+                }
+
+                return texte;
+            },
+            conditions: (perso: Perso): boolean =>
+                nombreDeCoupDeCoeur(perso) > 0,
+            nbJoursEntreOccurences: 1,
+            proba: 0.01,
         },
     ],
     probaParDefaut: 0.04,

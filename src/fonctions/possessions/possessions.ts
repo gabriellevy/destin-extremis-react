@@ -1,6 +1,7 @@
 import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {coutPossession, Possession, PossessionEnum} from "../../donnees/possessions/Possession";
 import {modifierStatut} from "../perso/statut";
+import {ajouteLigneDeTexteItalique} from "../texte_fc";
 
 export function acquerir(perso: Perso, possessionEnum: PossessionEnum):string {
     return acquerirEtNomme(perso, possessionEnum, '');
@@ -23,11 +24,12 @@ export function acquerirEtNomme(perso: PersoCommon, possessionEnum: PossessionEn
         possessionEnum: possessionEnum,
         nom: nomPossession
     });
-    texte += modifierStatut(perso, - coutPossession(possessionEnum));
-    texte += "<br/>Vous possédez maintenant : " + possessionEnum +
-        nomPossession !== undefined && nomPossession !== '' ?
-        " appelé " + nomPossession + "."
-        : ".";
+    texte += ajouteLigneDeTexteItalique(modifierStatut(perso, - coutPossession(possessionEnum)));
+    texte += "Vous possédez maintenant : " + possessionEnum;
+    texte += (nomPossession !== undefined && nomPossession !== '') ?
+        " appelé " + nomPossession
+        : "";
+    texte += ".<br/>";
     return texte;
 }
 

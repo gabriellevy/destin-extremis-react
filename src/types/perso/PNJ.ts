@@ -10,6 +10,8 @@ export type PNJ = {
     nom: string;
     sexe: Sexe;
     dateNaissance: number;
+    // devrait en théorie être maj quand le PJ et le PNJ interagissent de manière significative mais comme je ne vois aps comment l'automatiser, c'est un peu du bricolage...
+    dateDerniereInteration: number;
     lieu: Lieu,
     coterie: Coterie;
     carriere: Carriere,
