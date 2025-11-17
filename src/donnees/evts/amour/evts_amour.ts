@@ -142,7 +142,7 @@ export const evts_amour: GroupeEvts = {
                             const resTestCharme:ResultatTest = testComp(perso, TypeCompetence.charme, 0);
                             texte += resTestCharme.resume;
                             if (resTestCharme.reussi) {
-                                const dateDemain:number = perso.date + 1;
+                                const dateDemain:number = perso.date + 1; // TODO : programmer un truc du genre "le prochain Tridi" pltôt que juste le lendemain
                                 texte += "Vous la convainquez de vous revoir demain " + jourDeLaSemaineStr(dateDemain) + ".<br/>";
                                 perso.evtsProgrammes.push({
                                     date: (persoFutur:Perso) => perso.date + 1 === persoFutur.date,
@@ -167,11 +167,10 @@ export const evts_amour: GroupeEvts = {
 
                 return texte;
             },
-            conditions: (perso: Perso): boolean =>
-                nombreDeCoupDeCoeur(perso) > 0,
+            conditions: (perso: Perso): boolean => nombreDeCoupDeCoeur(perso) > 0,
             nbJoursEntreOccurences: 1,
             proba: 0.01,
         },
     ],
-    probaParDefaut: 0.04,
+    probaParDefaut: 0.03,
 };
