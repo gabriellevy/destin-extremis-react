@@ -122,7 +122,7 @@ export const evts_amour: GroupeEvts = {
             id: "evts_amour3 oubli/rappeler coup de coeur",
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
-                let diff:number = 40 - Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/12)*10; // +10 par mois qui est passé
+                let diff:number = 40 - Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/30)*5; // -5 par mois qui est passé
                 console.log("evts_amour3 oubli/rappeler coup de coeur nb mois : ", Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/12));
                 console.log("evts_amour3 oubli/rappeler coup de coeur diff : ", diff);
                 const resTestIntel:ResultatTest = testComp(perso, TypeCompetence.intelligence, diff);
