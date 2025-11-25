@@ -8,8 +8,7 @@ import {PersoContexte, PersoContexteType} from "../contexte/ContexteTypes";
 import {evts_tout} from "../donnees/evts/evts_tout";
 import {evts_serveur} from "../donnees/evts/carrieres/evts_serveur";
 import {evts_brasseur} from "../donnees/evts/carrieres/evts_brasseur";
-import {Box, Button, Dialog, Grid2, IconButton, Typography} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import {Box, Button, Grid2, Typography} from '@mui/material';
 import {evts_macon} from "../donnees/evts/carrieres/evts_macon";
 import {evts_boulanger} from "../donnees/evts/carrieres/evts_boulanger";
 import {evts_medecin} from "../donnees/evts/carrieres/evts_medecin";
@@ -33,7 +32,6 @@ import {evts_possessions} from "../donnees/evts/possessions/evts_possessions";
 import {evts_drogue} from "../donnees/evts/drogues/evts_drogue";
 import {evts_lycee_demokratos} from "../donnees/evts/coteries/demokratos/evts_lycee_demokratos";
 import {evts_cigarette} from "../donnees/evts/drogues/evts_cigarette";
-import AfficheEvt from "./affichage_evt/AfficheEvt";
 import {Perso} from "../types/perso/Perso";
 import {clonePersoHistoToPerso} from "../fonctions/perso/conversionsPerso";
 import {evts_lycee_acheron} from "../donnees/evts/coteries/acheron/evts_lycee_acheron";
@@ -49,6 +47,7 @@ import {evts_sports} from "../donnees/evts/evts_sport";
 import {evts_logement} from "../donnees/evts/possessions/evts_logement";
 import {evts_lycee} from "../donnees/evts/coteries/evts_lycee";
 import {evts_television} from "../donnees/evts/divertissements/evts_television";
+import EvtsExecutes from "./histoire/EvtsExecutes";
 
 let demarre:boolean = false; // le destin a été lancé et est en cours
 
@@ -56,18 +55,12 @@ const Histoire: React.FC = (): JSX.Element => {
     const [evtsExecutes, setEvtsExecutes] = useState<EvtExecute[]>([]); // événements déjà exécutés
     const [plusDEvts, setPlusDEvts] = useState(false); // true si il n'y a plus aucun evt exécutable
     const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
-    const [open, setOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [tempsRestant, setTempsRestant] = useState<number | null>(null);
     const [jourSansEvt, setJourSansEvt] = useState<number>(0);
     const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-    const handleClose = () => {
-        setOpen(false);
-        setSelectedImage(null);
-    };
-
     const executerEvt = useCallback((evtExecute: Evt, dateDejaAffichee: boolean) => {
+
         const previousPerso:Perso = clonePersoHistoToPerso(perso);
         const texte: Promise<string> = evtExecute.description(perso);
         texte.then((texte) => {
@@ -256,16 +249,10 @@ const Histoire: React.FC = (): JSX.Element => {
     return (
         <>
             <Box display="flex" flexDirection="column" gap={4}>
-                {evtsExecutes.map((evt: EvtExecute, index: number) => (
-                    <AfficheEvt
-                        key={evt.id + index}
-                        evt={evt}
-                        index={index}
-                        setOpen={setOpen}
-                        setSelectedImage={setSelectedImage}
-                        setEvtsExecutes={setEvtsExecutes}
-                    />
-                ))}
+                <EvtsExecutes
+                    setEvtsExecutes={setEvtsExecutes}
+                    evtsExecutes={evtsExecutes}
+                />
                 {tempsRestant !== null && tempsRestant >= 0 && (
                     <Grid2 container justifyContent="center" alignItems="center" spacing={2}
                            sx={{
@@ -308,25 +295,6 @@ const Histoire: React.FC = (): JSX.Element => {
                     Plus d'événements à exécuter !!!! Faut en ajouter mon vieux !!
                 </Typography>
             )}
-            {selectedImage &&
-                <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-                    <IconButton
-                        edge="end"
-                        color="inherit"
-                        onClick={handleClose}
-                        aria-label="close"
-                        sx={{ position: 'absolute', right: 8, top: 8 }}
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                    <Box
-                        component="img"
-                        sx={{ width: '100%', height: 'auto' }}
-                        alt="Image agrandie"
-                        src={selectedImage}
-                    />
-                </Dialog>
-            }
         </>
     );
 }

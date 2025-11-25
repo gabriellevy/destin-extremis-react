@@ -13,7 +13,7 @@ export interface AfficheEvtProps {
     setOpen: (value: (((prevState: boolean) => boolean) | boolean)) => void;
 }
 
-const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelectedImage, setEvtsExecutes}): JSX.Element => {
+const AfficheEvtExecute: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelectedImage, setEvtsExecutes}): JSX.Element => {
     const { perso, setPerso } = useContext(PersoContexte) as PersoContexteType;
 
     const handleClickOpen = (image: string): void => {
@@ -116,4 +116,4 @@ const AfficheEvt: React.FC<AfficheEvtProps> = ({evt, index, setOpen, setSelected
     );
 }
 
-export default AfficheEvt;
+export default AfficheEvtExecute;
