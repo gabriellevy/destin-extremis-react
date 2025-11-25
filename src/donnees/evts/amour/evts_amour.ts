@@ -8,18 +8,60 @@ import {
     aUnCoupDeCoeurNonReciproque,
     enCoupleAvecUnAmourFort,
     getUnCoupDeCoeur,
-    nombreDeCoupDeCoeur
+    nombreDeCoupDeCoeur,
+    nombreDeCouples
 } from "../../../fonctions/pnjs/amour";
 import {ResultatTest} from "../../../types/LancerDe";
-import {testComp, testVice} from "../../../fonctions/des";
+import {testComp, testVertu, testVice} from "../../../fonctions/des";
 import {TypeCompetence} from "../../../types/perso/comps/Comps";
 import {appelLeChat, NiveauInfosPerso} from "../../../fonctions/le_chat";
 import {Coterie} from "../../../types/Coterie";
 import {getAge, jourDeLaSemaineStr} from "../../../types/Date";
 import {supprimerPnj} from "../../../fonctions/pnjs/pnj_fc";
+import {modifierStatut} from "../../../fonctions/perso/statut";
+import {getReputationQuartier} from "../../../fonctions/perso/Reputation";
 
-const rencard: (pnj:PNJ, perso: Perso) => Promise<string> = ( pnj:PNJ, _perso: Perso) => {
-    let texte: string =  "TODO : Rencart avec " + pnj.prenom + ".<br/>";
+const rencard: (pnj:PNJ, perso: Perso) => Promise<string> = ( pnj:PNJ, perso: Perso) => {
+    let texte: string =  "Vous préparez votre rencart avec " + pnj.prenom + ".<br/>";
+    let niveauMotivation:number = getValeurVice(perso, Vice.luxurieux) * 2 - nombreDeCouples(perso);
+
+    if (niveauMotivation < 0) {
+        texte += "À la réflexion elle ne vous intéresse pas tellement mais vous verrez bien. <br/>";
+    } else if (niveauMotivation > 3 ) {
+        texte += "Vous êtes salement en manque et très motivé. <br/>";
+    }
+    let diffTest: number = -10;
+    const resTestDepensier:ResultatTest = testVertu(perso, Vertu.genereux, 0);
+    if (resTestDepensier.reussi) {
+        texte += "Vous réservez un superbe restaurant et apportez un beau cadeau. <br/>";
+        if (resTestDepensier.critical) {
+            texte += modifierStatut(perso, -2);
+            diffTest += 20;
+        } else {
+            texte += modifierStatut(perso, -1);
+            diffTest += 10;
+        }
+    }
+    texte += "Vous la rencontrez le soir. <br/>";
+    if (getReputationQuartier(perso, undefined).amplitude >= 40) {
+        texte += "Elle vous dit qu'elle a entendu parler de vous ces derniers temps et est contente de vous rencontrer enfin. C'est vrai que vous êtes plutôt connu. <br/>";
+        diffTest += 20;
+    }
+
+    const resTestChance: ResultatTest = testComp(perso, TypeCompetence.chance, niveauMotivation * 10);
+    const resTestCharme: ResultatTest = testComp(perso, TypeCompetence.charme, diffTest);
+    if (resTestCharme.reussi && resTestChance.reussi) {
+        if (resTestCharme.critical || resTestChance.critical) {
+            texte += "C'est le coup de foudre. Vous couchez ensemble le soir même. <br/>";
+            perso.bonheur += 0.1;
+        } else {
+            texte += "Vous vous plaisez beaucoup, vous allez vous revoir/ <br/>";
+        }
+        pnj.niveauRelationAmoureuse = NiveauRelationAmoureuse.petiteAmie;
+    } else {
+        texte += "Le courant n'est pas passé du tout. C'est dommage mais c'est la vie. <br/>";
+        supprimerPnj(perso, pnj.prenom, pnj.nom);
+    }
 
     return new Promise((resolve) => resolve(texte))
 }
@@ -100,7 +142,7 @@ export const evts_amour: GroupeEvts = {
                     texte += "Mais " + coupDeCoeur.prenom + " ne tombe pas sous votre charme. ";
                     if (getValeurVertu(perso, Vertu.prudent) > 0) {
                         texte += "Déçu, vous passez autre chose et l'oubliez rapidement. ";
-                        coupDeCoeur.amourPourCePnj = NiveauAmour.aucun; // TODO vérifiez que ça retire vraiment
+                        coupDeCoeur.amourPourCePnj = NiveauAmour.aucun;
                     }
                     if (getValeurVice(perso, Vice.aventureux) > 0) {
                         texte += "Vous n'êtes pas du genre à renoncer. Vous savez que vous pouvez lui plaire et chercherez une autre occasion. ";

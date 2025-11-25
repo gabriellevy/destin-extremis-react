@@ -27,6 +27,14 @@ export function aUnCoupDeCoeurNonReciproque(perso: Perso): boolean {
         .length > 0;
 }
 
+export function nombreDeCouples(perso:Perso):number {
+    return perso.pnjs.filter((pnj: PNJ) =>
+        pnj.niveauRelationAmoureuse === NiveauRelationAmoureuse.concubine
+        || pnj.niveauRelationAmoureuse === NiveauRelationAmoureuse.epouse
+        || pnj.niveauRelationAmoureuse === NiveauRelationAmoureuse.petiteAmie
+    ).length;
+}
+
 export function nombreDeCoupDeCoeur(perso:Perso):number {
     return perso.pnjs.filter((pnj: PNJ) =>
         pnj.amourPourCePnj === NiveauAmour.coupDeCoeur).length;
