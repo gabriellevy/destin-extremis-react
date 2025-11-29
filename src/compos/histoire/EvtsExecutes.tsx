@@ -10,7 +10,6 @@ export interface ExecutedEvtsProps {
 }
 
 const EvtsExecutes: React.FC<ExecutedEvtsProps> = ({evtsExecutes, setEvtsExecutes}): JSX.Element => {
-
     const [open, setOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
