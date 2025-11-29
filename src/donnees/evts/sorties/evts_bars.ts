@@ -29,7 +29,7 @@ export const evts_bars: GroupeEvts = {
                     const resTestSobre:ResultatTest = testVertu(perso, Vertu.sobre, 20);
                     texte += resTestSobre.resume;
                     if (!resTestSobre.reussi) {
-                        texte += "Vous commencez à fumer pour la première fois.";
+                        texte += "Vous commencez à fumer pour la première fois. <br/>";
                         texte += ajouteLigneDeTexteGras(seDroguer(perso, droguesEnum.cigarette));
                     }
                 }

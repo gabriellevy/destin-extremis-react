@@ -135,7 +135,7 @@ export const evts_lycee_orks: GroupeEvts = {
 
                 rand = Math.random();
                 if (rand <= 0.3) {
-                    texte += "L'alcool vous a salement endommagé le cerveau.";
+                    texte += "L'alcool vous a salement endommagé le cerveau. ";
                     texte += augmenterCompetence(perso, TypeCompetence.intelligence, -1);
                 }
                 rand = Math.random();

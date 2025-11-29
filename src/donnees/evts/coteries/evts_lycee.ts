@@ -26,7 +26,7 @@ export const evts_lycee: GroupeEvts = {
                     perso.bonheur -= 0.1;
                     texte += modifierReputationDansQuartier(perso, undefined, -4, 0);
                 } else {
-                    texte += "Mais il a tort : vous ne vous laissez pas faire. ";
+                    texte += "Mais il a tort : vous ne vous laissez pas faire : <br/>";
                     const resTest:ResultatTest = testComp(perso, TypeCompetence.intimidation, -10);
                     texte += resTest.resume;
                     if (resTest.reussi) {
