@@ -161,7 +161,7 @@ export const evts_lycee_acheron: GroupeEvts = {
             id: "evts_lycee_acheron6 méditations mortelles",
             description: async (perso: Perso): Promise<string> => {
                 let texte: string = "La mort est au coeur des obsessions achéroniennes. Son étude et la méditation à son sujet sont incontournables et oppressantes au lycée." +
-                    "Vos professeurs vous obligent à méditer immobiles pendant des heures, jusqu'à engourdir votre corps et ovus approcher de la psychose. <br/>";
+                    "Vos professeurs vous obligent à méditer immobiles pendant des heures, jusqu'à engourdir votre corps et vous approcher de la psychose. <br/>";
 
                 const resTestVolonte:ResultatTest = testComp(perso, TypeCompetence.volonte, 0);
                 texte += resTestVolonte.resume;

@@ -6,7 +6,7 @@ import {evts_chatenay_malabry} from "../../donnees/evts/quartiers/evts_chatenay_
 import {evts_montbrison} from "../../donnees/evts/quartiers/evts_montbrison";
 import {evts_pilleur_de_ruches} from "../../donnees/evts/carrieres/evts_pilleur_de_ruches";
 import {evts_bars} from "../../donnees/evts/sorties/evts_bars";
-import {evts_amour} from "../../donnees/evts/amour/evts_amour";
+import {evts_coups_de_coeur} from "../../donnees/evts/amour/evts_coups_de_coeur";
 import {evts_animaux} from "../../donnees/evts/animaux/evts_animaux";
 import {evts_calendrier} from "../../donnees/evts/programmes/evts_calendrier";
 import {evts_crime_ranconneur} from "../../donnees/evts/carrieres/crime/evts_crime_ranconneur";
@@ -47,6 +47,7 @@ import {PersoContexte, PersoContexteType} from "../../contexte/ContexteTypes";
 import {Perso} from "../../types/perso/Perso";
 import {clonePersoHistoToPerso} from "../../fonctions/perso/conversionsPerso";
 import {demarre} from "../Histoire";
+import {evts_relations_amoureuses} from "../../donnees/evts/amour/evts_relations_amoureuses";
 
 export interface CompteurProps {
     evtsExecutes: EvtExecute[],
@@ -119,7 +120,8 @@ const Compteur: React.FC<CompteurProps> = ({evtsExecutes, setEvtsExecutes}): JSX
             ...filtrerEtPreparerEvts(evts_montbrison, perso),
             ...filtrerEtPreparerEvts(evts_pilleur_de_ruches, perso),
             ...filtrerEtPreparerEvts(evts_bars, perso),
-            ...filtrerEtPreparerEvts(evts_amour, perso),
+            ...filtrerEtPreparerEvts(evts_coups_de_coeur, perso),
+            ...filtrerEtPreparerEvts(evts_relations_amoureuses, perso),
             ...filtrerEtPreparerEvts(evts_animaux, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
             ...filtrerEtPreparerEvts(evts_crime_ranconneur, perso),

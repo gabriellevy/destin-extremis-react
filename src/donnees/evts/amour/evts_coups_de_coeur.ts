@@ -66,7 +66,7 @@ const rencard: (pnj:PNJ, perso: Perso) => Promise<string> = ( pnj:PNJ, perso: Pe
     return new Promise((resolve) => resolve(texte))
 }
 
-export const evts_amour: GroupeEvts = {
+export const evts_coups_de_coeur: GroupeEvts = {
     evts: [
         {
             id: "evts_amour1 avoir un coup de coeur", // le pj va éventuellement la séduire
@@ -165,8 +165,6 @@ export const evts_amour: GroupeEvts = {
             description: async (perso: Perso): Promise<string> => {
                 const coupDeCoeur:PNJ = getUnCoupDeCoeur(perso);
                 let diff:number = 40 - Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/30)*5; // -5 par mois qui est passé
-                console.log("evts_amour3 oubli/rappeler coup de coeur nb mois : ", Math.floor((perso.date - coupDeCoeur.dateDerniereInteration)/12));
-                console.log("evts_amour3 oubli/rappeler coup de coeur diff : ", diff);
                 const resTestIntel:ResultatTest = testComp(perso, TypeCompetence.intelligence, diff);
                 let texte:string = "";
                 texte += resTestIntel.resume;

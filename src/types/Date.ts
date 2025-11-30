@@ -175,3 +175,19 @@ export function leTempsPasse(perso: Perso, executerEvt: (evtExecute: Evt, dateDe
     perso.jourDuMois = nouvJourDuMois;
     return evtProgrammeExecute;
 }
+
+/**
+ *
+ * @param date1 en nombre de secondes depuis l'an 0
+ * @param date2
+ */
+export function nbMoisEntre2Dates(date1:number, date2:number): number {
+    return date2 > date1 ? Math.floor((date2 - date1)/30)
+         : Math.floor((date1 - date2)/30);
+}
+
+export function dureeEntre2DatesToStr(date1:number, date2:number): string {
+    let nbMois:number = nbMoisEntre2Dates(date1, date2);
+    if (nbMois < 12) return nbMois + " mois";
+    else return Math.floor(nbMois/12) + " années";
+}

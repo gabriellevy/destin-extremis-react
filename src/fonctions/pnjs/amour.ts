@@ -2,6 +2,7 @@ import {Perso, PersoCommon} from "../../types/perso/Perso";
 import {PNJ} from "../../types/perso/PNJ";
 import {NiveauAmour, NiveauRelationAmoureuse} from "../../types/perso/Amour";
 import {genererPNJAmourableDePerso} from "../generation";
+import {nbMoisEntre2Dates} from "../../types/Date";
 
 // c'est à dire couchent ensemble ou sont au moins fiancés
 export function enCouple(perso: Perso, pnj: PNJ): boolean {
@@ -38,6 +39,12 @@ export function nombreDeCouples(perso:Perso):number {
 export function nombreDeCoupDeCoeur(perso:Perso):number {
     return perso.pnjs.filter((pnj: PNJ) =>
         pnj.amourPourCePnj === NiveauAmour.coupDeCoeur).length;
+}
+
+export function getPetitesAmiesDIlYAPlusDeDeuxMois(perso:Perso):PNJ[] {
+    return perso.pnjs.filter((pnj: PNJ) =>
+        pnj.niveauRelationAmoureuse === NiveauRelationAmoureuse.petiteAmie
+    && nbMoisEntre2Dates(perso.date, pnj.dateDerniereInteration) >= 2);
 }
 
 /**
