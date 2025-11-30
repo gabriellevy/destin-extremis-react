@@ -8,7 +8,8 @@ import {actuellementDrogueA, seDroguer} from "../../../fonctions/sante/drogues_f
 import {droguesEnum} from "../../sante/drogues";
 import {getAge} from "../../../types/Date";
 import {ajouteLigneDeTexteGras} from "../../../fonctions/texte_fc";
-import {modifierStatut} from "../../../fonctions/perso/statut";
+import {modifierStatut, statutPersoSuperieurAStatut2} from "../../../fonctions/perso/statut";
+import {MetalStatut} from "../../../types/statut_social/Statut";
 
 export const evts_bars: GroupeEvts = {
     evts: [
@@ -89,7 +90,7 @@ export const evts_bars: GroupeEvts = {
                         texte += modifierStatut(perso, -2);
                     } else {
                         perso.bonheur += 0.1;
-                        texte += "Vous enchainez danss privées, alcool et distribution de pourboires et sortez rincé mais heureux. <br/>";
+                        texte += "Vous enchainez danses privées, alcool et distribution de pourboires et sortez rincé mais heureux. <br/>";
                         texte += modifierStatut(perso, -1);
                     }
                 }
@@ -100,6 +101,10 @@ export const evts_bars: GroupeEvts = {
             },
             conditions: (perso: Perso): boolean =>
                 getValeurVice(perso, Vice.luxurieux) > 0
+                && statutPersoSuperieurAStatut2(perso, {
+                    rang: 1,
+                    metalStatut: MetalStatut.bronze,
+                })
                 && getAge(perso) >= 18,
             proba: 0.025,
             nbJoursEntreOccurences: 40,
