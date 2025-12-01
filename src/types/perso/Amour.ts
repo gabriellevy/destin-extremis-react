@@ -11,8 +11,8 @@ export enum NiveauAmour {
 export enum NiveauRelationAmoureuse {
     rien = "Rien",
     connaissance = "Connaissance",
-    amiPlatonique = "AmiPlatonique",
-    coupDunSoir = "Coup de Dun Soir",
+    amiPlatonique = "Amie platonique",
+    coupDunSoir = "Coup d'un Soir",
     petiteAmie = "Petite Amie",
     concubine = "Concubine",
     epouse = "Épouse",

@@ -87,6 +87,7 @@ export const evts_coups_de_coeur: GroupeEvts = {
                         if (resTestCharme.critical && resTestImpulsif.critical) {
                             texte += "Vous l'abordez immédiatement et le courant passe si bien que vous couchez ensemble le jour même. ";
                             prompt += " et a couché avec elle le jour même. ";
+                            coupDeCoeur.niveauRelationAmoureuse = NiveauRelationAmoureuse.coupDunSoir;
                             if (perso.coterie === Coterie.templiers || perso.coterie === Coterie.cathares) {
                                 const resTestTromperie: ResultatTest = testComp(perso, TypeCompetence.tromperie, 0);
                                 if (resTestTromperie.reussi) {
@@ -100,6 +101,7 @@ export const evts_coups_de_coeur: GroupeEvts = {
                             }
                         } else {
                             texte += "Vous l'abordez immédiatement et la séduisez. ";
+                            coupDeCoeur.niveauRelationAmoureuse = NiveauRelationAmoureuse.petiteAmie;
                             prompt += " et l'a séduite. ";
                         }
                     } else {

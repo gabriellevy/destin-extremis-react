@@ -11,7 +11,7 @@ import {ajouterVertuVal, ajouterViceVal, getValeurVertu, Vertu, Vice} from "../.
 import {ajouterMaitrise, aLaMaitrise} from "../../../../fonctions/perso/maitrise";
 import {Maitrise} from "../../../maitrise";
 import {getPrenom} from "../../../../fonctions/noms";
-import {DieuEnum} from "../../../../types/Dieu";
+import {Religion} from "../../../../types/Religion";
 
 export const evts_lycee_cathares: GroupeEvts = {
     evts: [
@@ -213,9 +213,7 @@ export const evts_lycee_cathares: GroupeEvts = {
                 if (resTestChance.reussi && resAltruisme.reussi && resSpirituel.reussi) {
                     texte += "Vous l'avez senti dans votre âme : votre dévotion sans faille a attiré la grâce de Dieu sur vous.  ";
                     texte += ajouterMaitrise(perso, Maitrise.beni);
-                    perso.dieu = {
-                        religion: DieuEnum.christianisme
-                    };
+                    perso.religion = Religion.christianisme;
                 }
 
                 if (perso.niveauIA === NiveauIA.systematique) {

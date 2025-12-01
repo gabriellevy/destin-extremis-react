@@ -1,7 +1,7 @@
 import {Lieu} from "../lieux/Lieu";
 import {Statut} from "../statut_social/Statut";
 import {Carriere} from "../metiers/Metier";
-import {Dieu} from "../Dieu";
+import {Religion} from "../Religion";
 import {Maitrise} from "../../donnees/maitrise";
 import {Coterie} from "../Coterie";
 import {ViceVertu} from "../ViceVertu";
@@ -34,8 +34,7 @@ export type PersoCommon = {
     jourDuMois: number, // déduit de date mais pratique pour optimiser les calculs de conditions en masse
     statut: Statut;
     coterie?: Coterie;
-    // surtout utile si affilié à un temple (ou très très croyant en un dieu particulier)
-    dieu: Dieu,
+    religion: Religion,
     comps: Competence[],
     viceVertu: ViceVertu[],
     maitrises: Maitrise[],

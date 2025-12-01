@@ -325,7 +325,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             id: "evts_brute_de_lycee11caillou",
             description: async (perso: Perso): Promise<string> => {
                 const merdeux:PNJ = genererPNJ(perso, Sexe.male, undefined, perso.bilanLycee.coterieActuelle);
-                let texte: string = "Vous repérez ce petit merdeux de " + merdeux.prenom + "qui passe au dessus de vous sur un pont. "
+                let texte: string = "Vous repérez ce petit merdeux de " + merdeux.prenom + " qui passe au dessus de vous sur un pont. "
                     + "Se croyant à l'abri, il se permet de vous insulter ! Vous ramassez promptement un caillou. ";
                 const resTestTir: ResultatTest = testComp(perso, TypeCompetence.tir, 0);
                 texte += resTestTir.resume;

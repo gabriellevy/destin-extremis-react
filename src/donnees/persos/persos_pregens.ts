@@ -14,7 +14,7 @@ import {MetiersEnum} from "../metiers";
 import {Mode, PhaseDExecution} from "../../types/Mode";
 import {rejointCoterie} from "../../fonctions/coteries/generales";
 import {ANNEE_DE_DEPART, DATE_NAISSANCE_BASE, NB_POINTS_DESTIN_DEPART, SECONDES_ENTRE_CHAQUE_EVT} from "../ReglagesJouabilite";
-import {DieuEnum} from "../../types/Dieu";
+import {Religion} from "../../types/Religion";
 import {evts_anniversaire} from "../evts/programmes/evts_anniversaire";
 
 export function enfant(empty: boolean): PersoForm {
@@ -34,7 +34,7 @@ export function enfant(empty: boolean): PersoForm {
         jourDuMois: -1,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         coterie: empty ? undefined : cot,
-        dieu: {religion: DieuEnum.aucun},
+        religion: Religion.aucun,
         comps: compsDeBase(),
         viceVertu: empty ? [] : viceVertuDeBase(),
         maitrises: [],

@@ -281,7 +281,7 @@ export const metiersObjs: MetierObj = {
     [MetiersEnum.novice_pretre] : {
         nom: MetiersEnum.novice_pretre,
         intitule: (perso: Perso) => {
-            return MetiersEnum.novice_pretre + " de " + perso.dieu.religion;
+            return MetiersEnum.novice_pretre + " de " + perso.religion;
         },
         statut: {rang: 1, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 2, metalStatut: MetalStatut.bronze},
@@ -291,7 +291,7 @@ export const metiersObjs: MetierObj = {
     },
     [MetiersEnum.initie_pretre] : {
         nom: MetiersEnum.initie_pretre,
-        intitule: (perso: Perso) => MetiersEnum.initie_pretre + " de " + perso.dieu.religion,
+        intitule: (perso: Perso) => MetiersEnum.initie_pretre + " de " + perso.religion,
         statut: {rang: 2, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 4, metalStatut: MetalStatut.bronze},
         proba: 0.3,
@@ -300,7 +300,7 @@ export const metiersObjs: MetierObj = {
     },
     [MetiersEnum.moine] : {
         nom: MetiersEnum.moine,
-        intitule: (perso: Perso) => MetiersEnum.moine + " de " + perso.dieu.religion,
+        intitule: (perso: Perso) => MetiersEnum.moine + " de " + perso.religion,
         statut: {rang: 4, metalStatut: MetalStatut.bronze},
         statutMax: {rang: 5, metalStatut: MetalStatut.argent},
         proba: 0.3,
@@ -309,7 +309,7 @@ export const metiersObjs: MetierObj = {
     },
     [MetiersEnum.pretre] : {
         nom: MetiersEnum.pretre,
-        intitule: (perso: Perso) => MetiersEnum.pretre + " de " + perso.dieu.religion,
+        intitule: (perso: Perso) => MetiersEnum.pretre + " de " + perso.religion,
         statut: {rang: 1, metalStatut: MetalStatut.argent},
         statutMax: {rang: 2, metalStatut: MetalStatut.or},
         proba: 0.3,
