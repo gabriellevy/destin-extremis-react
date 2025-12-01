@@ -158,7 +158,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                                 const texteBlessure: string = blessureSubie.nom;
                                 texte += texteBlessure + "<br/>";
                             }
-                            perdre(perso, PossessionEnum.couteau);
+                            texte += perdre(perso, PossessionEnum.couteau);
                         }
                     } else {
                         // bagarre normale à mains nues

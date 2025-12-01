@@ -12,7 +12,7 @@ export function perdre(perso: Perso, possessionEnum: PossessionEnum):string {
         const indexPossession = perso.possessions.findIndex((possession: Possession) => possessionEnum === possession.possessionEnum);
         if (indexPossession != -1) {
             perso.possessions.splice(indexPossession, 1);
-            return "Vous avez perdu " + possessionEnum;
+            return ajouteLigneDeTexteItalique("Vous avez perdu " + possessionEnum + ". ");
         }
     }
     return "";
