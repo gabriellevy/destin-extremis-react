@@ -113,7 +113,7 @@ export const evts_lycee_acheron: GroupeEvts = {
         {
             id: "evts_lycee_acheron4_dur travail",
             description: async (perso: Perso): Promise<string> => {
-                let texte: string = "Les achéronnais sont obsédés par l'étude jusqu'à l'épuisement et l'obsession. <br/>";
+                let texte: string = "Les achéronnais sont obsédés par l'étude. <br/>";
 
                 if (Math.random() <= 0.4) {
                     texte += "Plus le temps passe et plus les punitions se succèdent, plus vous ne pensez plus à rien d'autre qu'au travail. "
