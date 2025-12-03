@@ -49,6 +49,7 @@ import {clonePersoHistoToPerso} from "../../fonctions/perso/conversionsPerso";
 import {demarre} from "../Histoire";
 import {evts_relations_amoureuses} from "../../donnees/evts/amour/evts_relations_amoureuses";
 import {evts_conversion} from "../../donnees/evts/religion/evts_conversion";
+import {evts_acheronais} from "../../donnees/evts/coteries/acheron/evts_acheronais";
 
 export interface CompteurProps {
     evtsExecutes: EvtExecute[],
@@ -123,6 +124,7 @@ const Compteur: React.FC<CompteurProps> = ({evtsExecutes, setEvtsExecutes}): JSX
             ...filtrerEtPreparerEvts(evts_bars, perso),
             ...filtrerEtPreparerEvts(evts_coups_de_coeur, perso),
             ...filtrerEtPreparerEvts(evts_conversion, perso),
+            ...filtrerEtPreparerEvts(evts_acheronais, perso),
             ...filtrerEtPreparerEvts(evts_relations_amoureuses, perso),
             ...filtrerEtPreparerEvts(evts_animaux, perso),
             ...filtrerEtPreparerEvts(evts_calendrier, perso),
@@ -196,6 +198,8 @@ const Compteur: React.FC<CompteurProps> = ({evtsExecutes, setEvtsExecutes}): JSX
                         }),
                     };
                     executerEvt(evt, true);
+                } else if (perso.victoire) {
+                    // rien à exécuter à priori : victoire etc
                 } else {
                     if (evtExecute) {
                         setJourSansEvt(0);

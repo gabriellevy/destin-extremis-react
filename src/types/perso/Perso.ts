@@ -41,6 +41,7 @@ export type PersoCommon = {
     evtsProgrammes: EvtProgramme[],
     secondesEntreChaqueEvt: number, // en millisecondes entre chaque événement
     mort?: boolean,
+    victoire?: boolean,
     bilanLycee: BilanLycee
     reputation: Reputation
     // personnes avec qui le perso est en relation

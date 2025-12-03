@@ -91,6 +91,9 @@ const DonneesPerso: React.FC = (): JSX.Element => {
         <ListItem>
             <ListItemText primary={perso.coterie}/>
         </ListItem>
+        <ListItem>
+            <ListItemText primary="Religion" secondary={perso.religion}/>
+        </ListItem>
         {
             perso.maitrises.length > 0 && (
                 <ListItem>

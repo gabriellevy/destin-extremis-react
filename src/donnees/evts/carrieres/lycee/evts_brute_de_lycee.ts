@@ -330,7 +330,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                 const resTestTir: ResultatTest = testComp(perso, TypeCompetence.tir, 0);
                 texte += resTestTir.resume;
                 if (resTestTir.reussi) {
-                    texte += "Vous lui carrez en pleine tête. Il fait beacoup moins le malin ! ";
+                    texte += "Vous lui carrez en pleine tête. Il fait beaucoup moins le malin ! ";
                     augmenterCompetenceMetier(perso, MetiersEnum.brute_de_lycee, 1);
                     modifierReputationDansQuartier(perso, undefined, -4, 1);
                 } else {
@@ -344,7 +344,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
             },
             proba: 0.02,
             conditions: (perso: Perso): boolean => suitUneCarriereDe(perso, MetiersEnum.brute_de_lycee),
-            nbJoursEntreOccurences: 30,
+            nbJoursEntreOccurences: 200,
         },
     ],
     probaParDefaut: 0.03,
