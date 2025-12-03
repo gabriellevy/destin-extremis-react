@@ -129,6 +129,8 @@ export function imageQuartier(quartier: Quartier): string {
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Vladivostok.jpg";
         case Quartier.marseille:
             return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/Marseille.jpg";
+        case Quartier.saint_ouen:
+            return "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/quartiers/saint_ouen.jpg";
 
         default:
             console.error("Il manque l'image de cet endroit : " + quartier);
