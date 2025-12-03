@@ -34,13 +34,13 @@ export function changementPersonaliteSelonMonteeNiveau(perso:PersoHisto, typeCom
         return undefined;
     }
 
-    return modifsVice[Math.floor(getAleatoireParSeed(perso) * modifsVice.length)];
+    return modifsVice[Math.floor(getAleatoireParSeed(perso, "") * modifsVice.length)];
 }
 
 export function achatSelonMonteeNiveau(perso:PersoHisto, typeCompetence:TypeCompetence): Possession|undefined {
     const achats:Possession[] = achatsAssociesACompetence(typeCompetence);
     let achat:Possession|undefined = undefined;
-    let indexAleatoire:number = getRandomInt0Seed(achats.length, perso);
+    let indexAleatoire:number = getRandomInt0Seed(achats.length, perso, "");
     let count:number = 0;
     while (achat === undefined || possede(perso, achat.possessionEnum)) {
         if (count === achats.length) break;

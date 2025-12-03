@@ -26,7 +26,7 @@ export const evts_acheronais: GroupeEvts = {
 
                 return texte;
             },
-            image: (_perso:PersoHisto) => "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/ach%C3%A9ron/devient%20virtuel.jpg",
+            image: (_perso:PersoHisto):string => "https://raw.githubusercontent.com/gabriellevy/destin-extremis-react/refs/heads/main/images/coteries/ach%C3%A9ron/devient%20virtuel.jpg",
             conditions: (perso: Perso): boolean =>
                 perso.coterie === Coterie.acheron
                 && getValeurVertu(perso, Vertu.artificialiste) >= 2

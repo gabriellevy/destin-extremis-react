@@ -39,16 +39,16 @@ export function aleatoireDeTableauString(tableau: string[]): string {
 }
 
 // ------------------ version avec seed -----------
-export function getAleatoireParSeed(perso: PersoHisto): number {
-    const seed: string = perso.sauvegardes.length > 0 ? perso.sauvegardes[0].idTemporel : perso.idTemporel;
-    console.log("seed", seed);
+export function getAleatoireParSeed(perso: PersoHisto, extraSeedData: string): number {
+    let seed: string = perso.sauvegardes.length > 0 ? perso.sauvegardes[0].idTemporel : perso.idTemporel;
+    seed += extraSeedData;
     return seedrandom(seed)();
 }
 
-export function getRandomIntSeed(numMax: number, perso: PersoHisto): number {
-    return Math.floor(getAleatoireParSeed(perso) * numMax) + 1;
+export function getRandomIntSeed(numMax: number, perso: PersoHisto, extraSeedData: string): number {
+    return Math.floor(getAleatoireParSeed(perso, extraSeedData) * numMax) + 1;
 }
 
-export function getRandomInt0Seed(numMax: number, perso: PersoHisto): number {
-    return Math.floor(getAleatoireParSeed(perso) * numMax);
+export function getRandomInt0Seed(numMax: number, perso: PersoHisto, extraSeedData: string): number {
+    return Math.floor(getAleatoireParSeed(perso, extraSeedData) * numMax);
 }

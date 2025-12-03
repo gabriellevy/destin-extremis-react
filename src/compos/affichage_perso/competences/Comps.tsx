@@ -83,15 +83,19 @@ const Comp = ({ competenceType }: CompProps) => {
         setIsModalOpen(false);
     };
 
+    const quantiteMonteeComp:number = useMemo(() =>
+        1 + getRandomIntSeed(4, perso, getValeurCompetence(perso, competenceType).toString())
+        , [perso]);
+
     const monteeNiveauStandard = () => {
         depenserMonteeDeNiveau(perso, competenceType);
-        augmenterCompetence(perso, competenceType, getRandomIntSeed(6, perso));
+        augmenterCompetence(perso, competenceType, quantiteMonteeComp);
         setPerso({...perso});
         setIsModalOpen(false);
     };
 
     const texteBoutonAmeliorationComp:string = useMemo(() => {
-        return "+" + getRandomIntSeed(6, perso) + " en " + competenceType;
+        return "+" + quantiteMonteeComp + " en " + competenceType;
     }, [perso, competenceType]);
 
     const modifViceSelonMonteeDeNiveau: ModificationVice|undefined = useMemo(() =>

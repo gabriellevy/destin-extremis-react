@@ -260,7 +260,7 @@ export const evts_brute_de_lycee: GroupeEvts = {
                         texte += "Vous êtes un excellent racketteur de lycée, très efficace pour repérer les gamins à la fois faibles et riches. ";
                         texte += modifierStatut(perso, 1);
                     } else {
-                        texte += "Vous agressez régulièreent les faibles de votre lycée mais sans grand bénéfice. ";
+                        texte += "Vous agressez régulièrement les faibles de votre lycée mais sans grand bénéfice. ";
                     }
                 } else {
                     console.error("evts_brute_de_lycee8 travail améliore sans carrière !  : perso : ", perso);
